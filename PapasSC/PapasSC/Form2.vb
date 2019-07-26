@@ -7,11 +7,11 @@
 
     End Sub
 
-    Private Sub Button1_Click(sender As Object, e As EventArgs) Handles Button1.Click
+    Private Sub Button1_Click(sender As Object, e As EventArgs) Handles VentasMenuPrincipal.Click
 
     End Sub
 
-    Private Sub Button2_Click(sender As Object, e As EventArgs) Handles Button2.Click
+    Private Sub Button2_Click(sender As Object, e As EventArgs) Handles InventarioMenuPrincipal.Click
 
     End Sub
 
@@ -25,5 +25,15 @@
 
     Private Sub PictureBox1_Click(sender As Object, e As EventArgs) Handles PictureBox1.Click
 
+    End Sub
+
+
+    Private Sub VentasMenuPrincipal_MouseEnter(sender As Object, e As EventArgs) Handles VentasMenuPrincipal.MouseEnter
+        VentasMenuPrincipal.BackColor = Color.Coral
+
+    End Sub
+
+    Private Sub VentasMenuPrincipal_MouseLeave(sender As Object, e As EventArgs) Handles VentasMenuPrincipal.MouseLeave
+        VentasMenuPrincipal.BackColor = Color.Aqua
     End Sub
 End Class

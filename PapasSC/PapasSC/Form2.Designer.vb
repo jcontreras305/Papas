@@ -24,26 +24,26 @@ Partial Class Form2
     Private Sub InitializeComponent()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(Form2))
         Me.Panel1 = New System.Windows.Forms.Panel()
-        Me.Panel2 = New System.Windows.Forms.Panel()
-        Me.Button1 = New System.Windows.Forms.Button()
-        Me.Button2 = New System.Windows.Forms.Button()
-        Me.Button3 = New System.Windows.Forms.Button()
-        Me.Button4 = New System.Windows.Forms.Button()
-        Me.Button5 = New System.Windows.Forms.Button()
-        Me.Button6 = New System.Windows.Forms.Button()
-        Me.Button7 = New System.Windows.Forms.Button()
-        Me.Button8 = New System.Windows.Forms.Button()
+        Me.Label3 = New System.Windows.Forms.Label()
+        Me.Label2 = New System.Windows.Forms.Label()
+        Me.Label1 = New System.Windows.Forms.Label()
         Me.MenuStrip1 = New System.Windows.Forms.MenuStrip()
         Me.MenuToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.ArchivoToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
-        Me.Label1 = New System.Windows.Forms.Label()
-        Me.Label2 = New System.Windows.Forms.Label()
-        Me.Label3 = New System.Windows.Forms.Label()
+        Me.Panel2 = New System.Windows.Forms.Panel()
+        Me.ConfiguracionMenuPrincipal = New System.Windows.Forms.Button()
+        Me.ControlMenuPrincipal = New System.Windows.Forms.Button()
+        Me.UtileriasMenuPrincipal = New System.Windows.Forms.Button()
+        Me.NominaMenuPrincipal = New System.Windows.Forms.Button()
+        Me.CatalogoMenuPrincipal = New System.Windows.Forms.Button()
+        Me.ReporteMenuPrincipal = New System.Windows.Forms.Button()
+        Me.InventarioMenuPrincipal = New System.Windows.Forms.Button()
+        Me.VentasMenuPrincipal = New System.Windows.Forms.Button()
         Me.Panel3 = New System.Windows.Forms.Panel()
         Me.PictureBox1 = New System.Windows.Forms.PictureBox()
         Me.Panel1.SuspendLayout()
-        Me.Panel2.SuspendLayout()
         Me.MenuStrip1.SuspendLayout()
+        Me.Panel2.SuspendLayout()
         Me.Panel3.SuspendLayout()
         CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
@@ -60,93 +60,32 @@ Partial Class Form2
         Me.Panel1.Size = New System.Drawing.Size(1083, 43)
         Me.Panel1.TabIndex = 0
         '
-        'Panel2
+        'Label3
         '
-        Me.Panel2.BackColor = System.Drawing.Color.FromArgb(CType(CType(35, Byte), Integer), CType(CType(63, Byte), Integer), CType(CType(107, Byte), Integer))
-        Me.Panel2.Controls.Add(Me.Button8)
-        Me.Panel2.Controls.Add(Me.Button7)
-        Me.Panel2.Controls.Add(Me.Button6)
-        Me.Panel2.Controls.Add(Me.Button5)
-        Me.Panel2.Controls.Add(Me.Button4)
-        Me.Panel2.Controls.Add(Me.Button3)
-        Me.Panel2.Controls.Add(Me.Button2)
-        Me.Panel2.Controls.Add(Me.Button1)
-        Me.Panel2.Location = New System.Drawing.Point(0, 42)
-        Me.Panel2.Name = "Panel2"
-        Me.Panel2.Size = New System.Drawing.Size(182, 492)
-        Me.Panel2.TabIndex = 1
+        Me.Label3.AutoSize = True
+        Me.Label3.Location = New System.Drawing.Point(921, 13)
+        Me.Label3.Name = "Label3"
+        Me.Label3.Size = New System.Drawing.Size(50, 13)
+        Me.Label3.TabIndex = 3
+        Me.Label3.Text = "Minimizar"
         '
-        'Button1
+        'Label2
         '
-        Me.Button1.Location = New System.Drawing.Point(0, 11)
-        Me.Button1.Name = "Button1"
-        Me.Button1.Size = New System.Drawing.Size(182, 49)
-        Me.Button1.TabIndex = 0
-        Me.Button1.Text = "Ventas"
-        Me.Button1.UseVisualStyleBackColor = True
+        Me.Label2.AutoSize = True
+        Me.Label2.Location = New System.Drawing.Point(974, 12)
+        Me.Label2.Name = "Label2"
+        Me.Label2.Size = New System.Drawing.Size(53, 13)
+        Me.Label2.TabIndex = 2
+        Me.Label2.Text = "Restaurar"
         '
-        'Button2
+        'Label1
         '
-        Me.Button2.Location = New System.Drawing.Point(0, 72)
-        Me.Button2.Name = "Button2"
-        Me.Button2.Size = New System.Drawing.Size(182, 46)
-        Me.Button2.TabIndex = 1
-        Me.Button2.Text = "Inventario"
-        Me.Button2.UseVisualStyleBackColor = True
-        '
-        'Button3
-        '
-        Me.Button3.Location = New System.Drawing.Point(0, 130)
-        Me.Button3.Name = "Button3"
-        Me.Button3.Size = New System.Drawing.Size(181, 47)
-        Me.Button3.TabIndex = 2
-        Me.Button3.Text = "Reportes"
-        Me.Button3.UseVisualStyleBackColor = True
-        '
-        'Button4
-        '
-        Me.Button4.Location = New System.Drawing.Point(0, 188)
-        Me.Button4.Name = "Button4"
-        Me.Button4.Size = New System.Drawing.Size(181, 51)
-        Me.Button4.TabIndex = 3
-        Me.Button4.Text = "Catalogo"
-        Me.Button4.UseVisualStyleBackColor = True
-        '
-        'Button5
-        '
-        Me.Button5.Location = New System.Drawing.Point(0, 248)
-        Me.Button5.Name = "Button5"
-        Me.Button5.Size = New System.Drawing.Size(181, 51)
-        Me.Button5.TabIndex = 4
-        Me.Button5.Text = "Nomina"
-        Me.Button5.UseVisualStyleBackColor = True
-        '
-        'Button6
-        '
-        Me.Button6.Location = New System.Drawing.Point(0, 309)
-        Me.Button6.Name = "Button6"
-        Me.Button6.Size = New System.Drawing.Size(181, 51)
-        Me.Button6.TabIndex = 5
-        Me.Button6.Text = "Utilidades"
-        Me.Button6.UseVisualStyleBackColor = True
-        '
-        'Button7
-        '
-        Me.Button7.Location = New System.Drawing.Point(1, 370)
-        Me.Button7.Name = "Button7"
-        Me.Button7.Size = New System.Drawing.Size(181, 48)
-        Me.Button7.TabIndex = 6
-        Me.Button7.Text = "Control"
-        Me.Button7.UseVisualStyleBackColor = True
-        '
-        'Button8
-        '
-        Me.Button8.Location = New System.Drawing.Point(1, 427)
-        Me.Button8.Name = "Button8"
-        Me.Button8.Size = New System.Drawing.Size(181, 44)
-        Me.Button8.TabIndex = 7
-        Me.Button8.Text = "Configuración"
-        Me.Button8.UseVisualStyleBackColor = True
+        Me.Label1.AutoSize = True
+        Me.Label1.Location = New System.Drawing.Point(1033, 12)
+        Me.Label1.Name = "Label1"
+        Me.Label1.Size = New System.Drawing.Size(35, 13)
+        Me.Label1.TabIndex = 1
+        Me.Label1.Text = "Cerrar"
         '
         'MenuStrip1
         '
@@ -170,40 +109,149 @@ Partial Class Form2
         Me.ArchivoToolStripMenuItem.Size = New System.Drawing.Size(60, 20)
         Me.ArchivoToolStripMenuItem.Text = "Archivo"
         '
-        'Label1
+        'Panel2
         '
-        Me.Label1.AutoSize = True
-        Me.Label1.Location = New System.Drawing.Point(1033, 12)
-        Me.Label1.Name = "Label1"
-        Me.Label1.Size = New System.Drawing.Size(35, 13)
-        Me.Label1.TabIndex = 1
-        Me.Label1.Text = "Cerrar"
+        Me.Panel2.BackColor = System.Drawing.Color.FromArgb(CType(CType(35, Byte), Integer), CType(CType(63, Byte), Integer), CType(CType(107, Byte), Integer))
+        Me.Panel2.Controls.Add(Me.ConfiguracionMenuPrincipal)
+        Me.Panel2.Controls.Add(Me.ControlMenuPrincipal)
+        Me.Panel2.Controls.Add(Me.UtileriasMenuPrincipal)
+        Me.Panel2.Controls.Add(Me.NominaMenuPrincipal)
+        Me.Panel2.Controls.Add(Me.CatalogoMenuPrincipal)
+        Me.Panel2.Controls.Add(Me.ReporteMenuPrincipal)
+        Me.Panel2.Controls.Add(Me.InventarioMenuPrincipal)
+        Me.Panel2.Controls.Add(Me.VentasMenuPrincipal)
+        Me.Panel2.Location = New System.Drawing.Point(0, 42)
+        Me.Panel2.Name = "Panel2"
+        Me.Panel2.Size = New System.Drawing.Size(188, 492)
+        Me.Panel2.TabIndex = 1
         '
-        'Label2
+        'ConfiguracionMenuPrincipal
         '
-        Me.Label2.AutoSize = True
-        Me.Label2.Location = New System.Drawing.Point(974, 12)
-        Me.Label2.Name = "Label2"
-        Me.Label2.Size = New System.Drawing.Size(53, 13)
-        Me.Label2.TabIndex = 2
-        Me.Label2.Text = "Restaurar"
+        Me.ConfiguracionMenuPrincipal.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom
+        Me.ConfiguracionMenuPrincipal.Cursor = System.Windows.Forms.Cursors.Hand
+        Me.ConfiguracionMenuPrincipal.FlatStyle = System.Windows.Forms.FlatStyle.Popup
+        Me.ConfiguracionMenuPrincipal.Font = New System.Drawing.Font("Arial", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.ConfiguracionMenuPrincipal.ForeColor = System.Drawing.SystemColors.ButtonHighlight
+        Me.ConfiguracionMenuPrincipal.Location = New System.Drawing.Point(1, 427)
+        Me.ConfiguracionMenuPrincipal.Name = "ConfiguracionMenuPrincipal"
+        Me.ConfiguracionMenuPrincipal.Size = New System.Drawing.Size(181, 44)
+        Me.ConfiguracionMenuPrincipal.TabIndex = 7
+        Me.ConfiguracionMenuPrincipal.Text = "Configuración"
+        Me.ConfiguracionMenuPrincipal.UseVisualStyleBackColor = True
         '
-        'Label3
+        'ControlMenuPrincipal
         '
-        Me.Label3.AutoSize = True
-        Me.Label3.Location = New System.Drawing.Point(921, 13)
-        Me.Label3.Name = "Label3"
-        Me.Label3.Size = New System.Drawing.Size(50, 13)
-        Me.Label3.TabIndex = 3
-        Me.Label3.Text = "Minimizar"
+        Me.ControlMenuPrincipal.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom
+        Me.ControlMenuPrincipal.Cursor = System.Windows.Forms.Cursors.Hand
+        Me.ControlMenuPrincipal.FlatStyle = System.Windows.Forms.FlatStyle.Popup
+        Me.ControlMenuPrincipal.Font = New System.Drawing.Font("Arial", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.ControlMenuPrincipal.ForeColor = System.Drawing.SystemColors.ButtonHighlight
+        Me.ControlMenuPrincipal.Location = New System.Drawing.Point(1, 370)
+        Me.ControlMenuPrincipal.Name = "ControlMenuPrincipal"
+        Me.ControlMenuPrincipal.Size = New System.Drawing.Size(181, 48)
+        Me.ControlMenuPrincipal.TabIndex = 6
+        Me.ControlMenuPrincipal.Text = "Control"
+        Me.ControlMenuPrincipal.UseVisualStyleBackColor = True
+        '
+        'UtileriasMenuPrincipal
+        '
+        Me.UtileriasMenuPrincipal.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom
+        Me.UtileriasMenuPrincipal.Cursor = System.Windows.Forms.Cursors.Hand
+        Me.UtileriasMenuPrincipal.FlatStyle = System.Windows.Forms.FlatStyle.Popup
+        Me.UtileriasMenuPrincipal.Font = New System.Drawing.Font("Arial", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.UtileriasMenuPrincipal.ForeColor = System.Drawing.SystemColors.ButtonHighlight
+        Me.UtileriasMenuPrincipal.Location = New System.Drawing.Point(0, 309)
+        Me.UtileriasMenuPrincipal.Name = "UtileriasMenuPrincipal"
+        Me.UtileriasMenuPrincipal.Size = New System.Drawing.Size(181, 51)
+        Me.UtileriasMenuPrincipal.TabIndex = 5
+        Me.UtileriasMenuPrincipal.Text = "Utilerias"
+        Me.UtileriasMenuPrincipal.UseVisualStyleBackColor = True
+        '
+        'NominaMenuPrincipal
+        '
+        Me.NominaMenuPrincipal.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom
+        Me.NominaMenuPrincipal.Cursor = System.Windows.Forms.Cursors.Hand
+        Me.NominaMenuPrincipal.FlatStyle = System.Windows.Forms.FlatStyle.Popup
+        Me.NominaMenuPrincipal.Font = New System.Drawing.Font("Arial", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.NominaMenuPrincipal.ForeColor = System.Drawing.SystemColors.ButtonHighlight
+        Me.NominaMenuPrincipal.Location = New System.Drawing.Point(0, 248)
+        Me.NominaMenuPrincipal.Name = "NominaMenuPrincipal"
+        Me.NominaMenuPrincipal.Size = New System.Drawing.Size(181, 51)
+        Me.NominaMenuPrincipal.TabIndex = 4
+        Me.NominaMenuPrincipal.Text = "Nomina"
+        Me.NominaMenuPrincipal.UseVisualStyleBackColor = True
+        '
+        'CatalogoMenuPrincipal
+        '
+        Me.CatalogoMenuPrincipal.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom
+        Me.CatalogoMenuPrincipal.Cursor = System.Windows.Forms.Cursors.Hand
+        Me.CatalogoMenuPrincipal.FlatStyle = System.Windows.Forms.FlatStyle.Popup
+        Me.CatalogoMenuPrincipal.Font = New System.Drawing.Font("Arial", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.CatalogoMenuPrincipal.ForeColor = System.Drawing.SystemColors.ButtonHighlight
+        Me.CatalogoMenuPrincipal.Location = New System.Drawing.Point(0, 188)
+        Me.CatalogoMenuPrincipal.Name = "CatalogoMenuPrincipal"
+        Me.CatalogoMenuPrincipal.Size = New System.Drawing.Size(181, 51)
+        Me.CatalogoMenuPrincipal.TabIndex = 3
+        Me.CatalogoMenuPrincipal.Text = "Catalogo"
+        Me.CatalogoMenuPrincipal.UseVisualStyleBackColor = True
+        '
+        'ReporteMenuPrincipal
+        '
+        Me.ReporteMenuPrincipal.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom
+        Me.ReporteMenuPrincipal.Cursor = System.Windows.Forms.Cursors.Hand
+        Me.ReporteMenuPrincipal.FlatStyle = System.Windows.Forms.FlatStyle.Popup
+        Me.ReporteMenuPrincipal.Font = New System.Drawing.Font("Arial", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.ReporteMenuPrincipal.ForeColor = System.Drawing.SystemColors.ButtonHighlight
+        Me.ReporteMenuPrincipal.Location = New System.Drawing.Point(0, 130)
+        Me.ReporteMenuPrincipal.Name = "ReporteMenuPrincipal"
+        Me.ReporteMenuPrincipal.Size = New System.Drawing.Size(181, 47)
+        Me.ReporteMenuPrincipal.TabIndex = 2
+        Me.ReporteMenuPrincipal.Text = "Reportes"
+        Me.ReporteMenuPrincipal.UseVisualStyleBackColor = True
+        '
+        'InventarioMenuPrincipal
+        '
+        Me.InventarioMenuPrincipal.BackColor = System.Drawing.Color.FromArgb(CType(CType(35, Byte), Integer), CType(CType(63, Byte), Integer), CType(CType(107, Byte), Integer))
+        Me.InventarioMenuPrincipal.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom
+        Me.InventarioMenuPrincipal.Cursor = System.Windows.Forms.Cursors.Hand
+        Me.InventarioMenuPrincipal.FlatAppearance.BorderColor = System.Drawing.Color.Blue
+        Me.InventarioMenuPrincipal.FlatAppearance.BorderSize = 10
+        Me.InventarioMenuPrincipal.FlatStyle = System.Windows.Forms.FlatStyle.Popup
+        Me.InventarioMenuPrincipal.Font = New System.Drawing.Font("Arial", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.InventarioMenuPrincipal.ForeColor = System.Drawing.SystemColors.ButtonHighlight
+        Me.InventarioMenuPrincipal.Location = New System.Drawing.Point(2, 72)
+        Me.InventarioMenuPrincipal.Name = "InventarioMenuPrincipal"
+        Me.InventarioMenuPrincipal.Size = New System.Drawing.Size(182, 46)
+        Me.InventarioMenuPrincipal.TabIndex = 1
+        Me.InventarioMenuPrincipal.Text = "Inventario"
+        Me.InventarioMenuPrincipal.UseVisualStyleBackColor = False
+        '
+        'VentasMenuPrincipal
+        '
+        Me.VentasMenuPrincipal.BackColor = System.Drawing.Color.FromArgb(CType(CType(35, Byte), Integer), CType(CType(63, Byte), Integer), CType(CType(107, Byte), Integer))
+        Me.VentasMenuPrincipal.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
+        Me.VentasMenuPrincipal.Cursor = System.Windows.Forms.Cursors.Hand
+        Me.VentasMenuPrincipal.FlatAppearance.BorderColor = System.Drawing.SystemColors.ActiveCaptionText
+        Me.VentasMenuPrincipal.FlatAppearance.BorderSize = 10
+        Me.VentasMenuPrincipal.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Blue
+        Me.VentasMenuPrincipal.FlatStyle = System.Windows.Forms.FlatStyle.Popup
+        Me.VentasMenuPrincipal.Font = New System.Drawing.Font("Arial", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.VentasMenuPrincipal.ForeColor = System.Drawing.SystemColors.ButtonHighlight
+        Me.VentasMenuPrincipal.Location = New System.Drawing.Point(1, 11)
+        Me.VentasMenuPrincipal.Margin = New System.Windows.Forms.Padding(2, 3, 3, 1)
+        Me.VentasMenuPrincipal.Name = "VentasMenuPrincipal"
+        Me.VentasMenuPrincipal.Size = New System.Drawing.Size(182, 49)
+        Me.VentasMenuPrincipal.TabIndex = 0
+        Me.VentasMenuPrincipal.Text = "Ventas"
+        Me.VentasMenuPrincipal.UseVisualStyleBackColor = False
         '
         'Panel3
         '
         Me.Panel3.BackColor = System.Drawing.SystemColors.ControlLight
         Me.Panel3.Controls.Add(Me.PictureBox1)
-        Me.Panel3.Location = New System.Drawing.Point(187, 49)
+        Me.Panel3.Location = New System.Drawing.Point(194, 49)
         Me.Panel3.Name = "Panel3"
-        Me.Panel3.Size = New System.Drawing.Size(882, 465)
+        Me.Panel3.Size = New System.Drawing.Size(875, 465)
         Me.Panel3.TabIndex = 2
         '
         'PictureBox1
@@ -230,9 +278,9 @@ Partial Class Form2
         Me.Text = "Form2"
         Me.Panel1.ResumeLayout(False)
         Me.Panel1.PerformLayout()
-        Me.Panel2.ResumeLayout(False)
         Me.MenuStrip1.ResumeLayout(False)
         Me.MenuStrip1.PerformLayout()
+        Me.Panel2.ResumeLayout(False)
         Me.Panel3.ResumeLayout(False)
         CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
@@ -241,14 +289,14 @@ Partial Class Form2
 
     Friend WithEvents Panel1 As Panel
     Friend WithEvents Panel2 As Panel
-    Friend WithEvents Button8 As Button
-    Friend WithEvents Button7 As Button
-    Friend WithEvents Button6 As Button
-    Friend WithEvents Button5 As Button
-    Friend WithEvents Button4 As Button
-    Friend WithEvents Button3 As Button
-    Friend WithEvents Button2 As Button
-    Friend WithEvents Button1 As Button
+    Friend WithEvents ConfiguracionMenuPrincipal As Button
+    Friend WithEvents ControlMenuPrincipal As Button
+    Friend WithEvents UtileriasMenuPrincipal As Button
+    Friend WithEvents NominaMenuPrincipal As Button
+    Friend WithEvents CatalogoMenuPrincipal As Button
+    Friend WithEvents ReporteMenuPrincipal As Button
+    Friend WithEvents InventarioMenuPrincipal As Button
+    Friend WithEvents VentasMenuPrincipal As Button
     Friend WithEvents Label3 As Label
     Friend WithEvents Label2 As Label
     Friend WithEvents Label1 As Label
