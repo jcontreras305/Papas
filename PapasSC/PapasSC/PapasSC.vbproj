@@ -74,11 +74,11 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="conexionDB.vb" />
-    <Compile Include="Form1.vb">
+    <Compile Include="Logeo.vb">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Form1.Designer.vb">
-      <DependentUpon>Form1.vb</DependentUpon>
+    <Compile Include="Logeo.Designer.vb">
+      <DependentUpon>Logeo.vb</DependentUpon>
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Form2.Designer.vb">
@@ -104,8 +104,8 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Form1.resx">
-      <DependentUpon>Form1.vb</DependentUpon>
+    <EmbeddedResource Include="Logeo.resx">
+      <DependentUpon>Logeo.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Form2.resx">
       <DependentUpon>Form2.vb</DependentUpon>
