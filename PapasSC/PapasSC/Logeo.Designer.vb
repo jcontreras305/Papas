@@ -22,26 +22,26 @@ Partial Class Logeo
     'No lo modifique con el editor de código.
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
-        Me.TextBox1 = New System.Windows.Forms.TextBox()
-        Me.TextBox2 = New System.Windows.Forms.TextBox()
+        Me.txtUsuario = New System.Windows.Forms.TextBox()
+        Me.txtContrasenia = New System.Windows.Forms.TextBox()
         Me.Label1 = New System.Windows.Forms.Label()
         Me.Label2 = New System.Windows.Forms.Label()
         Me.btnIniciar = New System.Windows.Forms.Button()
         Me.SuspendLayout()
         '
-        'TextBox1
+        'txtUsuario
         '
-        Me.TextBox1.Location = New System.Drawing.Point(105, 79)
-        Me.TextBox1.Name = "TextBox1"
-        Me.TextBox1.Size = New System.Drawing.Size(141, 20)
-        Me.TextBox1.TabIndex = 0
+        Me.txtUsuario.Location = New System.Drawing.Point(105, 79)
+        Me.txtUsuario.Name = "txtUsuario"
+        Me.txtUsuario.Size = New System.Drawing.Size(141, 20)
+        Me.txtUsuario.TabIndex = 0
         '
-        'TextBox2
+        'txtContrasenia
         '
-        Me.TextBox2.Location = New System.Drawing.Point(105, 130)
-        Me.TextBox2.Name = "TextBox2"
-        Me.TextBox2.Size = New System.Drawing.Size(141, 20)
-        Me.TextBox2.TabIndex = 1
+        Me.txtContrasenia.Location = New System.Drawing.Point(105, 130)
+        Me.txtContrasenia.Name = "txtContrasenia"
+        Me.txtContrasenia.Size = New System.Drawing.Size(141, 20)
+        Me.txtContrasenia.TabIndex = 1
         '
         'Label1
         '
@@ -78,8 +78,8 @@ Partial Class Logeo
         Me.Controls.Add(Me.btnIniciar)
         Me.Controls.Add(Me.Label2)
         Me.Controls.Add(Me.Label1)
-        Me.Controls.Add(Me.TextBox2)
-        Me.Controls.Add(Me.TextBox1)
+        Me.Controls.Add(Me.txtContrasenia)
+        Me.Controls.Add(Me.txtUsuario)
         Me.Name = "Logeo"
         Me.Text = "Inicio de sesion"
         Me.ResumeLayout(False)
@@ -87,8 +87,8 @@ Partial Class Logeo
 
     End Sub
 
-    Friend WithEvents TextBox1 As TextBox
-    Friend WithEvents TextBox2 As TextBox
+    Friend WithEvents txtUsuario As TextBox
+    Friend WithEvents txtContrasenia As TextBox
     Friend WithEvents Label1 As Label
     Friend WithEvents Label2 As Label
     Friend WithEvents btnIniciar As Button
