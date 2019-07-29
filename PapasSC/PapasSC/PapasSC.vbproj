@@ -74,6 +74,24 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="conexionDB.vb" />
+    <Compile Include="Formularios\Catálogo.Designer.vb">
+      <DependentUpon>Catálogo.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Formularios\Catálogo.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formularios\MenuInventario.Designer.vb">
+      <DependentUpon>MenuInventario.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Formularios\MenuInventario.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formularios\MenuReportes.Designer.vb">
+      <DependentUpon>MenuReportes.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Formularios\MenuReportes.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="Formularios\MenuVentas.Designer.vb">
       <DependentUpon>MenuVentas.vb</DependentUpon>
     </Compile>
@@ -112,6 +130,18 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="Formularios\Catálogo.resx">
+      <DependentUpon>Catálogo.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formularios\MenuInventario.resx">
+      <DependentUpon>MenuInventario.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formularios\MenuReportes.resx">
+      <DependentUpon>MenuReportes.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formularios\MenuVentas.resx">
+      <DependentUpon>MenuVentas.vb</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Logeo.resx">
       <DependentUpon>Logeo.vb</DependentUpon>
     </EmbeddedResource>
