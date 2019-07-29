@@ -49,17 +49,20 @@ Partial Class Form2
         '
         'Panel1
         '
+        Me.Panel1.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
+            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.Panel1.BackColor = System.Drawing.Color.FromArgb(CType(CType(179, Byte), Integer), CType(CType(223, Byte), Integer), CType(CType(238, Byte), Integer))
         Me.Panel1.Controls.Add(Me.Minimizar)
         Me.Panel1.Controls.Add(Me.Cerrar)
         Me.Panel1.Controls.Add(Me.MenuStrip1)
-        Me.Panel1.Location = New System.Drawing.Point(-1, 0)
+        Me.Panel1.Location = New System.Drawing.Point(0, 1)
         Me.Panel1.Name = "Panel1"
-        Me.Panel1.Size = New System.Drawing.Size(1083, 43)
+        Me.Panel1.Size = New System.Drawing.Size(1082, 42)
         Me.Panel1.TabIndex = 0
         '
         'Minimizar
         '
+        Me.Minimizar.Anchor = System.Windows.Forms.AnchorStyles.Right
         Me.Minimizar.AutoSize = True
         Me.Minimizar.Location = New System.Drawing.Point(977, 11)
         Me.Minimizar.Name = "Minimizar"
@@ -69,6 +72,7 @@ Partial Class Form2
         '
         'Cerrar
         '
+        Me.Cerrar.Anchor = System.Windows.Forms.AnchorStyles.Right
         Me.Cerrar.AutoSize = True
         Me.Cerrar.Location = New System.Drawing.Point(1033, 12)
         Me.Cerrar.Name = "Cerrar"
@@ -82,7 +86,7 @@ Partial Class Form2
         Me.MenuStrip1.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.MenuToolStripMenuItem, Me.ArchivoToolStripMenuItem})
         Me.MenuStrip1.Location = New System.Drawing.Point(0, 0)
         Me.MenuStrip1.Name = "MenuStrip1"
-        Me.MenuStrip1.Size = New System.Drawing.Size(1083, 24)
+        Me.MenuStrip1.Size = New System.Drawing.Size(1082, 24)
         Me.MenuStrip1.TabIndex = 0
         Me.MenuStrip1.Text = "MenuStrip1"
         '
@@ -100,6 +104,8 @@ Partial Class Form2
         '
         'Panel2
         '
+        Me.Panel2.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
+            Or System.Windows.Forms.AnchorStyles.Left), System.Windows.Forms.AnchorStyles)
         Me.Panel2.BackColor = System.Drawing.Color.FromArgb(CType(CType(35, Byte), Integer), CType(CType(63, Byte), Integer), CType(CType(107, Byte), Integer))
         Me.Panel2.Controls.Add(Me.ConfiguracionMenuPrincipal)
         Me.Panel2.Controls.Add(Me.ControlMenuPrincipal)
@@ -116,6 +122,7 @@ Partial Class Form2
         '
         'ConfiguracionMenuPrincipal
         '
+        Me.ConfiguracionMenuPrincipal.Anchor = System.Windows.Forms.AnchorStyles.Left
         Me.ConfiguracionMenuPrincipal.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom
         Me.ConfiguracionMenuPrincipal.Cursor = System.Windows.Forms.Cursors.Hand
         Me.ConfiguracionMenuPrincipal.FlatStyle = System.Windows.Forms.FlatStyle.Popup
@@ -130,6 +137,7 @@ Partial Class Form2
         '
         'ControlMenuPrincipal
         '
+        Me.ControlMenuPrincipal.Anchor = System.Windows.Forms.AnchorStyles.Left
         Me.ControlMenuPrincipal.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom
         Me.ControlMenuPrincipal.Cursor = System.Windows.Forms.Cursors.Hand
         Me.ControlMenuPrincipal.FlatStyle = System.Windows.Forms.FlatStyle.Popup
@@ -144,6 +152,7 @@ Partial Class Form2
         '
         'UtileriasMenuPrincipal
         '
+        Me.UtileriasMenuPrincipal.Anchor = System.Windows.Forms.AnchorStyles.Left
         Me.UtileriasMenuPrincipal.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom
         Me.UtileriasMenuPrincipal.Cursor = System.Windows.Forms.Cursors.Hand
         Me.UtileriasMenuPrincipal.FlatStyle = System.Windows.Forms.FlatStyle.Popup
@@ -158,6 +167,7 @@ Partial Class Form2
         '
         'NominaMenuPrincipal
         '
+        Me.NominaMenuPrincipal.Anchor = System.Windows.Forms.AnchorStyles.Left
         Me.NominaMenuPrincipal.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom
         Me.NominaMenuPrincipal.Cursor = System.Windows.Forms.Cursors.Hand
         Me.NominaMenuPrincipal.FlatStyle = System.Windows.Forms.FlatStyle.Popup
@@ -172,6 +182,7 @@ Partial Class Form2
         '
         'CatalogoMenuPrincipal
         '
+        Me.CatalogoMenuPrincipal.Anchor = System.Windows.Forms.AnchorStyles.Left
         Me.CatalogoMenuPrincipal.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom
         Me.CatalogoMenuPrincipal.Cursor = System.Windows.Forms.Cursors.Hand
         Me.CatalogoMenuPrincipal.FlatStyle = System.Windows.Forms.FlatStyle.Popup
@@ -186,6 +197,7 @@ Partial Class Form2
         '
         'ReporteMenuPrincipal
         '
+        Me.ReporteMenuPrincipal.Anchor = System.Windows.Forms.AnchorStyles.Left
         Me.ReporteMenuPrincipal.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom
         Me.ReporteMenuPrincipal.Cursor = System.Windows.Forms.Cursors.Hand
         Me.ReporteMenuPrincipal.FlatStyle = System.Windows.Forms.FlatStyle.Popup
@@ -200,6 +212,7 @@ Partial Class Form2
         '
         'InventarioMenuPrincipal
         '
+        Me.InventarioMenuPrincipal.Anchor = System.Windows.Forms.AnchorStyles.Left
         Me.InventarioMenuPrincipal.BackColor = System.Drawing.Color.FromArgb(CType(CType(35, Byte), Integer), CType(CType(63, Byte), Integer), CType(CType(107, Byte), Integer))
         Me.InventarioMenuPrincipal.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom
         Me.InventarioMenuPrincipal.Cursor = System.Windows.Forms.Cursors.Hand
@@ -217,6 +230,7 @@ Partial Class Form2
         '
         'VentasMenuPrincipal
         '
+        Me.VentasMenuPrincipal.Anchor = System.Windows.Forms.AnchorStyles.Left
         Me.VentasMenuPrincipal.BackColor = System.Drawing.Color.FromArgb(CType(CType(35, Byte), Integer), CType(CType(63, Byte), Integer), CType(CType(107, Byte), Integer))
         Me.VentasMenuPrincipal.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
         Me.VentasMenuPrincipal.Cursor = System.Windows.Forms.Cursors.Hand
@@ -236,6 +250,9 @@ Partial Class Form2
         '
         'Panel3
         '
+        Me.Panel3.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
+            Or System.Windows.Forms.AnchorStyles.Left) _
+            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.Panel3.BackColor = System.Drawing.SystemColors.ControlLight
         Me.Panel3.Controls.Add(Me.PictureBox1)
         Me.Panel3.Location = New System.Drawing.Point(194, 49)
@@ -246,9 +263,9 @@ Partial Class Form2
         'PictureBox1
         '
         Me.PictureBox1.Image = CType(resources.GetObject("PictureBox1.Image"), System.Drawing.Image)
-        Me.PictureBox1.Location = New System.Drawing.Point(277, 65)
+        Me.PictureBox1.Location = New System.Drawing.Point(325, 220)
         Me.PictureBox1.Name = "PictureBox1"
-        Me.PictureBox1.Size = New System.Drawing.Size(302, 302)
+        Me.PictureBox1.Size = New System.Drawing.Size(508, 302)
         Me.PictureBox1.TabIndex = 0
         Me.PictureBox1.TabStop = False
         '
@@ -264,7 +281,9 @@ Partial Class Form2
         Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None
         Me.MainMenuStrip = Me.MenuStrip1
         Me.Name = "Form2"
+        Me.StartPosition = System.Windows.Forms.FormStartPosition.Manual
         Me.Text = "Form2"
+        Me.WindowState = System.Windows.Forms.FormWindowState.Maximized
         Me.Panel1.ResumeLayout(False)
         Me.Panel1.PerformLayout()
         Me.MenuStrip1.ResumeLayout(False)
