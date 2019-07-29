@@ -24,9 +24,8 @@ Partial Class Form2
     Private Sub InitializeComponent()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(Form2))
         Me.Panel1 = New System.Windows.Forms.Panel()
-        Me.Label3 = New System.Windows.Forms.Label()
-        Me.Label2 = New System.Windows.Forms.Label()
-        Me.Label1 = New System.Windows.Forms.Label()
+        Me.Minimizar = New System.Windows.Forms.Label()
+        Me.Cerrar = New System.Windows.Forms.Label()
         Me.MenuStrip1 = New System.Windows.Forms.MenuStrip()
         Me.MenuToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.ArchivoToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
@@ -51,41 +50,31 @@ Partial Class Form2
         'Panel1
         '
         Me.Panel1.BackColor = System.Drawing.Color.FromArgb(CType(CType(179, Byte), Integer), CType(CType(223, Byte), Integer), CType(CType(238, Byte), Integer))
-        Me.Panel1.Controls.Add(Me.Label3)
-        Me.Panel1.Controls.Add(Me.Label2)
-        Me.Panel1.Controls.Add(Me.Label1)
+        Me.Panel1.Controls.Add(Me.Minimizar)
+        Me.Panel1.Controls.Add(Me.Cerrar)
         Me.Panel1.Controls.Add(Me.MenuStrip1)
         Me.Panel1.Location = New System.Drawing.Point(-1, 0)
         Me.Panel1.Name = "Panel1"
         Me.Panel1.Size = New System.Drawing.Size(1083, 43)
         Me.Panel1.TabIndex = 0
         '
-        'Label3
+        'Minimizar
         '
-        Me.Label3.AutoSize = True
-        Me.Label3.Location = New System.Drawing.Point(921, 13)
-        Me.Label3.Name = "Label3"
-        Me.Label3.Size = New System.Drawing.Size(50, 13)
-        Me.Label3.TabIndex = 3
-        Me.Label3.Text = "Minimizar"
+        Me.Minimizar.AutoSize = True
+        Me.Minimizar.Location = New System.Drawing.Point(977, 11)
+        Me.Minimizar.Name = "Minimizar"
+        Me.Minimizar.Size = New System.Drawing.Size(50, 13)
+        Me.Minimizar.TabIndex = 3
+        Me.Minimizar.Text = "Minimizar"
         '
-        'Label2
+        'Cerrar
         '
-        Me.Label2.AutoSize = True
-        Me.Label2.Location = New System.Drawing.Point(974, 12)
-        Me.Label2.Name = "Label2"
-        Me.Label2.Size = New System.Drawing.Size(53, 13)
-        Me.Label2.TabIndex = 2
-        Me.Label2.Text = "Restaurar"
-        '
-        'Label1
-        '
-        Me.Label1.AutoSize = True
-        Me.Label1.Location = New System.Drawing.Point(1033, 12)
-        Me.Label1.Name = "Label1"
-        Me.Label1.Size = New System.Drawing.Size(35, 13)
-        Me.Label1.TabIndex = 1
-        Me.Label1.Text = "Cerrar"
+        Me.Cerrar.AutoSize = True
+        Me.Cerrar.Location = New System.Drawing.Point(1033, 12)
+        Me.Cerrar.Name = "Cerrar"
+        Me.Cerrar.Size = New System.Drawing.Size(35, 13)
+        Me.Cerrar.TabIndex = 1
+        Me.Cerrar.Text = "Cerrar"
         '
         'MenuStrip1
         '
@@ -297,9 +286,8 @@ Partial Class Form2
     Friend WithEvents ReporteMenuPrincipal As Button
     Friend WithEvents InventarioMenuPrincipal As Button
     Friend WithEvents VentasMenuPrincipal As Button
-    Friend WithEvents Label3 As Label
-    Friend WithEvents Label2 As Label
-    Friend WithEvents Label1 As Label
+    Friend WithEvents Minimizar As Label
+    Friend WithEvents Cerrar As Label
     Friend WithEvents MenuStrip1 As MenuStrip
     Friend WithEvents MenuToolStripMenuItem As ToolStripMenuItem
     Friend WithEvents ArchivoToolStripMenuItem As ToolStripMenuItem
