@@ -74,6 +74,12 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="conexionDB.vb" />
+    <Compile Include="Formularios\MenuVentas.Designer.vb">
+      <DependentUpon>MenuVentas.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Formularios\MenuVentas.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="Logeo.vb">
       <SubType>Form</SubType>
     </Compile>
@@ -88,6 +94,7 @@
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="LogeoMetodos.vb" />
+    <Compile Include="Metodos\MetodosVenta.vb" />
     <Compile Include="My Project\AssemblyInfo.vb" />
     <Compile Include="My Project\Application.Designer.vb">
       <AutoGen>True</AutoGen>
@@ -129,6 +136,10 @@
       <LastGenOutput>Settings.Designer.vb</LastGenOutput>
     </None>
     <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Imagenes\PapasSantaCruz.jpg" />
+    <Content Include="Imagenes\PapasSantaCruz1.jpg" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.VisualBasic.targets" />
 </Project>
