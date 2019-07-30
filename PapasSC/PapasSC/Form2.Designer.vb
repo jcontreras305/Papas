@@ -24,6 +24,7 @@ Partial Class Form2
     Private Sub InitializeComponent()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(Form2))
         Me.Panel1 = New System.Windows.Forms.Panel()
+        Me.NombreUsuario = New System.Windows.Forms.Label()
         Me.Minimizar = New System.Windows.Forms.Label()
         Me.Cerrar = New System.Windows.Forms.Label()
         Me.MenuStrip1 = New System.Windows.Forms.MenuStrip()
@@ -59,6 +60,17 @@ Partial Class Form2
         Me.Panel1.Name = "Panel1"
         Me.Panel1.Size = New System.Drawing.Size(1082, 42)
         Me.Panel1.TabIndex = 0
+        '
+        'NombreUsuario
+        '
+        Me.NombreUsuario.AutoSize = True
+        Me.NombreUsuario.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D
+        Me.NombreUsuario.Font = New System.Drawing.Font("Arial Black", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.NombreUsuario.ForeColor = System.Drawing.SystemColors.ButtonHighlight
+        Me.NombreUsuario.Location = New System.Drawing.Point(31, 61)
+        Me.NombreUsuario.Name = "NombreUsuario"
+        Me.NombreUsuario.Size = New System.Drawing.Size(2, 20)
+        Me.NombreUsuario.TabIndex = 4
         '
         'Minimizar
         '
@@ -107,6 +119,7 @@ Partial Class Form2
         Me.Panel2.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
             Or System.Windows.Forms.AnchorStyles.Left), System.Windows.Forms.AnchorStyles)
         Me.Panel2.BackColor = System.Drawing.Color.FromArgb(CType(CType(35, Byte), Integer), CType(CType(63, Byte), Integer), CType(CType(107, Byte), Integer))
+        Me.Panel2.Controls.Add(Me.NombreUsuario)
         Me.Panel2.Controls.Add(Me.ConfiguracionMenuPrincipal)
         Me.Panel2.Controls.Add(Me.ControlMenuPrincipal)
         Me.Panel2.Controls.Add(Me.UtileriasMenuPrincipal)
@@ -177,7 +190,7 @@ Partial Class Form2
         Me.NominaMenuPrincipal.Name = "NominaMenuPrincipal"
         Me.NominaMenuPrincipal.Size = New System.Drawing.Size(181, 51)
         Me.NominaMenuPrincipal.TabIndex = 4
-        Me.NominaMenuPrincipal.Text = "Nomina"
+        Me.NominaMenuPrincipal.Text = "Empleados"
         Me.NominaMenuPrincipal.UseVisualStyleBackColor = True
         '
         'CatalogoMenuPrincipal
@@ -289,6 +302,7 @@ Partial Class Form2
         Me.MenuStrip1.ResumeLayout(False)
         Me.MenuStrip1.PerformLayout()
         Me.Panel2.ResumeLayout(False)
+        Me.Panel2.PerformLayout()
         Me.PanelContenedorForm.ResumeLayout(False)
         CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
@@ -312,4 +326,5 @@ Partial Class Form2
     Friend WithEvents ArchivoToolStripMenuItem As ToolStripMenuItem
     Friend WithEvents PanelContenedorForm As Panel
     Friend WithEvents PictureBox1 As PictureBox
+    Friend WithEvents NombreUsuario As Label
 End Class

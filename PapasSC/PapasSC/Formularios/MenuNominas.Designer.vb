@@ -26,11 +26,12 @@ Partial Class MenuNominas
         Me.Button2 = New System.Windows.Forms.Button()
         Me.Label1 = New System.Windows.Forms.Label()
         Me.Label2 = New System.Windows.Forms.Label()
+        Me.ConsultaEmpleados = New System.Windows.Forms.Button()
         Me.SuspendLayout()
         '
         'Button1
         '
-        Me.Button1.Location = New System.Drawing.Point(111, 179)
+        Me.Button1.Location = New System.Drawing.Point(53, 99)
         Me.Button1.Name = "Button1"
         Me.Button1.Size = New System.Drawing.Size(159, 45)
         Me.Button1.TabIndex = 0
@@ -39,7 +40,7 @@ Partial Class MenuNominas
         '
         'Button2
         '
-        Me.Button2.Location = New System.Drawing.Point(381, 179)
+        Me.Button2.Location = New System.Drawing.Point(446, 99)
         Me.Button2.Name = "Button2"
         Me.Button2.Size = New System.Drawing.Size(159, 45)
         Me.Button2.TabIndex = 1
@@ -53,9 +54,9 @@ Partial Class MenuNominas
         Me.Label1.ForeColor = System.Drawing.SystemColors.ButtonShadow
         Me.Label1.Location = New System.Drawing.Point(268, 13)
         Me.Label1.Name = "Label1"
-        Me.Label1.Size = New System.Drawing.Size(98, 24)
+        Me.Label1.Size = New System.Drawing.Size(123, 24)
         Me.Label1.TabIndex = 2
-        Me.Label1.Text = "Nóminas"
+        Me.Label1.Text = "Empleados"
         '
         'Label2
         '
@@ -68,11 +69,21 @@ Partial Class MenuNominas
         Me.Label2.TabIndex = 9
         Me.Label2.Text = "X"
         '
+        'ConsultaEmpleados
+        '
+        Me.ConsultaEmpleados.Location = New System.Drawing.Point(243, 209)
+        Me.ConsultaEmpleados.Name = "ConsultaEmpleados"
+        Me.ConsultaEmpleados.Size = New System.Drawing.Size(159, 45)
+        Me.ConsultaEmpleados.TabIndex = 10
+        Me.ConsultaEmpleados.Text = "CunsultaEmpleados"
+        Me.ConsultaEmpleados.UseVisualStyleBackColor = True
+        '
         'MenuNominas
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(638, 440)
+        Me.Controls.Add(Me.ConsultaEmpleados)
         Me.Controls.Add(Me.Label2)
         Me.Controls.Add(Me.Label1)
         Me.Controls.Add(Me.Button2)
@@ -89,4 +100,5 @@ Partial Class MenuNominas
     Friend WithEvents Button2 As Button
     Friend WithEvents Label1 As Label
     Friend WithEvents Label2 As Label
+    Friend WithEvents ConsultaEmpleados As Button
 End Class

@@ -18,14 +18,10 @@ Public Class Logeo
                     MsgBox("No se ingreso una Contraseña")
                 Else
                     With Form2
-                        .MinimizeBox = False
-                        .ShowInTaskbar = False
-                        .ShowIcon = False
-                        .Location = New Point(0, 50)
-                        .Text = "Paspas Santa Cruz"
-                        .Size = New System.Drawing.Size(1155, 761)
-                        .FormBorderStyle = FormBorderStyle.FixedDialog
+                        .ShowIcon = True
+                        .FormBorderStyle = FormBorderStyle.None
                         .StartPosition = FormStartPosition.Manual
+                        .NombreUsuario.Text = metodos.nombre
                     End With
 
                     Form2.Show()
@@ -35,5 +31,14 @@ Public Class Logeo
         Else
             MsgBox("Usuario o Contraseña incorrecta")
         End If
+    End Sub
+
+    Private Sub txtContrasenia_KeyPress(sender As Object, e As KeyPressEventArgs) Handles txtContrasenia.KeyPress
+
+
+        txtContrasenia.PasswordChar = "*"
+
+
+
     End Sub
 End Class

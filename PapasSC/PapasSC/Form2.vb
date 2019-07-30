@@ -104,58 +104,107 @@
     End Sub
 
     Private Sub Cerrar_Click(sender As Object, e As EventArgs) Handles Cerrar.Click
+        Logeo.Show()
+
+        If (formulario IsNot Nothing) Then
+            formulario.Close()
+        End If
         Me.Close()
+
+
     End Sub
     Dim abierto As Boolean = False
     Private Sub InventarioMenuPrincipal_Click(sender As Object, e As EventArgs) Handles InventarioMenuPrincipal.Click
-
-
-        If (abierto) Then
+        If (formulario IsNot Nothing) Then
             formulario.Close()
-            abierto = False
+            formulario = Nothing
             AbrirFormEnPanel(Of MenuInventario)()
         Else
             AbrirFormEnPanel(Of MenuInventario)()
-            abierto = True
         End If
-
-
     End Sub
 
     Private Sub VentasMenuPrincipal_Click(sender As Object, e As EventArgs) Handles VentasMenuPrincipal.Click
-
-
-        If (abierto) Then
+        If (formulario IsNot Nothing) Then
             formulario.Close()
-            abierto = False
+            formulario = Nothing
             AbrirFormEnPanel(Of MenuVentas)()
         Else
             AbrirFormEnPanel(Of MenuVentas)()
-            abierto = True
         End If
     End Sub
 
     Private Sub ReporteMenuPrincipal_Click(sender As Object, e As EventArgs) Handles ReporteMenuPrincipal.Click
 
-        If (abierto) Then
+        If (formulario IsNot Nothing) Then
             formulario.Close()
-            abierto = False
+            formulario = Nothing
             AbrirFormEnPanel(Of MenuReportes)()
+
         Else
+
             AbrirFormEnPanel(Of MenuReportes)()
-            abierto = True
         End If
+
+
     End Sub
 
     Private Sub CatalogoMenuPrincipal_Click(sender As Object, e As EventArgs) Handles CatalogoMenuPrincipal.Click
 
-        If (abierto) Then
+        If (formulario IsNot Nothing) Then
             formulario.Close()
-            abierto = False
-            AbrirFormEnPanel(Of Catálogo)()
+            formulario = Nothing
+            AbrirFormEnPanel(Of MenuReportes)()
         Else
-            AbrirFormEnPanel(Of Catálogo)()
-            abierto = True
+            AbrirFormEnPanel(Of MenuReportes)()
         End If
     End Sub
+
+    Private Sub NominaMenuPrincipal_Click(sender As Object, e As EventArgs) Handles NominaMenuPrincipal.Click
+        If (formulario IsNot Nothing) Then
+            formulario.Close()
+            formulario = Nothing
+            AbrirFormEnPanel(Of MenuNominas)()
+        Else
+            AbrirFormEnPanel(Of MenuNominas)()
+        End If
+    End Sub
+
+    Private Sub UtileriasMenuPrincipal_Click(sender As Object, e As EventArgs) Handles UtileriasMenuPrincipal.Click
+        If (formulario IsNot Nothing) Then
+            formulario.Close()
+            formulario = Nothing
+            AbrirFormEnPanel(Of MenuUtilerias)()
+        Else
+            AbrirFormEnPanel(Of MenuUtilerias)()
+
+        End If
+    End Sub
+
+    Private Sub ControlMenuPrincipal_Click(sender As Object, e As EventArgs) Handles ControlMenuPrincipal.Click
+        If (formulario IsNot Nothing) Then
+            formulario.Close()
+            formulario = Nothing
+            AbrirFormEnPanel(Of MenuControl)()
+        Else
+
+            AbrirFormEnPanel(Of MenuControl)()
+
+        End If
+    End Sub
+
+    Private Sub ConfiguracionMenuPrincipal_Click(sender As Object, e As EventArgs) Handles ConfiguracionMenuPrincipal.Click
+        If (formulario IsNot Nothing) Then
+            formulario.Close()
+            formulario = Nothing
+            AbrirFormEnPanel(Of MenuConfiguracion)()
+        Else
+
+            AbrirFormEnPanel(Of MenuConfiguracion)()
+
+        End If
+    End Sub
+
+
+
 End Class
