@@ -3,6 +3,31 @@
         VentasMenuPrincipal.BackColor = Color.Coral
 
     End Sub
+    Dim formulario As Form
+    'METODO PARA ABRIR FORMULARIO DENTRO DEL PANEL 
+    Private Sub AbrirFormEnPanel(Of Forms As {Form, New})()
+        formulario = PanelContenedorForm.Controls.OfType(Of Forms)().FirstOrDefault()
+        If formulario Is Nothing Then
+            formulario = New Forms()
+            formulario.TopLevel = False
+            formulario.FormBorderStyle = FormBorderStyle.None
+            formulario.Dock = DockStyle.Fill
+            PanelContenedorForm.Controls.Add(formulario)
+            PanelContenedorForm.Tag = formulario
+            formulario.Show()
+            formulario.BringToFront()
+        Else
+            formulario.Close()
+
+        End If
+
+    End Sub
+
+
+
+
+
+
     Private Sub VentasMenuPrincipal_Mouseleave(sender As Object, e As EventArgs) Handles VentasMenuPrincipal.MouseLeave
         VentasMenuPrincipal.BackColor = Color.FromArgb(35, 63, 107)
 
@@ -80,5 +105,57 @@
 
     Private Sub Cerrar_Click(sender As Object, e As EventArgs) Handles Cerrar.Click
         Me.Close()
+    End Sub
+    Dim abierto As Boolean = False
+    Private Sub InventarioMenuPrincipal_Click(sender As Object, e As EventArgs) Handles InventarioMenuPrincipal.Click
+
+
+        If (abierto) Then
+            formulario.Close()
+            abierto = False
+            AbrirFormEnPanel(Of MenuInventario)()
+        Else
+            AbrirFormEnPanel(Of MenuInventario)()
+            abierto = True
+        End If
+
+
+    End Sub
+
+    Private Sub VentasMenuPrincipal_Click(sender As Object, e As EventArgs) Handles VentasMenuPrincipal.Click
+
+
+        If (abierto) Then
+            formulario.Close()
+            abierto = False
+            AbrirFormEnPanel(Of MenuVentas)()
+        Else
+            AbrirFormEnPanel(Of MenuVentas)()
+            abierto = True
+        End If
+    End Sub
+
+    Private Sub ReporteMenuPrincipal_Click(sender As Object, e As EventArgs) Handles ReporteMenuPrincipal.Click
+
+        If (abierto) Then
+            formulario.Close()
+            abierto = False
+            AbrirFormEnPanel(Of MenuReportes)()
+        Else
+            AbrirFormEnPanel(Of MenuReportes)()
+            abierto = True
+        End If
+    End Sub
+
+    Private Sub CatalogoMenuPrincipal_Click(sender As Object, e As EventArgs) Handles CatalogoMenuPrincipal.Click
+
+        If (abierto) Then
+            formulario.Close()
+            abierto = False
+            AbrirFormEnPanel(Of Catálogo)()
+        Else
+            AbrirFormEnPanel(Of Catálogo)()
+            abierto = True
+        End If
     End Sub
 End Class

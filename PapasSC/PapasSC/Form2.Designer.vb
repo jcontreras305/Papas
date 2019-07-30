@@ -38,12 +38,12 @@ Partial Class Form2
         Me.ReporteMenuPrincipal = New System.Windows.Forms.Button()
         Me.InventarioMenuPrincipal = New System.Windows.Forms.Button()
         Me.VentasMenuPrincipal = New System.Windows.Forms.Button()
-        Me.Panel3 = New System.Windows.Forms.Panel()
+        Me.PanelContenedorForm = New System.Windows.Forms.Panel()
         Me.PictureBox1 = New System.Windows.Forms.PictureBox()
         Me.Panel1.SuspendLayout()
         Me.MenuStrip1.SuspendLayout()
         Me.Panel2.SuspendLayout()
-        Me.Panel3.SuspendLayout()
+        Me.PanelContenedorForm.SuspendLayout()
         CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
@@ -248,17 +248,17 @@ Partial Class Form2
         Me.VentasMenuPrincipal.Text = "Ventas"
         Me.VentasMenuPrincipal.UseVisualStyleBackColor = False
         '
-        'Panel3
+        'PanelContenedorForm
         '
-        Me.Panel3.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
+        Me.PanelContenedorForm.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
             Or System.Windows.Forms.AnchorStyles.Left) _
             Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.Panel3.BackColor = System.Drawing.SystemColors.ControlLight
-        Me.Panel3.Controls.Add(Me.PictureBox1)
-        Me.Panel3.Location = New System.Drawing.Point(194, 49)
-        Me.Panel3.Name = "Panel3"
-        Me.Panel3.Size = New System.Drawing.Size(875, 465)
-        Me.Panel3.TabIndex = 2
+        Me.PanelContenedorForm.BackColor = System.Drawing.SystemColors.ControlLight
+        Me.PanelContenedorForm.Controls.Add(Me.PictureBox1)
+        Me.PanelContenedorForm.Location = New System.Drawing.Point(194, 49)
+        Me.PanelContenedorForm.Name = "PanelContenedorForm"
+        Me.PanelContenedorForm.Size = New System.Drawing.Size(875, 465)
+        Me.PanelContenedorForm.TabIndex = 2
         '
         'PictureBox1
         '
@@ -275,7 +275,7 @@ Partial Class Form2
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None
         Me.ClientSize = New System.Drawing.Size(1081, 526)
-        Me.Controls.Add(Me.Panel3)
+        Me.Controls.Add(Me.PanelContenedorForm)
         Me.Controls.Add(Me.Panel2)
         Me.Controls.Add(Me.Panel1)
         Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None
@@ -289,7 +289,7 @@ Partial Class Form2
         Me.MenuStrip1.ResumeLayout(False)
         Me.MenuStrip1.PerformLayout()
         Me.Panel2.ResumeLayout(False)
-        Me.Panel3.ResumeLayout(False)
+        Me.PanelContenedorForm.ResumeLayout(False)
         CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
 
@@ -310,6 +310,6 @@ Partial Class Form2
     Friend WithEvents MenuStrip1 As MenuStrip
     Friend WithEvents MenuToolStripMenuItem As ToolStripMenuItem
     Friend WithEvents ArchivoToolStripMenuItem As ToolStripMenuItem
-    Friend WithEvents Panel3 As Panel
+    Friend WithEvents PanelContenedorForm As Panel
     Friend WithEvents PictureBox1 As PictureBox
 End Class
