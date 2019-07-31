@@ -73,7 +73,31 @@
     <Import Include="System.Threading.Tasks" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Consulta_Cliente.Designer.vb">
+      <DependentUpon>Consulta_Cliente.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Consulta_Cliente.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formularios\Registro_Clientes.Designer.vb">
+      <DependentUpon>Registro_Clientes.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Formularios\Registro_Clientes.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formularios\Actualizar_Producto.Designer.vb">
+      <DependentUpon>Actualizar_Producto.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Formularios\Actualizar_Producto.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="conexionDB.vb" />
+    <Compile Include="Formularios\Consulta_Producto.Designer.vb">
+      <DependentUpon>Consulta_Producto.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Formularios\Consulta_Producto.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="Formularios\Catálogo.Designer.vb">
       <DependentUpon>Catálogo.vb</DependentUpon>
     </Compile>
@@ -152,10 +176,34 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
+    <Compile Include="Formularios\pantallaCargador.Designer.vb">
+      <DependentUpon>pantallaCargador.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Formularios\pantallaCargador.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formularios\Registro_productos.Designer.vb">
+      <DependentUpon>Registro_productos.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Formularios\Registro_productos.vb">
+      <SubType>Form</SubType>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="Consulta_Cliente.resx">
+      <DependentUpon>Consulta_Cliente.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formularios\Registro_Clientes.resx">
+      <DependentUpon>Registro_Clientes.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formularios\Actualizar_Producto.resx">
+      <DependentUpon>Actualizar_Producto.vb</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Formularios\Catálogo.resx">
       <DependentUpon>Catálogo.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formularios\Consulta_Producto.resx">
+      <DependentUpon>Consulta_Producto.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Formularios\MenuConfiguracion.resx">
       <DependentUpon>MenuConfiguracion.vb</DependentUpon>
@@ -178,6 +226,9 @@
     <EmbeddedResource Include="Formularios\MenuVentas.resx">
       <DependentUpon>MenuVentas.vb</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Formularios\Registro_productos.resx">
+      <DependentUpon>Registro_productos.vb</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Logeo.resx">
       <DependentUpon>Logeo.vb</DependentUpon>
     </EmbeddedResource>
@@ -189,6 +240,9 @@
       <LastGenOutput>Resources.Designer.vb</LastGenOutput>
       <CustomToolNamespace>My.Resources</CustomToolNamespace>
       <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formularios\pantallaCargador.resx">
+      <DependentUpon>pantallaCargador.vb</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
@@ -205,6 +259,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Imagenes\PapasSantaCruz.jpg" />
+    <Content Include="Imagenes\PapasSantaCruz1 - copia.ico" />
     <Content Include="Imagenes\PapasSantaCruz1.jpg" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.VisualBasic.targets" />

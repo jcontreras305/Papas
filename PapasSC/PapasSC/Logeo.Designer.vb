@@ -22,6 +22,7 @@ Partial Class Logeo
     'No lo modifique con el editor de código.
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
+        Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(Logeo))
         Me.txtUsuario = New System.Windows.Forms.TextBox()
         Me.txtContrasenia = New System.Windows.Forms.TextBox()
         Me.Label1 = New System.Windows.Forms.Label()
@@ -80,6 +81,7 @@ Partial Class Logeo
         Me.Controls.Add(Me.Label1)
         Me.Controls.Add(Me.txtContrasenia)
         Me.Controls.Add(Me.txtUsuario)
+        Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
         Me.Name = "Logeo"
         Me.Text = "Inicio de sesion"
         Me.ResumeLayout(False)

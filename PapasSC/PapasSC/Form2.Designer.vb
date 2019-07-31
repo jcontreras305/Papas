@@ -41,6 +41,7 @@ Partial Class Form2
         Me.VentasMenuPrincipal = New System.Windows.Forms.Button()
         Me.PanelContenedorForm = New System.Windows.Forms.Panel()
         Me.PictureBox1 = New System.Windows.Forms.PictureBox()
+        Me.CerrarSesionToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.Panel1.SuspendLayout()
         Me.MenuStrip1.SuspendLayout()
         Me.Panel2.SuspendLayout()
@@ -56,9 +57,9 @@ Partial Class Form2
         Me.Panel1.Controls.Add(Me.Minimizar)
         Me.Panel1.Controls.Add(Me.Cerrar)
         Me.Panel1.Controls.Add(Me.MenuStrip1)
-        Me.Panel1.Location = New System.Drawing.Point(0, 1)
+        Me.Panel1.Location = New System.Drawing.Point(0, 0)
         Me.Panel1.Name = "Panel1"
-        Me.Panel1.Size = New System.Drawing.Size(1082, 42)
+        Me.Panel1.Size = New System.Drawing.Size(1082, 43)
         Me.Panel1.TabIndex = 0
         '
         'NombreUsuario
@@ -95,7 +96,7 @@ Partial Class Form2
         'MenuStrip1
         '
         Me.MenuStrip1.BackColor = System.Drawing.Color.FromArgb(CType(CType(179, Byte), Integer), CType(CType(223, Byte), Integer), CType(CType(238, Byte), Integer))
-        Me.MenuStrip1.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.MenuToolStripMenuItem, Me.ArchivoToolStripMenuItem})
+        Me.MenuStrip1.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.MenuToolStripMenuItem, Me.ArchivoToolStripMenuItem, Me.CerrarSesionToolStripMenuItem})
         Me.MenuStrip1.Location = New System.Drawing.Point(0, 0)
         Me.MenuStrip1.Name = "MenuStrip1"
         Me.MenuStrip1.Size = New System.Drawing.Size(1082, 24)
@@ -282,6 +283,12 @@ Partial Class Form2
         Me.PictureBox1.TabIndex = 0
         Me.PictureBox1.TabStop = False
         '
+        'CerrarSesionToolStripMenuItem
+        '
+        Me.CerrarSesionToolStripMenuItem.Name = "CerrarSesionToolStripMenuItem"
+        Me.CerrarSesionToolStripMenuItem.Size = New System.Drawing.Size(88, 20)
+        Me.CerrarSesionToolStripMenuItem.Text = "Cerrar Sesion"
+        '
         'Form2
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
@@ -292,6 +299,7 @@ Partial Class Form2
         Me.Controls.Add(Me.Panel2)
         Me.Controls.Add(Me.Panel1)
         Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None
+        Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
         Me.MainMenuStrip = Me.MenuStrip1
         Me.Name = "Form2"
         Me.StartPosition = System.Windows.Forms.FormStartPosition.Manual
@@ -327,4 +335,5 @@ Partial Class Form2
     Friend WithEvents PanelContenedorForm As Panel
     Friend WithEvents PictureBox1 As PictureBox
     Friend WithEvents NombreUsuario As Label
+    Friend WithEvents CerrarSesionToolStripMenuItem As ToolStripMenuItem
 End Class

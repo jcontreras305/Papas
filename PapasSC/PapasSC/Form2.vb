@@ -205,6 +205,13 @@
         End If
     End Sub
 
+    Private Sub CerrarSesionToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles CerrarSesionToolStripMenuItem.Click
+        Logeo.Show()
 
+        If (formulario IsNot Nothing) Then
+            formulario.Close()
+        End If
+        Me.Close()
 
+    End Sub
 End Class
