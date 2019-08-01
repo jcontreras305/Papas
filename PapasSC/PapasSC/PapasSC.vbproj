@@ -103,6 +103,12 @@
     <Compile Include="Formularios\GenerarNomina.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="Formularios\Invertario.Designer.vb">
+      <DependentUpon>Invertario.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Formularios\Invertario.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="Formularios\Registro_Clientes.Designer.vb">
       <DependentUpon>Registro_Clientes.vb</DependentUpon>
     </Compile>
@@ -186,6 +192,7 @@
     <Compile Include="LogeoMetodos.vb" />
     <Compile Include="Metodos\MetodosCliente.vb" />
     <Compile Include="Metodos\MetodosEmpleado.vb" />
+    <Compile Include="Metodos\MetodosInventario.vb" />
     <Compile Include="Metodos\MetodosVenta.vb" />
     <Compile Include="My Project\AssemblyInfo.vb" />
     <Compile Include="My Project\Application.Designer.vb">
@@ -230,6 +237,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Formularios\GenerarNomina.resx">
       <DependentUpon>GenerarNomina.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formularios\Invertario.resx">
+      <DependentUpon>Invertario.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Formularios\Registro_Clientes.resx">
       <DependentUpon>Registro_Clientes.vb</DependentUpon>
