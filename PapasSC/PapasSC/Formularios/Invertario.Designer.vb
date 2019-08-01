@@ -108,11 +108,11 @@ Partial Class Invertario
         '
         'Button1
         '
-        Me.Button1.Location = New System.Drawing.Point(492, 391)
+        Me.Button1.Location = New System.Drawing.Point(518, 400)
         Me.Button1.Name = "Button1"
-        Me.Button1.Size = New System.Drawing.Size(131, 46)
+        Me.Button1.Size = New System.Drawing.Size(131, 37)
         Me.Button1.TabIndex = 7
-        Me.Button1.Text = "Button1"
+        Me.Button1.Text = "Actualizar (F5)"
         Me.Button1.UseVisualStyleBackColor = True
         '
         'Label1
@@ -152,6 +152,7 @@ Partial Class Invertario
         Me.Controls.Add(Me.cmbBodega)
         Me.Controls.Add(Me.tblInventario)
         Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None
+        Me.KeyPreview = True
         Me.Name = "Invertario"
         Me.Text = "Invertario"
         CType(Me.tblInventario, System.ComponentModel.ISupportInitialize).EndInit()

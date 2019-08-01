@@ -48,7 +48,7 @@ Public Class MetodosInventario
             comando.Parameters.AddWithValue("@bodega", bodega)
             comando.Parameters.AddWithValue("@clave", producto)
             If comando.ExecuteNonQuery Then
-                MsgBox("1")
+
 
                 Dim dt As New DataTable
                 Dim da As New SqlDataAdapter(comando)
@@ -70,7 +70,7 @@ Public Class MetodosInventario
             comando.Parameters.AddWithValue("@bodega", bodega)
             comando.Parameters.AddWithValue("@clave", producto)
             If comando.ExecuteNonQuery Then
-                MsgBox("2")
+
                 Dim dt As New DataTable
                 Dim da As New SqlDataAdapter(comando)
                 da.Fill(dt)
@@ -90,7 +90,7 @@ Public Class MetodosInventario
             comando.CommandType = CommandType.StoredProcedure
             comando.Parameters.AddWithValue("@bodega", bodega)
             If comando.ExecuteNonQuery Then
-                MsgBox("3")
+
                 Dim dt As New DataTable
                 Dim da As New SqlDataAdapter(comando)
                 da.Fill(dt)
@@ -110,7 +110,7 @@ Public Class MetodosInventario
             comando.CommandType = CommandType.StoredProcedure
             comando.Parameters.AddWithValue("@bodega", bodega)
             If comando.ExecuteNonQuery Then
-                MsgBox("4")
+
                 Dim dt As New DataTable
                 Dim da As New SqlDataAdapter(comando)
                 da.Fill(dt)
@@ -130,7 +130,7 @@ Public Class MetodosInventario
             comando.CommandType = CommandType.StoredProcedure
             comando.Parameters.AddWithValue("@clave", producto)
             If comando.ExecuteNonQuery Then
-                MsgBox("5")
+
                 Dim dt As New DataTable
                 Dim da As New SqlDataAdapter(comando)
                 da.Fill(dt)
@@ -150,7 +150,7 @@ Public Class MetodosInventario
             comando.CommandType = CommandType.StoredProcedure
             comando.Parameters.AddWithValue("@clave", producto)
             If comando.ExecuteNonQuery Then
-                MsgBox("6")
+
                 Dim dt As New DataTable
                 Dim da As New SqlDataAdapter(comando)
                 da.Fill(dt)
