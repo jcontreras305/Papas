@@ -24,13 +24,13 @@ Partial Class Consulta_Cliente
     Private Sub InitializeComponent()
         Me.Label1 = New System.Windows.Forms.Label()
         Me.TextBox1 = New System.Windows.Forms.TextBox()
-        Me.ComboBox1 = New System.Windows.Forms.ComboBox()
-        Me.DataGridView1 = New System.Windows.Forms.DataGridView()
+        Me.FiltroClientes = New System.Windows.Forms.ComboBox()
+        Me.TablaCLientes = New System.Windows.Forms.DataGridView()
         Me.Buscar = New System.Windows.Forms.Button()
         Me.Button1 = New System.Windows.Forms.Button()
         Me.Button2 = New System.Windows.Forms.Button()
         Me.Button3 = New System.Windows.Forms.Button()
-        CType(Me.DataGridView1, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.TablaCLientes, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'Label1
@@ -49,21 +49,23 @@ Partial Class Consulta_Cliente
         Me.TextBox1.Size = New System.Drawing.Size(333, 20)
         Me.TextBox1.TabIndex = 3
         '
-        'ComboBox1
+        'FiltroClientes
         '
-        Me.ComboBox1.FormattingEnabled = True
-        Me.ComboBox1.Location = New System.Drawing.Point(87, 6)
-        Me.ComboBox1.Name = "ComboBox1"
-        Me.ComboBox1.Size = New System.Drawing.Size(150, 21)
-        Me.ComboBox1.TabIndex = 4
+        Me.FiltroClientes.FormattingEnabled = True
+        Me.FiltroClientes.Items.AddRange(New Object() {"Nombre Cliente", "Tipo de Cliente", "Razon Social", "Alias contacto", "RFC", "Limite de credito", "Dias de credito"})
+        Me.FiltroClientes.Location = New System.Drawing.Point(87, 6)
+        Me.FiltroClientes.Name = "FiltroClientes"
+        Me.FiltroClientes.Size = New System.Drawing.Size(150, 21)
+        Me.FiltroClientes.TabIndex = 4
+        Me.FiltroClientes.Text = "Selecion de filtro"
         '
-        'DataGridView1
+        'TablaCLientes
         '
-        Me.DataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
-        Me.DataGridView1.Location = New System.Drawing.Point(50, 61)
-        Me.DataGridView1.Name = "DataGridView1"
-        Me.DataGridView1.Size = New System.Drawing.Size(682, 323)
-        Me.DataGridView1.TabIndex = 5
+        Me.TablaCLientes.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
+        Me.TablaCLientes.Location = New System.Drawing.Point(50, 61)
+        Me.TablaCLientes.Name = "TablaCLientes"
+        Me.TablaCLientes.Size = New System.Drawing.Size(682, 323)
+        Me.TablaCLientes.TabIndex = 5
         '
         'Buscar
         '
@@ -110,13 +112,13 @@ Partial Class Consulta_Cliente
         Me.Controls.Add(Me.Button2)
         Me.Controls.Add(Me.Button1)
         Me.Controls.Add(Me.Buscar)
-        Me.Controls.Add(Me.DataGridView1)
-        Me.Controls.Add(Me.ComboBox1)
+        Me.Controls.Add(Me.TablaCLientes)
+        Me.Controls.Add(Me.FiltroClientes)
         Me.Controls.Add(Me.TextBox1)
         Me.Controls.Add(Me.Label1)
         Me.Name = "Consulta_Cliente"
         Me.Text = "Form1"
-        CType(Me.DataGridView1, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.TablaCLientes, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
@@ -124,8 +126,8 @@ Partial Class Consulta_Cliente
 
     Friend WithEvents Label1 As Label
     Friend WithEvents TextBox1 As TextBox
-    Friend WithEvents ComboBox1 As ComboBox
-    Friend WithEvents DataGridView1 As DataGridView
+    Friend WithEvents FiltroClientes As ComboBox
+    Friend WithEvents TablaCLientes As DataGridView
     Friend WithEvents Buscar As Button
     Friend WithEvents Button1 As Button
     Friend WithEvents Button2 As Button

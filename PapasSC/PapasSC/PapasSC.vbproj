@@ -73,10 +73,10 @@
     <Import Include="System.Threading.Tasks" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Consulta_Cliente.Designer.vb">
+    <Compile Include="Formularios\Consulta_Cliente.Designer.vb">
       <DependentUpon>Consulta_Cliente.vb</DependentUpon>
     </Compile>
-    <Compile Include="Consulta_Cliente.vb">
+    <Compile Include="Formularios\Consulta_Cliente.vb">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Formularios\Registro_Clientes.Designer.vb">
@@ -191,7 +191,7 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Consulta_Cliente.resx">
+    <EmbeddedResource Include="Formularios\Consulta_Cliente.resx">
       <DependentUpon>Consulta_Cliente.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Formularios\Registro_Clientes.resx">
