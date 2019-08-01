@@ -9,7 +9,7 @@ Public Class MetodosCliente
         Dim comando = New SqlCommand("Select * from cliente")
         comando.Connection = conn
         Dim reader As IDataReader = comando.ExecuteReader()
-        While 
+
 
 
     End Sub
