@@ -27,7 +27,7 @@ Public Class MetodosCliente
     con.codigoPostal as Codigo_Postal
     from cliente cl inner join tipoCliente tcl on tcl.idTipoCliente = cl.idTipoCliente 
     inner join credito cr on cr.idCredito=cl.idCredito 
-    inner join contacto con on con.idContacto=con.idContacto", cn.conn)
+    inner join contacto con on con.idContacto=cl.idContacto", cn.conn)
             dt = New DataTable
             adaptador.Fill(dt)
             dgv.DataSource = dt
@@ -58,7 +58,7 @@ Public Class MetodosCliente
     con.codigoPostal as Codigo_Postal
     from cliente cl inner join tipoCliente tcl on tcl.idTipoCliente = cl.idTipoCliente 
     inner join credito cr on cr.idCredito=cl.idCredito 
-    inner join contacto con on con.idContacto=con.idContacto where cl.nombre like '" + filtro + "%'", cn.conn)
+    inner join contacto con on con.idContacto=cl.idContacto where cl.nombre like '" + filtro + "%'", cn.conn)
             dt = New DataTable
             adaptador.Fill(dt)
             dgv.DataSource = dt
@@ -89,7 +89,7 @@ Public Class MetodosCliente
     con.codigoPostal as Codigo_Postal
     from cliente cl inner join tipoCliente tcl on tcl.idTipoCliente = cl.idTipoCliente 
     inner join credito cr on cr.idCredito=cl.idCredito 
-    inner join contacto con on con.idContacto=con.idContacto where tcl.tipo like '" + filtro + "%'", cn.conn)
+    inner join contacto con on con.idContacto=cl.idContacto where tcl.tipo like '" + filtro + "%'", cn.conn)
             dt = New DataTable
             adaptador.Fill(dt)
             dgv.DataSource = dt
@@ -120,7 +120,7 @@ Public Class MetodosCliente
     con.codigoPostal as Codigo_Postal
     from cliente cl inner join tipoCliente tcl on tcl.idTipoCliente = cl.idTipoCliente 
     inner join credito cr on cr.idCredito=cl.idCredito 
-    inner join contacto con on con.idContacto=con.idContacto where tcl.razonSocial like '" + filtro + "%'", cn.conn)
+    inner join contacto con on con.idContacto=cl.idContacto where cl.razonSocial like '" + filtro + "%'", cn.conn)
             dt = New DataTable
             adaptador.Fill(dt)
             dgv.DataSource = dt
@@ -150,7 +150,7 @@ Public Class MetodosCliente
     con.codigoPostal as Codigo_Postal
     from cliente cl inner join tipoCliente tcl on tcl.idTipoCliente = cl.idTipoCliente 
     inner join credito cr on cr.idCredito=cl.idCredito 
-    inner join contacto con on con.idContacto=con.idContacto where con.nombre like '" + filtro + "%'", cn.conn)
+    inner join contacto con on con.idContacto=cl.idContacto where con.nombre like '" + filtro + "%'", cn.conn)
             dt = New DataTable
             adaptador.Fill(dt)
             dgv.DataSource = dt
@@ -181,38 +181,7 @@ Public Class MetodosCliente
     con.codigoPostal as Codigo_Postal
     from cliente cl inner join tipoCliente tcl on tcl.idTipoCliente = cl.idTipoCliente 
     inner join credito cr on cr.idCredito=cl.idCredito 
-    inner join contacto con on con.idContacto=con.idContacto where cl.RFC like '" + filtro + "%'", cn.conn)
-            dt = New DataTable
-            adaptador.Fill(dt)
-            dgv.DataSource = dt
-        Catch ex As Exception
-            MessageBox.Show("No se lleno el Datagridview debido a: " + ex.ToString)
-        End Try
-    End Sub
-
-    Public Sub llenarDatagridview_filtroDiasCredito(ByVal dgv As DataGridView, ByVal filtro As String)
-        cn.conectar()
-        Try
-            adaptador = New SqlDataAdapter("select cl.idCliente as Clave_Cliente, cl.nombre 
-    as Nombre,
-    cl.RFC,
-    cl.razonSocial as Razon_Social,
-    cl.fechaRegistro as Fecha_Registro,
-    tcl.tipo as Tipo,
-    tcl.estatus as Estatus,
-    cr.limiteCredito as Limite_Credito,
-    cr.diasCredito as Dias_de_Credito,
-    con.nombre as Nombre_Contacto,
-    con.genero as Genero,
-    con.direccion as Direccion,
-    con.telefono as Telefono,
-    con.email as Email,
-    con.estado as Estado,
-    con.municipio as municipio,
-    con.codigoPostal as Codigo_Postal
-    from cliente cl inner join tipoCliente tcl on tcl.idTipoCliente = cl.idTipoCliente 
-    inner join credito cr on cr.idCredito=cl.idCredito 
-    inner join contacto con on con.idContacto=con.idContacto where cr.limitecredito '" + filtro + "%'", cn.conn)
+    inner join contacto con on con.idContacto=cl.idContacto where cl.RFC like '" + filtro + "%'", cn.conn)
             dt = New DataTable
             adaptador.Fill(dt)
             dgv.DataSource = dt
@@ -243,7 +212,7 @@ Public Class MetodosCliente
     con.codigoPostal as Codigo_Postal
     from cliente cl inner join tipoCliente tcl on tcl.idTipoCliente = cl.idTipoCliente 
     inner join credito cr on cr.idCredito=cl.idCredito 
-    inner join contacto con on con.idContacto=con.idContacto where cr.diasCredito like '" + filtro + "%'", cn.conn)
+    inner join contacto con on con.idContacto=cl.idContacto where cr.limiteCredito like '" + filtro + "%'", cn.conn)
             dt = New DataTable
             adaptador.Fill(dt)
             dgv.DataSource = dt
@@ -252,5 +221,66 @@ Public Class MetodosCliente
         End Try
     End Sub
 
+    Public Sub llenarDatagridview_filtroDiasCredito(ByVal dgv As DataGridView, ByVal filtro As String)
+        cn.conectar()
+        Try
+            adaptador = New SqlDataAdapter("select cl.idCliente as Clave_Cliente, cl.nombre 
+    as Nombre,
+    cl.RFC,
+    cl.razonSocial as Razon_Social,
+    cl.fechaRegistro as Fecha_Registro,
+    tcl.tipo as Tipo,
+    tcl.estatus as Estatus,
+    cr.limiteCredito as Limite_Credito,
+    cr.diasCredito as Dias_de_Credito,
+    con.nombre as Nombre_Contacto,
+    con.genero as Genero,
+    con.direccion as Direccion,
+    con.telefono as Telefono,
+    con.email as Email,
+    con.estado as Estado,
+    con.municipio as municipio,
+    con.codigoPostal as Codigo_Postal
+    from cliente cl inner join tipoCliente tcl on tcl.idTipoCliente = cl.idTipoCliente 
+    inner join credito cr on cr.idCredito=cl.idCredito 
+    inner join contacto con on con.idContacto=cl.idContacto where cr.diasCredito like '" + filtro + "%'", cn.conn)
+            dt = New DataTable
+            adaptador.Fill(dt)
+            dgv.DataSource = dt
+        Catch ex As Exception
+            MessageBox.Show("No se lleno el Datagridview debido a: " + ex.ToString)
+        End Try
+    End Sub
+
+    Public Sub llenarDatagridview_filtroID(ByVal dgv As DataGridView, ByVal filtro As String)
+        cn.conectar()
+        Try
+            adaptador = New SqlDataAdapter("select cl.idCliente as Clave_Cliente, cl.nombre 
+    as Nombre,
+    cl.RFC,
+    cl.razonSocial as Razon_Social,
+    cl.fechaRegistro as Fecha_Registro,
+    tcl.tipo as Tipo,
+    tcl.estatus as Estatus,
+    cr.limiteCredito as Limite_Credito,
+    cr.diasCredito as Dias_de_Credito,
+    con.nombre as Nombre_Contacto,
+    con.genero as Genero,
+    con.direccion as Direccion,
+    con.telefono as Telefono,
+    con.email as Email,
+    con.estado as Estado,
+    con.municipio as municipio,
+    con.codigoPostal as Codigo_Postal
+    from cliente cl inner join tipoCliente tcl on tcl.idTipoCliente = cl.idTipoCliente 
+    inner join credito cr on cr.idCredito=cl.idCredito 
+    inner join contacto con on con.idContacto=cl.idContacto where cl.idCliente like '" + filtro + "%'", cn.conn)
+            dt = New DataTable
+            adaptador.Fill(dt)
+            dgv.DataSource = dt
+        Catch ex As Exception
+            MessageBox.Show("No se lleno el Datagridview debido a: " + ex.ToString)
+        End Try
+    End Sub
 
 End Class

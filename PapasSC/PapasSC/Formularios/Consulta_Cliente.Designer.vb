@@ -52,7 +52,7 @@ Partial Class Consulta_Cliente
         'FiltroClientes
         '
         Me.FiltroClientes.FormattingEnabled = True
-        Me.FiltroClientes.Items.AddRange(New Object() {"Nombre Cliente", "Tipo de Cliente", "Razon Social", "Alias contacto", "RFC", "Limite de credito", "Dias de credito"})
+        Me.FiltroClientes.Items.AddRange(New Object() {"Nombre Cliente", "Tipo de Cliente", "Razon Social", "Alias contacto", "RFC", "Limite de credito", "Dias de credito", "Clave Cliente"})
         Me.FiltroClientes.Location = New System.Drawing.Point(87, 6)
         Me.FiltroClientes.Name = "FiltroClientes"
         Me.FiltroClientes.Size = New System.Drawing.Size(150, 21)
@@ -82,7 +82,7 @@ Partial Class Consulta_Cliente
         Me.Button1.Name = "Button1"
         Me.Button1.Size = New System.Drawing.Size(153, 36)
         Me.Button1.TabIndex = 7
-        Me.Button1.Text = "Button1"
+        Me.Button1.Text = "Registrar Cliente"
         Me.Button1.UseVisualStyleBackColor = True
         '
         'Button2
@@ -91,7 +91,7 @@ Partial Class Consulta_Cliente
         Me.Button2.Name = "Button2"
         Me.Button2.Size = New System.Drawing.Size(138, 36)
         Me.Button2.TabIndex = 8
-        Me.Button2.Text = "Button2"
+        Me.Button2.Text = "Actualizar Cliente"
         Me.Button2.UseVisualStyleBackColor = True
         '
         'Button3
@@ -100,7 +100,7 @@ Partial Class Consulta_Cliente
         Me.Button3.Name = "Button3"
         Me.Button3.Size = New System.Drawing.Size(149, 36)
         Me.Button3.TabIndex = 9
-        Me.Button3.Text = "Button3"
+        Me.Button3.Text = "Eliminar Cliente"
         Me.Button3.UseVisualStyleBackColor = True
         '
         'Consulta_Cliente
