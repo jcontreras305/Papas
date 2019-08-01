@@ -20,7 +20,10 @@ Public Class Consulta_Cliente
                 MTCLI.llenarDatagridview_filtroalias(TablaCLientes, TextBox1.Text)
             ElseIf FiltroClientes.SelectedIndex = 4 Then
                 MTCLI.llenarDatagridview_filtroRFC(TablaCLientes, TextBox1.Text)
-
+            ElseIf FiltroClientes.SelectedIndex = 5 Then
+                MTCLI.llenarDatagridview_filtroLimitecredito(TablaCLientes, TextBox1.Text)
+            ElseIf FiltroClientes.SelectedIndex = 6 Then
+                MTCLI.llenarDatagridview_filtroDiasCredito(TablaCLientes, TextBox1.Text)
 
             End If
         Catch
