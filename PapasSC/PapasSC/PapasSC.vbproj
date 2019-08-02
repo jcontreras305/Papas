@@ -191,6 +191,7 @@
     </Compile>
     <Compile Include="LogeoMetodos.vb" />
     <Compile Include="Metodos\MetodosCliente.vb" />
+    <Compile Include="Metodos\MetodosClientes.vb" />
     <Compile Include="Metodos\MetodosEmpleado.vb" />
     <Compile Include="Metodos\MetodosInventario.vb" />
     <Compile Include="Metodos\MetodosVenta.vb" />
