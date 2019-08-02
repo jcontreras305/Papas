@@ -304,12 +304,14 @@
       <CustomToolNamespace>My</CustomToolNamespace>
       <LastGenOutput>Settings.Designer.vb</LastGenOutput>
     </None>
-    <None Include="App.config" />
+    <None Include="Documentos\App.config" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Documentos\CambioTablasClienteContactoCredito02-08-19.sql" />
     <Content Include="Imagenes\PapasSantaCruz.jpg" />
     <Content Include="Imagenes\PapasSantaCruz1 - copia.ico" />
     <Content Include="Imagenes\PapasSantaCruz1.jpg" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.VisualBasic.targets" />
 </Project>
