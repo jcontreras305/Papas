@@ -39,6 +39,7 @@ Partial Class Registro_Clientes
         Me.Label7 = New System.Windows.Forms.Label()
         Me.cmbTipoPersona = New System.Windows.Forms.ComboBox()
         Me.Panel2 = New System.Windows.Forms.Panel()
+        Me.cmbEstado = New System.Windows.Forms.ComboBox()
         Me.GroupBox1 = New System.Windows.Forms.GroupBox()
         Me.rdbRazonSocial = New System.Windows.Forms.RadioButton()
         Me.rdbMujer = New System.Windows.Forms.RadioButton()
@@ -59,7 +60,12 @@ Partial Class Registro_Clientes
         Me.Label11 = New System.Windows.Forms.Label()
         Me.Label9 = New System.Windows.Forms.Label()
         Me.Label16 = New System.Windows.Forms.Label()
-        Me.cmbEstado = New System.Windows.Forms.ComboBox()
+        Me.lbl18 = New System.Windows.Forms.Label()
+        Me.lbl19 = New System.Windows.Forms.Label()
+        Me.lbl22 = New System.Windows.Forms.Label()
+        Me.lbl20 = New System.Windows.Forms.Label()
+        Me.lbl21 = New System.Windows.Forms.Label()
+        Me.lbl23 = New System.Windows.Forms.Label()
         Me.Panel1.SuspendLayout()
         Me.Panel2.SuspendLayout()
         Me.GroupBox1.SuspendLayout()
@@ -175,6 +181,8 @@ Partial Class Registro_Clientes
         '
         'Panel1
         '
+        Me.Panel1.Controls.Add(Me.lbl19)
+        Me.Panel1.Controls.Add(Me.lbl18)
         Me.Panel1.Controls.Add(Me.Label7)
         Me.Panel1.Controls.Add(Me.cmbTipoPersona)
         Me.Panel1.Controls.Add(Me.Label1)
@@ -209,6 +217,8 @@ Partial Class Registro_Clientes
         '
         'Panel2
         '
+        Me.Panel2.Controls.Add(Me.lbl23)
+        Me.Panel2.Controls.Add(Me.lbl22)
         Me.Panel2.Controls.Add(Me.cmbEstado)
         Me.Panel2.Controls.Add(Me.GroupBox1)
         Me.Panel2.Controls.Add(Me.bntConfirmar)
@@ -230,6 +240,15 @@ Partial Class Registro_Clientes
         Me.Panel2.Name = "Panel2"
         Me.Panel2.Size = New System.Drawing.Size(602, 205)
         Me.Panel2.TabIndex = 24
+        '
+        'cmbEstado
+        '
+        Me.cmbEstado.FormattingEnabled = True
+        Me.cmbEstado.Items.AddRange(New Object() {"AGUAS CUALIENTES", "BAJA CALIFORNIA NORTE", "BAJA CALIFORNIA SUR", "CAMPECHE", "CHIAPAS", "CHIHUAUA", "COAHUILA", "COLIMA", "DURANGO", "ESTADO DE MEXICO", "GUANAJUATO", "GUERRRERO", "HIDALGO", "JALISCO", "MICHOACAN", "MORELOS", "NAYARIT", "NUEVO LEON", "OAXACA", "PUEBLA", "QUERETARO", "QUINTANA ROO", "SAN LUIS POTOSI", "SINALOA", "SONORA", "TABASCO", "TAMAULIPAS", "TLAXCALA", "VERACRUZ", "YUCATAN ", "ZACATECAS", "ESTADO UNIDOS DE AMERICA"})
+        Me.cmbEstado.Location = New System.Drawing.Point(397, 63)
+        Me.cmbEstado.Name = "cmbEstado"
+        Me.cmbEstado.Size = New System.Drawing.Size(142, 21)
+        Me.cmbEstado.TabIndex = 34
         '
         'GroupBox1
         '
@@ -348,9 +367,12 @@ Partial Class Registro_Clientes
         Me.txtTelefono.Name = "txtTelefono"
         Me.txtTelefono.Size = New System.Drawing.Size(138, 20)
         Me.txtTelefono.TabIndex = 23
+        Me.txtTelefono.Text = "355-000-0000"
         '
         'Panel3
         '
+        Me.Panel3.Controls.Add(Me.lbl21)
+        Me.Panel3.Controls.Add(Me.lbl20)
         Me.Panel3.Controls.Add(Me.spnDiasCredito)
         Me.Panel3.Controls.Add(Me.Label10)
         Me.Panel3.Controls.Add(Me.txtLimiteCredito)
@@ -418,14 +440,71 @@ Partial Class Registro_Clientes
         Me.Label16.TabIndex = 26
         Me.Label16.Text = "Nuevo cliente"
         '
-        'cmbEstado
+        'lbl18
         '
-        Me.cmbEstado.FormattingEnabled = True
-        Me.cmbEstado.Items.AddRange(New Object() {"AGUAS CUALIENTES", "BAJA CALIFORNIA NORTE", "BAJA CALIFORNIA SUR", "CAMPECHE", "CHIAPAS", "CHIHUAUA", "COAHUILA", "COLIMA", "DURANGO", "ESTADO DE MEXICO", "GUANAJUATO", "GUERRRERO", "HIDALGO", "JALISCO", "MICHOACAN", "MORELOS", "NAYARIT", "NUEVO LEON", "OAXACA", "PUEBLA", "QUERETARO", "QUINTANA ROO", "SAN LUIS POTOSI", "SINALOA", "SONORA", "TABASCO", "TAMAULIPAS", "TLAXCALA", "VERACRUZ", "YUCATAN ", "ZACATECAS", "ESTADO UNIDOS DE AMERICA"})
-        Me.cmbEstado.Location = New System.Drawing.Point(397, 63)
-        Me.cmbEstado.Name = "cmbEstado"
-        Me.cmbEstado.Size = New System.Drawing.Size(142, 21)
-        Me.cmbEstado.TabIndex = 34
+        Me.lbl18.AutoSize = True
+        Me.lbl18.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.lbl18.ForeColor = System.Drawing.Color.Red
+        Me.lbl18.Location = New System.Drawing.Point(300, 17)
+        Me.lbl18.Name = "lbl18"
+        Me.lbl18.Size = New System.Drawing.Size(15, 20)
+        Me.lbl18.TabIndex = 13
+        Me.lbl18.Text = "*"
+        '
+        'lbl19
+        '
+        Me.lbl19.AutoSize = True
+        Me.lbl19.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.lbl19.ForeColor = System.Drawing.Color.Red
+        Me.lbl19.Location = New System.Drawing.Point(298, 74)
+        Me.lbl19.Name = "lbl19"
+        Me.lbl19.Size = New System.Drawing.Size(15, 20)
+        Me.lbl19.TabIndex = 14
+        Me.lbl19.Text = "*"
+        '
+        'lbl22
+        '
+        Me.lbl22.AutoSize = True
+        Me.lbl22.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.lbl22.ForeColor = System.Drawing.Color.Red
+        Me.lbl22.Location = New System.Drawing.Point(242, 8)
+        Me.lbl22.Name = "lbl22"
+        Me.lbl22.Size = New System.Drawing.Size(15, 20)
+        Me.lbl22.TabIndex = 35
+        Me.lbl22.Text = "*"
+        '
+        'lbl20
+        '
+        Me.lbl20.AutoSize = True
+        Me.lbl20.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.lbl20.ForeColor = System.Drawing.Color.Red
+        Me.lbl20.Location = New System.Drawing.Point(259, 13)
+        Me.lbl20.Name = "lbl20"
+        Me.lbl20.Size = New System.Drawing.Size(15, 20)
+        Me.lbl20.TabIndex = 30
+        Me.lbl20.Text = "*"
+        '
+        'lbl21
+        '
+        Me.lbl21.AutoSize = True
+        Me.lbl21.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.lbl21.ForeColor = System.Drawing.Color.Red
+        Me.lbl21.Location = New System.Drawing.Point(259, 52)
+        Me.lbl21.Name = "lbl21"
+        Me.lbl21.Size = New System.Drawing.Size(15, 20)
+        Me.lbl21.TabIndex = 31
+        Me.lbl21.Text = "*"
+        '
+        'lbl23
+        '
+        Me.lbl23.AutoSize = True
+        Me.lbl23.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.lbl23.ForeColor = System.Drawing.Color.Red
+        Me.lbl23.Location = New System.Drawing.Point(221, 98)
+        Me.lbl23.Name = "lbl23"
+        Me.lbl23.Size = New System.Drawing.Size(15, 20)
+        Me.lbl23.TabIndex = 36
+        Me.lbl23.Text = "*"
         '
         'Registro_Clientes
         '
@@ -491,4 +570,10 @@ Partial Class Registro_Clientes
     Friend WithEvents cmbTipoPersona As ComboBox
     Friend WithEvents Label7 As Label
     Friend WithEvents cmbEstado As ComboBox
+    Friend WithEvents lbl19 As Label
+    Friend WithEvents lbl18 As Label
+    Friend WithEvents lbl23 As Label
+    Friend WithEvents lbl22 As Label
+    Friend WithEvents lbl21 As Label
+    Friend WithEvents lbl20 As Label
 End Class

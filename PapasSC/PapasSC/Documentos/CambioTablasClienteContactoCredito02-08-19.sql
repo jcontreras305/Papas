@@ -51,4 +51,4 @@ alter table contacto
 alter column municipio varchar (50) null
 
 alter table contacto 
-alter column codigoPostal char(3) null
+alter column codigoPostal char(5) null
