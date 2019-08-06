@@ -97,6 +97,12 @@
     <Compile Include="Formularios\ConsultarEmpleado.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="Formularios\Actualizar_Cliente.Designer.vb">
+      <DependentUpon>Actualizar_Cliente.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Formularios\Actualizar_Cliente.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="Formularios\GenerarNomina.designer.vb">
       <DependentUpon>GenerarNomina.vb</DependentUpon>
     </Compile>
@@ -193,6 +199,7 @@
     <Compile Include="Metodos\MetodosCliente.vb" />
     <Compile Include="Metodos\MetodosEmpleado.vb" />
     <Compile Include="Metodos\MetodosInventario.vb" />
+    <Compile Include="Metodos\MetodosProducto.vb" />
     <Compile Include="Metodos\MetodosVenta.vb" />
     <Compile Include="My Project\AssemblyInfo.vb" />
     <Compile Include="My Project\Application.Designer.vb">
@@ -223,6 +230,9 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="Formularios\Actualizar_Cliente.resx">
+      <DependentUpon>Actualizar_Cliente.vb</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Formularios\Consulta_Cliente.resx">
       <DependentUpon>Consulta_Cliente.vb</DependentUpon>
     </EmbeddedResource>

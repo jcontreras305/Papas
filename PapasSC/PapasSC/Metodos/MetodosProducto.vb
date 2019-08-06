@@ -1,5 +1,5 @@
 ﻿Imports System.Data.SqlClient
-Public Class MetodosCliente
+Public Class MetodosProducto
     Inherits conexionDB
     Public cn As New conexionDB
     Public adaptador As SqlDataAdapter
@@ -292,7 +292,6 @@ Public Class MetodosCliente
 
             command.Parameters.Add("@id", SqlDbType.NVarChar).Value = filtro
             command.ExecuteNonQuery()
-
 
         Catch ex As Exception
             MessageBox.Show("No se elimino debido a: " + ex.ToString)

@@ -61,7 +61,32 @@ Public Class Consulta_Cliente
         End Try
     End Sub
 
+    Private Sub Button1_Click(sender As Object, e As EventArgs) Handles Button1.Click
+        Registro_Clientes.Show()
+    End Sub
+
+    Private Sub Button2_Click(sender As Object, e As EventArgs) Handles Button2.Click
+        Actualizar_Cliente.Show()
+    End Sub
+
+    Private Sub Button3_Click(sender As Object, e As EventArgs) Handles Button3.Click
+
+        Dim nombre As String = Convert.ToString(TablaCLientes.CurrentRow.Cells(0).Value)
+        Dim MTCLI As New MetodosCliente
+
+        If MessageBox.Show("¿Desea ELIMINAR Cliente", "Atención", MessageBoxButtons.YesNo, MessageBoxIcon.Question) = Windows.Forms.DialogResult.Yes Then
+            MTCLI.eliminaCliente(nombre)
+            MessageBox.Show(nombre)
+        End If
 
 
 
+    End Sub
+
+    Private Sub Consulta_Cliente_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+
+        Dim MTCLI As New MetodosCliente
+        MTCLI.llenarDatagridview(TablaCLientes)
+        TablaCLientes.ReadOnly = True
+    End Sub
 End Class

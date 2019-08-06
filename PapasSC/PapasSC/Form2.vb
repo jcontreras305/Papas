@@ -154,9 +154,10 @@
         If (formulario IsNot Nothing) Then
             formulario.Close()
             formulario = Nothing
-            AbrirFormEnPanel(Of MenuReportes)()
+            AbrirFormEnPanel(Of Catálogo
+                )()
         Else
-            AbrirFormEnPanel(Of MenuReportes)()
+            AbrirFormEnPanel(Of Catálogo)()
         End If
     End Sub
 
