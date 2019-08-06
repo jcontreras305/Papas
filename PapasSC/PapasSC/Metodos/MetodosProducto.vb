@@ -8,26 +8,10 @@ Public Class MetodosProducto
     Public Sub llenarDatagridview(ByVal dgv As DataGridView)
         cn.conectar()
         Try
-            adaptador = New SqlDataAdapter("select cl.idCliente as Clave_Cliente, cl.nombre 
-    as Nombre,
-    cl.RFC,
-    cl.razonSocial as Razon_Social,
-    cl.fechaRegistro as Fecha_Registro,
-    tcl.tipo as Tipo,
-    tcl.estatus as Estatus,
-    cr.limiteCredito as Limite_Credito,
-    cr.diasCredito as Dias_de_Credito,
-    con.nombre as Nombre_Contacto,
-    con.genero as Genero,
-    con.direccion as Direccion,
-    con.telefono as Telefono,
-    con.email as Email,
-    con.estado as Estado,
-    con.municipio as municipio,
-    con.codigoPostal as Codigo_Postal
-    from cliente cl inner join tipoCliente tcl on tcl.idTipoCliente = cl.idTipoCliente 
-    inner join credito cr on cr.idCredito=cl.idCredito 
-    inner join contacto con on con.idContacto=cl.idContacto", cn.conn)
+            adaptador = New SqlDataAdapter(
+    "select idProducto as Clave_Producto, version as Version,
+    estado as Estatus
+    from producto", cn.conn)
             dt = New DataTable
             adaptador.Fill(dt)
             dgv.DataSource = dt

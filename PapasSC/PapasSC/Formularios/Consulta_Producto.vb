@@ -25,4 +25,10 @@
         End Try
 
     End Sub
+
+    Private Sub Consulta_Producto_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+        Dim MTPR As New MetodosProducto
+        MTPR.llenarDatagridview(TablaProductos)
+
+    End Sub
 End Class
