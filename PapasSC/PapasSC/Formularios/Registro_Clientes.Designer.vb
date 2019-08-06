@@ -202,7 +202,7 @@ Partial Class Registro_Clientes
         Me.lbl19.AutoSize = True
         Me.lbl19.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.lbl19.ForeColor = System.Drawing.Color.Red
-        Me.lbl19.Location = New System.Drawing.Point(298, 74)
+        Me.lbl19.Location = New System.Drawing.Point(298, 76)
         Me.lbl19.Name = "lbl19"
         Me.lbl19.Size = New System.Drawing.Size(15, 20)
         Me.lbl19.TabIndex = 14
