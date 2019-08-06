@@ -279,7 +279,7 @@ Public Class MetodosCliente
             adaptador.Fill(dt)
             dgv.DataSource = dt
         Catch ex As Exception
-            MessageBox.Show("No se lleno el Datagridview debido a: " + ex.ToString)
+            MessageBox.Show("No se lleno el Datagridview debido a:  " + ex.ToString)
         End Try
     End Sub
 
