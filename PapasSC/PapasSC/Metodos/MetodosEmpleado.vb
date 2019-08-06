@@ -9,7 +9,7 @@ Public Class MetodosEmpleado
     Public Function Consultar() As DataTable
         Try
             conectar()
-            cmd = New SqlCommand("sp_Consultar_Empleado")
+            cmd = New SqlCommand("sp_Consultar_Empleado2")
             cmd.CommandType = CommandType.StoredProcedure
             cmd.Connection = conn
 
@@ -26,4 +26,86 @@ Public Class MetodosEmpleado
 
     End Function
 
+    Public Function BuscarEm(no As String)
+        Try
+            conectar()
+            cmd = New SqlCommand("sp_Bus_Empleado")
+            cmd.CommandType = CommandType.StoredProcedure
+            cmd.Connection = conn
+
+            cmd.Parameters.AddWithValue("@nombre", no)
+            If cmd.ExecuteNonQuery Then
+                Dim dt As New DataTable
+                Dim da As New SqlDataAdapter(cmd)
+                da.Fill(dt)
+                Return dt
+            End If
+        Catch ex As Exception
+            MsgBox(ex.Message)
+            Return Nothing
+        End Try
+    End Function
+
+    Public Function BuscarEmBo(bo As String)
+        Try
+            conectar()
+            cmd = New SqlCommand("sp_Bus_Empleado1")
+            cmd.CommandType = CommandType.StoredProcedure
+            cmd.Connection = conn
+
+            cmd.Parameters.AddWithValue("@nombreBo", bo)
+            If cmd.ExecuteNonQuery Then
+                Dim dt As New DataTable
+                Dim da As New SqlDataAdapter(cmd)
+                da.Fill(dt)
+                Return dt
+            End If
+
+        Catch ex As Exception
+            MsgBox(ex.Message)
+            Return Nothing
+        End Try
+    End Function
+
+
+    Public Function BuscarEmPu(pu As String)
+        Try
+            conectar()
+            cmd = New SqlCommand("sp_Bus_Empleado2")
+            cmd.CommandType = CommandType.StoredProcedure
+            cmd.Connection = conn
+
+            cmd.Parameters.AddWithValue("@nombrePu", pu)
+            If cmd.ExecuteNonQuery Then
+                Dim dt As New DataTable
+                Dim da As New SqlDataAdapter(cmd)
+                da.Fill(dt)
+                Return dt
+            End If
+        Catch ex As Exception
+            MsgBox(ex.Message)
+            Return Nothing
+
+        End Try
+    End Function
+
+    Public Function BuscarEmSa(sa As Double)
+        Try
+            conectar()
+            cmd = New SqlCommand("sp_Bus_Empleado4")
+            cmd.CommandType = CommandType.StoredProcedure
+            cmd.Connection = conn
+
+            cmd.Parameters.AddWithValue("@Salario", sa)
+            If cmd.ExecuteNonQuery Then
+                Dim dt As New DataTable
+                Dim da As New SqlDataAdapter(cmd)
+                da.Fill(dt)
+                Return dt
+            End If
+        Catch ex As Exception
+            MsgBox(ex.Message)
+            Return Nothing
+        End Try
+    End Function
 End Class

@@ -89,4 +89,8 @@ Public Class Consulta_Cliente
         MTCLI.llenarDatagridview(TablaCLientes)
         TablaCLientes.ReadOnly = True
     End Sub
+
+    Private Sub Consulta_Cliente_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+
+    End Sub
 End Class
