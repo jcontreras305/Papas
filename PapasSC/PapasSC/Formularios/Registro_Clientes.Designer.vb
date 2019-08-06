@@ -36,9 +36,13 @@ Partial Class Registro_Clientes
         Me.Label4 = New System.Windows.Forms.Label()
         Me.Label8 = New System.Windows.Forms.Label()
         Me.Panel1 = New System.Windows.Forms.Panel()
+        Me.lbl19 = New System.Windows.Forms.Label()
+        Me.lbl18 = New System.Windows.Forms.Label()
         Me.Label7 = New System.Windows.Forms.Label()
         Me.cmbTipoPersona = New System.Windows.Forms.ComboBox()
         Me.Panel2 = New System.Windows.Forms.Panel()
+        Me.lbl23 = New System.Windows.Forms.Label()
+        Me.lbl22 = New System.Windows.Forms.Label()
         Me.cmbEstado = New System.Windows.Forms.ComboBox()
         Me.GroupBox1 = New System.Windows.Forms.GroupBox()
         Me.rdbRazonSocial = New System.Windows.Forms.RadioButton()
@@ -54,18 +58,14 @@ Partial Class Registro_Clientes
         Me.Label12 = New System.Windows.Forms.Label()
         Me.txtTelefono = New System.Windows.Forms.TextBox()
         Me.Panel3 = New System.Windows.Forms.Panel()
+        Me.lbl21 = New System.Windows.Forms.Label()
+        Me.lbl20 = New System.Windows.Forms.Label()
         Me.spnDiasCredito = New System.Windows.Forms.NumericUpDown()
         Me.Label10 = New System.Windows.Forms.Label()
         Me.txtLimiteCredito = New System.Windows.Forms.TextBox()
         Me.Label11 = New System.Windows.Forms.Label()
         Me.Label9 = New System.Windows.Forms.Label()
         Me.Label16 = New System.Windows.Forms.Label()
-        Me.lbl18 = New System.Windows.Forms.Label()
-        Me.lbl19 = New System.Windows.Forms.Label()
-        Me.lbl22 = New System.Windows.Forms.Label()
-        Me.lbl20 = New System.Windows.Forms.Label()
-        Me.lbl21 = New System.Windows.Forms.Label()
-        Me.lbl23 = New System.Windows.Forms.Label()
         Me.Panel1.SuspendLayout()
         Me.Panel2.SuspendLayout()
         Me.GroupBox1.SuspendLayout()
@@ -128,6 +128,7 @@ Partial Class Registro_Clientes
         Me.txtrfc.Name = "txtrfc"
         Me.txtrfc.Size = New System.Drawing.Size(204, 20)
         Me.txtrfc.TabIndex = 10
+        Me.txtrfc.Text = "XAXX010101000"
         '
         'Button1
         '
@@ -196,6 +197,28 @@ Partial Class Registro_Clientes
         Me.Panel1.Size = New System.Drawing.Size(602, 120)
         Me.Panel1.TabIndex = 23
         '
+        'lbl19
+        '
+        Me.lbl19.AutoSize = True
+        Me.lbl19.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.lbl19.ForeColor = System.Drawing.Color.Red
+        Me.lbl19.Location = New System.Drawing.Point(298, 74)
+        Me.lbl19.Name = "lbl19"
+        Me.lbl19.Size = New System.Drawing.Size(15, 20)
+        Me.lbl19.TabIndex = 14
+        Me.lbl19.Text = "*"
+        '
+        'lbl18
+        '
+        Me.lbl18.AutoSize = True
+        Me.lbl18.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.lbl18.ForeColor = System.Drawing.Color.Red
+        Me.lbl18.Location = New System.Drawing.Point(300, 17)
+        Me.lbl18.Name = "lbl18"
+        Me.lbl18.Size = New System.Drawing.Size(15, 20)
+        Me.lbl18.TabIndex = 13
+        Me.lbl18.Text = "*"
+        '
         'Label7
         '
         Me.Label7.AutoSize = True
@@ -240,6 +263,28 @@ Partial Class Registro_Clientes
         Me.Panel2.Name = "Panel2"
         Me.Panel2.Size = New System.Drawing.Size(602, 205)
         Me.Panel2.TabIndex = 24
+        '
+        'lbl23
+        '
+        Me.lbl23.AutoSize = True
+        Me.lbl23.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.lbl23.ForeColor = System.Drawing.Color.Red
+        Me.lbl23.Location = New System.Drawing.Point(221, 98)
+        Me.lbl23.Name = "lbl23"
+        Me.lbl23.Size = New System.Drawing.Size(15, 20)
+        Me.lbl23.TabIndex = 36
+        Me.lbl23.Text = "*"
+        '
+        'lbl22
+        '
+        Me.lbl22.AutoSize = True
+        Me.lbl22.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.lbl22.ForeColor = System.Drawing.Color.Red
+        Me.lbl22.Location = New System.Drawing.Point(242, 8)
+        Me.lbl22.Name = "lbl22"
+        Me.lbl22.Size = New System.Drawing.Size(15, 20)
+        Me.lbl22.TabIndex = 35
+        Me.lbl22.Text = "*"
         '
         'cmbEstado
         '
@@ -314,7 +359,7 @@ Partial Class Registro_Clientes
         'Label6
         '
         Me.Label6.AutoSize = True
-        Me.Label6.Location = New System.Drawing.Point(339, 59)
+        Me.Label6.Location = New System.Drawing.Point(339, 65)
         Me.Label6.Name = "Label6"
         Me.Label6.Size = New System.Drawing.Size(40, 13)
         Me.Label6.TabIndex = 28
@@ -323,7 +368,7 @@ Partial Class Registro_Clientes
         'Label14
         '
         Me.Label14.AutoSize = True
-        Me.Label14.Location = New System.Drawing.Point(339, 33)
+        Me.Label14.Location = New System.Drawing.Point(339, 40)
         Me.Label14.Name = "Label14"
         Me.Label14.Size = New System.Drawing.Size(52, 13)
         Me.Label14.TabIndex = 28
@@ -339,7 +384,7 @@ Partial Class Registro_Clientes
         'Label13
         '
         Me.Label13.AutoSize = True
-        Me.Label13.Location = New System.Drawing.Point(339, 7)
+        Me.Label13.Location = New System.Drawing.Point(338, 16)
         Me.Label13.Name = "Label13"
         Me.Label13.Size = New System.Drawing.Size(32, 13)
         Me.Label13.TabIndex = 26
@@ -381,6 +426,28 @@ Partial Class Registro_Clientes
         Me.Panel3.Name = "Panel3"
         Me.Panel3.Size = New System.Drawing.Size(602, 107)
         Me.Panel3.TabIndex = 25
+        '
+        'lbl21
+        '
+        Me.lbl21.AutoSize = True
+        Me.lbl21.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.lbl21.ForeColor = System.Drawing.Color.Red
+        Me.lbl21.Location = New System.Drawing.Point(259, 52)
+        Me.lbl21.Name = "lbl21"
+        Me.lbl21.Size = New System.Drawing.Size(15, 20)
+        Me.lbl21.TabIndex = 31
+        Me.lbl21.Text = "*"
+        '
+        'lbl20
+        '
+        Me.lbl20.AutoSize = True
+        Me.lbl20.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.lbl20.ForeColor = System.Drawing.Color.Red
+        Me.lbl20.Location = New System.Drawing.Point(259, 13)
+        Me.lbl20.Name = "lbl20"
+        Me.lbl20.Size = New System.Drawing.Size(15, 20)
+        Me.lbl20.TabIndex = 30
+        Me.lbl20.Text = "*"
         '
         'spnDiasCredito
         '
@@ -439,72 +506,6 @@ Partial Class Registro_Clientes
         Me.Label16.Size = New System.Drawing.Size(147, 24)
         Me.Label16.TabIndex = 26
         Me.Label16.Text = "Nuevo cliente"
-        '
-        'lbl18
-        '
-        Me.lbl18.AutoSize = True
-        Me.lbl18.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.lbl18.ForeColor = System.Drawing.Color.Red
-        Me.lbl18.Location = New System.Drawing.Point(300, 17)
-        Me.lbl18.Name = "lbl18"
-        Me.lbl18.Size = New System.Drawing.Size(15, 20)
-        Me.lbl18.TabIndex = 13
-        Me.lbl18.Text = "*"
-        '
-        'lbl19
-        '
-        Me.lbl19.AutoSize = True
-        Me.lbl19.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.lbl19.ForeColor = System.Drawing.Color.Red
-        Me.lbl19.Location = New System.Drawing.Point(298, 74)
-        Me.lbl19.Name = "lbl19"
-        Me.lbl19.Size = New System.Drawing.Size(15, 20)
-        Me.lbl19.TabIndex = 14
-        Me.lbl19.Text = "*"
-        '
-        'lbl22
-        '
-        Me.lbl22.AutoSize = True
-        Me.lbl22.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.lbl22.ForeColor = System.Drawing.Color.Red
-        Me.lbl22.Location = New System.Drawing.Point(242, 8)
-        Me.lbl22.Name = "lbl22"
-        Me.lbl22.Size = New System.Drawing.Size(15, 20)
-        Me.lbl22.TabIndex = 35
-        Me.lbl22.Text = "*"
-        '
-        'lbl20
-        '
-        Me.lbl20.AutoSize = True
-        Me.lbl20.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.lbl20.ForeColor = System.Drawing.Color.Red
-        Me.lbl20.Location = New System.Drawing.Point(259, 13)
-        Me.lbl20.Name = "lbl20"
-        Me.lbl20.Size = New System.Drawing.Size(15, 20)
-        Me.lbl20.TabIndex = 30
-        Me.lbl20.Text = "*"
-        '
-        'lbl21
-        '
-        Me.lbl21.AutoSize = True
-        Me.lbl21.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.lbl21.ForeColor = System.Drawing.Color.Red
-        Me.lbl21.Location = New System.Drawing.Point(259, 52)
-        Me.lbl21.Name = "lbl21"
-        Me.lbl21.Size = New System.Drawing.Size(15, 20)
-        Me.lbl21.TabIndex = 31
-        Me.lbl21.Text = "*"
-        '
-        'lbl23
-        '
-        Me.lbl23.AutoSize = True
-        Me.lbl23.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.lbl23.ForeColor = System.Drawing.Color.Red
-        Me.lbl23.Location = New System.Drawing.Point(221, 98)
-        Me.lbl23.Name = "lbl23"
-        Me.lbl23.Size = New System.Drawing.Size(15, 20)
-        Me.lbl23.TabIndex = 36
-        Me.lbl23.Text = "*"
         '
         'Registro_Clientes
         '

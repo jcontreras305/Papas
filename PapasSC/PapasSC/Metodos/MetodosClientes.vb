@@ -24,7 +24,8 @@ Public Class MetodosClientes
             cmd.Parameters.AddWithValue("@estado", datosCliente.ElementAt(9))
             cmd.Parameters.AddWithValue("@municipio", datosCliente.ElementAt(10))
             cmd.Parameters.AddWithValue("@codigoPostal", datosCliente.ElementAt(11))
-            cmd.Parameters.AddWithValue("@limiteCredito", datosCliente.ElementAt(12))
+            Dim limcredi As String = Replace(datosCliente.ElementAt(12), ",", ".")
+            cmd.Parameters.AddWithValue("@limiteCredito", limcredi)
             cmd.Parameters.AddWithValue("@diasCredito", datosCliente.ElementAt(13))
             MsgBox("El cliente " + datosCliente.ElementAt(0) + " con rfc " + datosCliente.ElementAt(1) + " o razon social " + datosCliente.ElementAt(2))
             If cmd.ExecuteNonQuery Then
@@ -34,6 +35,4 @@ Public Class MetodosClientes
             MsgBox(ex.Message)
         End Try
     End Sub
-
-
 End Class

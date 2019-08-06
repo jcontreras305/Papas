@@ -1,5 +1,7 @@
 ﻿Imports System.Text.RegularExpressions
+Imports PapasSC.MetodosClientes
 Public Class Registro_Clientes
+    Dim mtdCli As New MetodosClientes
     Private Sub Registro_Clientes_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         Try
             txtRazonSocial.Enabled = False
@@ -9,6 +11,8 @@ Public Class Registro_Clientes
             lbl21.Visible = False
             lbl22.Visible = False
             lbl23.Visible = False
+            rdbHombre.Checked = True
+            cmbEstado.SelectedIndex = 14
         Catch ex As Exception
 
         End Try
@@ -32,29 +36,37 @@ Public Class Registro_Clientes
     End Sub
 
     Private Sub bntConfirmar_Click(sender As Object, e As EventArgs) Handles bntConfirmar.Click
+        Dim datosCliente As New List(Of String)
         If validar_camposNoNulos() = True Then
+            Dim flag1 As Boolean = True
             Try
                 'datos de nombre o razon social
-                Dim datosCliente As New List(Of String)
+
 
                 If Not cmbTipoPersona.SelectedItem = "Moral" Then
                     datosCliente.Add(txtNombre.Text) 'nombre persona fisica
                     If txtrfc.Text.Length > 0 And Not txtrfc.Text.Trim = String.Empty Then
                         datosCliente.Add(txtrfc.Text)
+
                     Else
                         datosCliente.Add("XAXX010101000") 'se le asigna la de publico general
+
                     End If
                     datosCliente.Add("") 'si es persona fisica no hay persona moral
                     datosCliente.Add("Fisica") 'se agrega el tipo de persona
+
                 ElseIf cmbTipoPersona.SelectedItem = "Moral" Then 'es lo contrario 
                     datosCliente.Add("") '
                     If txtrfc.Text.Length > 0 Or Not txtrfc.Text.Trim = String.Empty Then
                         datosCliente.Add(txtrfc.Text)
+
                     Else
                         datosCliente.Add("XAXX010101000")
+
                     End If
                     datosCliente.Add(txtRazonSocial.Text)
                     datosCliente.Add("Moral")
+
                 End If
 
                 'agregar de contacto 
@@ -66,10 +78,11 @@ Public Class Registro_Clientes
                 Else
                     datosCliente.Add("F")
                 End If
+
                 datosCliente.Add(txtDireccion.Text)
                 datosCliente.Add(txtTelefono.Text)
                 datosCliente.Add(txtEmail.Text)
-                datosCliente.Add(cmbEstado.SelectedItem.ToString)
+                datosCliente.Add(CStr(cmbEstado.SelectedItem.ToString()))
                 datosCliente.Add(txtMunicipio.Text)
                 datosCliente.Add(txtCodigoPostal.Text)
 
@@ -80,13 +93,19 @@ Public Class Registro_Clientes
                     datosCliente.Add(CStr(spnDiasCredito.Value)) ' dias de credito
                 Else
                     datosCliente.Add("10000")
-                End If
 
+                End If
             Catch ex As Exception
-                MsgBox(ex.Message)
+                MsgBox(ex.Message + "1")
+                flag1 = False
             End Try
+
+            If flag1 = True Then
+                mtdCli.insertar_Cliente(datosCliente)
+            End If
         Else
             MsgBox(mensaje)
+            activarSenialCamposObligatorios()
         End If
     End Sub
 
@@ -123,6 +142,7 @@ Public Class Registro_Clientes
     Private Sub cmbTipoPersona_SelectedIndexChanged(sender As Object, e As EventArgs) Handles cmbTipoPersona.SelectedIndexChanged
         If cmbTipoPersona.SelectedItem = "Moral" Then
             txtNombre.Enabled = False
+            txtNombre.Text = ""
             txtRazonSocial.Enabled = True
             rdbRazonSocial.Checked = True
             rdbMujer.Enabled = False
@@ -130,6 +150,7 @@ Public Class Registro_Clientes
         Else
             txtNombre.Enabled = True
             txtRazonSocial.Enabled = False
+            txtNombre.Text = ""
             rdbRazonSocial.Enabled = True
             rdbRazonSocial.Checked = False
             rdbMujer.Enabled = True
@@ -146,10 +167,10 @@ Public Class Registro_Clientes
         Return Regex.IsMatch(tel, "\d{3}-\d{3}-\d{4}")
     End Function
 
-    Private dim mensaje As String
+    Private mensaje As String
 
     Private Function validar_camposNoNulos() As Boolean
-        Dim flag As Boolean
+        Dim flag As Boolean = True
         Dim resutado As String = "Existen campos obligarios: "
         If Not cmbTipoPersona.SelectedItem = "Moral" Then
             If txtNombre.Text.Length = 0 Or txtNombre.Text.Trim = String.Empty Then
@@ -164,7 +185,7 @@ Public Class Registro_Clientes
         End If
 
         If txtLimiteCredito.Text.Length = 0 And Not txtLimiteCredito.Text.Trim = String.Empty Then
-                resutado = resutado + "Limite de credito "
+            resutado = resutado + "Limite de credito "
             flag = False
         ElseIf txtAlias.Text.Length = 0 And Not txtAlias.Text.Trim = String.Empty Then
             resutado = resutado + "Alias "
@@ -180,6 +201,20 @@ Public Class Registro_Clientes
     Private Sub Button1_Click(sender As Object, e As EventArgs) Handles Button1.Click
         Me.Close()
     End Sub
+
+    Private Function activarSenialCamposObligatorios() As Boolean
+        Try
+            lbl18.Visible = True
+            lbl19.Visible = True
+            lbl20.Visible = True
+            lbl21.Visible = True
+            lbl22.Visible = True
+            lbl23.Visible = True
+            Return True
+        Catch ex As Exception
+            Return False
+        End Try
+    End Function
 
 
 End Class
