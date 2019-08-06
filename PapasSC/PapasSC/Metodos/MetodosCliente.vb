@@ -26,8 +26,8 @@ Public Class MetodosCliente
     con.municipio as municipio,
     con.codigoPostal as Codigo_Postal
     from cliente cl inner join tipoCliente tcl on tcl.idTipoCliente = cl.idTipoCliente 
-    inner join credito cr on cr.idCredito=cl.idCredito 
-    inner join contacto con on con.idContacto=cl.idContacto", cn.conn)
+    inner join credito cr on cr.idCliente=cl.idCliente
+    inner join contacto con on con.idCliente=cl.idCliente", cn.conn)
             dt = New DataTable
             adaptador.Fill(dt)
             dgv.DataSource = dt
@@ -57,8 +57,8 @@ Public Class MetodosCliente
     con.municipio as municipio,
     con.codigoPostal as Codigo_Postal
     from cliente cl inner join tipoCliente tcl on tcl.idTipoCliente = cl.idTipoCliente 
-    inner join credito cr on cr.idCredito=cl.idCredito 
-    inner join contacto con on con.idContacto=cl.idContacto where cl.nombre like '" + filtro + "%'", cn.conn)
+    inner join credito cr on cr.idCliente=cl.idCliente
+    inner join contacto con on con.idCliente=cl.idCliente where cl.nombre like '" + filtro + "%'", cn.conn)
             dt = New DataTable
             adaptador.Fill(dt)
             dgv.DataSource = dt
@@ -88,8 +88,8 @@ Public Class MetodosCliente
     con.municipio as municipio,
     con.codigoPostal as Codigo_Postal
     from cliente cl inner join tipoCliente tcl on tcl.idTipoCliente = cl.idTipoCliente 
-    inner join credito cr on cr.idCredito=cl.idCredito 
-    inner join contacto con on con.idContacto=cl.idContacto where tcl.tipo like '" + filtro + "%'", cn.conn)
+    inner join credito cr on cr.idCliente=cl.idCliente
+    inner join contacto con on con.idCliente=cl.idCliente where tcl.tipo like '" + filtro + "%'", cn.conn)
             dt = New DataTable
             adaptador.Fill(dt)
             dgv.DataSource = dt
@@ -119,8 +119,8 @@ Public Class MetodosCliente
     con.municipio as municipio,
     con.codigoPostal as Codigo_Postal
     from cliente cl inner join tipoCliente tcl on tcl.idTipoCliente = cl.idTipoCliente 
-    inner join credito cr on cr.idCredito=cl.idCredito 
-    inner join contacto con on con.idContacto=cl.idContacto where cl.razonSocial like '" + filtro + "%'", cn.conn)
+    inner join credito cr on cr.idCliente=cl.idCliente
+    inner join contacto con on con.idCliente=cl.idCliente where cl.razonSocial like '" + filtro + "%'", cn.conn)
             dt = New DataTable
             adaptador.Fill(dt)
             dgv.DataSource = dt
@@ -149,8 +149,8 @@ Public Class MetodosCliente
     con.municipio as municipio,
     con.codigoPostal as Codigo_Postal
     from cliente cl inner join tipoCliente tcl on tcl.idTipoCliente = cl.idTipoCliente 
-    inner join credito cr on cr.idCredito=cl.idCredito 
-    inner join contacto con on con.idContacto=cl.idContacto where con.nombre like '" + filtro + "%'", cn.conn)
+    inner join credito cr on cr.idCliente=cl.idCliente
+    inner join contacto con on con.idCliente=cl.idCliente where con.nombre like '" + filtro + "%'", cn.conn)
             dt = New DataTable
             adaptador.Fill(dt)
             dgv.DataSource = dt
@@ -180,8 +180,8 @@ Public Class MetodosCliente
     con.municipio as municipio,
     con.codigoPostal as Codigo_Postal
     from cliente cl inner join tipoCliente tcl on tcl.idTipoCliente = cl.idTipoCliente 
-    inner join credito cr on cr.idCredito=cl.idCredito 
-    inner join contacto con on con.idContacto=cl.idContacto where cl.RFC like '" + filtro + "%'", cn.conn)
+    inner join credito cr on cr.idCliente=cl.idCliente
+    inner join contacto con on con.idCliente=cl.idCliente where cl.RFC like '" + filtro + "%'", cn.conn)
             dt = New DataTable
             adaptador.Fill(dt)
             dgv.DataSource = dt
@@ -211,8 +211,8 @@ Public Class MetodosCliente
     con.municipio as municipio,
     con.codigoPostal as Codigo_Postal
     from cliente cl inner join tipoCliente tcl on tcl.idTipoCliente = cl.idTipoCliente 
-    inner join credito cr on cr.idCredito=cl.idCredito 
-    inner join contacto con on con.idContacto=cl.idContacto where cr.limiteCredito like '" + filtro + "%'", cn.conn)
+    inner join credito cr on cr.idCliente=cl.idCliente
+    inner join contacto con on con.idCliente=cl.idCliente where cr.limiteCredito like '" + filtro + "%'", cn.conn)
             dt = New DataTable
             adaptador.Fill(dt)
             dgv.DataSource = dt
@@ -242,8 +242,8 @@ Public Class MetodosCliente
     con.municipio as municipio,
     con.codigoPostal as Codigo_Postal
     from cliente cl inner join tipoCliente tcl on tcl.idTipoCliente = cl.idTipoCliente 
-    inner join credito cr on cr.idCredito=cl.idCredito 
-    inner join contacto con on con.idContacto=cl.idContacto where cr.diasCredito like '" + filtro + "%'", cn.conn)
+    inner join credito cr on cr.idCliente=cl.idCliente
+    inner join contacto con on con.idCliente=cl.idCliente where cr.diasCredito like '" + filtro + "%'", cn.conn)
             dt = New DataTable
             adaptador.Fill(dt)
             dgv.DataSource = dt
@@ -273,8 +273,8 @@ Public Class MetodosCliente
     con.municipio as municipio,
     con.codigoPostal as Codigo_Postal
     from cliente cl inner join tipoCliente tcl on tcl.idTipoCliente = cl.idTipoCliente 
-    inner join credito cr on cr.idCredito=cl.idCredito 
-    inner join contacto con on con.idContacto=cl.idContacto where cl.idCliente like '" + filtro + "%'", cn.conn)
+    inner join credito cr on cr.idCliente=cl.idCliente
+    inner join contacto con on con.idCliente=cl.idCliente where cl.idCliente like '" + filtro + "%'", cn.conn)
             dt = New DataTable
             adaptador.Fill(dt)
             dgv.DataSource = dt
