@@ -322,11 +322,20 @@
     <Content Include="Documentos\PS_ACTUAL1.0.sql" />
     <Content Include="Imagenes\ACTUALIZAR.png" />
     <Content Include="Imagenes\BORRAR.png" />
+    <Content Include="Imagenes\CATALOGO.jpg" />
+    <Content Include="Imagenes\CONFIGURACIÓN.jpg" />
+    <Content Include="Imagenes\CONTROL.jpg" />
+    <Content Include="Imagenes\EMPLEADOS.jpg" />
     <Content Include="Imagenes\GUARDAR.png" />
+    <Content Include="Imagenes\INVENTARIO.jpg" />
+    <Content Include="Imagenes\LOGIN.jpg" />
     <Content Include="Imagenes\NUEVO.png" />
     <Content Include="Imagenes\PapasSantaCruz.jpg" />
     <Content Include="Imagenes\PapasSantaCruz1 - copia.ico" />
     <Content Include="Imagenes\PapasSantaCruz1.jpg" />
+    <Content Include="Imagenes\REPORTES.jpg" />
+    <Content Include="Imagenes\UTILERIAS.jpg" />
+    <Content Include="Imagenes\VENTA.jpg" />
   </ItemGroup>
   <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.VisualBasic.targets" />

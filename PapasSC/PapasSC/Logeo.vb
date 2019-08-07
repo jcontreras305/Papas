@@ -2,7 +2,9 @@
 Public Class Logeo
     Dim metodos As New LogeoMetodos
 
+
     Private Sub Logeo_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+
 
     End Sub
 

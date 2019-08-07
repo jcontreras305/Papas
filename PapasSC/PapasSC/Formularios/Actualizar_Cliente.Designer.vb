@@ -199,7 +199,7 @@ Partial Class Actualizar_Cliente
         Me.btnElminar.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.btnElminar.Image = CType(resources.GetObject("btnElminar.Image"), System.Drawing.Image)
         Me.btnElminar.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
-        Me.btnElminar.Location = New System.Drawing.Point(286, 145)
+        Me.btnElminar.Location = New System.Drawing.Point(282, 153)
         Me.btnElminar.Name = "btnElminar"
         Me.btnElminar.Size = New System.Drawing.Size(111, 39)
         Me.btnElminar.TabIndex = 37

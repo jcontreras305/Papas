@@ -25,46 +25,26 @@ Partial Class Logeo
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(Logeo))
         Me.txtUsuario = New System.Windows.Forms.TextBox()
         Me.txtContrasenia = New System.Windows.Forms.TextBox()
-        Me.Label1 = New System.Windows.Forms.Label()
-        Me.Label2 = New System.Windows.Forms.Label()
         Me.btnIniciar = New System.Windows.Forms.Button()
         Me.SuspendLayout()
         '
         'txtUsuario
         '
-        Me.txtUsuario.Location = New System.Drawing.Point(105, 79)
+        Me.txtUsuario.Location = New System.Drawing.Point(279, 161)
         Me.txtUsuario.Name = "txtUsuario"
-        Me.txtUsuario.Size = New System.Drawing.Size(141, 20)
+        Me.txtUsuario.Size = New System.Drawing.Size(236, 20)
         Me.txtUsuario.TabIndex = 0
         '
         'txtContrasenia
         '
-        Me.txtContrasenia.Location = New System.Drawing.Point(105, 130)
+        Me.txtContrasenia.Location = New System.Drawing.Point(279, 247)
         Me.txtContrasenia.Name = "txtContrasenia"
-        Me.txtContrasenia.Size = New System.Drawing.Size(141, 20)
+        Me.txtContrasenia.Size = New System.Drawing.Size(236, 20)
         Me.txtContrasenia.TabIndex = 1
-        '
-        'Label1
-        '
-        Me.Label1.AutoSize = True
-        Me.Label1.Location = New System.Drawing.Point(47, 79)
-        Me.Label1.Name = "Label1"
-        Me.Label1.Size = New System.Drawing.Size(43, 13)
-        Me.Label1.TabIndex = 2
-        Me.Label1.Text = "Usuario"
-        '
-        'Label2
-        '
-        Me.Label2.AutoSize = True
-        Me.Label2.Location = New System.Drawing.Point(29, 133)
-        Me.Label2.Name = "Label2"
-        Me.Label2.Size = New System.Drawing.Size(61, 13)
-        Me.Label2.TabIndex = 3
-        Me.Label2.Text = "Contraseña"
         '
         'btnIniciar
         '
-        Me.btnIniciar.Location = New System.Drawing.Point(171, 175)
+        Me.btnIniciar.Location = New System.Drawing.Point(321, 308)
         Me.btnIniciar.Name = "btnIniciar"
         Me.btnIniciar.Size = New System.Drawing.Size(75, 23)
         Me.btnIniciar.TabIndex = 4
@@ -75,10 +55,9 @@ Partial Class Logeo
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(484, 411)
+        Me.BackgroundImage = CType(resources.GetObject("$this.BackgroundImage"), System.Drawing.Image)
+        Me.ClientSize = New System.Drawing.Size(563, 466)
         Me.Controls.Add(Me.btnIniciar)
-        Me.Controls.Add(Me.Label2)
-        Me.Controls.Add(Me.Label1)
         Me.Controls.Add(Me.txtContrasenia)
         Me.Controls.Add(Me.txtUsuario)
         Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
@@ -91,7 +70,5 @@ Partial Class Logeo
 
     Friend WithEvents txtUsuario As TextBox
     Friend WithEvents txtContrasenia As TextBox
-    Friend WithEvents Label1 As Label
-    Friend WithEvents Label2 As Label
     Friend WithEvents btnIniciar As Button
 End Class

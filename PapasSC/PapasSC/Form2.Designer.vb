@@ -260,12 +260,12 @@ Partial Class Form2
         Me.VentasMenuPrincipal.FlatStyle = System.Windows.Forms.FlatStyle.Popup
         Me.VentasMenuPrincipal.Font = New System.Drawing.Font("Arial", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.VentasMenuPrincipal.ForeColor = System.Drawing.SystemColors.ButtonHighlight
+        Me.VentasMenuPrincipal.Image = CType(resources.GetObject("VentasMenuPrincipal.Image"), System.Drawing.Image)
         Me.VentasMenuPrincipal.Location = New System.Drawing.Point(1, 11)
         Me.VentasMenuPrincipal.Margin = New System.Windows.Forms.Padding(2, 3, 3, 1)
         Me.VentasMenuPrincipal.Name = "VentasMenuPrincipal"
         Me.VentasMenuPrincipal.Size = New System.Drawing.Size(182, 49)
         Me.VentasMenuPrincipal.TabIndex = 0
-        Me.VentasMenuPrincipal.Text = "Ventas"
         Me.VentasMenuPrincipal.UseVisualStyleBackColor = False
         '
         'PanelContenedorForm
