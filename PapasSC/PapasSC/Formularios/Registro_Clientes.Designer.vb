@@ -481,9 +481,9 @@ Partial Class Registro_Clientes
         Me.Label11.AutoSize = True
         Me.Label11.Location = New System.Drawing.Point(3, 52)
         Me.Label11.Name = "Label11"
-        Me.Label11.Size = New System.Drawing.Size(79, 13)
+        Me.Label11.Size = New System.Drawing.Size(80, 13)
         Me.Label11.TabIndex = 25
-        Me.Label11.Text = "DIas de credito"
+        Me.Label11.Text = "Días de credito"
         '
         'Label9
         '

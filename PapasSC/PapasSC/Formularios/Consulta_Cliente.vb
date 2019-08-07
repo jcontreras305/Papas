@@ -1,5 +1,7 @@
 ﻿Imports PapasSC.MetodosCliente
 Public Class Consulta_Cliente
+    Public datosCliente As New List(Of String)
+
     Private Sub Buscar_Click(sender As Object, e As EventArgs) Handles Buscar.Click
         Dim MTCLI As New MetodosCliente
         If TextBox1.Text = "" Or TextBox1.Text = Nothing Then
@@ -16,7 +18,7 @@ Public Class Consulta_Cliente
         ElseIf FiltroClientes.SelectedIndex = 4 Then
             MTCLI.llenarDatagridview_filtroRFC(TablaCLientes, TextBox1.Text)
         ElseIf FiltroClientes.SelectedIndex = 5 Then
-            MTCLI.llenarDatagridview_filtroLimitecredito(TablaCLientes, TextBox1.Text)
+            MTCLI.llenarDatagridview_filtroLimiteCredito(TablaCLientes, TextBox1.Text)
         ElseIf FiltroClientes.SelectedIndex = 6 Then
             MTCLI.llenarDatagridview_filtroDiasCredito(TablaCLientes, TextBox1.Text)
         ElseIf FiltroClientes.SelectedIndex = 7 Then
@@ -66,6 +68,13 @@ Public Class Consulta_Cliente
     End Sub
 
     Private Sub Button2_Click(sender As Object, e As EventArgs) Handles Button2.Click
+        Try
+            For Each cell As DataGridViewCell In TablaCLientes.CurrentRow.Cells
+                datosCliente.Add(CStr(cell.Value.ToString))
+            Next
+        Catch ex As Exception
+            MsgBox(ex.Message)
+        End Try
         Actualizar_Cliente.Show()
     End Sub
 
