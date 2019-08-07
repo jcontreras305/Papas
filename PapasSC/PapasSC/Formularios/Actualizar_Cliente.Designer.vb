@@ -22,6 +22,7 @@ Partial Class Actualizar_Cliente
     'No lo modifique con el editor de código.
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
+        Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(Actualizar_Cliente))
         Me.Label9 = New System.Windows.Forms.Label()
         Me.Label16 = New System.Windows.Forms.Label()
         Me.Panel3 = New System.Windows.Forms.Panel()
@@ -32,6 +33,7 @@ Partial Class Actualizar_Cliente
         Me.txtLimiteCredito = New System.Windows.Forms.TextBox()
         Me.Label11 = New System.Windows.Forms.Label()
         Me.Panel2 = New System.Windows.Forms.Panel()
+        Me.btnElminar = New System.Windows.Forms.Button()
         Me.lbl23 = New System.Windows.Forms.Label()
         Me.lbl22 = New System.Windows.Forms.Label()
         Me.cmbEstado = New System.Windows.Forms.ComboBox()
@@ -66,7 +68,6 @@ Partial Class Actualizar_Cliente
         Me.txtRazonSocial = New System.Windows.Forms.TextBox()
         Me.txtrfc = New System.Windows.Forms.TextBox()
         Me.Label5 = New System.Windows.Forms.Label()
-        Me.btnElminar = New System.Windows.Forms.Button()
         Me.Panel3.SuspendLayout()
         CType(Me.spnDiasCredito, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.Panel2.SuspendLayout()
@@ -192,6 +193,19 @@ Partial Class Actualizar_Cliente
         Me.Panel2.Name = "Panel2"
         Me.Panel2.Size = New System.Drawing.Size(602, 205)
         Me.Panel2.TabIndex = 30
+        '
+        'btnElminar
+        '
+        Me.btnElminar.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.btnElminar.Image = CType(resources.GetObject("btnElminar.Image"), System.Drawing.Image)
+        Me.btnElminar.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
+        Me.btnElminar.Location = New System.Drawing.Point(286, 145)
+        Me.btnElminar.Name = "btnElminar"
+        Me.btnElminar.Size = New System.Drawing.Size(111, 39)
+        Me.btnElminar.TabIndex = 37
+        Me.btnElminar.Text = "Eliminar"
+        Me.btnElminar.TextAlign = System.Drawing.ContentAlignment.MiddleRight
+        Me.btnElminar.UseVisualStyleBackColor = True
         '
         'lbl23
         '
@@ -507,15 +521,6 @@ Partial Class Actualizar_Cliente
         Me.Label5.Name = "Label5"
         Me.Label5.Size = New System.Drawing.Size(0, 13)
         Me.Label5.TabIndex = 28
-        '
-        'btnElminar
-        '
-        Me.btnElminar.Location = New System.Drawing.Point(313, 163)
-        Me.btnElminar.Name = "btnElminar"
-        Me.btnElminar.Size = New System.Drawing.Size(84, 21)
-        Me.btnElminar.TabIndex = 37
-        Me.btnElminar.Text = "Eliminar"
-        Me.btnElminar.UseVisualStyleBackColor = True
         '
         'Actualizar_Cliente
         '

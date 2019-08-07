@@ -115,6 +115,19 @@ Public Class Actualizar_Cliente
         End Try
     End Sub
 
+    Private Sub btnElminar_Click(sender As Object, e As EventArgs) Handles btnElminar.Click
+        Try
+            If txtNombre.Left > 0 And Not txtNombre.Text.Trim = String.Empty Then
+                mtdCli.eliminar_Cliente(idCliente, txtNombre.Text)
+            Else
+                mtdCli.eliminar_Cliente(idCliente, "")
+            End If
+        Catch ex As Exception
+
+        End Try
+    End Sub
+
+
     Private Function validar_Correo(ByVal mail As String) As Boolean
         Return Regex.IsMatch(mail, "^[_a-z0-9]+(\._a-z0-9+)*@[a-z0-9-]+(\.[a-z0-9-]+)*(\.[a-z]{2,4})$")
     End Function
@@ -187,4 +200,6 @@ Public Class Actualizar_Cliente
 
         End If
     End Sub
+
+
 End Class

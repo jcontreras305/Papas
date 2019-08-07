@@ -80,11 +80,12 @@ Public Class Consulta_Cliente
 
     Private Sub Button3_Click(sender As Object, e As EventArgs) Handles Button3.Click
 
-        Dim nombre As String = Convert.ToString(TablaCLientes.CurrentRow.Cells(0).Value)
+        Dim nombre As String = Convert.ToString(TablaCLientes.CurrentRow.Cells(1).Value)
+        Dim id As String = Convert.ToString(TablaCLientes.CurrentRow.Cells(0).Value)
         Dim MTCLI As New MetodosCliente
 
         If MessageBox.Show("¿Desea ELIMINAR Cliente", "Atención", MessageBoxButtons.YesNo, MessageBoxIcon.Question) = Windows.Forms.DialogResult.Yes Then
-            MTCLI.eliminaCliente(nombre)
+            MTCLI.eliminaCliente(id, nombre)
             MessageBox.Show(nombre)
         End If
 

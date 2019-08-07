@@ -31,6 +31,7 @@ Public Class MetodosClientes
             If cmd.ExecuteNonQuery Then
                 MsgBox("Guardado Con exito")
             End If
+            desconectar()
         Catch ex As Exception
             MsgBox(ex.Message)
         End Try
@@ -62,8 +63,25 @@ Public Class MetodosClientes
             If cmd.ExecuteNonQuery Then
                 MsgBox("Guardado Con exito")
             End If
+            desconectar()
         Catch ex As Exception
 
+        End Try
+    End Sub
+
+    Public Sub eliminar_Cliente(ByVal idCliente As String, ByVal nombreCliente As String)
+        Try
+            conectar()
+            Dim cmd = New SqlCommand("sp_Eliminar_Cliente")
+            cmd.CommandType = CommandType.StoredProcedure
+            cmd.Connection = conn
+            cmd.Parameters.AddWithValue("@idCliente", idCliente)
+            If cmd.ExecuteNonQuery Then
+                MsgBox("Se ha eliminado el cliente " + nombreCliente)
+            End If
+            desconectar()
+        Catch ex As Exception
+            MsgBox(ex.Message)
         End Try
     End Sub
 
