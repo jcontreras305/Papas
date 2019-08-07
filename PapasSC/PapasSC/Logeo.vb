@@ -5,7 +5,6 @@ Public Class Logeo
 
     Private Sub Logeo_Load(sender As Object, e As EventArgs) Handles MyBase.Load
 
-
     End Sub
 
     Private Sub btnIniciar_Click(sender As Object, e As EventArgs) Handles btnIniciar.Click
