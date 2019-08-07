@@ -24,12 +24,13 @@ Partial Class Form2
     Private Sub InitializeComponent()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(Form2))
         Me.Panel1 = New System.Windows.Forms.Panel()
-        Me.NombreUsuario = New System.Windows.Forms.Label()
         Me.Minimizar = New System.Windows.Forms.Label()
         Me.Cerrar = New System.Windows.Forms.Label()
         Me.MenuStrip1 = New System.Windows.Forms.MenuStrip()
         Me.MenuToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.ArchivoToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.CerrarSesionToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.NombreUsuario = New System.Windows.Forms.Label()
         Me.Panel2 = New System.Windows.Forms.Panel()
         Me.ConfiguracionMenuPrincipal = New System.Windows.Forms.Button()
         Me.ControlMenuPrincipal = New System.Windows.Forms.Button()
@@ -41,7 +42,6 @@ Partial Class Form2
         Me.VentasMenuPrincipal = New System.Windows.Forms.Button()
         Me.PanelContenedorForm = New System.Windows.Forms.Panel()
         Me.PictureBox1 = New System.Windows.Forms.PictureBox()
-        Me.CerrarSesionToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.Panel1.SuspendLayout()
         Me.MenuStrip1.SuspendLayout()
         Me.Panel2.SuspendLayout()
@@ -61,17 +61,6 @@ Partial Class Form2
         Me.Panel1.Name = "Panel1"
         Me.Panel1.Size = New System.Drawing.Size(1082, 43)
         Me.Panel1.TabIndex = 0
-        '
-        'NombreUsuario
-        '
-        Me.NombreUsuario.AutoSize = True
-        Me.NombreUsuario.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D
-        Me.NombreUsuario.Font = New System.Drawing.Font("Arial Black", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.NombreUsuario.ForeColor = System.Drawing.SystemColors.ButtonHighlight
-        Me.NombreUsuario.Location = New System.Drawing.Point(31, 61)
-        Me.NombreUsuario.Name = "NombreUsuario"
-        Me.NombreUsuario.Size = New System.Drawing.Size(2, 20)
-        Me.NombreUsuario.TabIndex = 4
         '
         'Minimizar
         '
@@ -115,11 +104,28 @@ Partial Class Form2
         Me.ArchivoToolStripMenuItem.Size = New System.Drawing.Size(60, 20)
         Me.ArchivoToolStripMenuItem.Text = "Archivo"
         '
+        'CerrarSesionToolStripMenuItem
+        '
+        Me.CerrarSesionToolStripMenuItem.Name = "CerrarSesionToolStripMenuItem"
+        Me.CerrarSesionToolStripMenuItem.Size = New System.Drawing.Size(88, 20)
+        Me.CerrarSesionToolStripMenuItem.Text = "Cerrar Sesion"
+        '
+        'NombreUsuario
+        '
+        Me.NombreUsuario.AutoSize = True
+        Me.NombreUsuario.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D
+        Me.NombreUsuario.Font = New System.Drawing.Font("Arial Black", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.NombreUsuario.ForeColor = System.Drawing.SystemColors.ButtonHighlight
+        Me.NombreUsuario.Location = New System.Drawing.Point(31, 61)
+        Me.NombreUsuario.Name = "NombreUsuario"
+        Me.NombreUsuario.Size = New System.Drawing.Size(2, 20)
+        Me.NombreUsuario.TabIndex = 4
+        '
         'Panel2
         '
         Me.Panel2.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
             Or System.Windows.Forms.AnchorStyles.Left), System.Windows.Forms.AnchorStyles)
-        Me.Panel2.BackColor = System.Drawing.Color.FromArgb(CType(CType(35, Byte), Integer), CType(CType(63, Byte), Integer), CType(CType(107, Byte), Integer))
+        Me.Panel2.BackColor = System.Drawing.Color.FromArgb(CType(CType(23, Byte), Integer), CType(CType(165, Byte), Integer), CType(CType(137, Byte), Integer))
         Me.Panel2.Controls.Add(Me.NombreUsuario)
         Me.Panel2.Controls.Add(Me.ConfiguracionMenuPrincipal)
         Me.Panel2.Controls.Add(Me.ControlMenuPrincipal)
@@ -227,7 +233,7 @@ Partial Class Form2
         'InventarioMenuPrincipal
         '
         Me.InventarioMenuPrincipal.Anchor = System.Windows.Forms.AnchorStyles.Left
-        Me.InventarioMenuPrincipal.BackColor = System.Drawing.Color.FromArgb(CType(CType(35, Byte), Integer), CType(CType(63, Byte), Integer), CType(CType(107, Byte), Integer))
+        Me.InventarioMenuPrincipal.BackColor = System.Drawing.Color.FromArgb(CType(CType(23, Byte), Integer), CType(CType(165, Byte), Integer), CType(CType(137, Byte), Integer))
         Me.InventarioMenuPrincipal.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom
         Me.InventarioMenuPrincipal.Cursor = System.Windows.Forms.Cursors.Hand
         Me.InventarioMenuPrincipal.FlatAppearance.BorderColor = System.Drawing.Color.Blue
@@ -245,7 +251,7 @@ Partial Class Form2
         'VentasMenuPrincipal
         '
         Me.VentasMenuPrincipal.Anchor = System.Windows.Forms.AnchorStyles.Left
-        Me.VentasMenuPrincipal.BackColor = System.Drawing.Color.FromArgb(CType(CType(35, Byte), Integer), CType(CType(63, Byte), Integer), CType(CType(107, Byte), Integer))
+        Me.VentasMenuPrincipal.BackColor = System.Drawing.Color.FromArgb(CType(CType(23, Byte), Integer), CType(CType(165, Byte), Integer), CType(CType(137, Byte), Integer))
         Me.VentasMenuPrincipal.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
         Me.VentasMenuPrincipal.Cursor = System.Windows.Forms.Cursors.Hand
         Me.VentasMenuPrincipal.FlatAppearance.BorderColor = System.Drawing.SystemColors.ActiveCaptionText
@@ -282,12 +288,6 @@ Partial Class Form2
         Me.PictureBox1.Size = New System.Drawing.Size(508, 302)
         Me.PictureBox1.TabIndex = 0
         Me.PictureBox1.TabStop = False
-        '
-        'CerrarSesionToolStripMenuItem
-        '
-        Me.CerrarSesionToolStripMenuItem.Name = "CerrarSesionToolStripMenuItem"
-        Me.CerrarSesionToolStripMenuItem.Size = New System.Drawing.Size(88, 20)
-        Me.CerrarSesionToolStripMenuItem.Text = "Cerrar Sesion"
         '
         'Form2
         '

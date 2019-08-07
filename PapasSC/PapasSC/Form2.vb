@@ -1,6 +1,6 @@
 ﻿Public Class Form2
     Private Sub VentasMenuPrincipal_MouseEnter(sender As Object, e As EventArgs) Handles VentasMenuPrincipal.MouseEnter
-        VentasMenuPrincipal.BackColor = Color.Coral
+        VentasMenuPrincipal.BackColor = Color.FromArgb(72, 201, 176)
 
     End Sub
     Dim formulario As Form
@@ -29,73 +29,73 @@
 
 
     Private Sub VentasMenuPrincipal_Mouseleave(sender As Object, e As EventArgs) Handles VentasMenuPrincipal.MouseLeave
-        VentasMenuPrincipal.BackColor = Color.FromArgb(35, 63, 107)
+        VentasMenuPrincipal.BackColor = Color.FromArgb(23, 165, 137)
 
     End Sub
     Private Sub ControlMenuPrincipal_MouseLeave(sender As Object, e As EventArgs) Handles ControlMenuPrincipal.MouseEnter
 
-        ControlMenuPrincipal.BackColor = Color.Coral
+        ControlMenuPrincipal.BackColor = Color.FromArgb(72, 201, 176)
     End Sub
 
     Private Sub ControlMenuPrincipal_MouseEnter(sender As Object, e As EventArgs) Handles ControlMenuPrincipal.MouseLeave
-        ControlMenuPrincipal.BackColor = Color.FromArgb(35, 63, 107)
+        ControlMenuPrincipal.BackColor = Color.FromArgb(23, 165, 137)
 
     End Sub
 
 
 
     Private Sub ConfiguracionMenuPrincipal_MouseEnter(sender As Object, e As EventArgs) Handles ConfiguracionMenuPrincipal.MouseEnter
-        ConfiguracionMenuPrincipal.BackColor = Color.Coral
+        ConfiguracionMenuPrincipal.BackColor = Color.FromArgb(72, 201, 176)
 
     End Sub
 
     Private Sub ConfiguracionMenuPrincipal_MouseLeave(sender As Object, e As EventArgs) Handles ConfiguracionMenuPrincipal.MouseLeave
-        ConfiguracionMenuPrincipal.BackColor = Color.FromArgb(35, 63, 107)
+        ConfiguracionMenuPrincipal.BackColor = Color.FromArgb(23, 165, 137)
     End Sub
 
     Private Sub InventarioMenuPrincipal_MouseEnter(sender As Object, e As EventArgs) Handles InventarioMenuPrincipal.MouseEnter
-        InventarioMenuPrincipal.BackColor = Color.Coral
+        InventarioMenuPrincipal.BackColor = Color.FromArgb(72, 201, 176)
 
     End Sub
 
     Private Sub InventarioMenuPrincipal_MouseLeave(sender As Object, e As EventArgs) Handles InventarioMenuPrincipal.MouseLeave
-        InventarioMenuPrincipal.BackColor = Color.FromArgb(35, 63, 107)
+        InventarioMenuPrincipal.BackColor = Color.FromArgb(23, 165, 137)
     End Sub
 
     Private Sub ReporteMenuPrincipal_MouseEnter(sender As Object, e As EventArgs) Handles ReporteMenuPrincipal.MouseEnter
-        ReporteMenuPrincipal.BackColor = Color.Coral
+        ReporteMenuPrincipal.BackColor = Color.FromArgb(72, 201, 176)
 
     End Sub
 
     Private Sub ReporteMenuPrincipal_MouseLeave(sender As Object, e As EventArgs) Handles ReporteMenuPrincipal.MouseLeave
-        ReporteMenuPrincipal.BackColor = Color.FromArgb(35, 63, 107)
+        ReporteMenuPrincipal.BackColor = Color.FromArgb(23, 165, 137)
     End Sub
 
     Private Sub CatalogMenuPrincipal_MouseEnter(sender As Object, e As EventArgs) Handles CatalogoMenuPrincipal.MouseEnter
-        CatalogoMenuPrincipal.BackColor = Color.Coral
+        CatalogoMenuPrincipal.BackColor = Color.FromArgb(72, 201, 176)
 
     End Sub
 
     Private Sub CatalogoMenuPrincipal_MouseLeave(sender As Object, e As EventArgs) Handles CatalogoMenuPrincipal.MouseLeave
-        CatalogoMenuPrincipal.BackColor = Color.FromArgb(35, 63, 107)
+        CatalogoMenuPrincipal.BackColor = Color.FromArgb(23, 165, 137)
     End Sub
 
     Private Sub NominaMenuPrincipal_MouseEnter(sender As Object, e As EventArgs) Handles NominaMenuPrincipal.MouseEnter
-        NominaMenuPrincipal.BackColor = Color.Coral
+        NominaMenuPrincipal.BackColor = Color.FromArgb(72, 201, 176)
 
     End Sub
 
     Private Sub NominaaMenuPrincipal_MouseLeave(sender As Object, e As EventArgs) Handles NominaMenuPrincipal.MouseLeave
-        NominaMenuPrincipal.BackColor = Color.FromArgb(35, 63, 107)
+        NominaMenuPrincipal.BackColor = Color.FromArgb(23, 165, 137)
     End Sub
 
     Private Sub UtileriaMenuPrincipal_MouseEnter(sender As Object, e As EventArgs) Handles UtileriasMenuPrincipal.MouseEnter
-        UtileriasMenuPrincipal.BackColor = Color.Coral
+        UtileriasMenuPrincipal.BackColor = Color.FromArgb(72, 201, 176)
 
     End Sub
 
     Private Sub UtileriasMenuPrincipal_MouseLeave(sender As Object, e As EventArgs) Handles UtileriasMenuPrincipal.MouseLeave
-        UtileriasMenuPrincipal.BackColor = Color.FromArgb(35, 63, 107)
+        UtileriasMenuPrincipal.BackColor = Color.FromArgb(23, 165, 137)
     End Sub
 
     Private Sub Minimizar_Click(sender As Object, e As EventArgs) Handles Minimizar.Click
@@ -213,6 +213,14 @@
             formulario.Close()
         End If
         Me.Close()
+
+    End Sub
+
+    Private Sub Panel1_Paint(sender As Object, e As PaintEventArgs) Handles Panel1.Paint
+
+    End Sub
+
+    Private Sub Form2_Load(sender As Object, e As EventArgs) Handles MyBase.Load
 
     End Sub
 End Class

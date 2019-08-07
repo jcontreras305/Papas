@@ -27,7 +27,7 @@ Partial Class ConsultarEmpleado
         Me.btnNombreE = New System.Windows.Forms.Button()
         Me.filtro = New System.Windows.Forms.ComboBox()
         Me.txtNombreEm = New System.Windows.Forms.TextBox()
-        Me.Button1 = New System.Windows.Forms.Button()
+        Me.btnEliminarEm = New System.Windows.Forms.Button()
         Me.Button3 = New System.Windows.Forms.Button()
         CType(Me.DataListado, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
@@ -75,14 +75,14 @@ Partial Class ConsultarEmpleado
         Me.txtNombreEm.Size = New System.Drawing.Size(192, 20)
         Me.txtNombreEm.TabIndex = 8
         '
-        'Button1
+        'btnEliminarEm
         '
-        Me.Button1.Location = New System.Drawing.Point(651, 365)
-        Me.Button1.Name = "Button1"
-        Me.Button1.Size = New System.Drawing.Size(119, 32)
-        Me.Button1.TabIndex = 9
-        Me.Button1.Text = "Eliminar"
-        Me.Button1.UseVisualStyleBackColor = True
+        Me.btnEliminarEm.Location = New System.Drawing.Point(651, 365)
+        Me.btnEliminarEm.Name = "btnEliminarEm"
+        Me.btnEliminarEm.Size = New System.Drawing.Size(119, 32)
+        Me.btnEliminarEm.TabIndex = 9
+        Me.btnEliminarEm.Text = "Eliminar"
+        Me.btnEliminarEm.UseVisualStyleBackColor = True
         '
         'Button3
         '
@@ -99,7 +99,7 @@ Partial Class ConsultarEmpleado
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(800, 405)
         Me.Controls.Add(Me.Button3)
-        Me.Controls.Add(Me.Button1)
+        Me.Controls.Add(Me.btnEliminarEm)
         Me.Controls.Add(Me.txtNombreEm)
         Me.Controls.Add(Me.filtro)
         Me.Controls.Add(Me.btnNombreE)
@@ -119,6 +119,6 @@ Partial Class ConsultarEmpleado
     Friend WithEvents btnNombreE As Button
     Friend WithEvents filtro As ComboBox
     Friend WithEvents txtNombreEm As TextBox
-    Friend WithEvents Button1 As Button
+    Friend WithEvents btnEliminarEm As Button
     Friend WithEvents Button3 As Button
 End Class

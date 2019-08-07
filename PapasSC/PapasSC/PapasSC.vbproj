@@ -318,6 +318,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Documentos\CambioTablasClienteContactoCredito02-08-19.sql" />
+    <Content Include="Documentos\inserciones.sql" />
     <Content Include="Documentos\PS_ACTUAL1.0.sql" />
     <Content Include="Imagenes\PapasSantaCruz.jpg" />
     <Content Include="Imagenes\PapasSantaCruz1 - copia.ico" />
