@@ -327,6 +327,7 @@
     <Content Include="Imagenes\CONTROL.jpg" />
     <Content Include="Imagenes\EMPLEADOS.jpg" />
     <Content Include="Imagenes\GUARDAR.png" />
+    <Content Include="Imagenes\INICIO.png" />
     <Content Include="Imagenes\INVENTARIO.jpg" />
     <Content Include="Imagenes\LOGIN.jpg" />
     <Content Include="Imagenes\NUEVO.png" />
