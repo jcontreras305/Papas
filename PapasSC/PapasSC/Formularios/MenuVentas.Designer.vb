@@ -22,6 +22,7 @@ Partial Class MenuVentas
     'No lo modifique con el editor de código.
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
+        Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(MenuVentas))
         Me.Label1 = New System.Windows.Forms.Label()
         Me.Button1 = New System.Windows.Forms.Button()
         Me.Button2 = New System.Windows.Forms.Button()
@@ -43,9 +44,10 @@ Partial Class MenuVentas
         '
         'Button1
         '
-        Me.Button1.Location = New System.Drawing.Point(79, 115)
+        Me.Button1.Image = CType(resources.GetObject("Button1.Image"), System.Drawing.Image)
+        Me.Button1.Location = New System.Drawing.Point(88, 65)
         Me.Button1.Name = "Button1"
-        Me.Button1.Size = New System.Drawing.Size(172, 40)
+        Me.Button1.Size = New System.Drawing.Size(170, 170)
         Me.Button1.TabIndex = 1
         Me.Button1.Text = "Nueva Venta"
         Me.Button1.UseVisualStyleBackColor = True
