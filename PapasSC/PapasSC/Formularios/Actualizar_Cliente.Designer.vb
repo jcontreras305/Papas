@@ -197,9 +197,8 @@ Partial Class Actualizar_Cliente
         'btnElminar
         '
         Me.btnElminar.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.btnElminar.Image = CType(resources.GetObject("btnElminar.Image"), System.Drawing.Image)
         Me.btnElminar.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
-        Me.btnElminar.Location = New System.Drawing.Point(282, 153)
+        Me.btnElminar.Location = New System.Drawing.Point(246, 161)
         Me.btnElminar.Name = "btnElminar"
         Me.btnElminar.Size = New System.Drawing.Size(111, 39)
         Me.btnElminar.TabIndex = 37
@@ -285,11 +284,15 @@ Partial Class Actualizar_Cliente
         '
         'bntActualizar
         '
-        Me.bntActualizar.Location = New System.Drawing.Point(504, 162)
+        Me.bntActualizar.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.bntActualizar.Image = CType(resources.GetObject("bntActualizar.Image"), System.Drawing.Image)
+        Me.bntActualizar.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
+        Me.bntActualizar.Location = New System.Drawing.Point(480, 161)
         Me.bntActualizar.Name = "bntActualizar"
-        Me.bntActualizar.Size = New System.Drawing.Size(75, 23)
+        Me.bntActualizar.Size = New System.Drawing.Size(111, 39)
         Me.bntActualizar.TabIndex = 16
         Me.bntActualizar.Text = "Actualizar"
+        Me.bntActualizar.TextAlign = System.Drawing.ContentAlignment.MiddleRight
         Me.bntActualizar.UseVisualStyleBackColor = True
         '
         'Label15
@@ -303,11 +306,15 @@ Partial Class Actualizar_Cliente
         '
         'btnCancelar
         '
-        Me.btnCancelar.Location = New System.Drawing.Point(413, 162)
+        Me.btnCancelar.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.btnCancelar.Image = CType(resources.GetObject("btnCancelar.Image"), System.Drawing.Image)
+        Me.btnCancelar.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
+        Me.btnCancelar.Location = New System.Drawing.Point(363, 161)
         Me.btnCancelar.Name = "btnCancelar"
-        Me.btnCancelar.Size = New System.Drawing.Size(75, 23)
+        Me.btnCancelar.Size = New System.Drawing.Size(111, 39)
         Me.btnCancelar.TabIndex = 15
         Me.btnCancelar.Text = "Cancelar"
+        Me.btnCancelar.TextAlign = System.Drawing.ContentAlignment.MiddleRight
         Me.btnCancelar.UseVisualStyleBackColor = True
         '
         'txtCodigoPostal
