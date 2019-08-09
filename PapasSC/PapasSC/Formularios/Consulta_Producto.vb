@@ -13,11 +13,16 @@
 
     Private Sub Button4_Click(sender As Object, e As EventArgs) Handles Button4.Click
         Try
+
+            Dim MTCLI As New MetodosProducto
             Dim nombre As String = Convert.ToString(TablaProductos.CurrentRow.Cells(0).Value)
-            Dim MTCLI As New MetodosCliente
+
+
+
 
             If MessageBox.Show("¿Desea ELIMINAR Producto", "Atención", MessageBoxButtons.YesNo, MessageBoxIcon.Question) = Windows.Forms.DialogResult.Yes Then
                 MTCLI.eliminaCliente(nombre)
+                MTCLI.llenarDatagridview(TablaProductos)
 
             End If
         Catch
@@ -27,8 +32,12 @@
     End Sub
 
     Private Sub Consulta_Producto_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+
+
+    End Sub
+
+    Private Sub Button1_Click(sender As Object, e As EventArgs) Handles Button1.Click
         Dim MTPR As New MetodosProducto
         MTPR.llenarDatagridview(TablaProductos)
-
     End Sub
 End Class

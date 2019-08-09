@@ -54,12 +54,13 @@ Partial Class Catálogo
         '
         'Button2
         '
+        Me.Button2.BackColor = System.Drawing.SystemColors.ControlLightLight
         Me.Button2.Location = New System.Drawing.Point(258, 92)
         Me.Button2.Name = "Button2"
         Me.Button2.Size = New System.Drawing.Size(156, 45)
         Me.Button2.TabIndex = 2
         Me.Button2.Text = "Clientes"
-        Me.Button2.UseVisualStyleBackColor = True
+        Me.Button2.UseVisualStyleBackColor = False
         '
         'Button3
         '
@@ -112,6 +113,7 @@ Partial Class Catálogo
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
+        Me.BackColor = System.Drawing.SystemColors.ControlLightLight
         Me.ClientSize = New System.Drawing.Size(638, 440)
         Me.Controls.Add(Me.Label2)
         Me.Controls.Add(Me.Button6)

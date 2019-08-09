@@ -27,7 +27,7 @@ Public Class MetodosCliente
     con.codigoPostal as Codigo_Postal
     from cliente cl inner join tipoCliente tcl on tcl.idTipoCliente = cl.idTipoCliente 
     inner join credito cr on cr.idCliente=cl.idCliente
-    inner join contacto con on con.idCliente=cl.idCliente", cn.conn)
+    inner join contacto con on con.idCliente=cl.idCliente where cl.estatus ='A'", cn.conn)
             dt = New DataTable
             adaptador.Fill(dt)
             dgv.DataSource = dt
@@ -58,7 +58,7 @@ Public Class MetodosCliente
     con.codigoPostal as Codigo_Postal
     from cliente cl inner join tipoCliente tcl on tcl.idTipoCliente = cl.idTipoCliente 
     inner join credito cr on cr.idCliente=cl.idCliente
-    inner join contacto con on con.idCliente=cl.idCliente where cl.nombre like '" + filtro + "%'", cn.conn)
+    inner join contacto con on con.idCliente=cl.idCliente where cl.nombre like '" + filtro + "%' and cl.estatus ='A'", cn.conn)
             dt = New DataTable
             adaptador.Fill(dt)
             dgv.DataSource = dt
@@ -89,7 +89,7 @@ Public Class MetodosCliente
     con.codigoPostal as Codigo_Postal
     from cliente cl inner join tipoCliente tcl on tcl.idTipoCliente = cl.idTipoCliente 
     inner join credito cr on cr.idCliente=cl.idCliente
-    inner join contacto con on con.idCliente=cl.idCliente where tcl.tipo like '" + filtro + "%'", cn.conn)
+    inner join contacto con on con.idCliente=cl.idCliente where tcl.tipo like '" + filtro + "%' and cl.estatus ='A'", cn.conn)
             dt = New DataTable
             adaptador.Fill(dt)
             dgv.DataSource = dt
@@ -120,7 +120,7 @@ Public Class MetodosCliente
     con.codigoPostal as Codigo_Postal
     from cliente cl inner join tipoCliente tcl on tcl.idTipoCliente = cl.idTipoCliente 
     inner join credito cr on cr.idCliente=cl.idCliente
-    inner join contacto con on con.idCliente=cl.idCliente where cl.razonSocial like '" + filtro + "%'", cn.conn)
+    inner join contacto con on con.idCliente=cl.idCliente where cl.razonSocial like '" + filtro + "%' and cl.estatus ='A'", cn.conn)
             dt = New DataTable
             adaptador.Fill(dt)
             dgv.DataSource = dt
@@ -150,7 +150,7 @@ Public Class MetodosCliente
     con.codigoPostal as Codigo_Postal
     from cliente cl inner join tipoCliente tcl on tcl.idTipoCliente = cl.idTipoCliente 
     inner join credito cr on cr.idCliente=cl.idCliente
-    inner join contacto con on con.idCliente=cl.idCliente where con.nombre like '" + filtro + "%'", cn.conn)
+    inner join contacto con on con.idCliente=cl.idCliente where con.nombre like '" + filtro + "%' and cl.estatus ='A'", cn.conn)
             dt = New DataTable
             adaptador.Fill(dt)
             dgv.DataSource = dt
@@ -181,7 +181,7 @@ Public Class MetodosCliente
     con.codigoPostal as Codigo_Postal
     from cliente cl inner join tipoCliente tcl on tcl.idTipoCliente = cl.idTipoCliente 
     inner join credito cr on cr.idCliente=cl.idCliente
-    inner join contacto con on con.idCliente=cl.idCliente where cl.RFC like '" + filtro + "%'", cn.conn)
+    inner join contacto con on con.idCliente=cl.idCliente where cl.RFC like '" + filtro + "%' and cl.estatus ='A'", cn.conn)
             dt = New DataTable
             adaptador.Fill(dt)
             dgv.DataSource = dt
@@ -212,7 +212,7 @@ Public Class MetodosCliente
     con.codigoPostal as Codigo_Postal
     from cliente cl inner join tipoCliente tcl on tcl.idTipoCliente = cl.idTipoCliente 
     inner join credito cr on cr.idCliente=cl.idCliente
-    inner join contacto con on con.idCliente=cl.idCliente where cr.limiteCredito like '" + filtro + "%'", cn.conn)
+    inner join contacto con on con.idCliente=cl.idCliente where cr.limiteCredito like '" + filtro + "%' and cl.estatus ='A'", cn.conn)
             dt = New DataTable
             adaptador.Fill(dt)
             dgv.DataSource = dt
@@ -243,7 +243,7 @@ Public Class MetodosCliente
     con.codigoPostal as Codigo_Postal
     from cliente cl inner join tipoCliente tcl on tcl.idTipoCliente = cl.idTipoCliente 
     inner join credito cr on cr.idCliente=cl.idCliente
-    inner join contacto con on con.idCliente=cl.idCliente where cr.diasCredito like '" + filtro + "%'", cn.conn)
+    inner join contacto con on con.idCliente=cl.idCliente where cr.diasCredito like '" + filtro + "%' and cl.estatus ='A'", cn.conn)
             dt = New DataTable
             adaptador.Fill(dt)
             dgv.DataSource = dt
@@ -274,7 +274,7 @@ Public Class MetodosCliente
     con.codigoPostal as Codigo_Postal
     from cliente cl inner join tipoCliente tcl on tcl.idTipoCliente = cl.idTipoCliente 
     inner join credito cr on cr.idCliente=cl.idCliente
-    inner join contacto con on con.idCliente=cl.idCliente where cl.idCliente like '" + filtro + "%'", cn.conn)
+    inner join contacto con on con.idCliente=cl.idCliente where cl.idCliente like '" + filtro + "%' and cl.estatus ='A'", cn.conn)
             dt = New DataTable
             adaptador.Fill(dt)
             dgv.DataSource = dt
@@ -288,7 +288,7 @@ Public Class MetodosCliente
         cn.conectar()
 
         Try
-            Dim command As New SqlCommand("DELETE FROM cliente WHERE idCliente = @id", cn.conn)
+            Dim command As New SqlCommand("update cliente set estatus = 'B' WHERE idCliente = @id", cn.conn)
 
             command.Parameters.Add("@id", SqlDbType.NVarChar).Value = filtro
             command.ExecuteNonQuery()

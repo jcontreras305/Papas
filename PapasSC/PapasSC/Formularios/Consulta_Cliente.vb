@@ -74,9 +74,9 @@ Public Class Consulta_Cliente
         Dim nombre As String = Convert.ToString(TablaCLientes.CurrentRow.Cells(0).Value)
         Dim MTCLI As New MetodosCliente
 
-        If MessageBox.Show("¿Desea ELIMINAR Cliente", "Atención", MessageBoxButtons.YesNo, MessageBoxIcon.Question) = Windows.Forms.DialogResult.Yes Then
+        If MessageBox.Show("¿Desea ELIMINAR Cliente? ", "Atención", MessageBoxButtons.YesNo, MessageBoxIcon.Question) = Windows.Forms.DialogResult.Yes Then
             MTCLI.eliminaCliente(nombre)
-            MessageBox.Show(nombre)
+            MessageBox.Show("Cliente dado de baja exitosamente")
         End If
 
 

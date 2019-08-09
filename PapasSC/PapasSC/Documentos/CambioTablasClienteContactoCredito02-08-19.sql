@@ -1,4 +1,7 @@
 --cambio de la tabla clientes, contacto y credito
+delete from cliente
+delete from contacto
+delete from credito
 
 select * from cliente
 select * from contacto
