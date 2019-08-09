@@ -148,11 +148,11 @@ Partial Class Form2
         Me.ConfiguracionMenuPrincipal.FlatStyle = System.Windows.Forms.FlatStyle.Popup
         Me.ConfiguracionMenuPrincipal.Font = New System.Drawing.Font("Arial", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.ConfiguracionMenuPrincipal.ForeColor = System.Drawing.SystemColors.ButtonHighlight
+        Me.ConfiguracionMenuPrincipal.Image = CType(resources.GetObject("ConfiguracionMenuPrincipal.Image"), System.Drawing.Image)
         Me.ConfiguracionMenuPrincipal.Location = New System.Drawing.Point(1, 427)
         Me.ConfiguracionMenuPrincipal.Name = "ConfiguracionMenuPrincipal"
         Me.ConfiguracionMenuPrincipal.Size = New System.Drawing.Size(181, 44)
         Me.ConfiguracionMenuPrincipal.TabIndex = 7
-        Me.ConfiguracionMenuPrincipal.Text = "Configuración"
         Me.ConfiguracionMenuPrincipal.UseVisualStyleBackColor = True
         '
         'ControlMenuPrincipal
@@ -163,11 +163,11 @@ Partial Class Form2
         Me.ControlMenuPrincipal.FlatStyle = System.Windows.Forms.FlatStyle.Popup
         Me.ControlMenuPrincipal.Font = New System.Drawing.Font("Arial", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.ControlMenuPrincipal.ForeColor = System.Drawing.SystemColors.ButtonHighlight
+        Me.ControlMenuPrincipal.Image = CType(resources.GetObject("ControlMenuPrincipal.Image"), System.Drawing.Image)
         Me.ControlMenuPrincipal.Location = New System.Drawing.Point(1, 370)
         Me.ControlMenuPrincipal.Name = "ControlMenuPrincipal"
         Me.ControlMenuPrincipal.Size = New System.Drawing.Size(181, 48)
         Me.ControlMenuPrincipal.TabIndex = 6
-        Me.ControlMenuPrincipal.Text = "Control"
         Me.ControlMenuPrincipal.UseVisualStyleBackColor = True
         '
         'UtileriasMenuPrincipal
@@ -178,11 +178,11 @@ Partial Class Form2
         Me.UtileriasMenuPrincipal.FlatStyle = System.Windows.Forms.FlatStyle.Popup
         Me.UtileriasMenuPrincipal.Font = New System.Drawing.Font("Arial", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.UtileriasMenuPrincipal.ForeColor = System.Drawing.SystemColors.ButtonHighlight
+        Me.UtileriasMenuPrincipal.Image = CType(resources.GetObject("UtileriasMenuPrincipal.Image"), System.Drawing.Image)
         Me.UtileriasMenuPrincipal.Location = New System.Drawing.Point(0, 309)
         Me.UtileriasMenuPrincipal.Name = "UtileriasMenuPrincipal"
         Me.UtileriasMenuPrincipal.Size = New System.Drawing.Size(181, 51)
         Me.UtileriasMenuPrincipal.TabIndex = 5
-        Me.UtileriasMenuPrincipal.Text = "Utilerias"
         Me.UtileriasMenuPrincipal.UseVisualStyleBackColor = True
         '
         'NominaMenuPrincipal
@@ -193,11 +193,11 @@ Partial Class Form2
         Me.NominaMenuPrincipal.FlatStyle = System.Windows.Forms.FlatStyle.Popup
         Me.NominaMenuPrincipal.Font = New System.Drawing.Font("Arial", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.NominaMenuPrincipal.ForeColor = System.Drawing.SystemColors.ButtonHighlight
+        Me.NominaMenuPrincipal.Image = CType(resources.GetObject("NominaMenuPrincipal.Image"), System.Drawing.Image)
         Me.NominaMenuPrincipal.Location = New System.Drawing.Point(0, 248)
         Me.NominaMenuPrincipal.Name = "NominaMenuPrincipal"
         Me.NominaMenuPrincipal.Size = New System.Drawing.Size(181, 51)
         Me.NominaMenuPrincipal.TabIndex = 4
-        Me.NominaMenuPrincipal.Text = "Empleados"
         Me.NominaMenuPrincipal.UseVisualStyleBackColor = True
         '
         'CatalogoMenuPrincipal
@@ -208,11 +208,11 @@ Partial Class Form2
         Me.CatalogoMenuPrincipal.FlatStyle = System.Windows.Forms.FlatStyle.Popup
         Me.CatalogoMenuPrincipal.Font = New System.Drawing.Font("Arial", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.CatalogoMenuPrincipal.ForeColor = System.Drawing.SystemColors.ButtonHighlight
+        Me.CatalogoMenuPrincipal.Image = CType(resources.GetObject("CatalogoMenuPrincipal.Image"), System.Drawing.Image)
         Me.CatalogoMenuPrincipal.Location = New System.Drawing.Point(0, 188)
         Me.CatalogoMenuPrincipal.Name = "CatalogoMenuPrincipal"
         Me.CatalogoMenuPrincipal.Size = New System.Drawing.Size(181, 51)
         Me.CatalogoMenuPrincipal.TabIndex = 3
-        Me.CatalogoMenuPrincipal.Text = "Catalogo"
         Me.CatalogoMenuPrincipal.UseVisualStyleBackColor = True
         '
         'ReporteMenuPrincipal
@@ -223,11 +223,11 @@ Partial Class Form2
         Me.ReporteMenuPrincipal.FlatStyle = System.Windows.Forms.FlatStyle.Popup
         Me.ReporteMenuPrincipal.Font = New System.Drawing.Font("Arial", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.ReporteMenuPrincipal.ForeColor = System.Drawing.SystemColors.ButtonHighlight
+        Me.ReporteMenuPrincipal.Image = CType(resources.GetObject("ReporteMenuPrincipal.Image"), System.Drawing.Image)
         Me.ReporteMenuPrincipal.Location = New System.Drawing.Point(0, 130)
         Me.ReporteMenuPrincipal.Name = "ReporteMenuPrincipal"
         Me.ReporteMenuPrincipal.Size = New System.Drawing.Size(181, 47)
         Me.ReporteMenuPrincipal.TabIndex = 2
-        Me.ReporteMenuPrincipal.Text = "Reportes"
         Me.ReporteMenuPrincipal.UseVisualStyleBackColor = True
         '
         'InventarioMenuPrincipal
@@ -241,11 +241,11 @@ Partial Class Form2
         Me.InventarioMenuPrincipal.FlatStyle = System.Windows.Forms.FlatStyle.Popup
         Me.InventarioMenuPrincipal.Font = New System.Drawing.Font("Arial", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.InventarioMenuPrincipal.ForeColor = System.Drawing.SystemColors.ButtonHighlight
+        Me.InventarioMenuPrincipal.Image = CType(resources.GetObject("InventarioMenuPrincipal.Image"), System.Drawing.Image)
         Me.InventarioMenuPrincipal.Location = New System.Drawing.Point(2, 72)
         Me.InventarioMenuPrincipal.Name = "InventarioMenuPrincipal"
         Me.InventarioMenuPrincipal.Size = New System.Drawing.Size(182, 46)
         Me.InventarioMenuPrincipal.TabIndex = 1
-        Me.InventarioMenuPrincipal.Text = "Inventario"
         Me.InventarioMenuPrincipal.UseVisualStyleBackColor = False
         '
         'VentasMenuPrincipal
