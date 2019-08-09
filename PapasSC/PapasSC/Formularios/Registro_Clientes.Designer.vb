@@ -22,6 +22,7 @@ Partial Class Registro_Clientes
     'No lo modifique con el editor de código.
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
+        Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(Registro_Clientes))
         Me.Label1 = New System.Windows.Forms.Label()
         Me.Label2 = New System.Windows.Forms.Label()
         Me.Label3 = New System.Windows.Forms.Label()
@@ -132,20 +133,28 @@ Partial Class Registro_Clientes
         '
         'Button1
         '
-        Me.Button1.Location = New System.Drawing.Point(413, 162)
+        Me.Button1.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Button1.Image = CType(resources.GetObject("Button1.Image"), System.Drawing.Image)
+        Me.Button1.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
+        Me.Button1.Location = New System.Drawing.Point(352, 162)
         Me.Button1.Name = "Button1"
-        Me.Button1.Size = New System.Drawing.Size(75, 23)
+        Me.Button1.Size = New System.Drawing.Size(111, 39)
         Me.Button1.TabIndex = 15
         Me.Button1.Text = "Cancelar"
+        Me.Button1.TextAlign = System.Drawing.ContentAlignment.MiddleRight
         Me.Button1.UseVisualStyleBackColor = True
         '
         'bntConfirmar
         '
-        Me.bntConfirmar.Location = New System.Drawing.Point(504, 162)
+        Me.bntConfirmar.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.bntConfirmar.Image = CType(resources.GetObject("bntConfirmar.Image"), System.Drawing.Image)
+        Me.bntConfirmar.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
+        Me.bntConfirmar.Location = New System.Drawing.Point(478, 162)
         Me.bntConfirmar.Name = "bntConfirmar"
-        Me.bntConfirmar.Size = New System.Drawing.Size(75, 23)
+        Me.bntConfirmar.Size = New System.Drawing.Size(111, 39)
         Me.bntConfirmar.TabIndex = 16
         Me.bntConfirmar.Text = "Confirmar"
+        Me.bntConfirmar.TextAlign = System.Drawing.ContentAlignment.MiddleRight
         Me.bntConfirmar.UseVisualStyleBackColor = True
         '
         'txtDireccion

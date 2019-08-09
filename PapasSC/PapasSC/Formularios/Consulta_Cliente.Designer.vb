@@ -22,6 +22,7 @@ Partial Class Consulta_Cliente
     'No lo modifique con el editor de código.
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
+        Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(Consulta_Cliente))
         Me.Label1 = New System.Windows.Forms.Label()
         Me.TextBox1 = New System.Windows.Forms.TextBox()
         Me.FiltroClientes = New System.Windows.Forms.ComboBox()
@@ -78,29 +79,41 @@ Partial Class Consulta_Cliente
         '
         'Button1
         '
-        Me.Button1.Location = New System.Drawing.Point(321, 402)
+        Me.Button1.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Button1.Image = CType(resources.GetObject("Button1.Image"), System.Drawing.Image)
+        Me.Button1.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
+        Me.Button1.Location = New System.Drawing.Point(243, 402)
         Me.Button1.Name = "Button1"
-        Me.Button1.Size = New System.Drawing.Size(153, 36)
+        Me.Button1.Size = New System.Drawing.Size(169, 36)
         Me.Button1.TabIndex = 7
         Me.Button1.Text = "Registrar Cliente"
+        Me.Button1.TextAlign = System.Drawing.ContentAlignment.MiddleRight
         Me.Button1.UseVisualStyleBackColor = True
         '
         'Button2
         '
-        Me.Button2.Location = New System.Drawing.Point(480, 402)
+        Me.Button2.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Button2.Image = CType(resources.GetObject("Button2.Image"), System.Drawing.Image)
+        Me.Button2.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
+        Me.Button2.Location = New System.Drawing.Point(418, 402)
         Me.Button2.Name = "Button2"
-        Me.Button2.Size = New System.Drawing.Size(138, 36)
+        Me.Button2.Size = New System.Drawing.Size(169, 36)
         Me.Button2.TabIndex = 8
         Me.Button2.Text = "Actualizar Cliente"
+        Me.Button2.TextAlign = System.Drawing.ContentAlignment.MiddleRight
         Me.Button2.UseVisualStyleBackColor = True
         '
         'Button3
         '
-        Me.Button3.Location = New System.Drawing.Point(624, 402)
+        Me.Button3.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Button3.Image = CType(resources.GetObject("Button3.Image"), System.Drawing.Image)
+        Me.Button3.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
+        Me.Button3.Location = New System.Drawing.Point(593, 402)
         Me.Button3.Name = "Button3"
-        Me.Button3.Size = New System.Drawing.Size(149, 36)
+        Me.Button3.Size = New System.Drawing.Size(169, 36)
         Me.Button3.TabIndex = 9
         Me.Button3.Text = "Eliminar Cliente"
+        Me.Button3.TextAlign = System.Drawing.ContentAlignment.MiddleRight
         Me.Button3.UseVisualStyleBackColor = True
         '
         'Consulta_Cliente
