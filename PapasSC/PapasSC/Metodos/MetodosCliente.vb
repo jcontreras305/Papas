@@ -27,7 +27,7 @@ Public Class MetodosCliente
     con.codigoPostal as Codigo_Postal
     from cliente cl inner join tipoCliente tcl on tcl.idTipoCliente = cl.idTipoCliente 
     inner join credito cr on cr.idCliente=cl.idCliente
-    inner join contacto con on con.idCliente=cl.idCliente where cl.estatus ='A'", cn.conn)
+    inner join contacto con on con.idCliente=cl.idCliente where cl.estatus like 'A'", cn.conn)
             dt = New DataTable
             adaptador.Fill(dt)
             dgv.DataSource = dt
@@ -58,7 +58,7 @@ Public Class MetodosCliente
     con.codigoPostal as Codigo_Postal
     from cliente cl inner join tipoCliente tcl on tcl.idTipoCliente = cl.idTipoCliente 
     inner join credito cr on cr.idCliente=cl.idCliente
-    inner join contacto con on con.idCliente=cl.idCliente where cl.nombre like '" + filtro + "%' and cl.estatus ='A'", cn.conn)
+    inner join contacto con on con.idCliente=cl.idCliente where cl.estatus like 'A' and cl.nombre like '" + filtro + "%'", cn.conn)
             dt = New DataTable
             adaptador.Fill(dt)
             dgv.DataSource = dt
@@ -89,7 +89,7 @@ Public Class MetodosCliente
     con.codigoPostal as Codigo_Postal
     from cliente cl inner join tipoCliente tcl on tcl.idTipoCliente = cl.idTipoCliente 
     inner join credito cr on cr.idCliente=cl.idCliente
-    inner join contacto con on con.idCliente=cl.idCliente where tcl.tipo like '" + filtro + "%' and cl.estatus ='A'", cn.conn)
+    inner join contacto con on con.idCliente=cl.idCliente where cl.estatus like 'A' and tcl.tipo like '" + filtro + "%'", cn.conn)
             dt = New DataTable
             adaptador.Fill(dt)
             dgv.DataSource = dt
@@ -120,7 +120,7 @@ Public Class MetodosCliente
     con.codigoPostal as Codigo_Postal
     from cliente cl inner join tipoCliente tcl on tcl.idTipoCliente = cl.idTipoCliente 
     inner join credito cr on cr.idCliente=cl.idCliente
-    inner join contacto con on con.idCliente=cl.idCliente where cl.razonSocial like '" + filtro + "%' and cl.estatus ='A'", cn.conn)
+    inner join contacto con on con.idCliente=cl.idCliente where cl.estatus like 'A' and cl.razonSocial like '" + filtro + "%'", cn.conn)
             dt = New DataTable
             adaptador.Fill(dt)
             dgv.DataSource = dt
@@ -150,7 +150,7 @@ Public Class MetodosCliente
     con.codigoPostal as Codigo_Postal
     from cliente cl inner join tipoCliente tcl on tcl.idTipoCliente = cl.idTipoCliente 
     inner join credito cr on cr.idCliente=cl.idCliente
-    inner join contacto con on con.idCliente=cl.idCliente where con.nombre like '" + filtro + "%' and cl.estatus ='A'", cn.conn)
+    inner join contacto con on con.idCliente=cl.idCliente where cl.estatus like 'A' and con.nombre like '" + filtro + "%'", cn.conn)
             dt = New DataTable
             adaptador.Fill(dt)
             dgv.DataSource = dt
@@ -181,7 +181,7 @@ Public Class MetodosCliente
     con.codigoPostal as Codigo_Postal
     from cliente cl inner join tipoCliente tcl on tcl.idTipoCliente = cl.idTipoCliente 
     inner join credito cr on cr.idCliente=cl.idCliente
-    inner join contacto con on con.idCliente=cl.idCliente where cl.RFC like '" + filtro + "%' and cl.estatus ='A'", cn.conn)
+    inner join contacto con on con.idCliente=cl.idCliente where cl.estatus like 'A' and cl.RFC like '" + filtro + "%'", cn.conn)
             dt = New DataTable
             adaptador.Fill(dt)
             dgv.DataSource = dt
@@ -212,7 +212,7 @@ Public Class MetodosCliente
     con.codigoPostal as Codigo_Postal
     from cliente cl inner join tipoCliente tcl on tcl.idTipoCliente = cl.idTipoCliente 
     inner join credito cr on cr.idCliente=cl.idCliente
-    inner join contacto con on con.idCliente=cl.idCliente where cr.limiteCredito like '" + filtro + "%' and cl.estatus ='A'", cn.conn)
+    inner join contacto con on con.idCliente=cl.idCliente where cl.estatus like 'A' and cr.limiteCredito like '" + filtro + "%'", cn.conn)
             dt = New DataTable
             adaptador.Fill(dt)
             dgv.DataSource = dt
@@ -243,7 +243,7 @@ Public Class MetodosCliente
     con.codigoPostal as Codigo_Postal
     from cliente cl inner join tipoCliente tcl on tcl.idTipoCliente = cl.idTipoCliente 
     inner join credito cr on cr.idCliente=cl.idCliente
-    inner join contacto con on con.idCliente=cl.idCliente where cr.diasCredito like '" + filtro + "%' and cl.estatus ='A'", cn.conn)
+    inner join contacto con on con.idCliente=cl.idCliente where cl.estatus like 'A' and cr.diasCredito like '" + filtro + "%'", cn.conn)
             dt = New DataTable
             adaptador.Fill(dt)
             dgv.DataSource = dt
@@ -274,7 +274,7 @@ Public Class MetodosCliente
     con.codigoPostal as Codigo_Postal
     from cliente cl inner join tipoCliente tcl on tcl.idTipoCliente = cl.idTipoCliente 
     inner join credito cr on cr.idCliente=cl.idCliente
-    inner join contacto con on con.idCliente=cl.idCliente where cl.idCliente like '" + filtro + "%' and cl.estatus ='A'", cn.conn)
+    inner join contacto con on con.idCliente=cl.idCliente where cl.estatus like 'A' and cl.idCliente like '" + filtro + "%'", cn.conn)
             dt = New DataTable
             adaptador.Fill(dt)
             dgv.DataSource = dt
@@ -284,16 +284,17 @@ Public Class MetodosCliente
     End Sub
 
 
-    Public Sub eliminaCliente(ByVal filtro As String)
-        cn.conectar()
-
+    Public Sub eliminaCliente(ByVal idCliente As String, ByVal nombreCliente As String)
         Try
-            Dim command As New SqlCommand("update cliente set estatus = 'B' WHERE idCliente = @id", cn.conn)
-
-            command.Parameters.Add("@id", SqlDbType.NVarChar).Value = filtro
-            command.ExecuteNonQuery()
-
-
+            conectar()
+            Dim cmd = New SqlCommand("sp_Eliminar_Cliente")
+            cmd.CommandType = CommandType.StoredProcedure
+            cmd.Connection = conn
+            cmd.Parameters.AddWithValue("@idCliente", idCliente)
+            If cmd.ExecuteNonQuery Then
+                MsgBox("Se ha eliminado el cliente " + nombreCliente)
+            End If
+            desconectar()
         Catch ex As Exception
             MessageBox.Show("No se elimino debido a: " + ex.ToString)
         End Try

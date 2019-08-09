@@ -1,5 +1,7 @@
 ﻿Imports PapasSC.MetodosCliente
 Public Class Consulta_Cliente
+    Public datosCliente As New List(Of String)
+
     Private Sub Buscar_Click(sender As Object, e As EventArgs) Handles Buscar.Click
         Dim MTCLI As New MetodosCliente
         If TextBox1.Text = "" Or TextBox1.Text = Nothing Then
@@ -16,7 +18,7 @@ Public Class Consulta_Cliente
         ElseIf FiltroClientes.SelectedIndex = 4 Then
             MTCLI.llenarDatagridview_filtroRFC(TablaCLientes, TextBox1.Text)
         ElseIf FiltroClientes.SelectedIndex = 5 Then
-            MTCLI.llenarDatagridview_filtroLimitecredito(TablaCLientes, TextBox1.Text)
+            MTCLI.llenarDatagridview_filtroLimiteCredito(TablaCLientes, TextBox1.Text)
         ElseIf FiltroClientes.SelectedIndex = 6 Then
             MTCLI.llenarDatagridview_filtroDiasCredito(TablaCLientes, TextBox1.Text)
         ElseIf FiltroClientes.SelectedIndex = 7 Then
@@ -66,17 +68,25 @@ Public Class Consulta_Cliente
     End Sub
 
     Private Sub Button2_Click(sender As Object, e As EventArgs) Handles Button2.Click
+        Try
+            For Each cell As DataGridViewCell In TablaCLientes.CurrentRow.Cells
+                datosCliente.Add(CStr(cell.Value.ToString))
+            Next
+        Catch ex As Exception
+            MsgBox(ex.Message)
+        End Try
         Actualizar_Cliente.Show()
     End Sub
 
     Private Sub Button3_Click(sender As Object, e As EventArgs) Handles Button3.Click
 
-        Dim nombre As String = Convert.ToString(TablaCLientes.CurrentRow.Cells(0).Value)
+        Dim nombre As String = Convert.ToString(TablaCLientes.CurrentRow.Cells(1).Value)
+        Dim id As String = Convert.ToString(TablaCLientes.CurrentRow.Cells(0).Value)
         Dim MTCLI As New MetodosCliente
 
-        If MessageBox.Show("¿Desea ELIMINAR Cliente? ", "Atención", MessageBoxButtons.YesNo, MessageBoxIcon.Question) = Windows.Forms.DialogResult.Yes Then
-            MTCLI.eliminaCliente(nombre)
-            MessageBox.Show("Cliente dado de baja exitosamente")
+        If MessageBox.Show("¿Desea ELIMINAR Cliente", "Atención", MessageBoxButtons.YesNo, MessageBoxIcon.Question) = Windows.Forms.DialogResult.Yes Then
+            MTCLI.eliminaCliente(id, nombre)
+            MessageBox.Show(nombre)
         End If
 
 
@@ -84,9 +94,10 @@ Public Class Consulta_Cliente
     End Sub
 
     Private Sub Consulta_Cliente_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-
         Dim MTCLI As New MetodosCliente
         MTCLI.llenarDatagridview(TablaCLientes)
         TablaCLientes.ReadOnly = True
     End Sub
+
+
 End Class
