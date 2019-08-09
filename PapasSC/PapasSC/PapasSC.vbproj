@@ -337,7 +337,6 @@
     <Content Include="Imagenes\PapasSantaCruz1.jpg" />
     <Content Include="Imagenes\REPORTES.jpg" />
     <Content Include="Imagenes\UTILERIAS.jpg" />
-    <Content Include="Imagenes\VENTA.jpg" />
   </ItemGroup>
   <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.VisualBasic.targets" />
