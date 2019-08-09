@@ -57,9 +57,12 @@
         Dim fu As New MetodosEmpleado
         Dim nombre As String = Convert.ToString(DataListado.CurrentRow.Cells(0).Value)
 
-        If MessageBox.Show("Esta seguro de eliminar el empleado ", "Atención", MessageBoxButtons.YesNo, MessageBoxIcon.Question) = Windows.Forms.DialogResult.Yes Then
-            DataListado.DataSource = fu.EliminarEmple(nombre)
+        If MessageBox.Show("Deseas eliminar empleado " + nombre + "", "Atención", MessageBoxButtons.YesNo, MessageBoxIcon.Question) = Windows.Forms.DialogResult.Yes Then
+            If fu.EliminarEmple() Then
+                Consul()
+            End If
         End If
+
 
     End Sub
 End Class
