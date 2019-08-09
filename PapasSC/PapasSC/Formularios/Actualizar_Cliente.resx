@@ -118,6 +118,29 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
+  <data name="btnElminar.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAAB4AAAAeCAYAAAA7MK6iAAAABGdBTUEAALGeYUxB9wAAACBjSFJNAACH
+        EAAAjBIAAP1NAACBPgAAWesAARIPAAA85gAAGc66ySIyAAABJmlDQ1BBZG9iZSBSR0IgKDE5OTgpAAAo
+        z2NgYDJwdHFyZRJgYMjNKykKcndSiIiMUmA/z8DGwMwABonJxQWOAQE+IHZefl4qAwb4do2BEURf1gWZ
+        xUAa4EouKCoB0n+A2CgltTiZgYHRAMjOLi8pAIozzgGyRZKywewNIHZRSJAzkH0EyOZLh7CvgNhJEPYT
+        ELsI6Akg+wtIfTqYzcQBNgfClgGxS1IrQPYyOOcXVBZlpmeUKBhaWloqOKbkJ6UqBFcWl6TmFit45iXn
+        FxXkFyWWpKYA1ULcBwaCEIWgENMAarTQZKAyAMUDhPU5EBy+jGJnEGIIkFxaVAZlMjIZE+YjzJgjwcDg
+        v5SBgeUPQsykl4FhgQ4DA/9UhJiaIQODgD4Dw745AMDGT/0ZOjZcAAAACXBIWXMAAAsTAAALEwEAmpwY
+        AAAChElEQVRIS8XWy6tNURzA8Uvk/SqJm1AMvCIRhZn8C0qJCTLxF5AJeXTLAOF6jGRgQHnlkRAS5f3I
+        M0SUZxgx0PH9ntY6rbPtY997nHMMPu3z+52992/ttfZaa7eVSqX/IjfZCrnJVqgK2s/tKzIdT1DKOI92
+        5F1Tpd7Ch3AbozA8sDGfsBZ511T5W+G+GIpBGBgMgEUeYxuqboYLOIzBwZDEMPRC+dxahRfgGj7iFV4G
+        z/Aadusv3As5G/IIscs95w3eBu/wGWcxEz1qFbbLrqADnYk94bgBm7E35CLzW7A7sQs7sRU2zgZ11ips
+        q+eg3C0NtAzlXom1soXtXlt2EZfxEA+C++FYlEv/u4TrsNvvYH2twlOwHe9hC+/iKm7gZuDvW+GY/k7/
+        t9HP4T1sxBo4Eyq1soWjHbCFaa67xuID7OZKvqiwL5ItrUyDOkzAFyxPcoWFfVOdKv2TXNZqLMrkUpPw
+        DSuTXJcKOwX6hXgEjmBJiOVcd/xj7DjaU31CPBFf8U+Fp8EXxXw8x7f/dBI7/3/CVc+4IYWnwsKbQqwX
+        OJrEZ+C0icPTkK6OhV214jkWPp7Ep2AvxMJNfeJjSdzUwhtDrKInbkhXz4CF0y0x+8SuVt/hdmpc1xM7
+        LdJ57E1+wF0rnuNO5poe4xPwid2/jSfDhqwIcVlR4f1wkY8rV28sxJgQy337QBK7zs9FzxCPh41bFeKy
+        osIH4Y6T5rLGYWQml3Ktdoxd4Sr5osJL4ZguTnLdtQ7eY1aSKyzsS3USXmhXOV5+IMwrMBt+/PkueG06
+        /cqKCsulz/XZG9TDxSaOd0VXCms+nsI12L21iBuH5/rVORp/3DO3cCvlJpuv1PYbMQ6OT7qDYMEAAAAA
+        SUVORK5CYII=
+</value>
+  </data>
   <data name="bntActualizar.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAAB4AAAAeCAYAAAA7MK6iAAAABGdBTUEAALGeYUxB9wAAACBjSFJNAACH
