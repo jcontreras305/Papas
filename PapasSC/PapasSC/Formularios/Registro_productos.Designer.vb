@@ -23,11 +23,13 @@ Partial Class Registro_productos
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
         Me.Label1 = New System.Windows.Forms.Label()
-        Me.TextBox1 = New System.Windows.Forms.TextBox()
+        Me.txtVersion = New System.Windows.Forms.TextBox()
         Me.Button1 = New System.Windows.Forms.Button()
         Me.Button2 = New System.Windows.Forms.Button()
         Me.Label2 = New System.Windows.Forms.Label()
         Me.ComboBox1 = New System.Windows.Forms.ComboBox()
+        Me.txtClave = New System.Windows.Forms.TextBox()
+        Me.Label3 = New System.Windows.Forms.Label()
         Me.SuspendLayout()
         '
         'Label1
@@ -39,16 +41,16 @@ Partial Class Registro_productos
         Me.Label1.TabIndex = 0
         Me.Label1.Text = "Nuevo Producto"
         '
-        'TextBox1
+        'txtVersion
         '
-        Me.TextBox1.Location = New System.Drawing.Point(103, 17)
-        Me.TextBox1.Name = "TextBox1"
-        Me.TextBox1.Size = New System.Drawing.Size(152, 20)
-        Me.TextBox1.TabIndex = 1
+        Me.txtVersion.Location = New System.Drawing.Point(103, 17)
+        Me.txtVersion.Name = "txtVersion"
+        Me.txtVersion.Size = New System.Drawing.Size(152, 20)
+        Me.txtVersion.TabIndex = 1
         '
         'Button1
         '
-        Me.Button1.Location = New System.Drawing.Point(190, 107)
+        Me.Button1.Location = New System.Drawing.Point(291, 55)
         Me.Button1.Name = "Button1"
         Me.Button1.Size = New System.Drawing.Size(80, 25)
         Me.Button1.TabIndex = 2
@@ -57,7 +59,7 @@ Partial Class Registro_productos
         '
         'Button2
         '
-        Me.Button2.Location = New System.Drawing.Point(103, 107)
+        Me.Button2.Location = New System.Drawing.Point(204, 55)
         Me.Button2.Name = "Button2"
         Me.Button2.Size = New System.Drawing.Size(81, 25)
         Me.Button2.TabIndex = 3
@@ -82,16 +84,32 @@ Partial Class Registro_productos
         Me.ComboBox1.Size = New System.Drawing.Size(152, 21)
         Me.ComboBox1.TabIndex = 5
         '
+        'txtClave
+        '
+        Me.txtClave.Location = New System.Drawing.Point(303, 18)
+        Me.txtClave.Name = "txtClave"
+        Me.txtClave.Size = New System.Drawing.Size(68, 20)
+        Me.txtClave.TabIndex = 4
+        '
+        'Label3
+        '
+        Me.Label3.AutoSize = True
+        Me.Label3.Location = New System.Drawing.Point(261, 21)
+        Me.Label3.Name = "Label3"
+        Me.Label3.Size = New System.Drawing.Size(34, 13)
+        Me.Label3.TabIndex = 5
+        Me.Label3.Text = "Clave"
+        '
         'Registro_productos
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(293, 158)
-        Me.Controls.Add(Me.ComboBox1)
-        Me.Controls.Add(Me.Label2)
+        Me.ClientSize = New System.Drawing.Size(423, 96)
+        Me.Controls.Add(Me.Label3)
+        Me.Controls.Add(Me.txtClave)
         Me.Controls.Add(Me.Button2)
         Me.Controls.Add(Me.Button1)
-        Me.Controls.Add(Me.TextBox1)
+        Me.Controls.Add(Me.txtVersion)
         Me.Controls.Add(Me.Label1)
         Me.Name = "Registro_productos"
         Me.Text = "Registro_productos"
@@ -101,9 +119,11 @@ Partial Class Registro_productos
     End Sub
 
     Friend WithEvents Label1 As Label
-    Friend WithEvents TextBox1 As TextBox
+    Friend WithEvents txtVersion As TextBox
     Friend WithEvents Button1 As Button
     Friend WithEvents Button2 As Button
     Friend WithEvents Label2 As Label
     Friend WithEvents ComboBox1 As ComboBox
+    Friend WithEvents txtClave As TextBox
+    Friend WithEvents Label3 As Label
 End Class

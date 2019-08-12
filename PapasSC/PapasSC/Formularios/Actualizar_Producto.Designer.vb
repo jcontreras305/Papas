@@ -1,9 +1,9 @@
-﻿<Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()> _
+﻿<Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()>
 Partial Class Actualizar_Producto
     Inherits System.Windows.Forms.Form
 
     'Form reemplaza a Dispose para limpiar la lista de componentes.
-    <System.Diagnostics.DebuggerNonUserCode()> _
+    <System.Diagnostics.DebuggerNonUserCode()>
     Protected Overrides Sub Dispose(ByVal disposing As Boolean)
         Try
             If disposing AndAlso components IsNot Nothing Then
@@ -20,13 +20,14 @@ Partial Class Actualizar_Producto
     'NOTA: el Diseñador de Windows Forms necesita el siguiente procedimiento
     'Se puede modificar usando el Diseñador de Windows Forms.  
     'No lo modifique con el editor de código.
-    <System.Diagnostics.DebuggerStepThrough()> _
+    <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
         Me.Button2 = New System.Windows.Forms.Button()
         Me.Button1 = New System.Windows.Forms.Button()
-        Me.TextBox1 = New System.Windows.Forms.TextBox()
+        Me.txtversion = New System.Windows.Forms.TextBox()
         Me.Label1 = New System.Windows.Forms.Label()
-        Me.CheckBox1 = New System.Windows.Forms.CheckBox()
+        Me.Label3 = New System.Windows.Forms.Label()
+        Me.txtClave = New System.Windows.Forms.TextBox()
         Me.SuspendLayout()
         '
         'Button2
@@ -47,12 +48,12 @@ Partial Class Actualizar_Producto
         Me.Button1.Text = "Confirmar"
         Me.Button1.UseVisualStyleBackColor = True
         '
-        'TextBox1
+        'txtversion
         '
-        Me.TextBox1.Location = New System.Drawing.Point(103, 23)
-        Me.TextBox1.Name = "TextBox1"
-        Me.TextBox1.Size = New System.Drawing.Size(177, 20)
-        Me.TextBox1.TabIndex = 5
+        Me.txtversion.Location = New System.Drawing.Point(103, 23)
+        Me.txtversion.Name = "txtversion"
+        Me.txtversion.Size = New System.Drawing.Size(177, 20)
+        Me.txtversion.TabIndex = 5
         '
         'Label1
         '
@@ -63,25 +64,32 @@ Partial Class Actualizar_Producto
         Me.Label1.TabIndex = 4
         Me.Label1.Text = "Nuevo nombre"
         '
-        'CheckBox1
+        'Label3
         '
-        Me.CheckBox1.AutoSize = True
-        Me.CheckBox1.Location = New System.Drawing.Point(296, 26)
-        Me.CheckBox1.Name = "CheckBox1"
-        Me.CheckBox1.Size = New System.Drawing.Size(81, 17)
-        Me.CheckBox1.TabIndex = 8
-        Me.CheckBox1.Text = "Dar de baja"
-        Me.CheckBox1.UseVisualStyleBackColor = True
+        Me.Label3.AutoSize = True
+        Me.Label3.Location = New System.Drawing.Point(298, 26)
+        Me.Label3.Name = "Label3"
+        Me.Label3.Size = New System.Drawing.Size(34, 13)
+        Me.Label3.TabIndex = 9
+        Me.Label3.Text = "Clave"
+        '
+        'txtClave
+        '
+        Me.txtClave.Location = New System.Drawing.Point(340, 23)
+        Me.txtClave.Name = "txtClave"
+        Me.txtClave.Size = New System.Drawing.Size(68, 20)
+        Me.txtClave.TabIndex = 8
         '
         'Actualizar_Producto
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(439, 101)
-        Me.Controls.Add(Me.CheckBox1)
+        Me.Controls.Add(Me.Label3)
+        Me.Controls.Add(Me.txtClave)
         Me.Controls.Add(Me.Button2)
         Me.Controls.Add(Me.Button1)
-        Me.Controls.Add(Me.TextBox1)
+        Me.Controls.Add(Me.txtversion)
         Me.Controls.Add(Me.Label1)
         Me.Name = "Actualizar_Producto"
         Me.Text = "Actualizar_Producto"
@@ -92,7 +100,8 @@ Partial Class Actualizar_Producto
 
     Friend WithEvents Button2 As Button
     Friend WithEvents Button1 As Button
-    Friend WithEvents TextBox1 As TextBox
+    Friend WithEvents txtversion As TextBox
     Friend WithEvents Label1 As Label
-    Friend WithEvents CheckBox1 As CheckBox
+    Friend WithEvents Label3 As Label
+    Friend WithEvents txtClave As TextBox
 End Class
