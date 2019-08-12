@@ -5,7 +5,7 @@ Imports System.Text.RegularExpressions
 Public Class Actualizar_Cliente
     Public idCliente As String
     Private mtdCli As New MetodosClientes
-    Private datosCli As New List(Of String)
+    Private datosCli() As String
     Private Sub Actualizar_Cliente_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         lbl18.Visible = False
         lbl19.Visible = False
@@ -15,27 +15,40 @@ Public Class Actualizar_Cliente
         lbl23.Visible = False
         rdbHombre.Checked = True
         datosCli = Consulta_Cliente.datosCliente
-        idCliente = datosCli.ElementAt(0)
-        txtNombre.Text = datosCli.ElementAt(1)
+        idCliente = datosCli(0)
+
+        If datosCli(5).Equals("Moral") Then
+            txtRazonSocial.Text = datosCli(3)
+            txtRazonSocial.Enabled = True
+            txtNombre.Enabled = False
+            MsgBox(datosCli.ElementAt(3).ToString)
+            MsgBox("Hola")
+        Else
+
+            txtNombre.Text = datosCli(1)
+            txtNombre.Enabled = True
+            txtRazonSocial.Enabled = False
+            MsgBox(datosCli.ElementAt(1).ToString)
+        End If
         txtrfc.Text = datosCli.ElementAt(2)
-        txtRazonSocial.Text = datosCli.ElementAt(3)
-        cmbTipoPersona.Text = datosCli.ElementAt(5)
-        txtLimiteCredito.Text = datosCli.ElementAt(7)
-        spnDiasCredito.Value = CInt(datosCli.ElementAt(8).ToString)
-        txtAlias.Text = datosCli.ElementAt(9)
-        If datosCli.ElementAt(10).Equals("M") Then
+        txtRazonSocial.Text = datosCli(3)
+        cmbTipoPersona.Text = datosCli(5)
+        txtLimiteCredito.Text = datosCli(7)
+        spnDiasCredito.Value = CInt(datosCli(8).ToString)
+        txtAlias.Text = datosCli(9)
+        If datosCli(10).Equals("M") Then
             rdbHombre.Checked = True
-        ElseIf datosCli.ElementAt(10).Equals("F") Then
+        ElseIf datosCli(10).Equals("F") Then
             rdbMujer.Checked = True
         Else
             rdbRazonSocial.Checked = True
         End If
-        txtDireccion.Text = datosCli.ElementAt(11)
-        txtTelefono.Text = datosCli.ElementAt(12)
-        txtEmail.Text = datosCli.ElementAt(13)
-        cmbEstado.Text = datosCli.ElementAt(14)
-        txtMunicipio.Text = datosCli.ElementAt(15)
-        txtCodigoPostal.Text = datosCli.ElementAt(16)
+        txtDireccion.Text = datosCli(11)
+        txtTelefono.Text = datosCli(12)
+        txtEmail.Text = datosCli(13)
+        cmbEstado.Text = datosCli(14)
+        txtMunicipio.Text = datosCli(15)
+        txtCodigoPostal.Text = datosCli(16)
     End Sub
 
     Private Sub bntActualizar_Click(sender As Object, e As EventArgs) Handles bntActualizar.Click
