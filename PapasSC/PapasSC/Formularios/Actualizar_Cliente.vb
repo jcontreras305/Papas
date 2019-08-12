@@ -22,6 +22,7 @@ Public Class Actualizar_Cliente
             txtRazonSocial.Enabled = True
             txtNombre.Enabled = False
             MsgBox(datosCli.ElementAt(3).ToString)
+            MsgBox("Hola")
         Else
 
             txtNombre.Text = datosCli(1)

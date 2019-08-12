@@ -74,6 +74,7 @@ Public Class Consulta_Cliente
                 For Each cell As DataGridViewCell In TablaCLientes.CurrentRow.Cells
                     datosCliente(cont) = cell.Value.ToString
                     cont += 1
+                    MsgBox("contador " + cont)
                 Next
             Else
                 MsgBox("No se ha seleccionado un cliente")
