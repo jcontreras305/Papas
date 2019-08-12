@@ -201,5 +201,7 @@ Public Class Actualizar_Cliente
         End If
     End Sub
 
+    Private Sub txtCodigoPostal_TextChanged(sender As Object, e As EventArgs) Handles txtCodigoPostal.TextChanged
 
+    End Sub
 End Class

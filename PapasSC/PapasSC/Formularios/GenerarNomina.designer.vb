@@ -36,12 +36,14 @@ Partial Class GenerarNomina
         Me.ComboBox1 = New System.Windows.Forms.ComboBox()
         Me.Button1 = New System.Windows.Forms.Button()
         Me.Button2 = New System.Windows.Forms.Button()
+        Me.Label9 = New System.Windows.Forms.Label()
+        Me.Label16 = New System.Windows.Forms.Label()
         Me.SuspendLayout()
         '
         'Label1
         '
         Me.Label1.AutoSize = True
-        Me.Label1.Location = New System.Drawing.Point(31, 33)
+        Me.Label1.Location = New System.Drawing.Point(57, 85)
         Me.Label1.Name = "Label1"
         Me.Label1.Size = New System.Drawing.Size(44, 13)
         Me.Label1.TabIndex = 0
@@ -50,7 +52,7 @@ Partial Class GenerarNomina
         'Label2
         '
         Me.Label2.AutoSize = True
-        Me.Label2.Location = New System.Drawing.Point(31, 67)
+        Me.Label2.Location = New System.Drawing.Point(57, 119)
         Me.Label2.Name = "Label2"
         Me.Label2.Size = New System.Drawing.Size(70, 13)
         Me.Label2.TabIndex = 1
@@ -59,7 +61,7 @@ Partial Class GenerarNomina
         'Label3
         '
         Me.Label3.AutoSize = True
-        Me.Label3.Location = New System.Drawing.Point(31, 106)
+        Me.Label3.Location = New System.Drawing.Point(57, 158)
         Me.Label3.Name = "Label3"
         Me.Label3.Size = New System.Drawing.Size(37, 13)
         Me.Label3.TabIndex = 2
@@ -68,7 +70,7 @@ Partial Class GenerarNomina
         'Label4
         '
         Me.Label4.AutoSize = True
-        Me.Label4.Location = New System.Drawing.Point(31, 140)
+        Me.Label4.Location = New System.Drawing.Point(57, 192)
         Me.Label4.Name = "Label4"
         Me.Label4.Size = New System.Drawing.Size(31, 13)
         Me.Label4.TabIndex = 3
@@ -77,7 +79,7 @@ Partial Class GenerarNomina
         'Label5
         '
         Me.Label5.AutoSize = True
-        Me.Label5.Location = New System.Drawing.Point(31, 178)
+        Me.Label5.Location = New System.Drawing.Point(57, 230)
         Me.Label5.Name = "Label5"
         Me.Label5.Size = New System.Drawing.Size(33, 13)
         Me.Label5.TabIndex = 4
@@ -86,7 +88,7 @@ Partial Class GenerarNomina
         'Label6
         '
         Me.Label6.AutoSize = True
-        Me.Label6.Location = New System.Drawing.Point(31, 217)
+        Me.Label6.Location = New System.Drawing.Point(57, 269)
         Me.Label6.Name = "Label6"
         Me.Label6.Size = New System.Drawing.Size(35, 13)
         Me.Label6.TabIndex = 5
@@ -94,35 +96,35 @@ Partial Class GenerarNomina
         '
         'TextBox1
         '
-        Me.TextBox1.Location = New System.Drawing.Point(151, 25)
+        Me.TextBox1.Location = New System.Drawing.Point(177, 77)
         Me.TextBox1.Name = "TextBox1"
         Me.TextBox1.Size = New System.Drawing.Size(179, 20)
         Me.TextBox1.TabIndex = 6
         '
         'TextBox2
         '
-        Me.TextBox2.Location = New System.Drawing.Point(151, 106)
+        Me.TextBox2.Location = New System.Drawing.Point(177, 158)
         Me.TextBox2.Name = "TextBox2"
         Me.TextBox2.Size = New System.Drawing.Size(179, 20)
         Me.TextBox2.TabIndex = 7
         '
         'TextBox4
         '
-        Me.TextBox4.Location = New System.Drawing.Point(151, 140)
+        Me.TextBox4.Location = New System.Drawing.Point(177, 192)
         Me.TextBox4.Name = "TextBox4"
         Me.TextBox4.Size = New System.Drawing.Size(179, 20)
         Me.TextBox4.TabIndex = 9
         '
         'TextBox5
         '
-        Me.TextBox5.Location = New System.Drawing.Point(151, 175)
+        Me.TextBox5.Location = New System.Drawing.Point(177, 227)
         Me.TextBox5.Name = "TextBox5"
         Me.TextBox5.Size = New System.Drawing.Size(179, 20)
         Me.TextBox5.TabIndex = 10
         '
         'TextBox6
         '
-        Me.TextBox6.Location = New System.Drawing.Point(151, 217)
+        Me.TextBox6.Location = New System.Drawing.Point(177, 269)
         Me.TextBox6.Name = "TextBox6"
         Me.TextBox6.Size = New System.Drawing.Size(179, 20)
         Me.TextBox6.TabIndex = 11
@@ -130,7 +132,7 @@ Partial Class GenerarNomina
         'ComboBox1
         '
         Me.ComboBox1.FormattingEnabled = True
-        Me.ComboBox1.Location = New System.Drawing.Point(151, 64)
+        Me.ComboBox1.Location = New System.Drawing.Point(177, 116)
         Me.ComboBox1.Name = "ComboBox1"
         Me.ComboBox1.Size = New System.Drawing.Size(179, 21)
         Me.ComboBox1.TabIndex = 12
@@ -153,11 +155,35 @@ Partial Class GenerarNomina
         Me.Button2.Text = "Cancelar"
         Me.Button2.UseVisualStyleBackColor = True
         '
+        'Label9
+        '
+        Me.Label9.AutoSize = True
+        Me.Label9.Font = New System.Drawing.Font("Arial", 15.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label9.ForeColor = System.Drawing.SystemColors.ButtonShadow
+        Me.Label9.Location = New System.Drawing.Point(5, 6)
+        Me.Label9.Name = "Label9"
+        Me.Label9.Size = New System.Drawing.Size(24, 24)
+        Me.Label9.TabIndex = 35
+        Me.Label9.Text = "X"
+        '
+        'Label16
+        '
+        Me.Label16.AutoSize = True
+        Me.Label16.Font = New System.Drawing.Font("Arial", 15.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label16.ForeColor = System.Drawing.SystemColors.ButtonShadow
+        Me.Label16.Location = New System.Drawing.Point(127, 12)
+        Me.Label16.Name = "Label16"
+        Me.Label16.Size = New System.Drawing.Size(182, 24)
+        Me.Label16.TabIndex = 34
+        Me.Label16.Text = "Acutalizar cliente"
+        '
         'GenerarNomina
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(422, 369)
+        Me.ClientSize = New System.Drawing.Size(428, 370)
+        Me.Controls.Add(Me.Label9)
+        Me.Controls.Add(Me.Label16)
         Me.Controls.Add(Me.Button2)
         Me.Controls.Add(Me.Button1)
         Me.Controls.Add(Me.ComboBox1)
@@ -194,4 +220,6 @@ Partial Class GenerarNomina
     Friend WithEvents ComboBox1 As ComboBox
     Friend WithEvents Button1 As Button
     Friend WithEvents Button2 As Button
+    Friend WithEvents Label9 As Label
+    Friend WithEvents Label16 As Label
 End Class
