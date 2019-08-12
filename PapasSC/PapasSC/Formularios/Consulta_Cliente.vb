@@ -4,6 +4,7 @@ Public Class Consulta_Cliente
 
     Private Sub Buscar_Click(sender As Object, e As EventArgs) Handles Buscar.Click
         Dim MTCLI As New MetodosCliente
+
         If TextBox1.Text = "" Or TextBox1.Text = Nothing Then
             MTCLI.llenarDatagridview(TablaCLientes)
             TablaCLientes.ReadOnly = True

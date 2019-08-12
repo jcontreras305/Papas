@@ -27,7 +27,7 @@ Partial Class Consulta_Producto
         Me.Button3 = New System.Windows.Forms.Button()
         Me.Button2 = New System.Windows.Forms.Button()
         Me.Button1 = New System.Windows.Forms.Button()
-        Me.ComboBox1 = New System.Windows.Forms.ComboBox()
+        Me.filtroproductos = New System.Windows.Forms.ComboBox()
         Me.TextBox1 = New System.Windows.Forms.TextBox()
         Me.Label1 = New System.Windows.Forms.Label()
         Me.TablaProductos = New System.Windows.Forms.DataGridView()
@@ -41,7 +41,7 @@ Partial Class Consulta_Producto
         Me.Panel1.Controls.Add(Me.Button3)
         Me.Panel1.Controls.Add(Me.Button2)
         Me.Panel1.Controls.Add(Me.Button1)
-        Me.Panel1.Controls.Add(Me.ComboBox1)
+        Me.Panel1.Controls.Add(Me.filtroproductos)
         Me.Panel1.Controls.Add(Me.TextBox1)
         Me.Panel1.Controls.Add(Me.Label1)
         Me.Panel1.Controls.Add(Me.TablaProductos)
@@ -86,13 +86,15 @@ Partial Class Consulta_Producto
         Me.Button1.Text = "Buscar"
         Me.Button1.UseVisualStyleBackColor = True
         '
-        'ComboBox1
+        'filtroproductos
         '
-        Me.ComboBox1.FormattingEnabled = True
-        Me.ComboBox1.Location = New System.Drawing.Point(103, 18)
-        Me.ComboBox1.Name = "ComboBox1"
-        Me.ComboBox1.Size = New System.Drawing.Size(121, 21)
-        Me.ComboBox1.TabIndex = 3
+        Me.filtroproductos.FormattingEnabled = True
+        Me.filtroproductos.Items.AddRange(New Object() {"Estatus", "Nombre", "Clave", "ID del producto."})
+        Me.filtroproductos.Location = New System.Drawing.Point(103, 18)
+        Me.filtroproductos.Name = "filtroproductos"
+        Me.filtroproductos.Size = New System.Drawing.Size(121, 21)
+        Me.filtroproductos.TabIndex = 3
+        Me.filtroproductos.Text = "Filtro Producto"
         '
         'TextBox1
         '
@@ -104,7 +106,7 @@ Partial Class Consulta_Producto
         'Label1
         '
         Me.Label1.AutoSize = True
-        Me.Label1.Location = New System.Drawing.Point(9, 21)
+        Me.Label1.Location = New System.Drawing.Point(12, 21)
         Me.Label1.Name = "Label1"
         Me.Label1.Size = New System.Drawing.Size(88, 13)
         Me.Label1.TabIndex = 1
@@ -125,7 +127,7 @@ Partial Class Consulta_Producto
         Me.ClientSize = New System.Drawing.Size(800, 450)
         Me.Controls.Add(Me.Panel1)
         Me.Name = "Consulta_Producto"
-        Me.Text = "Consulta_Registro"
+        Me.Text = "Consulta Registro"
         Me.Panel1.ResumeLayout(False)
         Me.Panel1.PerformLayout()
         CType(Me.TablaProductos, System.ComponentModel.ISupportInitialize).EndInit()
@@ -135,7 +137,7 @@ Partial Class Consulta_Producto
 
     Friend WithEvents Panel1 As Panel
     Friend WithEvents Button1 As Button
-    Friend WithEvents ComboBox1 As ComboBox
+    Friend WithEvents filtroproductos As ComboBox
     Friend WithEvents TextBox1 As TextBox
     Friend WithEvents Label1 As Label
     Friend WithEvents TablaProductos As DataGridView
