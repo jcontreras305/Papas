@@ -1,6 +1,6 @@
 ﻿Imports PapasSC.MetodosCliente
 Public Class Consulta_Cliente
-    Public datosCliente As New List(Of String)
+    Public datosCliente(17) As String
 
     Private Sub Buscar_Click(sender As Object, e As EventArgs) Handles Buscar.Click
         Dim MTCLI As New MetodosCliente
@@ -69,9 +69,15 @@ Public Class Consulta_Cliente
 
     Private Sub Button2_Click(sender As Object, e As EventArgs) Handles Button2.Click
         Try
-            For Each cell As DataGridViewCell In TablaCLientes.CurrentRow.Cells
-                datosCliente.Add(CStr(cell.Value.ToString))
-            Next
+            If TablaCLientes.CurrentRow IsNot Nothing Then
+                Dim cont As Int16 = 0
+                For Each cell As DataGridViewCell In TablaCLientes.CurrentRow.Cells
+                    datosCliente(cont) = cell.Value.ToString
+                    cont += 1
+                Next
+            Else
+                MsgBox("No se ha seleccionado un cliente")
+            End If
         Catch ex As Exception
             MsgBox(ex.Message)
         End Try
@@ -99,5 +105,15 @@ Public Class Consulta_Cliente
         TablaCLientes.ReadOnly = True
     End Sub
 
-
+    Private Sub TablaCLientes_CellClick(sender As Object, e As DataGridViewCellEventArgs) Handles TablaCLientes.CellClick
+        If TablaCLientes.CurrentRow IsNot Nothing Then
+            Dim c As Integer = 0
+            For Each cell As DataGridViewCell In TablaCLientes.CurrentRow.Cells
+                datosCliente(c) = cell.Value.ToString
+                c += 1
+            Next
+        Else
+            MsgBox("No se ha seleccionado un cliente")
+        End If
+    End Sub
 End Class
