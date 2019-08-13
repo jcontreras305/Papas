@@ -158,10 +158,10 @@
     <Compile Include="Formularios\MenuInventario.vb">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Formularios\MenuNominas.Designer.vb">
-      <DependentUpon>MenuNominas.vb</DependentUpon>
+    <Compile Include="Formularios\MenuNomina.Designer.vb">
+      <DependentUpon>MenuNomina.vb</DependentUpon>
     </Compile>
-    <Compile Include="Formularios\MenuNominas.vb">
+    <Compile Include="Formularios\MenuNomina.vb">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Formularios\MenuReportes.Designer.vb">
@@ -274,8 +274,8 @@
     <EmbeddedResource Include="Formularios\MenuInventario.resx">
       <DependentUpon>MenuInventario.vb</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Formularios\MenuNominas.resx">
-      <DependentUpon>MenuNominas.vb</DependentUpon>
+    <EmbeddedResource Include="Formularios\MenuNomina.resx">
+      <DependentUpon>MenuNomina.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Formularios\MenuReportes.resx">
       <DependentUpon>MenuReportes.vb</DependentUpon>

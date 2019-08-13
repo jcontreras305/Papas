@@ -22,6 +22,7 @@ Partial Class MenuControl
     'No lo modifique con el editor de código.
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
+        Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(MenuControl))
         Me.Label2 = New System.Windows.Forms.Label()
         Me.Label1 = New System.Windows.Forms.Label()
         Me.Button1 = New System.Windows.Forms.Button()
@@ -44,7 +45,7 @@ Partial Class MenuControl
         Me.Label1.AutoSize = True
         Me.Label1.Font = New System.Drawing.Font("Arial", 15.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label1.ForeColor = System.Drawing.SystemColors.ButtonShadow
-        Me.Label1.Location = New System.Drawing.Point(260, 9)
+        Me.Label1.Location = New System.Drawing.Point(359, 9)
         Me.Label1.Name = "Label1"
         Me.Label1.Size = New System.Drawing.Size(84, 24)
         Me.Label1.TabIndex = 10
@@ -52,27 +53,32 @@ Partial Class MenuControl
         '
         'Button1
         '
-        Me.Button1.Location = New System.Drawing.Point(86, 199)
+        Me.Button1.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(CType(CType(0, Byte), Integer), CType(CType(0, Byte), Integer), CType(CType(0, Byte), Integer), CType(CType(0, Byte), Integer))
+        Me.Button1.FlatAppearance.BorderSize = 0
+        Me.Button1.Image = CType(resources.GetObject("Button1.Image"), System.Drawing.Image)
+        Me.Button1.Location = New System.Drawing.Point(130, 220)
         Me.Button1.Name = "Button1"
-        Me.Button1.Size = New System.Drawing.Size(159, 45)
+        Me.Button1.Size = New System.Drawing.Size(169, 169)
         Me.Button1.TabIndex = 12
-        Me.Button1.Text = "Perfiles "
         Me.Button1.UseVisualStyleBackColor = True
         '
         'Button2
         '
-        Me.Button2.Location = New System.Drawing.Point(353, 199)
+        Me.Button2.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(CType(CType(0, Byte), Integer), CType(CType(0, Byte), Integer), CType(CType(0, Byte), Integer), CType(CType(0, Byte), Integer))
+        Me.Button2.FlatAppearance.BorderSize = 0
+        Me.Button2.Image = CType(resources.GetObject("Button2.Image"), System.Drawing.Image)
+        Me.Button2.Location = New System.Drawing.Point(539, 220)
         Me.Button2.Name = "Button2"
-        Me.Button2.Size = New System.Drawing.Size(159, 45)
+        Me.Button2.Size = New System.Drawing.Size(169, 169)
         Me.Button2.TabIndex = 13
-        Me.Button2.Text = "Usuarios"
         Me.Button2.UseVisualStyleBackColor = True
         '
         'MenuControl
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(638, 440)
+        Me.BackColor = System.Drawing.Color.White
+        Me.ClientSize = New System.Drawing.Size(875, 465)
         Me.Controls.Add(Me.Button2)
         Me.Controls.Add(Me.Button1)
         Me.Controls.Add(Me.Label2)

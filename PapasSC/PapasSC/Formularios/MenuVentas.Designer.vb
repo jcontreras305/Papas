@@ -36,7 +36,7 @@ Partial Class MenuVentas
         Me.Label1.AutoSize = True
         Me.Label1.Font = New System.Drawing.Font("Arial", 15.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label1.ForeColor = System.Drawing.SystemColors.ButtonShadow
-        Me.Label1.Location = New System.Drawing.Point(271, 9)
+        Me.Label1.Location = New System.Drawing.Point(402, 9)
         Me.Label1.Name = "Label1"
         Me.Label1.Size = New System.Drawing.Size(78, 24)
         Me.Label1.TabIndex = 0
@@ -44,39 +44,46 @@ Partial Class MenuVentas
         '
         'Button1
         '
+        Me.Button1.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(CType(CType(0, Byte), Integer), CType(CType(0, Byte), Integer), CType(CType(0, Byte), Integer), CType(CType(0, Byte), Integer))
+        Me.Button1.FlatAppearance.BorderSize = 0
         Me.Button1.Image = CType(resources.GetObject("Button1.Image"), System.Drawing.Image)
-        Me.Button1.Location = New System.Drawing.Point(88, 65)
+        Me.Button1.Location = New System.Drawing.Point(116, 123)
         Me.Button1.Name = "Button1"
-        Me.Button1.Size = New System.Drawing.Size(170, 170)
+        Me.Button1.Size = New System.Drawing.Size(169, 169)
         Me.Button1.TabIndex = 1
-        Me.Button1.Text = "Nueva Venta"
         Me.Button1.UseVisualStyleBackColor = True
         '
         'Button2
         '
-        Me.Button2.Location = New System.Drawing.Point(385, 115)
+        Me.Button2.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(CType(CType(0, Byte), Integer), CType(CType(0, Byte), Integer), CType(CType(0, Byte), Integer), CType(CType(0, Byte), Integer))
+        Me.Button2.FlatAppearance.BorderSize = 0
+        Me.Button2.Image = CType(resources.GetObject("Button2.Image"), System.Drawing.Image)
+        Me.Button2.Location = New System.Drawing.Point(602, 123)
         Me.Button2.Name = "Button2"
-        Me.Button2.Size = New System.Drawing.Size(172, 40)
+        Me.Button2.Size = New System.Drawing.Size(169, 169)
         Me.Button2.TabIndex = 2
-        Me.Button2.Text = "Precios Por Defecto"
         Me.Button2.UseVisualStyleBackColor = True
         '
         'Button3
         '
-        Me.Button3.Location = New System.Drawing.Point(88, 291)
+        Me.Button3.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(CType(CType(0, Byte), Integer), CType(CType(0, Byte), Integer), CType(CType(0, Byte), Integer), CType(CType(0, Byte), Integer))
+        Me.Button3.FlatAppearance.BorderSize = 0
+        Me.Button3.Image = CType(resources.GetObject("Button3.Image"), System.Drawing.Image)
+        Me.Button3.Location = New System.Drawing.Point(116, 407)
         Me.Button3.Name = "Button3"
-        Me.Button3.Size = New System.Drawing.Size(172, 40)
+        Me.Button3.Size = New System.Drawing.Size(169, 169)
         Me.Button3.TabIndex = 3
-        Me.Button3.Text = "Caja"
         Me.Button3.UseVisualStyleBackColor = True
         '
         'Button4
         '
-        Me.Button4.Location = New System.Drawing.Point(385, 291)
+        Me.Button4.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(CType(CType(0, Byte), Integer), CType(CType(0, Byte), Integer), CType(CType(0, Byte), Integer), CType(CType(0, Byte), Integer))
+        Me.Button4.FlatAppearance.BorderSize = 0
+        Me.Button4.Image = CType(resources.GetObject("Button4.Image"), System.Drawing.Image)
+        Me.Button4.Location = New System.Drawing.Point(602, 407)
         Me.Button4.Name = "Button4"
-        Me.Button4.Size = New System.Drawing.Size(172, 40)
+        Me.Button4.Size = New System.Drawing.Size(169, 169)
         Me.Button4.TabIndex = 4
-        Me.Button4.Text = "Reporte de Venta"
         Me.Button4.UseVisualStyleBackColor = True
         '
         'Label2
@@ -94,7 +101,8 @@ Partial Class MenuVentas
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(638, 440)
+        Me.BackColor = System.Drawing.Color.White
+        Me.ClientSize = New System.Drawing.Size(875, 465)
         Me.Controls.Add(Me.Label2)
         Me.Controls.Add(Me.Button4)
         Me.Controls.Add(Me.Button3)

@@ -122,7 +122,8 @@ Partial Class MenuReportes
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(638, 440)
+        Me.BackColor = System.Drawing.Color.White
+        Me.ClientSize = New System.Drawing.Size(875, 465)
         Me.Controls.Add(Me.Label2)
         Me.Controls.Add(Me.Button7)
         Me.Controls.Add(Me.Button6)
