@@ -1,4 +1,5 @@
 ﻿Imports PapasSC.MetodosClientes
+Imports PapasSC.MetodosCliente
 Imports PapasSC.Consulta_Cliente
 Imports System.Text.RegularExpressions
 
@@ -16,22 +17,19 @@ Public Class Actualizar_Cliente
         rdbHombre.Checked = True
         datosCli = Consulta_Cliente.datosCliente
         idCliente = datosCli(0)
-
-        If datosCli(5).Equals("Moral") Then
-            txtRazonSocial.Text = datosCli(3)
-            txtRazonSocial.Enabled = True
-            txtNombre.Enabled = False
-            MsgBox(datosCli.ElementAt(3).ToString)
-            MsgBox("Hola")
-        Else
-
-            txtNombre.Text = datosCli(1)
-            txtNombre.Enabled = True
-            txtRazonSocial.Enabled = False
-            MsgBox(datosCli.ElementAt(1).ToString)
-        End If
-        txtrfc.Text = datosCli.ElementAt(2)
-        txtRazonSocial.Text = datosCli(3)
+        Try
+            MsgBox(datosCli(1).ToString)
+            txtNombre.Text = datosCli(1).ToString
+        Catch ex As Exception
+            txtNombre.Text = ""
+        End Try
+        Try
+            MsgBox(datosCli(3).ToString)
+            txtRazonSocial.Text = datosCli(3).ToString
+        Catch ex As Exception
+            txtRazonSocial.Text = ""
+        End Try
+        txtrfc.Text = datosCli(2)
         cmbTipoPersona.Text = datosCli(5)
         txtLimiteCredito.Text = datosCli(7)
         spnDiasCredito.Value = CInt(datosCli(8).ToString)
@@ -46,7 +44,8 @@ Public Class Actualizar_Cliente
         txtDireccion.Text = datosCli(11)
         txtTelefono.Text = datosCli(12)
         txtEmail.Text = datosCli(13)
-        cmbEstado.Text = datosCli(14)
+        'cmbEstado.Text = datosCli(14)
+        cmbEstado.SelectedText = datosCli(14)
         txtMunicipio.Text = datosCli(15)
         txtCodigoPostal.Text = datosCli(16)
     End Sub
@@ -74,10 +73,8 @@ Public Class Actualizar_Cliente
                         datosActCli.Add("") '
                         If txtrfc.Text.Length > 0 Or Not txtrfc.Text.Trim = String.Empty Then
                             datosActCli.Add(txtrfc.Text)
-
                         Else
                             datosActCli.Add("XAXX010101000")
-
                         End If
                         datosActCli.Add(txtRazonSocial.Text)
                         datosActCli.Add("Moral")
@@ -97,7 +94,8 @@ Public Class Actualizar_Cliente
                     datosActCli.Add(txtDireccion.Text)
                     datosActCli.Add(txtTelefono.Text)
                     datosActCli.Add(txtEmail.Text)
-                    datosActCli.Add(CStr(cmbEstado.SelectedItem.ToString()))
+
+                    datosActCli.Add(CStr(cmbEstado.SelectedItem.ToString))
                     datosActCli.Add(txtMunicipio.Text)
                     datosActCli.Add(txtCodigoPostal.Text)
 
@@ -130,7 +128,7 @@ Public Class Actualizar_Cliente
 
     Private Sub btnElminar_Click(sender As Object, e As EventArgs) Handles btnElminar.Click
         Try
-            If txtNombre.Left > 0 And Not txtNombre.Text.Trim = String.Empty Then
+            If txtNombre.Text.Length > 0 And Not txtNombre.Text.Trim = String.Empty Then
                 mtdCli.eliminar_Cliente(idCliente, txtNombre.Text)
             Else
                 mtdCli.eliminar_Cliente(idCliente, "")
@@ -202,19 +200,22 @@ Public Class Actualizar_Cliente
             rdbRazonSocial.Checked = True
             rdbMujer.Enabled = False
             rdbHombre.Enabled = False
-        Else
-            txtNombre.Enabled = True
+        Else 'fisica
             txtRazonSocial.Enabled = False
-            txtNombre.Text = ""
-            rdbRazonSocial.Enabled = True
-            rdbRazonSocial.Checked = False
+            txtRazonSocial.Text = ""
+            txtNombre.Enabled = True
+            rdbRazonSocial.Checked = True
+            rdbRazonSocial.Enabled = False
             rdbMujer.Enabled = True
-            rdbHombre.Enabled = True
-
+            rdbHombre.Checked = True
         End If
     End Sub
 
-    Private Sub txtCodigoPostal_TextChanged(sender As Object, e As EventArgs) Handles txtCodigoPostal.TextChanged
+    Private Sub btnCancelar_Click(sender As Object, e As EventArgs) Handles btnCancelar.Click
 
+        Dim mtdCliente As New MetodosCliente
+        Dim mtdConsul As New Consulta_Cliente
+        mtdCliente.llenarDatagridview(mtdConsul.TablaCLientes)
+        Me.Close()
     End Sub
 End Class
