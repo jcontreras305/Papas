@@ -22,29 +22,30 @@ Partial Class MenuNominas
     'No lo modifique con el editor de código.
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
-        Me.empleados = New System.Windows.Forms.Button()
+        Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(MenuNominas))
+        Me.Button1 = New System.Windows.Forms.Button()
         Me.Button2 = New System.Windows.Forms.Button()
         Me.Label1 = New System.Windows.Forms.Label()
         Me.Label2 = New System.Windows.Forms.Label()
         Me.ConsultaEmpleados = New System.Windows.Forms.Button()
         Me.SuspendLayout()
         '
-        'empleados
+        'Button1
         '
-        Me.empleados.Location = New System.Drawing.Point(53, 99)
-        Me.empleados.Name = "empleados"
-        Me.empleados.Size = New System.Drawing.Size(159, 45)
-        Me.empleados.TabIndex = 0
-        Me.empleados.Text = "Empleados"
-        Me.empleados.UseVisualStyleBackColor = True
+        Me.Button1.Image = CType(resources.GetObject("Button1.Image"), System.Drawing.Image)
+        Me.Button1.Location = New System.Drawing.Point(120, 129)
+        Me.Button1.Name = "Button1"
+        Me.Button1.Size = New System.Drawing.Size(169, 169)
+        Me.Button1.TabIndex = 0
+        Me.Button1.UseVisualStyleBackColor = True
         '
         'Button2
         '
-        Me.Button2.Location = New System.Drawing.Point(446, 99)
+        Me.Button2.Image = CType(resources.GetObject("Button2.Image"), System.Drawing.Image)
+        Me.Button2.Location = New System.Drawing.Point(642, 129)
         Me.Button2.Name = "Button2"
-        Me.Button2.Size = New System.Drawing.Size(159, 45)
+        Me.Button2.Size = New System.Drawing.Size(170, 169)
         Me.Button2.TabIndex = 1
-        Me.Button2.Text = "Generar nómina"
         Me.Button2.UseVisualStyleBackColor = True
         '
         'Label1
@@ -52,7 +53,7 @@ Partial Class MenuNominas
         Me.Label1.AutoSize = True
         Me.Label1.Font = New System.Drawing.Font("Arial", 15.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label1.ForeColor = System.Drawing.SystemColors.ButtonShadow
-        Me.Label1.Location = New System.Drawing.Point(268, 13)
+        Me.Label1.Location = New System.Drawing.Point(379, 9)
         Me.Label1.Name = "Label1"
         Me.Label1.Size = New System.Drawing.Size(123, 24)
         Me.Label1.TabIndex = 2
@@ -71,23 +72,24 @@ Partial Class MenuNominas
         '
         'ConsultaEmpleados
         '
-        Me.ConsultaEmpleados.Location = New System.Drawing.Point(243, 209)
+        Me.ConsultaEmpleados.Image = CType(resources.GetObject("ConsultaEmpleados.Image"), System.Drawing.Image)
+        Me.ConsultaEmpleados.Location = New System.Drawing.Point(383, 377)
         Me.ConsultaEmpleados.Name = "ConsultaEmpleados"
-        Me.ConsultaEmpleados.Size = New System.Drawing.Size(159, 45)
+        Me.ConsultaEmpleados.Size = New System.Drawing.Size(170, 169)
         Me.ConsultaEmpleados.TabIndex = 10
-        Me.ConsultaEmpleados.Text = "CunsultaEmpleados"
         Me.ConsultaEmpleados.UseVisualStyleBackColor = True
         '
         'MenuNominas
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(638, 440)
+        Me.BackColor = System.Drawing.Color.White
+        Me.ClientSize = New System.Drawing.Size(915, 553)
         Me.Controls.Add(Me.ConsultaEmpleados)
         Me.Controls.Add(Me.Label2)
         Me.Controls.Add(Me.Label1)
         Me.Controls.Add(Me.Button2)
-        Me.Controls.Add(Me.empleados)
+        Me.Controls.Add(Me.Button1)
         Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None
         Me.Name = "MenuNominas"
         Me.Text = "MenuNominas"
@@ -96,7 +98,7 @@ Partial Class MenuNominas
 
     End Sub
 
-    Friend WithEvents empleados As Button
+    Friend WithEvents Button1 As Button
     Friend WithEvents Button2 As Button
     Friend WithEvents Label1 As Label
     Friend WithEvents Label2 As Label

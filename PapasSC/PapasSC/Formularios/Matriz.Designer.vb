@@ -32,12 +32,12 @@ Partial Class Matriz
         Me.cmbCiudad = New System.Windows.Forms.ComboBox()
         Me.Label3 = New System.Windows.Forms.Label()
         Me.Panel2 = New System.Windows.Forms.Panel()
+        Me.btnRefrescar = New System.Windows.Forms.Button()
+        Me.btnActualizar = New System.Windows.Forms.Button()
+        Me.btnEliminarMatriz = New System.Windows.Forms.Button()
         Me.tblMatriz = New System.Windows.Forms.DataGridView()
         Me.Label9 = New System.Windows.Forms.Label()
         Me.Label16 = New System.Windows.Forms.Label()
-        Me.btnEliminarMatriz = New System.Windows.Forms.Button()
-        Me.btnActualizar = New System.Windows.Forms.Button()
-        Me.btnRefrescar = New System.Windows.Forms.Button()
         Me.Panel1.SuspendLayout()
         Me.Panel2.SuspendLayout()
         CType(Me.tblMatriz, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -135,6 +135,33 @@ Partial Class Matriz
         Me.Panel2.Size = New System.Drawing.Size(130, 181)
         Me.Panel2.TabIndex = 5
         '
+        'btnRefrescar
+        '
+        Me.btnRefrescar.Location = New System.Drawing.Point(18, 97)
+        Me.btnRefrescar.Name = "btnRefrescar"
+        Me.btnRefrescar.Size = New System.Drawing.Size(94, 23)
+        Me.btnRefrescar.TabIndex = 2
+        Me.btnRefrescar.Text = "Refrescar"
+        Me.btnRefrescar.UseVisualStyleBackColor = True
+        '
+        'btnActualizar
+        '
+        Me.btnActualizar.Location = New System.Drawing.Point(18, 56)
+        Me.btnActualizar.Name = "btnActualizar"
+        Me.btnActualizar.Size = New System.Drawing.Size(94, 23)
+        Me.btnActualizar.TabIndex = 1
+        Me.btnActualizar.Text = "Actualizar"
+        Me.btnActualizar.UseVisualStyleBackColor = True
+        '
+        'btnEliminarMatriz
+        '
+        Me.btnEliminarMatriz.Location = New System.Drawing.Point(18, 15)
+        Me.btnEliminarMatriz.Name = "btnEliminarMatriz"
+        Me.btnEliminarMatriz.Size = New System.Drawing.Size(94, 23)
+        Me.btnEliminarMatriz.TabIndex = 0
+        Me.btnEliminarMatriz.Text = "Eliminar"
+        Me.btnEliminarMatriz.UseVisualStyleBackColor = True
+        '
         'tblMatriz
         '
         Me.tblMatriz.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
@@ -164,33 +191,6 @@ Partial Class Matriz
         Me.Label16.Size = New System.Drawing.Size(182, 24)
         Me.Label16.TabIndex = 34
         Me.Label16.Text = "Acutalizar cliente"
-        '
-        'btnEliminarMatriz
-        '
-        Me.btnEliminarMatriz.Location = New System.Drawing.Point(18, 15)
-        Me.btnEliminarMatriz.Name = "btnEliminarMatriz"
-        Me.btnEliminarMatriz.Size = New System.Drawing.Size(94, 23)
-        Me.btnEliminarMatriz.TabIndex = 0
-        Me.btnEliminarMatriz.Text = "Eliminar"
-        Me.btnEliminarMatriz.UseVisualStyleBackColor = True
-        '
-        'btnActualizar
-        '
-        Me.btnActualizar.Location = New System.Drawing.Point(18, 56)
-        Me.btnActualizar.Name = "btnActualizar"
-        Me.btnActualizar.Size = New System.Drawing.Size(94, 23)
-        Me.btnActualizar.TabIndex = 1
-        Me.btnActualizar.Text = "Actualizar"
-        Me.btnActualizar.UseVisualStyleBackColor = True
-        '
-        'btnRefrescar
-        '
-        Me.btnRefrescar.Location = New System.Drawing.Point(18, 97)
-        Me.btnRefrescar.Name = "btnRefrescar"
-        Me.btnRefrescar.Size = New System.Drawing.Size(94, 23)
-        Me.btnRefrescar.TabIndex = 2
-        Me.btnRefrescar.Text = "Refrescar"
-        Me.btnRefrescar.UseVisualStyleBackColor = True
         '
         'Matriz
         '
