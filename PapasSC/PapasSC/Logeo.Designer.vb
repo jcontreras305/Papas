@@ -51,13 +51,13 @@ Partial Class Logeo
         Me.btnIniciar.BackColor = System.Drawing.SystemColors.ButtonFace
         Me.btnIniciar.Font = New System.Drawing.Font("Microsoft Sans Serif", 18.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.btnIniciar.Image = CType(resources.GetObject("btnIniciar.Image"), System.Drawing.Image)
-        Me.btnIniciar.ImageAlign = System.Drawing.ContentAlignment.MiddleRight
-        Me.btnIniciar.Location = New System.Drawing.Point(381, 320)
+        Me.btnIniciar.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
+        Me.btnIniciar.Location = New System.Drawing.Point(211, 320)
         Me.btnIniciar.Name = "btnIniciar"
         Me.btnIniciar.Size = New System.Drawing.Size(125, 46)
         Me.btnIniciar.TabIndex = 4
         Me.btnIniciar.Text = "Iniciar"
-        Me.btnIniciar.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
+        Me.btnIniciar.TextAlign = System.Drawing.ContentAlignment.MiddleRight
         Me.btnIniciar.UseVisualStyleBackColor = False
         '
         'Logeo

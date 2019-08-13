@@ -22,6 +22,7 @@ Partial Class MenuInventario
     'No lo modifique con el editor de código.
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
+        Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(MenuInventario))
         Me.Label1 = New System.Windows.Forms.Label()
         Me.Button1 = New System.Windows.Forms.Button()
         Me.Button2 = New System.Windows.Forms.Button()
@@ -34,7 +35,7 @@ Partial Class MenuInventario
         Me.Label1.AutoSize = True
         Me.Label1.Font = New System.Drawing.Font("Arial", 15.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label1.ForeColor = System.Drawing.SystemColors.ButtonShadow
-        Me.Label1.Location = New System.Drawing.Point(266, 9)
+        Me.Label1.Location = New System.Drawing.Point(353, 9)
         Me.Label1.Name = "Label1"
         Me.Label1.Size = New System.Drawing.Size(111, 24)
         Me.Label1.TabIndex = 0
@@ -42,29 +43,29 @@ Partial Class MenuInventario
         '
         'Button1
         '
-        Me.Button1.Location = New System.Drawing.Point(58, 84)
+        Me.Button1.Image = CType(resources.GetObject("Button1.Image"), System.Drawing.Image)
+        Me.Button1.Location = New System.Drawing.Point(121, 123)
         Me.Button1.Name = "Button1"
-        Me.Button1.Size = New System.Drawing.Size(175, 43)
+        Me.Button1.Size = New System.Drawing.Size(169, 169)
         Me.Button1.TabIndex = 1
-        Me.Button1.Text = "Almacen"
         Me.Button1.UseVisualStyleBackColor = True
         '
         'Button2
         '
-        Me.Button2.Location = New System.Drawing.Point(403, 84)
+        Me.Button2.Image = CType(resources.GetObject("Button2.Image"), System.Drawing.Image)
+        Me.Button2.Location = New System.Drawing.Point(592, 123)
         Me.Button2.Name = "Button2"
-        Me.Button2.Size = New System.Drawing.Size(175, 43)
+        Me.Button2.Size = New System.Drawing.Size(169, 169)
         Me.Button2.TabIndex = 2
-        Me.Button2.Text = "Existencias"
         Me.Button2.UseVisualStyleBackColor = True
         '
         'Button3
         '
-        Me.Button3.Location = New System.Drawing.Point(231, 211)
+        Me.Button3.Image = CType(resources.GetObject("Button3.Image"), System.Drawing.Image)
+        Me.Button3.Location = New System.Drawing.Point(369, 387)
         Me.Button3.Name = "Button3"
-        Me.Button3.Size = New System.Drawing.Size(175, 43)
+        Me.Button3.Size = New System.Drawing.Size(169, 169)
         Me.Button3.TabIndex = 3
-        Me.Button3.Text = "Reclasificación"
         Me.Button3.UseVisualStyleBackColor = True
         '
         'Label2
@@ -82,7 +83,8 @@ Partial Class MenuInventario
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(638, 440)
+        Me.BackColor = System.Drawing.Color.White
+        Me.ClientSize = New System.Drawing.Size(875, 465)
         Me.Controls.Add(Me.Label2)
         Me.Controls.Add(Me.Button3)
         Me.Controls.Add(Me.Button2)

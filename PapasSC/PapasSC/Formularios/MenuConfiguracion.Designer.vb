@@ -22,6 +22,7 @@ Partial Class MenuConfiguracion
     'No lo modifique con el editor de código.
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
+        Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(MenuConfiguracion))
         Me.Label2 = New System.Windows.Forms.Label()
         Me.Label1 = New System.Windows.Forms.Label()
         Me.Button1 = New System.Windows.Forms.Button()
@@ -49,7 +50,7 @@ Partial Class MenuConfiguracion
         Me.Label1.AutoSize = True
         Me.Label1.Font = New System.Drawing.Font("Arial", 15.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label1.ForeColor = System.Drawing.SystemColors.ButtonShadow
-        Me.Label1.Location = New System.Drawing.Point(261, 9)
+        Me.Label1.Location = New System.Drawing.Point(491, 31)
         Me.Label1.Name = "Label1"
         Me.Label1.Size = New System.Drawing.Size(152, 24)
         Me.Label1.TabIndex = 14
@@ -57,72 +58,77 @@ Partial Class MenuConfiguracion
         '
         'Button1
         '
-        Me.Button1.Location = New System.Drawing.Point(26, 133)
+        Me.Button1.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(CType(CType(0, Byte), Integer), CType(CType(0, Byte), Integer), CType(CType(0, Byte), Integer), CType(CType(0, Byte), Integer))
+        Me.Button1.FlatAppearance.BorderSize = 0
+        Me.Button1.Image = CType(resources.GetObject("Button1.Image"), System.Drawing.Image)
+        Me.Button1.Location = New System.Drawing.Point(127, 123)
         Me.Button1.Name = "Button1"
-        Me.Button1.Size = New System.Drawing.Size(130, 45)
+        Me.Button1.Size = New System.Drawing.Size(169, 169)
         Me.Button1.TabIndex = 16
-        Me.Button1.Text = "Matriz"
         Me.Button1.UseVisualStyleBackColor = True
         '
         'Button2
         '
-        Me.Button2.Location = New System.Drawing.Point(177, 133)
+        Me.Button2.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(CType(CType(0, Byte), Integer), CType(CType(0, Byte), Integer), CType(CType(0, Byte), Integer), CType(CType(0, Byte), Integer))
+        Me.Button2.FlatAppearance.BorderSize = 0
+        Me.Button2.Image = CType(resources.GetObject("Button2.Image"), System.Drawing.Image)
+        Me.Button2.Location = New System.Drawing.Point(364, 123)
         Me.Button2.Name = "Button2"
-        Me.Button2.Size = New System.Drawing.Size(130, 45)
+        Me.Button2.Size = New System.Drawing.Size(169, 169)
         Me.Button2.TabIndex = 17
-        Me.Button2.Text = "Bodegas"
         Me.Button2.UseVisualStyleBackColor = True
         '
         'Button3
         '
-        Me.Button3.Location = New System.Drawing.Point(330, 133)
+        Me.Button3.Image = CType(resources.GetObject("Button3.Image"), System.Drawing.Image)
+        Me.Button3.Location = New System.Drawing.Point(600, 123)
         Me.Button3.Name = "Button3"
-        Me.Button3.Size = New System.Drawing.Size(130, 45)
+        Me.Button3.Size = New System.Drawing.Size(169, 169)
         Me.Button3.TabIndex = 18
-        Me.Button3.Text = "Impresoras"
         Me.Button3.UseVisualStyleBackColor = True
         '
         'Button4
         '
-        Me.Button4.Location = New System.Drawing.Point(481, 133)
+        Me.Button4.Image = CType(resources.GetObject("Button4.Image"), System.Drawing.Image)
+        Me.Button4.Location = New System.Drawing.Point(839, 123)
         Me.Button4.Name = "Button4"
-        Me.Button4.Size = New System.Drawing.Size(130, 45)
+        Me.Button4.Size = New System.Drawing.Size(169, 169)
         Me.Button4.TabIndex = 19
-        Me.Button4.Text = "Unidades"
         Me.Button4.UseVisualStyleBackColor = True
         '
         'Button5
         '
-        Me.Button5.Location = New System.Drawing.Point(93, 247)
+        Me.Button5.Image = CType(resources.GetObject("Button5.Image"), System.Drawing.Image)
+        Me.Button5.Location = New System.Drawing.Point(248, 410)
         Me.Button5.Name = "Button5"
-        Me.Button5.Size = New System.Drawing.Size(130, 45)
+        Me.Button5.Size = New System.Drawing.Size(169, 169)
         Me.Button5.TabIndex = 20
-        Me.Button5.Text = "Tickets"
         Me.Button5.UseVisualStyleBackColor = True
         '
         'Button6
         '
-        Me.Button6.Location = New System.Drawing.Point(256, 247)
+        Me.Button6.Image = CType(resources.GetObject("Button6.Image"), System.Drawing.Image)
+        Me.Button6.Location = New System.Drawing.Point(483, 410)
         Me.Button6.Name = "Button6"
-        Me.Button6.Size = New System.Drawing.Size(130, 45)
+        Me.Button6.Size = New System.Drawing.Size(169, 169)
         Me.Button6.TabIndex = 21
-        Me.Button6.Text = "Cajas"
         Me.Button6.UseVisualStyleBackColor = True
         '
         'Button7
         '
-        Me.Button7.Location = New System.Drawing.Point(414, 247)
+        Me.Button7.Image = CType(resources.GetObject("Button7.Image"), System.Drawing.Image)
+        Me.Button7.Location = New System.Drawing.Point(721, 410)
         Me.Button7.Name = "Button7"
-        Me.Button7.Size = New System.Drawing.Size(130, 45)
+        Me.Button7.Size = New System.Drawing.Size(169, 169)
         Me.Button7.TabIndex = 22
-        Me.Button7.Text = "Valores por referencia"
         Me.Button7.UseVisualStyleBackColor = True
         '
         'MenuConfiguracion
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(638, 440)
+        Me.BackColor = System.Drawing.Color.White
+        Me.ClientSize = New System.Drawing.Size(902, 466)
         Me.Controls.Add(Me.Button7)
         Me.Controls.Add(Me.Button6)
         Me.Controls.Add(Me.Button5)

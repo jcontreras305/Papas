@@ -64,10 +64,10 @@ Partial Class Actualizar_Cliente
         Me.Label1 = New System.Windows.Forms.Label()
         Me.Label2 = New System.Windows.Forms.Label()
         Me.Label3 = New System.Windows.Forms.Label()
-        Me.txtNombre = New System.Windows.Forms.TextBox()
         Me.txtRazonSocial = New System.Windows.Forms.TextBox()
         Me.txtrfc = New System.Windows.Forms.TextBox()
         Me.Label5 = New System.Windows.Forms.Label()
+        Me.txtNombre = New System.Windows.Forms.TextBox()
         Me.Panel3.SuspendLayout()
         CType(Me.spnDiasCredito, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.Panel2.SuspendLayout()
@@ -314,8 +314,7 @@ Partial Class Actualizar_Cliente
         Me.btnCancelar.Name = "btnCancelar"
         Me.btnCancelar.Size = New System.Drawing.Size(111, 39)
         Me.btnCancelar.TabIndex = 15
-        Me.btnCancelar.Text = "Cancelar"
-        Me.btnCancelar.TextAlign = System.Drawing.ContentAlignment.MiddleRight
+        Me.btnCancelar.Text = "     Salir"
         Me.btnCancelar.UseVisualStyleBackColor = True
         '
         'txtCodigoPostal
@@ -417,6 +416,7 @@ Partial Class Actualizar_Cliente
         '
         'Panel1
         '
+        Me.Panel1.Controls.Add(Me.txtNombre)
         Me.Panel1.Controls.Add(Me.lbl19)
         Me.Panel1.Controls.Add(Me.lbl18)
         Me.Panel1.Controls.Add(Me.Label7)
@@ -424,7 +424,6 @@ Partial Class Actualizar_Cliente
         Me.Panel1.Controls.Add(Me.Label1)
         Me.Panel1.Controls.Add(Me.Label2)
         Me.Panel1.Controls.Add(Me.Label3)
-        Me.Panel1.Controls.Add(Me.txtNombre)
         Me.Panel1.Controls.Add(Me.txtRazonSocial)
         Me.Panel1.Controls.Add(Me.txtrfc)
         Me.Panel1.Location = New System.Drawing.Point(12, 35)
@@ -500,13 +499,6 @@ Partial Class Actualizar_Cliente
         Me.Label3.TabIndex = 3
         Me.Label3.Text = "Razon Social"
         '
-        'txtNombre
-        '
-        Me.txtNombre.Location = New System.Drawing.Point(90, 14)
-        Me.txtNombre.Name = "txtNombre"
-        Me.txtNombre.Size = New System.Drawing.Size(204, 20)
-        Me.txtNombre.TabIndex = 8
-        '
         'txtRazonSocial
         '
         Me.txtRazonSocial.Location = New System.Drawing.Point(90, 74)
@@ -529,6 +521,13 @@ Partial Class Actualizar_Cliente
         Me.Label5.Name = "Label5"
         Me.Label5.Size = New System.Drawing.Size(0, 13)
         Me.Label5.TabIndex = 28
+        '
+        'txtNombre
+        '
+        Me.txtNombre.Location = New System.Drawing.Point(90, 14)
+        Me.txtNombre.Name = "txtNombre"
+        Me.txtNombre.Size = New System.Drawing.Size(204, 20)
+        Me.txtNombre.TabIndex = 15
         '
         'Actualizar_Cliente
         '
@@ -597,9 +596,9 @@ Partial Class Actualizar_Cliente
     Friend WithEvents Label1 As Label
     Friend WithEvents Label2 As Label
     Friend WithEvents Label3 As Label
-    Friend WithEvents txtNombre As TextBox
     Friend WithEvents txtRazonSocial As TextBox
     Friend WithEvents txtrfc As TextBox
     Friend WithEvents Label5 As Label
     Friend WithEvents btnElminar As Button
+    Friend WithEvents txtNombre As TextBox
 End Class
