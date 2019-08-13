@@ -73,6 +73,12 @@
     <Import Include="System.Threading.Tasks" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Formularios\Bodega.Designer.vb">
+      <DependentUpon>Bodega.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Formularios\Bodega.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="Formularios\Consulta_Cliente.Designer.vb">
       <DependentUpon>Consulta_Cliente.vb</DependentUpon>
     </Compile>
@@ -113,6 +119,18 @@
       <DependentUpon>Invertario.vb</DependentUpon>
     </Compile>
     <Compile Include="Formularios\Invertario.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formularios\Lista_de_Precios.Designer.vb">
+      <DependentUpon>Lista_de_Precios.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Formularios\Lista_de_Precios.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formularios\Reclasificacion.Designer.vb">
+      <DependentUpon>Reclasificacion.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Formularios\Reclasificacion.vb">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Formularios\Registro_Clientes.Designer.vb">
@@ -251,6 +269,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Formularios\Invertario.resx">
       <DependentUpon>Invertario.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formularios\Lista_de_Precios.resx">
+      <DependentUpon>Lista_de_Precios.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Formularios\Registro_Clientes.resx">
       <DependentUpon>Registro_Clientes.vb</DependentUpon>

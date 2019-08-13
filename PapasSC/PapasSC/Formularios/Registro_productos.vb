@@ -3,7 +3,8 @@
     Private Sub Button1_Click(sender As Object, e As EventArgs) Handles Button1.Click
         If txtClave.Text <> "" And txtVersion.Text <> "" Then
             Dim MTDPR As New MetodosProducto
-            MTDPR.insertarProducto(txtVersion.Text, txtClave.Text)
+
+            MTDPR.insertarProducto(txtVersion.Text, txtClave.Text, npd.Value)
         End If
     End Sub
 

@@ -22,21 +22,21 @@ Partial Class MenuNominas
     'No lo modifique con el editor de código.
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
-        Me.Button1 = New System.Windows.Forms.Button()
+        Me.empleados = New System.Windows.Forms.Button()
         Me.Button2 = New System.Windows.Forms.Button()
         Me.Label1 = New System.Windows.Forms.Label()
         Me.Label2 = New System.Windows.Forms.Label()
         Me.ConsultaEmpleados = New System.Windows.Forms.Button()
         Me.SuspendLayout()
         '
-        'Button1
+        'empleados
         '
-        Me.Button1.Location = New System.Drawing.Point(53, 99)
-        Me.Button1.Name = "Button1"
-        Me.Button1.Size = New System.Drawing.Size(159, 45)
-        Me.Button1.TabIndex = 0
-        Me.Button1.Text = "Empleados"
-        Me.Button1.UseVisualStyleBackColor = True
+        Me.empleados.Location = New System.Drawing.Point(53, 99)
+        Me.empleados.Name = "empleados"
+        Me.empleados.Size = New System.Drawing.Size(159, 45)
+        Me.empleados.TabIndex = 0
+        Me.empleados.Text = "Empleados"
+        Me.empleados.UseVisualStyleBackColor = True
         '
         'Button2
         '
@@ -87,7 +87,7 @@ Partial Class MenuNominas
         Me.Controls.Add(Me.Label2)
         Me.Controls.Add(Me.Label1)
         Me.Controls.Add(Me.Button2)
-        Me.Controls.Add(Me.Button1)
+        Me.Controls.Add(Me.empleados)
         Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None
         Me.Name = "MenuNominas"
         Me.Text = "MenuNominas"
@@ -96,7 +96,7 @@ Partial Class MenuNominas
 
     End Sub
 
-    Friend WithEvents Button1 As Button
+    Friend WithEvents empleados As Button
     Friend WithEvents Button2 As Button
     Friend WithEvents Label1 As Label
     Friend WithEvents Label2 As Label
