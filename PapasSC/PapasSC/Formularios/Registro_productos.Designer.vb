@@ -104,7 +104,7 @@ Partial Class Registro_productos
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(423, 96)
+        Me.ClientSize = New System.Drawing.Size(407, 96)
         Me.Controls.Add(Me.Label3)
         Me.Controls.Add(Me.txtClave)
         Me.Controls.Add(Me.Button2)
