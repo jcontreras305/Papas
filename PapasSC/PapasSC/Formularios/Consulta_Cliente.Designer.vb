@@ -129,7 +129,6 @@ Partial Class Consulta_Cliente
         Me.Controls.Add(Me.FiltroClientes)
         Me.Controls.Add(Me.TextBox1)
         Me.Controls.Add(Me.Label1)
-        Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
         Me.Name = "Consulta_Cliente"
         Me.Text = "Form1"
         CType(Me.TablaCLientes, System.ComponentModel.ISupportInitialize).EndInit()

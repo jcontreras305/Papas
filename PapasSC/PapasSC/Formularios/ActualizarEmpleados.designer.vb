@@ -22,7 +22,6 @@ Partial Class ActualizarEmpleados
     'No lo modifique con el editor de código.
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
-        Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(ActualizarEmpleados))
         Me.btnEmCancelar = New System.Windows.Forms.Button()
         Me.btnEmAceptar = New System.Windows.Forms.Button()
         Me.cboEmPuesto = New System.Windows.Forms.ComboBox()
@@ -254,7 +253,6 @@ Partial Class ActualizarEmpleados
         Me.Controls.Add(Me.lblEmSexo)
         Me.Controls.Add(Me.lblEmNombre)
         Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None
-        Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
         Me.Name = "ActualizarEmpleados"
         Me.Text = "ActualizarEmpleados"
         Me.ResumeLayout(False)

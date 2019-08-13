@@ -9,12 +9,4 @@ Public Class Matriz
             MsgBox(ex.Message)
         End Try
     End Sub
-
-    Private Sub btnCiudad_Click(sender As Object, e As EventArgs) Handles btnCiudad.Click
-        Dim txtRespuesta As New TextBox
-        If MessageBox.Show(String.Format("Escriba el nombre de la nueva Ciudad" & txtRespuesta.Text), "Nueva Ciudad", MessageBoxButtons.OKCancel) = DialogResult.OK Then
-
-        End If
-
-    End Sub
 End Class
