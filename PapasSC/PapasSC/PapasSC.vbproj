@@ -73,6 +73,12 @@
     <Import Include="System.Threading.Tasks" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Formularios\Consultar_Proveedores.Designer.vb">
+      <DependentUpon>Consultar_Proveedores.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Formularios\Consultar_Proveedores.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="Formularios\Consulta_Cliente.Designer.vb">
       <DependentUpon>Consulta_Cliente.vb</DependentUpon>
     </Compile>
@@ -241,6 +247,9 @@
   <ItemGroup>
     <EmbeddedResource Include="Formularios\Actualizar_Cliente.resx">
       <DependentUpon>Actualizar_Cliente.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formularios\Consultar_Proveedores.resx">
+      <DependentUpon>Consultar_Proveedores.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Formularios\Consulta_Cliente.resx">
       <DependentUpon>Consulta_Cliente.vb</DependentUpon>
