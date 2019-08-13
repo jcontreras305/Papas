@@ -115,6 +115,12 @@
     <Compile Include="Formularios\Invertario.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="Formularios\Matriz.Designer.vb">
+      <DependentUpon>Matriz.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Formularios\Matriz.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="Formularios\Registro_Clientes.Designer.vb">
       <DependentUpon>Registro_Clientes.vb</DependentUpon>
     </Compile>
@@ -200,6 +206,7 @@
     <Compile Include="Metodos\MetodosClientes.vb" />
     <Compile Include="Metodos\MetodosEmpleado.vb" />
     <Compile Include="Metodos\MetodosInventario.vb" />
+    <Compile Include="Metodos\MetodosMatrizCiudad.vb" />
     <Compile Include="Metodos\MetodosProducto.vb" />
     <Compile Include="Metodos\MetodosProductos.vb" />
     <Compile Include="Metodos\MetodosVenta.vb" />
@@ -252,6 +259,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Formularios\Invertario.resx">
       <DependentUpon>Invertario.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formularios\Matriz.resx">
+      <DependentUpon>Matriz.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Formularios\Registro_Clientes.resx">
       <DependentUpon>Registro_Clientes.vb</DependentUpon>
