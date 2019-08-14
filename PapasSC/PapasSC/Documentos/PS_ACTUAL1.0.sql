@@ -178,3 +178,114 @@ begin
 		on em.idEmpleado = us.idEmpleado
 		where nombreUsuario like  @nombre and contrasenia like @contrasenia
 end
+
+--###########################################################################################
+--###################### PROCEDIMIENTOS MATRIZ ##############################################
+--###########################################################################################
+
+SELECT * FROM matriz
+SELECT * FROM ciudad
+
+alter table matriz
+add estatus char(1)
+
+update matriz set estatus = 'A'
+
+create proc sp_select_Matriz
+as
+begin 
+	
+select mt.nombre as Matriz, mt.clave as Clave , cd.nombre as Ciudad
+	 from matriz as mt left join  ciudad as cd  on mt.idCiudad = cd.idCiudad 
+	 where mt.estatus = 'A'
+end
+
+
+--select mt.nombre as Matriz, mt.clave as Clave , cd.nombre as Ciudad
+--	 from matriz as mt left join  ciudad as cd  on mt.idCiudad = cd.idCiudad 
+--	 where mt.estatus = 'A'
+
+
+create proc sp_select_Ciudad
+as
+begin 
+	select nombre from ciudad where estatus like 'A' order by nombre asc
+end
+
+create proc sp_insertar_ciudad
+@Nombre varchar(30)
+as 
+declare @error int 
+begin 
+	begin tran
+		begin try 
+			insert into ciudad values (newid(), @Nombre,'A')
+			set @error = @@ERROR
+		end try
+		begin catch
+			goto repararProblema
+		end catch
+	commit tran 
+	repararProblema:
+		if	@error <> 0
+		begin 
+			rollback tran
+		end
+end
+select * from matriz
+
+create proc sp_insertar_Matriz
+@matriz varchar (50),
+@clave varchar(36),
+@ciudad varchar(50)
+as 
+declare @idCiudad  varchar (36)
+declare @idMatriz varchar (36)
+declare @error int 
+begin 
+	begin tran
+		begin try	
+			select @idCiudad = idCiudad from ciudad where nombre = @ciudad
+			set @idMatriz = NEWID()
+			insert into matriz values (@idMatriz,@matriz,@clave,@idCiudad,'A')
+			set @error = @@ERROR
+		end try
+		begin catch
+			goto repararproblema
+		end catch
+	commit tran
+
+	repararproblema:
+		if	@error <> 0
+			begin 
+				rollback tran
+			end
+end
+
+select * from matriz
+
+create proc sp_eliminar_Matriz
+@matriz varchar (50),
+@clave varchar(36),
+@ciudad varchar(50)
+as 
+declare @idciudad varchar (36)
+declare @error int 
+begin 
+	begin tran
+		begin try	
+			select @idciudad = idCiudad from ciudad where  nombre like CONCAT('%',@ciudad)
+			update matriz set estatus = 'B' where nombre like CONCAT('%',@matriz) and @clave like CONCAT('%',@clave) and idCiudad = @idciudad
+			set @error = @@ERROR
+		end try
+		begin catch
+			goto repararproblema
+		end catch
+	commit tran
+
+	repararproblema:
+		if	@error <> 0
+			begin 
+				rollback tran
+			end
+end
