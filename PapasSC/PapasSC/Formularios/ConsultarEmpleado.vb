@@ -1,5 +1,6 @@
 ﻿Public Class ConsultarEmpleado
     Dim dv As New DataView
+
     Public Sub Consul()
         Dim fun As New MetodosEmpleado
         DataListado.DataSource = fun.Consultar

@@ -68,6 +68,8 @@ Public Class MetodosEmpleado
     End Function
 
 
+
+
     Public Function BuscarEmPu(pu As String)
         Try
             conectar()

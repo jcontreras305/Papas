@@ -10,4 +10,13 @@
     Private Sub Button1_Click(sender As Object, e As EventArgs) Handles Button1.Click
         Consulta_Producto.Show()
     End Sub
+
+    Private Sub Catálogo_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+
+    End Sub
+
+    Private Sub Button5_Click(sender As Object, e As EventArgs) Handles Button5.Click
+        Consultar_Proveedores.Show()
+
+    End Sub
 End Class
