@@ -73,6 +73,12 @@
     <Import Include="System.Threading.Tasks" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Formularios\Consultar_Proveedores.Designer.vb">
+      <DependentUpon>Consultar_Proveedores.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Formularios\Consultar_Proveedores.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="Formularios\Consulta_Cliente.Designer.vb">
       <DependentUpon>Consulta_Cliente.vb</DependentUpon>
     </Compile>
@@ -119,6 +125,12 @@
       <DependentUpon>Matriz.vb</DependentUpon>
     </Compile>
     <Compile Include="Formularios\Matriz.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formularios\Registrar_Proveedor.Designer.vb">
+      <DependentUpon>Registrar_Proveedor.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Formularios\Registrar_Proveedor.vb">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Formularios\Registro_Clientes.Designer.vb">
@@ -209,6 +221,7 @@
     <Compile Include="Metodos\MetodosMatrizCiudad.vb" />
     <Compile Include="Metodos\MetodosProducto.vb" />
     <Compile Include="Metodos\MetodosProductos.vb" />
+    <Compile Include="Metodos\MetodosProveedor.vb" />
     <Compile Include="Metodos\MetodosVenta.vb" />
     <Compile Include="My Project\AssemblyInfo.vb" />
     <Compile Include="My Project\Application.Designer.vb">
@@ -242,6 +255,9 @@
     <EmbeddedResource Include="Formularios\Actualizar_Cliente.resx">
       <DependentUpon>Actualizar_Cliente.vb</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Formularios\Consultar_Proveedores.resx">
+      <DependentUpon>Consultar_Proveedores.vb</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Formularios\Consulta_Cliente.resx">
       <DependentUpon>Consulta_Cliente.vb</DependentUpon>
     </EmbeddedResource>
@@ -262,6 +278,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Formularios\Matriz.resx">
       <DependentUpon>Matriz.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formularios\Registrar_Proveedor.resx">
+      <DependentUpon>Registrar_Proveedor.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Formularios\Registro_Clientes.resx">
       <DependentUpon>Registro_Clientes.vb</DependentUpon>

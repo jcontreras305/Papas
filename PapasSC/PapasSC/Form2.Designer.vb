@@ -273,7 +273,7 @@ Partial Class Form2
         Me.PanelContenedorForm.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
             Or System.Windows.Forms.AnchorStyles.Left) _
             Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.PanelContenedorForm.BackColor = System.Drawing.SystemColors.ControlLight
+        Me.PanelContenedorForm.BackColor = System.Drawing.Color.White
         Me.PanelContenedorForm.Controls.Add(Me.PictureBox1)
         Me.PanelContenedorForm.Location = New System.Drawing.Point(194, 49)
         Me.PanelContenedorForm.Name = "PanelContenedorForm"

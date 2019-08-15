@@ -25,19 +25,22 @@ Partial Class Matriz
         Me.txtNombreMatriz = New System.Windows.Forms.TextBox()
         Me.Label1 = New System.Windows.Forms.Label()
         Me.Label2 = New System.Windows.Forms.Label()
-        Me.txtCalveCiudad = New System.Windows.Forms.TextBox()
+        Me.txtCalveMatriz = New System.Windows.Forms.TextBox()
         Me.Panel1 = New System.Windows.Forms.Panel()
+        Me.lbl3 = New System.Windows.Forms.Label()
+        Me.lbl2 = New System.Windows.Forms.Label()
+        Me.lbl1 = New System.Windows.Forms.Label()
         Me.btnCiudad = New System.Windows.Forms.Button()
-        Me.btnGuardarCiudad = New System.Windows.Forms.Button()
         Me.cmbCiudad = New System.Windows.Forms.ComboBox()
         Me.Label3 = New System.Windows.Forms.Label()
+        Me.btnGuardarMatriz = New System.Windows.Forms.Button()
         Me.Panel2 = New System.Windows.Forms.Panel()
+        Me.btnRefrescar = New System.Windows.Forms.Button()
+        Me.btnActualizar = New System.Windows.Forms.Button()
+        Me.btnEliminarMatriz = New System.Windows.Forms.Button()
         Me.tblMatriz = New System.Windows.Forms.DataGridView()
         Me.Label9 = New System.Windows.Forms.Label()
         Me.Label16 = New System.Windows.Forms.Label()
-        Me.btnEliminarMatriz = New System.Windows.Forms.Button()
-        Me.btnActualizar = New System.Windows.Forms.Button()
-        Me.btnRefrescar = New System.Windows.Forms.Button()
         Me.Panel1.SuspendLayout()
         Me.Panel2.SuspendLayout()
         CType(Me.tblMatriz, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -68,21 +71,23 @@ Partial Class Matriz
         Me.Label2.TabIndex = 2
         Me.Label2.Text = "Clave "
         '
-        'txtCalveCiudad
+        'txtCalveMatriz
         '
-        Me.txtCalveCiudad.Location = New System.Drawing.Point(70, 58)
-        Me.txtCalveCiudad.Name = "txtCalveCiudad"
-        Me.txtCalveCiudad.Size = New System.Drawing.Size(165, 20)
-        Me.txtCalveCiudad.TabIndex = 3
+        Me.txtCalveMatriz.Location = New System.Drawing.Point(70, 58)
+        Me.txtCalveMatriz.Name = "txtCalveMatriz"
+        Me.txtCalveMatriz.Size = New System.Drawing.Size(165, 20)
+        Me.txtCalveMatriz.TabIndex = 3
         '
         'Panel1
         '
+        Me.Panel1.Controls.Add(Me.lbl3)
+        Me.Panel1.Controls.Add(Me.lbl2)
+        Me.Panel1.Controls.Add(Me.lbl1)
         Me.Panel1.Controls.Add(Me.btnCiudad)
-        Me.Panel1.Controls.Add(Me.btnGuardarCiudad)
         Me.Panel1.Controls.Add(Me.cmbCiudad)
         Me.Panel1.Controls.Add(Me.Label3)
         Me.Panel1.Controls.Add(Me.Label1)
-        Me.Panel1.Controls.Add(Me.txtCalveCiudad)
+        Me.Panel1.Controls.Add(Me.txtCalveMatriz)
         Me.Panel1.Controls.Add(Me.txtNombreMatriz)
         Me.Panel1.Controls.Add(Me.Label2)
         Me.Panel1.Location = New System.Drawing.Point(12, 33)
@@ -90,50 +95,112 @@ Partial Class Matriz
         Me.Panel1.Size = New System.Drawing.Size(498, 96)
         Me.Panel1.TabIndex = 4
         '
+        'lbl3
+        '
+        Me.lbl3.AutoSize = True
+        Me.lbl3.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.lbl3.ForeColor = System.Drawing.Color.Red
+        Me.lbl3.Location = New System.Drawing.Point(239, 62)
+        Me.lbl3.Name = "lbl3"
+        Me.lbl3.Size = New System.Drawing.Size(13, 16)
+        Me.lbl3.TabIndex = 13
+        Me.lbl3.Text = "*"
+        '
+        'lbl2
+        '
+        Me.lbl2.AutoSize = True
+        Me.lbl2.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.lbl2.ForeColor = System.Drawing.Color.Red
+        Me.lbl2.Location = New System.Drawing.Point(480, 17)
+        Me.lbl2.Name = "lbl2"
+        Me.lbl2.Size = New System.Drawing.Size(13, 16)
+        Me.lbl2.TabIndex = 12
+        Me.lbl2.Text = "*"
+        '
+        'lbl1
+        '
+        Me.lbl1.AutoSize = True
+        Me.lbl1.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.lbl1.ForeColor = System.Drawing.Color.Red
+        Me.lbl1.Location = New System.Drawing.Point(237, 17)
+        Me.lbl1.Name = "lbl1"
+        Me.lbl1.Size = New System.Drawing.Size(13, 16)
+        Me.lbl1.TabIndex = 11
+        Me.lbl1.Text = "*"
+        '
         'btnCiudad
         '
-        Me.btnCiudad.Location = New System.Drawing.Point(254, 56)
+        Me.btnCiudad.Location = New System.Drawing.Point(339, 56)
         Me.btnCiudad.Name = "btnCiudad"
-        Me.btnCiudad.Size = New System.Drawing.Size(117, 23)
+        Me.btnCiudad.Size = New System.Drawing.Size(132, 23)
         Me.btnCiudad.TabIndex = 10
         Me.btnCiudad.Text = "Nueva Ciudad"
         Me.btnCiudad.UseVisualStyleBackColor = True
         '
-        'btnGuardarCiudad
-        '
-        Me.btnGuardarCiudad.Location = New System.Drawing.Point(384, 56)
-        Me.btnGuardarCiudad.Name = "btnGuardarCiudad"
-        Me.btnGuardarCiudad.Size = New System.Drawing.Size(94, 22)
-        Me.btnGuardarCiudad.TabIndex = 9
-        Me.btnGuardarCiudad.Text = "Guardar"
-        Me.btnGuardarCiudad.UseVisualStyleBackColor = True
-        '
         'cmbCiudad
         '
         Me.cmbCiudad.FormattingEnabled = True
-        Me.cmbCiudad.Location = New System.Drawing.Point(296, 14)
+        Me.cmbCiudad.Items.AddRange(New Object() {"--"})
+        Me.cmbCiudad.Location = New System.Drawing.Point(302, 14)
         Me.cmbCiudad.Name = "cmbCiudad"
-        Me.cmbCiudad.Size = New System.Drawing.Size(182, 21)
+        Me.cmbCiudad.Size = New System.Drawing.Size(176, 21)
         Me.cmbCiudad.TabIndex = 8
         '
         'Label3
         '
         Me.Label3.AutoSize = True
-        Me.Label3.Location = New System.Drawing.Point(251, 18)
+        Me.Label3.Location = New System.Drawing.Point(257, 18)
         Me.Label3.Name = "Label3"
         Me.Label3.Size = New System.Drawing.Size(40, 13)
         Me.Label3.TabIndex = 5
         Me.Label3.Text = "Ciudad"
+        '
+        'btnGuardarMatriz
+        '
+        Me.btnGuardarMatriz.Location = New System.Drawing.Point(18, 21)
+        Me.btnGuardarMatriz.Name = "btnGuardarMatriz"
+        Me.btnGuardarMatriz.Size = New System.Drawing.Size(94, 22)
+        Me.btnGuardarMatriz.TabIndex = 9
+        Me.btnGuardarMatriz.Text = "Guardar"
+        Me.btnGuardarMatriz.UseVisualStyleBackColor = True
         '
         'Panel2
         '
         Me.Panel2.Controls.Add(Me.btnRefrescar)
         Me.Panel2.Controls.Add(Me.btnActualizar)
         Me.Panel2.Controls.Add(Me.btnEliminarMatriz)
+        Me.Panel2.Controls.Add(Me.btnGuardarMatriz)
         Me.Panel2.Location = New System.Drawing.Point(378, 143)
         Me.Panel2.Name = "Panel2"
         Me.Panel2.Size = New System.Drawing.Size(130, 181)
         Me.Panel2.TabIndex = 5
+        '
+        'btnRefrescar
+        '
+        Me.btnRefrescar.Location = New System.Drawing.Point(18, 127)
+        Me.btnRefrescar.Name = "btnRefrescar"
+        Me.btnRefrescar.Size = New System.Drawing.Size(94, 23)
+        Me.btnRefrescar.TabIndex = 2
+        Me.btnRefrescar.Text = "Refrescar"
+        Me.btnRefrescar.UseVisualStyleBackColor = True
+        '
+        'btnActualizar
+        '
+        Me.btnActualizar.Location = New System.Drawing.Point(18, 56)
+        Me.btnActualizar.Name = "btnActualizar"
+        Me.btnActualizar.Size = New System.Drawing.Size(94, 23)
+        Me.btnActualizar.TabIndex = 1
+        Me.btnActualizar.Text = "Actualizar"
+        Me.btnActualizar.UseVisualStyleBackColor = True
+        '
+        'btnEliminarMatriz
+        '
+        Me.btnEliminarMatriz.Location = New System.Drawing.Point(18, 92)
+        Me.btnEliminarMatriz.Name = "btnEliminarMatriz"
+        Me.btnEliminarMatriz.Size = New System.Drawing.Size(94, 23)
+        Me.btnEliminarMatriz.TabIndex = 0
+        Me.btnEliminarMatriz.Text = "Eliminar"
+        Me.btnEliminarMatriz.UseVisualStyleBackColor = True
         '
         'tblMatriz
         '
@@ -159,38 +226,11 @@ Partial Class Matriz
         Me.Label16.AutoSize = True
         Me.Label16.Font = New System.Drawing.Font("Arial", 15.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label16.ForeColor = System.Drawing.SystemColors.ButtonShadow
-        Me.Label16.Location = New System.Drawing.Point(191, 4)
+        Me.Label16.Location = New System.Drawing.Point(239, 4)
         Me.Label16.Name = "Label16"
-        Me.Label16.Size = New System.Drawing.Size(182, 24)
+        Me.Label16.Size = New System.Drawing.Size(70, 24)
         Me.Label16.TabIndex = 34
-        Me.Label16.Text = "Acutalizar cliente"
-        '
-        'btnEliminarMatriz
-        '
-        Me.btnEliminarMatriz.Location = New System.Drawing.Point(18, 15)
-        Me.btnEliminarMatriz.Name = "btnEliminarMatriz"
-        Me.btnEliminarMatriz.Size = New System.Drawing.Size(94, 23)
-        Me.btnEliminarMatriz.TabIndex = 0
-        Me.btnEliminarMatriz.Text = "Eliminar"
-        Me.btnEliminarMatriz.UseVisualStyleBackColor = True
-        '
-        'btnActualizar
-        '
-        Me.btnActualizar.Location = New System.Drawing.Point(18, 56)
-        Me.btnActualizar.Name = "btnActualizar"
-        Me.btnActualizar.Size = New System.Drawing.Size(94, 23)
-        Me.btnActualizar.TabIndex = 1
-        Me.btnActualizar.Text = "Actualizar"
-        Me.btnActualizar.UseVisualStyleBackColor = True
-        '
-        'btnRefrescar
-        '
-        Me.btnRefrescar.Location = New System.Drawing.Point(18, 97)
-        Me.btnRefrescar.Name = "btnRefrescar"
-        Me.btnRefrescar.Size = New System.Drawing.Size(94, 23)
-        Me.btnRefrescar.TabIndex = 2
-        Me.btnRefrescar.Text = "Refrescar"
-        Me.btnRefrescar.UseVisualStyleBackColor = True
+        Me.Label16.Text = "Matriz"
         '
         'Matriz
         '
@@ -202,6 +242,7 @@ Partial Class Matriz
         Me.Controls.Add(Me.tblMatriz)
         Me.Controls.Add(Me.Panel2)
         Me.Controls.Add(Me.Panel1)
+        Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None
         Me.Name = "Matriz"
         Me.Panel1.ResumeLayout(False)
         Me.Panel1.PerformLayout()
@@ -215,10 +256,10 @@ Partial Class Matriz
     Friend WithEvents txtNombreMatriz As TextBox
     Friend WithEvents Label1 As Label
     Friend WithEvents Label2 As Label
-    Friend WithEvents txtCalveCiudad As TextBox
+    Friend WithEvents txtCalveMatriz As TextBox
     Friend WithEvents Panel1 As Panel
     Friend WithEvents btnCiudad As Button
-    Friend WithEvents btnGuardarCiudad As Button
+    Friend WithEvents btnGuardarMatriz As Button
     Friend WithEvents cmbCiudad As ComboBox
     Friend WithEvents Label3 As Label
     Friend WithEvents Panel2 As Panel
@@ -228,4 +269,7 @@ Partial Class Matriz
     Friend WithEvents btnRefrescar As Button
     Friend WithEvents btnActualizar As Button
     Friend WithEvents btnEliminarMatriz As Button
+    Friend WithEvents lbl2 As Label
+    Friend WithEvents lbl1 As Label
+    Friend WithEvents lbl3 As Label
 End Class
