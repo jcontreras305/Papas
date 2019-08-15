@@ -109,6 +109,28 @@ Public Class MetodosMatrizCiudad
         End Try
     End Sub
 
+    Public Sub actualizar_Matriz(ByVal datosMat() As String)
+        Try
+            conectar()
+            Dim cmd = New SqlCommand("sp_actualizar_Matriz")
+            cmd.CommandType = CommandType.StoredProcedure
+            cmd.Parameters.AddWithValue("@matrizN", datosMat(0)) 'los primeros 3 son los nuevos datos 
+            cmd.Parameters.AddWithValue("@claveN", datosMat(1))
+            cmd.Parameters.AddWithValue("@ciudadN", datosMat(2))
+            cmd.Parameters.AddWithValue("@matriz", datosMat(3)) ' los siguientes son los viejos
+            cmd.Parameters.AddWithValue("@clave", datosMat(4))
+            cmd.Parameters.AddWithValue("@ciudad", datosMat(5))
+            cmd.Connection = conn
+            If cmd.ExecuteNonQuery Then
+                MsgBox("Se ha eliminado " + datosMat(0))
 
+            Else
+                MsgBox("Se prudujo un error al eliminar: " + datosMat(0))
+            End If
+            desconectar()
+        Catch ex As Exception
+            MsgBox(ex.Message)
+        End Try
+    End Sub
 End Class
 

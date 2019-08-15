@@ -29,13 +29,18 @@ Public Class Matriz
         End If
     End Sub
 
-    Private Sub btnGuardarCiudad_Click(sender As Object, e As EventArgs) Handles btnGuardarCiudad.Click
-        Try
-            mtdMatCD.insertar_matriz(txtNombreMatriz.Text, txtCalveMatriz.Text, cmbCiudad.Text)
-            mtdMatCD.seleccionar_Matriz(tblMatriz)
-        Catch ex As Exception
-            MsgBox(ex.Message)
-        End Try
+    Private Sub btnGuardarMatriz_Click(sender As Object, e As EventArgs) Handles btnGuardarMatriz.Click
+        If validarCampos() Then
+            Try
+                mtdMatCD.insertar_matriz(txtNombreMatriz.Text, txtCalveMatriz.Text, cmbCiudad.Text)
+                mtdMatCD.seleccionar_Matriz(tblMatriz)
+            Catch ex As Exception
+                MsgBox(ex.Message)
+            End Try
+        Else
+            lbl1.Visible = True
+            lbl2.Visible = True
+        End If
     End Sub
 
     Private Sub txtNombreMatriz_KeyUp(sender As Object, e As KeyEventArgs) Handles txtNombreMatriz.KeyUp
@@ -75,15 +80,67 @@ Public Class Matriz
             Next
             txtNombreMatriz.Text = datosMatriz(0)
             txtCalveMatriz.Text = datosMatriz(1)
-            'cmbCiudad.SelectedValue = datosMatriz(2)
-            cont = 0
-            'For Each ciu In cmbCiudad.
-            '    If ciu.ToString = datosMatriz(2) Then
-            '        cmbCiudad.SelectedIndex = cont
-            '    End If
-            cont += 1
-            Next
-            'cmbCiudad.SelectedText = datosMatriz(2)
+            cmbCiudad.SelectedIndex = cmbCiudad.FindString(datosMatriz(2))
+        Catch ex As Exception
+            MsgBox(ex.Message)
+        End Try
+    End Sub
+
+    Private Sub btnActualizar_Click(sender As Object, e As EventArgs) Handles btnActualizar.Click
+        If validarCampos() Then
+            Try
+                Dim datosActMat(7) As String
+                Dim cont As Integer = 0
+                For Each cell As DataGridViewCell In tblMatriz.CurrentRow.Cells
+                    datosActMat(cont) = cell.Value.ToString
+                    cont += 1
+                Next
+                datosActMat(3) = txtNombreMatriz.Text
+                datosActMat(4) = txtCalveMatriz.Text
+                datosActMat(5) = cmbCiudad.SelectedValue.ToString
+                mtdMatCD.actualizar_Matriz(datosActMat)
+                mtdMatCD.seleccionar_Matriz(tblMatriz)
+            Catch ex As Exception
+                MsgBox(ex.Message)
+            End Try
+        Else
+            lbl1.Visible = True
+            lbl2.Visible = True
+        End If
+    End Sub
+
+    Private Function validarCampos() As Boolean
+        Dim flag As Boolean = False
+        Try
+
+            If txtNombreMatriz.Text.Length <> 0 And Not txtNombreMatriz.Text.Trim = String.Empty Then
+                flag = True
+                If txtCalveMatriz.Text.Length <> 0 And Not txtCalveMatriz.Text.Trim = String.Empty Then
+                    flag = True
+                    If cmbCiudad.Items.Count > 0 And cmbCiudad.Text <> Nothing Then
+                        flag = True
+                    Else
+                        flag = False
+                    End If
+                Else
+                    flag = False
+                End If
+            Else
+                flag = False
+            End If
+
+
+        Catch ex As Exception
+            flag = False
+            MsgBox("Estos Campos son obligatorios")
+        End Try
+        Return flag
+    End Function
+
+    Private Sub btnRefrescar_Click(sender As Object, e As EventArgs) Handles btnRefrescar.Click
+        Try
+            mtdMatCD.seleccionar_Matriz(tblMatriz)
+            mtdMatCD.seleccionar_Ciudad(cmbCiudad)
         Catch ex As Exception
             MsgBox(ex.Message)
         End Try
