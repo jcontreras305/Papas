@@ -106,6 +106,7 @@ Public Class Matriz
         Else
             lbl1.Visible = True
             lbl2.Visible = True
+            lbl3.Visible = True
         End If
     End Sub
 

@@ -27,6 +27,7 @@ Partial Class Matriz
         Me.Label2 = New System.Windows.Forms.Label()
         Me.txtCalveMatriz = New System.Windows.Forms.TextBox()
         Me.Panel1 = New System.Windows.Forms.Panel()
+        Me.lbl3 = New System.Windows.Forms.Label()
         Me.lbl2 = New System.Windows.Forms.Label()
         Me.lbl1 = New System.Windows.Forms.Label()
         Me.btnCiudad = New System.Windows.Forms.Button()
@@ -40,7 +41,6 @@ Partial Class Matriz
         Me.tblMatriz = New System.Windows.Forms.DataGridView()
         Me.Label9 = New System.Windows.Forms.Label()
         Me.Label16 = New System.Windows.Forms.Label()
-        Me.Label4 = New System.Windows.Forms.Label()
         Me.Panel1.SuspendLayout()
         Me.Panel2.SuspendLayout()
         CType(Me.tblMatriz, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -80,7 +80,7 @@ Partial Class Matriz
         '
         'Panel1
         '
-        Me.Panel1.Controls.Add(Me.Label4)
+        Me.Panel1.Controls.Add(Me.lbl3)
         Me.Panel1.Controls.Add(Me.lbl2)
         Me.Panel1.Controls.Add(Me.lbl1)
         Me.Panel1.Controls.Add(Me.btnCiudad)
@@ -94,6 +94,17 @@ Partial Class Matriz
         Me.Panel1.Name = "Panel1"
         Me.Panel1.Size = New System.Drawing.Size(498, 96)
         Me.Panel1.TabIndex = 4
+        '
+        'lbl3
+        '
+        Me.lbl3.AutoSize = True
+        Me.lbl3.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.lbl3.ForeColor = System.Drawing.Color.Red
+        Me.lbl3.Location = New System.Drawing.Point(239, 62)
+        Me.lbl3.Name = "lbl3"
+        Me.lbl3.Size = New System.Drawing.Size(13, 16)
+        Me.lbl3.TabIndex = 13
+        Me.lbl3.Text = "*"
         '
         'lbl2
         '
@@ -221,17 +232,6 @@ Partial Class Matriz
         Me.Label16.TabIndex = 34
         Me.Label16.Text = "Matriz"
         '
-        'Label4
-        '
-        Me.Label4.AutoSize = True
-        Me.Label4.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label4.ForeColor = System.Drawing.Color.Red
-        Me.Label4.Location = New System.Drawing.Point(239, 62)
-        Me.Label4.Name = "Label4"
-        Me.Label4.Size = New System.Drawing.Size(13, 16)
-        Me.Label4.TabIndex = 13
-        Me.Label4.Text = "*"
-        '
         'Matriz
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
@@ -271,5 +271,5 @@ Partial Class Matriz
     Friend WithEvents btnEliminarMatriz As Button
     Friend WithEvents lbl2 As Label
     Friend WithEvents lbl1 As Label
-    Friend WithEvents Label4 As Label
+    Friend WithEvents lbl3 As Label
 End Class
