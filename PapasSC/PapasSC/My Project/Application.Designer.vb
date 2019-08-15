@@ -32,7 +32,7 @@ Namespace My
         
         <Global.System.Diagnostics.DebuggerStepThroughAttribute()>  _
         Protected Overrides Sub OnCreateMainForm()
-            Me.MainForm = Global.PapasSC.Logeo
+            Me.MainForm = Global.PapasSC.Registrar_Proveedor
         End Sub
     End Class
 End Namespace
