@@ -10,8 +10,4 @@
     Private Sub Button1_Click(sender As Object, e As EventArgs) Handles Button1.Click
         Consulta_Producto.Show()
     End Sub
-
-    Private Sub Button4_Click(sender As Object, e As EventArgs) Handles Button4.Click
-        Lista_de_Precios.Show()
-    End Sub
 End Class

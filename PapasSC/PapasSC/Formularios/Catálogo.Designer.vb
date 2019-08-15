@@ -124,7 +124,6 @@ Partial Class Catálogo
         Me.Controls.Add(Me.Button1)
         Me.Controls.Add(Me.Label1)
         Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None
-        Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
         Me.Name = "Catálogo"
         Me.Text = "Catálogo"
         Me.ResumeLayout(False)

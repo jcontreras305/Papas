@@ -10,7 +10,7 @@ Public Class MetodosProducto
         Try
             adaptador = New SqlDataAdapter(
     "select idProducto as Clave_Producto, version as Version,
-    estado as Estatus, clave as Clave, precio as Precio
+    estado as Estatus, clave as Clave
     from producto where estado ='A'", cn.conn)
             dt = New DataTable
             adaptador.Fill(dt)
@@ -25,7 +25,7 @@ Public Class MetodosProducto
         Try
             adaptador = New SqlDataAdapter(
     "select idProducto as Clave_Producto, version as Version,
-    estado as Estatus, clave as Clave, precio as Precio
+    estado as Estatus, clave as Clave
     from producto pl where pl.estado ='A' and pl.version like '" + filtro + "%'", cn.conn)
             dt = New DataTable
             adaptador.Fill(dt)
@@ -40,7 +40,7 @@ Public Class MetodosProducto
         Try
             adaptador = New SqlDataAdapter(
     "select idProducto as Clave_Producto, version as Version,
-    estado as Estatus, clave as Clave, precio as Precio
+    estado as Estatus, clave as Clave
     from producto pl where  pl.estado like '" + filtro + "%'", cn.conn)
             dt = New DataTable
             adaptador.Fill(dt)
@@ -55,7 +55,7 @@ Public Class MetodosProducto
         Try
             adaptador = New SqlDataAdapter(
     "select idProducto as Clave_Producto, version as Version,
-    estado as Estatus, clave as Clave, precio as Precio
+    estado as Estatus, clave as Clave
     from producto pl where pl.estado ='A' and pl.idProducto like '" + filtro + "%'", cn.conn)
             dt = New DataTable
             adaptador.Fill(dt)
@@ -69,7 +69,7 @@ Public Class MetodosProducto
         Try
             adaptador = New SqlDataAdapter(
     "select idProducto as Clave_Producto, version as Version,
-    estado as Estatus, clave as Clave, precio as Precio
+    estado as Estatus, clave as Clave
     from producto pl where pl.estado ='A' and pl.clave like '" + filtro + "%'", cn.conn)
             dt = New DataTable
             adaptador.Fill(dt)
@@ -90,7 +90,7 @@ Public Class MetodosProducto
         End Try
     End Sub
 
-    Public Sub insertarProducto(ByVal Version As String, ByVal clave As String, ByVal precio As String)
+    Public Sub insertarProducto(ByVal Version As String, ByVal clave As String)
         Try
             MsgBox("pus si entro carnal")
             cn.conectar()
@@ -98,14 +98,12 @@ Public Class MetodosProducto
            ([idProducto]
            ,[version]
            ,[estado]
-           ,[clave]
-           ,[precio])
+           ,[clave])
      VALUES
            (newid()
            ,'" + Version + "'
            ,'A'
-           ,'" + clave + "'
-           ," + precio + ")"
+           ,'" + clave + "')"
             Dim comando = New SqlCommand(cadena, cn.conn)
             comando.ExecuteNonQuery()
             MsgBox("pus si salio carnal")
@@ -113,14 +111,13 @@ Public Class MetodosProducto
             MessageBox.Show("No se inserto debido a: " + ex.ToString)
         End Try
     End Sub
-    Public Sub updateProducto(ByVal id As String, ByVal Version As String, ByVal clave As String, ByVal precio As String)
+    Public Sub updateProducto(ByVal id As String, ByVal Version As String, ByVal clave As String)
         Try
             MsgBox("pus si entro carnal")
             cn.conectar()
             Dim cadena As String = "UPDATE [dbo].[producto]
       SET [version] = '" + Version + "'
       ,[clave] = '" + clave + "'
-      ,[precio] = '" + precio + "'
       WHERE [idProducto] = '" + id + "'"
             Dim comando = New SqlCommand(cadena, cn.conn)
             comando.ExecuteNonQuery()
@@ -129,38 +126,4 @@ Public Class MetodosProducto
             MessageBox.Show("No se inserto debido a: " + ex.ToString)
         End Try
     End Sub
-
-
-    Public Sub llenarDatagridviewlistaprecio(ByVal dgv As DataGridView)
-        cn.conectar()
-        Try
-            adaptador = New SqlDataAdapter(
-    "select idProducto as Clave_Producto, version as Version,
-    estado as Estatus, clave as Clave, precio as Precio
-    from producto where estado ='A'", cn.conn)
-            dt = New DataTable
-            adaptador.Fill(dt)
-            dgv.DataSource = dt
-        Catch ex As Exception
-            MessageBox.Show("No se lleno el Datagridview debido a: " + ex.ToString)
-        End Try
-    End Sub
-
-
-    Public Sub updateprecio(ByVal id As String, ByVal precio As String)
-        Try
-            MsgBox("pus si entro carnal")
-            cn.conectar()
-            Dim cadena As String = "UPDATE [dbo].[producto]
-      SET 
-      [precio] = '" + precio + "'
-      WHERE [idProducto] = '" + id + "'"
-            Dim comando = New SqlCommand(cadena, cn.conn)
-            comando.ExecuteNonQuery()
-            MsgBox("pus si salio carnal")
-        Catch ex As Exception
-            MessageBox.Show("No se inserto debido a: " + ex.ToString)
-        End Try
-    End Sub
-
 End Class

@@ -82,9 +82,6 @@ Public Class Consulta_Cliente
         Catch ex As Exception
             MsgBox(ex.Message)
         End Try
-        If Convert.ToString(TablaCLientes.CurrentRow.Cells(5).Value) = "Fisica" Then
-            Actualizar_Cliente.txtNombre.Text = Convert.ToString(TablaCLientes.CurrentRow.Cells(1).Value)
-        End If
         Actualizar_Cliente.Show()
     End Sub
 

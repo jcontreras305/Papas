@@ -73,12 +73,6 @@
     <Import Include="System.Threading.Tasks" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Formularios\Bodega.Designer.vb">
-      <DependentUpon>Bodega.vb</DependentUpon>
-    </Compile>
-    <Compile Include="Formularios\Bodega.vb">
-      <SubType>Form</SubType>
-    </Compile>
     <Compile Include="Formularios\Consulta_Cliente.Designer.vb">
       <DependentUpon>Consulta_Cliente.vb</DependentUpon>
     </Compile>
@@ -121,16 +115,10 @@
     <Compile Include="Formularios\Invertario.vb">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Formularios\Lista_de_Precios.Designer.vb">
-      <DependentUpon>Lista_de_Precios.vb</DependentUpon>
+    <Compile Include="Formularios\Matriz.Designer.vb">
+      <DependentUpon>Matriz.vb</DependentUpon>
     </Compile>
-    <Compile Include="Formularios\Lista_de_Precios.vb">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Formularios\Reclasificacion.Designer.vb">
-      <DependentUpon>Reclasificacion.vb</DependentUpon>
-    </Compile>
-    <Compile Include="Formularios\Reclasificacion.vb">
+    <Compile Include="Formularios\Matriz.vb">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Formularios\Registro_Clientes.Designer.vb">
@@ -176,10 +164,10 @@
     <Compile Include="Formularios\MenuInventario.vb">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Formularios\MenuNominas.Designer.vb">
-      <DependentUpon>MenuNominas.vb</DependentUpon>
+    <Compile Include="Formularios\MenuNomina.Designer.vb">
+      <DependentUpon>MenuNomina.vb</DependentUpon>
     </Compile>
-    <Compile Include="Formularios\MenuNominas.vb">
+    <Compile Include="Formularios\MenuNomina.vb">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Formularios\MenuReportes.Designer.vb">
@@ -218,7 +206,9 @@
     <Compile Include="Metodos\MetodosClientes.vb" />
     <Compile Include="Metodos\MetodosEmpleado.vb" />
     <Compile Include="Metodos\MetodosInventario.vb" />
+    <Compile Include="Metodos\MetodosMatrizCiudad.vb" />
     <Compile Include="Metodos\MetodosProducto.vb" />
+    <Compile Include="Metodos\MetodosProductos.vb" />
     <Compile Include="Metodos\MetodosVenta.vb" />
     <Compile Include="My Project\AssemblyInfo.vb" />
     <Compile Include="My Project\Application.Designer.vb">
@@ -270,8 +260,8 @@
     <EmbeddedResource Include="Formularios\Invertario.resx">
       <DependentUpon>Invertario.vb</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Formularios\Lista_de_Precios.resx">
-      <DependentUpon>Lista_de_Precios.vb</DependentUpon>
+    <EmbeddedResource Include="Formularios\Matriz.resx">
+      <DependentUpon>Matriz.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Formularios\Registro_Clientes.resx">
       <DependentUpon>Registro_Clientes.vb</DependentUpon>
@@ -294,8 +284,8 @@
     <EmbeddedResource Include="Formularios\MenuInventario.resx">
       <DependentUpon>MenuInventario.vb</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Formularios\MenuNominas.resx">
-      <DependentUpon>MenuNominas.vb</DependentUpon>
+    <EmbeddedResource Include="Formularios\MenuNomina.resx">
+      <DependentUpon>MenuNomina.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Formularios\MenuReportes.resx">
       <DependentUpon>MenuReportes.vb</DependentUpon>
@@ -342,22 +332,49 @@
     <Content Include="Documentos\inserciones.sql" />
     <Content Include="Documentos\PS_ACTUAL1.0.sql" />
     <Content Include="Imagenes\ACTUALIZAR.png" />
+    <Content Include="Imagenes\ALMACEN.jpg" />
+    <Content Include="Imagenes\BODEGAS.jpg" />
     <Content Include="Imagenes\BORRAR.png" />
+    <Content Include="Imagenes\CAJA.jpg" />
+    <Content Include="Imagenes\CAJAS1.jpg" />
     <Content Include="Imagenes\CATALOGO.jpg" />
+    <Content Include="Imagenes\Clientes2.jpg" />
+    <Content Include="Imagenes\CONFIG. BD.jpg" />
     <Content Include="Imagenes\CONFIGURACIÓN.jpg" />
+    <Content Include="Imagenes\CONSULTA EMPLEADOS.jpg" />
     <Content Include="Imagenes\CONTROL.jpg" />
+    <Content Include="Imagenes\Descuentos.jpg" />
     <Content Include="Imagenes\EMPLEADOS.jpg" />
+    <Content Include="Imagenes\EMPLEADOS2.jpg" />
+    <Content Include="Imagenes\EXISTENCIAS.jpg" />
+    <Content Include="Imagenes\GENERAR NOMINA.jpg" />
     <Content Include="Imagenes\GUARDAR.png" />
+    <Content Include="Imagenes\IMPRESORAS.jpg" />
     <Content Include="Imagenes\INICIO.png" />
     <Content Include="Imagenes\INVENTARIO.jpg" />
+    <Content Include="Imagenes\LICENCIAS.jpg" />
+    <Content Include="Imagenes\Lista de Precios.jpg" />
     <Content Include="Imagenes\LOGIN.jpg" />
+    <Content Include="Imagenes\MATRIZ.jpg" />
     <Content Include="Imagenes\NUEVA VENTA.jpg" />
+    <Content Include="Imagenes\NUEVA VENTA1.jpg" />
     <Content Include="Imagenes\NUEVO.png" />
     <Content Include="Imagenes\PapasSantaCruz.jpg" />
     <Content Include="Imagenes\PapasSantaCruz1 - copia.ico" />
     <Content Include="Imagenes\PapasSantaCruz1.jpg" />
+    <Content Include="Imagenes\PERFILES.jpg" />
+    <Content Include="Imagenes\PRECIOSxDEFECTO.jpg" />
+    <Content Include="Imagenes\PRODUCTOS.jpg" />
+    <Content Include="Imagenes\Proveedores.jpg" />
+    <Content Include="Imagenes\RECLASIFICACIÓN.jpg" />
+    <Content Include="Imagenes\REPORTE DE VENTA.jpg" />
     <Content Include="Imagenes\REPORTES.jpg" />
+    <Content Include="Imagenes\TICKETS.jpg" />
+    <Content Include="Imagenes\Transporte.jpg" />
+    <Content Include="Imagenes\UNIDADES.jpg" />
+    <Content Include="Imagenes\USUARIOS.jpg" />
     <Content Include="Imagenes\UTILERIAS.jpg" />
+    <Content Include="Imagenes\VALORES X REFERENCIA.jpg" />
   </ItemGroup>
   <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.VisualBasic.targets" />

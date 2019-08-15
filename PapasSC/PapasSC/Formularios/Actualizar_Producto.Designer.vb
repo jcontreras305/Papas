@@ -22,16 +22,12 @@ Partial Class Actualizar_Producto
     'No lo modifique con el editor de código.
     <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
-        Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(Actualizar_Producto))
         Me.Button2 = New System.Windows.Forms.Button()
         Me.Button1 = New System.Windows.Forms.Button()
         Me.txtversion = New System.Windows.Forms.TextBox()
         Me.Label1 = New System.Windows.Forms.Label()
         Me.Label3 = New System.Windows.Forms.Label()
         Me.txtClave = New System.Windows.Forms.TextBox()
-        Me.Label4 = New System.Windows.Forms.Label()
-        Me.npd = New System.Windows.Forms.NumericUpDown()
-        CType(Me.npd, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'Button2
@@ -84,40 +80,19 @@ Partial Class Actualizar_Producto
         Me.txtClave.Size = New System.Drawing.Size(68, 20)
         Me.txtClave.TabIndex = 8
         '
-        'Label4
-        '
-        Me.Label4.AutoSize = True
-        Me.Label4.Location = New System.Drawing.Point(27, 73)
-        Me.Label4.Name = "Label4"
-        Me.Label4.Size = New System.Drawing.Size(37, 13)
-        Me.Label4.TabIndex = 11
-        Me.Label4.Text = "Precio"
-        '
-        'npd
-        '
-        Me.npd.Location = New System.Drawing.Point(118, 66)
-        Me.npd.Name = "npd"
-        Me.npd.Size = New System.Drawing.Size(120, 20)
-        Me.npd.TabIndex = 10
-        Me.npd.Value = New Decimal(New Integer() {50, 0, 0, 65536})
-        '
         'Actualizar_Producto
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(439, 101)
-        Me.Controls.Add(Me.Label4)
-        Me.Controls.Add(Me.npd)
         Me.Controls.Add(Me.Label3)
         Me.Controls.Add(Me.txtClave)
         Me.Controls.Add(Me.Button2)
         Me.Controls.Add(Me.Button1)
         Me.Controls.Add(Me.txtversion)
         Me.Controls.Add(Me.Label1)
-        Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
         Me.Name = "Actualizar_Producto"
         Me.Text = "Actualizar_Producto"
-        CType(Me.npd, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
@@ -129,6 +104,4 @@ Partial Class Actualizar_Producto
     Friend WithEvents Label1 As Label
     Friend WithEvents Label3 As Label
     Friend WithEvents txtClave As TextBox
-    Friend WithEvents Label4 As Label
-    Friend WithEvents npd As NumericUpDown
 End Class

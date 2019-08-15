@@ -30,9 +30,6 @@ Partial Class Registro_productos
         Me.ComboBox1 = New System.Windows.Forms.ComboBox()
         Me.txtClave = New System.Windows.Forms.TextBox()
         Me.Label3 = New System.Windows.Forms.Label()
-        Me.npd = New System.Windows.Forms.NumericUpDown()
-        Me.Label4 = New System.Windows.Forms.Label()
-        CType(Me.npd, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'Label1
@@ -53,7 +50,7 @@ Partial Class Registro_productos
         '
         'Button1
         '
-        Me.Button1.Location = New System.Drawing.Point(339, 51)
+        Me.Button1.Location = New System.Drawing.Point(291, 55)
         Me.Button1.Name = "Button1"
         Me.Button1.Size = New System.Drawing.Size(80, 25)
         Me.Button1.TabIndex = 2
@@ -62,7 +59,7 @@ Partial Class Registro_productos
         '
         'Button2
         '
-        Me.Button2.Location = New System.Drawing.Point(252, 51)
+        Me.Button2.Location = New System.Drawing.Point(204, 55)
         Me.Button2.Name = "Button2"
         Me.Button2.Size = New System.Drawing.Size(81, 25)
         Me.Button2.TabIndex = 3
@@ -103,30 +100,11 @@ Partial Class Registro_productos
         Me.Label3.TabIndex = 5
         Me.Label3.Text = "Clave"
         '
-        'npd
-        '
-        Me.npd.Location = New System.Drawing.Point(103, 50)
-        Me.npd.Name = "npd"
-        Me.npd.Size = New System.Drawing.Size(120, 20)
-        Me.npd.TabIndex = 6
-        Me.npd.Value = New Decimal(New Integer() {50, 0, 0, 65536})
-        '
-        'Label4
-        '
-        Me.Label4.AutoSize = True
-        Me.Label4.Location = New System.Drawing.Point(12, 57)
-        Me.Label4.Name = "Label4"
-        Me.Label4.Size = New System.Drawing.Size(37, 13)
-        Me.Label4.TabIndex = 7
-        Me.Label4.Text = "Precio"
-        '
         'Registro_productos
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(445, 95)
-        Me.Controls.Add(Me.Label4)
-        Me.Controls.Add(Me.npd)
+        Me.ClientSize = New System.Drawing.Size(407, 96)
         Me.Controls.Add(Me.Label3)
         Me.Controls.Add(Me.txtClave)
         Me.Controls.Add(Me.Button2)
@@ -135,7 +113,6 @@ Partial Class Registro_productos
         Me.Controls.Add(Me.Label1)
         Me.Name = "Registro_productos"
         Me.Text = "Registro_productos"
-        CType(Me.npd, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
@@ -149,6 +126,4 @@ Partial Class Registro_productos
     Friend WithEvents ComboBox1 As ComboBox
     Friend WithEvents txtClave As TextBox
     Friend WithEvents Label3 As Label
-    Friend WithEvents npd As NumericUpDown
-    Friend WithEvents Label4 As Label
 End Class
