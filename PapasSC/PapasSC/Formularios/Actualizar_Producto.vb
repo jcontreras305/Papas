@@ -10,6 +10,6 @@
 
     Private Sub Button1_Click(sender As Object, e As EventArgs) Handles Button1.Click
         Dim MTDPR As New MetodosProducto
-        MTDPR.updateProducto(id, txtversion.Text, txtClave.Text)
+        MTDPR.updateProducto(id, txtversion.Text, txtClave.Text, npd.Value)
     End Sub
 End Class

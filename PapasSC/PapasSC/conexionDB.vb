@@ -7,8 +7,6 @@ Public Class conexionDB
     Public Function conectar() 'metodo que hace la conexion a la base de datos
         Try
             conn = New SqlConnection("data source=localhost; initial catalog=PapaSC; integrated security=true")
-            'conn = New SqlConnection("data source=localhost; initial catalog=PapaSC; integrated security=true") 'aqui cambia el nombre de su servidor Larigza
-            'conn = New SqlConnection("data source=localhost; initial catalog=PapaSC; integrated security=true") 'aqui cambia el nombre de su servidor Chuy
             conn.Open() 'se abre la conexion
             If conn.State Then 'comprueba si la conexion esta habilitada 
 

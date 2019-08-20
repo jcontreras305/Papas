@@ -24,10 +24,10 @@ Partial Class Catálogo
     Private Sub InitializeComponent()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(Catálogo))
         Me.Label1 = New System.Windows.Forms.Label()
-        Me.Button1 = New System.Windows.Forms.Button()
-        Me.Button2 = New System.Windows.Forms.Button()
-        Me.Button3 = New System.Windows.Forms.Button()
-        Me.Button4 = New System.Windows.Forms.Button()
+        Me.productos = New System.Windows.Forms.Button()
+        Me.clientes = New System.Windows.Forms.Button()
+        Me.descuentos = New System.Windows.Forms.Button()
+        Me.listadeprecios = New System.Windows.Forms.Button()
         Me.Button5 = New System.Windows.Forms.Button()
         Me.Label2 = New System.Windows.Forms.Label()
         Me.SuspendLayout()
@@ -43,50 +43,51 @@ Partial Class Catálogo
         Me.Label1.TabIndex = 0
         Me.Label1.Text = "Catálogo"
         '
-        'Button1
+        'productos
         '
-        Me.Button1.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(CType(CType(0, Byte), Integer), CType(CType(0, Byte), Integer), CType(CType(0, Byte), Integer), CType(CType(0, Byte), Integer))
-        Me.Button1.FlatAppearance.BorderSize = 0
-        Me.Button1.Image = CType(resources.GetObject("Button1.Image"), System.Drawing.Image)
-        Me.Button1.Location = New System.Drawing.Point(113, 123)
-        Me.Button1.Name = "Button1"
-        Me.Button1.Size = New System.Drawing.Size(169, 169)
-        Me.Button1.TabIndex = 1
-        Me.Button1.UseVisualStyleBackColor = True
+        Me.productos.AccessibleRole = System.Windows.Forms.AccessibleRole.Border
+        Me.productos.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(CType(CType(0, Byte), Integer), CType(CType(0, Byte), Integer), CType(CType(0, Byte), Integer), CType(CType(0, Byte), Integer))
+        Me.productos.FlatAppearance.BorderSize = 0
+        Me.productos.Image = CType(resources.GetObject("productos.Image"), System.Drawing.Image)
+        Me.productos.Location = New System.Drawing.Point(113, 123)
+        Me.productos.Name = "productos"
+        Me.productos.Size = New System.Drawing.Size(169, 169)
+        Me.productos.TabIndex = 1
+        Me.productos.UseVisualStyleBackColor = True
         '
-        'Button2
+        'clientes
         '
-        Me.Button2.BackColor = System.Drawing.SystemColors.ControlLightLight
-        Me.Button2.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(CType(CType(0, Byte), Integer), CType(CType(0, Byte), Integer), CType(CType(0, Byte), Integer), CType(CType(0, Byte), Integer))
-        Me.Button2.FlatAppearance.BorderSize = 0
-        Me.Button2.Image = CType(resources.GetObject("Button2.Image"), System.Drawing.Image)
-        Me.Button2.Location = New System.Drawing.Point(396, 123)
-        Me.Button2.Name = "Button2"
-        Me.Button2.Size = New System.Drawing.Size(169, 169)
-        Me.Button2.TabIndex = 2
-        Me.Button2.UseVisualStyleBackColor = False
+        Me.clientes.BackColor = System.Drawing.SystemColors.ControlLightLight
+        Me.clientes.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(CType(CType(0, Byte), Integer), CType(CType(0, Byte), Integer), CType(CType(0, Byte), Integer), CType(CType(0, Byte), Integer))
+        Me.clientes.FlatAppearance.BorderSize = 0
+        Me.clientes.Image = CType(resources.GetObject("clientes.Image"), System.Drawing.Image)
+        Me.clientes.Location = New System.Drawing.Point(396, 123)
+        Me.clientes.Name = "clientes"
+        Me.clientes.Size = New System.Drawing.Size(169, 169)
+        Me.clientes.TabIndex = 2
+        Me.clientes.UseVisualStyleBackColor = False
         '
-        'Button3
+        'descuentos
         '
-        Me.Button3.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(CType(CType(0, Byte), Integer), CType(CType(0, Byte), Integer), CType(CType(0, Byte), Integer), CType(CType(0, Byte), Integer))
-        Me.Button3.FlatAppearance.BorderSize = 0
-        Me.Button3.Image = CType(resources.GetObject("Button3.Image"), System.Drawing.Image)
-        Me.Button3.Location = New System.Drawing.Point(247, 416)
-        Me.Button3.Name = "Button3"
-        Me.Button3.Size = New System.Drawing.Size(169, 169)
-        Me.Button3.TabIndex = 3
-        Me.Button3.UseVisualStyleBackColor = True
+        Me.descuentos.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(CType(CType(0, Byte), Integer), CType(CType(0, Byte), Integer), CType(CType(0, Byte), Integer), CType(CType(0, Byte), Integer))
+        Me.descuentos.FlatAppearance.BorderSize = 0
+        Me.descuentos.Image = CType(resources.GetObject("descuentos.Image"), System.Drawing.Image)
+        Me.descuentos.Location = New System.Drawing.Point(247, 416)
+        Me.descuentos.Name = "descuentos"
+        Me.descuentos.Size = New System.Drawing.Size(169, 169)
+        Me.descuentos.TabIndex = 3
+        Me.descuentos.UseVisualStyleBackColor = True
         '
-        'Button4
+        'listadeprecios
         '
-        Me.Button4.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(CType(CType(0, Byte), Integer), CType(CType(0, Byte), Integer), CType(CType(0, Byte), Integer), CType(CType(0, Byte), Integer))
-        Me.Button4.FlatAppearance.BorderSize = 0
-        Me.Button4.Image = CType(resources.GetObject("Button4.Image"), System.Drawing.Image)
-        Me.Button4.Location = New System.Drawing.Point(666, 123)
-        Me.Button4.Name = "Button4"
-        Me.Button4.Size = New System.Drawing.Size(169, 169)
-        Me.Button4.TabIndex = 4
-        Me.Button4.UseVisualStyleBackColor = True
+        Me.listadeprecios.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(CType(CType(0, Byte), Integer), CType(CType(0, Byte), Integer), CType(CType(0, Byte), Integer), CType(CType(0, Byte), Integer))
+        Me.listadeprecios.FlatAppearance.BorderSize = 0
+        Me.listadeprecios.Image = CType(resources.GetObject("listadeprecios.Image"), System.Drawing.Image)
+        Me.listadeprecios.Location = New System.Drawing.Point(666, 123)
+        Me.listadeprecios.Name = "listadeprecios"
+        Me.listadeprecios.Size = New System.Drawing.Size(169, 169)
+        Me.listadeprecios.TabIndex = 4
+        Me.listadeprecios.UseVisualStyleBackColor = True
         '
         'Button5
         '
@@ -118,12 +119,13 @@ Partial Class Catálogo
         Me.ClientSize = New System.Drawing.Size(875, 465)
         Me.Controls.Add(Me.Label2)
         Me.Controls.Add(Me.Button5)
-        Me.Controls.Add(Me.Button4)
-        Me.Controls.Add(Me.Button3)
-        Me.Controls.Add(Me.Button2)
-        Me.Controls.Add(Me.Button1)
+        Me.Controls.Add(Me.listadeprecios)
+        Me.Controls.Add(Me.descuentos)
+        Me.Controls.Add(Me.clientes)
+        Me.Controls.Add(Me.productos)
         Me.Controls.Add(Me.Label1)
         Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None
+        Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
         Me.Name = "Catálogo"
         Me.Text = "Catálogo"
         Me.ResumeLayout(False)
@@ -132,10 +134,10 @@ Partial Class Catálogo
     End Sub
 
     Friend WithEvents Label1 As Label
-    Friend WithEvents Button1 As Button
-    Friend WithEvents Button2 As Button
-    Friend WithEvents Button3 As Button
-    Friend WithEvents Button4 As Button
+    Friend WithEvents productos As Button
+    Friend WithEvents clientes As Button
+    Friend WithEvents descuentos As Button
+    Friend WithEvents listadeprecios As Button
     Friend WithEvents Button5 As Button
     Friend WithEvents Label2 As Label
 End Class
