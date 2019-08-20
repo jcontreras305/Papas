@@ -140,6 +140,12 @@
     <Compile Include="Formularios\GenerarNomina.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="Formularios\Impresoras.Designer.vb">
+      <DependentUpon>Impresoras.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Formularios\Impresoras.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="Formularios\Invertario.Designer.vb">
       <DependentUpon>Invertario.vb</DependentUpon>
     </Compile>
@@ -310,6 +316,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Formularios\GenerarNomina.resx">
       <DependentUpon>GenerarNomina.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formularios\Impresoras.resx">
+      <DependentUpon>Impresoras.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Formularios\Invertario.resx">
       <DependentUpon>Invertario.vb</DependentUpon>
