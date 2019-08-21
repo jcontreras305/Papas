@@ -12,6 +12,6 @@
     End Sub
 
     Private Sub Button4_Click(sender As Object, e As EventArgs) Handles listadeprecios.Click
-        Lista_de_Precios.Show()
+        'Lista_de_Precios.Show()
     End Sub
 End Class

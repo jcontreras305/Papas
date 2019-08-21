@@ -26,9 +26,6 @@ Partial Class Perfiles
         Me.lblCerrar = New System.Windows.Forms.Label()
         Me.Label16 = New System.Windows.Forms.Label()
         Me.pnlDatosUsuario = New System.Windows.Forms.Panel()
-        Me.lbl3 = New System.Windows.Forms.Label()
-        Me.lbl2 = New System.Windows.Forms.Label()
-        Me.lbl1 = New System.Windows.Forms.Label()
         Me.chbActivo = New System.Windows.Forms.CheckBox()
         Me.cmbEmpleado = New System.Windows.Forms.ComboBox()
         Me.txtContasenia = New System.Windows.Forms.TextBox()
@@ -38,7 +35,6 @@ Partial Class Perfiles
         Me.Label4 = New System.Windows.Forms.Label()
         Me.Label3 = New System.Windows.Forms.Label()
         Me.Label2 = New System.Windows.Forms.Label()
-        Me.btnCargarDatos = New System.Windows.Forms.Button()
         Me.cmbNombreUsuario = New System.Windows.Forms.ComboBox()
         Me.Label1 = New System.Windows.Forms.Label()
         Me.tblUsuarios = New System.Windows.Forms.DataGridView()
@@ -48,6 +44,7 @@ Partial Class Perfiles
         Me.btnAceptar = New System.Windows.Forms.Button()
         Me.btnCancelar = New System.Windows.Forms.Button()
         Me.errorIcono = New System.Windows.Forms.ErrorProvider(Me.components)
+        Me.btnCargarDatos = New System.Windows.Forms.Button()
         Me.pnlDatosUsuario.SuspendLayout()
         CType(Me.tblUsuarios, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.errorIcono, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -77,9 +74,7 @@ Partial Class Perfiles
         '
         'pnlDatosUsuario
         '
-        Me.pnlDatosUsuario.Controls.Add(Me.lbl3)
-        Me.pnlDatosUsuario.Controls.Add(Me.lbl2)
-        Me.pnlDatosUsuario.Controls.Add(Me.lbl1)
+        Me.pnlDatosUsuario.Controls.Add(Me.btnCargarDatos)
         Me.pnlDatosUsuario.Controls.Add(Me.chbActivo)
         Me.pnlDatosUsuario.Controls.Add(Me.cmbEmpleado)
         Me.pnlDatosUsuario.Controls.Add(Me.txtContasenia)
@@ -89,7 +84,6 @@ Partial Class Perfiles
         Me.pnlDatosUsuario.Controls.Add(Me.Label4)
         Me.pnlDatosUsuario.Controls.Add(Me.Label3)
         Me.pnlDatosUsuario.Controls.Add(Me.Label2)
-        Me.pnlDatosUsuario.Controls.Add(Me.btnCargarDatos)
         Me.pnlDatosUsuario.Controls.Add(Me.cmbNombreUsuario)
         Me.pnlDatosUsuario.Controls.Add(Me.Label1)
         Me.pnlDatosUsuario.Location = New System.Drawing.Point(7, 266)
@@ -97,43 +91,10 @@ Partial Class Perfiles
         Me.pnlDatosUsuario.Size = New System.Drawing.Size(545, 109)
         Me.pnlDatosUsuario.TabIndex = 36
         '
-        'lbl3
-        '
-        Me.lbl3.AutoSize = True
-        Me.lbl3.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.lbl3.ForeColor = System.Drawing.Color.Red
-        Me.lbl3.Location = New System.Drawing.Point(521, 75)
-        Me.lbl3.Name = "lbl3"
-        Me.lbl3.Size = New System.Drawing.Size(14, 18)
-        Me.lbl3.TabIndex = 17
-        Me.lbl3.Text = "*"
-        '
-        'lbl2
-        '
-        Me.lbl2.AutoSize = True
-        Me.lbl2.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.lbl2.ForeColor = System.Drawing.Color.Red
-        Me.lbl2.Location = New System.Drawing.Point(521, 43)
-        Me.lbl2.Name = "lbl2"
-        Me.lbl2.Size = New System.Drawing.Size(14, 18)
-        Me.lbl2.TabIndex = 16
-        Me.lbl2.Text = "*"
-        '
-        'lbl1
-        '
-        Me.lbl1.AutoSize = True
-        Me.lbl1.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.lbl1.ForeColor = System.Drawing.Color.Red
-        Me.lbl1.Location = New System.Drawing.Point(250, 8)
-        Me.lbl1.Name = "lbl1"
-        Me.lbl1.Size = New System.Drawing.Size(14, 18)
-        Me.lbl1.TabIndex = 15
-        Me.lbl1.Text = "*"
-        '
         'chbActivo
         '
         Me.chbActivo.AutoSize = True
-        Me.chbActivo.Location = New System.Drawing.Point(362, 11)
+        Me.chbActivo.Location = New System.Drawing.Point(459, 11)
         Me.chbActivo.Name = "chbActivo"
         Me.chbActivo.Size = New System.Drawing.Size(56, 17)
         Me.chbActivo.TabIndex = 14
@@ -206,15 +167,6 @@ Partial Class Perfiles
         Me.Label2.Size = New System.Drawing.Size(43, 13)
         Me.Label2.TabIndex = 3
         Me.Label2.Text = "Usuario"
-        '
-        'btnCargarDatos
-        '
-        Me.btnCargarDatos.Location = New System.Drawing.Point(270, 5)
-        Me.btnCargarDatos.Name = "btnCargarDatos"
-        Me.btnCargarDatos.Size = New System.Drawing.Size(75, 23)
-        Me.btnCargarDatos.TabIndex = 2
-        Me.btnCargarDatos.Text = "Cargar datos"
-        Me.btnCargarDatos.UseVisualStyleBackColor = True
         '
         'cmbNombreUsuario
         '
@@ -290,6 +242,15 @@ Partial Class Perfiles
         '
         Me.errorIcono.ContainerControl = Me
         '
+        'btnCargarDatos
+        '
+        Me.btnCargarDatos.Location = New System.Drawing.Point(263, 5)
+        Me.btnCargarDatos.Name = "btnCargarDatos"
+        Me.btnCargarDatos.Size = New System.Drawing.Size(75, 23)
+        Me.btnCargarDatos.TabIndex = 41
+        Me.btnCargarDatos.Text = "Cargar Datos"
+        Me.btnCargarDatos.UseVisualStyleBackColor = True
+        '
         'Perfiles
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
@@ -320,7 +281,6 @@ Partial Class Perfiles
     Friend WithEvents pnlDatosUsuario As Panel
     Friend WithEvents cmbNombreUsuario As ComboBox
     Friend WithEvents Label1 As Label
-    Friend WithEvents btnCargarDatos As Button
     Friend WithEvents cmbEmpleado As ComboBox
     Friend WithEvents txtContasenia As TextBox
     Friend WithEvents cmbTipoUsuario As ComboBox
@@ -336,8 +296,6 @@ Partial Class Perfiles
     Friend WithEvents chbActivo As CheckBox
     Friend WithEvents btnAceptar As Button
     Friend WithEvents btnCancelar As Button
-    Friend WithEvents lbl3 As Label
-    Friend WithEvents lbl2 As Label
-    Friend WithEvents lbl1 As Label
     Friend WithEvents errorIcono As ErrorProvider
+    Friend WithEvents btnCargarDatos As Button
 End Class

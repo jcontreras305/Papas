@@ -54,7 +54,7 @@ Public Class MetodosUsuarios
         desconectar()
     End Sub
 
-    Public Sub cargarNombreEmpleadp(ByVal cmbEmpleado As ComboBox)
+    Public Sub cargarNombreEmpleado(ByVal cmbEmpleado As ComboBox)
         Try
             conectar()
             adaptador = New SqlDataAdapter("select nombre from empleado where estatus = 'A'", conn)
@@ -127,6 +127,27 @@ Public Class MetodosUsuarios
                 MsgBox("Se ha eliminado el Usuario " + usuario + " que conrrespondia a " + empleado)
             Else
                 MsgBox("Hubo un ERROR al eliminar el usuario" + usuario)
+            End If
+        Catch ex As Exception
+            MsgBox(ex.Message)
+        End Try
+    End Sub
+
+    Public Sub modificar(ByVal datos() As String)
+        Try
+            conectar()
+            Dim data() As String = datos
+            Dim cmd As New SqlCommand("sp_insertar_Usuario")
+            cmd.CommandType = CommandType.StoredProcedure
+            cmd.Parameters.AddWithValue("@login", data(0))
+            cmd.Parameters.AddWithValue("@pass", data(1))
+            cmd.Parameters.AddWithValue("@tipoUsuario", data(2))
+            cmd.Parameters.AddWithValue("@empleado", data(3))
+            cmd.Connection = conn
+            If cmd.ExecuteNonQuery Then
+                MsgBox("Se ha insertado el Usuario " + data(0))
+            Else
+                MsgBox("Error al insertar")
             End If
         Catch ex As Exception
             MsgBox(ex.Message)

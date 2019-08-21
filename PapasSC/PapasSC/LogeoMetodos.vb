@@ -4,6 +4,7 @@ Public Class LogeoMetodos
     Public usuario As String
     Public nombre As String
     Public tipoUsuario As String
+    Public clave As String
 
     Public Function conect() As Boolean
         conectar()
@@ -28,6 +29,7 @@ Public Class LogeoMetodos
                 tipoUsuario = dt.Rows(0).Item(0).ToString
                 usuario = dt.Rows(0).Item(1).ToString
                 nombre = dt.Rows(0).Item(2).ToString
+                clave = dt.Rows(0).Item(3).ToString
                 MsgBox("Hola " + nombre + " inicio de sesion con " + usuario)
                 Return True
             Else
