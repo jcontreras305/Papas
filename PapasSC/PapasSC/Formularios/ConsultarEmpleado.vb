@@ -1,9 +1,10 @@
 ﻿Public Class ConsultarEmpleado
     Dim dv As New DataView
+    Public datosEmple(8) As String
 
     Public Sub Consul()
         Dim fun As New MetodosEmpleado
-        DataListado.DataSource = fun.Consultar
+        tblEmple.DataSource = fun.Consultar
     End Sub
 
     Private Sub ConsultarEmpleado_Load(sender As Object, e As EventArgs) Handles MyBase.Load
@@ -16,17 +17,18 @@
         Dim pu As String = txtNombreEm.Text
         Dim sa As String = txtNombreEm.Text
         Dim fu As New MetodosEmpleado
+        Consul()
 
         If txtNombreEm.Text = "" Or txtNombreEm.Text = Nothing Then
         ElseIf filtro.SelectedIndex = 0 Then
-            DataListado.DataSource = fu.BuscarEm(no)
-            ElseIf filtro.SelectedIndex = 1 Then
-                DataListado.DataSource = fu.BuscarEmBo(bo)
-            ElseIf filtro.SelectedIndex = 2 Then
-                DataListado.DataSource = fu.BuscarEmPu(pu)
-            ElseIf filtro.SelectedIndex = 3 Then
-                DataListado.DataSource = fu.BuscarEmSa(sa)
-            End If
+            tblEmple.DataSource = fu.BuscarEm(no)
+        ElseIf filtro.SelectedIndex = 1 Then
+            tblEmple.DataSource = fu.BuscarEmBo(bo)
+        ElseIf filtro.SelectedIndex = 2 Then
+            tblEmple.DataSource = fu.BuscarEmPu(pu)
+        ElseIf filtro.SelectedIndex = 3 Then
+            tblEmple.DataSource = fu.BuscarEmSa(sa)
+        End If
     End Sub
 
 
@@ -40,13 +42,13 @@
 
         Try
             If filtro.SelectedIndex = 0 Then
-                DataListado.DataSource = fu.BuscarEm(no)
+                tblEmple.DataSource = fu.BuscarEm(no)
             ElseIf filtro.SelectedIndex = 1 Then
-                DataListado.DataSource = fu.BuscarEmBo(bo)
+                tblEmple.DataSource = fu.BuscarEmBo(bo)
             ElseIf filtro.SelectedIndex = 2 Then
-                DataListado.DataSource = fu.BuscarEmPu(pu)
+                tblEmple.DataSource = fu.BuscarEmPu(pu)
             ElseIf filtro.SelectedIndex = 3 Then
-                DataListado.DataSource = fu.BuscarEmSa(sa)
+                tblEmple.DataSource = fu.BuscarEmSa(sa)
             End If
 
         Catch ex As Exception
@@ -54,16 +56,28 @@
         End Try
     End Sub
 
+    Private Sub Label2_Click(sender As Object, e As EventArgs) Handles Label2.Click
+        Me.Close()
+    End Sub
+
     Private Sub btnEliminarEm_Click(sender As Object, e As EventArgs) Handles btnEliminarEm.Click
-        Dim fu As New MetodosEmpleado
-        Dim nombre As String = Convert.ToString(DataListado.CurrentRow.Cells(0).Value)
+        Dim eliEm As New MetodosEmpleado
 
-        If MessageBox.Show("Deseas eliminar empleado " + nombre + "", "Atención", MessageBoxButtons.YesNo, MessageBoxIcon.Question) = Windows.Forms.DialogResult.Yes Then
-            If fu.EliminarEmple() Then
-                Consul()
+        Try
+            If tblEmple.CurrentRow IsNot Nothing Then
+                Dim con As Int16 = 0
+                For Each cell As DataGridViewCell In tblEmple.CurrentRow.Cells
+                    datosEmple(con) = cell.Value.ToString
+                    con += 1
+                Next
+                eliEm.EliminarEmple(datosEmple)
+            Else
+                MsgBox("No se ha seleccionado un empleado")
             End If
-        End If
 
+        Catch ex As Exception
+
+        End Try
 
     End Sub
 End Class

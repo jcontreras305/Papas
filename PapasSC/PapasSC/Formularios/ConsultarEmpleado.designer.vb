@@ -22,23 +22,24 @@ Partial Class ConsultarEmpleado
     'No lo modifique con el editor de código.
     <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
-        Me.DataListado = New System.Windows.Forms.DataGridView()
+        Me.tblEmple = New System.Windows.Forms.DataGridView()
         Me.Label1 = New System.Windows.Forms.Label()
         Me.btnNombreE = New System.Windows.Forms.Button()
         Me.filtro = New System.Windows.Forms.ComboBox()
         Me.txtNombreEm = New System.Windows.Forms.TextBox()
         Me.btnEliminarEm = New System.Windows.Forms.Button()
-        Me.Button3 = New System.Windows.Forms.Button()
-        CType(Me.DataListado, System.ComponentModel.ISupportInitialize).BeginInit()
+        Me.btnActualizarEmple = New System.Windows.Forms.Button()
+        Me.Label2 = New System.Windows.Forms.Label()
+        CType(Me.tblEmple, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
-        'DataListado
+        'tblEmple
         '
-        Me.DataListado.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
-        Me.DataListado.Location = New System.Drawing.Point(31, 65)
-        Me.DataListado.Name = "DataListado"
-        Me.DataListado.Size = New System.Drawing.Size(739, 292)
-        Me.DataListado.TabIndex = 0
+        Me.tblEmple.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
+        Me.tblEmple.Location = New System.Drawing.Point(31, 65)
+        Me.tblEmple.Name = "tblEmple"
+        Me.tblEmple.Size = New System.Drawing.Size(739, 292)
+        Me.tblEmple.TabIndex = 0
         '
         'Label1
         '
@@ -84,41 +85,54 @@ Partial Class ConsultarEmpleado
         Me.btnEliminarEm.Text = "Eliminar"
         Me.btnEliminarEm.UseVisualStyleBackColor = True
         '
-        'Button3
+        'btnActualizarEmple
         '
-        Me.Button3.Location = New System.Drawing.Point(539, 365)
-        Me.Button3.Name = "Button3"
-        Me.Button3.Size = New System.Drawing.Size(106, 32)
-        Me.Button3.TabIndex = 10
-        Me.Button3.Text = "Actualizar"
-        Me.Button3.UseVisualStyleBackColor = True
+        Me.btnActualizarEmple.Location = New System.Drawing.Point(539, 365)
+        Me.btnActualizarEmple.Name = "btnActualizarEmple"
+        Me.btnActualizarEmple.Size = New System.Drawing.Size(106, 32)
+        Me.btnActualizarEmple.TabIndex = 10
+        Me.btnActualizarEmple.Text = "Actualizar"
+        Me.btnActualizarEmple.UseVisualStyleBackColor = True
+        '
+        'Label2
+        '
+        Me.Label2.AutoSize = True
+        Me.Label2.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label2.ForeColor = System.Drawing.SystemColors.ButtonShadow
+        Me.Label2.Location = New System.Drawing.Point(1, 0)
+        Me.Label2.Name = "Label2"
+        Me.Label2.Size = New System.Drawing.Size(21, 20)
+        Me.Label2.TabIndex = 11
+        Me.Label2.Text = "X"
         '
         'ConsultarEmpleado
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(800, 405)
-        Me.Controls.Add(Me.Button3)
+        Me.Controls.Add(Me.Label2)
+        Me.Controls.Add(Me.btnActualizarEmple)
         Me.Controls.Add(Me.btnEliminarEm)
         Me.Controls.Add(Me.txtNombreEm)
         Me.Controls.Add(Me.filtro)
         Me.Controls.Add(Me.btnNombreE)
         Me.Controls.Add(Me.Label1)
-        Me.Controls.Add(Me.DataListado)
+        Me.Controls.Add(Me.tblEmple)
         Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None
         Me.Name = "ConsultarEmpleado"
         Me.Text = "ConsultarEmpleado"
-        CType(Me.DataListado, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.tblEmple, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
     End Sub
 
-    Friend WithEvents DataListado As DataGridView
+    Friend WithEvents tblEmple As DataGridView
     Friend WithEvents Label1 As Label
     Friend WithEvents btnNombreE As Button
     Friend WithEvents filtro As ComboBox
     Friend WithEvents txtNombreEm As TextBox
     Friend WithEvents btnEliminarEm As Button
-    Friend WithEvents Button3 As Button
+    Friend WithEvents btnActualizarEmple As Button
+    Friend WithEvents Label2 As Label
 End Class
