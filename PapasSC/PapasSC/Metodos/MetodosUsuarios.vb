@@ -133,19 +133,22 @@ Public Class MetodosUsuarios
         End Try
     End Sub
 
-    Public Sub modificar(ByVal datos() As String)
+    Public Sub modificar(ByVal datosNuevos() As String, ByVal datosViejos() As String)
         Try
             conectar()
-            Dim data() As String = datos
-            Dim cmd As New SqlCommand("sp_insertar_Usuario")
+            Dim cmd As New SqlCommand("sp_modificar_Usuario")
             cmd.CommandType = CommandType.StoredProcedure
-            cmd.Parameters.AddWithValue("@login", data(0))
-            cmd.Parameters.AddWithValue("@pass", data(1))
-            cmd.Parameters.AddWithValue("@tipoUsuario", data(2))
-            cmd.Parameters.AddWithValue("@empleado", data(3))
+            cmd.Parameters.AddWithValue("@loginN", datosNuevos(0))
+            cmd.Parameters.AddWithValue("@passN", datosNuevos(1))
+            cmd.Parameters.AddWithValue("@tipoUsuarioN", datosNuevos(2))
+            cmd.Parameters.AddWithValue("@empleadoN", datosNuevos(3))
+            cmd.Parameters.AddWithValue("@loginV", datosViejos(0))
+            cmd.Parameters.AddWithValue("@passV", datosViejos(1))
+            cmd.Parameters.AddWithValue("@tipoUsuarioV", datosViejos(2))
+            cmd.Parameters.AddWithValue("@empleadoV", datosViejos(3))
             cmd.Connection = conn
             If cmd.ExecuteNonQuery Then
-                MsgBox("Se ha insertado el Usuario " + data(0))
+                MsgBox("Se ha Actualizado el Usuario " + datosNuevos(0))
             Else
                 MsgBox("Error al insertar")
             End If

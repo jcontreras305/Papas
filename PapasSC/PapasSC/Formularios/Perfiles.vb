@@ -6,7 +6,6 @@ Public Class Perfiles
     Dim flag As Int16 = 0
     Dim nombreEmpleado, nombreUsuario, tipoUsuario, Contrasenia As String
 
-
     Private Sub Perfiles_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         mtdUsuario.cargarUsuarioCombo(cmbNombreUsuario)
         desactiarCampo()
@@ -70,10 +69,20 @@ Public Class Perfiles
             ElseIf flag = 2 Then
                 If valoresObligatorios() Then
                     If MessageBox.Show("Esta seguro de realizar los cambios", "Advertencia", MessageBoxButtons.OKCancel, MessageBoxIcon.Warning) = 1 Then
-                        Dim datos()
+                        Dim datosN(5) As String
+                        Dim datosV(5) As String
+                        datosN(0) = txtUsuario.Text
+                        datosN(1) = txtContasenia.Text
+                        datosN(2) = cmbTipoUsuario.Text
+                        datosN(3) = cmbEmpleado.Text
+                        datosV(0) = nombreUsuario
+                        datosV(1) = Contrasenia
+                        datosV(2) = tipoUsuario
+                        datosV(3) = nombreEmpleado
+                        mtdUsuario.modificar(datosN, datosV)
+                        limpiarCampos()
                     End If
                 End If
-
             End If
 
 
@@ -106,6 +115,8 @@ Public Class Perfiles
             btnCargarDatos.Enabled = True
             cmbNombreUsuario.Enabled = True
             mtdUsuario.cargarUsuarioCombo(cmbNombreUsuario)
+            Dim user As String = tblUsuarios.CurrentRow.Cells(0).Value
+            cmbNombreUsuario.SelectedItem = user
         Catch ex As Exception
 
         End Try
@@ -236,8 +247,5 @@ Public Class Perfiles
         mtdUsuario.todosLosUsuarios(tblUsuarios)
         Return True
     End Function
-
-
-
 
 End Class

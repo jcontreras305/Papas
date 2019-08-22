@@ -394,3 +394,56 @@ insert into tipoUsuario values(NEWID(),'Administracion'),(NEWID(),'Operador'),(N
 select * from empleado
 
 select nombre from empleado where estatus = 'A'
+
+--###################################################################################################
+--################################## Modificar usuario ###############################################
+--###################################################################################################
+
+create proc sp_modificar_Usuario
+@loginN  varchar(50),
+@passN  varchar(50),
+@tipoUsuarioN varchar(30),
+@empleadoN varchar(80),
+@loginv  varchar(50),
+@passv  varchar(50),
+@tipoUsuariov varchar(30),
+@empleadov varchar(80)
+as
+declare @error int 
+declare @idEmpleadoN varchar(36)
+declare @idEmpleadoV varchar(36)
+declare @idTipoEmpleadoN varchar(36)
+declare @idTipoEmpleadoV varchar(36)
+declare @idUsuario varchar(36)
+declare @cont int 
+begin 
+	--Obtenemos los datos necesarios para hacer el Update
+	select @idUsuario = idUsuario from usuarios where nombreUsuario like (CONCAT('%',@loginv))
+	select @idTipoEmpleadoN = idTipoUsuario from tipoUsuario where tipo like (@tipoUsuarioN)
+	select @idTipoEmpleadoV = idTipoUsuario from tipoUsuario where tipo like (@tipoUsuarioV)
+	select @idEmpleadoV  =  idEmpleado from empleado where nombre like (@empleadov)
+	select @idEmpleadoN  =  idEmpleado from empleado where nombre like (@empleadoN)
+	begin tran
+		begin try 	
+			select @cont = count(idUsuario) from usuarios where nombreUsuario like @loginv and idEmpleado = @idEmpleadoV
+			if @cont = 1 --si solo existe un solo usuario si no es incorrecto cambiar 2 o mas usuario
+			begin
+				update usuarios set nombreUsuario = @loginN , contrasenia = @passN , idTipoUsuario = @idTipoEmpleadoN , idEmpleado = @idEmpleadoN
+				where nombreUsuario like @loginv and idEmpleado = @idEmpleadoV
+				if @@ERROR <> 0
+				begin 
+					set @error = @@ERROR 
+				end
+			end
+		end try
+		begin catch
+			goto solucionarProblema
+		end catch
+	commit tran
+	solucionarProblema:
+		if	@error <> 0 
+		begin 
+			rollback tran
+			print 'Error al actualizar'
+		end
+end
