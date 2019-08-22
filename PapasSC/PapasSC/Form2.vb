@@ -1,4 +1,5 @@
 ﻿Public Class Form2
+    Public usuario As String
     Private Sub VentasMenuPrincipal_MouseEnter(sender As Object, e As EventArgs) Handles VentasMenuPrincipal.MouseEnter
         VentasMenuPrincipal.BackColor = Color.FromArgb(72, 201, 176)
 
@@ -14,6 +15,7 @@
             formulario.Dock = DockStyle.Fill
             PanelContenedorForm.Controls.Add(formulario)
             PanelContenedorForm.Tag = formulario
+
             formulario.Show()
             formulario.BringToFront()
 
@@ -155,10 +157,20 @@
         If (formulario IsNot Nothing) Then
             formulario.Close()
             formulario = Nothing
-            AbrirFormEnPanel(Of Catálogo
-                )()
+
+
         Else
             AbrirFormEnPanel(Of Catálogo)()
+
+            If usuario = "Venta" Then
+
+
+            ElseIf usuario = "Operador" Then
+
+            ElseIf usuario = "Contador" Then
+
+
+            End If
         End If
     End Sub
 
@@ -220,6 +232,15 @@
 
 
     Private Sub Form2_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+        If usuario = "Venta" Then
 
+            Catálogo.Button5.Visible = False
+
+        ElseIf usuario = "Operador" Then
+
+        ElseIf usuario = "Contador" Then
+
+
+        End If
     End Sub
 End Class

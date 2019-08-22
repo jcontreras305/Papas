@@ -134,6 +134,12 @@
     <Compile Include="Formularios\Actualizar_Cliente.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="Formularios\Consulta_usuarios.Designer.vb">
+      <DependentUpon>Consulta_usuarios.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Formularios\Consulta_usuarios.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="Formularios\GenerarNomina.designer.vb">
       <DependentUpon>GenerarNomina.vb</DependentUpon>
     </Compile>
@@ -313,6 +319,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Formularios\ConsultarEmpleado.resx">
       <DependentUpon>ConsultarEmpleado.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formularios\Consulta_usuarios.resx">
+      <DependentUpon>Consulta_usuarios.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Formularios\GenerarNomina.resx">
       <DependentUpon>GenerarNomina.vb</DependentUpon>

@@ -132,7 +132,7 @@ right join producto as pd
 on xp.idProducto = pd.idProducto 
 where pd.version like @clave 
 end
-
+select * from usuarios
 --#########################segundo metodo##########################################
 --################ estos son para cuando inicia la interfaz de inventario########## 
 create proc sp_selectMatriz

@@ -275,9 +275,9 @@ Partial Class Form2
             Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.PanelContenedorForm.BackColor = System.Drawing.Color.White
         Me.PanelContenedorForm.Controls.Add(Me.PictureBox1)
-        Me.PanelContenedorForm.Location = New System.Drawing.Point(194, 49)
+        Me.PanelContenedorForm.Location = New System.Drawing.Point(194, 53)
         Me.PanelContenedorForm.Name = "PanelContenedorForm"
-        Me.PanelContenedorForm.Size = New System.Drawing.Size(875, 465)
+        Me.PanelContenedorForm.Size = New System.Drawing.Size(875, 461)
         Me.PanelContenedorForm.TabIndex = 2
         '
         'PictureBox1

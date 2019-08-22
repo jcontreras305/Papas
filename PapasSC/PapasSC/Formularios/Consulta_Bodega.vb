@@ -42,7 +42,7 @@
             Dim id As String = Convert.ToString(tablabodega.CurrentRow.Cells(0).Value)
             Dim MTCLI As New MetodosBodega
 
-            If MessageBox.Show("¿Desea ELIMINAR Producto?", "Atención", MessageBoxButtons.YesNo, MessageBoxIcon.Question) = Windows.Forms.DialogResult.Yes Then
+            If MessageBox.Show("¿Desea ELIMINAR Bodega?", "Atención", MessageBoxButtons.YesNo, MessageBoxIcon.Question) = Windows.Forms.DialogResult.Yes Then
                 MTCLI.eliminaprobodega(id)
                 MsgBox(id)
                 MTCLI.llenarDatagridview(tablabodega)

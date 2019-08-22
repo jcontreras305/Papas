@@ -30,7 +30,7 @@ Public Class MetodosBodega
     Public Sub llenarComboMatriz(ByVal dgv As ComboBox)
         cn.conectar()
         Try
-            adaptador = New SqlDataAdapter("select nombre as Matriz from matriz", cn.conn)
+            adaptador = New SqlDataAdapter("select nombre as Matriz from matriz where estatus = 'A'", cn.conn)
 
             Dim ds As New DataSet
 
@@ -193,7 +193,7 @@ Public Class MetodosBodega
 
 
 
-            Dim Sql As String = "select idMatriz from matriz where nombre ='" + clave + "'"
+            Dim Sql As String = "select idMatriz from matriz where nombre ='" + clave + "' and estatus = 'A'"
             MsgBox(clave)
 
             Com = New SqlCommand(Sql, cn.conn)
@@ -235,7 +235,7 @@ Public Class MetodosBodega
 
 
 
-            Dim Sql As String = "select idMatriz from matriz where nombre ='" + clave + "'"
+            Dim Sql As String = "select idMatriz from matriz where nombre ='" + clave + "' and estatus = 'A'"
             MsgBox(clave)
 
             Com = New SqlCommand(Sql, cn.conn)
