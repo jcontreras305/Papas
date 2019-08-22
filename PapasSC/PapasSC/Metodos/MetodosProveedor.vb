@@ -73,7 +73,7 @@ Public Class MetodosProveedor
     Public Sub SelecionarCiu(ByVal comboCiuPro As ComboBox)
         Try
             conectar()
-            cmd = New SqlCommand("sp_select_Ciudad1")
+            cmd = New SqlCommand("sp_select_CiudadPro")
             cmd.CommandType = CommandType.StoredProcedure
             cmd.Connection = conn
 
@@ -83,7 +83,7 @@ Public Class MetodosProveedor
                 da.Fill(dt)
 
                 comboCiuPro.DataSource = dt.Tables(0)
-                comboCiuPro.DisplayMember = "nombreCiu"
+                comboCiuPro.DisplayMember = "nombre"
                 comboCiuPro.SelectedIndex = 0
 
             End If
@@ -94,8 +94,53 @@ Public Class MetodosProveedor
         End Try
     End Sub
 
+    Public Function InsertarProveedor(ByVal nom As String, ByVal tel As String, ByVal ema As String, ByVal nombreCi As String) As Boolean
+        Try
+            conectar()
+            cmd = New SqlCommand("sp_Insertar_Proveedor")
+            cmd.CommandType = CommandType.StoredProcedure
+            cmd.Connection = conn
 
+            cmd.Parameters.AddWithValue("@nombre", nom)
+            cmd.Parameters.AddWithValue("@telefono", tel)
+            cmd.Parameters.AddWithValue("@Email", ema)
+            cmd.Parameters.AddWithValue("nombreCiu", nombreCi)
 
+            If cmd.ExecuteNonQuery Then
+                MsgBox("Se agrego correctamente " + nom)
+                Return True
+            Else
+                Return False
+            End If
+        Catch ex As Exception
+            desconectar()
+            MsgBox(ex.Message)
+            Return False
+        End Try
+    End Function
+
+    Public Sub EliminarProveedor(ByVal datosPro() As String)
+        Try
+            conectar()
+            cmd = New SqlCommand("sp_Eliminar_Proveedor")
+            cmd.CommandType = CommandType.StoredProcedure
+            cmd.Connection = conn
+
+            cmd.Parameters.AddWithValue("@nombre", datosPro(0))
+            cmd.Parameters.AddWithValue("@telefono", datosPro(1))
+            cmd.Parameters.AddWithValue("@email", datosPro(2))
+            cmd.Parameters.AddWithValue("@NomCiu", datosPro(3))
+
+            If cmd.ExecuteNonQuery Then
+                MsgBox("Se ha eliminado el proveedor " + datosPro(0))
+
+            End If
+            desconectar()
+        Catch ex As Exception
+            desconectar()
+            MsgBox(ex.Message)
+        End Try
+    End Sub
 
 
 

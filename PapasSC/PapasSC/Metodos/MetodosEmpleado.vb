@@ -9,7 +9,7 @@ Public Class MetodosEmpleado
     Public Function Consultar() As DataTable
         Try
             conectar()
-            cmd = New SqlCommand("sp_Consultar_Empleado2")
+            cmd = New SqlCommand("sp_Consultar_Empleado")
             cmd.CommandType = CommandType.StoredProcedure
             cmd.Connection = conn
 
@@ -33,7 +33,7 @@ Public Class MetodosEmpleado
             cmd.CommandType = CommandType.StoredProcedure
             cmd.Connection = conn
 
-            cmd.Parameters.AddWithValue("@nombre", no)
+            cmd.Parameters.AddWithValue("@nombreEm", no)
             If cmd.ExecuteNonQuery Then
                 Dim dt As New DataTable
                 Dim da As New SqlDataAdapter(cmd)
@@ -112,20 +112,142 @@ Public Class MetodosEmpleado
         End Try
     End Function
 
-    Public Function EliminarEmple() As Boolean
+    Public Sub SelecionarBode(ByVal comBode As ComboBox)
         Try
             conectar()
-            cmd = New SqlCommand("sp_EliminarEmpleado")
+            cmd = New SqlCommand("sp_Sele_Bodega")
             cmd.CommandType = CommandType.StoredProcedure
             cmd.Connection = conn
 
             If cmd.ExecuteNonQuery Then
+                Dim dt As New DataSet
+                Dim da As New SqlDataAdapter(cmd)
+                da.Fill(dt)
 
+                comBode.DataSource = dt.Tables(0)
+                comBode.DisplayMember = "nombre"
+                comBode.SelectedIndex = 0
+
+            End If
+
+            desconectar()
+        Catch ex As Exception
+
+        End Try
+    End Sub
+
+    Public Sub SelecionarHora(ByVal comHor As ComboBox)
+        Try
+            conectar()
+            cmd = New SqlCommand("sp_Sele_Horario")
+            cmd.CommandType = CommandType.StoredProcedure
+            cmd.Connection = conn
+
+            If cmd.ExecuteNonQuery Then
+                Dim dt As New DataSet
+                Dim da As New SqlDataAdapter(cmd)
+                da.Fill(dt)
+
+                comHor.DataSource = dt.Tables(0)
+                comHor.DisplayMember = "nombre"
+                comHor.SelectedIndex = 0
+
+            End If
+
+            desconectar()
+        Catch ex As Exception
+
+        End Try
+    End Sub
+
+    Public Sub SelecionarPues(ByVal comPus As ComboBox)
+        Try
+            conectar()
+            cmd = New SqlCommand("sp_select_Puesto")
+            cmd.CommandType = CommandType.StoredProcedure
+            cmd.Connection = conn
+
+            If cmd.ExecuteNonQuery Then
+                Dim dt As New DataSet
+                Dim da As New SqlDataAdapter(cmd)
+                da.Fill(dt)
+
+                comPus.DataSource = dt.Tables(0)
+                comPus.DisplayMember = "nombre"
+                comPus.SelectedIndex = 0
+
+            End If
+
+            desconectar()
+        Catch ex As Exception
+
+        End Try
+    End Sub
+
+
+    Public Function InsertarEmple(ByVal nom As String, ByVal se As String,
+        ByVal sa As Double, ByVal tel As String, ByVal dir As String,
+        ByVal NoB As String, ByVal ho As String, ByVal Npu As String) As Boolean
+
+        Try
+            conectar()
+            cmd = New SqlCommand("sp_Insertar_Empleado")
+            cmd.CommandType = CommandType.StoredProcedure
+            cmd.Connection = conn
+
+            cmd.Parameters.AddWithValue("@nombre", nom)
+            cmd.Parameters.AddWithValue("@sexo", se)
+            Dim salari As String = CStr(sa)
+            salari = salari.Replace(",", ".")
+            cmd.Parameters.AddWithValue("@salario", salari)
+            cmd.Parameters.AddWithValue("@telefono", tel)
+            cmd.Parameters.AddWithValue("@direccion", dir)
+            cmd.Parameters.AddWithValue("@NomBodega", NoB)
+            cmd.Parameters.AddWithValue("@EnSaHorario", ho)
+            cmd.Parameters.AddWithValue("@NomPuesto", Npu)
+
+            If cmd.ExecuteNonQuery Then
+                MsgBox("Se agrego correctamente " + nom)
                 Return True
+            Else
+                Return False
             End If
         Catch ex As Exception
+            desconectar()
+            MsgBox(ex.Message)
+            Return False
+        End Try
+    End Function
+
+
+    Public Sub EliminarEmple(ByVal datosEmple() As String)
+        Try
+            conectar()
+            cmd = New SqlCommand("sp_EliminarEmple")
+            cmd.CommandType = CommandType.StoredProcedure
+            cmd.Connection = conn
+
+            cmd.Parameters.AddWithValue("@nombre", datosEmple(0))
+            cmd.Parameters.AddWithValue("@sexo", datosEmple(1))
+            Dim sala As String = Replace(datosEmple.ElementAt(2), ",", ".")
+            cmd.Parameters.AddWithValue("@salario", sala)
+            cmd.Parameters.AddWithValue("@tel", datosEmple(3))
+            cmd.Parameters.AddWithValue("@direccion", datosEmple(4))
+            cmd.Parameters.AddWithValue("@NomBodega", datosEmple(5))
+            cmd.Parameters.AddWithValue("@EnSaHorario", datosEmple(6))
+            cmd.Parameters.AddWithValue("@NomPuesto", datosEmple(7))
+
+            If cmd.ExecuteNonQuery Then
+                MsgBox("Se ha eliminado el empleado llamado " + datosEmple(0))
+
+            End If
+            desconectar()
+
+        Catch ex As Exception
+            desconectar()
             MsgBox(ex.Message)
         End Try
 
-    End Function
+
+    End Sub
 End Class

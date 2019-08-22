@@ -30,7 +30,7 @@ Partial Class Consultar_Proveedores
         Me.Label2 = New System.Windows.Forms.Label()
         Me.Button1 = New System.Windows.Forms.Button()
         Me.Button2 = New System.Windows.Forms.Button()
-        Me.Button3 = New System.Windows.Forms.Button()
+        Me.btnEliminarProvee = New System.Windows.Forms.Button()
         CType(Me.DataListado, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
@@ -105,21 +105,21 @@ Partial Class Consultar_Proveedores
         Me.Button2.Text = "Actualizar proveedor"
         Me.Button2.UseVisualStyleBackColor = True
         '
-        'Button3
+        'btnEliminarProvee
         '
-        Me.Button3.Location = New System.Drawing.Point(477, 338)
-        Me.Button3.Name = "Button3"
-        Me.Button3.Size = New System.Drawing.Size(169, 36)
-        Me.Button3.TabIndex = 8
-        Me.Button3.Text = "Eliminar Proveedor"
-        Me.Button3.UseVisualStyleBackColor = True
+        Me.btnEliminarProvee.Location = New System.Drawing.Point(477, 338)
+        Me.btnEliminarProvee.Name = "btnEliminarProvee"
+        Me.btnEliminarProvee.Size = New System.Drawing.Size(169, 36)
+        Me.btnEliminarProvee.TabIndex = 8
+        Me.btnEliminarProvee.Text = "Eliminar Proveedor"
+        Me.btnEliminarProvee.UseVisualStyleBackColor = True
         '
         'Consultar_Proveedores
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(689, 386)
-        Me.Controls.Add(Me.Button3)
+        Me.Controls.Add(Me.btnEliminarProvee)
         Me.Controls.Add(Me.Button2)
         Me.Controls.Add(Me.Button1)
         Me.Controls.Add(Me.Label2)
@@ -145,5 +145,5 @@ Partial Class Consultar_Proveedores
     Friend WithEvents Label2 As Label
     Friend WithEvents Button1 As Button
     Friend WithEvents Button2 As Button
-    Friend WithEvents Button3 As Button
+    Friend WithEvents btnEliminarProvee As Button
 End Class

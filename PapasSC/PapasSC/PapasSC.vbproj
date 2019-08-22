@@ -86,6 +86,12 @@
     <Compile Include="Formularios\Actualizar_Producto.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="Formularios\Actualizar_Proveedor.Designer.vb">
+      <DependentUpon>Actualizar_Proveedor.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Formularios\Actualizar_Proveedor.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="Formularios\Catálogo.designer.vb">
       <DependentUpon>Catálogo.vb</DependentUpon>
     </Compile>
