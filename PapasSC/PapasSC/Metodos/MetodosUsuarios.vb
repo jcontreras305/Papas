@@ -54,7 +54,7 @@ Public Class MetodosUsuarios
         desconectar()
     End Sub
 
-    Public Sub cargarNombreEmpleado(ByVal cmbEmpleado As ComboBox)
+    Public Sub cargarNombreEmpleadp(ByVal cmbEmpleado As ComboBox)
         Try
             conectar()
             adaptador = New SqlDataAdapter("select nombre from empleado where estatus = 'A'", conn)
@@ -127,30 +127,6 @@ Public Class MetodosUsuarios
                 MsgBox("Se ha eliminado el Usuario " + usuario + " que conrrespondia a " + empleado)
             Else
                 MsgBox("Hubo un ERROR al eliminar el usuario" + usuario)
-            End If
-        Catch ex As Exception
-            MsgBox(ex.Message)
-        End Try
-    End Sub
-
-    Public Sub modificar(ByVal datosNuevos() As String, ByVal datosViejos() As String)
-        Try
-            conectar()
-            Dim cmd As New SqlCommand("sp_modificar_Usuario")
-            cmd.CommandType = CommandType.StoredProcedure
-            cmd.Parameters.AddWithValue("@loginN", datosNuevos(0))
-            cmd.Parameters.AddWithValue("@passN", datosNuevos(1))
-            cmd.Parameters.AddWithValue("@tipoUsuarioN", datosNuevos(2))
-            cmd.Parameters.AddWithValue("@empleadoN", datosNuevos(3))
-            cmd.Parameters.AddWithValue("@loginV", datosViejos(0))
-            cmd.Parameters.AddWithValue("@passV", datosViejos(1))
-            cmd.Parameters.AddWithValue("@tipoUsuarioV", datosViejos(2))
-            cmd.Parameters.AddWithValue("@empleadoV", datosViejos(3))
-            cmd.Connection = conn
-            If cmd.ExecuteNonQuery Then
-                MsgBox("Se ha Actualizado el Usuario " + datosNuevos(0))
-            Else
-                MsgBox("Error al insertar")
             End If
         Catch ex As Exception
             MsgBox(ex.Message)
