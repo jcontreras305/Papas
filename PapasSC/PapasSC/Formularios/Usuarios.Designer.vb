@@ -26,34 +26,32 @@ Partial Class Usuarios
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(Usuarios))
         Me.lblCerrar = New System.Windows.Forms.Label()
         Me.Label16 = New System.Windows.Forms.Label()
-        Me.pnlDatosUsuario = New System.Windows.Forms.Panel()
-        Me.lbl3 = New System.Windows.Forms.Label()
-        Me.lbl2 = New System.Windows.Forms.Label()
-        Me.lbl1 = New System.Windows.Forms.Label()
-        Me.chbActivo = New System.Windows.Forms.CheckBox()
-        Me.cmbEmpleado = New System.Windows.Forms.ComboBox()
-        Me.txtContasenia = New System.Windows.Forms.TextBox()
-        Me.cmbTipoUsuario = New System.Windows.Forms.ComboBox()
-        Me.txtUsuario = New System.Windows.Forms.TextBox()
-        Me.Label5 = New System.Windows.Forms.Label()
-        Me.Label4 = New System.Windows.Forms.Label()
-        Me.Label3 = New System.Windows.Forms.Label()
-        Me.Label2 = New System.Windows.Forms.Label()
-        Me.btnCargarDatos = New System.Windows.Forms.Button()
-        Me.cmbNombreUsuario = New System.Windows.Forms.ComboBox()
-        Me.Label1 = New System.Windows.Forms.Label()
         Me.tblUsuarios = New System.Windows.Forms.DataGridView()
         Me.errorIcono = New System.Windows.Forms.ErrorProvider(Me.components)
         Me.txtBusqueda = New System.Windows.Forms.TextBox()
+        Me.btnBuscar = New System.Windows.Forms.Button()
+        Me.btnEmpleados = New System.Windows.Forms.Button()
         Me.btnCancelar = New System.Windows.Forms.Button()
         Me.btnAceptar = New System.Windows.Forms.Button()
         Me.btnModificar = New System.Windows.Forms.Button()
         Me.btnEliminar = New System.Windows.Forms.Button()
         Me.btnAgragar = New System.Windows.Forms.Button()
-        Me.btnBuscar = New System.Windows.Forms.Button()
-        Me.pnlDatosUsuario.SuspendLayout()
+        Me.Label1 = New System.Windows.Forms.Label()
+        Me.cmbNombreUsuario = New System.Windows.Forms.ComboBox()
+        Me.btnCargarDatos = New System.Windows.Forms.Button()
+        Me.Label2 = New System.Windows.Forms.Label()
+        Me.Label3 = New System.Windows.Forms.Label()
+        Me.Label4 = New System.Windows.Forms.Label()
+        Me.Label5 = New System.Windows.Forms.Label()
+        Me.txtUsuario = New System.Windows.Forms.TextBox()
+        Me.cmbTipoUsuario = New System.Windows.Forms.ComboBox()
+        Me.txtContasenia = New System.Windows.Forms.TextBox()
+        Me.cmbEmpleado = New System.Windows.Forms.ComboBox()
+        Me.chbActivo = New System.Windows.Forms.CheckBox()
+        Me.pnlDatosUsuario = New System.Windows.Forms.Panel()
         CType(Me.tblUsuarios, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.errorIcono, System.ComponentModel.ISupportInitialize).BeginInit()
+        Me.pnlDatosUsuario.SuspendLayout()
         Me.SuspendLayout()
         '
         'lblCerrar
@@ -78,164 +76,6 @@ Partial Class Usuarios
         Me.Label16.TabIndex = 34
         Me.Label16.Text = "Configurar Perfil"
         '
-        'pnlDatosUsuario
-        '
-        Me.pnlDatosUsuario.Controls.Add(Me.lbl3)
-        Me.pnlDatosUsuario.Controls.Add(Me.lbl2)
-        Me.pnlDatosUsuario.Controls.Add(Me.lbl1)
-        Me.pnlDatosUsuario.Controls.Add(Me.chbActivo)
-        Me.pnlDatosUsuario.Controls.Add(Me.cmbEmpleado)
-        Me.pnlDatosUsuario.Controls.Add(Me.txtContasenia)
-        Me.pnlDatosUsuario.Controls.Add(Me.cmbTipoUsuario)
-        Me.pnlDatosUsuario.Controls.Add(Me.txtUsuario)
-        Me.pnlDatosUsuario.Controls.Add(Me.Label5)
-        Me.pnlDatosUsuario.Controls.Add(Me.Label4)
-        Me.pnlDatosUsuario.Controls.Add(Me.Label3)
-        Me.pnlDatosUsuario.Controls.Add(Me.Label2)
-        Me.pnlDatosUsuario.Controls.Add(Me.btnCargarDatos)
-        Me.pnlDatosUsuario.Controls.Add(Me.cmbNombreUsuario)
-        Me.pnlDatosUsuario.Controls.Add(Me.Label1)
-        Me.pnlDatosUsuario.Location = New System.Drawing.Point(7, 312)
-        Me.pnlDatosUsuario.Name = "pnlDatosUsuario"
-        Me.pnlDatosUsuario.Size = New System.Drawing.Size(545, 109)
-        Me.pnlDatosUsuario.TabIndex = 36
-        '
-        'lbl3
-        '
-        Me.lbl3.AutoSize = True
-        Me.lbl3.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.lbl3.ForeColor = System.Drawing.Color.Red
-        Me.lbl3.Location = New System.Drawing.Point(521, 75)
-        Me.lbl3.Name = "lbl3"
-        Me.lbl3.Size = New System.Drawing.Size(14, 18)
-        Me.lbl3.TabIndex = 17
-        Me.lbl3.Text = "*"
-        '
-        'lbl2
-        '
-        Me.lbl2.AutoSize = True
-        Me.lbl2.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.lbl2.ForeColor = System.Drawing.Color.Red
-        Me.lbl2.Location = New System.Drawing.Point(521, 43)
-        Me.lbl2.Name = "lbl2"
-        Me.lbl2.Size = New System.Drawing.Size(14, 18)
-        Me.lbl2.TabIndex = 16
-        Me.lbl2.Text = "*"
-        '
-        'lbl1
-        '
-        Me.lbl1.AutoSize = True
-        Me.lbl1.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.lbl1.ForeColor = System.Drawing.Color.Red
-        Me.lbl1.Location = New System.Drawing.Point(250, 8)
-        Me.lbl1.Name = "lbl1"
-        Me.lbl1.Size = New System.Drawing.Size(14, 18)
-        Me.lbl1.TabIndex = 15
-        Me.lbl1.Text = "*"
-        '
-        'chbActivo
-        '
-        Me.chbActivo.AutoSize = True
-        Me.chbActivo.Location = New System.Drawing.Point(362, 11)
-        Me.chbActivo.Name = "chbActivo"
-        Me.chbActivo.Size = New System.Drawing.Size(56, 17)
-        Me.chbActivo.TabIndex = 14
-        Me.chbActivo.Text = "Activo"
-        Me.chbActivo.UseVisualStyleBackColor = True
-        '
-        'cmbEmpleado
-        '
-        Me.cmbEmpleado.FormattingEnabled = True
-        Me.cmbEmpleado.Location = New System.Drawing.Point(67, 36)
-        Me.cmbEmpleado.Name = "cmbEmpleado"
-        Me.cmbEmpleado.Size = New System.Drawing.Size(178, 21)
-        Me.cmbEmpleado.TabIndex = 10
-        '
-        'txtContasenia
-        '
-        Me.txtContasenia.Location = New System.Drawing.Point(337, 73)
-        Me.txtContasenia.Name = "txtContasenia"
-        Me.txtContasenia.Size = New System.Drawing.Size(178, 20)
-        Me.txtContasenia.TabIndex = 9
-        '
-        'cmbTipoUsuario
-        '
-        Me.cmbTipoUsuario.FormattingEnabled = True
-        Me.cmbTipoUsuario.Items.AddRange(New Object() {"Venta ", "Operacion ", "Administracion"})
-        Me.cmbTipoUsuario.Location = New System.Drawing.Point(93, 71)
-        Me.cmbTipoUsuario.Name = "cmbTipoUsuario"
-        Me.cmbTipoUsuario.Size = New System.Drawing.Size(150, 21)
-        Me.cmbTipoUsuario.TabIndex = 8
-        '
-        'txtUsuario
-        '
-        Me.txtUsuario.Location = New System.Drawing.Point(337, 44)
-        Me.txtUsuario.Name = "txtUsuario"
-        Me.txtUsuario.Size = New System.Drawing.Size(178, 20)
-        Me.txtUsuario.TabIndex = 7
-        '
-        'Label5
-        '
-        Me.Label5.AutoSize = True
-        Me.Label5.Location = New System.Drawing.Point(7, 39)
-        Me.Label5.Name = "Label5"
-        Me.Label5.Size = New System.Drawing.Size(54, 13)
-        Me.Label5.TabIndex = 6
-        Me.Label5.Text = "Empleado"
-        '
-        'Label4
-        '
-        Me.Label4.AutoSize = True
-        Me.Label4.Location = New System.Drawing.Point(5, 74)
-        Me.Label4.Name = "Label4"
-        Me.Label4.Size = New System.Drawing.Size(82, 13)
-        Me.Label4.TabIndex = 5
-        Me.Label4.Text = "Tipo de Usuario"
-        '
-        'Label3
-        '
-        Me.Label3.AutoSize = True
-        Me.Label3.Location = New System.Drawing.Point(277, 76)
-        Me.Label3.Name = "Label3"
-        Me.Label3.Size = New System.Drawing.Size(61, 13)
-        Me.Label3.TabIndex = 4
-        Me.Label3.Text = "Contraseña"
-        '
-        'Label2
-        '
-        Me.Label2.AutoSize = True
-        Me.Label2.Location = New System.Drawing.Point(277, 44)
-        Me.Label2.Name = "Label2"
-        Me.Label2.Size = New System.Drawing.Size(43, 13)
-        Me.Label2.TabIndex = 3
-        Me.Label2.Text = "Usuario"
-        '
-        'btnCargarDatos
-        '
-        Me.btnCargarDatos.Location = New System.Drawing.Point(270, 5)
-        Me.btnCargarDatos.Name = "btnCargarDatos"
-        Me.btnCargarDatos.Size = New System.Drawing.Size(75, 23)
-        Me.btnCargarDatos.TabIndex = 2
-        Me.btnCargarDatos.Text = "Cargar datos"
-        Me.btnCargarDatos.UseVisualStyleBackColor = True
-        '
-        'cmbNombreUsuario
-        '
-        Me.cmbNombreUsuario.FormattingEnabled = True
-        Me.cmbNombreUsuario.Location = New System.Drawing.Point(67, 7)
-        Me.cmbNombreUsuario.Name = "cmbNombreUsuario"
-        Me.cmbNombreUsuario.Size = New System.Drawing.Size(178, 21)
-        Me.cmbNombreUsuario.TabIndex = 1
-        '
-        'Label1
-        '
-        Me.Label1.AutoSize = True
-        Me.Label1.Location = New System.Drawing.Point(7, 7)
-        Me.Label1.Name = "Label1"
-        Me.Label1.Size = New System.Drawing.Size(43, 13)
-        Me.Label1.TabIndex = 0
-        Me.Label1.Text = "Usuario"
-        '
         'tblUsuarios
         '
         Me.tblUsuarios.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
@@ -254,6 +94,27 @@ Partial Class Usuarios
         Me.txtBusqueda.Name = "txtBusqueda"
         Me.txtBusqueda.Size = New System.Drawing.Size(295, 20)
         Me.txtBusqueda.TabIndex = 41
+        '
+        'btnBuscar
+        '
+        Me.btnBuscar.Location = New System.Drawing.Point(451, 53)
+        Me.btnBuscar.Name = "btnBuscar"
+        Me.btnBuscar.Size = New System.Drawing.Size(91, 23)
+        Me.btnBuscar.TabIndex = 42
+        Me.btnBuscar.Text = "Buscar"
+        Me.btnBuscar.UseVisualStyleBackColor = True
+        '
+        'btnEmpleados
+        '
+        Me.btnEmpleados.Image = Global.PapasSC.My.Resources.Resources.empleadosButton1
+        Me.btnEmpleados.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
+        Me.btnEmpleados.Location = New System.Drawing.Point(0, 36)
+        Me.btnEmpleados.Name = "btnEmpleados"
+        Me.btnEmpleados.Size = New System.Drawing.Size(146, 45)
+        Me.btnEmpleados.TabIndex = 44
+        Me.btnEmpleados.Text = "Agregar Empleados"
+        Me.btnEmpleados.TextAlign = System.Drawing.ContentAlignment.MiddleRight
+        Me.btnEmpleados.UseVisualStyleBackColor = True
         '
         'btnCancelar
         '
@@ -315,20 +176,135 @@ Partial Class Usuarios
         Me.btnAgragar.TextAlign = System.Drawing.ContentAlignment.MiddleRight
         Me.btnAgragar.UseVisualStyleBackColor = True
         '
-        'btnBuscar
+        'Label1
         '
-        Me.btnBuscar.Location = New System.Drawing.Point(451, 53)
-        Me.btnBuscar.Name = "btnBuscar"
-        Me.btnBuscar.Size = New System.Drawing.Size(91, 23)
-        Me.btnBuscar.TabIndex = 42
-        Me.btnBuscar.Text = "Buscar"
-        Me.btnBuscar.UseVisualStyleBackColor = True
+        Me.Label1.AutoSize = True
+        Me.Label1.Location = New System.Drawing.Point(7, 7)
+        Me.Label1.Name = "Label1"
+        Me.Label1.Size = New System.Drawing.Size(43, 13)
+        Me.Label1.TabIndex = 0
+        Me.Label1.Text = "Usuario"
         '
-        'Perfiles
+        'cmbNombreUsuario
+        '
+        Me.cmbNombreUsuario.FormattingEnabled = True
+        Me.cmbNombreUsuario.Location = New System.Drawing.Point(67, 7)
+        Me.cmbNombreUsuario.Name = "cmbNombreUsuario"
+        Me.cmbNombreUsuario.Size = New System.Drawing.Size(178, 21)
+        Me.cmbNombreUsuario.TabIndex = 1
+        '
+        'btnCargarDatos
+        '
+        Me.btnCargarDatos.Location = New System.Drawing.Point(270, 5)
+        Me.btnCargarDatos.Name = "btnCargarDatos"
+        Me.btnCargarDatos.Size = New System.Drawing.Size(75, 23)
+        Me.btnCargarDatos.TabIndex = 2
+        Me.btnCargarDatos.Text = "Cargar datos"
+        Me.btnCargarDatos.UseVisualStyleBackColor = True
+        '
+        'Label2
+        '
+        Me.Label2.AutoSize = True
+        Me.Label2.Location = New System.Drawing.Point(277, 44)
+        Me.Label2.Name = "Label2"
+        Me.Label2.Size = New System.Drawing.Size(43, 13)
+        Me.Label2.TabIndex = 3
+        Me.Label2.Text = "Usuario"
+        '
+        'Label3
+        '
+        Me.Label3.AutoSize = True
+        Me.Label3.Location = New System.Drawing.Point(277, 76)
+        Me.Label3.Name = "Label3"
+        Me.Label3.Size = New System.Drawing.Size(61, 13)
+        Me.Label3.TabIndex = 4
+        Me.Label3.Text = "Contraseña"
+        '
+        'Label4
+        '
+        Me.Label4.AutoSize = True
+        Me.Label4.Location = New System.Drawing.Point(5, 74)
+        Me.Label4.Name = "Label4"
+        Me.Label4.Size = New System.Drawing.Size(82, 13)
+        Me.Label4.TabIndex = 5
+        Me.Label4.Text = "Tipo de Usuario"
+        '
+        'Label5
+        '
+        Me.Label5.AutoSize = True
+        Me.Label5.Location = New System.Drawing.Point(7, 39)
+        Me.Label5.Name = "Label5"
+        Me.Label5.Size = New System.Drawing.Size(54, 13)
+        Me.Label5.TabIndex = 6
+        Me.Label5.Text = "Empleado"
+        '
+        'txtUsuario
+        '
+        Me.txtUsuario.Location = New System.Drawing.Point(337, 44)
+        Me.txtUsuario.Name = "txtUsuario"
+        Me.txtUsuario.Size = New System.Drawing.Size(178, 20)
+        Me.txtUsuario.TabIndex = 7
+        '
+        'cmbTipoUsuario
+        '
+        Me.cmbTipoUsuario.FormattingEnabled = True
+        Me.cmbTipoUsuario.Items.AddRange(New Object() {"Venta ", "Operacion ", "Administracion"})
+        Me.cmbTipoUsuario.Location = New System.Drawing.Point(93, 71)
+        Me.cmbTipoUsuario.Name = "cmbTipoUsuario"
+        Me.cmbTipoUsuario.Size = New System.Drawing.Size(150, 21)
+        Me.cmbTipoUsuario.TabIndex = 8
+        '
+        'txtContasenia
+        '
+        Me.txtContasenia.Location = New System.Drawing.Point(337, 73)
+        Me.txtContasenia.Name = "txtContasenia"
+        Me.txtContasenia.Size = New System.Drawing.Size(178, 20)
+        Me.txtContasenia.TabIndex = 9
+        '
+        'cmbEmpleado
+        '
+        Me.cmbEmpleado.FormattingEnabled = True
+        Me.cmbEmpleado.Location = New System.Drawing.Point(67, 36)
+        Me.cmbEmpleado.Name = "cmbEmpleado"
+        Me.cmbEmpleado.Size = New System.Drawing.Size(178, 21)
+        Me.cmbEmpleado.TabIndex = 10
+        '
+        'chbActivo
+        '
+        Me.chbActivo.AutoSize = True
+        Me.chbActivo.Location = New System.Drawing.Point(362, 11)
+        Me.chbActivo.Name = "chbActivo"
+        Me.chbActivo.Size = New System.Drawing.Size(56, 17)
+        Me.chbActivo.TabIndex = 14
+        Me.chbActivo.Text = "Activo"
+        Me.chbActivo.UseVisualStyleBackColor = True
+        '
+        'pnlDatosUsuario
+        '
+        Me.pnlDatosUsuario.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
+        Me.pnlDatosUsuario.Controls.Add(Me.chbActivo)
+        Me.pnlDatosUsuario.Controls.Add(Me.cmbEmpleado)
+        Me.pnlDatosUsuario.Controls.Add(Me.txtContasenia)
+        Me.pnlDatosUsuario.Controls.Add(Me.cmbTipoUsuario)
+        Me.pnlDatosUsuario.Controls.Add(Me.txtUsuario)
+        Me.pnlDatosUsuario.Controls.Add(Me.Label5)
+        Me.pnlDatosUsuario.Controls.Add(Me.Label4)
+        Me.pnlDatosUsuario.Controls.Add(Me.Label3)
+        Me.pnlDatosUsuario.Controls.Add(Me.Label2)
+        Me.pnlDatosUsuario.Controls.Add(Me.btnCargarDatos)
+        Me.pnlDatosUsuario.Controls.Add(Me.cmbNombreUsuario)
+        Me.pnlDatosUsuario.Controls.Add(Me.Label1)
+        Me.pnlDatosUsuario.Location = New System.Drawing.Point(7, 312)
+        Me.pnlDatosUsuario.Name = "pnlDatosUsuario"
+        Me.pnlDatosUsuario.Size = New System.Drawing.Size(545, 109)
+        Me.pnlDatosUsuario.TabIndex = 36
+        '
+        'Usuarios
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(564, 480)
+        Me.Controls.Add(Me.btnEmpleados)
         Me.Controls.Add(Me.btnBuscar)
         Me.Controls.Add(Me.txtBusqueda)
         Me.Controls.Add(Me.btnCancelar)
@@ -340,12 +316,12 @@ Partial Class Usuarios
         Me.Controls.Add(Me.pnlDatosUsuario)
         Me.Controls.Add(Me.lblCerrar)
         Me.Controls.Add(Me.Label16)
-        Me.Name = "Perfiles"
+        Me.Name = "Usuarios"
         Me.Text = "Perfiles"
-        Me.pnlDatosUsuario.ResumeLayout(False)
-        Me.pnlDatosUsuario.PerformLayout()
         CType(Me.tblUsuarios, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.errorIcono, System.ComponentModel.ISupportInitialize).EndInit()
+        Me.pnlDatosUsuario.ResumeLayout(False)
+        Me.pnlDatosUsuario.PerformLayout()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
@@ -353,10 +329,18 @@ Partial Class Usuarios
 
     Friend WithEvents lblCerrar As Label
     Friend WithEvents Label16 As Label
+    Friend WithEvents tblUsuarios As DataGridView
+    Friend WithEvents btnAgragar As Button
+    Friend WithEvents btnEliminar As Button
+    Friend WithEvents btnModificar As Button
+    Friend WithEvents btnAceptar As Button
+    Friend WithEvents btnCancelar As Button
+    Friend WithEvents errorIcono As ErrorProvider
+    Friend WithEvents txtBusqueda As TextBox
+    Friend WithEvents btnBuscar As Button
+    Friend WithEvents btnEmpleados As Button
     Friend WithEvents pnlDatosUsuario As Panel
-    Friend WithEvents cmbNombreUsuario As ComboBox
-    Friend WithEvents Label1 As Label
-    Friend WithEvents btnCargarDatos As Button
+    Friend WithEvents chbActivo As CheckBox
     Friend WithEvents cmbEmpleado As ComboBox
     Friend WithEvents txtContasenia As TextBox
     Friend WithEvents cmbTipoUsuario As ComboBox
@@ -365,17 +349,7 @@ Partial Class Usuarios
     Friend WithEvents Label4 As Label
     Friend WithEvents Label3 As Label
     Friend WithEvents Label2 As Label
-    Friend WithEvents tblUsuarios As DataGridView
-    Friend WithEvents btnAgragar As Button
-    Friend WithEvents btnEliminar As Button
-    Friend WithEvents btnModificar As Button
-    Friend WithEvents chbActivo As CheckBox
-    Friend WithEvents btnAceptar As Button
-    Friend WithEvents btnCancelar As Button
-    Friend WithEvents lbl3 As Label
-    Friend WithEvents lbl2 As Label
-    Friend WithEvents lbl1 As Label
-    Friend WithEvents errorIcono As ErrorProvider
-    Friend WithEvents txtBusqueda As TextBox
-    Friend WithEvents btnBuscar As Button
+    Friend WithEvents btnCargarDatos As Button
+    Friend WithEvents cmbNombreUsuario As ComboBox
+    Friend WithEvents Label1 As Label
 End Class

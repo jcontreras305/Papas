@@ -481,6 +481,7 @@
     <Content Include="Imagenes\Descuentos.jpg" />
     <Content Include="Imagenes\EMPLEADOS.jpg" />
     <Content Include="Imagenes\EMPLEADOS2.jpg" />
+    <None Include="Imagenes\empleadosButton.png" />
     <Content Include="Imagenes\EXISTENCIAS.jpg" />
     <Content Include="Imagenes\GENERAR NOMINA.jpg" />
     <Content Include="Imagenes\GUARDAR.png" />

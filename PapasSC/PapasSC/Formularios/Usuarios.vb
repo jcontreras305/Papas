@@ -11,9 +11,7 @@ Public Class Usuarios
         desactiarCampo()
         mtdUsuario.todosLosUsuarios(tblUsuarios)
         Me.Size = New Drawing.Size(w, h)
-        lbl1.Visible = False
-        lbl2.Visible = False
-        lbl3.Visible = False
+        Me.MaximizeBox = False
     End Sub
 
     Private Sub btnCargarDatos_Click(sender As Object, e As EventArgs) Handles btnCargarDatos.Click
