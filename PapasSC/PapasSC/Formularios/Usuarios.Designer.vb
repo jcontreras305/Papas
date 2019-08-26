@@ -1,5 +1,5 @@
 ﻿<Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()> _
-Partial Class Perfiles
+Partial Class Usuarios
     Inherits System.Windows.Forms.Form
 
     'Form reemplaza a Dispose para limpiar la lista de componentes.
@@ -23,6 +23,7 @@ Partial Class Perfiles
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
         Me.components = New System.ComponentModel.Container()
+        Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(Usuarios))
         Me.lblCerrar = New System.Windows.Forms.Label()
         Me.Label16 = New System.Windows.Forms.Label()
         Me.pnlDatosUsuario = New System.Windows.Forms.Panel()
@@ -42,12 +43,14 @@ Partial Class Perfiles
         Me.cmbNombreUsuario = New System.Windows.Forms.ComboBox()
         Me.Label1 = New System.Windows.Forms.Label()
         Me.tblUsuarios = New System.Windows.Forms.DataGridView()
-        Me.btnAgragar = New System.Windows.Forms.Button()
-        Me.btnEliminar = New System.Windows.Forms.Button()
-        Me.btnModificar = New System.Windows.Forms.Button()
-        Me.btnAceptar = New System.Windows.Forms.Button()
-        Me.btnCancelar = New System.Windows.Forms.Button()
         Me.errorIcono = New System.Windows.Forms.ErrorProvider(Me.components)
+        Me.txtBusqueda = New System.Windows.Forms.TextBox()
+        Me.btnCancelar = New System.Windows.Forms.Button()
+        Me.btnAceptar = New System.Windows.Forms.Button()
+        Me.btnModificar = New System.Windows.Forms.Button()
+        Me.btnEliminar = New System.Windows.Forms.Button()
+        Me.btnAgragar = New System.Windows.Forms.Button()
+        Me.btnBuscar = New System.Windows.Forms.Button()
         Me.pnlDatosUsuario.SuspendLayout()
         CType(Me.tblUsuarios, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.errorIcono, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -92,7 +95,7 @@ Partial Class Perfiles
         Me.pnlDatosUsuario.Controls.Add(Me.btnCargarDatos)
         Me.pnlDatosUsuario.Controls.Add(Me.cmbNombreUsuario)
         Me.pnlDatosUsuario.Controls.Add(Me.Label1)
-        Me.pnlDatosUsuario.Location = New System.Drawing.Point(7, 266)
+        Me.pnlDatosUsuario.Location = New System.Drawing.Point(7, 312)
         Me.pnlDatosUsuario.Name = "pnlDatosUsuario"
         Me.pnlDatosUsuario.Size = New System.Drawing.Size(545, 109)
         Me.pnlDatosUsuario.TabIndex = 36
@@ -236,65 +239,98 @@ Partial Class Perfiles
         'tblUsuarios
         '
         Me.tblUsuarios.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
-        Me.tblUsuarios.Location = New System.Drawing.Point(7, 56)
+        Me.tblUsuarios.Location = New System.Drawing.Point(7, 87)
         Me.tblUsuarios.Name = "tblUsuarios"
         Me.tblUsuarios.Size = New System.Drawing.Size(545, 175)
         Me.tblUsuarios.TabIndex = 37
-        '
-        'btnAgragar
-        '
-        Me.btnAgragar.Location = New System.Drawing.Point(474, 237)
-        Me.btnAgragar.Name = "btnAgragar"
-        Me.btnAgragar.Size = New System.Drawing.Size(75, 23)
-        Me.btnAgragar.TabIndex = 11
-        Me.btnAgragar.Text = "Agregar"
-        Me.btnAgragar.UseVisualStyleBackColor = True
-        '
-        'btnEliminar
-        '
-        Me.btnEliminar.Location = New System.Drawing.Point(388, 237)
-        Me.btnEliminar.Name = "btnEliminar"
-        Me.btnEliminar.Size = New System.Drawing.Size(75, 23)
-        Me.btnEliminar.TabIndex = 38
-        Me.btnEliminar.Text = "Eliminar"
-        Me.btnEliminar.UseVisualStyleBackColor = True
-        '
-        'btnModificar
-        '
-        Me.btnModificar.Location = New System.Drawing.Point(301, 237)
-        Me.btnModificar.Name = "btnModificar"
-        Me.btnModificar.Size = New System.Drawing.Size(75, 23)
-        Me.btnModificar.TabIndex = 39
-        Me.btnModificar.Text = "Modificar"
-        Me.btnModificar.UseVisualStyleBackColor = True
-        '
-        'btnAceptar
-        '
-        Me.btnAceptar.Location = New System.Drawing.Point(477, 384)
-        Me.btnAceptar.Name = "btnAceptar"
-        Me.btnAceptar.Size = New System.Drawing.Size(75, 23)
-        Me.btnAceptar.TabIndex = 15
-        Me.btnAceptar.Text = "Aceptar"
-        Me.btnAceptar.UseVisualStyleBackColor = True
-        '
-        'btnCancelar
-        '
-        Me.btnCancelar.Location = New System.Drawing.Point(384, 384)
-        Me.btnCancelar.Name = "btnCancelar"
-        Me.btnCancelar.Size = New System.Drawing.Size(75, 23)
-        Me.btnCancelar.TabIndex = 40
-        Me.btnCancelar.Text = "Cancelar"
-        Me.btnCancelar.UseVisualStyleBackColor = True
         '
         'errorIcono
         '
         Me.errorIcono.ContainerControl = Me
         '
+        'txtBusqueda
+        '
+        Me.txtBusqueda.Location = New System.Drawing.Point(151, 56)
+        Me.txtBusqueda.Name = "txtBusqueda"
+        Me.txtBusqueda.Size = New System.Drawing.Size(295, 20)
+        Me.txtBusqueda.TabIndex = 41
+        '
+        'btnCancelar
+        '
+        Me.btnCancelar.Image = Global.PapasSC.My.Resources.Resources.CANCELAR
+        Me.btnCancelar.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
+        Me.btnCancelar.Location = New System.Drawing.Point(369, 427)
+        Me.btnCancelar.Name = "btnCancelar"
+        Me.btnCancelar.Size = New System.Drawing.Size(90, 41)
+        Me.btnCancelar.TabIndex = 40
+        Me.btnCancelar.Text = "Cancelar"
+        Me.btnCancelar.TextAlign = System.Drawing.ContentAlignment.MiddleRight
+        Me.btnCancelar.UseVisualStyleBackColor = True
+        '
+        'btnAceptar
+        '
+        Me.btnAceptar.Image = Global.PapasSC.My.Resources.Resources.ACEPTAR
+        Me.btnAceptar.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
+        Me.btnAceptar.Location = New System.Drawing.Point(469, 427)
+        Me.btnAceptar.Name = "btnAceptar"
+        Me.btnAceptar.Size = New System.Drawing.Size(83, 39)
+        Me.btnAceptar.TabIndex = 15
+        Me.btnAceptar.Text = "Aceptar"
+        Me.btnAceptar.TextAlign = System.Drawing.ContentAlignment.MiddleRight
+        Me.btnAceptar.UseVisualStyleBackColor = True
+        '
+        'btnModificar
+        '
+        Me.btnModificar.Image = Global.PapasSC.My.Resources.Resources.ACTUALIZAR
+        Me.btnModificar.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
+        Me.btnModificar.Location = New System.Drawing.Point(270, 268)
+        Me.btnModificar.Name = "btnModificar"
+        Me.btnModificar.Size = New System.Drawing.Size(93, 36)
+        Me.btnModificar.TabIndex = 39
+        Me.btnModificar.Text = "Modificar"
+        Me.btnModificar.TextAlign = System.Drawing.ContentAlignment.MiddleRight
+        Me.btnModificar.UseVisualStyleBackColor = True
+        '
+        'btnEliminar
+        '
+        Me.btnEliminar.Image = Global.PapasSC.My.Resources.Resources.BORRAR
+        Me.btnEliminar.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
+        Me.btnEliminar.Location = New System.Drawing.Point(369, 266)
+        Me.btnEliminar.Name = "btnEliminar"
+        Me.btnEliminar.Size = New System.Drawing.Size(90, 38)
+        Me.btnEliminar.TabIndex = 38
+        Me.btnEliminar.Text = "Eliminar"
+        Me.btnEliminar.TextAlign = System.Drawing.ContentAlignment.MiddleRight
+        Me.btnEliminar.UseVisualStyleBackColor = True
+        '
+        'btnAgragar
+        '
+        Me.btnAgragar.Image = CType(resources.GetObject("btnAgragar.Image"), System.Drawing.Image)
+        Me.btnAgragar.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
+        Me.btnAgragar.Location = New System.Drawing.Point(469, 266)
+        Me.btnAgragar.Name = "btnAgragar"
+        Me.btnAgragar.Size = New System.Drawing.Size(80, 38)
+        Me.btnAgragar.TabIndex = 11
+        Me.btnAgragar.Text = "Agregar"
+        Me.btnAgragar.TextAlign = System.Drawing.ContentAlignment.MiddleRight
+        Me.btnAgragar.UseVisualStyleBackColor = True
+        '
+        'btnBuscar
+        '
+        Me.btnBuscar.Location = New System.Drawing.Point(451, 53)
+        Me.btnBuscar.Name = "btnBuscar"
+        Me.btnBuscar.Size = New System.Drawing.Size(91, 23)
+        Me.btnBuscar.TabIndex = 42
+        Me.btnBuscar.Text = "Buscar"
+        Me.btnBuscar.UseVisualStyleBackColor = True
+        '
         'Perfiles
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(564, 421)
+        Me.ClientSize = New System.Drawing.Size(564, 480)
+        Me.Controls.Add(Me.btnBuscar)
+        Me.Controls.Add(Me.txtBusqueda)
         Me.Controls.Add(Me.btnCancelar)
         Me.Controls.Add(Me.btnAceptar)
         Me.Controls.Add(Me.btnModificar)
@@ -340,4 +376,6 @@ Partial Class Perfiles
     Friend WithEvents lbl2 As Label
     Friend WithEvents lbl1 As Label
     Friend WithEvents errorIcono As ErrorProvider
+    Friend WithEvents txtBusqueda As TextBox
+    Friend WithEvents btnBuscar As Button
 End Class

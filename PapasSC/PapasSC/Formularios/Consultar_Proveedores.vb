@@ -56,7 +56,12 @@
     End Sub
 
     Private Sub Button2_Click(sender As Object, e As EventArgs) Handles Button2.Click
-        Actualizar_Proveedor.Show()
+        Try
+
+        Catch ex As Exception
+
+        End Try
+
     End Sub
 
 
