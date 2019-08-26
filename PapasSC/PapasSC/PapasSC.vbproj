@@ -104,6 +104,12 @@
     <Compile Include="Formularios\Catálogo.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="Formularios\ConfiguracionBD1.Designer.vb">
+      <DependentUpon>ConfiguracionBD1.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Formularios\ConfiguracionBD1.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="Formularios\Consultar_Proveedores.Designer.vb">
       <DependentUpon>Consultar_Proveedores.vb</DependentUpon>
     </Compile>
@@ -330,8 +336,14 @@
     <EmbeddedResource Include="Formularios\Actualizar_Producto.resx">
       <DependentUpon>Actualizar_Producto.vb</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Formularios\Actualizar_Proveedor.resx">
+      <DependentUpon>Actualizar_Proveedor.vb</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Formularios\Catálogo.resx">
       <DependentUpon>Catálogo.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formularios\ConfiguracionBD1.resx">
+      <DependentUpon>ConfiguracionBD1.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Formularios\Consultar_Proveedores.resx">
       <DependentUpon>Consultar_Proveedores.vb</DependentUpon>
