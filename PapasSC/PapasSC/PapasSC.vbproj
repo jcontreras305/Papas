@@ -92,22 +92,10 @@
     <Compile Include="Formularios\Actualizar_Proveedor.vb">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Formularios\Caja.Designer.vb">
-      <DependentUpon>Caja.vb</DependentUpon>
-    </Compile>
-    <Compile Include="Formularios\Caja.vb">
-      <SubType>Form</SubType>
-    </Compile>
     <Compile Include="Formularios\Catálogo.designer.vb">
       <DependentUpon>Catálogo.vb</DependentUpon>
     </Compile>
     <Compile Include="Formularios\Catálogo.vb">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Formularios\ConfiguracionBD1.Designer.vb">
-      <DependentUpon>ConfiguracionBD1.vb</DependentUpon>
-    </Compile>
-    <Compile Include="Formularios\ConfiguracionBD1.vb">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Formularios\Consultar_Proveedores.Designer.vb">
@@ -188,19 +176,18 @@
     <Compile Include="Formularios\Matriz.vb">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Formularios\NuevaVenta.Designer.vb">
-      <DependentUpon>NuevaVenta.vb</DependentUpon>
+    <Compile Include="Formularios\Usuarios.Designer.vb">
+      <DependentUpon>Usuarios.vb</DependentUpon>
     </Compile>
-    <Compile Include="Formularios\NuevaVenta.vb">
+    <Compile Include="Formularios\Usuarios.vb">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Formularios\Precios_por_defecto.Designer.vb">
-      <DependentUpon>Precios_por_defecto.vb</DependentUpon>
+    <Compile Include="Formularios\Reclasificacion.Designer.vb">
+      <DependentUpon>Reclasificacion.vb</DependentUpon>
     </Compile>
-    <Compile Include="Formularios\Precios_por_defecto.vb">
+    <Compile Include="Formularios\Reclasificacion.vb">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Formularios\Reclasificacion_N.vb" />
     <Compile Include="Formularios\Registrar_Bodega.Designer.vb">
       <DependentUpon>Registrar_Bodega.vb</DependentUpon>
     </Compile>
@@ -274,12 +261,6 @@
     <Compile Include="Formularios\Registro_productos.vb">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Formularios\Reporte_de_ventas.Designer.vb">
-      <DependentUpon>Reporte_de_ventas.vb</DependentUpon>
-    </Compile>
-    <Compile Include="Formularios\Reporte_de_ventas.vb">
-      <SubType>Form</SubType>
-    </Compile>
     <Compile Include="Logeo.vb">
       <SubType>Form</SubType>
     </Compile>
@@ -303,6 +284,7 @@
     <Compile Include="Metodos\MetodosProducto.vb" />
     <Compile Include="Metodos\MetodosProductos.vb" />
     <Compile Include="Metodos\MetodosProveedor.vb" />
+    <Compile Include="Metodos\MetodosUsuarios.vb" />
     <Compile Include="Metodos\MetodosVenta.vb" />
     <Compile Include="My Project\AssemblyInfo.vb" />
     <Compile Include="My Project\Application.Designer.vb">
@@ -336,14 +318,8 @@
     <EmbeddedResource Include="Formularios\Actualizar_Producto.resx">
       <DependentUpon>Actualizar_Producto.vb</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Formularios\Actualizar_Proveedor.resx">
-      <DependentUpon>Actualizar_Proveedor.vb</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="Formularios\Catálogo.resx">
       <DependentUpon>Catálogo.vb</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Formularios\ConfiguracionBD1.resx">
-      <DependentUpon>ConfiguracionBD1.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Formularios\Consultar_Proveedores.resx">
       <DependentUpon>Consultar_Proveedores.vb</DependentUpon>
@@ -380,6 +356,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Formularios\Matriz.resx">
       <DependentUpon>Matriz.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formularios\Usuarios.resx">
+      <DependentUpon>Usuarios.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Formularios\Registrar_Bodega.resx">
       <DependentUpon>Registrar_Bodega.vb</DependentUpon>
@@ -449,12 +428,14 @@
     <Content Include="Documentos\CambioTablasClienteContactoCredito02-08-19.sql" />
     <Content Include="Documentos\inserciones.sql" />
     <Content Include="Documentos\PS_ACTUAL1.0.sql" />
+    <None Include="Imagenes\ACEPTAR.png" />
     <Content Include="Imagenes\ACTUALIZAR.png" />
     <Content Include="Imagenes\ALMACEN.jpg" />
     <Content Include="Imagenes\BODEGAS.jpg" />
     <Content Include="Imagenes\BORRAR.png" />
     <Content Include="Imagenes\CAJA.jpg" />
     <Content Include="Imagenes\CAJAS1.jpg" />
+    <None Include="Imagenes\CANCELAR.png" />
     <Content Include="Imagenes\CATALOGO.jpg" />
     <Content Include="Imagenes\Clientes2.jpg" />
     <Content Include="Imagenes\CONFIG. BD.jpg" />

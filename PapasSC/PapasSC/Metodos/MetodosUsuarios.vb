@@ -84,6 +84,7 @@ Public Class MetodosUsuarios
                 datosUsuario(2) = CStr(reader(2))
                 datosUsuario(3) = CStr(reader(3))
                 datosUsuario(4) = CStr(reader(4))
+                datosUsuario(5) = CStr(reader(5))
             End While
             Return datosUsuario
         Catch ex As Exception
@@ -103,6 +104,7 @@ Public Class MetodosUsuarios
             cmd.Parameters.AddWithValue("@pass", data(1))
             cmd.Parameters.AddWithValue("@tipoUsuario", data(2))
             cmd.Parameters.AddWithValue("@empleado", data(3))
+            cmd.Parameters.AddWithValue("@estatus", data(4))
             cmd.Connection = conn
             If cmd.ExecuteNonQuery Then
                 MsgBox("Se ha insertado el Usuario " + data(0))
@@ -127,6 +129,51 @@ Public Class MetodosUsuarios
                 MsgBox("Se ha eliminado el Usuario " + usuario + " que conrrespondia a " + empleado)
             Else
                 MsgBox("Hubo un ERROR al eliminar el usuario" + usuario)
+            End If
+        Catch ex As Exception
+            MsgBox(ex.Message)
+        End Try
+    End Sub
+
+    Public Sub modificar(ByVal datosNuevos() As String, ByVal datosViejos() As String)
+        Try
+            conectar()
+            Dim cmd As New SqlCommand("sp_modificar_Usuario")
+            cmd.CommandType = CommandType.StoredProcedure
+            cmd.Parameters.AddWithValue("@loginN", datosNuevos(0))
+            cmd.Parameters.AddWithValue("@passN", datosNuevos(1))
+            cmd.Parameters.AddWithValue("@tipoUsuarioN", datosNuevos(2))
+            cmd.Parameters.AddWithValue("@empleadoN", datosNuevos(3))
+            cmd.Parameters.AddWithValue("@estatusN", datosNuevos(4))
+            cmd.Parameters.AddWithValue("@loginv", datosViejos(0))
+            cmd.Parameters.AddWithValue("@passv", datosViejos(1))
+            cmd.Parameters.AddWithValue("@tipoUsuariov", datosViejos(2))
+            cmd.Parameters.AddWithValue("@empleadov", datosViejos(3))
+            cmd.Parameters.AddWithValue("@estatusv", datosViejos(4))
+            cmd.Connection = conn
+            If cmd.ExecuteNonQuery Then
+                MsgBox("Se ha Actualizado el Usuario " + datosNuevos(0))
+            Else
+                MsgBox("Error al insertar")
+            End If
+        Catch ex As Exception
+            MsgBox(ex.Message)
+        End Try
+    End Sub
+
+
+    Public Sub busquedaDeUsuarios(ByVal busqueda As String, ByVal tabla As DataGridView)
+        Try
+            conectar()
+            Dim cmd As New SqlCommand("sp_busqueda_usuario")
+            cmd.CommandType = CommandType.StoredProcedure
+            cmd.Parameters.AddWithValue("@texto", busqueda)
+            cmd.Connection = conn
+            If cmd.ExecuteNonQuery Then
+                Dim da As New SqlDataAdapter(cmd)
+                Dim dt = New DataTable
+                da.Fill(dt)
+                tabla.DataSource = dt
             End If
         Catch ex As Exception
             MsgBox(ex.Message)

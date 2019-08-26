@@ -123,4 +123,27 @@
   <metadata name="$this.TrayHeight" type="System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>63</value>
   </metadata>
+  <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
+  <data name="btnAgragar.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAAB4AAAAeCAYAAAA7MK6iAAAABGdBTUEAALGeYUxB9wAAACBjSFJNAACH
+        EAAAjBIAAP1NAACBPgAAWesAARIPAAA85gAAGc66ySIyAAABJmlDQ1BBZG9iZSBSR0IgKDE5OTgpAAAo
+        z2NgYDJwdHFyZRJgYMjNKykKcndSiIiMUmA/z8DGwMwABonJxQWOAQE+IHZefl4qAwb4do2BEURf1gWZ
+        xUAa4EouKCoB0n+A2CgltTiZgYHRAMjOLi8pAIozzgGyRZKywewNIHZRSJAzkH0EyOZLh7CvgNhJEPYT
+        ELsI6Akg+wtIfTqYzcQBNgfClgGxS1IrQPYyOOcXVBZlpmeUKBhaWloqOKbkJ6UqBFcWl6TmFit45iXn
+        FxXkFyWWpKYA1ULcBwaCEIWgENMAarTQZKAyAMUDhPU5EBy+jGJnEGIIkFxaVAZlMjIZE+YjzJgjwcDg
+        v5SBgeUPQsykl4FhgQ4DA/9UhJiaIQODgD4Dw745AMDGT/0ZOjZcAAAACXBIWXMAAAsTAAALEwEAmpwY
+        AAACXElEQVRIS8XW32vPURzH8ZnNj9kyLantQkqU8qOmKHLDJaXMBXfKv+CSpF244WKFYkVccMGGslEr
+        ClsuiHAniuLClmTEZj6er0+f97ez7+d9tm99v5/t4tF3O5/zPq/Pz3NOXZIk88JtnAulP9qHeptxHr+Q
+        VOAG2qDainnBZ2CDPsBN9OFW4Brewvo9RQdyATFesAaawj40oRGLAvp/AXZhFBb+GKuQC/HEgu+GnSLa
+        8R4WLENYAa//NLHg61honSLW4SPCYHmIVng1JbHgfui25goC6/EJ5cGi266X1KtLxYL1Ms0WvBnfUB5q
+        dNe8ulQ1wUvRi3d4hRd4CTuZSejkvNqqgqUey6CTWJL9bsF3aJw98OqqDo75AI2zI2ibpojgxfgMjaNv
+        3etTSLAmHXvOu7O2nCKCl+M0jkJX7/UpJDikSUh3IHesqOBNOA6NM4hz2At9BWmfIoJPYBwap9w9rEbN
+        g4/BQv7hN35Cq521awltq2XwVigsDD6ItXiTtZmTtQw+BRtYt1qTyAbo2G38gF3561hwJatTSFOlXiLV
+        asvUhY3QdKrjWsl24j7UZyIWXMl6HNISqHVYtbqylfD6XYH6EOUH30F50Uz0mVyEavVsn0Nj6Ep1vAfD
+        sBntixes5ewPDkC3W1feMAML34/0agLboHotmWH7ZS/4bNDhCQagZ+PRHks7zhaoVi+l1U7gEbQr/Zq1
+        iT6v7V6w1tVLGIN1ns0FqHYNRrI2j3alevFKeWGw0e7hEA5nvzFHoMFsOtQi0Y1n+AsFajd6FZ1Ix88F
+        zzW3sXhJ3X8DnksX9CZ/mQAAAABJRU5ErkJggg==
+</value>
+  </data>
 </root>
