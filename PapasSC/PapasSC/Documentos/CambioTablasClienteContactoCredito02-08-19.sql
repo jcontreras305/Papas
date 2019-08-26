@@ -55,5 +55,8 @@ alter column municipio varchar (50) null
 
 alter table contacto 
 alter column codigoPostal char(5) null
-
-
+--Aqui se agregaron dos columnas mas a la tabla de horario
+--para identificar los horarios y poder tener una idea mas
+--mas clara del por que o para quien es ese horario
+alter table horario 
+add nombre varchar (30), descripcion varchar(200)

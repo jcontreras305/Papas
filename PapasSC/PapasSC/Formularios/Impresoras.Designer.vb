@@ -26,10 +26,10 @@ Partial Class Impresoras
         Me.Label16 = New System.Windows.Forms.Label()
         Me.lstLImpresoras = New System.Windows.Forms.ListBox()
         Me.Panel1 = New System.Windows.Forms.Panel()
-        Me.Label1 = New System.Windows.Forms.Label()
         Me.Button2 = New System.Windows.Forms.Button()
-        Me.lstPropiedades = New System.Windows.Forms.ListView()
         Me.Label3 = New System.Windows.Forms.Label()
+        Me.lstPropiedades = New System.Windows.Forms.ListView()
+        Me.Label1 = New System.Windows.Forms.Label()
         Me.Panel1.SuspendLayout()
         Me.SuspendLayout()
         '
@@ -77,16 +77,6 @@ Partial Class Impresoras
         Me.Panel1.Size = New System.Drawing.Size(924, 430)
         Me.Panel1.TabIndex = 37
         '
-        'Label1
-        '
-        Me.Label1.AutoSize = True
-        Me.Label1.Font = New System.Drawing.Font("Arial Narrow", 14.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label1.Location = New System.Drawing.Point(3, 6)
-        Me.Label1.Name = "Label1"
-        Me.Label1.Size = New System.Drawing.Size(177, 23)
-        Me.Label1.TabIndex = 37
-        Me.Label1.Text = "Selecciona la impresora"
-        '
         'Button2
         '
         Me.Button2.Location = New System.Drawing.Point(561, 148)
@@ -95,15 +85,6 @@ Partial Class Impresoras
         Me.Button2.TabIndex = 39
         Me.Button2.Text = "Checar"
         Me.Button2.UseVisualStyleBackColor = True
-        '
-        'lstPropiedades
-        '
-        Me.lstPropiedades.Font = New System.Drawing.Font("Arial Narrow", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.lstPropiedades.Location = New System.Drawing.Point(7, 216)
-        Me.lstPropiedades.Name = "lstPropiedades"
-        Me.lstPropiedades.Size = New System.Drawing.Size(899, 173)
-        Me.lstPropiedades.TabIndex = 40
-        Me.lstPropiedades.UseCompatibleStateImageBehavior = False
         '
         'Label3
         '
@@ -114,6 +95,25 @@ Partial Class Impresoras
         Me.Label3.Size = New System.Drawing.Size(99, 23)
         Me.Label3.TabIndex = 38
         Me.Label3.Text = "Propiedades"
+        '
+        'lstPropiedades
+        '
+        Me.lstPropiedades.Font = New System.Drawing.Font("Arial Narrow", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.lstPropiedades.Location = New System.Drawing.Point(7, 216)
+        Me.lstPropiedades.Name = "lstPropiedades"
+        Me.lstPropiedades.Size = New System.Drawing.Size(899, 173)
+        Me.lstPropiedades.TabIndex = 40
+        Me.lstPropiedades.UseCompatibleStateImageBehavior = False
+        '
+        'Label1
+        '
+        Me.Label1.AutoSize = True
+        Me.Label1.Font = New System.Drawing.Font("Arial Narrow", 14.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label1.Location = New System.Drawing.Point(3, 6)
+        Me.Label1.Name = "Label1"
+        Me.Label1.Size = New System.Drawing.Size(177, 23)
+        Me.Label1.TabIndex = 37
+        Me.Label1.Text = "Selecciona la impresora"
         '
         'Impresoras
         '

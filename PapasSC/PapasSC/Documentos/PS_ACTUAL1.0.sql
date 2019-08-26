@@ -289,3 +289,108 @@ begin
 				rollback tran
 			end
 end
+
+--#############################################################################################
+--#################### Procedimientos para datos de un usuarios ###############################
+--#############################################################################################
+execute sp_selectDatosUsuario 'admin'
+
+create proc sp_selectDatosUsuario
+@nombreUsuario varchar (20)
+as 
+declare @error int 
+begin 
+	begin tran
+		begin try 
+			select 
+			 us.idUsuario , us.nombreUsuario, us.contrasenia ,tpus.tipo ,emp.nombre
+			 from usuarios as us left join  empleado as emp on us.idEmpleado = emp.idEmpleado
+			left join tipoUsuario as tpus on us.idTipoUsuario = tpus.idTipoUsuario
+			where us.nombreUsuario like @nombreUsuario
+		end try
+		begin catch
+			goto repararProblema
+		end catch
+	commit tran 
+	repararProblema:
+		if	@error <> 0
+		begin 
+			rollback tran
+		end
+end
+
+
+--#####################################################################################################
+--########################## Procedmiento para consultar usuarios #####################################
+--#####################################################################################################
+
+--execute sp_selectUsuarios
+create proc sp_selectUsuarios 
+as
+begin 
+	select nombreUsuario as Usuario, contrasenia as Contraseña , tpus.tipo , emp.nombre as NombreEmpleado
+	from usuarios as us left join tipoUsuario as tpus on us.idTipoUsuario = tpus.idTipoUsuario 
+	left join empleado as emp on us.idEmpleado = emp.idEmpleado
+end
+
+--#####################################################################################################
+--########################## Procedmiento para insertar usuarios ######################################
+--#####################################################################################################
+create proc sp_insertar_Usuario
+@login  varchar(50),
+@pass  varchar(50),
+@tipoUsuario varchar(30),
+@empleado varchar(80)
+as
+declare @idUsuario  varchar(36)
+declare @idTipoUsuario varchar (36)
+declare @idEmpleado varchar(36)
+declare @contador int
+declare @error int
+begin 
+	set @contador = 0
+	--Compruebo que no exista un usario asignado al mismo empleado 
+	print 'comprobando usuarios'
+	select @contador = count(*) from usuarios as usr left join empleado as emp on usr.idEmpleado  = emp.idEmpleado
+	inner join tipoUsuario as tpus on usr.idTipoUsuario = tpus.idTipoUsuario 
+	where usr.nombreUsuario like (@login) and emp.nombre like (CONCAT('%',@empleado))
+	if @contador = 0 
+	begin 
+		--Compruebo que no exita un usuario con el mismo nombre
+		select @contador = COUNT(*) from usuarios where nombreUsuario like(CONCAT('%',@login))
+		if @contador = 0 
+		begin
+			print 'No existen usuarios con el mismo nombre'
+			select @idEmpleado = idEmpleado from empleado where nombre = @empleado
+			select @idTipoUsuario = idTipoUsuario from tipoUsuario where tipo = @tipoUsuario
+			begin tran
+				begin try
+					set @idUsuario = NEWID()
+					print concat('Usuario: ', @idUsuario, ' Emplado: ', @idEmpleado , ' TipoUsuario: ', @idTipoUsuario)
+					insert into usuarios values(@idUsuario, @login , @pass , @idTipoUsuario , @idEmpleado)
+					if @@ERROR <> 0
+					begin 
+						set @error = @@ERROR
+					end
+				end try
+				begin catch
+					goto solucionaProblema
+				end catch
+			commit tran 
+			solucionaProblema:
+				if @error <> 0 
+				begin
+					rollback tran
+					print 'error'
+				end
+		end
+	end	
+end
+--############################# estos son los tipos #################################################
+--############################# de usuario basicos  #################################################
+select * from usuarios
+select * from tipoUsuario
+insert into tipoUsuario values(NEWID(),'Administracion'),(NEWID(),'Operador'),(NEWID(),'Venta')
+select * from empleado
+
+select nombre from empleado where estatus = 'A'
