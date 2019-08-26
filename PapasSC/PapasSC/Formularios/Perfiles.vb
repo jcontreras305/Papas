@@ -157,4 +157,8 @@ Public Class Perfiles
 
         End Try
     End Sub
+
+    Private Sub txtContasenia_TextChanged(sender As Object, e As EventArgs) Handles txtContasenia.TextChanged
+
+    End Sub
 End Class

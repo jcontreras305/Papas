@@ -74,6 +74,9 @@
     <Import Include="System.Threading.Tasks" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Formularios\.Designer.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="Formularios\Actualizar_bodega.Designer.vb">
       <DependentUpon>Actualizar_bodega.vb</DependentUpon>
     </Compile>
@@ -152,6 +155,12 @@
     <Compile Include="Formularios\Consulta_usuarios.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="Formularios\ExistenciaBodega.Designer.vb">
+      <DependentUpon>ExistenciaBodega.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Formularios\ExistenciaBodega.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="Formularios\GenerarNomina.designer.vb">
       <DependentUpon>GenerarNomina.vb</DependentUpon>
     </Compile>
@@ -188,10 +197,22 @@
     <Compile Include="Formularios\NuevaVenta.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="Formularios\Perfiles.Designer.vb">
+      <DependentUpon>Perfiles.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Formularios\Perfiles.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="Formularios\Precios_por_defecto.Designer.vb">
       <DependentUpon>Precios_por_defecto.vb</DependentUpon>
     </Compile>
     <Compile Include="Formularios\Precios_por_defecto.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formularios\Reclasificacion.Designer.vb">
+      <DependentUpon>Reclasificacion.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Formularios\Reclasificacion.vb">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Formularios\Reclasificacion_N.vb" />
@@ -288,6 +309,7 @@
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="LogeoMetodos.vb" />
+    <Compile Include="Metodos\MetodoExistenciaProducto.vb" />
     <Compile Include="Metodos\MetodosBodega.vb" />
     <Compile Include="Metodos\MetodosCliente.vb" />
     <Compile Include="Metodos\MetodosClientes.vb" />
@@ -297,6 +319,7 @@
     <Compile Include="Metodos\MetodosProducto.vb" />
     <Compile Include="Metodos\MetodosProductos.vb" />
     <Compile Include="Metodos\MetodosProveedor.vb" />
+    <Compile Include="Metodos\MetodosUsuarios.vb" />
     <Compile Include="Metodos\MetodosVenta.vb" />
     <Compile Include="My Project\AssemblyInfo.vb" />
     <Compile Include="My Project\Application.Designer.vb">
@@ -354,6 +377,9 @@
     <EmbeddedResource Include="Formularios\Consulta_usuarios.resx">
       <DependentUpon>Consulta_usuarios.vb</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Formularios\ExistenciaBodega.resx">
+      <DependentUpon>ExistenciaBodega.vb</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Formularios\GenerarNomina.resx">
       <DependentUpon>GenerarNomina.vb</DependentUpon>
     </EmbeddedResource>
@@ -368,6 +394,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Formularios\Matriz.resx">
       <DependentUpon>Matriz.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formularios\Perfiles.resx">
+      <DependentUpon>Perfiles.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Formularios\Registrar_Bodega.resx">
       <DependentUpon>Registrar_Bodega.vb</DependentUpon>
