@@ -92,6 +92,12 @@
     <Compile Include="Formularios\Actualizar_Proveedor.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="Formularios\Caja.Designer.vb">
+      <DependentUpon>Caja.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Formularios\Caja.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="Formularios\Catálogo.designer.vb">
       <DependentUpon>Catálogo.vb</DependentUpon>
     </Compile>
@@ -176,6 +182,19 @@
     <Compile Include="Formularios\Matriz.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="Formularios\NuevaVenta.Designer.vb">
+      <DependentUpon>NuevaVenta.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Formularios\NuevaVenta.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formularios\Precios_por_defecto.Designer.vb">
+      <DependentUpon>Precios_por_defecto.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Formularios\Precios_por_defecto.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formularios\Reclasificacion_N.vb" />
     <Compile Include="Formularios\Registrar_Bodega.Designer.vb">
       <DependentUpon>Registrar_Bodega.vb</DependentUpon>
     </Compile>
@@ -247,6 +266,12 @@
       <DependentUpon>Registro_productos.vb</DependentUpon>
     </Compile>
     <Compile Include="Formularios\Registro_productos.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formularios\Reporte_de_ventas.Designer.vb">
+      <DependentUpon>Reporte_de_ventas.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Formularios\Reporte_de_ventas.vb">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Logeo.vb">

@@ -28,6 +28,7 @@ Partial Class MenuInventario
         Me.Button2 = New System.Windows.Forms.Button()
         Me.Button3 = New System.Windows.Forms.Button()
         Me.Label2 = New System.Windows.Forms.Label()
+        Me.btnTranspasos = New System.Windows.Forms.Button()
         Me.SuspendLayout()
         '
         'Label1
@@ -62,7 +63,7 @@ Partial Class MenuInventario
         'Button3
         '
         Me.Button3.Image = CType(resources.GetObject("Button3.Image"), System.Drawing.Image)
-        Me.Button3.Location = New System.Drawing.Point(369, 387)
+        Me.Button3.Location = New System.Drawing.Point(121, 353)
         Me.Button3.Name = "Button3"
         Me.Button3.Size = New System.Drawing.Size(169, 169)
         Me.Button3.TabIndex = 3
@@ -79,12 +80,22 @@ Partial Class MenuInventario
         Me.Label2.TabIndex = 8
         Me.Label2.Text = "X"
         '
+        'btnTranspasos
+        '
+        Me.btnTranspasos.Location = New System.Drawing.Point(589, 353)
+        Me.btnTranspasos.Name = "btnTranspasos"
+        Me.btnTranspasos.Size = New System.Drawing.Size(172, 169)
+        Me.btnTranspasos.TabIndex = 9
+        Me.btnTranspasos.Text = "Transpasos"
+        Me.btnTranspasos.UseVisualStyleBackColor = True
+        '
         'MenuInventario
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackColor = System.Drawing.Color.White
         Me.ClientSize = New System.Drawing.Size(875, 465)
+        Me.Controls.Add(Me.btnTranspasos)
         Me.Controls.Add(Me.Label2)
         Me.Controls.Add(Me.Button3)
         Me.Controls.Add(Me.Button2)
@@ -104,4 +115,5 @@ Partial Class MenuInventario
     Friend WithEvents Button2 As Button
     Friend WithEvents Button3 As Button
     Friend WithEvents Label2 As Label
+    Friend WithEvents btnTranspasos As Button
 End Class

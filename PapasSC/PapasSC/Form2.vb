@@ -158,19 +158,11 @@
             formulario.Close()
             formulario = Nothing
 
-
+            AbrirFormEnPanel(Of Catálogo)()
         Else
             AbrirFormEnPanel(Of Catálogo)()
 
-            If usuario = "Venta" Then
 
-
-            ElseIf usuario = "Operador" Then
-
-            ElseIf usuario = "Contador" Then
-
-
-            End If
         End If
     End Sub
 
