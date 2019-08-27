@@ -155,10 +155,13 @@ Public Class Usuarios
 
     Private Sub btnEliminar_Click(sender As Object, e As EventArgs) Handles btnEliminar.Click
         Try
+
             Dim empleado, usuario As String
             usuario = tblUsuarios.CurrentRow.Cells(0).Value
             empleado = tblUsuarios.CurrentRow.Cells(3).Value
-            mtdUsuario.eliminar(usuario, empleado)
+            If MessageBox.Show("Esta seguro de ELIMINAR el usuario: " + usuario + " que pertenece" + vbCrLf + "a al empleado: " + empleado, "Advertencia", MessageBoxButtons.OKCancel, MessageBoxIcon.Warning) = 1 Then
+                mtdUsuario.eliminar(usuario, empleado)
+            End If
         Catch ex As Exception
 
         End Try
