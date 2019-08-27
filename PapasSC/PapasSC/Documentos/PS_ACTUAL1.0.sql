@@ -336,11 +336,12 @@ end
 --#####################################################################################################
 --########################## Procedmiento para insertar usuarios ######################################
 --#####################################################################################################
-create proc sp_insertar_Usuario
+create  proc sp_insertar_Usuario
 @login  varchar(50),
 @pass  varchar(50),
 @tipoUsuario varchar(30),
-@empleado varchar(80)
+@empleado varchar(80),
+@estatus char(1)
 as
 declare @idUsuario  varchar(36)
 declare @idTipoUsuario varchar (36)
@@ -367,7 +368,7 @@ begin
 				begin try
 					set @idUsuario = NEWID()
 					print concat('Usuario: ', @idUsuario, ' Emplado: ', @idEmpleado , ' TipoUsuario: ', @idTipoUsuario)
-					insert into usuarios values(@idUsuario, @login , @pass , @idTipoUsuario , @idEmpleado)
+					insert into usuarios values(@idUsuario, @login , @pass , @idTipoUsuario , @idEmpleado,@estatus)	
 					if @@ERROR <> 0
 					begin 
 						set @error = @@ERROR
@@ -386,11 +387,214 @@ begin
 		end
 	end	
 end
+--#####################################################################################################
+--########################## Procedmiento para eliminar usuarios ######################################
+--#####################################################################################################
+
+create proc sp_eliminar_Usuario
+@nombreUsuario as varchar(80),
+@nombreEmpleado as varchar(80)
+as 
+declare @idUsuario varchar (36)
+declare @idEmpleado varchar (36)
+declare @error int
+declare @cont int
+begin 
+	set @cont = 0
+	select @cont = count (*) from usuarios left join empleado on usuarios.idEmpleado = empleado.idEmpleado 
+	where usuarios.nombreUsuario like @nombreUsuario and empleado.nombre like @nombreEmpleado
+	print CONCAT('Buscando Usuario ',@cont)
+	if @cont > 0 
+	begin 
+		begin tran 
+			begin try
+				select @idEmpleado = idEmpleado from empleado where nombre like (CONCAT('%',@nombreEmpleado))
+				print @idEmpleado
+				select @idUsuario = idUsuario  from usuarios where nombreUsuario like (CONCAT('%',@nombreUsuario))
+				print @idUsuario
+				delete from usuarios where idEmpleado = @idEmpleado and idUsuario = @idUsuario
+				if @@ERROR <> 0 
+				begin 
+					set @error = @@ERROR
+					print 'Error al eliminar'
+				end
+			end try
+			begin catch
+				goto resolverProblema
+			end catch
+		commit tran 
+		resolverProblema:
+			if @error <> 0 
+			begin 
+				rollback tran
+				print 'error'
+			end
+	end
+end
+
+--#####################################################################################################
+--########################## Procedmiento para modificar usuarios #####################################
+--#####################################################################################################
+
+create  proc sp_modificar_Usuario
+@loginN  varchar(50),
+@passN  varchar(50),
+@tipoUsuarioN varchar(30),
+@empleadoN varchar(80),
+@estatusN char(1),
+@loginv  varchar(50),
+@passv  varchar(50),
+@tipoUsuariov varchar(30),
+@empleadov varchar(80),
+@estatusv char(1)
+as
+declare @error int 
+declare @idEmpleadoN varchar(36)
+declare @idEmpleadoV varchar(36)
+declare @idTipoEmpleadoN varchar(36)
+declare @idTipoEmpleadoV varchar(36)
+declare @idUsuario varchar(36)
+declare @cont int 
+begin 
+	--Obtenemos los datos necesarios para hacer el Update
+	select @idUsuario = idUsuario from usuarios where nombreUsuario like (CONCAT('%',@loginv))
+	select @idTipoEmpleadoN = idTipoUsuario from tipoUsuario where tipo like (@tipoUsuarioN)
+	select @idTipoEmpleadoV = idTipoUsuario from tipoUsuario where tipo like (@tipoUsuarioV)
+	select @idEmpleadoV  =  idEmpleado from empleado where nombre like (@empleadov)
+	select @idEmpleadoN  =  idEmpleado from empleado where nombre like (@empleadoN)
+	begin tran
+		begin try 	
+			select @cont = count(idUsuario) from usuarios where nombreUsuario like @loginv and idEmpleado = @idEmpleadoV
+			if @cont = 1 --si solo existe un solo usuario si no es incorrecto cambiar 2 o mas usuario
+			begin
+				print 'entro2'
+				update usuarios set nombreUsuario = @loginN , contrasenia = @passN , idTipoUsuario = @idTipoEmpleadoN , idEmpleado = @idEmpleadoN, estatus = @estatusN
+				where nombreUsuario like @loginv and idEmpleado = @idEmpleadoV
+				if @@ERROR <> 0
+				begin 
+					set @error = @@ERROR 
+					print 'entro3'
+				end
+			end
+		end try
+		begin catch
+			goto solucionarProblema
+		end catch
+	commit tran
+	solucionarProblema:
+		if	@error <> 0 
+		begin 
+			rollback tran
+			print 'Error al actualizar'
+		end
+end
+
+--#####################################################################################################
+--############ Procedmiento seleccionar datos usuario y llenar la tabla ###############################
+--#####################################################################################################
+
+create proc sp_selectDatosUsuario
+@nombreUsuario varchar (20)
+as 
+declare @error int 
+begin 
+	begin tran
+		begin try 
+			select 
+			 us.idUsuario , us.nombreUsuario, us.contrasenia ,tpus.tipo ,emp.nombre , us.estatus
+			 from usuarios as us left join  empleado as emp on us.idEmpleado = emp.idEmpleado
+			left join tipoUsuario as tpus on us.idTipoUsuario = tpus.idTipoUsuario
+			where us.nombreUsuario like @nombreUsuario
+		end try
+		begin catch
+			goto repararProblema
+		end catch
+	commit tran 
+	repararProblema:
+		if	@error <> 0
+		begin 
+			rollback tran
+		end
+end
+
+--#####################################################################################################
+--######################## consultar usuarios para llenar un combo box ################################
+--#####################################################################################################
+
+execute sp_selectUsuarios
+
+create proc sp_selectUsuarios
+as
+begin 
+	select nombreUsuario as Usuario, contrasenia as Contraseña , tpus.tipo as Tipo , emp.nombre as NombreEmpleado ,
+	case  
+		when us.estatus = 'A' then 'Activo'
+		when us.estatus = 'B' then 'Bloqueado'
+	end as Estatus
+	from usuarios as us left join tipoUsuario as tpus on us.idTipoUsuario = tpus.idTipoUsuario 
+	left join empleado as emp on us.idEmpleado = emp.idEmpleado
+end
+
+--#####################################################################################################
+--######################## consultar usuarios para busqueda por filtro ################################
+--#####################################################################################################
+execute sp_busqueda_usuario 'activo'
+
+create proc sp_busqueda_usuario
+@texto varchar(50)
+as
+begin 
+	if @texto like CONCAT('%','bloqueado','%')
+	begin 
+		set	@texto = 'B'
+			select us.nombreUsuario as Usuario, us.contrasenia as Contraseña, tpu.tipo as Tipo , em.nombre as NombreEmplado ,
+		case  
+			when us.estatus = 'A' then 'Activo'
+			when us.estatus = 'B' then 'Bloqueado'
+		end as Estatus
+		from usuarios as us left join empleado as em on us.idEmpleado = em.idEmpleado
+		inner join tipoUsuario as tpu on us.idTipoUsuario = tpu.idTipoUsuario
+		where  us.estatus like 'B'
+	end
+	else if @texto like CONCAT('%','Activo','%')
+	begin 
+		set	@texto = 'A'
+		select us.nombreUsuario as Usuario, us.contrasenia as Contraseña, tpu.tipo as Tipo , em.nombre as NombreEmplado ,
+		case  
+			when us.estatus = 'A' then 'Activo'
+			when us.estatus = 'B' then 'Bloqueado'
+		end as Estatus
+		from usuarios as us left join empleado as em on us.idEmpleado = em.idEmpleado
+		inner join tipoUsuario as tpu on us.idTipoUsuario = tpu.idTipoUsuario
+		where us.estatus like 'A'
+	end
+	else 
+	begin
+		select us.nombreUsuario as Usuario, us.contrasenia as Contraseña, tpu.tipo as Tipo , em.nombre as NombreEmplado ,
+		case  
+			when us.estatus = 'A' then 'Activo'
+			when us.estatus = 'B' then 'Bloqueado'
+		end as Estatus
+		from usuarios as us left join empleado as em on us.idEmpleado = em.idEmpleado
+		inner join tipoUsuario as tpu on us.idTipoUsuario = tpu.idTipoUsuario
+		where tpu.tipo like (CONCAT('%',@texto,'%')) or us.nombreUsuario like (CONCAT('%',@texto,'%'))	or em.nombre like (CONCAT('%',@texto,'%')) or us.estatus like (@texto) 	
+	end
+	--usuario, contrasenia , tipo, nombre empleado
+	
+end
+
+
 --############################# estos son los tipos #################################################
 --############################# de usuario basicos  #################################################
 select * from usuarios
 select * from tipoUsuario
 insert into tipoUsuario values(NEWID(),'Administracion'),(NEWID(),'Operador'),(NEWID(),'Venta')
 select * from empleado
-
+update usuarios set estatus = 'A'
 select nombre from empleado where estatus = 'A'
+--############################# cambio en la tabla de usuario #################################################
+--############################# solo se agrego el campo de status #############################################
+
+alter table usuarios
+add estatus char (1)
+
