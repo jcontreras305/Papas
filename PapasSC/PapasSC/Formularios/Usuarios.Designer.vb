@@ -72,9 +72,9 @@ Partial Class Usuarios
         Me.Label16.ForeColor = System.Drawing.SystemColors.ButtonShadow
         Me.Label16.Location = New System.Drawing.Point(192, 9)
         Me.Label16.Name = "Label16"
-        Me.Label16.Size = New System.Drawing.Size(174, 24)
+        Me.Label16.Size = New System.Drawing.Size(212, 24)
         Me.Label16.TabIndex = 34
-        Me.Label16.Text = "Configurar Perfil"
+        Me.Label16.Text = "Configurar Usuarios"
         '
         'tblUsuarios
         '
@@ -316,6 +316,7 @@ Partial Class Usuarios
         Me.Controls.Add(Me.pnlDatosUsuario)
         Me.Controls.Add(Me.lblCerrar)
         Me.Controls.Add(Me.Label16)
+        Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None
         Me.Name = "Usuarios"
         Me.Text = "Perfiles"
         CType(Me.tblUsuarios, System.ComponentModel.ISupportInitialize).EndInit()

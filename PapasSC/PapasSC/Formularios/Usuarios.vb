@@ -2,7 +2,7 @@
 Public Class Usuarios
     Dim mtdUsuario As New MetodosUsuarios
     Dim w As Integer = 580
-    Dim h As Integer = 350
+    Dim h As Integer = 308
     Dim flag As Int16 = 1
     Dim nombreUsuario, nombreEmpleado, tipoEmpleado, contrasenia, estatus As String
 
@@ -218,7 +218,7 @@ Public Class Usuarios
 
 
     Private Function agrandarFrom() As Boolean
-        Me.Size = New Drawing.Size(w, h + 160)
+        Me.Size = New Drawing.Size(w, h + 164)
         Return True
     End Function
 
@@ -244,6 +244,10 @@ Public Class Usuarios
             Return False
         End If
     End Function
+
+    Private Sub btnEmpleados_Click(sender As Object, e As EventArgs) Handles btnEmpleados.Click
+        AgregarEmpleados.Show()
+    End Sub
 
     Private Sub txtUsuario_Validating(sender As Object, e As System.ComponentModel.CancelEventArgs) Handles txtUsuario.Validating
         If DirectCast(sender, TextBox).Text.Length > 0 Then
