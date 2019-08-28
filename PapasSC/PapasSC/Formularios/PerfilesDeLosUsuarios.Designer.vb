@@ -36,6 +36,9 @@ Partial Class PerfilesDeLosUsuarios
         Me.Button3 = New System.Windows.Forms.Button()
         Me.Button4 = New System.Windows.Forms.Button()
         Me.Button5 = New System.Windows.Forms.Button()
+        Me.Button6 = New System.Windows.Forms.Button()
+        Me.Button7 = New System.Windows.Forms.Button()
+        Me.Button8 = New System.Windows.Forms.Button()
         Me.GroupBox1.SuspendLayout()
         Me.GroupBox2.SuspendLayout()
         Me.SuspendLayout()
@@ -177,11 +180,41 @@ Partial Class PerfilesDeLosUsuarios
         Me.Button5.Text = "Guardar"
         Me.Button5.UseVisualStyleBackColor = True
         '
+        'Button6
+        '
+        Me.Button6.Location = New System.Drawing.Point(397, 404)
+        Me.Button6.Name = "Button6"
+        Me.Button6.Size = New System.Drawing.Size(88, 40)
+        Me.Button6.TabIndex = 49
+        Me.Button6.Text = "Aceptar"
+        Me.Button6.UseVisualStyleBackColor = True
+        '
+        'Button7
+        '
+        Me.Button7.Location = New System.Drawing.Point(306, 404)
+        Me.Button7.Name = "Button7"
+        Me.Button7.Size = New System.Drawing.Size(85, 40)
+        Me.Button7.TabIndex = 50
+        Me.Button7.Text = "Cancelar"
+        Me.Button7.UseVisualStyleBackColor = True
+        '
+        'Button8
+        '
+        Me.Button8.Location = New System.Drawing.Point(214, 404)
+        Me.Button8.Name = "Button8"
+        Me.Button8.Size = New System.Drawing.Size(85, 40)
+        Me.Button8.TabIndex = 51
+        Me.Button8.Text = "Salir"
+        Me.Button8.UseVisualStyleBackColor = True
+        '
         'PerfilesDeLosUsuarios
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(503, 450)
+        Me.Controls.Add(Me.Button8)
+        Me.Controls.Add(Me.Button7)
+        Me.Controls.Add(Me.Button6)
         Me.Controls.Add(Me.Button5)
         Me.Controls.Add(Me.Button4)
         Me.Controls.Add(Me.Button3)
@@ -218,4 +251,7 @@ Partial Class PerfilesDeLosUsuarios
     Friend WithEvents Button3 As Button
     Friend WithEvents Button4 As Button
     Friend WithEvents Button5 As Button
+    Friend WithEvents Button6 As Button
+    Friend WithEvents Button7 As Button
+    Friend WithEvents Button8 As Button
 End Class
