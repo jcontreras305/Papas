@@ -250,4 +250,39 @@ Public Class MetodosEmpleado
 
 
     End Sub
+
+    Public Sub ActualizarEmpleado(ByVal datosV() As String, ByVal datosN() As String, ByVal nombre As String, ByVal se As String)
+        Try
+            conectar()
+            cmd = New SqlCommand("sp_Actualizar_Empleado")
+            cmd.CommandType = CommandType.StoredProcedure
+            cmd.Connection = conn
+
+            cmd.Parameters.AddWithValue("@nombre", nombre)
+            cmd.Parameters.AddWithValue("@sexo", se)
+            Dim sala As String = Replace(datosN.ElementAt(0), ",", ".")
+            cmd.Parameters.AddWithValue("@salarioN", sala)
+            cmd.Parameters.AddWithValue("@telN", datosN(1))
+            cmd.Parameters.AddWithValue("@direccionN", datosN(2))
+            cmd.Parameters.AddWithValue("@NomBodegaN", datosN(3))
+            cmd.Parameters.AddWithValue("@EnSaHorarioN", datosN(4))
+            cmd.Parameters.AddWithValue("@NomPuestoN", datosN(5))
+            Dim sala1 As String = Replace(datosV.ElementAt(0), ",", ".")
+            cmd.Parameters.AddWithValue("@salario", sala1)
+            cmd.Parameters.AddWithValue("@tel", datosV(1))
+            cmd.Parameters.AddWithValue("@direccion", datosV(2))
+            cmd.Parameters.AddWithValue("@NomBodega", datosV(3))
+            cmd.Parameters.AddWithValue("@EnSaHorario", datosV(4))
+            cmd.Parameters.AddWithValue("@NomPuesto", datosV(5))
+
+            If cmd.ExecuteNonQuery Then
+                MsgBox("Se actualizo correctamente los datos del empleado " + nombre)
+            End If
+            desconectar()
+        Catch ex As Exception
+            desconectar()
+            MsgBox(ex.Message)
+        End Try
+    End Sub
+
 End Class

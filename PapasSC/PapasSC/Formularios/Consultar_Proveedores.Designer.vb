@@ -29,7 +29,7 @@ Partial Class Consultar_Proveedores
         Me.BuscarProve = New System.Windows.Forms.Button()
         Me.Label2 = New System.Windows.Forms.Label()
         Me.Button1 = New System.Windows.Forms.Button()
-        Me.Button2 = New System.Windows.Forms.Button()
+        Me.btnActualizarPro = New System.Windows.Forms.Button()
         Me.btnEliminarProvee = New System.Windows.Forms.Button()
         CType(Me.DataListado, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
@@ -96,14 +96,14 @@ Partial Class Consultar_Proveedores
         Me.Button1.Text = "Registrar proveedor"
         Me.Button1.UseVisualStyleBackColor = True
         '
-        'Button2
+        'btnActualizarPro
         '
-        Me.Button2.Location = New System.Drawing.Point(302, 338)
-        Me.Button2.Name = "Button2"
-        Me.Button2.Size = New System.Drawing.Size(169, 36)
-        Me.Button2.TabIndex = 7
-        Me.Button2.Text = "Actualizar proveedor"
-        Me.Button2.UseVisualStyleBackColor = True
+        Me.btnActualizarPro.Location = New System.Drawing.Point(302, 338)
+        Me.btnActualizarPro.Name = "btnActualizarPro"
+        Me.btnActualizarPro.Size = New System.Drawing.Size(169, 36)
+        Me.btnActualizarPro.TabIndex = 7
+        Me.btnActualizarPro.Text = "Actualizar proveedor"
+        Me.btnActualizarPro.UseVisualStyleBackColor = True
         '
         'btnEliminarProvee
         '
@@ -120,7 +120,7 @@ Partial Class Consultar_Proveedores
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(689, 386)
         Me.Controls.Add(Me.btnEliminarProvee)
-        Me.Controls.Add(Me.Button2)
+        Me.Controls.Add(Me.btnActualizarPro)
         Me.Controls.Add(Me.Button1)
         Me.Controls.Add(Me.Label2)
         Me.Controls.Add(Me.BuscarProve)
@@ -144,6 +144,6 @@ Partial Class Consultar_Proveedores
     Friend WithEvents BuscarProve As Button
     Friend WithEvents Label2 As Label
     Friend WithEvents Button1 As Button
-    Friend WithEvents Button2 As Button
+    Friend WithEvents btnActualizarPro As Button
     Friend WithEvents btnEliminarProvee As Button
 End Class
