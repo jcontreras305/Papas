@@ -598,3 +598,164 @@ select nombre from empleado where estatus = 'A'
 alter table usuarios
 add estatus char (1)
 
+--############################# ESTE PROC SOLO SE EJECUTA UNA VEZ #############################################
+--############################# YA QUE SOLO SON 3 TIPOS DE USUARIOS ###########################################
+--create proc sp_usuarios_privilegios
+--as
+--declare @idPrivielegio as varchar(36)
+--declare @idTipoUsuario as varchar(36)
+--declare @cont int 
+--begin
+--	begin try	
+--		insert into privilegio values (newid(),'Venta'),
+--							  (newid(),'Inventario'),
+--							  (newid(),'Reportes'),
+--							  (newid(),'Catálogo'),
+--							  (newid(),'Empleados'),
+--							  (newid(),'Utilieria'),
+--							  (newid(),'Control'),
+--							  (newid(),'Configuración')
+--		insert into tipoUsuario values (NEWID(),'Administracion'),(NEWID(),'Operador'),(NEWID(),'Venta')
+
+--		set @cont = 1
+--		while @cont <= 5
+--		begin 
+--			print 'ERROR'		
+--		end 
+--	end try
+--	begin catch
+
+--	end catch
+--end
+
+
+--#############################################################################################################
+--############################# insertar nuevo tipo usuario Y sus privilegios##################################
+--#############################################################################################################
+
+create proc sp_insertarTipoUsuarioYPrivilegios
+@nombreTipoUsuario varchar(50),
+@privilegio varchar (50)
+as 
+declare @idTipoUsuario varchar (36)
+declare @idPrivilegio varchar (36)
+declare @error int 
+declare @count int
+begin
+	begin tran 
+		begin try	
+			select @count = count(*) from tipoUsuario where tipo = @nombreTipoUsuario 
+			if @count > 0 
+			begin --ya existe solo agrego privilegio
+				select @idTipoUsuario = idTipoUsuario from tipoUsuario where tipo = @nombreTipoUsuario 
+				select @idPrivilegio= idPrivilegio from privilegio where nombre = @privilegio
+				insert into usuarioPrivilegio values (@idTipoUsuario,@idPrivilegio)
+				if @@ERROR <> 0 
+				begin 
+					set @error = @@ERROR
+				end
+			end 
+			else 
+			begin --aqui aun no existe seria el primer privilegio
+				insert into tipoUsuario values(NEWID(),@nombreTipoUsuario)
+				select  @idTipoUsuario = idTipoUsuario from tipoUsuario where tipo = @nombreTipoUsuario 
+				print 'se creo el nuevo tipo de Usuario'
+				select @idPrivilegio= idPrivilegio from privilegio where nombre = @privilegio
+				insert into usuarioPrivilegio values (@idTipoUsuario,@idPrivilegio)
+				print concat('el privilegio ',@privilegio,' fue agregado')
+				if @@ERROR <> 0 
+				begin 
+					set @error = @@ERROR
+				end
+			end
+		end try
+		begin catch
+			goto solucionarproblema
+		end catch
+	commit tran
+	solucionarproblema:
+		if @error <> 0
+		begin 
+			rollback tran
+		end	
+end 
+
+--#############################################################################################################
+--############################# elimina privilegio de un tipo usuario #########################################
+--#############################################################################################################
+
+create proc sp_Elimina_Privilegios
+@nombreTipoUsuario varchar(50),
+@nombrePrivilegio varchar (50)
+as
+declare @idTipoUsuario varchar(36)
+declare @idPrivilegio varchar(36)
+declare @cont int 
+declare @error int 
+begin 
+	select @idTipoUsuario = idTipoUsuario from tipoUsuario where tipo like @nombreTipoUsuario
+	select @idPrivilegio = idPrivilegio from privilegio where nombre like CONCAT('%',@nombrePrivilegio)
+	if @idTipoUsuario <> '' and @idPrivilegio <> ''
+	begin 
+		begin tran 
+			begin try
+				select @cont = count (*) from usuarioPrivilegio where idPrivilegio = @idPrivilegio and idTipoUsario = @idTipoUsuario
+				if @cont = 1
+				begin 
+					delete from usuarioPrivilegio where idPrivilegio = @idPrivilegio and idTipoUsario = @idTipoUsuario
+					set @error = @@ERROR 
+				end
+			end try
+			begin catch
+				goto solucionaProblema
+			end catch
+		commit tran
+		solucionaProblema:
+			if @error <> 0 
+			begin
+				rollback tran
+				print 'error'
+			end
+		
+	end
+end
+
+--#############################################################################################################
+--############################# actualizacion privilegio de un tipo usuario ###################################
+--#############################################################################################################
+
+create proc sp_actualizar_Privilegios
+@nombreTipoUsuario varchar(50),
+@nombrePrivilegio varchar (50)
+as
+declare @idTipoUsuario varchar(36)
+declare @idPrivilegio varchar(36)
+declare @cont int 
+declare @error int 
+begin 
+	select @idTipoUsuario = idTipoUsuario from tipoUsuario where tipo like @nombreTipoUsuario
+	select @idPrivilegio = idPrivilegio from privilegio where nombre like CONCAT('%',@nombrePrivilegio)
+	if @idTipoUsuario <> '' and @idPrivilegio <> ''
+	begin 
+		begin tran 
+			begin try
+				select @cont = count (*) from usuarioPrivilegio where idPrivilegio = @idPrivilegio and idTipoUsario = @idTipoUsuario
+				if @cont = 0
+				begin 
+					insert into usuarioPrivilegio values (@idTipoUsuario , @idPrivilegio)
+					set @error = @@ERROR 
+				end
+			end try
+			begin catch
+				goto solucionaProblema
+			end catch
+		commit tran
+		solucionaProblema:
+			if @error <> 0 
+			begin
+				rollback tran
+				print 'error'
+			end
+	
+	end
+end

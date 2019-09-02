@@ -71,7 +71,6 @@ Partial Class PerfilesDeLosUsuarios
         'clmActividad
         '
         Me.clmActividad.Text = "Actividad"
-        Me.clmActividad.Width = 90
         '
         'lblCerrar
         '
@@ -136,7 +135,7 @@ Partial Class PerfilesDeLosUsuarios
         Me.ltsAsignados.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.ltsAsignados.FullRowSelect = True
         Me.ltsAsignados.GridLines = True
-        Me.ltsAsignados.Location = New System.Drawing.Point(6, 25)
+        Me.ltsAsignados.Location = New System.Drawing.Point(6, 19)
         Me.ltsAsignados.Name = "ltsAsignados"
         Me.ltsAsignados.Size = New System.Drawing.Size(172, 280)
         Me.ltsAsignados.TabIndex = 1
@@ -146,7 +145,6 @@ Partial Class PerfilesDeLosUsuarios
         'clmActividadAgregada
         '
         Me.clmActividadAgregada.Text = "ActividadAgregada"
-        Me.clmActividadAgregada.Width = 90
         '
         'btnAgregar
         '

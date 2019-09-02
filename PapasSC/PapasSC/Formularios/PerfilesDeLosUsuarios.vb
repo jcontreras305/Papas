@@ -9,8 +9,8 @@ Public Class PerfilesDeLosUsuarios
 
     Private Sub PerfilesDeLosUsuarios_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         Try
-            cmbTipoUsuario.Items.Clear()
             mtdPerfiles.consulaPriVilegios(ltsAsignados)
+            cmbTipoUsuario.Items.Clear()
             mtdPerfiles.consultaTipoUsuario(cmbTipoUsuario)
             For Each cmbItem In cmbTipoUsuario.Items
                 tiposUsuario.Add(cmbItem)
@@ -202,7 +202,6 @@ Public Class PerfilesDeLosUsuarios
                 For Each tipo In tiposUsuario
                     If txtNombreNuevo.Text = tipo Then
                         flag = False
-                        Exit For
                     End If
                 Next
                 If flag Then
@@ -228,6 +227,7 @@ Public Class PerfilesDeLosUsuarios
                     MsgBox("Ya existe un Tipo de usario con ese nombre")
                 End If
             End If
+
         Catch ex As Exception
 
         End Try
