@@ -61,27 +61,4 @@
             MsgBox("Seleciona un renglos")
         End Try
     End Sub
-
-    Private Sub Button1_Click(sender As Object, e As EventArgs) Handles Button1.Click
-        Registrar_Existencias.Show()
-
-    End Sub
-
-    Private Sub ActulizarExistencia_Click(sender As Object, e As EventArgs) Handles ActulizarExistencia.Click
-        Try
-
-
-            Dim id As String = Convert.ToString(tblexistenciapro.CurrentRow.Cells(0).Value)
-            Dim version As String = Convert.ToString(tblexistenciapro.CurrentRow.Cells(1).Value)
-            Dim clave As String = Convert.ToString(tblexistenciapro.CurrentRow.Cells(2).Value)
-            Actualizar_Existencia.cmbBodega.Text = id
-            Actualizar_Existencia.npd.Value = version
-            Actualizar_Existencia.claveb = id
-            Actualizar_Existencia.clavep = clave
-            Actualizar_Existencia.cmbProducto.Text = clave
-            Actualizar_Existencia.Show()
-        Catch
-            MsgBox("Seleciona un renglos")
-        End Try
-    End Sub
 End Class

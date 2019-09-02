@@ -27,10 +27,10 @@ Public Class MetodoExistenciaProducto
 
 
 
-    Public Sub llenarComboBodega(ByVal dgv As ComboBox)
+    Public Sub llenarComboMatriz(ByVal dgv As ComboBox)
         cn.conectar()
         Try
-            adaptador = New SqlDataAdapter("select nombre as Bodega from bodega where estatus = 'A'", cn.conn)
+            adaptador = New SqlDataAdapter("select nombre as Matriz from matriz where estatus = 'A'", cn.conn)
 
             Dim ds As New DataSet
 
@@ -38,29 +38,13 @@ Public Class MetodoExistenciaProducto
 
 
             dgv.DataSource = ds.Tables(0)
-            dgv.DisplayMember = "Bodega"
+            dgv.DisplayMember = "Matriz"
             dgv.SelectedIndex = 0
         Catch ex As Exception
             MessageBox.Show("No se lleno el Datagridview debido a: " + ex.Message)
         End Try
     End Sub
-    Public Sub llenarComboProducto(ByVal dgv As ComboBox)
-        cn.conectar()
-        Try
-            adaptador = New SqlDataAdapter("select version as Producto from producto where estado = 'A'", cn.conn)
 
-            Dim ds As New DataSet
-
-            adaptador.Fill(ds)
-
-
-            dgv.DataSource = ds.Tables(0)
-            dgv.DisplayMember = "Producto"
-            dgv.SelectedIndex = 0
-        Catch ex As Exception
-            MessageBox.Show("No se lleno el Datagridview debido a: " + ex.Message)
-        End Try
-    End Sub
 
     Public Sub llenarDatagridview_filtroBodega(ByVal dgv As DataGridView, ByVal filtro As String)
         cn.conectar()
@@ -200,57 +184,37 @@ Public Class MetodoExistenciaProducto
         End Try
     End Sub
 
-    Public Sub insertarExitemcia(ByVal bodega As String, ByVal producto As String, ByVal version As String)
+    Public Sub insertarBodega(ByVal nombre As String, ByVal clave As String)
         Try
             cn.conectar()
             MsgBox("entro")
-            Dim idbodega As String
-            Dim idproducto As String
             Dim Rs As SqlDataReader
             Dim Com As New SqlCommand
 
 
 
-            Dim Sql As String = "select idBodega from bodega where nombre ='" + bodega + "' and estatus = 'A'"
+            Dim Sql As String = "select bodega from matriz where nombre ='" + clave + "' and estatus = 'A'"
+            MsgBox(clave)
 
             Com = New SqlCommand(Sql, cn.conn)
 
             Rs = Com.ExecuteReader()
 
             Rs.Read()
-            idbodega = Rs(0).ToString
-
-
-            Rs.Close()
-            cn.desconectar()
-            cn.conectar()
-
-
-
-
-
-            Dim Sql2 As String = "select idproducto from producto where version ='" + producto + "' and estado= 'A'"
-
-            Com = New SqlCommand(Sql2, cn.conn)
-
-            Rs = Com.ExecuteReader()
-
-            Rs.Read()
-            idproducto = Rs(0).ToString
-
-            Rs.Close()
-            cn.desconectar()
-            Dim cadena As String = "INSERT INTO [dbo].[existenciaProductos]
-           ([idBodega]
-           ,[idProducto]
-           ,[cantidad]
-           ,[estatus])
+            MsgBox(Rs(0))
+            Dim cadena As String = "INSERT INTO [dbo].[bodega]
+            ([idBodega]
+            ,[nombre]
+            ,[estatus]
+            ,[idMatriz])
             VALUES
-            ('" + idbodega + "'
-            ,'" + idproducto + "'
-          
-            ," + version + ",'A')"
+            (newid()
+            ,'" + nombre + "'
+            ,'A'
+            ,'" + Rs(0).ToString + "')"
             MsgBox(cadena)
+            Rs.Close()
+            cn.desconectar()
             cn.conectar()
             Com = New SqlCommand(cadena, cn.conn)
             MsgBox("cade")
@@ -262,75 +226,41 @@ Public Class MetodoExistenciaProducto
     End Sub
 
 
-    Public Sub updatebodega(ByVal bodega As String, ByVal producto As String, ByVal version As String, ByVal claveb As String, ByVal clavep As String)
+    Public Sub updatebodega(ByVal nombre As String, ByVal clave As String, ByVal id As String)
         Try
-
+            cn.conectar()
+            MsgBox("entro")
             Dim Rs As SqlDataReader
             Dim Com As New SqlCommand
 
-            cn.conectar()
 
-            Dim idbodega As String
-            Dim idproducto As String
-            Dim Sql As String = "select idBodega from bodega where nombre ='" + claveb + "' and estatus = 'A'"
+
+            Dim Sql As String = "select idMatriz from matriz where nombre ='" + clave + "' and estatus = 'A'"
+            MsgBox(clave)
 
             Com = New SqlCommand(Sql, cn.conn)
+
             Rs = Com.ExecuteReader()
+
             Rs.Read()
-            idbodega = Rs(0).ToString
-            MsgBox(idbodega)
-            Rs.Close()
-            cn.desconectar()
+            MsgBox(Rs(0))
+            Dim cadena As String = "UPDATE [dbo].[bodega]
+       SET 
+       [nombre] = '" + nombre + "'
+      ,[idMatriz] = '" + Rs(0).ToString + "'
+       WHERE idBodega = '" + id + "'"
 
-            cn.conectar()
-            Dim Sql2 As String = "select idproducto from producto where version ='" + clavep + "' and estado= 'A'"
-            Com = New SqlCommand(Sql2, cn.conn)
-            Rs = Com.ExecuteReader()
-            Rs.Read()
-            idproducto = Rs(0).ToString
-            MsgBox(idproducto)
-            Rs.Close()
-            cn.desconectar()
 
-            Dim idbodegan As String
-            Dim idproducton As String
-            Dim Rsn As SqlDataReader
-            Dim Comn As New SqlCommand
-            cn.conectar()
-            Dim Sql3 As String = "select idBodega from bodega where nombre ='" + bodega + "' and estatus = 'A'"
-            Comn = New SqlCommand(Sql3, cn.conn)
-            Rsn = Comn.ExecuteReader()
-            Rsn.Read()
-            idbodegan = Rsn(0).ToString
-            MsgBox(idbodegan)
-            Rsn.Close()
-            cn.desconectar()
-
-            cn.conectar()
-            Dim Sql4 As String = "select idproducto from producto where version ='" + producto + "' and estado= 'A'"
-            Comn = New SqlCommand(Sql4, cn.conn)
-            Rsn = Comn.ExecuteReader()
-            Rsn.Read()
-            idproducton = Rsn(0).ToString
-            MsgBox(idproducton)
-            Rsn.Close()
-            cn.desconectar()
-
-            Dim cadena As String = "
-       UPDATE [dbo].[existenciaProductos]
-       SET [idBodega] = '" + idbodegan + "'
-      ,[idProducto] = '" + idproducton + "'
-      ,[cantidad] =" + version + " 
-      ,[estatus] = 'A'
-       WHERE [idBodega] = '" + idbodega + "' and [idProducto] = '" + idproducto + "'"
             MsgBox(cadena)
+            Rs.Close()
+            cn.desconectar()
             cn.conectar()
             Com = New SqlCommand(cadena, cn.conn)
             MsgBox("cade")
             Com.ExecuteNonQuery()
             MsgBox("pus si salio carnal")
         Catch ex As Exception
-            MessageBox.Show("No se actualizo debido a: " + ex.ToString)
+            MessageBox.Show("No se inserto debido a: " + ex.ToString)
         End Try
     End Sub
 
