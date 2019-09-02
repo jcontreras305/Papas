@@ -23,29 +23,31 @@ Partial Class PerfilesDeLosUsuarios
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
         Me.GroupBox1 = New System.Windows.Forms.GroupBox()
-        Me.ListView1 = New System.Windows.Forms.ListView()
+        Me.lstDisponibles = New System.Windows.Forms.ListView()
+        Me.clmActividad = CType(New System.Windows.Forms.ColumnHeader(), System.Windows.Forms.ColumnHeader)
         Me.lblCerrar = New System.Windows.Forms.Label()
         Me.Label16 = New System.Windows.Forms.Label()
         Me.Label2 = New System.Windows.Forms.Label()
-        Me.TextBox1 = New System.Windows.Forms.TextBox()
-        Me.ComboBox1 = New System.Windows.Forms.ComboBox()
+        Me.txtNombreNuevo = New System.Windows.Forms.TextBox()
+        Me.cmbTipoUsuario = New System.Windows.Forms.ComboBox()
         Me.GroupBox2 = New System.Windows.Forms.GroupBox()
-        Me.ListView2 = New System.Windows.Forms.ListView()
-        Me.Button1 = New System.Windows.Forms.Button()
-        Me.Button2 = New System.Windows.Forms.Button()
-        Me.Button3 = New System.Windows.Forms.Button()
-        Me.Button4 = New System.Windows.Forms.Button()
-        Me.Button5 = New System.Windows.Forms.Button()
-        Me.Button6 = New System.Windows.Forms.Button()
-        Me.Button7 = New System.Windows.Forms.Button()
-        Me.Button8 = New System.Windows.Forms.Button()
+        Me.ltsAsignados = New System.Windows.Forms.ListView()
+        Me.clmActividadAgregada = CType(New System.Windows.Forms.ColumnHeader(), System.Windows.Forms.ColumnHeader)
+        Me.btnAgregar = New System.Windows.Forms.Button()
+        Me.btnAgergarTodos = New System.Windows.Forms.Button()
+        Me.btnQuitarTodos = New System.Windows.Forms.Button()
+        Me.btnQuitar = New System.Windows.Forms.Button()
+        Me.btnSalirCancelar = New System.Windows.Forms.Button()
+        Me.btnCancelar = New System.Windows.Forms.Button()
+        Me.btnAceptar = New System.Windows.Forms.Button()
+        Me.btnNuevoGuardar = New System.Windows.Forms.Button()
         Me.GroupBox1.SuspendLayout()
         Me.GroupBox2.SuspendLayout()
         Me.SuspendLayout()
         '
         'GroupBox1
         '
-        Me.GroupBox1.Controls.Add(Me.ListView1)
+        Me.GroupBox1.Controls.Add(Me.lstDisponibles)
         Me.GroupBox1.Location = New System.Drawing.Point(30, 93)
         Me.GroupBox1.Name = "GroupBox1"
         Me.GroupBox1.Size = New System.Drawing.Size(184, 305)
@@ -53,13 +55,22 @@ Partial Class PerfilesDeLosUsuarios
         Me.GroupBox1.TabStop = False
         Me.GroupBox1.Text = "Actividades Disponibles"
         '
-        'ListView1
+        'lstDisponibles
         '
-        Me.ListView1.Location = New System.Drawing.Point(6, 19)
-        Me.ListView1.Name = "ListView1"
-        Me.ListView1.Size = New System.Drawing.Size(172, 280)
-        Me.ListView1.TabIndex = 0
-        Me.ListView1.UseCompatibleStateImageBehavior = False
+        Me.lstDisponibles.Columns.AddRange(New System.Windows.Forms.ColumnHeader() {Me.clmActividad})
+        Me.lstDisponibles.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.lstDisponibles.FullRowSelect = True
+        Me.lstDisponibles.GridLines = True
+        Me.lstDisponibles.Location = New System.Drawing.Point(6, 19)
+        Me.lstDisponibles.Name = "lstDisponibles"
+        Me.lstDisponibles.Size = New System.Drawing.Size(172, 280)
+        Me.lstDisponibles.TabIndex = 0
+        Me.lstDisponibles.UseCompatibleStateImageBehavior = False
+        Me.lstDisponibles.View = System.Windows.Forms.View.List
+        '
+        'clmActividad
+        '
+        Me.clmActividad.Text = "Actividad"
         '
         'lblCerrar
         '
@@ -93,24 +104,24 @@ Partial Class PerfilesDeLosUsuarios
         Me.Label2.TabIndex = 41
         Me.Label2.Text = "Nombre"
         '
-        'TextBox1
+        'txtNombreNuevo
         '
-        Me.TextBox1.Location = New System.Drawing.Point(118, 64)
-        Me.TextBox1.Name = "TextBox1"
-        Me.TextBox1.Size = New System.Drawing.Size(193, 20)
-        Me.TextBox1.TabIndex = 42
+        Me.txtNombreNuevo.Location = New System.Drawing.Point(118, 64)
+        Me.txtNombreNuevo.Name = "txtNombreNuevo"
+        Me.txtNombreNuevo.Size = New System.Drawing.Size(193, 20)
+        Me.txtNombreNuevo.TabIndex = 42
         '
-        'ComboBox1
+        'cmbTipoUsuario
         '
-        Me.ComboBox1.FormattingEnabled = True
-        Me.ComboBox1.Location = New System.Drawing.Point(118, 37)
-        Me.ComboBox1.Name = "ComboBox1"
-        Me.ComboBox1.Size = New System.Drawing.Size(193, 21)
-        Me.ComboBox1.TabIndex = 43
+        Me.cmbTipoUsuario.FormattingEnabled = True
+        Me.cmbTipoUsuario.Location = New System.Drawing.Point(118, 37)
+        Me.cmbTipoUsuario.Name = "cmbTipoUsuario"
+        Me.cmbTipoUsuario.Size = New System.Drawing.Size(193, 21)
+        Me.cmbTipoUsuario.TabIndex = 43
         '
         'GroupBox2
         '
-        Me.GroupBox2.Controls.Add(Me.ListView2)
+        Me.GroupBox2.Controls.Add(Me.ltsAsignados)
         Me.GroupBox2.Location = New System.Drawing.Point(307, 93)
         Me.GroupBox2.Name = "GroupBox2"
         Me.GroupBox2.Size = New System.Drawing.Size(184, 305)
@@ -118,111 +129,132 @@ Partial Class PerfilesDeLosUsuarios
         Me.GroupBox2.TabStop = False
         Me.GroupBox2.Text = "Actividades Asignadas"
         '
-        'ListView2
+        'ltsAsignados
         '
-        Me.ListView2.Location = New System.Drawing.Point(6, 19)
-        Me.ListView2.Name = "ListView2"
-        Me.ListView2.Size = New System.Drawing.Size(172, 280)
-        Me.ListView2.TabIndex = 1
-        Me.ListView2.UseCompatibleStateImageBehavior = False
+        Me.ltsAsignados.Columns.AddRange(New System.Windows.Forms.ColumnHeader() {Me.clmActividadAgregada})
+        Me.ltsAsignados.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.ltsAsignados.FullRowSelect = True
+        Me.ltsAsignados.GridLines = True
+        Me.ltsAsignados.Location = New System.Drawing.Point(6, 19)
+        Me.ltsAsignados.Name = "ltsAsignados"
+        Me.ltsAsignados.Size = New System.Drawing.Size(172, 280)
+        Me.ltsAsignados.TabIndex = 1
+        Me.ltsAsignados.UseCompatibleStateImageBehavior = False
+        Me.ltsAsignados.View = System.Windows.Forms.View.List
         '
-        'Button1
+        'clmActividadAgregada
         '
-        Me.Button1.Font = New System.Drawing.Font("Tahoma", 14.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Button1.ForeColor = System.Drawing.Color.FromArgb(CType(CType(23, Byte), Integer), CType(CType(165, Byte), Integer), CType(CType(137, Byte), Integer))
-        Me.Button1.Location = New System.Drawing.Point(235, 151)
-        Me.Button1.Name = "Button1"
-        Me.Button1.Size = New System.Drawing.Size(53, 36)
-        Me.Button1.TabIndex = 44
-        Me.Button1.Text = ">"
-        Me.Button1.UseVisualStyleBackColor = True
+        Me.clmActividadAgregada.Text = "ActividadAgregada"
         '
-        'Button2
+        'btnAgregar
         '
-        Me.Button2.Font = New System.Drawing.Font("Tahoma", 14.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Button2.ForeColor = System.Drawing.Color.FromArgb(CType(CType(23, Byte), Integer), CType(CType(165, Byte), Integer), CType(CType(137, Byte), Integer))
-        Me.Button2.Location = New System.Drawing.Point(235, 193)
-        Me.Button2.Name = "Button2"
-        Me.Button2.Size = New System.Drawing.Size(53, 36)
-        Me.Button2.TabIndex = 45
-        Me.Button2.Text = ">>"
-        Me.Button2.UseVisualStyleBackColor = True
+        Me.btnAgregar.Font = New System.Drawing.Font("Tahoma", 14.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.btnAgregar.ForeColor = System.Drawing.Color.FromArgb(CType(CType(23, Byte), Integer), CType(CType(165, Byte), Integer), CType(CType(137, Byte), Integer))
+        Me.btnAgregar.Location = New System.Drawing.Point(235, 151)
+        Me.btnAgregar.Name = "btnAgregar"
+        Me.btnAgregar.Size = New System.Drawing.Size(53, 36)
+        Me.btnAgregar.TabIndex = 44
+        Me.btnAgregar.Text = ">"
+        Me.btnAgregar.UseVisualStyleBackColor = True
         '
-        'Button3
+        'btnAgergarTodos
         '
-        Me.Button3.Font = New System.Drawing.Font("Tahoma", 14.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Button3.ForeColor = System.Drawing.Color.FromArgb(CType(CType(23, Byte), Integer), CType(CType(165, Byte), Integer), CType(CType(137, Byte), Integer))
-        Me.Button3.Location = New System.Drawing.Point(235, 235)
-        Me.Button3.Name = "Button3"
-        Me.Button3.Size = New System.Drawing.Size(53, 36)
-        Me.Button3.TabIndex = 46
-        Me.Button3.Text = "<<"
-        Me.Button3.UseVisualStyleBackColor = True
+        Me.btnAgergarTodos.Font = New System.Drawing.Font("Tahoma", 14.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.btnAgergarTodos.ForeColor = System.Drawing.Color.FromArgb(CType(CType(23, Byte), Integer), CType(CType(165, Byte), Integer), CType(CType(137, Byte), Integer))
+        Me.btnAgergarTodos.Location = New System.Drawing.Point(235, 193)
+        Me.btnAgergarTodos.Name = "btnAgergarTodos"
+        Me.btnAgergarTodos.Size = New System.Drawing.Size(53, 36)
+        Me.btnAgergarTodos.TabIndex = 45
+        Me.btnAgergarTodos.Text = ">>"
+        Me.btnAgergarTodos.UseVisualStyleBackColor = True
         '
-        'Button4
+        'btnQuitarTodos
         '
-        Me.Button4.Font = New System.Drawing.Font("Tahoma", 14.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Button4.ForeColor = System.Drawing.Color.FromArgb(CType(CType(23, Byte), Integer), CType(CType(165, Byte), Integer), CType(CType(137, Byte), Integer))
-        Me.Button4.Location = New System.Drawing.Point(235, 277)
-        Me.Button4.Name = "Button4"
-        Me.Button4.Size = New System.Drawing.Size(53, 36)
-        Me.Button4.TabIndex = 47
-        Me.Button4.Text = "<"
-        Me.Button4.UseVisualStyleBackColor = True
+        Me.btnQuitarTodos.Font = New System.Drawing.Font("Tahoma", 14.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.btnQuitarTodos.ForeColor = System.Drawing.Color.FromArgb(CType(CType(23, Byte), Integer), CType(CType(165, Byte), Integer), CType(CType(137, Byte), Integer))
+        Me.btnQuitarTodos.Location = New System.Drawing.Point(235, 235)
+        Me.btnQuitarTodos.Name = "btnQuitarTodos"
+        Me.btnQuitarTodos.Size = New System.Drawing.Size(53, 36)
+        Me.btnQuitarTodos.TabIndex = 46
+        Me.btnQuitarTodos.Text = "<<"
+        Me.btnQuitarTodos.UseVisualStyleBackColor = True
         '
-        'Button5
+        'btnQuitar
         '
-        Me.Button5.ForeColor = System.Drawing.Color.Black
-        Me.Button5.Location = New System.Drawing.Point(334, 35)
-        Me.Button5.Name = "Button5"
-        Me.Button5.Size = New System.Drawing.Size(75, 23)
-        Me.Button5.TabIndex = 48
-        Me.Button5.Text = "Guardar"
-        Me.Button5.UseVisualStyleBackColor = True
+        Me.btnQuitar.Font = New System.Drawing.Font("Tahoma", 14.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.btnQuitar.ForeColor = System.Drawing.Color.FromArgb(CType(CType(23, Byte), Integer), CType(CType(165, Byte), Integer), CType(CType(137, Byte), Integer))
+        Me.btnQuitar.Location = New System.Drawing.Point(235, 277)
+        Me.btnQuitar.Name = "btnQuitar"
+        Me.btnQuitar.Size = New System.Drawing.Size(53, 36)
+        Me.btnQuitar.TabIndex = 47
+        Me.btnQuitar.Text = "<"
+        Me.btnQuitar.UseVisualStyleBackColor = True
         '
-        'Button6
+        'btnSalirCancelar
         '
-        Me.Button6.Location = New System.Drawing.Point(397, 404)
-        Me.Button6.Name = "Button6"
-        Me.Button6.Size = New System.Drawing.Size(88, 40)
-        Me.Button6.TabIndex = 49
-        Me.Button6.Text = "Aceptar"
-        Me.Button6.UseVisualStyleBackColor = True
+        Me.btnSalirCancelar.Image = Global.PapasSC.My.Resources.Resources.CANCELAR
+        Me.btnSalirCancelar.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
+        Me.btnSalirCancelar.Location = New System.Drawing.Point(421, 35)
+        Me.btnSalirCancelar.Name = "btnSalirCancelar"
+        Me.btnSalirCancelar.Size = New System.Drawing.Size(65, 40)
+        Me.btnSalirCancelar.TabIndex = 51
+        Me.btnSalirCancelar.Text = "Salir"
+        Me.btnSalirCancelar.TextAlign = System.Drawing.ContentAlignment.MiddleRight
+        Me.btnSalirCancelar.UseVisualStyleBackColor = True
         '
-        'Button7
+        'btnCancelar
         '
-        Me.Button7.Location = New System.Drawing.Point(306, 404)
-        Me.Button7.Name = "Button7"
-        Me.Button7.Size = New System.Drawing.Size(85, 40)
-        Me.Button7.TabIndex = 50
-        Me.Button7.Text = "Cancelar"
-        Me.Button7.UseVisualStyleBackColor = True
+        Me.btnCancelar.Image = Global.PapasSC.My.Resources.Resources.CANCELAR
+        Me.btnCancelar.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
+        Me.btnCancelar.Location = New System.Drawing.Point(306, 404)
+        Me.btnCancelar.Name = "btnCancelar"
+        Me.btnCancelar.Size = New System.Drawing.Size(85, 40)
+        Me.btnCancelar.TabIndex = 50
+        Me.btnCancelar.Text = "Cancelar"
+        Me.btnCancelar.TextAlign = System.Drawing.ContentAlignment.MiddleRight
+        Me.btnCancelar.UseVisualStyleBackColor = True
         '
-        'Button8
+        'btnAceptar
         '
-        Me.Button8.Location = New System.Drawing.Point(214, 404)
-        Me.Button8.Name = "Button8"
-        Me.Button8.Size = New System.Drawing.Size(85, 40)
-        Me.Button8.TabIndex = 51
-        Me.Button8.Text = "Salir"
-        Me.Button8.UseVisualStyleBackColor = True
+        Me.btnAceptar.Image = Global.PapasSC.My.Resources.Resources.ACEPTAR
+        Me.btnAceptar.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
+        Me.btnAceptar.Location = New System.Drawing.Point(397, 404)
+        Me.btnAceptar.Name = "btnAceptar"
+        Me.btnAceptar.Size = New System.Drawing.Size(88, 40)
+        Me.btnAceptar.TabIndex = 49
+        Me.btnAceptar.Text = "Aceptar"
+        Me.btnAceptar.TextAlign = System.Drawing.ContentAlignment.MiddleRight
+        Me.btnAceptar.UseVisualStyleBackColor = True
+        '
+        'btnNuevoGuardar
+        '
+        Me.btnNuevoGuardar.ForeColor = System.Drawing.Color.FromArgb(CType(CType(23, Byte), Integer), CType(CType(165, Byte), Integer), CType(CType(137, Byte), Integer))
+        Me.btnNuevoGuardar.Image = Global.PapasSC.My.Resources.Resources.NUEVO
+        Me.btnNuevoGuardar.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
+        Me.btnNuevoGuardar.Location = New System.Drawing.Point(340, 37)
+        Me.btnNuevoGuardar.Name = "btnNuevoGuardar"
+        Me.btnNuevoGuardar.Size = New System.Drawing.Size(75, 38)
+        Me.btnNuevoGuardar.TabIndex = 48
+        Me.btnNuevoGuardar.Text = "Nuevo"
+        Me.btnNuevoGuardar.TextAlign = System.Drawing.ContentAlignment.MiddleRight
+        Me.btnNuevoGuardar.UseVisualStyleBackColor = True
         '
         'PerfilesDeLosUsuarios
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(503, 450)
-        Me.Controls.Add(Me.Button8)
-        Me.Controls.Add(Me.Button7)
-        Me.Controls.Add(Me.Button6)
-        Me.Controls.Add(Me.Button5)
-        Me.Controls.Add(Me.Button4)
-        Me.Controls.Add(Me.Button3)
-        Me.Controls.Add(Me.Button2)
-        Me.Controls.Add(Me.Button1)
+        Me.Controls.Add(Me.btnSalirCancelar)
+        Me.Controls.Add(Me.btnCancelar)
+        Me.Controls.Add(Me.btnAceptar)
+        Me.Controls.Add(Me.btnNuevoGuardar)
+        Me.Controls.Add(Me.btnQuitar)
+        Me.Controls.Add(Me.btnQuitarTodos)
+        Me.Controls.Add(Me.btnAgergarTodos)
+        Me.Controls.Add(Me.btnAgregar)
         Me.Controls.Add(Me.GroupBox2)
-        Me.Controls.Add(Me.ComboBox1)
-        Me.Controls.Add(Me.TextBox1)
+        Me.Controls.Add(Me.cmbTipoUsuario)
+        Me.Controls.Add(Me.txtNombreNuevo)
         Me.Controls.Add(Me.Label2)
         Me.Controls.Add(Me.lblCerrar)
         Me.Controls.Add(Me.Label16)
@@ -240,18 +272,20 @@ Partial Class PerfilesDeLosUsuarios
     Friend WithEvents GroupBox1 As GroupBox
     Friend WithEvents lblCerrar As Label
     Friend WithEvents Label16 As Label
-    Friend WithEvents ListView1 As ListView
+    Friend WithEvents lstDisponibles As ListView
     Friend WithEvents Label2 As Label
-    Friend WithEvents TextBox1 As TextBox
-    Friend WithEvents ComboBox1 As ComboBox
+    Friend WithEvents txtNombreNuevo As TextBox
+    Friend WithEvents cmbTipoUsuario As ComboBox
     Friend WithEvents GroupBox2 As GroupBox
-    Friend WithEvents ListView2 As ListView
-    Friend WithEvents Button1 As Button
-    Friend WithEvents Button2 As Button
-    Friend WithEvents Button3 As Button
-    Friend WithEvents Button4 As Button
-    Friend WithEvents Button5 As Button
-    Friend WithEvents Button6 As Button
-    Friend WithEvents Button7 As Button
-    Friend WithEvents Button8 As Button
+    Friend WithEvents ltsAsignados As ListView
+    Friend WithEvents btnAgregar As Button
+    Friend WithEvents btnAgergarTodos As Button
+    Friend WithEvents btnQuitarTodos As Button
+    Friend WithEvents btnQuitar As Button
+    Friend WithEvents btnNuevoGuardar As Button
+    Friend WithEvents btnAceptar As Button
+    Friend WithEvents btnCancelar As Button
+    Friend WithEvents btnSalirCancelar As Button
+    Friend WithEvents clmActividad As ColumnHeader
+    Friend WithEvents clmActividadAgregada As ColumnHeader
 End Class
