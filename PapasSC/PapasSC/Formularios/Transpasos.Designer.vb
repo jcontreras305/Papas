@@ -22,45 +22,53 @@ Partial Class Transpasos
     'No lo modifique con el editor de código.
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
-        Me.ComboBox1 = New System.Windows.Forms.ComboBox()
-        Me.ComboBox2 = New System.Windows.Forms.ComboBox()
+        Me.bodega1 = New System.Windows.Forms.ComboBox()
+        Me.cmbproducto1 = New System.Windows.Forms.ComboBox()
         Me.Label1 = New System.Windows.Forms.Label()
         Me.Label2 = New System.Windows.Forms.Label()
         Me.NumericUpDown1 = New System.Windows.Forms.NumericUpDown()
         Me.Label3 = New System.Windows.Forms.Label()
-        Me.ComboBox5 = New System.Windows.Forms.ComboBox()
-        Me.ComboBox6 = New System.Windows.Forms.ComboBox()
+        Me.bodega2 = New System.Windows.Forms.ComboBox()
+        Me.cmbproducto2 = New System.Windows.Forms.ComboBox()
         Me.Label7 = New System.Windows.Forms.Label()
         Me.Label8 = New System.Windows.Forms.Label()
         Me.NumericUpDown3 = New System.Windows.Forms.NumericUpDown()
         Me.Label9 = New System.Windows.Forms.Label()
         Me.Button1 = New System.Windows.Forms.Button()
-        Me.ListView1 = New System.Windows.Forms.ListView()
-        Me.ListView2 = New System.Windows.Forms.ListView()
+        Me.tblpro1 = New System.Windows.Forms.DataGridView()
+        Me.tblpro2 = New System.Windows.Forms.DataGridView()
+        Me.TextBox1 = New System.Windows.Forms.TextBox()
+        Me.TextBox2 = New System.Windows.Forms.TextBox()
+        Me.Label4 = New System.Windows.Forms.Label()
+        Me.Label5 = New System.Windows.Forms.Label()
+        Me.Button2 = New System.Windows.Forms.Button()
         CType(Me.NumericUpDown1, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.NumericUpDown3, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.tblpro1, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.tblpro2, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
-        'ComboBox1
+        'bodega1
         '
-        Me.ComboBox1.FormattingEnabled = True
-        Me.ComboBox1.Location = New System.Drawing.Point(107, 46)
-        Me.ComboBox1.Name = "ComboBox1"
-        Me.ComboBox1.Size = New System.Drawing.Size(121, 21)
-        Me.ComboBox1.TabIndex = 0
+        Me.bodega1.FormattingEnabled = True
+        Me.bodega1.Location = New System.Drawing.Point(107, 37)
+        Me.bodega1.Name = "bodega1"
+        Me.bodega1.Size = New System.Drawing.Size(121, 21)
+        Me.bodega1.TabIndex = 0
         '
-        'ComboBox2
+        'cmbproducto1
         '
-        Me.ComboBox2.FormattingEnabled = True
-        Me.ComboBox2.Location = New System.Drawing.Point(107, 86)
-        Me.ComboBox2.Name = "ComboBox2"
-        Me.ComboBox2.Size = New System.Drawing.Size(121, 21)
-        Me.ComboBox2.TabIndex = 1
+        Me.cmbproducto1.FormattingEnabled = True
+        Me.cmbproducto1.Location = New System.Drawing.Point(107, 73)
+        Me.cmbproducto1.Name = "cmbproducto1"
+        Me.cmbproducto1.Size = New System.Drawing.Size(121, 21)
+        Me.cmbproducto1.TabIndex = 1
+        Me.cmbproducto1.Text = "Selecione producto"
         '
         'Label1
         '
         Me.Label1.AutoSize = True
-        Me.Label1.Location = New System.Drawing.Point(35, 53)
+        Me.Label1.Location = New System.Drawing.Point(35, 40)
         Me.Label1.Name = "Label1"
         Me.Label1.Size = New System.Drawing.Size(49, 13)
         Me.Label1.TabIndex = 2
@@ -69,7 +77,7 @@ Partial Class Transpasos
         'Label2
         '
         Me.Label2.AutoSize = True
-        Me.Label2.Location = New System.Drawing.Point(34, 86)
+        Me.Label2.Location = New System.Drawing.Point(34, 77)
         Me.Label2.Name = "Label2"
         Me.Label2.Size = New System.Drawing.Size(50, 13)
         Me.Label2.TabIndex = 3
@@ -77,7 +85,7 @@ Partial Class Transpasos
         '
         'NumericUpDown1
         '
-        Me.NumericUpDown1.Location = New System.Drawing.Point(158, 124)
+        Me.NumericUpDown1.Location = New System.Drawing.Point(158, 112)
         Me.NumericUpDown1.Name = "NumericUpDown1"
         Me.NumericUpDown1.Size = New System.Drawing.Size(120, 20)
         Me.NumericUpDown1.TabIndex = 4
@@ -85,27 +93,28 @@ Partial Class Transpasos
         'Label3
         '
         Me.Label3.AutoSize = True
-        Me.Label3.Location = New System.Drawing.Point(34, 126)
+        Me.Label3.Location = New System.Drawing.Point(37, 115)
         Me.Label3.Name = "Label3"
         Me.Label3.Size = New System.Drawing.Size(118, 13)
         Me.Label3.TabIndex = 5
         Me.Label3.Text = "Cantidad en Kilogramos"
         '
-        'ComboBox5
+        'bodega2
         '
-        Me.ComboBox5.FormattingEnabled = True
-        Me.ComboBox5.Location = New System.Drawing.Point(475, 36)
-        Me.ComboBox5.Name = "ComboBox5"
-        Me.ComboBox5.Size = New System.Drawing.Size(121, 21)
-        Me.ComboBox5.TabIndex = 0
+        Me.bodega2.FormattingEnabled = True
+        Me.bodega2.Location = New System.Drawing.Point(475, 36)
+        Me.bodega2.Name = "bodega2"
+        Me.bodega2.Size = New System.Drawing.Size(121, 21)
+        Me.bodega2.TabIndex = 0
         '
-        'ComboBox6
+        'cmbproducto2
         '
-        Me.ComboBox6.FormattingEnabled = True
-        Me.ComboBox6.Location = New System.Drawing.Point(475, 76)
-        Me.ComboBox6.Name = "ComboBox6"
-        Me.ComboBox6.Size = New System.Drawing.Size(121, 21)
-        Me.ComboBox6.TabIndex = 1
+        Me.cmbproducto2.FormattingEnabled = True
+        Me.cmbproducto2.Location = New System.Drawing.Point(475, 76)
+        Me.cmbproducto2.Name = "cmbproducto2"
+        Me.cmbproducto2.Size = New System.Drawing.Size(121, 21)
+        Me.cmbproducto2.TabIndex = 1
+        Me.cmbproducto2.Text = "Seleccione producto"
         '
         'Label7
         '
@@ -143,36 +152,90 @@ Partial Class Transpasos
         '
         'Button1
         '
-        Me.Button1.Location = New System.Drawing.Point(292, 66)
+        Me.Button1.Location = New System.Drawing.Point(304, 187)
         Me.Button1.Name = "Button1"
         Me.Button1.Size = New System.Drawing.Size(75, 23)
         Me.Button1.TabIndex = 6
-        Me.Button1.Text = "Transpasos"
+        Me.Button1.Text = "<<"
         Me.Button1.UseVisualStyleBackColor = True
         '
-        'ListView1
+        'tblpro1
         '
-        Me.ListView1.Location = New System.Drawing.Point(38, 178)
-        Me.ListView1.Name = "ListView1"
-        Me.ListView1.Size = New System.Drawing.Size(211, 119)
-        Me.ListView1.TabIndex = 7
-        Me.ListView1.UseCompatibleStateImageBehavior = False
+        Me.tblpro1.AllowUserToAddRows = False
+        Me.tblpro1.AllowUserToDeleteRows = False
+        Me.tblpro1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
+        Me.tblpro1.Location = New System.Drawing.Point(37, 187)
+        Me.tblpro1.Name = "tblpro1"
+        Me.tblpro1.ReadOnly = True
+        Me.tblpro1.Size = New System.Drawing.Size(240, 279)
+        Me.tblpro1.TabIndex = 7
         '
-        'ListView2
+        'tblpro2
         '
-        Me.ListView2.Location = New System.Drawing.Point(435, 178)
-        Me.ListView2.Name = "ListView2"
-        Me.ListView2.Size = New System.Drawing.Size(211, 119)
-        Me.ListView2.TabIndex = 8
-        Me.ListView2.UseCompatibleStateImageBehavior = False
+        Me.tblpro2.AllowUserToAddRows = False
+        Me.tblpro2.AllowUserToDeleteRows = False
+        Me.tblpro2.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
+        Me.tblpro2.Location = New System.Drawing.Point(405, 190)
+        Me.tblpro2.Name = "tblpro2"
+        Me.tblpro2.ReadOnly = True
+        Me.tblpro2.Size = New System.Drawing.Size(240, 276)
+        Me.tblpro2.TabIndex = 8
+        '
+        'TextBox1
+        '
+        Me.TextBox1.Location = New System.Drawing.Point(445, 156)
+        Me.TextBox1.Name = "TextBox1"
+        Me.TextBox1.Size = New System.Drawing.Size(100, 20)
+        Me.TextBox1.TabIndex = 9
+        '
+        'TextBox2
+        '
+        Me.TextBox2.Location = New System.Drawing.Point(80, 154)
+        Me.TextBox2.Name = "TextBox2"
+        Me.TextBox2.Size = New System.Drawing.Size(100, 20)
+        Me.TextBox2.TabIndex = 10
+        '
+        'Label4
+        '
+        Me.Label4.AutoSize = True
+        Me.Label4.Location = New System.Drawing.Point(402, 159)
+        Me.Label4.Name = "Label4"
+        Me.Label4.Size = New System.Drawing.Size(40, 13)
+        Me.Label4.TabIndex = 11
+        Me.Label4.Text = "Buscar"
+        '
+        'Label5
+        '
+        Me.Label5.AllowDrop = True
+        Me.Label5.AutoSize = True
+        Me.Label5.Location = New System.Drawing.Point(37, 158)
+        Me.Label5.Name = "Label5"
+        Me.Label5.Size = New System.Drawing.Size(40, 13)
+        Me.Label5.TabIndex = 12
+        Me.Label5.Text = "Buscar"
+        '
+        'Button2
+        '
+        Me.Button2.Location = New System.Drawing.Point(308, 228)
+        Me.Button2.Name = "Button2"
+        Me.Button2.Size = New System.Drawing.Size(75, 23)
+        Me.Button2.TabIndex = 13
+        Me.Button2.Text = ">>"
+        Me.Button2.UseVisualStyleBackColor = True
         '
         'Transpasos
         '
+        Me.AcceptButton = Me.Button1
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(690, 321)
-        Me.Controls.Add(Me.ListView2)
-        Me.Controls.Add(Me.ListView1)
+        Me.ClientSize = New System.Drawing.Size(690, 478)
+        Me.Controls.Add(Me.Button2)
+        Me.Controls.Add(Me.Label5)
+        Me.Controls.Add(Me.Label4)
+        Me.Controls.Add(Me.TextBox2)
+        Me.Controls.Add(Me.TextBox1)
+        Me.Controls.Add(Me.tblpro2)
+        Me.Controls.Add(Me.tblpro1)
         Me.Controls.Add(Me.Button1)
         Me.Controls.Add(Me.Label9)
         Me.Controls.Add(Me.Label3)
@@ -181,33 +244,40 @@ Partial Class Transpasos
         Me.Controls.Add(Me.NumericUpDown1)
         Me.Controls.Add(Me.Label7)
         Me.Controls.Add(Me.Label2)
-        Me.Controls.Add(Me.ComboBox6)
+        Me.Controls.Add(Me.cmbproducto2)
         Me.Controls.Add(Me.Label1)
-        Me.Controls.Add(Me.ComboBox5)
-        Me.Controls.Add(Me.ComboBox2)
-        Me.Controls.Add(Me.ComboBox1)
+        Me.Controls.Add(Me.bodega2)
+        Me.Controls.Add(Me.cmbproducto1)
+        Me.Controls.Add(Me.bodega1)
         Me.Name = "Transpasos"
         Me.Text = "Transpasos"
         CType(Me.NumericUpDown1, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.NumericUpDown3, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.tblpro1, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.tblpro2, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
     End Sub
 
-    Friend WithEvents ComboBox1 As ComboBox
-    Friend WithEvents ComboBox2 As ComboBox
+    Friend WithEvents bodega1 As ComboBox
+    Friend WithEvents cmbproducto1 As ComboBox
     Friend WithEvents Label1 As Label
     Friend WithEvents Label2 As Label
     Friend WithEvents NumericUpDown1 As NumericUpDown
     Friend WithEvents Label3 As Label
-    Friend WithEvents ComboBox5 As ComboBox
-    Friend WithEvents ComboBox6 As ComboBox
+    Friend WithEvents bodega2 As ComboBox
+    Friend WithEvents cmbproducto2 As ComboBox
     Friend WithEvents Label7 As Label
     Friend WithEvents Label8 As Label
     Friend WithEvents NumericUpDown3 As NumericUpDown
     Friend WithEvents Label9 As Label
     Friend WithEvents Button1 As Button
-    Friend WithEvents ListView1 As ListView
-    Friend WithEvents ListView2 As ListView
+    Friend WithEvents tblpro1 As DataGridView
+    Friend WithEvents tblpro2 As DataGridView
+    Friend WithEvents TextBox1 As TextBox
+    Friend WithEvents TextBox2 As TextBox
+    Friend WithEvents Label4 As Label
+    Friend WithEvents Label5 As Label
+    Friend WithEvents Button2 As Button
 End Class

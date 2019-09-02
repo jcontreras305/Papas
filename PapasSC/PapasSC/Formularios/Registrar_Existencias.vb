@@ -16,7 +16,7 @@
     Private Sub Registrar_Existencias_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         mtde.llenarComboBodega(cmbBodega)
         mtde.llenarComboProducto(cmbProducto)
-        kgUpDown.Increment = 0.1
+        kgUpDown.Increment = 0.01
         kgUpDown.DecimalPlaces = 2
         kgUpDown.ThousandsSeparator = True
     End Sub
