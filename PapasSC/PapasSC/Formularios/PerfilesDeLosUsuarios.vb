@@ -9,6 +9,7 @@ Public Class PerfilesDeLosUsuarios
 
     Private Sub PerfilesDeLosUsuarios_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         Try
+            cmbTipoUsuario.Items.Clear()
             mtdPerfiles.consulaPriVilegios(ltsAsignados)
             mtdPerfiles.consultaTipoUsuario(cmbTipoUsuario)
             For Each cmbItem In cmbTipoUsuario.Items
@@ -201,6 +202,7 @@ Public Class PerfilesDeLosUsuarios
                 For Each tipo In tiposUsuario
                     If txtNombreNuevo.Text = tipo Then
                         flag = False
+                        Exit For
                     End If
                 Next
                 If flag Then
@@ -216,6 +218,7 @@ Public Class PerfilesDeLosUsuarios
                     cmbTipoUsuario.Visible = True
                     txtNombreNuevo.Visible = False
                     btnSalirCancelar.Visible = False
+                    cmbTipoUsuario.Items.Clear()
                     mtdPerfiles.consultaTipoUsuario(cmbTipoUsuario)
                     cmbTipoUsuario.SelectedIndex = 0
                     mtdPerfiles.consultaPrivlegioTipoUsuario(cmbTipoUsuario.Text, ltsAsignados, lstDisponibles)
@@ -225,7 +228,6 @@ Public Class PerfilesDeLosUsuarios
                     MsgBox("Ya existe un Tipo de usario con ese nombre")
                 End If
             End If
-
         Catch ex As Exception
 
         End Try
@@ -236,6 +238,7 @@ Public Class PerfilesDeLosUsuarios
         cmbTipoUsuario.Visible = True
         txtNombreNuevo.Visible = False
         btnSalirCancelar.Visible = False
+        cmbTipoUsuario.Items.Clear()
         mtdPerfiles.consultaTipoUsuario(cmbTipoUsuario)
         cmbTipoUsuario.SelectedIndex = 0
         mtdPerfiles.consultaPrivlegioTipoUsuario(cmbTipoUsuario.Text, ltsAsignados, lstDisponibles)
