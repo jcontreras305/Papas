@@ -43,7 +43,7 @@ Partial Class Consulta_Bodega
         Me.eliminar.Name = "eliminar"
         Me.eliminar.Size = New System.Drawing.Size(169, 36)
         Me.eliminar.TabIndex = 17
-        Me.eliminar.Text = "Eliminar Cliente"
+        Me.eliminar.Text = "Eliminar Bodega"
         Me.eliminar.TextAlign = System.Drawing.ContentAlignment.MiddleRight
         Me.eliminar.UseVisualStyleBackColor = True
         '
@@ -56,7 +56,7 @@ Partial Class Consulta_Bodega
         Me.actualizar.Name = "actualizar"
         Me.actualizar.Size = New System.Drawing.Size(169, 36)
         Me.actualizar.TabIndex = 16
-        Me.actualizar.Text = "Actualizar Cliente"
+        Me.actualizar.Text = "Actualizar Bodega"
         Me.actualizar.TextAlign = System.Drawing.ContentAlignment.MiddleRight
         Me.actualizar.UseVisualStyleBackColor = True
         '
@@ -69,7 +69,7 @@ Partial Class Consulta_Bodega
         Me.registrar.Name = "registrar"
         Me.registrar.Size = New System.Drawing.Size(169, 36)
         Me.registrar.TabIndex = 15
-        Me.registrar.Text = "Registrar Cliente"
+        Me.registrar.Text = "Registrar Bodega"
         Me.registrar.TextAlign = System.Drawing.ContentAlignment.MiddleRight
         Me.registrar.UseVisualStyleBackColor = True
         '

@@ -351,6 +351,7 @@
     <Compile Include="Metodos\MetodosEmpleado.vb" />
     <Compile Include="Metodos\MetodosInventario.vb" />
     <Compile Include="Metodos\MetodosMatrizCiudad.vb" />
+    <Compile Include="Metodos\MetodosPerfiles.vb" />
     <Compile Include="Metodos\MetodosProducto.vb" />
     <Compile Include="Metodos\MetodosProductos.vb" />
     <Compile Include="Metodos\MetodosProveedor.vb" />

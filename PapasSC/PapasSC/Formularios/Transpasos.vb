@@ -27,4 +27,11 @@
     Private Sub cmbproducto2_Enter(sender As Object, e As EventArgs) Handles cmbproducto2.Enter
         mdt.llenarComboproductos(cmbproducto2, bodega2.Text)
     End Sub
+
+    Private Sub Button1_Click(sender As Object, e As EventArgs) Handles Button1.Click
+        If Convert.ToDouble(tblpro2.CurrentRow.Cells(1).Value) > NumericUpDown1.Value Then
+
+
+        End If
+    End Sub
 End Class
