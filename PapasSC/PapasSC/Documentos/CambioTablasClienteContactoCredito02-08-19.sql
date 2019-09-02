@@ -60,3 +60,31 @@ alter column codigoPostal char(5) null
 --mas clara del por que o para quien es ese horario
 alter table horario 
 add nombre varchar (30), descripcion varchar(200)
+
+
+--###################################################################
+--################### privilegio ####################################
+--###################################################################
+
+create table privilegio(
+	idPrivilegio varchar(36) primary key not null,
+	nombre varchar(30) 
+)
+
+create table UsuarioPrivilegio(
+	idTipoUsario varchar (36) not null,
+	idPrivilegio varchar (36) not null
+)
+
+alter table usuarioPrivilegio
+add constraint pk_idTipoUsuarioYidPrivilegio_UsuarioPrivilegio
+primary key (idTipoUsario,idPrivilegio)
+
+
+alter table usuarioPrivilegio
+add constraint fk_idTipoUsario_UsuarioPrivilegio
+foreign key (idTipoUsario) references tipoUsuario(idTipoUsuario)
+
+alter table usuarioPrivilegio
+add constraint fk_idPrivilegio_UsuarioPrivilegio
+foreign key (idPrivilegio) references privilegio(idPrivilegio)

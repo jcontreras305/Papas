@@ -1,7 +1,7 @@
 ﻿Public Class Consultar_Proveedores
     Dim dv As New DataView
     Public datosProveedor(4) As String
-
+    Public nombreV, telefonoV, emailV, ciudadV As String
     Public Sub ConsulProv()
         Dim fu As New MetodosProveedor
         DataListado.DataSource = fu.ConsultarPro
@@ -55,17 +55,6 @@
         Registrar_Proveedor.Show()
     End Sub
 
-    Private Sub Button2_Click(sender As Object, e As EventArgs) Handles Button2.Click
-        Try
-
-        Catch ex As Exception
-
-        End Try
-
-    End Sub
-
-
-
     Private Sub btnEliminarProvee_Click(sender As Object, e As EventArgs) Handles btnEliminarProvee.Click
         Dim fu As New MetodosProveedor
         Try
@@ -85,5 +74,28 @@
         End Try
     End Sub
 
+    Private Sub btnActualizarPro_Click(sender As Object, e As EventArgs) Handles btnActualizarPro.Click
+        Try
+            Dim nombre As String = Convert.ToString(DataListado.CurrentRow.Cells(0).Value)
+            Dim tel As String = Convert.ToString(DataListado.CurrentRow.Cells(1).Value)
+            Dim email As String = Convert.ToString(DataListado.CurrentRow.Cells(2).Value)
+            Dim ciudad As String = Convert.ToString(DataListado.CurrentRow.Cells(3).Value)
+            nombreV = nombre
+            telefonoV = tel
+            emailV = email
+            ciudadV = ciudad
+            Actualizar_Proveedor.txtNombrePro.Text = nombre
+            Actualizar_Proveedor.txtTelefonoProvee.Text = tel
+            Actualizar_Proveedor.txtEmailProvee.Text = email
+            Actualizar_Proveedor.cboCiudadProve.Text = ciudad
+            Actualizar_Proveedor.nombre = nombreV
+            Actualizar_Proveedor.ciudad = ciudadV
+            Actualizar_Proveedor.telefono = telefonoV
+            Actualizar_Proveedor.email = emailV
+            Actualizar_Proveedor.Show()
 
+        Catch ex As Exception
+            MsgBox("No seleccionaste un reglon")
+        End Try
+    End Sub
 End Class

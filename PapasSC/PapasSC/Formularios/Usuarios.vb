@@ -2,7 +2,7 @@
 Public Class Usuarios
     Dim mtdUsuario As New MetodosUsuarios
     Dim w As Integer = 580
-    Dim h As Integer = 350
+    Dim h As Integer = 308
     Dim flag As Int16 = 1
     Dim nombreUsuario, nombreEmpleado, tipoEmpleado, contrasenia, estatus As String
 
@@ -155,10 +155,13 @@ Public Class Usuarios
 
     Private Sub btnEliminar_Click(sender As Object, e As EventArgs) Handles btnEliminar.Click
         Try
+
             Dim empleado, usuario As String
             usuario = tblUsuarios.CurrentRow.Cells(0).Value
             empleado = tblUsuarios.CurrentRow.Cells(3).Value
-            mtdUsuario.eliminar(usuario, empleado)
+            If MessageBox.Show("Esta seguro de ELIMINAR el usuario: " + usuario + " que pertenece" + vbCrLf + "a al empleado: " + empleado, "Advertencia", MessageBoxButtons.OKCancel, MessageBoxIcon.Warning) = 1 Then
+                mtdUsuario.eliminar(usuario, empleado)
+            End If
         Catch ex As Exception
 
         End Try
@@ -218,7 +221,7 @@ Public Class Usuarios
 
 
     Private Function agrandarFrom() As Boolean
-        Me.Size = New Drawing.Size(w, h + 160)
+        Me.Size = New Drawing.Size(w, h + 164)
         Return True
     End Function
 
@@ -244,6 +247,10 @@ Public Class Usuarios
             Return False
         End If
     End Function
+
+    Private Sub btnEmpleados_Click(sender As Object, e As EventArgs) Handles btnEmpleados.Click
+        AgregarEmpleados.Show()
+    End Sub
 
     Private Sub txtUsuario_Validating(sender As Object, e As System.ComponentModel.CancelEventArgs) Handles txtUsuario.Validating
         If DirectCast(sender, TextBox).Text.Length > 0 Then

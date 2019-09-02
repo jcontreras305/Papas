@@ -44,18 +44,18 @@ Partial Class Actualizar_Proveedor
         Me.Label6.AutoSize = True
         Me.Label6.Font = New System.Drawing.Font("Arial", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label6.ForeColor = System.Drawing.SystemColors.ButtonShadow
-        Me.Label6.Location = New System.Drawing.Point(81, 6)
+        Me.Label6.Location = New System.Drawing.Point(112, 5)
         Me.Label6.Name = "Label6"
-        Me.Label6.Size = New System.Drawing.Size(163, 19)
+        Me.Label6.Size = New System.Drawing.Size(169, 19)
         Me.Label6.TabIndex = 18
-        Me.Label6.Text = "Registrar Proveedor"
+        Me.Label6.Text = "Actualizar Proveedor"
         '
         'Label5
         '
         Me.Label5.AutoSize = True
         Me.Label5.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label5.ForeColor = System.Drawing.SystemColors.ButtonShadow
-        Me.Label5.Location = New System.Drawing.Point(375, -4)
+        Me.Label5.Location = New System.Drawing.Point(394, 5)
         Me.Label5.Name = "Label5"
         Me.Label5.Size = New System.Drawing.Size(21, 20)
         Me.Label5.TabIndex = 17

@@ -143,5 +143,29 @@ Public Class MetodosProveedor
     End Sub
 
 
+    Public Sub modificar_Proveedor(ByVal datosV() As String, ByVal datosN() As String, ByVal nombre As String)
+        Try
+            conectar()
+            Dim comando As New SqlCommand("sp_Actualizar_Proveedor")
+            comando.CommandType = CommandType.StoredProcedure
+            comando.Parameters.AddWithValue("@nombre", nombre)
+            comando.Parameters.AddWithValue("@telefonoN", datosN(0))
+            comando.Parameters.AddWithValue("@emailN", datosN(1))
+            comando.Parameters.AddWithValue("@nombreCiuN", datosN(2))
+            comando.Parameters.AddWithValue("@telefonoV", datosV(0))
+            comando.Parameters.AddWithValue("@emailV", datosV(1))
+            comando.Parameters.AddWithValue("@nombreCiuV", datosV(2))
+            comando.Connection = conn
+            If comando.ExecuteNonQuery Then
+                MsgBox("Se actualizo correctamente los datos del proveedor " + nombre)
+            End If
+            desconectar()
+        Catch ex As Exception
+            desconectar()
+            MsgBox(ex.Message)
+        End Try
+    End Sub
+
+
 
 End Class

@@ -22,6 +22,7 @@ Partial Class Form2
     'No lo modifique con el editor de código.
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
+        Me.components = New System.ComponentModel.Container()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(Form2))
         Me.Panel1 = New System.Windows.Forms.Panel()
         Me.Minimizar = New System.Windows.Forms.Label()
@@ -42,6 +43,8 @@ Partial Class Form2
         Me.VentasMenuPrincipal = New System.Windows.Forms.Button()
         Me.PanelContenedorForm = New System.Windows.Forms.Panel()
         Me.PictureBox1 = New System.Windows.Forms.PictureBox()
+        Me.lblHora = New System.Windows.Forms.Label()
+        Me.Timer1 = New System.Windows.Forms.Timer(Me.components)
         Me.Panel1.SuspendLayout()
         Me.MenuStrip1.SuspendLayout()
         Me.Panel2.SuspendLayout()
@@ -126,6 +129,7 @@ Partial Class Form2
         Me.Panel2.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
             Or System.Windows.Forms.AnchorStyles.Left), System.Windows.Forms.AnchorStyles)
         Me.Panel2.BackColor = System.Drawing.Color.FromArgb(CType(CType(23, Byte), Integer), CType(CType(165, Byte), Integer), CType(CType(137, Byte), Integer))
+        Me.Panel2.Controls.Add(Me.lblHora)
         Me.Panel2.Controls.Add(Me.NombreUsuario)
         Me.Panel2.Controls.Add(Me.ConfiguracionMenuPrincipal)
         Me.Panel2.Controls.Add(Me.ControlMenuPrincipal)
@@ -289,6 +293,21 @@ Partial Class Form2
         Me.PictureBox1.TabIndex = 0
         Me.PictureBox1.TabStop = False
         '
+        'lblHora
+        '
+        Me.lblHora.AutoSize = True
+        Me.lblHora.Font = New System.Drawing.Font("Microsoft Sans Serif", 14.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.lblHora.ForeColor = System.Drawing.Color.White
+        Me.lblHora.Location = New System.Drawing.Point(5, 650)
+        Me.lblHora.Name = "lblHora"
+        Me.lblHora.Size = New System.Drawing.Size(66, 24)
+        Me.lblHora.TabIndex = 8
+        Me.lblHora.Text = "Label1"
+        '
+        'Timer1
+        '
+        Me.Timer1.Enabled = True
+        '
         'Form2
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
@@ -336,4 +355,6 @@ Partial Class Form2
     Friend WithEvents PictureBox1 As PictureBox
     Friend WithEvents NombreUsuario As Label
     Friend WithEvents CerrarSesionToolStripMenuItem As ToolStripMenuItem
+    Friend WithEvents lblHora As Label
+    Friend WithEvents Timer1 As Timer
 End Class
