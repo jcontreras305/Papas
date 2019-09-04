@@ -48,4 +48,9 @@
             MsgBox("Seleciona un renglos")
         End Try
     End Sub
+
+    Private Sub Lista_de_Precios_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+        npd.DecimalPlaces = 2
+        npd.ThousandsSeparator = True
+    End Sub
 End Class

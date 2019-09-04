@@ -87,7 +87,7 @@ Partial Class Actualizar_Producto
         'Label4
         '
         Me.Label4.AutoSize = True
-        Me.Label4.Location = New System.Drawing.Point(27, 73)
+        Me.Label4.Location = New System.Drawing.Point(12, 71)
         Me.Label4.Name = "Label4"
         Me.Label4.Size = New System.Drawing.Size(37, 13)
         Me.Label4.TabIndex = 11
@@ -95,7 +95,7 @@ Partial Class Actualizar_Producto
         '
         'npd
         '
-        Me.npd.Location = New System.Drawing.Point(118, 66)
+        Me.npd.Location = New System.Drawing.Point(55, 66)
         Me.npd.Name = "npd"
         Me.npd.Size = New System.Drawing.Size(120, 20)
         Me.npd.TabIndex = 10

@@ -83,6 +83,12 @@
     <Compile Include="Formularios\Actualizar_bodega.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="Formularios\Actualizar_Existencia.Designer.vb">
+      <DependentUpon>Actualizar_Existencia.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Formularios\Actualizar_Existencia.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="Formularios\Actualizar_Producto.Designer.vb">
       <DependentUpon>Actualizar_Producto.vb</DependentUpon>
     </Compile>
@@ -105,6 +111,12 @@
       <DependentUpon>Catálogo.vb</DependentUpon>
     </Compile>
     <Compile Include="Formularios\Catálogo.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formularios\ConfiguracionBD1.Designer.vb">
+      <DependentUpon>ConfiguracionBD1.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Formularios\ConfiguracionBD1.vb">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Formularios\Consultar_Proveedores.Designer.vb">
@@ -197,6 +209,12 @@
     <Compile Include="Formularios\NuevaVenta.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="Formularios\Opciones_Avanzadas.Designer.vb">
+      <DependentUpon>Opciones_Avanzadas.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Formularios\Opciones_Avanzadas.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="Formularios\PerfilesDeLosUsuarios.Designer.vb">
       <DependentUpon>PerfilesDeLosUsuarios.vb</DependentUpon>
     </Compile>
@@ -219,6 +237,12 @@
       <DependentUpon>Registrar_Bodega.vb</DependentUpon>
     </Compile>
     <Compile Include="Formularios\Registrar_Bodega.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formularios\Registrar_Existencias.Designer.vb">
+      <DependentUpon>Registrar_Existencias.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Formularios\Registrar_Existencias.vb">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Formularios\Registrar_Proveedor.Designer.vb">
@@ -294,6 +318,12 @@
     <Compile Include="Formularios\Reporte_de_ventas.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="Formularios\Transpasos.Designer.vb">
+      <DependentUpon>Transpasos.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Formularios\Transpasos.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="Formularios\Usuarios.Designer.vb">
       <DependentUpon>Usuarios.vb</DependentUpon>
     </Compile>
@@ -325,6 +355,7 @@
     <Compile Include="Metodos\MetodosProducto.vb" />
     <Compile Include="Metodos\MetodosProductos.vb" />
     <Compile Include="Metodos\MetodosProveedor.vb" />
+    <Compile Include="Metodos\MetodosTranspasos.vb" />
     <Compile Include="Metodos\MetodosUsuarios.vb" />
     <Compile Include="Metodos\MetodosVenta.vb" />
     <Compile Include="My Project\AssemblyInfo.vb" />
@@ -356,11 +387,17 @@
     <EmbeddedResource Include="Formularios\Actualizar_Cliente.resx">
       <DependentUpon>Actualizar_Cliente.vb</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Formularios\Actualizar_Existencia.resx">
+      <DependentUpon>Actualizar_Existencia.vb</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Formularios\Actualizar_Producto.resx">
       <DependentUpon>Actualizar_Producto.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Formularios\Catálogo.resx">
       <DependentUpon>Catálogo.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formularios\ConfiguracionBD1.resx">
+      <DependentUpon>ConfiguracionBD1.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Formularios\Consultar_Proveedores.resx">
       <DependentUpon>Consultar_Proveedores.vb</DependentUpon>
@@ -401,11 +438,17 @@
     <EmbeddedResource Include="Formularios\Matriz.resx">
       <DependentUpon>Matriz.vb</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Formularios\Opciones_Avanzadas.resx">
+      <DependentUpon>Opciones_Avanzadas.vb</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Formularios\PerfilesDeLosUsuarios.resx">
       <DependentUpon>PerfilesDeLosUsuarios.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Formularios\Registrar_Bodega.resx">
       <DependentUpon>Registrar_Bodega.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formularios\Registrar_Existencias.resx">
+      <DependentUpon>Registrar_Existencias.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Formularios\Registrar_Proveedor.resx">
       <DependentUpon>Registrar_Proveedor.vb</DependentUpon>
@@ -439,6 +482,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Formularios\Registro_productos.resx">
       <DependentUpon>Registro_productos.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formularios\Transpasos.resx">
+      <DependentUpon>Transpasos.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Formularios\Usuarios.resx">
       <DependentUpon>Usuarios.vb</DependentUpon>

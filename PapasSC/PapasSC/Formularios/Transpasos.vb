@@ -13,11 +13,11 @@
     End Sub
 
     Private Sub bodega1_SelectedIndexChanged(sender As Object, e As EventArgs) Handles bodega1.SelectedIndexChanged
-        mdt.llenarDatagridview_filtroBodega(tblpro1, bodega1.Text)
+
     End Sub
 
     Private Sub bodega2_SelectedIndexChanged(sender As Object, e As EventArgs) Handles bodega2.SelectedIndexChanged
-        mdt.llenarDatagridview_filtroBodega(tblpro2, bodega2.Text)
+
     End Sub
 
     Private Sub cmbproducto1_Enter(sender As Object, e As EventArgs) Handles cmbproducto1.Enter
@@ -29,9 +29,6 @@
     End Sub
 
     Private Sub Button1_Click(sender As Object, e As EventArgs) Handles Button1.Click
-        If Convert.ToDouble(tblpro2.CurrentRow.Cells(1).Value) > NumericUpDown1.Value Then
 
-
-        End If
     End Sub
 End Class

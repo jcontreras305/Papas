@@ -120,7 +120,7 @@ Partial Class Transpasos
         'Label8
         '
         Me.Label8.AutoSize = True
-        Me.Label8.Location = New System.Drawing.Point(402, 76)
+        Me.Label8.Location = New System.Drawing.Point(404, 80)
         Me.Label8.Name = "Label8"
         Me.Label8.Size = New System.Drawing.Size(50, 13)
         Me.Label8.TabIndex = 3
@@ -128,7 +128,7 @@ Partial Class Transpasos
         '
         'NumericUpDown3
         '
-        Me.NumericUpDown3.Location = New System.Drawing.Point(526, 114)
+        Me.NumericUpDown3.Location = New System.Drawing.Point(525, 114)
         Me.NumericUpDown3.Name = "NumericUpDown3"
         Me.NumericUpDown3.Size = New System.Drawing.Size(120, 20)
         Me.NumericUpDown3.TabIndex = 4
@@ -136,7 +136,7 @@ Partial Class Transpasos
         'Label9
         '
         Me.Label9.AutoSize = True
-        Me.Label9.Location = New System.Drawing.Point(402, 116)
+        Me.Label9.Location = New System.Drawing.Point(403, 117)
         Me.Label9.Name = "Label9"
         Me.Label9.Size = New System.Drawing.Size(118, 13)
         Me.Label9.TabIndex = 5
@@ -144,7 +144,7 @@ Partial Class Transpasos
         '
         'Button1
         '
-        Me.Button1.Location = New System.Drawing.Point(304, 187)
+        Me.Button1.Location = New System.Drawing.Point(308, 37)
         Me.Button1.Name = "Button1"
         Me.Button1.Size = New System.Drawing.Size(75, 23)
         Me.Button1.TabIndex = 6
@@ -153,7 +153,7 @@ Partial Class Transpasos
         '
         'Button2
         '
-        Me.Button2.Location = New System.Drawing.Point(308, 228)
+        Me.Button2.Location = New System.Drawing.Point(308, 80)
         Me.Button2.Name = "Button2"
         Me.Button2.Size = New System.Drawing.Size(75, 23)
         Me.Button2.TabIndex = 13
@@ -165,7 +165,7 @@ Partial Class Transpasos
         Me.AcceptButton = Me.Button1
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(690, 317)
+        Me.ClientSize = New System.Drawing.Size(690, 163)
         Me.Controls.Add(Me.Button2)
         Me.Controls.Add(Me.Button1)
         Me.Controls.Add(Me.Label9)

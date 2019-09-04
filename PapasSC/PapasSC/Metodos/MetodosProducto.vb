@@ -113,6 +113,7 @@ Public Class MetodosProducto
             MessageBox.Show("No se inserto debido a: " + ex.ToString)
         End Try
     End Sub
+
     Public Sub updateProducto(ByVal id As String, ByVal Version As String, ByVal clave As String, ByVal precio As String)
         Try
             MsgBox("pus si entro carnal")

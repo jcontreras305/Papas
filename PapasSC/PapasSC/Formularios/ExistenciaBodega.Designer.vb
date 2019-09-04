@@ -120,7 +120,7 @@ Partial Class ExistenciaBodega
         '
         'Button3
         '
-        Me.Button3.Location = New System.Drawing.Point(590, 356)
+        Me.Button3.Location = New System.Drawing.Point(590, 357)
         Me.Button3.Name = "Button3"
         Me.Button3.Size = New System.Drawing.Size(80, 50)
         Me.Button3.TabIndex = 9
@@ -129,7 +129,7 @@ Partial Class ExistenciaBodega
         '
         'btnAvanzado
         '
-        Me.btnAvanzado.Location = New System.Drawing.Point(134, 358)
+        Me.btnAvanzado.Location = New System.Drawing.Point(134, 359)
         Me.btnAvanzado.Name = "btnAvanzado"
         Me.btnAvanzado.Size = New System.Drawing.Size(88, 48)
         Me.btnAvanzado.TabIndex = 10
@@ -140,7 +140,7 @@ Partial Class ExistenciaBodega
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(800, 450)
+        Me.ClientSize = New System.Drawing.Size(773, 427)
         Me.Controls.Add(Me.btnAvanzado)
         Me.Controls.Add(Me.Button3)
         Me.Controls.Add(Me.Reclasificacion)
