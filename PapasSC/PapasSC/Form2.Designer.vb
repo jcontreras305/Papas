@@ -33,6 +33,7 @@ Partial Class Form2
         Me.CerrarSesionToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.NombreUsuario = New System.Windows.Forms.Label()
         Me.Panel2 = New System.Windows.Forms.Panel()
+        Me.lblHora = New System.Windows.Forms.Label()
         Me.ConfiguracionMenuPrincipal = New System.Windows.Forms.Button()
         Me.ControlMenuPrincipal = New System.Windows.Forms.Button()
         Me.UtileriasMenuPrincipal = New System.Windows.Forms.Button()
@@ -43,7 +44,6 @@ Partial Class Form2
         Me.VentasMenuPrincipal = New System.Windows.Forms.Button()
         Me.PanelContenedorForm = New System.Windows.Forms.Panel()
         Me.PictureBox1 = New System.Windows.Forms.PictureBox()
-        Me.lblHora = New System.Windows.Forms.Label()
         Me.Timer1 = New System.Windows.Forms.Timer(Me.components)
         Me.Panel1.SuspendLayout()
         Me.MenuStrip1.SuspendLayout()
@@ -143,6 +143,17 @@ Partial Class Form2
         Me.Panel2.Name = "Panel2"
         Me.Panel2.Size = New System.Drawing.Size(188, 492)
         Me.Panel2.TabIndex = 1
+        '
+        'lblHora
+        '
+        Me.lblHora.AutoSize = True
+        Me.lblHora.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.lblHora.ForeColor = System.Drawing.Color.White
+        Me.lblHora.Location = New System.Drawing.Point(3, 650)
+        Me.lblHora.Name = "lblHora"
+        Me.lblHora.Size = New System.Drawing.Size(51, 18)
+        Me.lblHora.TabIndex = 8
+        Me.lblHora.Text = "Label1"
         '
         'ConfiguracionMenuPrincipal
         '
@@ -292,17 +303,6 @@ Partial Class Form2
         Me.PictureBox1.Size = New System.Drawing.Size(508, 302)
         Me.PictureBox1.TabIndex = 0
         Me.PictureBox1.TabStop = False
-        '
-        'lblHora
-        '
-        Me.lblHora.AutoSize = True
-        Me.lblHora.Font = New System.Drawing.Font("Microsoft Sans Serif", 14.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.lblHora.ForeColor = System.Drawing.Color.White
-        Me.lblHora.Location = New System.Drawing.Point(5, 650)
-        Me.lblHora.Name = "lblHora"
-        Me.lblHora.Size = New System.Drawing.Size(66, 24)
-        Me.lblHora.TabIndex = 8
-        Me.lblHora.Text = "Label1"
         '
         'Timer1
         '

@@ -759,3 +759,23 @@ begin
 	
 	end
 end
+
+--#############################################################################################
+--############################### Camios de la primer entrega #################################
+--#############################################################################################
+
+ALTER proc [dbo].[sp_selectMatriz]
+as
+begin 
+	select isnull( nombre , 'ND')as Sucursal
+	from matriz
+end
+
+ALTER proc [dbo].[sp_select_Matriz]
+as
+begin 
+select mt.nombre as Sucursal, mt.clave as Clave , cd.nombre as Ciudad
+	 from matriz as mt left join  ciudad as cd  on mt.idCiudad = cd.idCiudad 
+	 where mt.estatus = 'A'
+end
+

@@ -130,7 +130,7 @@ Partial Class Consulta_Cliente
         Me.Controls.Add(Me.TextBox1)
         Me.Controls.Add(Me.Label1)
         Me.Name = "Consulta_Cliente"
-        Me.Text = "Form1"
+        Me.Text = "Clientes"
         CType(Me.TablaCLientes, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
         Me.PerformLayout()

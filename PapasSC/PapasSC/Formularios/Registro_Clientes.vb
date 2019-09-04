@@ -11,6 +11,10 @@ Public Class Registro_Clientes
             lbl21.Visible = False
             lbl22.Visible = False
             lbl23.Visible = False
+            chbActivarCredito.Checked = False
+            txtSaldo.Enabled = False
+            spnDiasCredito.Enabled = False
+            txtLimiteCredito.Enabled = False
             rdbHombre.Checked = True
             cmbEstado.SelectedIndex = 14
         Catch ex As Exception
@@ -68,7 +72,11 @@ Public Class Registro_Clientes
                     datosCliente.Add("Moral")
 
                 End If
-
+                If chbActivo.Checked Then
+                    datosCliente.Add("A")
+                Else
+                    datosCliente.Add("I")
+                End If
                 'agregar de contacto 
                 datosCliente.Add(txtAlias.Text)
                 If rdbRazonSocial.Checked Then
@@ -87,14 +95,20 @@ Public Class Registro_Clientes
                 datosCliente.Add(txtCodigoPostal.Text)
 
                 'datos de credito
-                If txtLimiteCredito.Text.Length > 0 And Not txtLimiteCredito.Text.Equals("") Then
-                    Dim credito As Double = (CDbl(txtLimiteCredito.Text))
-                    datosCliente.Add(txtLimiteCredito.Text) ' limite de credito
-                    datosCliente.Add(CStr(spnDiasCredito.Value)) ' dias de credito
+                If chbActivarCredito.Checked Then
+                    If txtLimiteCredito.Text.Length > 0 And Not txtLimiteCredito.Text.Equals("") Then
+                        Dim credito As Double = (CDbl(txtLimiteCredito.Text))
+                        datosCliente.Add(txtLimiteCredito.Text) ' limite de credito
+                        datosCliente.Add(CStr(spnDiasCredito.Value)) ' dias de credito
+                    Else
+                        datosCliente.Add("0")
+                        datosCliente.Add("0")
+                    End If
                 Else
-                    datosCliente.Add("10000")
-
+                    datosCliente.Add("0")
+                    datosCliente.Add("0")
                 End If
+
             Catch ex As Exception
                 MsgBox(ex.Message + "1")
                 flag1 = False
@@ -216,5 +230,40 @@ Public Class Registro_Clientes
         End Try
     End Function
 
+    Private Sub chbActivarCredito_CheckedChanged(sender As Object, e As EventArgs) Handles chbActivarCredito.CheckedChanged
+        If chbActivarCredito.Checked Then
+            txtLimiteCredito.Enabled = True
+            spnDiasCredito.Enabled = True
+            txtSaldo.Enabled = True
 
+        Else
+            txtLimiteCredito.Enabled = False
+            spnDiasCredito.Enabled = False
+            txtSaldo.Enabled = False
+        End If
+    End Sub
+
+    Private Sub txtCodigoPostal_KeyDown(sender As Object, e As KeyEventArgs) Handles txtCodigoPostal.KeyDown
+        Dim ultimo As String = txtCodigoPostal.Text
+
+
+        Dim cp As String = txtCodigoPostal.Text
+
+        If cp.Length >= 13 Then
+            cp = txtCodigoPostal.Text.Remove(txtCodigoPostal.Text.Length - 1)
+            txtrfc.Text = cp
+            'MsgBox("Solo se permiten como maximo 13 caracteres")
+        End If
+        txtrfc.Text = txtrfc.Text.ToUpper
+        txtrfc.SelectionStart = cp.Length
+    End Sub
+
+    'Private Sub txtCodigoPostal_KeyPress(sender As Object, e As KeyPressEventArgs) Handles txtCodigoPostal.KeyPress
+    '    e.Handled = Not IsNumeric(e.KeyChar) And Not Char.IsControl(e.KeyChar)
+    '    If Not IsNumeric(e.KeyChar) And Not Char.IsControl(e.KeyChar) Then
+    '        Dim cp As String = txtCodigoPostal.Text
+    '        Dim length As Int16 = cp
+
+    '    End If
+    'End Sub
 End Class

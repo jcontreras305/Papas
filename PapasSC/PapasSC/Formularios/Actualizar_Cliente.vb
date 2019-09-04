@@ -14,40 +14,58 @@ Public Class Actualizar_Cliente
         lbl21.Visible = False
         lbl22.Visible = False
         lbl23.Visible = False
+
         rdbHombre.Checked = True
         datosCli = Consulta_Cliente.datosCliente
         idCliente = datosCli(0)
         Try
-            MsgBox(datosCli(1).ToString)
+            'MsgBox(datosCli(1).ToString)
             txtNombre.Text = datosCli(1).ToString
         Catch ex As Exception
             txtNombre.Text = ""
         End Try
         Try
-            MsgBox(datosCli(3).ToString)
+            'MsgBox(datosCli(3).ToString)
             txtRazonSocial.Text = datosCli(3).ToString
         Catch ex As Exception
             txtRazonSocial.Text = ""
         End Try
         txtrfc.Text = datosCli(2)
         cmbTipoPersona.Text = datosCli(5)
-        txtLimiteCredito.Text = datosCli(7)
-        spnDiasCredito.Value = CInt(datosCli(8).ToString)
-        txtAlias.Text = datosCli(9)
-        If datosCli(10).Equals("M") Then
+        If datosCli(6) = "A" Then
+            chbActivo.Checked = True
+        Else
+            chbActivo.Checked = False
+        End If
+        If Not datosCli(7) = "" And Not datosCli(8) = "" Then
+            txtLimiteCredito.Text = datosCli(7)
+            txtSaldo.Text = datosCli(8)
+            spnDiasCredito.Value = CInt(datosCli(9).ToString)
+            chbActivarCredito.Checked = True
+        Else
+            txtLimiteCredito.Enabled = False
+            txtSaldo.Enabled = False
+            spnDiasCredito.Enabled = False
+            chbActivarCredito.Checked = False
+
+        End If
+
+        spnDiasCredito.Value = CInt(datosCli(9).ToString)
+        txtAlias.Text = datosCli(10)
+        If datosCli(11).Equals("M") Then
             rdbHombre.Checked = True
-        ElseIf datosCli(10).Equals("F") Then
+        ElseIf datosCli(12).Equals("F") Then
             rdbMujer.Checked = True
         Else
             rdbRazonSocial.Checked = True
         End If
-        txtDireccion.Text = datosCli(11)
-        txtTelefono.Text = datosCli(12)
-        txtEmail.Text = datosCli(13)
+        txtDireccion.Text = datosCli(12)
+        txtTelefono.Text = datosCli(13)
+        txtEmail.Text = datosCli(14)
         'cmbEstado.Text = datosCli(14)
-        cmbEstado.SelectedText = datosCli(14)
-        txtMunicipio.Text = datosCli(15)
-        txtCodigoPostal.Text = datosCli(16)
+        cmbEstado.SelectedText = datosCli(15)
+        txtMunicipio.Text = datosCli(16)
+        txtCodigoPostal.Text = datosCli(17)
     End Sub
 
     Private Sub bntActualizar_Click(sender As Object, e As EventArgs) Handles bntActualizar.Click
@@ -80,7 +98,11 @@ Public Class Actualizar_Cliente
                         datosActCli.Add("Moral")
 
                     End If
-
+                    If chbActivo.Checked Then
+                        datosActCli.Add("A")
+                    Else
+                        datosActCli.Add("I")
+                    End If
                     'agregar de contacto 
                     datosActCli.Add(txtAlias.Text)
                     If rdbRazonSocial.Checked Then
@@ -95,21 +117,25 @@ Public Class Actualizar_Cliente
                     datosActCli.Add(txtTelefono.Text)
                     datosActCli.Add(txtEmail.Text)
 
-                    datosActCli.Add(CStr(cmbEstado.SelectedItem.ToString))
+                    datosActCli.Add(CStr(cmbEstado.Text))
                     datosActCli.Add(txtMunicipio.Text)
                     datosActCli.Add(txtCodigoPostal.Text)
 
                     'datos de credito
-                    If txtLimiteCredito.Text.Length > 0 And Not txtLimiteCredito.Text.Equals("") Then
-                        Dim credito As Double = (CDbl(txtLimiteCredito.Text))
-                        datosActCli.Add(txtLimiteCredito.Text) ' limite de credito
-                        datosActCli.Add(CStr(spnDiasCredito.Value)) ' dias de credito
+                    If chbActivarCredito.Checked Then
+                        If txtLimiteCredito.Text.Length > 0 And Not txtLimiteCredito.Text.Equals("") Then
+                            Dim credito As Double = (CDbl(txtLimiteCredito.Text))
+                            datosActCli.Add(txtLimiteCredito.Text) ' limite de credito
+                            datosActCli.Add(CStr(spnDiasCredito.Value)) ' dias de credito
+                        Else
+                            datosActCli.Add("0")
+                        End If
                     Else
-                        datosActCli.Add("10000")
-
+                        datosActCli.Add("0")
+                        datosActCli.Add("0")
                     End If
                 Catch ex As Exception
-                    MsgBox(ex.Message + "1")
+                    'MsgBox(ex.Message + "1")
                     flag1 = False
                 End Try
 
@@ -218,4 +244,22 @@ Public Class Actualizar_Cliente
         mtdCliente.llenarDatagridview(mtdConsul.TablaCLientes)
         Me.Close()
     End Sub
+
+    Private Sub Label9_Click(sender As Object, e As EventArgs) Handles Label9.Click
+        Me.Close()
+    End Sub
+
+    Private Sub chbActivarCredito_CheckedChanged(sender As Object, e As EventArgs) Handles chbActivarCredito.CheckedChanged
+        If chbActivarCredito.Checked = True Then
+            txtSaldo.Enabled = True
+            txtLimiteCredito.Enabled = True
+            spnDiasCredito.Enabled = True
+        Else
+            txtSaldo.Enabled = False
+            txtLimiteCredito.Enabled = False
+            spnDiasCredito.Enabled = False
+        End If
+    End Sub
+
+
 End Class

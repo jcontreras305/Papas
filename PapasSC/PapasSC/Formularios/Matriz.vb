@@ -9,7 +9,7 @@ Public Class Matriz
             mtdMatCD.seleccionar_Ciudad(cmbCiudad)
             lbl1.Visible = False
             lbl2.Visible = False
-
+            lbl3.Visible = False
         Catch ex As Exception
             MsgBox(ex.Message)
         End Try
@@ -40,6 +40,7 @@ Public Class Matriz
         Else
             lbl1.Visible = True
             lbl2.Visible = True
+            lbl3.Visible = True
         End If
     End Sub
 

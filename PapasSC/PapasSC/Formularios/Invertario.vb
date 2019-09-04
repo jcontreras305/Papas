@@ -6,6 +6,7 @@ Public Class Invertario
         Try
             mtdInv.buscarBodegas(cmbBodega)
             mtdInv.buscarProducto(cmbProducto)
+            Me.Location = New Point(300, 200)
         Catch ex As Exception
 
         End Try
@@ -39,7 +40,7 @@ Public Class Invertario
         ElseIf bodega.Equals("--") And Not producto.Equals("--") And Not chbExistencia.Checked Then
             mtdInv.buscarProductoPorProductoSinExistencia(producto, tblInventario)
         ElseIf bodega.Equals("--") And producto.Equals("--") Then
-            MsgBox(bodega + producto)
+            'MsgBox(bodega + producto)
         End If
 
         tablaDisenio(tblInventario)
