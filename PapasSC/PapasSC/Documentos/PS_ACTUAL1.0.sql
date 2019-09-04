@@ -600,33 +600,33 @@ add estatus char (1)
 
 --############################# ESTE PROC SOLO SE EJECUTA UNA VEZ #############################################
 --############################# YA QUE SOLO SON 3 TIPOS DE USUARIOS ###########################################
-create proc sp_usuarios_privilegios
-as
-declare @idPrivielegio as varchar(36)
-declare @idTipoUsuario as varchar(36)
-declare @cont int 
-begin
-	begin try	
-		insert into privilegio values (newid(),'Venta'),
-							  (newid(),'Inventario'),
-							  (newid(),'Reportes'),
-							  (newid(),'Catálogo'),
-							  (newid(),'Empleados'),
-							  (newid(),'Utilieria'),
-							  (newid(),'Control'),
-							  (newid(),'Configuración')
-		insert into tipoUsuario values (NEWID(),'Administracion'),(NEWID(),'Operador'),(NEWID(),'Venta')
+--create proc sp_usuarios_privilegios
+--as
+--declare @idPrivielegio as varchar(36)
+--declare @idTipoUsuario as varchar(36)
+--declare @cont int 
+--begin
+--	begin try	
+--		insert into privilegio values (newid(),'Venta'),
+--							  (newid(),'Inventario'),
+--							  (newid(),'Reportes'),
+--							  (newid(),'Catálogo'),
+--							  (newid(),'Empleados'),
+--							  (newid(),'Utilieria'),
+--							  (newid(),'Control'),
+--							  (newid(),'Configuración')
+--		insert into tipoUsuario values (NEWID(),'Administracion'),(NEWID(),'Operador'),(NEWID(),'Venta')
 
-		set @cont = 1
-		while @cont <= 5
-		begin 
-			print 'ERROR'		
-		end 
-	end try
-	begin catch
+--		set @cont = 1
+--		while @cont <= 5
+--		begin 
+--			print 'ERROR'		
+--		end 
+--	end try
+--	begin catch
 
-	end catch
-end
+--	end catch
+--end
 
 
 --#############################################################################################################
@@ -760,48 +760,22 @@ begin
 	end
 end
 
-drop proc sp_insertar_nuevoCliente
+--#############################################################################################
+--############################### Camios de la primer entrega #################################
+--#############################################################################################
 
-create proc sp_insertar_nuevoCliente
---cliente
-@nombreCliente varchar(80),
-@RFC varchar(13),
-@razonSocial varchar(100),
-@tipoPersona varchar (10),
---contacto
-@nombreContacto varchar(100),
-@genero char(1),
-@direccion varchar(100),
-@telefono char(12),
-@email varchar(100),
-@estado varchar(50),
-@municipio varchar(50),
-@codigoPostal char(5),
---credito
-@limiteCredito float,
-@diasCredito int 
-as 
-declare @idCliente  varchar(36)
-declare @idTipoPersona varchar(36)
-declare @flag int
+ALTER proc [dbo].[sp_selectMatriz]
+as
 begin 
-	select @idCliente = newid()
-	select @idTipoPersona=idTipoCliente from tipoCliente where tipo = @tipoPersona  
-	begin try 
-		insert into cliente values (@idCliente, @nombreCliente , @RFC , @razonSocial , GETDATE(), @idTipoPersona,'A')
-		select @flag = COUNT(*) from cliente where idCliente = @idCliente
-	end try
-	begin catch
-		select @flag =  COUNT(*) from cliente where idCliente = @idCliente
-	end catch
-	if @flag > 0 
-	begin
-		begin try 
-			insert into contacto values (NEWID(), @nombreContacto , @genero , @direccion , @telefono , @email , @estado , @municipio , @codigoPostal , @idCliente)
-			insert into credito values (NEWID(), @limiteCredito , @diasCredito , @idCliente)
-		end try 
-		begin catch
-			delete from cliente where idCliente = @idCliente
-		end catch
-	end
+	select isnull( nombre , 'ND')as Sucursal
+	from matriz
 end
+
+ALTER proc [dbo].[sp_select_Matriz]
+as
+begin 
+select mt.nombre as Sucursal, mt.clave as Clave , cd.nombre as Ciudad
+	 from matriz as mt left join  ciudad as cd  on mt.idCiudad = cd.idCiudad 
+	 where mt.estatus = 'A'
+end
+

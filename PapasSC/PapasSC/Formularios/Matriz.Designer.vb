@@ -228,9 +228,9 @@ Partial Class Matriz
         Me.Label16.ForeColor = System.Drawing.SystemColors.ButtonShadow
         Me.Label16.Location = New System.Drawing.Point(239, 4)
         Me.Label16.Name = "Label16"
-        Me.Label16.Size = New System.Drawing.Size(70, 24)
+        Me.Label16.Size = New System.Drawing.Size(99, 24)
         Me.Label16.TabIndex = 34
-        Me.Label16.Text = "Matriz"
+        Me.Label16.Text = "Sucursal"
         '
         'Matriz
         '

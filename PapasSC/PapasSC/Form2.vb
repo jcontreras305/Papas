@@ -237,6 +237,8 @@
     End Sub
 
     Private Sub Timer1_Tick(sender As Object, e As EventArgs) Handles Timer1.Tick
-        lblHora.Text = Now.ToLongDateString + "  " + vbCrLf + "        " + Now.ToLongTimeString
+        lblHora.Text = Now.ToLongDateString + vbCrLf + "       " + Now.ToLongTimeString
+
     End Sub
+
 End Class

@@ -88,3 +88,52 @@ foreign key (idTipoUsario) references tipoUsuario(idTipoUsuario)
 alter table usuarioPrivilegio
 add constraint fk_idPrivilegio_UsuarioPrivilegio
 foreign key (idPrivilegio) references privilegio(idPrivilegio)
+
+--#####################################################################################################
+--##################### se agregaron las tablas de traspaso y detalleTraspaso #########################
+--#####################################################################################################
+
+create table traspaso (
+	idTraspaso varchar (36) primary key not null,
+	fecha date,
+	descripocion varchar(max),
+	idBodegaOrigen varchar(36),
+	idBodegaDestino varchar(36),
+	idUsuario varchar(36)
+)
+
+alter table traspaso
+add constraint fk_idUsuario_traspaso
+foreign key (idUsuario) references usuarios (idUsuario)
+
+alter table traspaso
+add constraint fk_idBodegaOrigen_traspaso
+foreign key (idBodegaOrigen) references bodega (idBodega)
+
+
+alter table traspaso
+add constraint fk_idBodegaDestino_traspaso
+foreign key (idBodegaDestino) references bodega (idBodega)
+
+
+create table detalleTraspaso(
+	idDetalleTraspaso varchar (36) primary key not null,
+	idProducto varchar (36),
+	idTraspaso varchar (36),
+	cantidad float
+)
+
+alter table detalleTraspaso
+add constraint fk_idProdcuto_detalleTraspaso
+foreign key (idProducto) references producto (idProducto)
+
+alter table detalleTraspaso
+add constraint fk_idTraspaso_detalleTraspaso
+foreign key (idTraspaso) references traspaso (idTraspaso)
+
+-- Cambios para contacto y credito
+alter table credito
+add saldo float null
+
+alter table contacto
+add telefono2 char(12), email2 varchar(100),direccion2 varchar(100)

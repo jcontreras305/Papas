@@ -37,13 +37,14 @@ Partial Class Registro_Clientes
         Me.Label4 = New System.Windows.Forms.Label()
         Me.Label8 = New System.Windows.Forms.Label()
         Me.Panel1 = New System.Windows.Forms.Panel()
+        Me.chbActivo = New System.Windows.Forms.CheckBox()
         Me.lbl19 = New System.Windows.Forms.Label()
+        Me.lbl22 = New System.Windows.Forms.Label()
         Me.lbl18 = New System.Windows.Forms.Label()
         Me.Label7 = New System.Windows.Forms.Label()
         Me.cmbTipoPersona = New System.Windows.Forms.ComboBox()
         Me.Panel2 = New System.Windows.Forms.Panel()
         Me.lbl23 = New System.Windows.Forms.Label()
-        Me.lbl22 = New System.Windows.Forms.Label()
         Me.cmbEstado = New System.Windows.Forms.ComboBox()
         Me.GroupBox1 = New System.Windows.Forms.GroupBox()
         Me.rdbRazonSocial = New System.Windows.Forms.RadioButton()
@@ -59,6 +60,9 @@ Partial Class Registro_Clientes
         Me.Label12 = New System.Windows.Forms.Label()
         Me.txtTelefono = New System.Windows.Forms.TextBox()
         Me.Panel3 = New System.Windows.Forms.Panel()
+        Me.Label17 = New System.Windows.Forms.Label()
+        Me.txtSaldo = New System.Windows.Forms.TextBox()
+        Me.chbActivarCredito = New System.Windows.Forms.CheckBox()
         Me.lbl21 = New System.Windows.Forms.Label()
         Me.lbl20 = New System.Windows.Forms.Label()
         Me.spnDiasCredito = New System.Windows.Forms.NumericUpDown()
@@ -159,14 +163,14 @@ Partial Class Registro_Clientes
         '
         'txtDireccion
         '
-        Me.txtDireccion.Location = New System.Drawing.Point(80, 36)
+        Me.txtDireccion.Location = New System.Drawing.Point(80, 14)
         Me.txtDireccion.Name = "txtDireccion"
         Me.txtDireccion.Size = New System.Drawing.Size(204, 20)
         Me.txtDireccion.TabIndex = 21
         '
         'txtAlias
         '
-        Me.txtAlias.Location = New System.Drawing.Point(80, 7)
+        Me.txtAlias.Location = New System.Drawing.Point(423, 78)
         Me.txtAlias.Name = "txtAlias"
         Me.txtAlias.Size = New System.Drawing.Size(156, 20)
         Me.txtAlias.TabIndex = 20
@@ -174,7 +178,7 @@ Partial Class Registro_Clientes
         'Label4
         '
         Me.Label4.AutoSize = True
-        Me.Label4.Location = New System.Drawing.Point(3, 39)
+        Me.Label4.Location = New System.Drawing.Point(3, 17)
         Me.Label4.Name = "Label4"
         Me.Label4.Size = New System.Drawing.Size(52, 13)
         Me.Label4.TabIndex = 19
@@ -183,7 +187,7 @@ Partial Class Registro_Clientes
         'Label8
         '
         Me.Label8.AutoSize = True
-        Me.Label8.Location = New System.Drawing.Point(11, 13)
+        Me.Label8.Location = New System.Drawing.Point(388, 83)
         Me.Label8.Name = "Label8"
         Me.Label8.Size = New System.Drawing.Size(29, 13)
         Me.Label8.TabIndex = 17
@@ -191,7 +195,9 @@ Partial Class Registro_Clientes
         '
         'Panel1
         '
+        Me.Panel1.Controls.Add(Me.chbActivo)
         Me.Panel1.Controls.Add(Me.lbl19)
+        Me.Panel1.Controls.Add(Me.lbl22)
         Me.Panel1.Controls.Add(Me.lbl18)
         Me.Panel1.Controls.Add(Me.Label7)
         Me.Panel1.Controls.Add(Me.cmbTipoPersona)
@@ -201,10 +207,22 @@ Partial Class Registro_Clientes
         Me.Panel1.Controls.Add(Me.txtNombre)
         Me.Panel1.Controls.Add(Me.txtRazonSocial)
         Me.Panel1.Controls.Add(Me.txtrfc)
+        Me.Panel1.Controls.Add(Me.Label8)
+        Me.Panel1.Controls.Add(Me.txtAlias)
         Me.Panel1.Location = New System.Drawing.Point(12, 35)
         Me.Panel1.Name = "Panel1"
         Me.Panel1.Size = New System.Drawing.Size(602, 120)
         Me.Panel1.TabIndex = 23
+        '
+        'chbActivo
+        '
+        Me.chbActivo.AutoSize = True
+        Me.chbActivo.Location = New System.Drawing.Point(427, 46)
+        Me.chbActivo.Name = "chbActivo"
+        Me.chbActivo.Size = New System.Drawing.Size(56, 17)
+        Me.chbActivo.TabIndex = 36
+        Me.chbActivo.Text = "Activo"
+        Me.chbActivo.UseVisualStyleBackColor = True
         '
         'lbl19
         '
@@ -216,6 +234,17 @@ Partial Class Registro_Clientes
         Me.lbl19.Size = New System.Drawing.Size(15, 20)
         Me.lbl19.TabIndex = 14
         Me.lbl19.Text = "*"
+        '
+        'lbl22
+        '
+        Me.lbl22.AutoSize = True
+        Me.lbl22.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.lbl22.ForeColor = System.Drawing.Color.Red
+        Me.lbl22.Location = New System.Drawing.Point(584, 81)
+        Me.lbl22.Name = "lbl22"
+        Me.lbl22.Size = New System.Drawing.Size(15, 20)
+        Me.lbl22.TabIndex = 35
+        Me.lbl22.Text = "*"
         '
         'lbl18
         '
@@ -250,7 +279,6 @@ Partial Class Registro_Clientes
         'Panel2
         '
         Me.Panel2.Controls.Add(Me.lbl23)
-        Me.Panel2.Controls.Add(Me.lbl22)
         Me.Panel2.Controls.Add(Me.cmbEstado)
         Me.Panel2.Controls.Add(Me.GroupBox1)
         Me.Panel2.Controls.Add(Me.bntConfirmar)
@@ -264,10 +292,8 @@ Partial Class Registro_Clientes
         Me.Panel2.Controls.Add(Me.txtEmail)
         Me.Panel2.Controls.Add(Me.Label12)
         Me.Panel2.Controls.Add(Me.txtTelefono)
-        Me.Panel2.Controls.Add(Me.Label8)
         Me.Panel2.Controls.Add(Me.Label4)
         Me.Panel2.Controls.Add(Me.txtDireccion)
-        Me.Panel2.Controls.Add(Me.txtAlias)
         Me.Panel2.Location = New System.Drawing.Point(12, 274)
         Me.Panel2.Name = "Panel2"
         Me.Panel2.Size = New System.Drawing.Size(602, 205)
@@ -278,22 +304,11 @@ Partial Class Registro_Clientes
         Me.lbl23.AutoSize = True
         Me.lbl23.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.lbl23.ForeColor = System.Drawing.Color.Red
-        Me.lbl23.Location = New System.Drawing.Point(221, 98)
+        Me.lbl23.Location = New System.Drawing.Point(221, 76)
         Me.lbl23.Name = "lbl23"
         Me.lbl23.Size = New System.Drawing.Size(15, 20)
         Me.lbl23.TabIndex = 36
         Me.lbl23.Text = "*"
-        '
-        'lbl22
-        '
-        Me.lbl22.AutoSize = True
-        Me.lbl22.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.lbl22.ForeColor = System.Drawing.Color.Red
-        Me.lbl22.Location = New System.Drawing.Point(242, 8)
-        Me.lbl22.Name = "lbl22"
-        Me.lbl22.Size = New System.Drawing.Size(15, 20)
-        Me.lbl22.TabIndex = 35
-        Me.lbl22.Text = "*"
         '
         'cmbEstado
         '
@@ -352,7 +367,7 @@ Partial Class Registro_Clientes
         'Label15
         '
         Me.Label15.AutoSize = True
-        Me.Label15.Location = New System.Drawing.Point(3, 66)
+        Me.Label15.Location = New System.Drawing.Point(3, 44)
         Me.Label15.Name = "Label15"
         Me.Label15.Size = New System.Drawing.Size(71, 13)
         Me.Label15.TabIndex = 29
@@ -360,7 +375,7 @@ Partial Class Registro_Clientes
         '
         'txtCodigoPostal
         '
-        Me.txtCodigoPostal.Location = New System.Drawing.Point(80, 66)
+        Me.txtCodigoPostal.Location = New System.Drawing.Point(80, 44)
         Me.txtCodigoPostal.Name = "txtCodigoPostal"
         Me.txtCodigoPostal.Size = New System.Drawing.Size(204, 20)
         Me.txtCodigoPostal.TabIndex = 30
@@ -409,7 +424,7 @@ Partial Class Registro_Clientes
         'Label12
         '
         Me.Label12.AutoSize = True
-        Me.Label12.Location = New System.Drawing.Point(3, 98)
+        Me.Label12.Location = New System.Drawing.Point(3, 76)
         Me.Label12.Name = "Label12"
         Me.Label12.Size = New System.Drawing.Size(49, 13)
         Me.Label12.TabIndex = 24
@@ -417,7 +432,7 @@ Partial Class Registro_Clientes
         '
         'txtTelefono
         '
-        Me.txtTelefono.Location = New System.Drawing.Point(80, 98)
+        Me.txtTelefono.Location = New System.Drawing.Point(80, 76)
         Me.txtTelefono.Name = "txtTelefono"
         Me.txtTelefono.Size = New System.Drawing.Size(138, 20)
         Me.txtTelefono.TabIndex = 23
@@ -425,6 +440,9 @@ Partial Class Registro_Clientes
         '
         'Panel3
         '
+        Me.Panel3.Controls.Add(Me.Label17)
+        Me.Panel3.Controls.Add(Me.txtSaldo)
+        Me.Panel3.Controls.Add(Me.chbActivarCredito)
         Me.Panel3.Controls.Add(Me.lbl21)
         Me.Panel3.Controls.Add(Me.lbl20)
         Me.Panel3.Controls.Add(Me.spnDiasCredito)
@@ -435,6 +453,32 @@ Partial Class Registro_Clientes
         Me.Panel3.Name = "Panel3"
         Me.Panel3.Size = New System.Drawing.Size(602, 107)
         Me.Panel3.TabIndex = 25
+        '
+        'Label17
+        '
+        Me.Label17.AutoSize = True
+        Me.Label17.Location = New System.Drawing.Point(301, 18)
+        Me.Label17.Name = "Label17"
+        Me.Label17.Size = New System.Drawing.Size(34, 13)
+        Me.Label17.TabIndex = 44
+        Me.Label17.Text = "Saldo"
+        '
+        'txtSaldo
+        '
+        Me.txtSaldo.Location = New System.Drawing.Point(359, 15)
+        Me.txtSaldo.Name = "txtSaldo"
+        Me.txtSaldo.Size = New System.Drawing.Size(131, 20)
+        Me.txtSaldo.TabIndex = 43
+        '
+        'chbActivarCredito
+        '
+        Me.chbActivarCredito.AutoSize = True
+        Me.chbActivarCredito.Location = New System.Drawing.Point(504, 3)
+        Me.chbActivarCredito.Name = "chbActivarCredito"
+        Me.chbActivarCredito.Size = New System.Drawing.Size(95, 17)
+        Me.chbActivarCredito.TabIndex = 42
+        Me.chbActivarCredito.Text = "Activar Credito"
+        Me.chbActivarCredito.UseVisualStyleBackColor = True
         '
         'lbl21
         '
@@ -466,7 +510,6 @@ Partial Class Registro_Clientes
         Me.spnDiasCredito.Size = New System.Drawing.Size(156, 20)
         Me.spnDiasCredito.TabIndex = 29
         Me.spnDiasCredito.Tag = ""
-        Me.spnDiasCredito.Value = New Decimal(New Integer() {30, 0, 0, 0})
         '
         'Label10
         '
@@ -483,7 +526,7 @@ Partial Class Registro_Clientes
         Me.txtLimiteCredito.Name = "txtLimiteCredito"
         Me.txtLimiteCredito.Size = New System.Drawing.Size(156, 20)
         Me.txtLimiteCredito.TabIndex = 28
-        Me.txtLimiteCredito.Text = "10000,00"
+        Me.txtLimiteCredito.Text = "0,00"
         '
         'Label11
         '
@@ -510,7 +553,7 @@ Partial Class Registro_Clientes
         Me.Label16.AutoSize = True
         Me.Label16.Font = New System.Drawing.Font("Arial", 15.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label16.ForeColor = System.Drawing.SystemColors.ButtonShadow
-        Me.Label16.Location = New System.Drawing.Point(291, 9)
+        Me.Label16.Location = New System.Drawing.Point(233, 9)
         Me.Label16.Name = "Label16"
         Me.Label16.Size = New System.Drawing.Size(147, 24)
         Me.Label16.TabIndex = 26
@@ -528,6 +571,7 @@ Partial Class Registro_Clientes
         Me.Controls.Add(Me.Panel1)
         Me.Controls.Add(Me.Label5)
         Me.Name = "Registro_Clientes"
+        Me.Text = "Nuevo Cliente"
         Me.Panel1.ResumeLayout(False)
         Me.Panel1.PerformLayout()
         Me.Panel2.ResumeLayout(False)
@@ -586,4 +630,8 @@ Partial Class Registro_Clientes
     Friend WithEvents lbl22 As Label
     Friend WithEvents lbl21 As Label
     Friend WithEvents lbl20 As Label
+    Friend WithEvents chbActivarCredito As CheckBox
+    Friend WithEvents Label17 As Label
+    Friend WithEvents txtSaldo As TextBox
+    Friend WithEvents chbActivo As CheckBox
 End Class
