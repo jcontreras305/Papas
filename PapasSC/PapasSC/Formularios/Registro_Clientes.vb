@@ -243,27 +243,11 @@ Public Class Registro_Clientes
         End If
     End Sub
 
-    Private Sub txtCodigoPostal_KeyDown(sender As Object, e As KeyEventArgs) Handles txtCodigoPostal.KeyDown
-        Dim ultimo As String = txtCodigoPostal.Text
-
-
-        Dim cp As String = txtCodigoPostal.Text
-
-        If cp.Length >= 13 Then
-            cp = txtCodigoPostal.Text.Remove(txtCodigoPostal.Text.Length - 1)
-            txtrfc.Text = cp
-            'MsgBox("Solo se permiten como maximo 13 caracteres")
+    Private Sub txtCodigoPostal_KeyPress(sender As Object, e As KeyPressEventArgs) Handles txtCodigoPostal.KeyPress
+        e.Handled = Not IsNumeric(e.KeyChar) And Not Char.IsControl(e.KeyChar)
+        If Not IsNumeric(e.KeyChar) And Not Char.IsControl(e.KeyChar) Or txtCodigoPostal.Left > 5 Then
+            MsgBox("Solo puedes ingresar números y no exeder de 5 dígitos")
         End If
-        txtrfc.Text = txtrfc.Text.ToUpper
-        txtrfc.SelectionStart = cp.Length
+
     End Sub
-
-    'Private Sub txtCodigoPostal_KeyPress(sender As Object, e As KeyPressEventArgs) Handles txtCodigoPostal.KeyPress
-    '    e.Handled = Not IsNumeric(e.KeyChar) And Not Char.IsControl(e.KeyChar)
-    '    If Not IsNumeric(e.KeyChar) And Not Char.IsControl(e.KeyChar) Then
-    '        Dim cp As String = txtCodigoPostal.Text
-    '        Dim length As Int16 = cp
-
-    '    End If
-    'End Sub
 End Class
