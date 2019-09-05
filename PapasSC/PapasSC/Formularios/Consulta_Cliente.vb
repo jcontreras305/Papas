@@ -1,6 +1,6 @@
 ﻿Imports PapasSC.MetodosCliente
 Public Class Consulta_Cliente
-    Public datosCliente(17) As String
+    Public datosCliente(20) As String
 
     Private Sub Buscar_Click(sender As Object, e As EventArgs) Handles Buscar.Click
         Dim MTCLI As New MetodosCliente
@@ -24,15 +24,13 @@ Public Class Consulta_Cliente
             MTCLI.llenarDatagridview_filtroDiasCredito(TablaCLientes, TextBox1.Text)
         ElseIf FiltroClientes.SelectedIndex = 7 Then
             MTCLI.llenarDatagridview_filtroID(TablaCLientes, TextBox1.Text)
-
+        ElseIf FiltroClientes.SelectedIndex = 8 Then
+            MTCLI.llenarDatagridviewTodos(TablaCLientes)
         End If
 
 
     End Sub
 
-    Private Sub TextBox1_KeyPress(sender As Object, e As KeyPressEventArgs) Handles TextBox1.KeyPress
-
-    End Sub
 
     Private Sub TextBox1_KeyDown(sender As Object, e As KeyEventArgs) Handles TextBox1.KeyDown
         Dim MTCLI As New MetodosCliente
@@ -54,7 +52,6 @@ Public Class Consulta_Cliente
                 MTCLI.llenarDatagridview_filtroDiasCredito(TablaCLientes, TextBox1.Text)
             ElseIf FiltroClientes.SelectedIndex = 7 Then
                 MTCLI.llenarDatagridview_filtroID(TablaCLientes, TextBox1.Text)
-
             End If
 
         Catch
@@ -115,4 +112,15 @@ Public Class Consulta_Cliente
             MsgBox("No se ha seleccionado un cliente")
         End If
     End Sub
+
+    Private Sub chbMostrarTodos_CheckedChanged(sender As Object, e As EventArgs) Handles chbMostrarTodos.CheckedChanged
+        If chbMostrarTodos.Checked Then
+            Dim MTCLI As New MetodosCliente
+            MTCLI.llenarDatagridviewTodos(TablaCLientes)
+        Else
+            Dim MTCLI As New MetodosCliente
+            MTCLI.llenarDatagridview(TablaCLientes)
+        End If
+    End Sub
+
 End Class

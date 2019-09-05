@@ -31,6 +31,7 @@ Partial Class Consulta_Cliente
         Me.Button1 = New System.Windows.Forms.Button()
         Me.Button2 = New System.Windows.Forms.Button()
         Me.Button3 = New System.Windows.Forms.Button()
+        Me.chbMostrarTodos = New System.Windows.Forms.CheckBox()
         CType(Me.TablaCLientes, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
@@ -53,7 +54,7 @@ Partial Class Consulta_Cliente
         'FiltroClientes
         '
         Me.FiltroClientes.FormattingEnabled = True
-        Me.FiltroClientes.Items.AddRange(New Object() {"Nombre Cliente", "Tipo de Cliente", "Razon Social", "Alias contacto", "RFC", "Limite de credito", "Dias de credito", "Clave Cliente"})
+        Me.FiltroClientes.Items.AddRange(New Object() {"Nombre Cliente", "Tipo de Cliente", "Razon Social", "Alias contacto", "RFC", "Limite de credito", "Dias de credito", "Clave Cliente", "Mostrar Todos"})
         Me.FiltroClientes.Location = New System.Drawing.Point(87, 6)
         Me.FiltroClientes.Name = "FiltroClientes"
         Me.FiltroClientes.Size = New System.Drawing.Size(150, 21)
@@ -116,11 +117,22 @@ Partial Class Consulta_Cliente
         Me.Button3.TextAlign = System.Drawing.ContentAlignment.MiddleRight
         Me.Button3.UseVisualStyleBackColor = True
         '
+        'chbMostrarTodos
+        '
+        Me.chbMostrarTodos.AutoSize = True
+        Me.chbMostrarTodos.Location = New System.Drawing.Point(638, 38)
+        Me.chbMostrarTodos.Name = "chbMostrarTodos"
+        Me.chbMostrarTodos.Size = New System.Drawing.Size(94, 17)
+        Me.chbMostrarTodos.TabIndex = 10
+        Me.chbMostrarTodos.Text = "Mostrar Todos"
+        Me.chbMostrarTodos.UseVisualStyleBackColor = True
+        '
         'Consulta_Cliente
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(800, 450)
+        Me.Controls.Add(Me.chbMostrarTodos)
         Me.Controls.Add(Me.Button3)
         Me.Controls.Add(Me.Button2)
         Me.Controls.Add(Me.Button1)
@@ -145,4 +157,5 @@ Partial Class Consulta_Cliente
     Friend WithEvents Button1 As Button
     Friend WithEvents Button2 As Button
     Friend WithEvents Button3 As Button
+    Friend WithEvents chbMostrarTodos As CheckBox
 End Class

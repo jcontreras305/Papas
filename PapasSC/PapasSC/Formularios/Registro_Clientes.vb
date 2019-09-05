@@ -11,6 +11,12 @@ Public Class Registro_Clientes
             lbl21.Visible = False
             lbl22.Visible = False
             lbl23.Visible = False
+            lblDireccion2.Visible = False
+            lblEmail2.Visible = False
+            lblTelefono2.Visible = False
+            txtTelefono2.Visible = False
+            txtEmail2.Visible = False
+            txtDireccion2.Visible = False
             chbActivarCredito.Checked = False
             txtSaldo.Enabled = False
             spnDiasCredito.Enabled = False
@@ -26,7 +32,7 @@ Public Class Registro_Clientes
         Try
             Dim textoRFC As String = txtrfc.Text
 
-            If textoRFC.Length >= 13 Then
+            If textoRFC.Length >= 14 Then
                 textoRFC = textoRFC.Remove(textoRFC.Length - 1)
                 txtrfc.Text = textoRFC
                 'MsgBox("Solo se permiten como maximo 13 caracteres")
@@ -96,7 +102,7 @@ Public Class Registro_Clientes
 
                 'datos de credito
                 If chbActivarCredito.Checked Then
-                    If txtLimiteCredito.Text.Length > 0 And Not txtLimiteCredito.Text.Equals("") Then
+                    If txtLimiteCredito.Text.Length > 0 And Not txtLimiteCredito.Text = String.Empty Then
                         Dim credito As Double = (CDbl(txtLimiteCredito.Text))
                         datosCliente.Add(txtLimiteCredito.Text) ' limite de credito
                         datosCliente.Add(CStr(spnDiasCredito.Value)) ' dias de credito
@@ -109,6 +115,15 @@ Public Class Registro_Clientes
                     datosCliente.Add("0")
                 End If
 
+                If chbActivarCamporExtras.Checked Then
+                    datosCliente.Add(txtTelefono2.Text)
+                    datosCliente.Add(txtEmail2.Text)
+                    datosCliente.Add(txtDireccion2.Text)
+                Else
+                    datosCliente.Add("")
+                    datosCliente.Add("")
+                    datosCliente.Add("")
+                End If
             Catch ex As Exception
                 MsgBox(ex.Message + "1")
                 flag1 = False
@@ -155,6 +170,7 @@ Public Class Registro_Clientes
 
     Private Sub cmbTipoPersona_SelectedIndexChanged(sender As Object, e As EventArgs) Handles cmbTipoPersona.SelectedIndexChanged
         If cmbTipoPersona.SelectedItem = "Moral" Then
+            txtrfc.Text = "XAX010101000"
             txtNombre.Enabled = False
             txtNombre.Text = ""
             txtRazonSocial.Enabled = True
@@ -162,6 +178,7 @@ Public Class Registro_Clientes
             rdbMujer.Enabled = False
             rdbHombre.Enabled = False
         Else
+            txtrfc.Text = "XAXX010101000"
             txtNombre.Enabled = True
             txtRazonSocial.Enabled = False
             txtNombre.Text = ""
@@ -174,7 +191,7 @@ Public Class Registro_Clientes
     End Sub
 
     Private Function validar_Correo(ByVal mail As String) As Boolean
-        Return Regex.IsMatch(mail, "^[_a-z0-9]+(\._a-z0-9+)*@[a-z0-9-]+(\.[a-z0-9-]+)*(\.[a-z]{2,4})$")
+        Return Regex.IsMatch(mail, "^[a-zA-Z][\w\.-]*[a-zA-Z0-9]@[a-zA-Z0-9][\w\.-]*[a-zA-Z0-9]\.[a-zA-Z][a-zA-Z\.]*[a-zA-Z]{2,4}$") '"^[_a-zA-B0-9]+(\._a-zA-B0-9+)*@[a-zA-B0-9-]+(\.[a-zA-B0-9-]+)*(\.[a-z]{2,4})$")
     End Function
 
     Private Function validar_Telefono(ByVal tel As String) As Boolean
@@ -209,10 +226,34 @@ Public Class Registro_Clientes
             flag = False
         End If
         mensaje = resutado
+
+        If cmbTipoPersona.Text = "Moral" And txtrfc.Text.Length <> 12 Then
+            MsgBox("El RFC de una persona Moral debe contener 12 Caracteres")
+            flag = False
+        ElseIf cmbTipoPersona.Text = "Física" And txtrfc.Text.Length <> 13 Then
+            MsgBox("El RFC de una persona Física debe contener 13 Caracteres")
+            flag = False
+        End If
+
+        If Not txtTelefono.Text = String.Empty Then
+            Dim arrayTel() As Char = txtTelefono.Text.ToCharArray
+
+            If arrayTel(3).Equals("-"c) And arrayTel(7).Equals("-"c) And arrayTel.Length = 12 And validar_Telefono(txtTelefono.Text) Then
+            Else
+                MsgBox("El número debe tener el siguiente formato 355-000-0000")
+                flag = False
+            End If
+        End If
+
+        If validar_Correo(txtEmail.Text) <> True Then
+            MsgBox("El correo no es valido")
+            flag = False
+        End If
         Return flag
     End Function
 
     Private Sub Button1_Click(sender As Object, e As EventArgs) Handles Button1.Click
+        Consulta_Cliente.Show()
         Me.Close()
     End Sub
 
@@ -243,11 +284,113 @@ Public Class Registro_Clientes
         End If
     End Sub
 
+
+
+    Private Sub chbActivarCamporExtras_CheckedChanged(sender As Object, e As EventArgs) Handles chbActivarCamporExtras.CheckedChanged
+        If chbActivarCamporExtras.Checked Then
+            lblDireccion2.Visible = True
+            lblTelefono2.Visible = True
+            lblEmail2.Visible = True
+            txtDireccion2.Visible = True
+            txtTelefono2.Visible = True
+            txtEmail2.Visible = True
+        Else
+            lblDireccion2.Visible = False
+            lblTelefono2.Visible = False
+            lblEmail2.Visible = False
+            txtDireccion2.Visible = False
+            txtTelefono2.Visible = False
+            txtEmail2.Visible = False
+            txtDireccion2.Text = ""
+            txtTelefono2.Text = ""
+            txtEmail2.Text = ""
+        End If
+    End Sub
+
     Private Sub txtCodigoPostal_KeyPress(sender As Object, e As KeyPressEventArgs) Handles txtCodigoPostal.KeyPress
         e.Handled = Not IsNumeric(e.KeyChar) And Not Char.IsControl(e.KeyChar)
-        If Not IsNumeric(e.KeyChar) And Not Char.IsControl(e.KeyChar) Or txtCodigoPostal.Left > 5 Then
+        If Not IsNumeric(e.KeyChar) Then
+        ElseIf Not Char.IsControl(e.KeyChar) Then
+        Else
             MsgBox("Solo puedes ingresar números y no exeder de 5 dígitos")
         End If
+    End Sub
 
+    Private Sub txtCodigoPostal_KeyUp(sender As Object, e As KeyEventArgs) Handles txtCodigoPostal.KeyUp
+        Try
+
+
+            Dim textocp As String = txtCodigoPostal.Text
+            If textocp.Length > 5 Then
+                textocp = textocp.Remove(textocp.Length - 1)
+                txtCodigoPostal.Text = textocp
+            End If
+            txtCodigoPostal.Text = txtCodigoPostal.Text.ToUpper
+            txtCodigoPostal.SelectionStart = textocp.Length
+        Catch ex As Exception
+
+        End Try
+    End Sub
+
+    Private Sub txtTelefono_KeyPress(sender As Object, e As KeyPressEventArgs) Handles txtTelefono.KeyPress
+        e.Handled = Not IsNumeric(e.KeyChar) And Not Char.IsControl(e.KeyChar)
+        If IsNumeric(e.KeyChar) Then
+        ElseIf e.KeyChar.Equals("-"c) Then
+        ElseIf Char.IsControl(e.KeyChar) Then
+        Else
+            MsgBox("Solo puedes ingresar números y no exeder de 12 dígitos")
+        End If
+    End Sub
+
+    Private Sub txtTelefono_KeyUp(sender As Object, e As KeyEventArgs) Handles txtTelefono.KeyUp
+        Try
+            If txtTelefono.Text.Length = 3 Or txtTelefono.Text.Length = 7 Then
+                txtTelefono.Text = txtTelefono.Text + "-"
+            End If
+
+
+            Dim texttel As String = txtTelefono.Text
+            If texttel.Length > 12 Then
+                texttel = texttel.Remove(texttel.Length - 1)
+                txtTelefono.Text = texttel
+                'MsgBox("Solo se permiten como maximo 13 caracteres")
+            End If
+            txtTelefono.Text = txtTelefono.Text.ToUpper
+            txtTelefono.SelectionStart = texttel.Length
+        Catch ex As Exception
+
+        End Try
+    End Sub
+
+    Private Sub txtTelefono2_KeyPress(sender As Object, e As KeyPressEventArgs) Handles txtTelefono2.KeyPress
+        e.Handled = Not IsNumeric(e.KeyChar) And Not Char.IsControl(e.KeyChar)
+        If IsNumeric(e.KeyChar) Then
+        ElseIf e.KeyChar.Equals("-"c) Then
+        ElseIf Char.IsControl(e.KeyChar) Then
+            'ElseIf txtTelefono.Text.Length <= 12 Then
+        Else
+            MsgBox("Solo puedes ingresar números y no exeder de 12 dígitos")
+        End If
+    End Sub
+
+    Private Sub txtTelefono2_KeyUp(sender As Object, e As KeyEventArgs) Handles txtTelefono2.KeyUp
+        Try
+            If txtTelefono2.Text.Length = 3 Or txtTelefono2.Text.Length = 7 Then
+                txtTelefono2.Text = txtTelefono2.Text + "-"
+            End If
+
+
+            Dim texttel As String = txtTelefono2.Text
+
+            If texttel.Length > 12 Then
+                texttel = texttel.Remove(texttel.Length - 1)
+                txtTelefono2.Text = texttel
+                'MsgBox("Solo se permiten como maximo 13 caracteres")
+            End If
+            txtTelefono2.Text = txtTelefono2.Text.ToUpper
+            txtTelefono2.SelectionStart = texttel.Length
+        Catch ex As Exception
+
+        End Try
     End Sub
 End Class
