@@ -11,13 +11,13 @@ execute  sp_insertar_nuevoCliente 'Pedro Marquez', 'XAXX010101000','','Moral',
 '351-111-2233', 'PedroM@gmail.com','Michocan','Zamora','59752',10000.0,30
 
 --delete from cliente where nombre like '%Pedro Marquez'\
-
 create proc sp_insertar_nuevoCliente
 --cliente
 @nombreCliente varchar(80),
 @RFC varchar(13),
 @razonSocial varchar(100),
 @tipoPersona varchar (10),
+@estatus char (1),
 --contacto
 @nombreContacto varchar(100),
 @genero char(1),
@@ -27,6 +27,9 @@ create proc sp_insertar_nuevoCliente
 @estado varchar(50),
 @municipio varchar(50),
 @codigoPostal char(5),
+@tel2 char(12),
+@email2 varchar(100),
+@dir2 varchar(100),
 --credito
 @limiteCredito float,
 @diasCredito int 
@@ -35,28 +38,96 @@ declare @idCliente  varchar(36)
 declare @idTipoPersona varchar(36)
 declare @flag int
 begin 
-	select @idCliente = newid()
-	select @idTipoPersona=idTipoCliente from tipoCliente where tipo = @tipoPersona  
-	begin try 
-		insert into cliente values (@idCliente, @nombreCliente , @RFC , @razonSocial , GETDATE(), @idTipoPersona)
-		select @flag =  COUNT(*) from cliente where idCliente = @idCliente
-	end try
-	begin catch
-		select @flag =  COUNT(*) from cliente where idCliente = @idCliente
-	end catch
-	if @flag > 0 
-	begin
-		begin try 
-			insert into contacto values (NEWID(), @nombreContacto , @genero , @direccion , @telefono , @email , @estado , @municipio , @codigoPostal , @idCliente)
-			insert into credito values (NEWID(), @limiteCredito , @diasCredito , @idCliente)
-		end try 
+	begin tran 
+		begin try
+			select @idCliente = newid()
+			select @idTipoPersona=idTipoCliente from tipoCliente where tipo = @tipoPersona  
+			insert into cliente values (@idCliente, @nombreCliente , @RFC , @razonSocial , GETDATE(), @idTipoPersona,@estatus)
+			if @@ERROR <> 0 begin set @flag = @@ERROR end 
+			insert into contacto values (NEWID(), @nombreContacto , @genero , @direccion , @telefono , @email , @estado , @municipio , @codigoPostal , @idCliente, @tel2, @email2, @dir2)
+			if @@ERROR <> 0 begin set @flag = @@ERROR end 
+			insert into credito values (NEWID(), @limiteCredito , @diasCredito , @idCliente,0.0)
+			if @@ERROR <> 0 begin set @flag = @@ERROR end 
+		end try
 		begin catch
-			delete from cliente where idCliente = @idCliente
+			goto solucionarproblema
 		end catch
-	end
+	commit tran
+	solucionarproblema:
+		if @flag <> 0
+		begin 
+			rollback tran
+			print 'ERROR'
+		end
 end
 
+--###############################################################################
+--############ ACTUALIZAR CLIENTE CON SU CONTACTO Y CREDITO #####################
+--###############################################################################
+--declare @msg1 varchar(100)
+--execute sp_actualizar_nuevoCliente 'FC534ECC-0B24-4C2F-9DE9-03E9356BA6DA','','XAX010101000','Raúl','Moral','I','RuLAS','R','Mariano Gerrero #301','355-000-1231','raulA1234@gmail.com','COLIMA','Tecoman','57680','355-000-1231','','',0,0,@msg1 output 
+--select @msg1
 
+CREATE PROC sp_actualizar_nuevoCliente
+--cliente
+@idCliente varchar(36),
+@nombreCliente varchar(80),
+@RFC varchar(13),
+@razonSocial varchar(100),
+@tipoPersona varchar (10),
+@estatus char(1),
+--contacto
+@nombreContacto varchar(100),
+@genero char(1),
+@direccion varchar(100),
+@telefono char(12),
+@email varchar(100),
+@estado varchar(50),
+@municipio varchar(50),
+@codigoPostal char(5),
+@tel2 char(12),
+@email2 varchar(100),
+@dir2 varchar(100),
+--credito
+@limiteCredito float,
+@diasCredito int, 
+@msg  varchar(100) output
+as 
+declare @idTipoPersona varchar(36)
+declare @error int
+begin 
+	begin tran 
+		set @msg = 'Guardado con exito'
+		select @idTipoPersona=idTipoCliente from tipoCliente where tipo = @tipoPersona  
+		begin try 
+			update cliente set idCliente =  @idCliente,nombre = @nombreCliente ,RFC = @RFC ,razonSocial = @razonSocial ,idTipoCliente= @idTipoPersona, estatus = @estatus where idCliente = @idCliente
+			set @error = @@ERROR-- si ocurre error actualizamos la variable de error
+		end try
+		begin catch
+			set @msg = 'Error al actualizar los datos del cliente'
+			goto SolucionarError -- en el catch vamos al rollback
+		end catch
+		if @error <> 0	goto SolucionarError
+		else 
+		begin
+			begin try 
+				update contacto set nombre = @nombreContacto ,genero=  @genero ,direccion= @direccion ,telefono = @telefono ,email = @email ,estado = @estado ,municipio = @municipio ,codigoPostal = @codigoPostal , telefono2 = @tel2 , email2 = @email2 , direccion2 = @dir2 where idCliente = @idCliente
+				update credito set limiteCredito = @limiteCredito ,diasCredito = @diasCredito where idCliente = @idCliente
+				set @error =@@ERROR
+			end try 
+			begin catch
+				set @msg = 'Error al cargar los datos de contacto o credito'
+				goto SolucionarError
+			end catch
+		end
+	commit tran
+	SolucionarError: --este niega las transacciones hechas dentro del tran se usa como un if
+		if	@@ERROR<>0 
+		begin 
+			rollback tran
+			set	@msg = ERROR_MESSAGE()
+		end
+end
 
 
 --########################################################################################
