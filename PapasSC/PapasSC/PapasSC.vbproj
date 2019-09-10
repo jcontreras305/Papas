@@ -318,10 +318,10 @@
     <Compile Include="Formularios\Reporte_de_ventas.vb">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Formularios\Transpasos.Designer.vb">
-      <DependentUpon>Transpasos.vb</DependentUpon>
+    <Compile Include="Formularios\Reubicacion.Designer.vb">
+      <DependentUpon>Reubicacion.vb</DependentUpon>
     </Compile>
-    <Compile Include="Formularios\Transpasos.vb">
+    <Compile Include="Formularios\Reubicacion.vb">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Formularios\Usuarios.Designer.vb">
@@ -353,9 +353,8 @@
     <Compile Include="Metodos\MetodosMatrizCiudad.vb" />
     <Compile Include="Metodos\MetodosPerfiles.vb" />
     <Compile Include="Metodos\MetodosProducto.vb" />
-    <Compile Include="Metodos\MetodosProductos.vb" />
     <Compile Include="Metodos\MetodosProveedor.vb" />
-    <Compile Include="Metodos\MetodosTranspasos.vb" />
+    <Compile Include="Metodos\MetodosReubicacion.vb" />
     <Compile Include="Metodos\MetodosUsuarios.vb" />
     <Compile Include="Metodos\MetodosVenta.vb" />
     <Compile Include="My Project\AssemblyInfo.vb" />
@@ -483,8 +482,8 @@
     <EmbeddedResource Include="Formularios\Registro_productos.resx">
       <DependentUpon>Registro_productos.vb</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Formularios\Transpasos.resx">
-      <DependentUpon>Transpasos.vb</DependentUpon>
+    <EmbeddedResource Include="Formularios\Reubicacion.resx">
+      <DependentUpon>Reubicacion.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Formularios\Usuarios.resx">
       <DependentUpon>Usuarios.vb</DependentUpon>

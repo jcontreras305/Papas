@@ -86,7 +86,7 @@ Partial Class MenuInventario
         Me.btnTranspasos.Name = "btnTranspasos"
         Me.btnTranspasos.Size = New System.Drawing.Size(172, 169)
         Me.btnTranspasos.TabIndex = 9
-        Me.btnTranspasos.Text = "Transpasos"
+        Me.btnTranspasos.Text = "Reubicación"
         Me.btnTranspasos.UseVisualStyleBackColor = True
         '
         'MenuInventario
