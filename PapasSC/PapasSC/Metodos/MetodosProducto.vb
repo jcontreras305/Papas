@@ -92,26 +92,21 @@ Public Class MetodosProducto
 
     Public Sub insertarProducto(ByVal Version As String, ByVal clave As String, ByVal precio As String)
         Try
-            MsgBox("pus si entro carnal")
+            'MsgBox("pus si entro carnal") 
             cn.conectar()
-            Dim cadena As String = "INSERT INTO [dbo].[producto]
-           ([idProducto]
-           ,[version]
-           ,[estado]
-           ,[clave]
-           ,[precio])
-     VALUES
-           (newid()
-           ,'" + Version + "'
-           ,'A'
-           ,'" + clave + "'
-           ," + precio + ")"
-            Dim comando = New SqlCommand(cadena, cn.conn)
-            comando.ExecuteNonQuery()
-            MsgBox("pus si salio carnal")
+            'Dim cadena As String = "INSERT INTO producto VALUES (NEWID(),'" + Version + "','A','" + clave + "'," + precio + ")"
+            precio = Replace(precio, ",", ".")
+            Dim comando = New SqlCommand("INSERT INTO producto VALUES (NEWID(),'" + Version + "','A','" + clave + "'," + precio + ")", cn.conn)
+            If comando.ExecuteNonQuery() Then
+                MsgBox("Se ha agregado el nuevo producto")
+            Else
+                MsgBox("Error al insertar")
+            End If
+
         Catch ex As Exception
-            MessageBox.Show("No se inserto debido a: " + ex.ToString)
+            MessageBox.Show("No se inserto debido a: " + ex.Message)
         End Try
+        desconectar()
     End Sub
 
     Public Sub updateProducto(ByVal id As String, ByVal Version As String, ByVal clave As String, ByVal precio As String)

@@ -26,7 +26,7 @@ Partial Class MenuInventario
         Me.Label1 = New System.Windows.Forms.Label()
         Me.Button1 = New System.Windows.Forms.Button()
         Me.Button2 = New System.Windows.Forms.Button()
-        Me.Button3 = New System.Windows.Forms.Button()
+        Me.btnReclasificacion = New System.Windows.Forms.Button()
         Me.Label2 = New System.Windows.Forms.Label()
         Me.btnTranspasos = New System.Windows.Forms.Button()
         Me.SuspendLayout()
@@ -60,14 +60,14 @@ Partial Class MenuInventario
         Me.Button2.TabIndex = 2
         Me.Button2.UseVisualStyleBackColor = True
         '
-        'Button3
+        'btnReclasificacion
         '
-        Me.Button3.Image = CType(resources.GetObject("Button3.Image"), System.Drawing.Image)
-        Me.Button3.Location = New System.Drawing.Point(121, 353)
-        Me.Button3.Name = "Button3"
-        Me.Button3.Size = New System.Drawing.Size(169, 169)
-        Me.Button3.TabIndex = 3
-        Me.Button3.UseVisualStyleBackColor = True
+        Me.btnReclasificacion.Image = CType(resources.GetObject("btnReclasificacion.Image"), System.Drawing.Image)
+        Me.btnReclasificacion.Location = New System.Drawing.Point(121, 353)
+        Me.btnReclasificacion.Name = "btnReclasificacion"
+        Me.btnReclasificacion.Size = New System.Drawing.Size(169, 169)
+        Me.btnReclasificacion.TabIndex = 3
+        Me.btnReclasificacion.UseVisualStyleBackColor = True
         '
         'Label2
         '
@@ -97,7 +97,7 @@ Partial Class MenuInventario
         Me.ClientSize = New System.Drawing.Size(875, 465)
         Me.Controls.Add(Me.btnTranspasos)
         Me.Controls.Add(Me.Label2)
-        Me.Controls.Add(Me.Button3)
+        Me.Controls.Add(Me.btnReclasificacion)
         Me.Controls.Add(Me.Button2)
         Me.Controls.Add(Me.Button1)
         Me.Controls.Add(Me.Label1)
@@ -113,7 +113,7 @@ Partial Class MenuInventario
     Friend WithEvents Label1 As Label
     Friend WithEvents Button1 As Button
     Friend WithEvents Button2 As Button
-    Friend WithEvents Button3 As Button
+    Friend WithEvents btnReclasificacion As Button
     Friend WithEvents Label2 As Label
     Friend WithEvents btnTranspasos As Button
 End Class
