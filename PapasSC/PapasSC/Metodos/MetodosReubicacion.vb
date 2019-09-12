@@ -64,7 +64,7 @@ Public Class MetodosReubicacion
         Try
             conectar()
             Dim adapt As New SqlDataAdapter("select pd.version, ep.cantidad , pd.clave from producto as pd right join existenciaProductos as ep on pd.idProducto = ep.idProducto 
-					left join bodega as bd on bd.idBodega = ep.idBodega where bd.nombre like '" + bodega1 + "' order by pd.version ", conn)
+					left join bodega as bd on bd.idBodega = ep.idBodega where bd.nombre = '" + bodega1 + "' order by pd.version ", conn)
             Dim dt As New DataTable
             adapt.Fill(dt)
             tabla.DataSource = dt

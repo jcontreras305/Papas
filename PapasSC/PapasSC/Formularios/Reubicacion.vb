@@ -4,6 +4,7 @@
     Dim datosRow1(3), datosRow2(3) As String
     Public usuario As String
     Dim cantidad1, cantidad2 As Double
+    Dim verde, amarillo As Integer
 
     Private Sub Transpasos_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         'mdt.llenarComboBodega(cmbBodega1)
@@ -21,16 +22,20 @@
         llenarTabla(tblExisitenciaBodega1, nombreBodega1)
         llenarTabla(tblExistenciaBodega2, nombreBodega2)
         actualizarTablas()
-        sprKg1.Increment = 0.2
+        sprKg1.Increment = 0.5
         sprKg1.DecimalPlaces = 2
         sprKg1.ThousandsSeparator = True
 
-        sprKg2.Increment = 0.2
+        sprKg2.Increment = 0.5
         sprKg2.DecimalPlaces = 2
         sprKg2.ThousandsSeparator = True
+
+        verde = 100
+        amarillo = 50
+
     End Sub
 
-    Private Sub cmbConsultaBodega1_SelectionChangeCommitted(sender As Object, e As EventArgs) Handles cmbConsultaBodega1.SelectionChangeCommitted
+    Private Sub cmbConsultaBodega1_SelectedIndexChanged(sender As Object, e As EventArgs) Handles cmbConsultaBodega1.SelectedIndexChanged
         tblExisitenciaBodega1.SelectAll()
         tblExisitenciaBodega1.ClearSelection()
         nombreBodega1 = cmbConsultaBodega1.Text
@@ -70,19 +75,17 @@
         End Try
     End Function
 
-
-
     Private Function colorearFilas(ByVal tabla As DataGridView) As Boolean
         Try
             Dim cont As Int16 = 0
             For Each row As DataGridViewRow In tabla.Rows
 
                 Dim dato As Integer = CInt(row.Cells(1).Value)
-                If dato < 50 Then
+                If dato < amarillo Then
                     row.DefaultCellStyle.BackColor = Color.Red
-                ElseIf dato >= 50 And dato < 100 Then
+                ElseIf dato >= amarillo And dato < verde Then
                     row.DefaultCellStyle.BackColor = Color.Orange
-                Else
+                ElseIf dato >= verde Then
                     row.DefaultCellStyle.BackColor = Color.Green
                 End If
                 cont += 1
@@ -130,6 +133,34 @@
 
 
 
+    Private Sub sprAmarillo_ValueChanged(sender As Object, e As EventArgs) Handles sprAmarillo.ValueChanged
+        If sprVerde.Value <= sprAmarillo.Value Then
+            sprVerde.Value = sprAmarillo.Value + 1
+            verde = sprVerde.Value
+            amarillo = sprAmarillo.Value
+        Else
+            amarillo = sprAmarillo.Value
+        End If
+        If tblExisitenciaBodega1.Rows.Count > 0 And tblExistenciaBodega2.Rows.Count > 0 Then
+            colorearFilas(tblExisitenciaBodega1)
+            colorearFilas(tblExistenciaBodega2)
+        End If
+    End Sub
+
+    Private Sub sprVerde_ValueChanged(sender As Object, e As EventArgs) Handles sprVerde.ValueChanged
+        If sprVerde.Value <= sprAmarillo.Value Then
+            sprAmarillo.Value = sprVerde.Value - 1
+            verde = sprVerde.Value
+            amarillo = sprAmarillo.Value
+        Else
+            verde = sprVerde.Value
+        End If
+        If tblExisitenciaBodega1.Rows.Count > 0 And tblExistenciaBodega2.Rows.Count > 0 Then
+            colorearFilas(tblExisitenciaBodega1)
+            colorearFilas(tblExistenciaBodega2)
+        End If
+    End Sub
+
     Private Sub cmbproducto2_SelectedIndexChanged(sender As Object, e As EventArgs) Handles cmbproducto2.SelectedIndexChanged
         Try
             Dim nombreProducto As String = cmbproducto2.Text
@@ -142,6 +173,7 @@
             Next
             sprKg2.Maximum = cantidad
             sprKg2.Value = cantidad
+            cantidad2 = cantidad
         Catch ex As Exception
             MsgBox(ex.Message)
         End Try
@@ -159,11 +191,13 @@
             Next
             sprKg1.Maximum = cantidad
             sprKg1.Value = cantidad
-
+            cantidad1 = cantidad
         Catch ex As Exception
             MsgBox(ex.Message)
         End Try
     End Sub
+
+
 
     Private Sub tblExistenciaBodega2_DoubleClick(sender As Object, e As EventArgs) Handles tblExistenciaBodega2.DoubleClick
         Try
@@ -206,7 +240,8 @@
             MsgBox(ex.Message)
         End Try
         actualizarTablas()
-        sprKg2.Value = 0
+        'sprKg2.Value = 0
+        'sprKg1.Value = 0
     End Sub
 
     Private Sub btnTraspasoIzq_Click(sender As Object, e As EventArgs) Handles btnTraspasoIzq.Click
@@ -231,8 +266,8 @@
             MsgBox(ex.Message)
         End Try
         actualizarTablas()
-        sprKg2.Value = 0
-
+        'sprKg1.Value = 0
+        'sprKg2.Value = 0
     End Sub
 
     Private Function validarCampos(lado As Int16, maximo As Integer) As Boolean

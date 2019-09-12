@@ -22,8 +22,8 @@ Partial Class Reubicacion
     'No lo modifique con el editor de código.
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
-        Dim DataGridViewCellStyle1 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle2 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle3 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle4 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Me.cmbproducto1 = New System.Windows.Forms.ComboBox()
         Me.Label2 = New System.Windows.Forms.Label()
         Me.sprKg1 = New System.Windows.Forms.NumericUpDown()
@@ -44,11 +44,19 @@ Partial Class Reubicacion
         Me.tblExistenciaBodega2 = New System.Windows.Forms.DataGridView()
         Me.Label1 = New System.Windows.Forms.Label()
         Me.lblNombreUsuario = New System.Windows.Forms.Label()
+        Me.lblColorRojo = New System.Windows.Forms.Label()
+        Me.lblAmarillo = New System.Windows.Forms.Label()
+        Me.sprAmarillo = New System.Windows.Forms.NumericUpDown()
+        Me.sprVerde = New System.Windows.Forms.NumericUpDown()
+        Me.ValoresMinimos = New System.Windows.Forms.GroupBox()
         CType(Me.sprKg1, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.sprKg2, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.GroupBox1.SuspendLayout()
         CType(Me.tblExisitenciaBodega1, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.tblExistenciaBodega2, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.sprAmarillo, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.sprVerde, System.ComponentModel.ISupportInitialize).BeginInit()
+        Me.ValoresMinimos.SuspendLayout()
         Me.SuspendLayout()
         '
         'cmbproducto1
@@ -189,15 +197,15 @@ Partial Class Reubicacion
         '
         Me.tblExisitenciaBodega1.AllowUserToAddRows = False
         Me.tblExisitenciaBodega1.AllowUserToDeleteRows = False
-        DataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
-        DataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Window
-        DataGridViewCellStyle1.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        DataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.ControlText
-        DataGridViewCellStyle1.NullValue = "ND"
-        DataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight
-        DataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText
-        DataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.[False]
-        Me.tblExisitenciaBodega1.DefaultCellStyle = DataGridViewCellStyle1
+        DataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
+        DataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Window
+        DataGridViewCellStyle3.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        DataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.ControlText
+        DataGridViewCellStyle3.NullValue = "ND"
+        DataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight
+        DataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText
+        DataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.[False]
+        Me.tblExisitenciaBodega1.DefaultCellStyle = DataGridViewCellStyle3
         Me.tblExisitenciaBodega1.Location = New System.Drawing.Point(23, 99)
         Me.tblExisitenciaBodega1.Name = "tblExisitenciaBodega1"
         Me.tblExisitenciaBodega1.ReadOnly = True
@@ -225,15 +233,15 @@ Partial Class Reubicacion
         '
         Me.tblExistenciaBodega2.AllowUserToAddRows = False
         Me.tblExistenciaBodega2.AllowUserToDeleteRows = False
-        DataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.TopCenter
-        DataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window
-        DataGridViewCellStyle2.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        DataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.ControlText
-        DataGridViewCellStyle2.NullValue = "ND"
-        DataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight
-        DataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText
-        DataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.[False]
-        Me.tblExistenciaBodega2.DefaultCellStyle = DataGridViewCellStyle2
+        DataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.TopCenter
+        DataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.Window
+        DataGridViewCellStyle4.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        DataGridViewCellStyle4.ForeColor = System.Drawing.SystemColors.ControlText
+        DataGridViewCellStyle4.NullValue = "ND"
+        DataGridViewCellStyle4.SelectionBackColor = System.Drawing.SystemColors.Highlight
+        DataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.HighlightText
+        DataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.[False]
+        Me.tblExistenciaBodega2.DefaultCellStyle = DataGridViewCellStyle4
         Me.tblExistenciaBodega2.Location = New System.Drawing.Point(379, 99)
         Me.tblExistenciaBodega2.Name = "tblExistenciaBodega2"
         Me.tblExistenciaBodega2.ReadOnly = True
@@ -259,12 +267,64 @@ Partial Class Reubicacion
         Me.lblNombreUsuario.TabIndex = 20
         Me.lblNombreUsuario.Text = "Label4"
         '
+        'lblColorRojo
+        '
+        Me.lblColorRojo.AutoSize = True
+        Me.lblColorRojo.Location = New System.Drawing.Point(14, 21)
+        Me.lblColorRojo.Name = "lblColorRojo"
+        Me.lblColorRojo.Size = New System.Drawing.Size(43, 13)
+        Me.lblColorRojo.TabIndex = 21
+        Me.lblColorRojo.Text = "Amarillo"
+        '
+        'lblAmarillo
+        '
+        Me.lblAmarillo.AutoSize = True
+        Me.lblAmarillo.Location = New System.Drawing.Point(152, 21)
+        Me.lblAmarillo.Name = "lblAmarillo"
+        Me.lblAmarillo.Size = New System.Drawing.Size(35, 13)
+        Me.lblAmarillo.TabIndex = 23
+        Me.lblAmarillo.Text = "Verde"
+        '
+        'sprAmarillo
+        '
+        Me.sprAmarillo.Location = New System.Drawing.Point(76, 17)
+        Me.sprAmarillo.Maximum = New Decimal(New Integer() {99, 0, 0, 0})
+        Me.sprAmarillo.Minimum = New Decimal(New Integer() {1, 0, 0, 0})
+        Me.sprAmarillo.Name = "sprAmarillo"
+        Me.sprAmarillo.Size = New System.Drawing.Size(55, 20)
+        Me.sprAmarillo.TabIndex = 27
+        Me.sprAmarillo.Value = New Decimal(New Integer() {50, 0, 0, 0})
+        '
+        'sprVerde
+        '
+        Me.sprVerde.Location = New System.Drawing.Point(192, 17)
+        Me.sprVerde.Maximum = New Decimal(New Integer() {1000000, 0, 0, 0})
+        Me.sprVerde.Minimum = New Decimal(New Integer() {2, 0, 0, 0})
+        Me.sprVerde.Name = "sprVerde"
+        Me.sprVerde.Size = New System.Drawing.Size(55, 20)
+        Me.sprVerde.TabIndex = 28
+        Me.sprVerde.Value = New Decimal(New Integer() {100, 0, 0, 0})
+        '
+        'ValoresMinimos
+        '
+        Me.ValoresMinimos.Controls.Add(Me.lblColorRojo)
+        Me.ValoresMinimos.Controls.Add(Me.sprVerde)
+        Me.ValoresMinimos.Controls.Add(Me.lblAmarillo)
+        Me.ValoresMinimos.Controls.Add(Me.sprAmarillo)
+        Me.ValoresMinimos.Location = New System.Drawing.Point(438, 5)
+        Me.ValoresMinimos.Name = "ValoresMinimos"
+        Me.ValoresMinimos.Size = New System.Drawing.Size(260, 48)
+        Me.ValoresMinimos.TabIndex = 29
+        Me.ValoresMinimos.TabStop = False
+        Me.ValoresMinimos.Text = "Valores minimos"
+        '
         'Reubicacion
         '
         Me.AcceptButton = Me.btnTraspasoIzq
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(727, 445)
+        Me.Controls.Add(Me.ValoresMinimos)
         Me.Controls.Add(Me.lblNombreUsuario)
         Me.Controls.Add(Me.Label1)
         Me.Controls.Add(Me.tblExistenciaBodega2)
@@ -281,6 +341,10 @@ Partial Class Reubicacion
         Me.GroupBox1.PerformLayout()
         CType(Me.tblExisitenciaBodega1, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.tblExistenciaBodega2, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.sprAmarillo, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.sprVerde, System.ComponentModel.ISupportInitialize).EndInit()
+        Me.ValoresMinimos.ResumeLayout(False)
+        Me.ValoresMinimos.PerformLayout()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
@@ -305,4 +369,9 @@ Partial Class Reubicacion
     Friend WithEvents lblNombreUsuario As Label
     Friend WithEvents Label4 As Label
     Friend WithEvents txtDescripcion As TextBox
+    Friend WithEvents lblColorRojo As Label
+    Friend WithEvents lblAmarillo As Label
+    Friend WithEvents sprAmarillo As NumericUpDown
+    Friend WithEvents sprVerde As NumericUpDown
+    Friend WithEvents ValoresMinimos As GroupBox
 End Class
