@@ -21,6 +21,7 @@ Public Class MetodosReubicacion
             MessageBox.Show("No se lleno el Datagridview debido a: " + ex.Message)
         End Try
     End Sub
+
     Public Sub llenarDatagridview_filtroBodega(ByVal dgv As DataGridView, ByVal filtro As String)
         cn.conectar()
         Try
@@ -36,7 +37,7 @@ Public Class MetodosReubicacion
             adaptador.Fill(dt)
             dgv.DataSource = dt
         Catch ex As Exception
-            MessageBox.Show("No se lleno el Datagridview debido a: " + ex.ToString)
+            MessageBox.Show("No se lleno el Datagridview debido a: " + ex.Message)
         End Try
     End Sub
 
@@ -68,8 +69,32 @@ Public Class MetodosReubicacion
             adapt.Fill(dt)
             tabla.DataSource = dt
         Catch ex As Exception
-            MsgBox(ex.Message)
+            MsgBox(ex.Message + "1")
         End Try
         desconectar()
+    End Sub
+
+    Public Sub insertar_reubicacion(ByVal datosReubicacion() As String)
+        Try
+            conectar()
+            Dim cmd As New SqlCommand("sp_insertar_reubicacion")
+            cmd.CommandType = CommandType.StoredProcedure
+            cmd.Parameters.Add("@producto", SqlDbType.VarChar, 100).Value = datosReubicacion(0)
+            cmd.Parameters.Add("@descripcion", SqlDbType.VarChar, 200).Value = datosReubicacion(1)
+            cmd.Parameters.Add("@bodega1", SqlDbType.VarChar, 50).Value = datosReubicacion(2)
+            cmd.Parameters.Add("@bodega2", SqlDbType.VarChar, 50).Value = datosReubicacion(3)
+            cmd.Parameters.Add("@nombreUsuario", SqlDbType.VarChar, 20).Value = datosReubicacion(4)
+            'Dim kilos As String = Replace(datosReubicacion(5), ",", ".")
+            cmd.Parameters.Add("@cantidad", SqlDbType.Float).Value = datosReubicacion(5)
+            cmd.Parameters.Add("@msg", SqlDbType.VarChar, 100).Direction = ParameterDirection.Output
+            cmd.Connection = conn
+            If cmd.ExecuteNonQuery Then
+                Dim resultado As String = cmd.Parameters("@msg").Value
+                MsgBox(resultado)
+            End If
+            desconectar()
+        Catch ex As Exception
+            MsgBox(ex.Message + "2")
+        End Try
     End Sub
 End Class

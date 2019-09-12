@@ -187,6 +187,8 @@ Partial Class Reubicacion
         '
         'tblExisitenciaBodega1
         '
+        Me.tblExisitenciaBodega1.AllowUserToAddRows = False
+        Me.tblExisitenciaBodega1.AllowUserToDeleteRows = False
         DataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
         DataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Window
         DataGridViewCellStyle1.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
@@ -198,6 +200,7 @@ Partial Class Reubicacion
         Me.tblExisitenciaBodega1.DefaultCellStyle = DataGridViewCellStyle1
         Me.tblExisitenciaBodega1.Location = New System.Drawing.Point(23, 99)
         Me.tblExisitenciaBodega1.Name = "tblExisitenciaBodega1"
+        Me.tblExisitenciaBodega1.ReadOnly = True
         Me.tblExisitenciaBodega1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect
         Me.tblExisitenciaBodega1.Size = New System.Drawing.Size(327, 154)
         Me.tblExisitenciaBodega1.TabIndex = 15
@@ -220,6 +223,8 @@ Partial Class Reubicacion
         '
         'tblExistenciaBodega2
         '
+        Me.tblExistenciaBodega2.AllowUserToAddRows = False
+        Me.tblExistenciaBodega2.AllowUserToDeleteRows = False
         DataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.TopCenter
         DataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window
         DataGridViewCellStyle2.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
@@ -231,6 +236,7 @@ Partial Class Reubicacion
         Me.tblExistenciaBodega2.DefaultCellStyle = DataGridViewCellStyle2
         Me.tblExistenciaBodega2.Location = New System.Drawing.Point(379, 99)
         Me.tblExistenciaBodega2.Name = "tblExistenciaBodega2"
+        Me.tblExistenciaBodega2.ReadOnly = True
         Me.tblExistenciaBodega2.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect
         Me.tblExistenciaBodega2.Size = New System.Drawing.Size(327, 154)
         Me.tblExistenciaBodega2.TabIndex = 18
@@ -253,7 +259,7 @@ Partial Class Reubicacion
         Me.lblNombreUsuario.TabIndex = 20
         Me.lblNombreUsuario.Text = "Label4"
         '
-        'Transpasos
+        'Reubicacion
         '
         Me.AcceptButton = Me.btnTraspasoIzq
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
@@ -267,7 +273,7 @@ Partial Class Reubicacion
         Me.Controls.Add(Me.tblExisitenciaBodega1)
         Me.Controls.Add(Me.GroupBox1)
         Me.Controls.Add(Me.Label7)
-        Me.Name = "Transpasos"
+        Me.Name = "Reubicacion"
         Me.Text = "Reubicación "
         CType(Me.sprKg1, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.sprKg2, System.ComponentModel.ISupportInitialize).EndInit()

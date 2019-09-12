@@ -18,5 +18,6 @@
     Private Sub btnTranspasos_Click(sender As Object, e As EventArgs) Handles btnTranspasos.Click
         Reubicacion.Show()
         Reubicacion.lblNombreUsuario.Text = PapasSC.Form2.NombreUsuario.Text
+        Reubicacion.usuario = PapasSC.Form2.login
     End Sub
 End Class

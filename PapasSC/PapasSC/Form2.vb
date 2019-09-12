@@ -1,5 +1,7 @@
 ﻿Public Class Form2
-    Public usuario As String
+    Public usuario, login As String
+
+
     Private Sub VentasMenuPrincipal_MouseEnter(sender As Object, e As EventArgs) Handles VentasMenuPrincipal.MouseEnter
         VentasMenuPrincipal.BackColor = Color.FromArgb(72, 201, 176)
 
