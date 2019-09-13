@@ -360,6 +360,7 @@
     <Compile Include="Metodos\MetodosPerfiles.vb" />
     <Compile Include="Metodos\MetodosProducto.vb" />
     <Compile Include="Metodos\MetodosProveedor.vb" />
+    <Compile Include="Metodos\MetodosReclasificacion.vb" />
     <Compile Include="Metodos\MetodosReubicacion.vb" />
     <Compile Include="Metodos\MetodosUsuarios.vb" />
     <Compile Include="Metodos\MetodosVenta.vb" />
@@ -448,6 +449,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Formularios\PerfilesDeLosUsuarios.resx">
       <DependentUpon>PerfilesDeLosUsuarios.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formularios\Reclasificacion.resx">
+      <DependentUpon>Reclasificacion.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Formularios\Reclasificar.resx">
       <DependentUpon>Reclasificar.vb</DependentUpon>

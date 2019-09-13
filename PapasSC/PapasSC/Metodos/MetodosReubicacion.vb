@@ -10,10 +10,7 @@ Public Class MetodosReubicacion
             adaptador = New SqlDataAdapter("select nombre as Bodega from bodega where estatus = 'A'", cn.conn)
 
             Dim ds As New DataSet
-
             adaptador.Fill(ds)
-
-
             dgv.DataSource = ds.Tables(0)
             dgv.DisplayMember = "Bodega"
             dgv.SelectedIndex = 0
