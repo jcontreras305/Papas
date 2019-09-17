@@ -35,7 +35,7 @@
                 mtd.llenar_TblBodega(tblProductosExistencias, cmbBodega.Text)
                 colorear_Filas(tblProductosExistencias)
                 mtd.cargar_prodcutos_Bodega(cmbBodega.Text, cmbProdcutos)
-                bodega = cmbProdcutos.Text
+                bodega = cmbBodega.Text
             End If
         End If
     End Sub
@@ -97,15 +97,22 @@
 
     Private Sub btnAgregar_Click(sender As Object, e As EventArgs) Handles btnAgregar.Click
         Try
-            If (total + sprKilosMas.Value) <= sprKilosMenos.Value Then
-                Dim cont As Int16 = tblCambios.Rows.Count - 1
-                tblCambios.Rows.Add()
-                tblCambios.Rows(cont).Cells(0).Value = txtProducto.Text
-                tblCambios.Rows(cont).Cells(1).Value = cmbProdcutos.Text
-                tblCambios.Rows(cont).Cells(2).Value = sprKilosMas.Value
-                total = total + sprKilosMas.Value
+            If cmbProdcutos.Text = String.Empty Or cmbProdcutos.Text = Nothing Or cmbProdcutos.Text.Length = 0 Then
+                MsgBox("Los productos aparecen despues de seleccionar la bodega")
+                mtd.cargar_prodcutos_Bodega(cmbBodega.Text, cmbBodega)
+            ElseIf Not sprKilosMas.Value > 0 And Not sprKilosMenos.Value > 0 Then
+                MsgBox("La cantidad de Kilos debe de ser mayor a 0,00")
             Else
-                MsgBox("El límite especificado a ser reclasificado fué exedido")
+                If (total + sprKilosMas.Value) <= sprKilosMenos.Value Then
+                    Dim cont As Int16 = tblCambios.Rows.Count - 1
+                    tblCambios.Rows.Add()
+                    tblCambios.Rows(cont).Cells(0).Value = txtProducto.Text
+                    tblCambios.Rows(cont).Cells(1).Value = cmbProdcutos.Text
+                    tblCambios.Rows(cont).Cells(2).Value = sprKilosMas.Value
+                    total = total + sprKilosMas.Value
+                Else
+                    MsgBox("El límite especificado a ser reclasificado fué exedido")
+                End If
             End If
         Catch ex As Exception
 
@@ -131,15 +138,38 @@
 
     Private Sub btnConfirmar_Click(sender As Object, e As EventArgs) Handles btnConfirmar.Click
         Try
+            Dim cont As Int16 = tblCambios.Rows.Count() - 1
             For Each row As DataGridViewRow In tblCambios.Rows
-                Dim producto1 As String = row.Cells(0).Value
-                Dim prodcuto2 As String = row.Cells(1).Value
-                Dim cantidad As String = row.Cells(2).Value
-                cantidad = cantidad.Replace(",", ".")
-                mtd.insertar_reubicaciones(bodega, producto1, prodcuto2, cantidad)
+                If cont <> 0 Then
+                    Dim producto1 As String = row.Cells("Producto").Value
+                    Dim prodcuto2 As String = row.Cells("Cambio").Value
+                    Dim cantidad As String = row.Cells("Cantidad").Value
+                    'cantidad = cantidad.Replace(",", ".")
+                    mtd.insertar_reubicaciones(bodega, producto1, prodcuto2, cantidad)
+                    cont = cont - 1
+                Else
+                    Exit For
+                End If
             Next
+            total = 0
+            mtd.llenar_TblBodega(tblCambios, cmbBodega.Text)
+            colorear_Filas(tblCambios)
         Catch ex As Exception
             MsgBox(ex.Message)
         End Try
     End Sub
+
+    Private Sub tblProductosExistencias_ColumnHeaderMouseClick(sender As Object, e As DataGridViewCellMouseEventArgs) Handles tblProductosExistencias.ColumnHeaderMouseClick
+        colorear_Filas(tblProductosExistencias)
+    End Sub
+
+    Private Sub sprKilosMenos_ValueChanged(sender As Object, e As EventArgs) Handles sprKilosMenos.ValueChanged
+        Try
+            sprKilosMas.Maximum = sprKilosMenos.Value
+        Catch ex As Exception
+
+        End Try
+    End Sub
+
+
 End Class

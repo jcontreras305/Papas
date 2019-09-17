@@ -197,6 +197,7 @@ Partial Class Reubicacion
         '
         Me.tblExisitenciaBodega1.AllowUserToAddRows = False
         Me.tblExisitenciaBodega1.AllowUserToDeleteRows = False
+        Me.tblExisitenciaBodega1.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill
         DataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
         DataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Window
         DataGridViewCellStyle1.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
@@ -233,6 +234,7 @@ Partial Class Reubicacion
         '
         Me.tblExistenciaBodega2.AllowUserToAddRows = False
         Me.tblExistenciaBodega2.AllowUserToDeleteRows = False
+        Me.tblExistenciaBodega2.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill
         DataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.TopCenter
         DataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window
         DataGridViewCellStyle2.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))

@@ -1,9 +1,9 @@
-﻿<Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()> _
+﻿<Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()>
 Partial Class Reclasificar
     Inherits System.Windows.Forms.Form
 
     'Form reemplaza a Dispose para limpiar la lista de componentes.
-    <System.Diagnostics.DebuggerNonUserCode()> _
+    <System.Diagnostics.DebuggerNonUserCode()>
     Protected Overrides Sub Dispose(ByVal disposing As Boolean)
         Try
             If disposing AndAlso components IsNot Nothing Then
@@ -20,32 +20,35 @@ Partial Class Reclasificar
     'NOTA: el Diseñador de Windows Forms necesita el siguiente procedimiento
     'Se puede modificar usando el Diseñador de Windows Forms.  
     'No lo modifique con el editor de código.
-    <System.Diagnostics.DebuggerStepThrough()> _
+    <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
         Me.tblProductosExistencias = New System.Windows.Forms.DataGridView()
         Me.cmbBodega = New System.Windows.Forms.ComboBox()
         Me.Label2 = New System.Windows.Forms.Label()
         Me.txtBusqueda = New System.Windows.Forms.TextBox()
         Me.Raclasificación = New System.Windows.Forms.GroupBox()
+        Me.Cambios = New System.Windows.Forms.GroupBox()
+        Me.txtProducto = New System.Windows.Forms.TextBox()
+        Me.Label5 = New System.Windows.Forms.Label()
+        Me.lblCantidad = New System.Windows.Forms.Label()
+        Me.Label4 = New System.Windows.Forms.Label()
+        Me.cmbProdcutos = New System.Windows.Forms.ComboBox()
         Me.Label3 = New System.Windows.Forms.Label()
+        Me.btnAgregar = New System.Windows.Forms.Button()
         Me.sprKilosMas = New System.Windows.Forms.NumericUpDown()
         Me.sprKilosMenos = New System.Windows.Forms.NumericUpDown()
-        Me.btnAgregar = New System.Windows.Forms.Button()
         Me.GroupBox2 = New System.Windows.Forms.GroupBox()
         Me.tblCambios = New System.Windows.Forms.DataGridView()
-        Me.lblCambios = New System.Windows.Forms.Label()
-        Me.btnEliminar = New System.Windows.Forms.Button()
-        Me.btnConfirmar = New System.Windows.Forms.Button()
-        Me.cmbProdcutos = New System.Windows.Forms.ComboBox()
-        Me.txtProducto = New System.Windows.Forms.TextBox()
-        Me.lblCantidad = New System.Windows.Forms.Label()
-        Me.Label1 = New System.Windows.Forms.Label()
         Me.Producto = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.Cambio = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.Cantidad = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.Eliminar = New System.Windows.Forms.DataGridViewCheckBoxColumn()
+        Me.btnEliminar = New System.Windows.Forms.Button()
+        Me.btnConfirmar = New System.Windows.Forms.Button()
+        Me.Label1 = New System.Windows.Forms.Label()
         CType(Me.tblProductosExistencias, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.Raclasificación.SuspendLayout()
+        Me.Cambios.SuspendLayout()
         CType(Me.sprKilosMas, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.sprKilosMenos, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.GroupBox2.SuspendLayout()
@@ -57,11 +60,12 @@ Partial Class Reclasificar
         Me.tblProductosExistencias.AllowUserToAddRows = False
         Me.tblProductosExistencias.AllowUserToDeleteRows = False
         Me.tblProductosExistencias.AllowUserToOrderColumns = True
+        Me.tblProductosExistencias.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill
         Me.tblProductosExistencias.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
         Me.tblProductosExistencias.Location = New System.Drawing.Point(19, 49)
         Me.tblProductosExistencias.Name = "tblProductosExistencias"
         Me.tblProductosExistencias.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect
-        Me.tblProductosExistencias.Size = New System.Drawing.Size(487, 150)
+        Me.tblProductosExistencias.Size = New System.Drawing.Size(516, 150)
         Me.tblProductosExistencias.TabIndex = 1
         '
         'cmbBodega
@@ -90,16 +94,10 @@ Partial Class Reclasificar
         '
         'Raclasificación
         '
-        Me.Raclasificación.Controls.Add(Me.Label3)
-        Me.Raclasificación.Controls.Add(Me.sprKilosMas)
-        Me.Raclasificación.Controls.Add(Me.sprKilosMenos)
-        Me.Raclasificación.Controls.Add(Me.btnAgregar)
+        Me.Raclasificación.Controls.Add(Me.Cambios)
         Me.Raclasificación.Controls.Add(Me.GroupBox2)
         Me.Raclasificación.Controls.Add(Me.btnEliminar)
         Me.Raclasificación.Controls.Add(Me.btnConfirmar)
-        Me.Raclasificación.Controls.Add(Me.cmbProdcutos)
-        Me.Raclasificación.Controls.Add(Me.txtProducto)
-        Me.Raclasificación.Controls.Add(Me.lblCantidad)
         Me.Raclasificación.Controls.Add(Me.txtBusqueda)
         Me.Raclasificación.Controls.Add(Me.Label2)
         Me.Raclasificación.Controls.Add(Me.cmbBodega)
@@ -107,52 +105,114 @@ Partial Class Reclasificar
         Me.Raclasificación.Controls.Add(Me.Label1)
         Me.Raclasificación.Location = New System.Drawing.Point(30, 45)
         Me.Raclasificación.Name = "Raclasificación"
-        Me.Raclasificación.Size = New System.Drawing.Size(512, 427)
+        Me.Raclasificación.Size = New System.Drawing.Size(541, 437)
         Me.Raclasificación.TabIndex = 0
         Me.Raclasificación.TabStop = False
+        '
+        'Cambios
+        '
+        Me.Cambios.Controls.Add(Me.txtProducto)
+        Me.Cambios.Controls.Add(Me.Label5)
+        Me.Cambios.Controls.Add(Me.lblCantidad)
+        Me.Cambios.Controls.Add(Me.Label4)
+        Me.Cambios.Controls.Add(Me.cmbProdcutos)
+        Me.Cambios.Controls.Add(Me.Label3)
+        Me.Cambios.Controls.Add(Me.btnAgregar)
+        Me.Cambios.Controls.Add(Me.sprKilosMas)
+        Me.Cambios.Controls.Add(Me.sprKilosMenos)
+        Me.Cambios.Location = New System.Drawing.Point(19, 205)
+        Me.Cambios.Name = "Cambios"
+        Me.Cambios.Size = New System.Drawing.Size(257, 184)
+        Me.Cambios.TabIndex = 22
+        Me.Cambios.TabStop = False
+        Me.Cambios.Text = "Datos"
+        '
+        'txtProducto
+        '
+        Me.txtProducto.Enabled = False
+        Me.txtProducto.Location = New System.Drawing.Point(28, 22)
+        Me.txtProducto.Name = "txtProducto"
+        Me.txtProducto.Size = New System.Drawing.Size(129, 20)
+        Me.txtProducto.TabIndex = 7
+        '
+        'Label5
+        '
+        Me.Label5.AutoSize = True
+        Me.Label5.Location = New System.Drawing.Point(25, 115)
+        Me.Label5.Name = "Label5"
+        Me.Label5.Size = New System.Drawing.Size(76, 13)
+        Me.Label5.TabIndex = 21
+        Me.Label5.Text = "Kilos a Asignar"
+        '
+        'lblCantidad
+        '
+        Me.lblCantidad.AutoSize = True
+        Me.lblCantidad.Font = New System.Drawing.Font("Arial Narrow", 11.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.lblCantidad.Location = New System.Drawing.Point(178, 21)
+        Me.lblCantidad.Name = "lblCantidad"
+        Me.lblCantidad.Size = New System.Drawing.Size(50, 20)
+        Me.lblCantidad.TabIndex = 6
+        Me.lblCantidad.Text = "Label3"
+        '
+        'Label4
+        '
+        Me.Label4.AutoSize = True
+        Me.Label4.Location = New System.Drawing.Point(25, 89)
+        Me.Label4.Name = "Label4"
+        Me.Label4.Size = New System.Drawing.Size(50, 13)
+        Me.Label4.TabIndex = 20
+        Me.Label4.Text = "Producto"
+        '
+        'cmbProdcutos
+        '
+        Me.cmbProdcutos.FormattingEnabled = True
+        Me.cmbProdcutos.Location = New System.Drawing.Point(95, 86)
+        Me.cmbProdcutos.Name = "cmbProdcutos"
+        Me.cmbProdcutos.Size = New System.Drawing.Size(133, 21)
+        Me.cmbProdcutos.TabIndex = 10
         '
         'Label3
         '
         Me.Label3.AutoSize = True
-        Me.Label3.Location = New System.Drawing.Point(32, 256)
+        Me.Label3.Location = New System.Drawing.Point(25, 59)
         Me.Label3.Name = "Label3"
         Me.Label3.Size = New System.Drawing.Size(96, 13)
         Me.Label3.TabIndex = 19
         Me.Label3.Text = "Kilos a Reclasificar"
         '
+        'btnAgregar
+        '
+        Me.btnAgregar.Location = New System.Drawing.Point(139, 139)
+        Me.btnAgregar.Name = "btnAgregar"
+        Me.btnAgregar.Size = New System.Drawing.Size(89, 34)
+        Me.btnAgregar.TabIndex = 16
+        Me.btnAgregar.Text = "Agregar"
+        Me.btnAgregar.TextAlign = System.Drawing.ContentAlignment.MiddleRight
+        Me.btnAgregar.UseVisualStyleBackColor = True
+        '
         'sprKilosMas
         '
-        Me.sprKilosMas.Location = New System.Drawing.Point(158, 286)
+        Me.sprKilosMas.Location = New System.Drawing.Point(124, 113)
         Me.sprKilosMas.Name = "sprKilosMas"
-        Me.sprKilosMas.Size = New System.Drawing.Size(77, 20)
+        Me.sprKilosMas.Size = New System.Drawing.Size(104, 20)
         Me.sprKilosMas.TabIndex = 18
         '
         'sprKilosMenos
         '
-        Me.sprKilosMenos.Location = New System.Drawing.Point(131, 253)
+        Me.sprKilosMenos.Location = New System.Drawing.Point(124, 56)
         Me.sprKilosMenos.Name = "sprKilosMenos"
         Me.sprKilosMenos.Size = New System.Drawing.Size(104, 20)
         Me.sprKilosMenos.TabIndex = 17
         '
-        'btnAgregar
-        '
-        Me.btnAgregar.Location = New System.Drawing.Point(31, 335)
-        Me.btnAgregar.Name = "btnAgregar"
-        Me.btnAgregar.Size = New System.Drawing.Size(75, 23)
-        Me.btnAgregar.TabIndex = 16
-        Me.btnAgregar.Text = "Agregar"
-        Me.btnAgregar.UseVisualStyleBackColor = True
-        '
         'GroupBox2
         '
         Me.GroupBox2.Controls.Add(Me.tblCambios)
-        Me.GroupBox2.Controls.Add(Me.lblCambios)
-        Me.GroupBox2.Location = New System.Drawing.Point(253, 205)
+        Me.GroupBox2.Location = New System.Drawing.Point(282, 205)
         Me.GroupBox2.Name = "GroupBox2"
         Me.GroupBox2.Size = New System.Drawing.Size(253, 216)
         Me.GroupBox2.TabIndex = 15
         Me.GroupBox2.TabStop = False
-        Me.GroupBox2.Text = "GroupBox2"
+        Me.GroupBox2.Text = "Cambios a realizar"
         '
         'tblCambios
         '
@@ -163,57 +223,57 @@ Partial Class Reclasificar
         Me.tblCambios.Size = New System.Drawing.Size(238, 168)
         Me.tblCambios.TabIndex = 13
         '
-        'lblCambios
+        'Producto
         '
-        Me.lblCambios.AutoSize = True
-        Me.lblCambios.Location = New System.Drawing.Point(17, 18)
-        Me.lblCambios.Name = "lblCambios"
-        Me.lblCambios.Size = New System.Drawing.Size(47, 13)
-        Me.lblCambios.TabIndex = 9
-        Me.lblCambios.Text = "Cambios"
+        Me.Producto.FillWeight = 80.0!
+        Me.Producto.HeaderText = "Producto"
+        Me.Producto.Name = "Producto"
+        Me.Producto.Width = 54
+        '
+        'Cambio
+        '
+        Me.Cambio.HeaderText = "Cambio"
+        Me.Cambio.Name = "Cambio"
+        Me.Cambio.ReadOnly = True
+        Me.Cambio.Width = 67
+        '
+        'Cantidad
+        '
+        Me.Cantidad.FillWeight = 80.0!
+        Me.Cantidad.HeaderText = "Cantidad"
+        Me.Cantidad.Name = "Cantidad"
+        Me.Cantidad.Width = 54
+        '
+        'Eliminar
+        '
+        Me.Eliminar.FillWeight = 30.0!
+        Me.Eliminar.HeaderText = "Eliminar"
+        Me.Eliminar.Name = "Eliminar"
+        Me.Eliminar.Width = 30
         '
         'btnEliminar
         '
-        Me.btnEliminar.Location = New System.Drawing.Point(149, 387)
+        Me.btnEliminar.Image = Global.PapasSC.My.Resources.Resources.BORRAR
+        Me.btnEliminar.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
+        Me.btnEliminar.Location = New System.Drawing.Point(158, 395)
         Me.btnEliminar.Name = "btnEliminar"
-        Me.btnEliminar.Size = New System.Drawing.Size(75, 23)
+        Me.btnEliminar.Size = New System.Drawing.Size(89, 34)
         Me.btnEliminar.TabIndex = 14
         Me.btnEliminar.Text = "Eliminar"
+        Me.btnEliminar.TextAlign = System.Drawing.ContentAlignment.MiddleRight
         Me.btnEliminar.UseVisualStyleBackColor = True
         '
         'btnConfirmar
         '
-        Me.btnConfirmar.Location = New System.Drawing.Point(32, 387)
+        Me.btnConfirmar.Image = Global.PapasSC.My.Resources.Resources.ACEPTAR
+        Me.btnConfirmar.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
+        Me.btnConfirmar.Location = New System.Drawing.Point(54, 395)
         Me.btnConfirmar.Name = "btnConfirmar"
-        Me.btnConfirmar.Size = New System.Drawing.Size(75, 23)
+        Me.btnConfirmar.Size = New System.Drawing.Size(86, 34)
         Me.btnConfirmar.TabIndex = 12
         Me.btnConfirmar.Text = "Confirmar"
+        Me.btnConfirmar.TextAlign = System.Drawing.ContentAlignment.MiddleRight
         Me.btnConfirmar.UseVisualStyleBackColor = True
-        '
-        'cmbProdcutos
-        '
-        Me.cmbProdcutos.FormattingEnabled = True
-        Me.cmbProdcutos.Location = New System.Drawing.Point(31, 285)
-        Me.cmbProdcutos.Name = "cmbProdcutos"
-        Me.cmbProdcutos.Size = New System.Drawing.Size(121, 21)
-        Me.cmbProdcutos.TabIndex = 10
-        '
-        'txtProducto
-        '
-        Me.txtProducto.Location = New System.Drawing.Point(35, 219)
-        Me.txtProducto.Name = "txtProducto"
-        Me.txtProducto.Size = New System.Drawing.Size(129, 20)
-        Me.txtProducto.TabIndex = 7
-        '
-        'lblCantidad
-        '
-        Me.lblCantidad.AutoSize = True
-        Me.lblCantidad.Font = New System.Drawing.Font("Arial Narrow", 11.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.lblCantidad.Location = New System.Drawing.Point(185, 218)
-        Me.lblCantidad.Name = "lblCantidad"
-        Me.lblCantidad.Size = New System.Drawing.Size(50, 20)
-        Me.lblCantidad.TabIndex = 6
-        Me.lblCantidad.Text = "Label3"
         '
         'Label1
         '
@@ -223,30 +283,6 @@ Partial Class Reclasificar
         Me.Label1.Size = New System.Drawing.Size(55, 13)
         Me.Label1.TabIndex = 0
         Me.Label1.Text = "Busqueda"
-        '
-        'Producto
-        '
-        Me.Producto.FillWeight = 80.0!
-        Me.Producto.HeaderText = "Producto"
-        Me.Producto.Name = "Producto"
-        '
-        'Cambio
-        '
-        Me.Cambio.HeaderText = "Cambio"
-        Me.Cambio.Name = "Cambio"
-        Me.Cambio.ReadOnly = True
-        '
-        'Cantidad
-        '
-        Me.Cantidad.FillWeight = 80.0!
-        Me.Cantidad.HeaderText = "Cantidad"
-        Me.Cantidad.Name = "Cantidad"
-        '
-        'Eliminar
-        '
-        Me.Eliminar.FillWeight = 30.0!
-        Me.Eliminar.HeaderText = "Eliminar"
-        Me.Eliminar.Name = "Eliminar"
         '
         'Reclasificar
         '
@@ -259,10 +295,11 @@ Partial Class Reclasificar
         CType(Me.tblProductosExistencias, System.ComponentModel.ISupportInitialize).EndInit()
         Me.Raclasificación.ResumeLayout(False)
         Me.Raclasificación.PerformLayout()
+        Me.Cambios.ResumeLayout(False)
+        Me.Cambios.PerformLayout()
         CType(Me.sprKilosMas, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.sprKilosMenos, System.ComponentModel.ISupportInitialize).EndInit()
         Me.GroupBox2.ResumeLayout(False)
-        Me.GroupBox2.PerformLayout()
         CType(Me.tblCambios, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
 
@@ -276,7 +313,6 @@ Partial Class Reclasificar
     Friend WithEvents tblCambios As DataGridView
     Friend WithEvents btnConfirmar As Button
     Friend WithEvents cmbProdcutos As ComboBox
-    Friend WithEvents lblCambios As Label
     Friend WithEvents txtProducto As TextBox
     Friend WithEvents lblCantidad As Label
     Friend WithEvents btnAgregar As Button
@@ -289,4 +325,7 @@ Partial Class Reclasificar
     Friend WithEvents Cambio As DataGridViewTextBoxColumn
     Friend WithEvents Cantidad As DataGridViewTextBoxColumn
     Friend WithEvents Eliminar As DataGridViewCheckBoxColumn
+    Friend WithEvents Cambios As GroupBox
+    Friend WithEvents Label5 As Label
+    Friend WithEvents Label4 As Label
 End Class

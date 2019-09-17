@@ -71,18 +71,19 @@ on pd.idProducto = ep.idProducto left join bodega as bg on ep.idBodega = bg.idBo
     Public Sub insertar_reubicaciones(ByVal bodega As String, ByVal producto1 As String, ByVal producto2 As String, ByVal cantidad As String)
         Try
             conectar()
-            Dim cmd = New SqlCommand("sp_insertReclasificacion")
+            Dim cmd As New SqlCommand("sp_insertReclasificacion")
             cmd.CommandType = CommandType.StoredProcedure
             cmd.Parameters.Add("@nombreBodega", SqlDbType.VarChar, 30).Value = bodega
-            cmd.Parameters.Add("@nombreProducto1", SqlDbType.VarChar, 15).Value = producto2
-            cmd.Parameters.Add("@nombreProducto2", SqlDbType.VarChar, 15).Value = producto1
+            cmd.Parameters.Add("@nombreProducto1", SqlDbType.VarChar, 15).Value = producto1
+            cmd.Parameters.Add("@nombreProducto2", SqlDbType.VarChar, 15).Value = producto2
             cmd.Parameters.Add("@cantidad", SqlDbType.Float).Value = cantidad
-            cmd.Parameters.Add("@msg", SqlDbType.VarChar, 100).Direction = ParameterDirection.Output
+            'cmd.Parameters.Add("@msg", SqlDbType.VarChar, 100).Direction = ParameterDirection.Output
             cmd.Connection = conn
             If cmd.ExecuteNonQuery Then
-                Dim resultado As String = cmd.Parameters("@msg").Value
-                MsgBox(resultado)
+                'Dim resultado As String = cmd.Parameters("@msg").Value
+                'MsgBox(resultado)
             End If
+
         Catch ex As Exception
             MsgBox(ex.Message)
         End Try
