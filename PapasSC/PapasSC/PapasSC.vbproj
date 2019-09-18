@@ -399,6 +399,9 @@
     <EmbeddedResource Include="Formularios\Actualizar_Producto.resx">
       <DependentUpon>Actualizar_Producto.vb</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Formularios\Caja.resx">
+      <DependentUpon>Caja.vb</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Formularios\Catálogo.resx">
       <DependentUpon>Catálogo.vb</DependentUpon>
     </EmbeddedResource>

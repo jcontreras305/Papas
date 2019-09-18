@@ -9,7 +9,7 @@
         flag = True
         sprKilosMenos.DecimalPlaces = 2
         sprKilosMenos.Increment = 0.5
-        sprKilosMenos.ThousandsSeparator = True
+        'sprKilosMenos.ThousandsSeparator = True
 
         sprKilosMas.DecimalPlaces = 2
         sprKilosMas.Increment = 0.5
@@ -57,10 +57,10 @@
                 datos(cont) = item.Value
                 cont += 1
             Next
-            lblCantidad.Text = "Kg " + datos(3)
+            lblCantidad.Text = "Kg " + datos(2)
             txtProducto.Text = datos(1)
-            sprKilosMenos.Maximum = CDbl(datos(3))
-            sprKilosMas.Maximum = CDbl(datos(3))
+            sprKilosMenos.Maximum = CDbl(datos(2))
+            sprKilosMas.Maximum = CDbl(datos(2))
         Catch ex As Exception
             MsgBox(ex.Message)
         End Try
@@ -68,7 +68,7 @@
 
     Private Function colorear_Filas(tabla As DataGridView) As Boolean
         For Each row As DataGridViewRow In tabla.Rows
-            Dim cantidad As Integer = row.Cells(3).Value
+            Dim cantidad As Integer = row.Cells("Existencia").Value
             If cantidad >= 100 Then
                 row.DefaultCellStyle.BackColor = Color.Green
 
@@ -152,8 +152,9 @@
                 End If
             Next
             total = 0
-            mtd.llenar_TblBodega(tblCambios, cmbBodega.Text)
-            colorear_Filas(tblCambios)
+            mtd.llenar_TblBodega(tblProductosExistencias, cmbBodega.Text)
+            colorear_Filas(tblProductosExistencias)
+            tblCambios.Rows.Clear()
         Catch ex As Exception
             MsgBox(ex.Message)
         End Try
@@ -170,6 +171,4 @@
 
         End Try
     End Sub
-
-
 End Class

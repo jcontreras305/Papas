@@ -21,7 +21,7 @@ Public Class MetodosReclasificacion
     Public Sub llenar_TblBodega(ByVal tbl As DataGridView, ByVal bodega As String)
         Try
             conectar()
-            Dim cmd = New SqlDataAdapter("select bg.nombre,  pd.version, pd.clave, ep.cantidad 
+            Dim cmd = New SqlDataAdapter("select pd.clave as Clave, pd.version as Nombre, ep.cantidad as Existencia
 from producto as pd right join existenciaProductos as ep 
 on pd.idProducto = ep.idProducto 
 left join bodega as bg on ep.idBodega = bg.idBodega where bg.nombre = '" + bodega + "'", conn)
@@ -37,7 +37,7 @@ left join bodega as bg on ep.idBodega = bg.idBodega where bg.nombre = '" + bodeg
     Public Sub busqueda_producto(ByVal busqueda As String, ByVal bodega As String, ByVal tbl As DataGridView)
         Try
             conectar()
-            Dim cmd = New SqlDataAdapter("select bg.nombre,  pd.version, pd.clave, ep.cantidad 
+            Dim cmd = New SqlDataAdapter("select pd.clave as Clave, pd.version as Nombre, ep.cantidad as Existencia 
 from producto as pd right join existenciaProductos as ep 
 on pd.idProducto = ep.idProducto 
 left join bodega as bg on ep.idBodega = bg.idBodega where bg.nombre = '" + bodega + "'
