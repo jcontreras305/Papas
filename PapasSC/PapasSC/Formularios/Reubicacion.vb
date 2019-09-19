@@ -24,11 +24,11 @@
         actualizarTablas()
         sprKg1.Increment = 0.5
         sprKg1.DecimalPlaces = 2
-        sprKg1.ThousandsSeparator = True
+        sprKg1.ThousandsSeparator = False
 
         sprKg2.Increment = 0.5
         sprKg2.DecimalPlaces = 2
-        sprKg2.ThousandsSeparator = True
+        sprKg2.ThousandsSeparator = False
 
         verde = 100
         amarillo = 50

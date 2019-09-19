@@ -78,3 +78,53 @@ end
 declare @msg varchar(max)
 execute sp_insertar_reubicacion 'Sucia tercera','calis','Bodega 1','Bodega2','admin',12.70, @msg output
 select @msg
+
+--##########################################################################################
+--######################## consultas y cambios para cajas ##################################
+--##########################################################################################
+
+
+select * from venta
+select * from ventaDetalle
+select * from bodega 
+select * from existenciaProductos
+select * from caja
+select * from corteCaja
+
+create table caja(
+idCaja varchar(36) not null primary key,
+nombre varchar(20) not null,
+clave varchar(5),
+estatus char(1)
+)
+go
+
+
+create table corteCaja(
+	idCorteCaja varchar(36) not null,
+	montoInicial float,
+	montoFinal float,
+	fechaInicio float,
+	fechaFin float,
+	idCaja varchar(36),
+	idEmpleado varchar(36),
+)
+
+
+alter table corteCaja  
+add constraint fk_idCaja_Caja
+foreign key (idCaja) references caja(idCaja)
+
+alter table corteCaja 
+add constraint fk_idEmpledo_Caja
+foreign key (idEmpleado) references empleado(idEmpleado)
+
+alter table venta 
+add tipoPago varchar(30)
+
+alter table venta 
+add idCaja varchar(36)
+
+alter table venta 
+add constraint fk_idCaja_venta
+foreign key (idCaja) references caja(idCaja)
