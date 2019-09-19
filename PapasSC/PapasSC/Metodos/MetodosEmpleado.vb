@@ -18,10 +18,12 @@ Public Class MetodosEmpleado
                 Dim da As New SqlDataAdapter(cmd)
                 da.Fill(dt)
                 Return dt
+            Else
+                Return Nothing
             End If
         Catch ex As Exception
             MsgBox(ex.Message)
-
+            Return Nothing
         End Try
 
     End Function
@@ -39,6 +41,8 @@ Public Class MetodosEmpleado
                 Dim da As New SqlDataAdapter(cmd)
                 da.Fill(dt)
                 Return dt
+            Else
+                Return Nothing
             End If
         Catch ex As Exception
             MsgBox(ex.Message)
@@ -49,7 +53,7 @@ Public Class MetodosEmpleado
     Public Function BuscarEmBo(bo As String)
         Try
             conectar()
-            cmd = New SqlCommand("sp_Bus_Empleado1")
+            cmd = New SqlCommand("sp_BuscarBodega_Empleado")
             cmd.CommandType = CommandType.StoredProcedure
             cmd.Connection = conn
 
@@ -59,6 +63,8 @@ Public Class MetodosEmpleado
                 Dim da As New SqlDataAdapter(cmd)
                 da.Fill(dt)
                 Return dt
+            Else
+                Return Nothing
             End If
 
         Catch ex As Exception
@@ -73,7 +79,7 @@ Public Class MetodosEmpleado
     Public Function BuscarEmPu(pu As String)
         Try
             conectar()
-            cmd = New SqlCommand("sp_Bus_Empleado2")
+            cmd = New SqlCommand("sp_BuscarPuesto_Empleado")
             cmd.CommandType = CommandType.StoredProcedure
             cmd.Connection = conn
 
@@ -83,6 +89,8 @@ Public Class MetodosEmpleado
                 Dim da As New SqlDataAdapter(cmd)
                 da.Fill(dt)
                 Return dt
+            Else
+                Return Nothing
             End If
         Catch ex As Exception
             MsgBox(ex.Message)
@@ -105,6 +113,8 @@ Public Class MetodosEmpleado
                 Dim da As New SqlDataAdapter(cmd)
                 da.Fill(dt)
                 Return dt
+            Else
+                Return Nothing
             End If
         Catch ex As Exception
             MsgBox(ex.Message)

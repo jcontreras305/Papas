@@ -1,4 +1,4 @@
-----------------------------------------------------------------Proveedores--------------------------------------------------------------------
+----------------------------------------------------------------PROVEEDORES--------------------------------------------------------------------
 
 
 ---------------------------------------------------------------Modificacion de las tablas proveedores------------------------------------------
@@ -331,3 +331,248 @@ begin
 			end
 			
 end 
+
+
+
+
+
+
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+---------------------------------------------------EMPLEADOS--------------------------------------------------------------------------------------------
+
+---agregar los campos de nombre y descripcion a la tabla horario------
+alter table horario 
+add nombre varchar(30), descripcion varchar(200)
+
+
+---------------------------------------------------Filtros-----------------------------------------------------------------------------------------------
+
+create procedure sp_Consultar_Empleado
+as
+select e.nombre as Nombre, e.sexo as Sexo,e.salario as Salario,e.telefono as Telefono,e.direccion as Direccion,
+b.nombre as Bodega,h.nombre as Horario,p.nombre as Puesto from empleado e left join bodega b on e.idBodega=b.idBodega
+inner join horario h on e.idHorario=h.idHorario inner join puesto p on e.idPuesto=p.idPuesto where e.estatus = 'A'
+
+
+----------------------------------------------------------------------------------------------------------------------------------------------------------
+
+create procedure sp_Bus_Empleado
+@nombreEm varchar(50)
+as
+select e.nombre as Nombre, e.sexo as Sexo,e.salario as Salario,e.telefono as Telefono,e.direccion as Direccion, 
+b.nombre as Bodega, h.nombre as Horario, p.nombre as Puesto from empleado e inner join bodega b on e.idBodega=b.idBodega 
+inner join puesto p on e.idPuesto=p.idPuesto inner join horario h on e.idHorario=h.idHorario  where e.nombre like '%'+@nombreEm+'%' and e.estatus= 'A'
+
+-------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+create procedure sp_BuscarBodega_Empleado
+@nombreBo varchar(50)
+as
+select e.nombre as Nombre, e.sexo as Sexo,e.salario as Salario,e.telefono as Telefono,e.direccion as Direccion, 
+b.nombre as Bodega, h.nombre as Horario,p.nombre as Puesto from empleado e inner join bodega b on e.idBodega=b.idBodega 
+inner join puesto p on e.idPuesto=p.idPuesto inner join horario h on e.idHorario=h.idHorario  where b.nombre like '%'+@nombreBo+'%'
+and e.estatus='A'
+
+------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+create procedure sp_BuscarPuesto_Empleado
+@nombrePu varchar(50)
+as
+select e.nombre as Nombre, e.sexo as Sexo,e.salario as Salario,e.telefono as Telefono,e.direccion as Direccion, 
+b.nombre as Bodega,h.nombre as Horario,p.nombre as Puesto from empleado e inner join bodega b on e.idBodega=b.idBodega 
+inner join puesto p on e.idPuesto=p.idPuesto inner join horario h on e.idHorario=h.idHorario  where p.nombre like '%'+@nombrePu+'%'
+and e.estatus='A'
+
+
+-----------------------------------------------------------------------------------------------------------------------------------------------------------
+
+declare @sal float
+set @sal = 200
+execute sp_Bus_Empleado4 @sal
+
+create procedure sp_Bus_Empleado4
+@Salario float
+as
+select e.nombre as Nombre, e.sexo as Sexo,e.salario as Salario,e.telefono as Telefono,e.direccion as Direccion, 
+b.nombre as Bodega,h.nombre as Horario, p.nombre as Puesto from empleado e inner join bodega b on e.idBodega=b.idBodega 
+inner join puesto p on e.idPuesto=p.idPuesto inner join horario h on e.idHorario=h.idHorario  
+where e.salario like CONCAT(@Salario,'%') and e.estatus ='A'
+
+------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+------------------------------------------------------------------------------------------------------------------------------------------------------------
+create procedure sp_Sele_Bodega
+as
+begin
+  select nombre from bodega where estatus like 'A' order by nombre asc
+end
+
+execute sp_Sele_Bodega
+
+----------------------------------------------------------------------------------------------
+create procedure sp_Sele_Horario
+as
+begin
+  select nombre from horario order by nombre asc
+end
+
+execute sp_Sele_Horario
+
+----------------------------------------------------------------------------------------------
+create proc sp_select_Puesto
+as
+begin 
+	select nombre from puesto where estatus like 'A' order by nombre asc
+end
+
+execute sp_select_CiudadEmple
+
+
+-------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+create procedure sp_Insertar_Empleado
+@nombre varchar(80),
+@sexo char,
+@salario float,
+@telefono char(12),
+@direccion varchar(100),
+@estatus char,
+@NomBodega varchar(30),
+@EnSaHorario varchar(30),
+@NomPuesto varchar(80)
+as
+declare @idEmpleado varchar(36)
+declare @idBodega varchar(36)
+declare @idHorario varchar(36)
+declare @idPuesto varchar(36)
+declare @error int
+begin
+	begin tran
+		begin try
+			select @idBodega= idBodega from bodega where nombre=@NomBodega
+			select @idHorario= idHorario from horario where nombre=@EnSaHorario  
+			select @idPuesto =idPuesto from puesto where nombre=@NomPuesto 
+			set @idEmpleado = NEWID()
+			insert into empleado values(@idEmpleado,@nombre,@sexo,@salario,@telefono,@direccion,@estatus,@idBodega,@idHorario,@idPuesto)
+			select @error=@@ERROR 
+		end try 
+	begin catch
+		goto repararproblema
+	end catch
+	commit tran
+
+	repararproblema:
+		if	@error <> 0
+			begin 
+				rollback tran
+			end
+end
+		 
+execute sp_Insertar_Empleado 'Manolo','M',2000,'123-456-7890','Benito Juarez #14','A','Bod Zamora','Vespertino','Cargador'
+
+ ---------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+ create procedure sp_EliminarEmple
+@nombre varchar(80),
+@sexo char,
+@salario float,
+@tel char(12),
+@direccion varchar(100),
+@NomBodega varchar(30),
+@EnSaHorario varchar(30),
+@NomPuesto varchar(80)
+as
+declare @idBodega varchar(36)
+declare @idHorario varchar(36)
+declare @idPuesto varchar(36)
+declare @error int
+
+begin 
+	begin tran 
+		begin try
+			select @idBodega= idBodega from bodega where nombre like CONCAT('%',@NomBodega)
+			select @idHorario= idHorario from horario where nombre like CONCAT('%',@EnSaHorario)
+			select @idPuesto =idPuesto from puesto where nombre like CONCAT('%',@NomPuesto)
+			update empleado set estatus='B' where nombre like CONCAT('%',@nombre) and @tel like CONCAT('%',@tel)
+			and @direccion like CONCAT('%',@direccion) and idBodega=@idBodega and idHorario=@idHorario and idPuesto=@idPuesto 
+			set @error=@@ERROR
+		end try
+	begin catch
+			goto repararproblema
+		end catch
+	commit tran
+
+	repararproblema:
+		if	@error <> 0
+			begin 
+				rollback tran
+			end
+			
+end 
+
+
+-------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+create procedure sp_Actualizar_EmpleadoNuevo
+@nombre varchar(80),
+@sexo char,
+@salario float,
+@tel char(12),
+@direccion varchar(100),
+@estatus char,
+@NomBodega varchar(30),
+@EnSaHorario varchar(30),
+@NomPuesto varchar(80),
+@NomBodegaN varchar(30),
+@EnSaHorarioN varchar(30),
+@NomPuestoN varchar(80)
+as
+declare @idEmpleado varchar(36)
+declare @idBodegaV varchar(36)
+declare @idBodegaN varchar(36)
+declare @idHorarioV varchar(36)
+declare @idHorarioN varchar(36)
+declare @idPuestoV varchar(36)
+declare @idPuestoN varchar(36)
+declare @error int
+begin
+	begin tran 
+		begin try 
+			select  @idBodegaV =idBodega from bodega  where nombre=@NomBodega  and estatus='A'
+			select @idBodegaN=idBodega from bodega  where nombre=@NomBodegaN  and estatus='A'
+			select @idHorarioV = idhorario from horario where nombre = @EnSaHorario 
+			select @idHorarioN = idhorario from horario where nombre = @EnSaHorarioN 
+			select @idPuestoV = idPuesto from puesto where nombre = @NomPuesto and estatus='A'
+			select @idPuestoN = idPuesto from puesto where nombre = @NomPuestoN and estatus='A'
+			select @idEmpleado= idEmpleado from empleado  where nombre like (@nombre) 
+			update empleado set salario=@salario, telefono=@tel, direccion=@direccion, estatus= @estatus,idBodega=@idBodegaN, idHorario=@idHorarioN, idPuesto=@idPuestoN where idEmpleado= @idEmpleado 
+		if @@ERROR <> 0 
+			begin
+				set @error=@@ERROR 
+			end
+		end try
+	begin catch
+			goto repararproblema
+		end catch
+	commit tran
+
+	repararproblema:
+		if	@error <> 0
+			begin 
+				rollback tran
+			end
+end 
+
+execute sp_Actualizar_EmpleadoNuevo 'Martha','F',600,'351-555-5555','Jorge Chavolla #36','A','Bodega 1','Vespertino','Cargador','Bodega 1','Vespertino','Cajero'
+
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+
