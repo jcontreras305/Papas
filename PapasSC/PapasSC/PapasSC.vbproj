@@ -399,6 +399,9 @@
     <EmbeddedResource Include="Formularios\Actualizar_Producto.resx">
       <DependentUpon>Actualizar_Producto.vb</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Formularios\Actualizar_Proveedor.resx">
+      <DependentUpon>Actualizar_Proveedor.vb</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Formularios\Caja.resx">
       <DependentUpon>Caja.vb</DependentUpon>
     </EmbeddedResource>
@@ -536,6 +539,7 @@
     <Content Include="Documentos\CambioTablasClienteContactoCredito02-08-19.sql" />
     <Content Include="Documentos\inserciones.sql" />
     <Content Include="Documentos\ISAAC.sql" />
+    <Content Include="Documentos\LARIGZA.sql" />
     <Content Include="Documentos\PS_ACTUAL1.0.sql" />
     <Content Include="Imagenes\ACTUALIZAR.png" />
     <Content Include="Imagenes\ALMACEN.jpg" />

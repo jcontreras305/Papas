@@ -185,9 +185,7 @@ Public Class MetodosEmpleado
     End Sub
 
 
-    Public Function InsertarEmple(ByVal nom As String, ByVal se As String,
-        ByVal sa As Double, ByVal tel As String, ByVal dir As String,
-        ByVal NoB As String, ByVal ho As String, ByVal Npu As String) As Boolean
+    Public Function InsertarEmple(ByVal datosEmple As List(Of String))
 
         Try
             conectar()
@@ -195,19 +193,19 @@ Public Class MetodosEmpleado
             cmd.CommandType = CommandType.StoredProcedure
             cmd.Connection = conn
 
-            cmd.Parameters.AddWithValue("@nombre", nom)
-            cmd.Parameters.AddWithValue("@sexo", se)
-            Dim salari As String = CStr(sa)
-            salari = salari.Replace(",", ".")
-            cmd.Parameters.AddWithValue("@salario", salari)
-            cmd.Parameters.AddWithValue("@telefono", tel)
-            cmd.Parameters.AddWithValue("@direccion", dir)
-            cmd.Parameters.AddWithValue("@NomBodega", NoB)
-            cmd.Parameters.AddWithValue("@EnSaHorario", ho)
-            cmd.Parameters.AddWithValue("@NomPuesto", Npu)
+            cmd.Parameters.AddWithValue("@nombre", datosEmple.ElementAt(0))
+            cmd.Parameters.AddWithValue("@sexo", datosEmple.ElementAt(1))
+            Dim sala As String = Replace(datosEmple.ElementAt(2), ",", ".")
+            cmd.Parameters.AddWithValue("@salario", sala)
+            cmd.Parameters.AddWithValue("@telefono", datosEmple.ElementAt(3))
+            cmd.Parameters.AddWithValue("@direccion", datosEmple.ElementAt(4))
+            cmd.Parameters.AddWithValue("@estatus", datosEmple.ElementAt(5))
+            cmd.Parameters.AddWithValue("@NomBodega", datosEmple.ElementAt(6))
+            cmd.Parameters.AddWithValue("@EnSaHorario", datosEmple.ElementAt(7))
+            cmd.Parameters.AddWithValue("@NomPuesto", datosEmple.ElementAt(8))
 
             If cmd.ExecuteNonQuery Then
-                MsgBox("Se agrego correctamente " + nom)
+                MsgBox("Se agrego correctamente " + datosEmple(0))
                 Return True
             Else
                 Return False
@@ -220,25 +218,25 @@ Public Class MetodosEmpleado
     End Function
 
 
-    Public Sub EliminarEmple(ByVal datosEmple() As String)
+    Public Sub EliminarEmple(ByVal datosEmpleEli() As String)
         Try
             conectar()
             cmd = New SqlCommand("sp_EliminarEmple")
             cmd.CommandType = CommandType.StoredProcedure
             cmd.Connection = conn
 
-            cmd.Parameters.AddWithValue("@nombre", datosEmple(0))
-            cmd.Parameters.AddWithValue("@sexo", datosEmple(1))
-            Dim sala As String = Replace(datosEmple.ElementAt(2), ",", ".")
+            cmd.Parameters.AddWithValue("@nombre", datosEmpleEli(0))
+            cmd.Parameters.AddWithValue("@sexo", datosEmpleEli(1))
+            Dim sala As String = Replace(datosEmpleEli.ElementAt(2), ",", ".")
             cmd.Parameters.AddWithValue("@salario", sala)
-            cmd.Parameters.AddWithValue("@tel", datosEmple(3))
-            cmd.Parameters.AddWithValue("@direccion", datosEmple(4))
-            cmd.Parameters.AddWithValue("@NomBodega", datosEmple(5))
-            cmd.Parameters.AddWithValue("@EnSaHorario", datosEmple(6))
-            cmd.Parameters.AddWithValue("@NomPuesto", datosEmple(7))
+            cmd.Parameters.AddWithValue("@tel", datosEmpleEli(3))
+            cmd.Parameters.AddWithValue("@direccion", datosEmpleEli(4))
+            cmd.Parameters.AddWithValue("@NomBodega", datosEmpleEli(5))
+            cmd.Parameters.AddWithValue("@EnSaHorario", datosEmpleEli(6))
+            cmd.Parameters.AddWithValue("@NomPuesto", datosEmpleEli(7))
 
             If cmd.ExecuteNonQuery Then
-                MsgBox("Se ha eliminado el empleado llamado " + datosEmple(0))
+                MsgBox("Se ha eliminado el empleado llamado " + datosEmpleEli(0))
 
             End If
             desconectar()
@@ -251,32 +249,29 @@ Public Class MetodosEmpleado
 
     End Sub
 
-    Public Sub ActualizarEmpleado(ByVal datosV() As String, ByVal datosN() As String, ByVal nombre As String, ByVal se As String)
+    Public Sub ActualizarEmpleado(ByVal datosEmpleAct As List(Of String))
         Try
             conectar()
-            cmd = New SqlCommand("sp_Actualizar_Empleado")
+            cmd = New SqlCommand("sp_Actualizar_EmpleadoNuevo")
             cmd.CommandType = CommandType.StoredProcedure
             cmd.Connection = conn
 
-            cmd.Parameters.AddWithValue("@nombre", nombre)
-            cmd.Parameters.AddWithValue("@sexo", se)
-            Dim sala As String = Replace(datosN.ElementAt(0), ",", ".")
-            cmd.Parameters.AddWithValue("@salarioN", sala)
-            cmd.Parameters.AddWithValue("@telN", datosN(1))
-            cmd.Parameters.AddWithValue("@direccionN", datosN(2))
-            cmd.Parameters.AddWithValue("@NomBodegaN", datosN(3))
-            cmd.Parameters.AddWithValue("@EnSaHorarioN", datosN(4))
-            cmd.Parameters.AddWithValue("@NomPuestoN", datosN(5))
-            Dim sala1 As String = Replace(datosV.ElementAt(0), ",", ".")
-            cmd.Parameters.AddWithValue("@salario", sala1)
-            cmd.Parameters.AddWithValue("@tel", datosV(1))
-            cmd.Parameters.AddWithValue("@direccion", datosV(2))
-            cmd.Parameters.AddWithValue("@NomBodega", datosV(3))
-            cmd.Parameters.AddWithValue("@EnSaHorario", datosV(4))
-            cmd.Parameters.AddWithValue("@NomPuesto", datosV(5))
+            cmd.Parameters.Add("@nombre", SqlDbType.VarChar, 80).Value = datosEmpleAct.ElementAt(0)
+            cmd.Parameters.Add("@sexo", SqlDbType.Char, 1).Value = datosEmpleAct.ElementAt(1)
+            Dim salario As String = Replace(datosEmpleAct.ElementAt(2), ",", ".")
+            cmd.Parameters.Add("@salario", SqlDbType.Float).Value = salario
+            cmd.Parameters.Add("@tel", SqlDbType.Char, 12).Value = datosEmpleAct.ElementAt(3)
+            cmd.Parameters.Add("@direccion", SqlDbType.VarChar, 100).Value = datosEmpleAct.ElementAt(4)
+            cmd.Parameters.Add("@estatus", SqlDbType.Char, 1).Value = datosEmpleAct.ElementAt(5)
+            cmd.Parameters.Add("@NomBodega", SqlDbType.VarChar, 30).Value = datosEmpleAct.ElementAt(6)
+            cmd.Parameters.Add("@EnSaHorario", SqlDbType.VarChar, 30).Value = datosEmpleAct.ElementAt(7)
+            cmd.Parameters.Add("@NomPuesto", SqlDbType.VarChar, 80).Value = datosEmpleAct.ElementAt(8)
+            cmd.Parameters.Add("@NomBodegaN", SqlDbType.VarChar, 30).Value = datosEmpleAct.ElementAt(6)
+            cmd.Parameters.Add("@EnSaHorarioN", SqlDbType.VarChar, 30).Value = datosEmpleAct.ElementAt(7)
+            cmd.Parameters.Add("@NomPuestoN", SqlDbType.VarChar, 80).Value = datosEmpleAct.ElementAt(8)
 
             If cmd.ExecuteNonQuery Then
-                MsgBox("Se actualizo correctamente los datos del empleado " + nombre)
+                MsgBox("Se actualizo correctamente los datos del empleado " + datosEmpleAct(0))
             End If
             desconectar()
         Catch ex As Exception
