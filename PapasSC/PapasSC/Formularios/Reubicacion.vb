@@ -53,7 +53,6 @@
             mdt.llenarComboproductos(cmbproducto2, nombreBodega2)
             llenarTabla(tblExistenciaBodega2, nombreBodega2)
         End If
-
     End Sub
 
     Private Sub cmbproducto1_Enter(sender As Object, e As EventArgs) Handles cmbproducto1.Enter
