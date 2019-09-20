@@ -20,7 +20,6 @@
             Actualizar_Producto.txtClave.Text = clave
             Actualizar_Producto.Show()
         Catch
-            MsgBox("Seleciona un renglos")
         End Try
 
 

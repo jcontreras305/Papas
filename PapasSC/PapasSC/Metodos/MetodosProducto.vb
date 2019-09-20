@@ -8,10 +8,19 @@ Public Class MetodosProducto
     Public Sub llenarDatagridview(ByVal dgv As DataGridView)
         cn.conectar()
         Try
-            adaptador = New SqlDataAdapter(
-    "select idProducto as Clave_Producto, version as Version,
-    estado as Estatus, clave as Clave, precio as Precio
-    from producto where estado ='A'", cn.conn)
+            'adaptador = New SqlDataAdapter(
+            '"select idProducto as Clave_Producto, version as Version,
+            'estado as Estatus, clave as Clave, precio as Precio
+            'From producto where estado ='A'", cn.conn)
+
+            adaptador = New SqlDataAdapter("
+    Select pr.idProducto as  Clave_del_Producto,
+    isnull(bo.nombre,'No asignada') as Nombre_Bodega,
+    isnull(ep.cantidad,'0')  As  Cantidad,
+    pr.version as Producto,
+    pr.precio  as Precio
+    From bodega bo right Join existenciaProductos ep on bo.idBodega   = ep.idBodega  
+    right join producto pr on pr.idProducto = ep.idProducto  where pr.estado = 'A'", cn.conn)
             dt = New DataTable
             adaptador.Fill(dt)
             dgv.DataSource = dt
@@ -24,9 +33,15 @@ Public Class MetodosProducto
         cn.conectar()
         Try
             adaptador = New SqlDataAdapter(
-    "select idProducto as Clave_Producto, version as Version,
-    estado as Estatus, clave as Clave, precio as Precio
-    from producto pl where pl.estado ='A' and pl.version like '" + filtro + "%'", cn.conn)
+    "
+    Select pr.idProducto as  Clave_del_Producto,
+    isnull(bo.nombre,'No asignada') as Nombre_Bodega,
+    isnull(ep.cantidad,'0')  As  Cantidad,
+    pr.version as Producto,
+    pr.precio  as Precio
+    From bodega bo right Join existenciaProductos ep on bo.idBodega   = ep.idBodega  
+    right join producto pr on pr.idProducto = ep.idProducto  where pr.estado = 'A'
+ and pl.version like '" + filtro + "%'", cn.conn)
             dt = New DataTable
             adaptador.Fill(dt)
             dgv.DataSource = dt
@@ -39,9 +54,14 @@ Public Class MetodosProducto
         cn.conectar()
         Try
             adaptador = New SqlDataAdapter(
-    "select idProducto as Clave_Producto, version as Version,
-    estado as Estatus, clave as Clave, precio as Precio
-    from producto pl where  pl.estado like '" + filtro + "%'", cn.conn)
+    "Select 
+    pr.idProducto as  Clave_del_Producto,
+    bo.nombre as Nombre_Bodega,
+    ep.cantidad  As  Cantidad,
+     pr.version as Producto,
+    pr.precio  as Precio
+    From bodega bo inner Join existenciaProductos ep on bo.idBodega   = ep.idBodega  
+    inner Join producto pr on pr.idProducto = ep.idProducto  where pr.estado like '" + filtro + "%'", cn.conn)
             dt = New DataTable
             adaptador.Fill(dt)
             dgv.DataSource = dt
@@ -54,9 +74,15 @@ Public Class MetodosProducto
         cn.conectar()
         Try
             adaptador = New SqlDataAdapter(
-    "select idProducto as Clave_Producto, version as Version,
-    estado as Estatus, clave as Clave, precio as Precio
-    from producto pl where pl.estado ='A' and pl.idProducto like '" + filtro + "%'", cn.conn)
+    "
+    Select pr.idProducto as  Clave_del_Producto,
+    isnull(bo.nombre,'No asignada') as Nombre_Bodega,
+    isnull(ep.cantidad,'0')  As  Cantidad,
+    pr.version as Producto,
+    pr.precio  as Precio
+    From bodega bo right Join existenciaProductos ep on bo.idBodega   = ep.idBodega  
+    right join producto pr on pr.idProducto = ep.idProducto  where pr.estado = 'A'
+ and pl.idProducto like '" + filtro + "%'", cn.conn)
             dt = New DataTable
             adaptador.Fill(dt)
             dgv.DataSource = dt
@@ -68,9 +94,15 @@ Public Class MetodosProducto
         cn.conectar()
         Try
             adaptador = New SqlDataAdapter(
-    "select idProducto as Clave_Producto, version as Version,
-    estado as Estatus, clave as Clave, precio as Precio
-    from producto pl where pl.estado ='A' and pl.clave like '" + filtro + "%'", cn.conn)
+    "
+    Select pr.idProducto as  Clave_del_Producto,
+    isnull(bo.nombre,'No asignada') as Nombre_Bodega,
+    isnull(ep.cantidad,'0')  As  Cantidad,
+    pr.version as Producto,
+    pr.precio  as Precio
+    From bodega bo right Join existenciaProductos ep on bo.idBodega   = ep.idBodega  
+    right join producto pr on pr.idProducto = ep.idProducto  where pr.estado = 'A'
+ and pl.clave like '" + filtro + "%'", cn.conn)
             dt = New DataTable
             adaptador.Fill(dt)
             dgv.DataSource = dt
@@ -108,6 +140,7 @@ Public Class MetodosProducto
            ," + precio + ")"
             Dim comando = New SqlCommand(cadena, cn.conn)
             comando.ExecuteNonQuery()
+            MsgBox(cadena)
             MsgBox("pus si salio carnal")
         Catch ex As Exception
             MessageBox.Show("No se inserto debido a: " + ex.ToString)

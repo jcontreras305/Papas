@@ -31,12 +31,14 @@ Partial Class Consulta_Producto
         Me.TextBox1 = New System.Windows.Forms.TextBox()
         Me.Label1 = New System.Windows.Forms.Label()
         Me.TablaProductos = New System.Windows.Forms.DataGridView()
+        Me.CheckBox1 = New System.Windows.Forms.CheckBox()
         Me.Panel1.SuspendLayout()
         CType(Me.TablaProductos, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'Panel1
         '
+        Me.Panel1.Controls.Add(Me.CheckBox1)
         Me.Panel1.Controls.Add(Me.Button4)
         Me.Panel1.Controls.Add(Me.Button3)
         Me.Panel1.Controls.Add(Me.Button2)
@@ -115,10 +117,20 @@ Partial Class Consulta_Producto
         'TablaProductos
         '
         Me.TablaProductos.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
-        Me.TablaProductos.Location = New System.Drawing.Point(12, 61)
+        Me.TablaProductos.Location = New System.Drawing.Point(12, 78)
         Me.TablaProductos.Name = "TablaProductos"
-        Me.TablaProductos.Size = New System.Drawing.Size(776, 330)
+        Me.TablaProductos.Size = New System.Drawing.Size(776, 313)
         Me.TablaProductos.TabIndex = 0
+        '
+        'CheckBox1
+        '
+        Me.CheckBox1.AutoSize = True
+        Me.CheckBox1.Location = New System.Drawing.Point(19, 55)
+        Me.CheckBox1.Name = "CheckBox1"
+        Me.CheckBox1.Size = New System.Drawing.Size(150, 17)
+        Me.CheckBox1.TabIndex = 12
+        Me.CheckBox1.Text = "Productos Dados de Baja "
+        Me.CheckBox1.UseVisualStyleBackColor = True
         '
         'Consulta_Producto
         '
@@ -144,4 +156,5 @@ Partial Class Consulta_Producto
     Friend WithEvents Button4 As Button
     Friend WithEvents Button3 As Button
     Friend WithEvents Button2 As Button
+    Friend WithEvents CheckBox1 As CheckBox
 End Class

@@ -1,5 +1,4 @@
 ﻿Public Class Lista_de_Precios
-
     Private Sub TextBox1_KeyDown(sender As Object, e As KeyEventArgs) Handles TextBox1.KeyDown
         tablaprecios.ReadOnly = True
         Dim MTCLI As New MetodosProducto

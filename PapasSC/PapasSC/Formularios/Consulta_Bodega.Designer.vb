@@ -31,6 +31,8 @@ Partial Class Consulta_Bodega
         Me.FiltroBodega = New System.Windows.Forms.ComboBox()
         Me.TextBox1 = New System.Windows.Forms.TextBox()
         Me.Label1 = New System.Windows.Forms.Label()
+        Me.CheckBox1 = New System.Windows.Forms.CheckBox()
+        Me.Reactivar = New System.Windows.Forms.Button()
         CType(Me.tablabodega, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
@@ -116,11 +118,33 @@ Partial Class Consulta_Bodega
         Me.Label1.TabIndex = 10
         Me.Label1.Text = "Filtro Bodega"
         '
+        'CheckBox1
+        '
+        Me.CheckBox1.AutoSize = True
+        Me.CheckBox1.Location = New System.Drawing.Point(58, 42)
+        Me.CheckBox1.Name = "CheckBox1"
+        Me.CheckBox1.Size = New System.Drawing.Size(114, 17)
+        Me.CheckBox1.TabIndex = 18
+        Me.CheckBox1.Text = "Bodegas Inactivas"
+        Me.CheckBox1.UseVisualStyleBackColor = True
+        '
+        'Reactivar
+        '
+        Me.Reactivar.Enabled = False
+        Me.Reactivar.Location = New System.Drawing.Point(179, 36)
+        Me.Reactivar.Name = "Reactivar"
+        Me.Reactivar.Size = New System.Drawing.Size(99, 23)
+        Me.Reactivar.TabIndex = 19
+        Me.Reactivar.Text = "Activar Bodega"
+        Me.Reactivar.UseVisualStyleBackColor = True
+        '
         'Consulta_Bodega
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(800, 450)
+        Me.Controls.Add(Me.Reactivar)
+        Me.Controls.Add(Me.CheckBox1)
         Me.Controls.Add(Me.eliminar)
         Me.Controls.Add(Me.actualizar)
         Me.Controls.Add(Me.registrar)
@@ -145,4 +169,6 @@ Partial Class Consulta_Bodega
     Friend WithEvents FiltroBodega As ComboBox
     Friend WithEvents TextBox1 As TextBox
     Friend WithEvents Label1 As Label
+    Friend WithEvents CheckBox1 As CheckBox
+    Friend WithEvents Reactivar As Button
 End Class

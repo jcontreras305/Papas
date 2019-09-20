@@ -1,6 +1,7 @@
 ﻿Public Class Registrar_Existencias
     Dim mtde As New MetodoExistenciaProducto
     Dim media As Double = 0
+    Public total As String
     Private Sub GroupBox1_Enter(sender As Object, e As EventArgs) Handles GroupBox1.Enter
 
     End Sub
@@ -10,7 +11,12 @@
     End Sub
 
     Private Sub Aceptar_Click(sender As Object, e As EventArgs) Handles Aceptar.Click
-        mtde.insertarExitemcia(cmbBodega.Text, cmbProducto.Text, lbltotal.Text)
+        If cbxregistraspro.Checked Then
+            mtde.insertarExitemcia(cmbBodega.Text, cmbProducto.Text, lbltotal.Text)
+        Else
+            mtde.insertarExitemcia(cmbBodega.Text, cmbProducto.Text, "0")
+
+        End If
     End Sub
 
     Private Sub Registrar_Existencias_Load(sender As Object, e As EventArgs) Handles MyBase.Load
@@ -19,6 +25,8 @@
         kgUpDown.Increment = 0.01
         kgUpDown.DecimalPlaces = 2
         kgUpDown.ThousandsSeparator = True
+        lbltotal.Height = 30
+        lbltotal.Height = 30
     End Sub
 
     Private Sub npd_ValueChanged(sender As Object, e As EventArgs) Handles npd.ValueChanged
@@ -43,7 +51,10 @@
     End Sub
     Dim cont As Int64 = 0
     Private Sub Button1_Click(sender As Object, e As EventArgs) Handles Button1.Click
-        tblpesoarpilla.Rows.Add(kgUpDown.Value)
+        kgUpDown.Increment = 0.01
+        kgUpDown.DecimalPlaces = 2
+        kgUpDown.ThousandsSeparator = True
+        tblpesoarpilla.Rows.Add(Convert.ToDouble(kgUpDown.Value))
     End Sub
 
     Private Sub Button2_Click(sender As Object, e As EventArgs) Handles Button2.Click
@@ -61,12 +72,27 @@
             lbltotal.Text = media * (recorrer - 2)
             media = 0
         Else
-
             MsgBox("valor defecto" + ((recorrer + npd.Value) - 2).ToString)
-
-            media = ((npd.Value + recorrer) - 2) * media
+            Dim totalKilos As Double = 0
+            totalKilos = npd.Value * Alturacamasarpilla.Value
+            media = media * totalKilos
             lbltotal.Text = media
             media = 0
         End If
+    End Sub
+
+    Private Sub cbxregistraspro_CheckedChanged(sender As Object, e As EventArgs) Handles cbxregistraspro.CheckedChanged
+        If cbxregistraspro.Checked Then
+            GroupBox2.Enabled = False
+            GroupBox3.Enabled = False
+        Else
+            GroupBox2.Enabled = True
+            GroupBox3.Enabled = True
+        End If
+
+    End Sub
+
+    Private Sub GroupBox2_Enter(sender As Object, e As EventArgs) Handles GroupBox2.Enter
+
     End Sub
 End Class

@@ -438,6 +438,9 @@
     <EmbeddedResource Include="Formularios\Matriz.resx">
       <DependentUpon>Matriz.vb</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Formularios\NuevaVenta.resx">
+      <DependentUpon>NuevaVenta.vb</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Formularios\Opciones_Avanzadas.resx">
       <DependentUpon>Opciones_Avanzadas.vb</DependentUpon>
     </EmbeddedResource>

@@ -172,6 +172,16 @@ Public Class MetodosBodega
 
 
 
+    Public Sub reactivarbodega(ByVal filtro As String)
+        Try
+            cn.conectar()
+            Dim cadena As String = "update bodega set estatus = 'A' where idBodega = '" + filtro + "'"
+            Dim comando = New SqlCommand(cadena, cn.conn)
+            comando.ExecuteNonQuery()
+        Catch ex As Exception
+            MessageBox.Show("No se elimino debido a: " + ex.ToString)
+        End Try
+    End Sub
 
     Public Sub eliminaprobodega(ByVal filtro As String)
         Try

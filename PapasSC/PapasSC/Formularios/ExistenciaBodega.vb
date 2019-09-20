@@ -69,10 +69,11 @@
             Dim version As String = Convert.ToString(tblexistenciapro.CurrentRow.Cells(1).Value)
             Dim clave As String = Convert.ToString(tblexistenciapro.CurrentRow.Cells(2).Value)
             Actualizar_Existencia.cmbBodega.Text = id
-            Actualizar_Existencia.npd.Value = version
+            Actualizar_Existencia.kgUpDown.Value = version
             Actualizar_Existencia.claveb = id
             Actualizar_Existencia.clavep = clave
-            Actualizar_Existencia.cmbProducto.Text = clave
+            Actualizar_Existencia.cmbProducto.Text = clave.ToString
+            Actualizar_Existencia.kac = clave
             Actualizar_Existencia.Show()
         Catch
             MsgBox("Seleciona un renglos")
@@ -80,9 +81,22 @@
     End Sub
 
     Private Sub ExistenciaBodega_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+        Dim MTCLI As New MetodoExistenciaProducto
+        MTCLI.llenarDatagridview(tblexistenciapro)
     End Sub
 
     Private Sub btnAvanzado_Click(sender As Object, e As EventArgs) Handles btnAvanzado.Click
         Opciones_Avanzadas.Show()
+    End Sub
+
+    Private Sub CheckBox1_CheckedChanged(sender As Object, e As EventArgs) Handles CheckBox1.CheckedChanged
+        Dim MTCLI As New MetodoExistenciaProducto
+        If CheckBox1.Checked Then
+
+            MTCLI.llenarDatagridviewB(tblexistenciapro)
+        Else
+            MTCLI.llenarDatagridview(tblexistenciapro)
+
+        End If
     End Sub
 End Class

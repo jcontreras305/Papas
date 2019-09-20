@@ -1,8 +1,7 @@
 ﻿Public Class Registro_productos
 
     Private Sub Button1_Click(sender As Object, e As EventArgs) Handles Button1.Click
-        npd.DecimalPlaces = 2
-        npd.ThousandsSeparator = True
+
         If txtClave.Text <> "" And txtVersion.Text <> "" Then
             Dim MTDPR As New MetodosProducto
 

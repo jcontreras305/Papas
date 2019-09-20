@@ -33,6 +33,7 @@ Partial Class ExistenciaBodega
         Me.Reclasificacion = New System.Windows.Forms.Button()
         Me.Button3 = New System.Windows.Forms.Button()
         Me.btnAvanzado = New System.Windows.Forms.Button()
+        Me.CheckBox1 = New System.Windows.Forms.CheckBox()
         CType(Me.tblexistenciapro, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
@@ -136,11 +137,22 @@ Partial Class ExistenciaBodega
         Me.btnAvanzado.Text = "Funciones avanzadas"
         Me.btnAvanzado.UseVisualStyleBackColor = True
         '
+        'CheckBox1
+        '
+        Me.CheckBox1.AutoSize = True
+        Me.CheckBox1.Location = New System.Drawing.Point(38, 58)
+        Me.CheckBox1.Name = "CheckBox1"
+        Me.CheckBox1.Size = New System.Drawing.Size(205, 17)
+        Me.CheckBox1.TabIndex = 11
+        Me.CheckBox1.Text = "Productos Dados de Baja en Bodega "
+        Me.CheckBox1.UseVisualStyleBackColor = True
+        '
         'ExistenciaBodega
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(773, 427)
+        Me.Controls.Add(Me.CheckBox1)
         Me.Controls.Add(Me.btnAvanzado)
         Me.Controls.Add(Me.Button3)
         Me.Controls.Add(Me.Reclasificacion)
@@ -171,4 +183,5 @@ Partial Class ExistenciaBodega
     Friend WithEvents Reclasificacion As Button
     Friend WithEvents Button3 As Button
     Friend WithEvents btnAvanzado As Button
+    Friend WithEvents CheckBox1 As CheckBox
 End Class

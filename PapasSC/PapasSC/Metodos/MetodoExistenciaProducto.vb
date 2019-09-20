@@ -27,6 +27,27 @@ Public Class MetodoExistenciaProducto
 
 
 
+    Public Sub llenarDatagridviewB(ByVal dgv As DataGridView)
+        cn.conectar()
+        Try
+            adaptador = New SqlDataAdapter("select  
+    bo.nombre as Nombre_Bodega,
+    ep.cantidad  as  Cantidad,
+     pr.version as Producto,
+    pr.precio  as Precio
+    from bodega bo inner join existenciaProductos ep on bo.idBodega   = ep.idBodega  
+    inner join producto pr on pr.idProducto = ep.idProducto  where ep.estatus = 'B'
+", cn.conn)
+            dt = New DataTable
+            adaptador.Fill(dt)
+            dgv.DataSource = dt
+        Catch ex As Exception
+            MessageBox.Show("No se lleno el Datagridview debido a: " + ex.ToString)
+        End Try
+    End Sub
+
+
+
     Public Sub llenarComboMatriz(ByVal dgv As ComboBox)
         cn.conectar()
         Try
@@ -113,8 +134,7 @@ Public Class MetodoExistenciaProducto
      pr.version as Producto,
     pr.precio  as Precio
     from bodega bo inner join existenciaProductos ep on bo.idBodega   = ep.idBodega  
-    inner join producto pr on pr.idProducto = ep.idProducto  where ep.estatus = 
- '" + filtro + "%'", cn.conn)
+    inner join producto pr on pr.idProducto = ep.idProducto  where ep.estatus like '" + filtro + "%'", cn.conn)
             dt = New DataTable
             adaptador.Fill(dt)
             dgv.DataSource = dt
@@ -185,38 +205,79 @@ Public Class MetodoExistenciaProducto
     End Sub
 
 
-
-
-
-
     Public Sub llenarComboBodega(ByVal dgv As ComboBox)
         cn.conectar()
         Try
             adaptador = New SqlDataAdapter("select nombre as Bodega from bodega where estatus = 'A'", cn.conn)
-
             Dim ds As New DataSet
-
             adaptador.Fill(ds)
-
-
             dgv.DataSource = ds.Tables(0)
-
             dgv.DisplayMember = "Bodega"
             dgv.SelectedIndex = 0
         Catch ex As Exception
             MessageBox.Show("No se lleno el Datagridview debido a: " + ex.Message)
         End Try
     End Sub
+
+
+
+    Public Sub llenarComboProducto(ByVal dgv As ComboBox, ByVal t As String)
+        cn.conectar()
+        Try
+            adaptador = New SqlDataAdapter("select  
+    pr.version as producto
+    from bodega bo inner join existenciaProductos ep on bo.idBodega   = ep.idBodega  
+    inner join producto pr on pr.idProducto = ep.idProducto  where ep.estatus = 'A'
+    and bo.nombre='" + t + "'", cn.conn)
+            Dim ds As New DataSet
+            adaptador.Fill(ds)
+            dgv.DataSource = ds.Tables(0)
+            dgv.DisplayMember = "Producto"
+
+        Catch ex As Exception
+            MessageBox.Show("No se lleno el Datagridview debido a: " + ex.Message)
+        End Try
+    End Sub
+
+    Public Function cantidadkgProductos(ByVal filtro As String, ByVal filtro2 As String) As String
+
+        cn.conectar()
+        Try
+
+            Dim idproducto As String
+            Dim Rs As SqlDataReader
+            Dim Com As New SqlCommand
+            MsgBox(filtro)
+            MsgBox(filtro2)
+            Dim Sql As String = "select
+            ep.cantidad 
+            From bodega bo inner Join existenciaProductos ep on bo.idBodega   = ep.idBodega  
+            inner Join producto pr on pr.idProducto = ep.idProducto  where ep.estatus = 'A' 
+            and pr.version like '" + filtro + "'and bo.nombre like '" + filtro2 + "'"
+
+            Com = New SqlCommand(Sql, cn.conn)
+
+
+            Rs = Com.ExecuteReader()
+
+            Rs.Read()
+            idproducto = Rs(0).ToString
+
+            Return idproducto
+        Catch ex As Exception
+            MessageBox.Show("No se lleno el Datagridview debido a: " + ex.Message)
+        End Try
+    End Function
+
+
+
+
     Public Sub llenarComboProducto(ByVal dgv As ComboBox)
         cn.conectar()
         Try
             adaptador = New SqlDataAdapter("select version as Producto from producto where estado = 'A'", cn.conn)
-
             Dim ds As New DataSet
-
             adaptador.Fill(ds)
-
-
             dgv.DataSource = ds.Tables(0)
             dgv.DisplayMember = "Producto"
             dgv.SelectedIndex = 0
@@ -224,8 +285,6 @@ Public Class MetodoExistenciaProducto
             MessageBox.Show("No se lleno el Datagridview debido a: " + ex.Message)
         End Try
     End Sub
-
-
 
     Public Sub insertarExitemcia(ByVal bodega As String, ByVal producto As String, ByVal version As String)
         Try
@@ -263,6 +322,8 @@ Public Class MetodoExistenciaProducto
 
             Rs.Close()
             cn.desconectar()
+
+            cn.conectar()
             Dim cadena As String = "INSERT INTO [dbo].[existenciaProductos]
            ([idBodega]
            ,[idProducto]
@@ -271,11 +332,12 @@ Public Class MetodoExistenciaProducto
             VALUES
             ('" + idbodega + "'
             ,'" + idproducto + "'
-
             ," + version + ",'A')"
             MsgBox(cadena)
-            cn.conectar()
             Com = New SqlCommand(cadena, cn.conn)
+            Com.ExecuteNonQuery()
+            cn.desconectar()
+
             MsgBox("cade")
         Catch ex As Exception
             MessageBox.Show("No se inserto debido a: " + ex.ToString)
@@ -291,6 +353,7 @@ Public Class MetodoExistenciaProducto
             Dim Com As New SqlCommand
 
             cn.conectar()
+
 
 
 
@@ -346,8 +409,7 @@ Public Class MetodoExistenciaProducto
 
             Dim cadena As String = "
        UPDATE [dbo].[existenciaProductos]
-       SET [idB
-odega] = '" + idbodegan + "'
+       SET [idBodega] = '" + idbodegan + "'
       ,[idProducto] = '" + idproducton + "'
       ,[cantidad] =" + version + " 
       ,[estatus] = 'A'

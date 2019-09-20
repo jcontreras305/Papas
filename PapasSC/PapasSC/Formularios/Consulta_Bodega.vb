@@ -5,6 +5,7 @@
     Private Sub TextBox1_KeyDown(sender As Object, e As KeyEventArgs) Handles TextBox1.KeyDown
 
         Dim MTCLI As New MetodosBodega
+
         If FiltroBodega.SelectedIndex = 0 Then
             MTCLI.llenarDatagridview_filtrobodega(tablabodega, TextBox1.Text)
         ElseIf FiltroBodega.SelectedIndex = 1 Then
@@ -71,5 +72,24 @@
         Catch
             MsgBox("Seleciona un renglos")
         End Try
+    End Sub
+
+    Private Sub CheckBox1_CheckedChanged(sender As Object, e As EventArgs) Handles CheckBox1.CheckedChanged
+        Dim MTCLI As New MetodosBodega
+
+        If CheckBox1.Checked Then
+            MTCLI.llenarDatagridview_filtroEstatus(tablabodega, "B")
+            Reactivar.Enabled = True
+        Else
+            Reactivar.Enabled = False
+
+        End If
+    End Sub
+
+    Private Sub Button1_Click(sender As Object, e As EventArgs) Handles Reactivar.Click
+        Dim MTCLI As New MetodosBodega
+        Dim id As String = Convert.ToString(tablabodega.CurrentRow.Cells(0).Value)
+        MTCLI.reactivarbodega(id)
+        MTCLI.llenarDatagridview_filtroEstatus(tablabodega, "B")
     End Sub
 End Class
