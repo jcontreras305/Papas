@@ -23,12 +23,17 @@ Partial Class AgregarEmpleados
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
         Me.components = New System.ComponentModel.Container()
+        Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(AgregarEmpleados))
         Me.btnEmAceptar = New System.Windows.Forms.Button()
         Me.btnEmCancelar = New System.Windows.Forms.Button()
         Me.Label9 = New System.Windows.Forms.Label()
         Me.ErrorIcono = New System.Windows.Forms.ErrorProvider(Me.components)
         Me.Label6 = New System.Windows.Forms.Label()
         Me.GroupBox1 = New System.Windows.Forms.GroupBox()
+        Me.lblCam2 = New System.Windows.Forms.Label()
+        Me.lblCam1 = New System.Windows.Forms.Label()
+        Me.lblCam = New System.Windows.Forms.Label()
+        Me.chbActivo = New System.Windows.Forms.CheckBox()
         Me.GroupBox2 = New System.Windows.Forms.GroupBox()
         Me.rbuEmMasculino = New System.Windows.Forms.RadioButton()
         Me.rbuEmFemenino = New System.Windows.Forms.RadioButton()
@@ -53,20 +58,28 @@ Partial Class AgregarEmpleados
         '
         'btnEmAceptar
         '
-        Me.btnEmAceptar.Location = New System.Drawing.Point(361, 302)
+        Me.btnEmAceptar.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.btnEmAceptar.Image = CType(resources.GetObject("btnEmAceptar.Image"), System.Drawing.Image)
+        Me.btnEmAceptar.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
+        Me.btnEmAceptar.Location = New System.Drawing.Point(366, 276)
         Me.btnEmAceptar.Name = "btnEmAceptar"
         Me.btnEmAceptar.Size = New System.Drawing.Size(108, 37)
         Me.btnEmAceptar.TabIndex = 19
         Me.btnEmAceptar.Text = "Aceptar"
+        Me.btnEmAceptar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText
         Me.btnEmAceptar.UseVisualStyleBackColor = True
         '
         'btnEmCancelar
         '
-        Me.btnEmCancelar.Location = New System.Drawing.Point(480, 302)
+        Me.btnEmCancelar.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.btnEmCancelar.Image = CType(resources.GetObject("btnEmCancelar.Image"), System.Drawing.Image)
+        Me.btnEmCancelar.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
+        Me.btnEmCancelar.Location = New System.Drawing.Point(480, 276)
         Me.btnEmCancelar.Name = "btnEmCancelar"
         Me.btnEmCancelar.Size = New System.Drawing.Size(108, 37)
         Me.btnEmCancelar.TabIndex = 20
         Me.btnEmCancelar.Text = "Cancelar"
+        Me.btnEmCancelar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText
         Me.btnEmCancelar.UseVisualStyleBackColor = True
         '
         'Label9
@@ -74,7 +87,7 @@ Partial Class AgregarEmpleados
         Me.Label9.AutoSize = True
         Me.Label9.Font = New System.Drawing.Font("Arial", 15.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label9.ForeColor = System.Drawing.SystemColors.ButtonShadow
-        Me.Label9.Location = New System.Drawing.Point(0, -1)
+        Me.Label9.Location = New System.Drawing.Point(588, -2)
         Me.Label9.Name = "Label9"
         Me.Label9.Size = New System.Drawing.Size(24, 24)
         Me.Label9.TabIndex = 28
@@ -97,6 +110,10 @@ Partial Class AgregarEmpleados
         '
         'GroupBox1
         '
+        Me.GroupBox1.Controls.Add(Me.lblCam2)
+        Me.GroupBox1.Controls.Add(Me.lblCam1)
+        Me.GroupBox1.Controls.Add(Me.lblCam)
+        Me.GroupBox1.Controls.Add(Me.chbActivo)
         Me.GroupBox1.Controls.Add(Me.GroupBox2)
         Me.GroupBox1.Controls.Add(Me.cboEmPuesto)
         Me.GroupBox1.Controls.Add(Me.cboEmHorario)
@@ -114,18 +131,61 @@ Partial Class AgregarEmpleados
         Me.GroupBox1.Controls.Add(Me.lblEmNombre)
         Me.GroupBox1.Location = New System.Drawing.Point(26, 45)
         Me.GroupBox1.Name = "GroupBox1"
-        Me.GroupBox1.Size = New System.Drawing.Size(572, 251)
+        Me.GroupBox1.Size = New System.Drawing.Size(562, 225)
         Me.GroupBox1.TabIndex = 30
         Me.GroupBox1.TabStop = False
-        Me.GroupBox1.Text = "Datos"
+        Me.GroupBox1.Text = "Datos Principales"
+        '
+        'lblCam2
+        '
+        Me.lblCam2.AutoSize = True
+        Me.lblCam2.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.lblCam2.ForeColor = System.Drawing.Color.Red
+        Me.lblCam2.Location = New System.Drawing.Point(250, 178)
+        Me.lblCam2.Name = "lblCam2"
+        Me.lblCam2.Size = New System.Drawing.Size(15, 20)
+        Me.lblCam2.TabIndex = 49
+        Me.lblCam2.Text = "*"
+        '
+        'lblCam1
+        '
+        Me.lblCam1.AutoSize = True
+        Me.lblCam1.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.lblCam1.ForeColor = System.Drawing.Color.Red
+        Me.lblCam1.Location = New System.Drawing.Point(250, 154)
+        Me.lblCam1.Name = "lblCam1"
+        Me.lblCam1.Size = New System.Drawing.Size(15, 20)
+        Me.lblCam1.TabIndex = 48
+        Me.lblCam1.Text = "*"
+        '
+        'lblCam
+        '
+        Me.lblCam.AutoSize = True
+        Me.lblCam.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.lblCam.ForeColor = System.Drawing.Color.Red
+        Me.lblCam.Location = New System.Drawing.Point(250, 49)
+        Me.lblCam.Name = "lblCam"
+        Me.lblCam.Size = New System.Drawing.Size(15, 20)
+        Me.lblCam.TabIndex = 47
+        Me.lblCam.Text = "*"
+        '
+        'chbActivo
+        '
+        Me.chbActivo.AutoSize = True
+        Me.chbActivo.Location = New System.Drawing.Point(484, 19)
+        Me.chbActivo.Name = "chbActivo"
+        Me.chbActivo.Size = New System.Drawing.Size(56, 17)
+        Me.chbActivo.TabIndex = 46
+        Me.chbActivo.Text = "Activo"
+        Me.chbActivo.UseVisualStyleBackColor = True
         '
         'GroupBox2
         '
         Me.GroupBox2.Controls.Add(Me.rbuEmMasculino)
         Me.GroupBox2.Controls.Add(Me.rbuEmFemenino)
-        Me.GroupBox2.Location = New System.Drawing.Point(315, 164)
+        Me.GroupBox2.Location = New System.Drawing.Point(17, 75)
         Me.GroupBox2.Name = "GroupBox2"
-        Me.GroupBox2.Size = New System.Drawing.Size(236, 63)
+        Me.GroupBox2.Size = New System.Drawing.Size(227, 47)
         Me.GroupBox2.TabIndex = 45
         Me.GroupBox2.TabStop = False
         Me.GroupBox2.Text = "Sexo"
@@ -133,7 +193,7 @@ Partial Class AgregarEmpleados
         'rbuEmMasculino
         '
         Me.rbuEmMasculino.AutoSize = True
-        Me.rbuEmMasculino.Location = New System.Drawing.Point(20, 31)
+        Me.rbuEmMasculino.Location = New System.Drawing.Point(19, 19)
         Me.rbuEmMasculino.Name = "rbuEmMasculino"
         Me.rbuEmMasculino.Size = New System.Drawing.Size(73, 17)
         Me.rbuEmMasculino.TabIndex = 11
@@ -144,7 +204,7 @@ Partial Class AgregarEmpleados
         'rbuEmFemenino
         '
         Me.rbuEmFemenino.AutoSize = True
-        Me.rbuEmFemenino.Location = New System.Drawing.Point(144, 31)
+        Me.rbuEmFemenino.Location = New System.Drawing.Point(141, 19)
         Me.rbuEmFemenino.Name = "rbuEmFemenino"
         Me.rbuEmFemenino.Size = New System.Drawing.Size(71, 17)
         Me.rbuEmFemenino.TabIndex = 10
@@ -155,7 +215,7 @@ Partial Class AgregarEmpleados
         'cboEmPuesto
         '
         Me.cboEmPuesto.FormattingEnabled = True
-        Me.cboEmPuesto.Location = New System.Drawing.Point(374, 121)
+        Me.cboEmPuesto.Location = New System.Drawing.Point(371, 101)
         Me.cboEmPuesto.Name = "cboEmPuesto"
         Me.cboEmPuesto.Size = New System.Drawing.Size(169, 21)
         Me.cboEmPuesto.TabIndex = 44
@@ -163,7 +223,7 @@ Partial Class AgregarEmpleados
         'cboEmHorario
         '
         Me.cboEmHorario.FormattingEnabled = True
-        Me.cboEmHorario.Location = New System.Drawing.Point(374, 75)
+        Me.cboEmHorario.Location = New System.Drawing.Point(371, 75)
         Me.cboEmHorario.Name = "cboEmHorario"
         Me.cboEmHorario.Size = New System.Drawing.Size(169, 21)
         Me.cboEmHorario.TabIndex = 43
@@ -171,35 +231,37 @@ Partial Class AgregarEmpleados
         'cboEmBodega
         '
         Me.cboEmBodega.FormattingEnabled = True
-        Me.cboEmBodega.Location = New System.Drawing.Point(374, 23)
+        Me.cboEmBodega.Location = New System.Drawing.Point(371, 49)
         Me.cboEmBodega.Name = "cboEmBodega"
         Me.cboEmBodega.Size = New System.Drawing.Size(169, 21)
         Me.cboEmBodega.TabIndex = 42
         '
         'txtEmDireccion
         '
-        Me.txtEmDireccion.Location = New System.Drawing.Point(79, 164)
+        Me.txtEmDireccion.Location = New System.Drawing.Point(76, 128)
         Me.txtEmDireccion.Name = "txtEmDireccion"
         Me.txtEmDireccion.Size = New System.Drawing.Size(168, 20)
         Me.txtEmDireccion.TabIndex = 41
         '
         'txtEmTelefono
         '
-        Me.txtEmTelefono.Location = New System.Drawing.Point(79, 121)
+        Me.txtEmTelefono.Location = New System.Drawing.Point(76, 154)
         Me.txtEmTelefono.Name = "txtEmTelefono"
         Me.txtEmTelefono.Size = New System.Drawing.Size(168, 20)
         Me.txtEmTelefono.TabIndex = 40
+        Me.txtEmTelefono.Text = "355-000-000"
         '
         'txtEmSalario
         '
-        Me.txtEmSalario.Location = New System.Drawing.Point(79, 75)
+        Me.txtEmSalario.Location = New System.Drawing.Point(76, 180)
         Me.txtEmSalario.Name = "txtEmSalario"
         Me.txtEmSalario.Size = New System.Drawing.Size(168, 20)
         Me.txtEmSalario.TabIndex = 39
+        Me.txtEmSalario.Text = "0.00"
         '
         'txtEmNombre
         '
-        Me.txtEmNombre.Location = New System.Drawing.Point(79, 23)
+        Me.txtEmNombre.Location = New System.Drawing.Point(76, 49)
         Me.txtEmNombre.Name = "txtEmNombre"
         Me.txtEmNombre.Size = New System.Drawing.Size(168, 20)
         Me.txtEmNombre.TabIndex = 38
@@ -207,7 +269,7 @@ Partial Class AgregarEmpleados
         'lblEmPuesto
         '
         Me.lblEmPuesto.AutoSize = True
-        Me.lblEmPuesto.Location = New System.Drawing.Point(312, 124)
+        Me.lblEmPuesto.Location = New System.Drawing.Point(312, 104)
         Me.lblEmPuesto.Name = "lblEmPuesto"
         Me.lblEmPuesto.Size = New System.Drawing.Size(40, 13)
         Me.lblEmPuesto.TabIndex = 37
@@ -216,7 +278,7 @@ Partial Class AgregarEmpleados
         'lblEmHorario
         '
         Me.lblEmHorario.AutoSize = True
-        Me.lblEmHorario.Location = New System.Drawing.Point(315, 78)
+        Me.lblEmHorario.Location = New System.Drawing.Point(312, 78)
         Me.lblEmHorario.Name = "lblEmHorario"
         Me.lblEmHorario.Size = New System.Drawing.Size(41, 13)
         Me.lblEmHorario.TabIndex = 36
@@ -225,7 +287,7 @@ Partial Class AgregarEmpleados
         'lblEmBodega
         '
         Me.lblEmBodega.AutoSize = True
-        Me.lblEmBodega.Location = New System.Drawing.Point(312, 26)
+        Me.lblEmBodega.Location = New System.Drawing.Point(309, 52)
         Me.lblEmBodega.Name = "lblEmBodega"
         Me.lblEmBodega.Size = New System.Drawing.Size(44, 13)
         Me.lblEmBodega.TabIndex = 35
@@ -234,7 +296,7 @@ Partial Class AgregarEmpleados
         'lblEmDireccion
         '
         Me.lblEmDireccion.AutoSize = True
-        Me.lblEmDireccion.Location = New System.Drawing.Point(12, 171)
+        Me.lblEmDireccion.Location = New System.Drawing.Point(14, 131)
         Me.lblEmDireccion.Name = "lblEmDireccion"
         Me.lblEmDireccion.Size = New System.Drawing.Size(52, 13)
         Me.lblEmDireccion.TabIndex = 34
@@ -243,7 +305,7 @@ Partial Class AgregarEmpleados
         'lblEmTelefono
         '
         Me.lblEmTelefono.AutoSize = True
-        Me.lblEmTelefono.Location = New System.Drawing.Point(12, 124)
+        Me.lblEmTelefono.Location = New System.Drawing.Point(14, 157)
         Me.lblEmTelefono.Name = "lblEmTelefono"
         Me.lblEmTelefono.Size = New System.Drawing.Size(49, 13)
         Me.lblEmTelefono.TabIndex = 33
@@ -252,7 +314,7 @@ Partial Class AgregarEmpleados
         'lblEmSalario
         '
         Me.lblEmSalario.AutoSize = True
-        Me.lblEmSalario.Location = New System.Drawing.Point(17, 78)
+        Me.lblEmSalario.Location = New System.Drawing.Point(14, 180)
         Me.lblEmSalario.Name = "lblEmSalario"
         Me.lblEmSalario.Size = New System.Drawing.Size(39, 13)
         Me.lblEmSalario.TabIndex = 32
@@ -261,7 +323,7 @@ Partial Class AgregarEmpleados
         'lblEmNombre
         '
         Me.lblEmNombre.AutoSize = True
-        Me.lblEmNombre.Location = New System.Drawing.Point(17, 26)
+        Me.lblEmNombre.Location = New System.Drawing.Point(14, 52)
         Me.lblEmNombre.Name = "lblEmNombre"
         Me.lblEmNombre.Size = New System.Drawing.Size(44, 13)
         Me.lblEmNombre.TabIndex = 31
@@ -271,7 +333,7 @@ Partial Class AgregarEmpleados
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(610, 353)
+        Me.ClientSize = New System.Drawing.Size(613, 332)
         Me.Controls.Add(Me.GroupBox1)
         Me.Controls.Add(Me.Label6)
         Me.Controls.Add(Me.Label9)
@@ -279,6 +341,7 @@ Partial Class AgregarEmpleados
         Me.Controls.Add(Me.btnEmAceptar)
         Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None
         Me.Name = "AgregarEmpleados"
+        Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
         Me.Text = "AgregarEmpleados"
         CType(Me.ErrorIcono, System.ComponentModel.ISupportInitialize).EndInit()
         Me.GroupBox1.ResumeLayout(False)
@@ -312,4 +375,8 @@ Partial Class AgregarEmpleados
     Friend WithEvents lblEmTelefono As Label
     Friend WithEvents lblEmSalario As Label
     Friend WithEvents lblEmNombre As Label
+    Friend WithEvents chbActivo As CheckBox
+    Friend WithEvents lblCam2 As Label
+    Friend WithEvents lblCam1 As Label
+    Friend WithEvents lblCam As Label
 End Class

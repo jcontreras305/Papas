@@ -8,10 +8,11 @@ Public Class MetodosProveedor
 
 
     'Metodo para consultar los proveedores
-    Public Function ConsultarPro() As DataTable
+
+    Public Function ConsultarProTodos() As DataTable
         Try
             conectar()
-            cmd = New SqlCommand("sp_Consultar_Proveedor")
+            cmd = New SqlCommand("sp_Consultar_ProveedoresTodos")
             cmd.CommandType = CommandType.StoredProcedure
             cmd.Connection = conn
 
@@ -20,10 +21,37 @@ Public Class MetodosProveedor
                 Dim da As New SqlDataAdapter(cmd)
                 da.Fill(dt)
                 Return dt
+            Else
+                Return Nothing
             End If
         Catch ex As Exception
-            MsgBox(ex.Message)
+            MessageBox.Show(ex.Message, "Error al mostrar los proveedores", MessageBoxButtons.OK, MessageBoxIcon.Error)
+            Return Nothing
+        Finally
+            desconectar()
+        End Try
+    End Function
 
+    Public Function ConsultarPro() As DataTable
+        Try
+            conectar()
+            cmd = New SqlCommand("sp_Consultar_Proveedores")
+            cmd.CommandType = CommandType.StoredProcedure
+            cmd.Connection = conn
+
+            If cmd.ExecuteNonQuery Then
+                Dim dt As New DataTable
+                Dim da As New SqlDataAdapter(cmd)
+                da.Fill(dt)
+                Return dt
+            Else
+                Return Nothing
+            End If
+        Catch ex As Exception
+            MessageBox.Show(ex.Message, "Error al mostrar los proveedores", MessageBoxButtons.OK, MessageBoxIcon.Error)
+            Return Nothing
+        Finally
+            desconectar()
         End Try
     End Function
 
@@ -32,7 +60,7 @@ Public Class MetodosProveedor
     Public Function BuscarProveedorNom(no As String)
         Try
             conectar()
-            cmd = New SqlCommand("sp_Bus_ProveedorNombre")
+            cmd = New SqlCommand("sp_BucarProveedor")
             cmd.CommandType = CommandType.StoredProcedure
             cmd.Connection = conn
 
@@ -42,18 +70,23 @@ Public Class MetodosProveedor
                 Dim da As New SqlDataAdapter(cmd)
                 da.Fill(dt)
                 Return dt
+            Else
+                Return Nothing
             End If
         Catch ex As Exception
             MsgBox(ex.Message)
             Return Nothing
+        Finally
+            desconectar()
         End Try
     End Function
 
-    'Metodo para bucar el nombre de la ciudad donde se encuentra el proveedor
+
+    'Metodo para buscar por zona
     Public Function BuscarProveedorCiu(ByVal noCiu As String)
         Try
             conectar()
-            cmd = New SqlCommand("sp_Bus_ProveedorCiudad")
+            cmd = New SqlCommand("sp_BuscarOrigenCiudad")
             cmd.CommandType = CommandType.StoredProcedure
             cmd.Connection = conn
 
@@ -63,12 +96,115 @@ Public Class MetodosProveedor
                 Dim da As New SqlDataAdapter(cmd)
                 da.Fill(dt)
                 Return dt
+            Else
+                Return Nothing
             End If
         Catch ex As Exception
             MsgBox(ex.Message)
+            Return Nothing
+        Finally
+            desconectar()
 
         End Try
     End Function
+
+    Public Function BuscarTipoPersona(ByVal tipoPer As String)
+        Try
+            conectar()
+            cmd = New SqlCommand("Buscar_TipoCliente_Empleado")
+            cmd.CommandType = CommandType.StoredProcedure
+            cmd.Connection = conn
+
+            cmd.Parameters.AddWithValue("@TipoPersona", tipoPer)
+            If cmd.ExecuteNonQuery Then
+                Dim dt As New DataTable
+                Dim da As New SqlDataAdapter(cmd)
+                da.Fill(dt)
+                Return dt
+            Else
+                Return Nothing
+            End If
+            desconectar()
+        Catch ex As Exception
+            Return Nothing
+
+        End Try
+
+    End Function
+
+    Public Function BuscarRazon(ByVal razon As String)
+        Try
+            conectar()
+            cmd = New SqlCommand("Buscar_RazonSocial_Empleado")
+            cmd.CommandType = CommandType.StoredProcedure
+            cmd.Connection = conn
+
+            cmd.Parameters.AddWithValue("@Rasocial", razon)
+            If cmd.ExecuteNonQuery Then
+                Dim dt As New DataTable
+                Dim da As New SqlDataAdapter(cmd)
+                da.Fill(dt)
+                Return dt
+            Else
+                Return Nothing
+            End If
+            desconectar()
+        Catch ex As Exception
+            Return Nothing
+        End Try
+
+    End Function
+
+    Public Function AliasPro(ByVal al As String)
+        Try
+            conectar()
+            cmd = New SqlCommand("Buscar_AliasContacto_Empleado")
+            cmd.CommandType = CommandType.StoredProcedure
+            cmd.Connection = conn
+
+            cmd.Parameters.AddWithValue("@AliasCont", al)
+
+            If cmd.ExecuteNonQuery Then
+                Dim dt As New DataTable
+                Dim da As New SqlDataAdapter(cmd)
+                da.Fill(dt)
+                Return dt
+            Else
+                Return Nothing
+            End If
+            desconectar()
+        Catch ex As Exception
+            Return Nothing
+        End Try
+
+    End Function
+
+    Public Function BuscarRfcPro(ByVal rfc As String)
+        Try
+            conectar()
+            cmd = New SqlCommand("Buscar_RFC_Empleado")
+            cmd.CommandType = CommandType.StoredProcedure
+            cmd.Connection = conn
+
+            cmd.Parameters.AddWithValue("@rfc", rfc)
+
+            If cmd.ExecuteNonQuery Then
+                Dim dt As New DataTable
+                Dim da As New SqlDataAdapter(cmd)
+                da.Fill(dt)
+                Return dt
+            Else
+                Return Nothing
+            End If
+
+            desconectar()
+        Catch ex As Exception
+            Return Nothing
+        End Try
+    End Function
+
+
+
 
     Public Sub SelecionarCiu(ByVal comboCiuPro As ComboBox)
         Try
@@ -94,45 +230,68 @@ Public Class MetodosProveedor
         End Try
     End Sub
 
-    Public Function InsertarProveedor(ByVal nom As String, ByVal tel As String, ByVal ema As String, ByVal nombreCi As String) As Boolean
+    Public Sub InsertarProveedor(ByVal datosPro As List(Of String))
         Try
             conectar()
-            cmd = New SqlCommand("sp_Insertar_Proveedor")
+            cmd = New SqlCommand("sp_Insertar_ProveedorNuevo")
             cmd.CommandType = CommandType.StoredProcedure
             cmd.Connection = conn
 
-            cmd.Parameters.AddWithValue("@nombre", nom)
-            cmd.Parameters.AddWithValue("@telefono", tel)
-            cmd.Parameters.AddWithValue("@Email", ema)
-            cmd.Parameters.AddWithValue("nombreCiu", nombreCi)
+            cmd.Parameters.AddWithValue("@nombre", datosPro.ElementAt(0))
+            cmd.Parameters.AddWithValue("@rfc", datosPro.ElementAt(1))
+            cmd.Parameters.AddWithValue("@razonSocial", datosPro.ElementAt(2))
+            cmd.Parameters.AddWithValue("@nombreCiu", datosPro.ElementAt(3))
+            cmd.Parameters.AddWithValue("@estatus", datosPro.ElementAt(4))
+            cmd.Parameters.AddWithValue("@TipoPer", datosPro.ElementAt(5))
+            cmd.Parameters.AddWithValue("@NomContacto", datosPro.ElementAt(6))
+            cmd.Parameters.AddWithValue("@genero", datosPro.ElementAt(7))
+            cmd.Parameters.AddWithValue("@direccion", datosPro.ElementAt(8))
+            cmd.Parameters.AddWithValue("@telefono", datosPro.ElementAt(9))
+            cmd.Parameters.AddWithValue("@email", datosPro.ElementAt(10))
+            cmd.Parameters.AddWithValue("@direccion2", datosPro.ElementAt(11))
+            cmd.Parameters.AddWithValue("@telefono2", datosPro.ElementAt(12))
+            cmd.Parameters.AddWithValue("@email2", datosPro.ElementAt(13))
+            cmd.Parameters.AddWithValue("@estado", datosPro.ElementAt(14))
+            cmd.Parameters.AddWithValue("@municipio", datosPro.ElementAt(15))
+            cmd.Parameters.AddWithValue("@codigoPostal", datosPro.ElementAt(16))
 
             If cmd.ExecuteNonQuery Then
-                MsgBox("Se agrego correctamente " + nom)
-                Return True
-            Else
-                Return False
+                MsgBox("Se agrego correctamente los datos " + datosPro.ElementAt(0))
+
             End If
         Catch ex As Exception
             desconectar()
             MsgBox(ex.Message)
-            Return False
-        End Try
-    End Function
 
-    Public Sub EliminarProveedor(ByVal datosPro() As String)
+        End Try
+    End Sub
+
+    Public Sub EliminarProveedor(ByVal datosProEli() As String)
         Try
             conectar()
-            cmd = New SqlCommand("sp_Eliminar_Proveedor")
+            cmd = New SqlCommand("sp_Eliminar_Proveedor3")
             cmd.CommandType = CommandType.StoredProcedure
             cmd.Connection = conn
 
-            cmd.Parameters.AddWithValue("@nombre", datosPro(0))
-            cmd.Parameters.AddWithValue("@telefono", datosPro(1))
-            cmd.Parameters.AddWithValue("@email", datosPro(2))
-            cmd.Parameters.AddWithValue("@NomCiu", datosPro(3))
+            cmd.Parameters.AddWithValue("@nombre", datosProEli.ElementAt(0))
+            cmd.Parameters.AddWithValue("@rfc", datosProEli.ElementAt(1))
+            cmd.Parameters.AddWithValue("@razonSocial", datosProEli.ElementAt(2))
+            cmd.Parameters.AddWithValue("@nombreCiu", datosProEli.ElementAt(3))
+            cmd.Parameters.AddWithValue("@TipoPer", datosProEli.ElementAt(4))
+            cmd.Parameters.AddWithValue("@NomContacto", datosProEli.ElementAt(5))
+            cmd.Parameters.AddWithValue("@genero", datosProEli.ElementAt(6))
+            cmd.Parameters.AddWithValue("@direccion", datosProEli.ElementAt(7))
+            cmd.Parameters.AddWithValue("@telefono", datosProEli.ElementAt(8))
+            cmd.Parameters.AddWithValue("@email", datosProEli.ElementAt(9))
+            cmd.Parameters.AddWithValue("@direccion2", datosProEli.ElementAt(10))
+            cmd.Parameters.AddWithValue("@telefono2", datosProEli.ElementAt(11))
+            cmd.Parameters.AddWithValue("@email2", datosProEli.ElementAt(12))
+            cmd.Parameters.AddWithValue("@estado", datosProEli.ElementAt(13))
+            cmd.Parameters.AddWithValue("@municipio", datosProEli.ElementAt(14))
+            cmd.Parameters.AddWithValue("@codigoPostal", datosProEli.ElementAt(15))
 
             If cmd.ExecuteNonQuery Then
-                MsgBox("Se ha eliminado el proveedor " + datosPro(0))
+                MsgBox("Se ha eliminado el proveedor " + datosProEli.ElementAt(0))
 
             End If
             desconectar()
@@ -143,21 +302,35 @@ Public Class MetodosProveedor
     End Sub
 
 
-    Public Sub modificar_Proveedor(ByVal datosV() As String, ByVal datosN() As String, ByVal nombre As String)
+    Public Sub Actualizar_Proveedor(ByVal datosProveedorNuevo As List(Of String))
         Try
             conectar()
-            Dim comando As New SqlCommand("sp_Actualizar_Proveedor")
-            comando.CommandType = CommandType.StoredProcedure
-            comando.Parameters.AddWithValue("@nombre", nombre)
-            comando.Parameters.AddWithValue("@telefonoN", datosN(0))
-            comando.Parameters.AddWithValue("@emailN", datosN(1))
-            comando.Parameters.AddWithValue("@nombreCiuN", datosN(2))
-            comando.Parameters.AddWithValue("@telefonoV", datosV(0))
-            comando.Parameters.AddWithValue("@emailV", datosV(1))
-            comando.Parameters.AddWithValue("@nombreCiuV", datosV(2))
-            comando.Connection = conn
-            If comando.ExecuteNonQuery Then
-                MsgBox("Se actualizo correctamente los datos del proveedor " + nombre)
+            cmd = New SqlCommand("sp_Actualizar_ProveedorNuevo")
+            cmd.CommandType = CommandType.StoredProcedure
+            cmd.Connection = conn
+
+            cmd.Parameters.Add("@nombre", SqlDbType.VarChar, 80).Value = datosProveedorNuevo.ElementAt(0)
+            cmd.Parameters.Add("@rfc", SqlDbType.VarChar, 13).Value = datosProveedorNuevo.ElementAt(1)
+            cmd.Parameters.Add("@razonSocial", SqlDbType.VarChar, 100).Value = datosProveedorNuevo.ElementAt(2)
+            cmd.Parameters.Add("@nombreCiu", SqlDbType.VarChar, 30).Value = datosProveedorNuevo.ElementAt(3)
+            cmd.Parameters.Add("@estatus", SqlDbType.Char, 1).Value = datosProveedorNuevo.ElementAt(4)
+            cmd.Parameters.Add("@TipoPer", SqlDbType.VarChar, 10).Value = datosProveedorNuevo.ElementAt(5)
+            cmd.Parameters.Add("@NomContacto", SqlDbType.VarChar, 100).Value = datosProveedorNuevo.ElementAt(6)
+            cmd.Parameters.Add("@genero", SqlDbType.Char, 1).Value = datosProveedorNuevo.ElementAt(7)
+            cmd.Parameters.Add("@direccion", SqlDbType.VarChar, 100).Value = datosProveedorNuevo.ElementAt(8)
+            cmd.Parameters.Add("@telefono", SqlDbType.VarChar, 12).Value = datosProveedorNuevo.ElementAt(9)
+            cmd.Parameters.Add("@email", SqlDbType.VarChar, 100).Value = datosProveedorNuevo.ElementAt(10)
+            cmd.Parameters.Add("@direccion2", SqlDbType.VarChar, 100).Value = datosProveedorNuevo.ElementAt(13)
+            cmd.Parameters.Add("@telefono2", SqlDbType.VarChar, 12).Value = datosProveedorNuevo.ElementAt(11)
+            cmd.Parameters.Add("@email2", SqlDbType.VarChar, 100).Value = datosProveedorNuevo.ElementAt(12)
+            cmd.Parameters.Add("@estado", SqlDbType.VarChar, 50).Value = datosProveedorNuevo.ElementAt(14)
+            cmd.Parameters.Add("@municipio", SqlDbType.VarChar, 50).Value = datosProveedorNuevo.ElementAt(15)
+            cmd.Parameters.Add("@codigoPostal", SqlDbType.Char, 5).Value = datosProveedorNuevo.ElementAt(16)
+            cmd.Parameters.Add("@nombreCiuN", SqlDbType.VarChar, 30).Value = datosProveedorNuevo.ElementAt(3)
+
+
+            If cmd.ExecuteNonQuery Then
+                MsgBox("Se actualizo correctamente los datos del proveedor " + datosProveedorNuevo(0))
             End If
             desconectar()
         Catch ex As Exception

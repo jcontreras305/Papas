@@ -23,7 +23,7 @@ Partial Class Consultar_Proveedores
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
         Me.Label1 = New System.Windows.Forms.Label()
-        Me.DataListado = New System.Windows.Forms.DataGridView()
+        Me.tblProveedores = New System.Windows.Forms.DataGridView()
         Me.cboFiltroProve = New System.Windows.Forms.ComboBox()
         Me.txtFiltro = New System.Windows.Forms.TextBox()
         Me.BuscarProve = New System.Windows.Forms.Button()
@@ -31,7 +31,8 @@ Partial Class Consultar_Proveedores
         Me.Button1 = New System.Windows.Forms.Button()
         Me.btnActualizarPro = New System.Windows.Forms.Button()
         Me.btnEliminarProvee = New System.Windows.Forms.Button()
-        CType(Me.DataListado, System.ComponentModel.ISupportInitialize).BeginInit()
+        Me.chbMostrarTodos = New System.Windows.Forms.CheckBox()
+        CType(Me.tblProveedores, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'Label1
@@ -43,18 +44,18 @@ Partial Class Consultar_Proveedores
         Me.Label1.TabIndex = 0
         Me.Label1.Text = "Filtro Proveedores"
         '
-        'DataListado
+        'tblProveedores
         '
-        Me.DataListado.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
-        Me.DataListado.Location = New System.Drawing.Point(34, 63)
-        Me.DataListado.Name = "DataListado"
-        Me.DataListado.Size = New System.Drawing.Size(612, 260)
-        Me.DataListado.TabIndex = 1
+        Me.tblProveedores.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
+        Me.tblProveedores.Location = New System.Drawing.Point(34, 92)
+        Me.tblProveedores.Name = "tblProveedores"
+        Me.tblProveedores.Size = New System.Drawing.Size(612, 260)
+        Me.tblProveedores.TabIndex = 1
         '
         'cboFiltroProve
         '
         Me.cboFiltroProve.FormattingEnabled = True
-        Me.cboFiltroProve.Items.AddRange(New Object() {"Nombre Proveedor", "Ciudad"})
+        Me.cboFiltroProve.Items.AddRange(New Object() {"Nombre Proveedor", "Tipo Persona", "Razón Social", "Alias Contacto", "RFC", "Origen Matriz"})
         Me.cboFiltroProve.Location = New System.Drawing.Point(129, 17)
         Me.cboFiltroProve.Name = "cboFiltroProve"
         Me.cboFiltroProve.Size = New System.Drawing.Size(175, 21)
@@ -89,7 +90,7 @@ Partial Class Consultar_Proveedores
         '
         'Button1
         '
-        Me.Button1.Location = New System.Drawing.Point(127, 338)
+        Me.Button1.Location = New System.Drawing.Point(127, 358)
         Me.Button1.Name = "Button1"
         Me.Button1.Size = New System.Drawing.Size(169, 36)
         Me.Button1.TabIndex = 6
@@ -98,7 +99,7 @@ Partial Class Consultar_Proveedores
         '
         'btnActualizarPro
         '
-        Me.btnActualizarPro.Location = New System.Drawing.Point(302, 338)
+        Me.btnActualizarPro.Location = New System.Drawing.Point(302, 358)
         Me.btnActualizarPro.Name = "btnActualizarPro"
         Me.btnActualizarPro.Size = New System.Drawing.Size(169, 36)
         Me.btnActualizarPro.TabIndex = 7
@@ -107,18 +108,29 @@ Partial Class Consultar_Proveedores
         '
         'btnEliminarProvee
         '
-        Me.btnEliminarProvee.Location = New System.Drawing.Point(477, 338)
+        Me.btnEliminarProvee.Location = New System.Drawing.Point(477, 358)
         Me.btnEliminarProvee.Name = "btnEliminarProvee"
         Me.btnEliminarProvee.Size = New System.Drawing.Size(169, 36)
         Me.btnEliminarProvee.TabIndex = 8
         Me.btnEliminarProvee.Text = "Eliminar Proveedor"
         Me.btnEliminarProvee.UseVisualStyleBackColor = True
         '
+        'chbMostrarTodos
+        '
+        Me.chbMostrarTodos.AutoSize = True
+        Me.chbMostrarTodos.Location = New System.Drawing.Point(552, 58)
+        Me.chbMostrarTodos.Name = "chbMostrarTodos"
+        Me.chbMostrarTodos.Size = New System.Drawing.Size(94, 17)
+        Me.chbMostrarTodos.TabIndex = 11
+        Me.chbMostrarTodos.Text = "Mostrar Todos"
+        Me.chbMostrarTodos.UseVisualStyleBackColor = True
+        '
         'Consultar_Proveedores
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(689, 386)
+        Me.ClientSize = New System.Drawing.Size(689, 406)
+        Me.Controls.Add(Me.chbMostrarTodos)
         Me.Controls.Add(Me.btnEliminarProvee)
         Me.Controls.Add(Me.btnActualizarPro)
         Me.Controls.Add(Me.Button1)
@@ -126,19 +138,20 @@ Partial Class Consultar_Proveedores
         Me.Controls.Add(Me.BuscarProve)
         Me.Controls.Add(Me.txtFiltro)
         Me.Controls.Add(Me.cboFiltroProve)
-        Me.Controls.Add(Me.DataListado)
+        Me.Controls.Add(Me.tblProveedores)
         Me.Controls.Add(Me.Label1)
         Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None
         Me.Name = "Consultar_Proveedores"
+        Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
         Me.Text = "Consultar_Proveedores"
-        CType(Me.DataListado, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.tblProveedores, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
     End Sub
 
     Friend WithEvents Label1 As Label
-    Friend WithEvents DataListado As DataGridView
+    Friend WithEvents tblProveedores As DataGridView
     Friend WithEvents cboFiltroProve As ComboBox
     Friend WithEvents txtFiltro As TextBox
     Friend WithEvents BuscarProve As Button
@@ -146,4 +159,5 @@ Partial Class Consultar_Proveedores
     Friend WithEvents Button1 As Button
     Friend WithEvents btnActualizarPro As Button
     Friend WithEvents btnEliminarProvee As Button
+    Friend WithEvents chbMostrarTodos As CheckBox
 End Class

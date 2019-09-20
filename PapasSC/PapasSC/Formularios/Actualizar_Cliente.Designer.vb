@@ -26,6 +26,7 @@ Partial Class Actualizar_Cliente
         Me.Label9 = New System.Windows.Forms.Label()
         Me.Label16 = New System.Windows.Forms.Label()
         Me.Panel3 = New System.Windows.Forms.Panel()
+        Me.chbActivarCredito = New System.Windows.Forms.CheckBox()
         Me.Label17 = New System.Windows.Forms.Label()
         Me.txtSaldo = New System.Windows.Forms.TextBox()
         Me.lbl21 = New System.Windows.Forms.Label()
@@ -35,14 +36,14 @@ Partial Class Actualizar_Cliente
         Me.txtLimiteCredito = New System.Windows.Forms.TextBox()
         Me.Label11 = New System.Windows.Forms.Label()
         Me.Panel2 = New System.Windows.Forms.Panel()
-        Me.Button1 = New System.Windows.Forms.Button()
+        Me.chbActivarAcomposExtras = New System.Windows.Forms.CheckBox()
+        Me.lblDireccion2 = New System.Windows.Forms.Label()
+        Me.txtDireccion2 = New System.Windows.Forms.TextBox()
+        Me.txtTelefono2 = New System.Windows.Forms.TextBox()
+        Me.lblTelefono2 = New System.Windows.Forms.Label()
         Me.btnElminar = New System.Windows.Forms.Button()
         Me.lbl23 = New System.Windows.Forms.Label()
         Me.cmbEstado = New System.Windows.Forms.ComboBox()
-        Me.GroupBox1 = New System.Windows.Forms.GroupBox()
-        Me.rdbRazonSocial = New System.Windows.Forms.RadioButton()
-        Me.rdbMujer = New System.Windows.Forms.RadioButton()
-        Me.rdbHombre = New System.Windows.Forms.RadioButton()
         Me.bntActualizar = New System.Windows.Forms.Button()
         Me.Label15 = New System.Windows.Forms.Label()
         Me.btnCancelar = New System.Windows.Forms.Button()
@@ -50,17 +51,22 @@ Partial Class Actualizar_Cliente
         Me.Label6 = New System.Windows.Forms.Label()
         Me.Label14 = New System.Windows.Forms.Label()
         Me.txtMunicipio = New System.Windows.Forms.TextBox()
+        Me.lblEmail2 = New System.Windows.Forms.Label()
+        Me.txtEmail2 = New System.Windows.Forms.TextBox()
         Me.Label13 = New System.Windows.Forms.Label()
         Me.txtEmail = New System.Windows.Forms.TextBox()
         Me.Label12 = New System.Windows.Forms.Label()
         Me.txtTelefono = New System.Windows.Forms.TextBox()
         Me.Label4 = New System.Windows.Forms.Label()
         Me.txtDireccion = New System.Windows.Forms.TextBox()
+        Me.GroupBox1 = New System.Windows.Forms.GroupBox()
+        Me.rdbRazonSocial = New System.Windows.Forms.RadioButton()
+        Me.rdbMujer = New System.Windows.Forms.RadioButton()
+        Me.rdbHombre = New System.Windows.Forms.RadioButton()
         Me.lbl22 = New System.Windows.Forms.Label()
         Me.Label8 = New System.Windows.Forms.Label()
         Me.txtAlias = New System.Windows.Forms.TextBox()
         Me.Panel1 = New System.Windows.Forms.Panel()
-        Me.chbActivo = New System.Windows.Forms.CheckBox()
         Me.txtNombre = New System.Windows.Forms.TextBox()
         Me.lbl19 = New System.Windows.Forms.Label()
         Me.lbl18 = New System.Windows.Forms.Label()
@@ -71,8 +77,8 @@ Partial Class Actualizar_Cliente
         Me.Label3 = New System.Windows.Forms.Label()
         Me.txtRazonSocial = New System.Windows.Forms.TextBox()
         Me.txtrfc = New System.Windows.Forms.TextBox()
+        Me.chbActivo = New System.Windows.Forms.CheckBox()
         Me.Label5 = New System.Windows.Forms.Label()
-        Me.chbActivarCredito = New System.Windows.Forms.CheckBox()
         Me.Panel3.SuspendLayout()
         CType(Me.spnDiasCredito, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.Panel2.SuspendLayout()
@@ -117,6 +123,16 @@ Partial Class Actualizar_Cliente
         Me.Panel3.Name = "Panel3"
         Me.Panel3.Size = New System.Drawing.Size(602, 107)
         Me.Panel3.TabIndex = 31
+        '
+        'chbActivarCredito
+        '
+        Me.chbActivarCredito.AutoSize = True
+        Me.chbActivarCredito.Location = New System.Drawing.Point(504, 3)
+        Me.chbActivarCredito.Name = "chbActivarCredito"
+        Me.chbActivarCredito.Size = New System.Drawing.Size(95, 17)
+        Me.chbActivarCredito.TabIndex = 41
+        Me.chbActivarCredito.Text = "Activar Credito"
+        Me.chbActivarCredito.UseVisualStyleBackColor = True
         '
         'Label17
         '
@@ -192,11 +208,14 @@ Partial Class Actualizar_Cliente
         '
         'Panel2
         '
-        Me.Panel2.Controls.Add(Me.Button1)
+        Me.Panel2.Controls.Add(Me.chbActivarAcomposExtras)
+        Me.Panel2.Controls.Add(Me.lblDireccion2)
+        Me.Panel2.Controls.Add(Me.txtDireccion2)
+        Me.Panel2.Controls.Add(Me.txtTelefono2)
+        Me.Panel2.Controls.Add(Me.lblTelefono2)
         Me.Panel2.Controls.Add(Me.btnElminar)
         Me.Panel2.Controls.Add(Me.lbl23)
         Me.Panel2.Controls.Add(Me.cmbEstado)
-        Me.Panel2.Controls.Add(Me.GroupBox1)
         Me.Panel2.Controls.Add(Me.bntActualizar)
         Me.Panel2.Controls.Add(Me.Label15)
         Me.Panel2.Controls.Add(Me.btnCancelar)
@@ -204,6 +223,8 @@ Partial Class Actualizar_Cliente
         Me.Panel2.Controls.Add(Me.Label6)
         Me.Panel2.Controls.Add(Me.Label14)
         Me.Panel2.Controls.Add(Me.txtMunicipio)
+        Me.Panel2.Controls.Add(Me.lblEmail2)
+        Me.Panel2.Controls.Add(Me.txtEmail2)
         Me.Panel2.Controls.Add(Me.Label13)
         Me.Panel2.Controls.Add(Me.txtEmail)
         Me.Panel2.Controls.Add(Me.Label12)
@@ -215,17 +236,47 @@ Partial Class Actualizar_Cliente
         Me.Panel2.Size = New System.Drawing.Size(602, 207)
         Me.Panel2.TabIndex = 30
         '
-        'Button1
+        'chbActivarAcomposExtras
         '
-        Me.Button1.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Button1.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
-        Me.Button1.Location = New System.Drawing.Point(144, 161)
-        Me.Button1.Name = "Button1"
-        Me.Button1.Size = New System.Drawing.Size(92, 39)
-        Me.Button1.TabIndex = 38
-        Me.Button1.Text = "Extras"
-        Me.Button1.TextAlign = System.Drawing.ContentAlignment.MiddleRight
-        Me.Button1.UseVisualStyleBackColor = True
+        Me.chbActivarAcomposExtras.AutoSize = True
+        Me.chbActivarAcomposExtras.Location = New System.Drawing.Point(29, 174)
+        Me.chbActivarAcomposExtras.Name = "chbActivarAcomposExtras"
+        Me.chbActivarAcomposExtras.Size = New System.Drawing.Size(126, 17)
+        Me.chbActivarAcomposExtras.TabIndex = 43
+        Me.chbActivarAcomposExtras.Text = "ActivarCamposExtras"
+        Me.chbActivarAcomposExtras.UseVisualStyleBackColor = True
+        '
+        'lblDireccion2
+        '
+        Me.lblDireccion2.AutoSize = True
+        Me.lblDireccion2.Location = New System.Drawing.Point(5, 92)
+        Me.lblDireccion2.Name = "lblDireccion2"
+        Me.lblDireccion2.Size = New System.Drawing.Size(58, 13)
+        Me.lblDireccion2.TabIndex = 41
+        Me.lblDireccion2.Text = "Direccion2"
+        '
+        'txtDireccion2
+        '
+        Me.txtDireccion2.Location = New System.Drawing.Point(80, 85)
+        Me.txtDireccion2.Name = "txtDireccion2"
+        Me.txtDireccion2.Size = New System.Drawing.Size(204, 20)
+        Me.txtDireccion2.TabIndex = 42
+        '
+        'txtTelefono2
+        '
+        Me.txtTelefono2.Location = New System.Drawing.Point(81, 109)
+        Me.txtTelefono2.Name = "txtTelefono2"
+        Me.txtTelefono2.Size = New System.Drawing.Size(138, 20)
+        Me.txtTelefono2.TabIndex = 40
+        '
+        'lblTelefono2
+        '
+        Me.lblTelefono2.AutoSize = True
+        Me.lblTelefono2.Location = New System.Drawing.Point(8, 116)
+        Me.lblTelefono2.Name = "lblTelefono2"
+        Me.lblTelefono2.Size = New System.Drawing.Size(55, 13)
+        Me.lblTelefono2.TabIndex = 39
+        Me.lblTelefono2.Text = "Telefono2"
         '
         'btnElminar
         '
@@ -245,7 +296,7 @@ Partial Class Actualizar_Cliente
         Me.lbl23.AutoSize = True
         Me.lbl23.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.lbl23.ForeColor = System.Drawing.Color.Red
-        Me.lbl23.Location = New System.Drawing.Point(221, 76)
+        Me.lbl23.Location = New System.Drawing.Point(222, 42)
         Me.lbl23.Name = "lbl23"
         Me.lbl23.Size = New System.Drawing.Size(15, 20)
         Me.lbl23.TabIndex = 36
@@ -257,15 +308,146 @@ Partial Class Actualizar_Cliente
         Me.cmbEstado.Items.AddRange(New Object() {"AGUAS CUALIENTES", "BAJA CALIFORNIA NORTE", "BAJA CALIFORNIA SUR", "CAMPECHE", "CHIAPAS", "CHIHUAUA", "COAHUILA", "COLIMA", "DURANGO", "ESTADO DE MEXICO", "GUANAJUATO", "GUERRRERO", "HIDALGO", "JALISCO", "MICHOACAN", "MORELOS", "NAYARIT", "NUEVO LEON", "OAXACA", "PUEBLA", "QUERETARO", "QUINTANA ROO", "SAN LUIS POTOSI", "SINALOA", "SONORA", "TABASCO", "TAMAULIPAS", "TLAXCALA", "VERACRUZ", "YUCATAN ", "ZACATECAS", "ESTADO UNIDOS DE AMERICA"})
         Me.cmbEstado.Location = New System.Drawing.Point(397, 63)
         Me.cmbEstado.Name = "cmbEstado"
-        Me.cmbEstado.Size = New System.Drawing.Size(142, 21)
+        Me.cmbEstado.Size = New System.Drawing.Size(156, 21)
         Me.cmbEstado.TabIndex = 34
+        '
+        'bntActualizar
+        '
+        Me.bntActualizar.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.bntActualizar.Image = CType(resources.GetObject("bntActualizar.Image"), System.Drawing.Image)
+        Me.bntActualizar.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
+        Me.bntActualizar.Location = New System.Drawing.Point(480, 161)
+        Me.bntActualizar.Name = "bntActualizar"
+        Me.bntActualizar.Size = New System.Drawing.Size(111, 39)
+        Me.bntActualizar.TabIndex = 16
+        Me.bntActualizar.Text = "Actualizar"
+        Me.bntActualizar.TextAlign = System.Drawing.ContentAlignment.MiddleRight
+        Me.bntActualizar.UseVisualStyleBackColor = True
+        '
+        'Label15
+        '
+        Me.Label15.AutoSize = True
+        Me.Label15.Location = New System.Drawing.Point(320, 14)
+        Me.Label15.Name = "Label15"
+        Me.Label15.Size = New System.Drawing.Size(71, 13)
+        Me.Label15.TabIndex = 29
+        Me.Label15.Text = "Codigo postal"
+        '
+        'btnCancelar
+        '
+        Me.btnCancelar.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.btnCancelar.Image = CType(resources.GetObject("btnCancelar.Image"), System.Drawing.Image)
+        Me.btnCancelar.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
+        Me.btnCancelar.Location = New System.Drawing.Point(363, 161)
+        Me.btnCancelar.Name = "btnCancelar"
+        Me.btnCancelar.Size = New System.Drawing.Size(111, 39)
+        Me.btnCancelar.TabIndex = 15
+        Me.btnCancelar.Text = "     Salir"
+        Me.btnCancelar.UseVisualStyleBackColor = True
+        '
+        'txtCodigoPostal
+        '
+        Me.txtCodigoPostal.Location = New System.Drawing.Point(397, 14)
+        Me.txtCodigoPostal.Name = "txtCodigoPostal"
+        Me.txtCodigoPostal.Size = New System.Drawing.Size(156, 20)
+        Me.txtCodigoPostal.TabIndex = 30
+        '
+        'Label6
+        '
+        Me.Label6.AutoSize = True
+        Me.Label6.Location = New System.Drawing.Point(339, 65)
+        Me.Label6.Name = "Label6"
+        Me.Label6.Size = New System.Drawing.Size(40, 13)
+        Me.Label6.TabIndex = 28
+        Me.Label6.Text = "Estado"
+        '
+        'Label14
+        '
+        Me.Label14.AutoSize = True
+        Me.Label14.Location = New System.Drawing.Point(339, 43)
+        Me.Label14.Name = "Label14"
+        Me.Label14.Size = New System.Drawing.Size(52, 13)
+        Me.Label14.TabIndex = 28
+        Me.Label14.Text = "Municipio"
+        '
+        'txtMunicipio
+        '
+        Me.txtMunicipio.Location = New System.Drawing.Point(397, 39)
+        Me.txtMunicipio.Name = "txtMunicipio"
+        Me.txtMunicipio.Size = New System.Drawing.Size(156, 20)
+        Me.txtMunicipio.TabIndex = 27
+        '
+        'lblEmail2
+        '
+        Me.lblEmail2.AutoSize = True
+        Me.lblEmail2.Location = New System.Drawing.Point(25, 137)
+        Me.lblEmail2.Name = "lblEmail2"
+        Me.lblEmail2.Size = New System.Drawing.Size(38, 13)
+        Me.lblEmail2.TabIndex = 26
+        Me.lblEmail2.Text = "Email2"
+        '
+        'txtEmail2
+        '
+        Me.txtEmail2.Location = New System.Drawing.Point(81, 131)
+        Me.txtEmail2.Name = "txtEmail2"
+        Me.txtEmail2.Size = New System.Drawing.Size(138, 20)
+        Me.txtEmail2.TabIndex = 25
+        '
+        'Label13
+        '
+        Me.Label13.AutoSize = True
+        Me.Label13.Location = New System.Drawing.Point(26, 68)
+        Me.Label13.Name = "Label13"
+        Me.Label13.Size = New System.Drawing.Size(32, 13)
+        Me.Label13.TabIndex = 26
+        Me.Label13.Text = "Email"
+        '
+        'txtEmail
+        '
+        Me.txtEmail.Location = New System.Drawing.Point(80, 62)
+        Me.txtEmail.Name = "txtEmail"
+        Me.txtEmail.Size = New System.Drawing.Size(138, 20)
+        Me.txtEmail.TabIndex = 25
+        '
+        'Label12
+        '
+        Me.Label12.AutoSize = True
+        Me.Label12.Location = New System.Drawing.Point(15, 45)
+        Me.Label12.Name = "Label12"
+        Me.Label12.Size = New System.Drawing.Size(49, 13)
+        Me.Label12.TabIndex = 24
+        Me.Label12.Text = "Telefono"
+        '
+        'txtTelefono
+        '
+        Me.txtTelefono.Location = New System.Drawing.Point(81, 38)
+        Me.txtTelefono.Name = "txtTelefono"
+        Me.txtTelefono.Size = New System.Drawing.Size(138, 20)
+        Me.txtTelefono.TabIndex = 23
+        Me.txtTelefono.Text = "355-000-0000"
+        '
+        'Label4
+        '
+        Me.Label4.AutoSize = True
+        Me.Label4.Location = New System.Drawing.Point(13, 17)
+        Me.Label4.Name = "Label4"
+        Me.Label4.Size = New System.Drawing.Size(52, 13)
+        Me.Label4.TabIndex = 19
+        Me.Label4.Text = "Direccion"
+        '
+        'txtDireccion
+        '
+        Me.txtDireccion.Location = New System.Drawing.Point(81, 14)
+        Me.txtDireccion.Name = "txtDireccion"
+        Me.txtDireccion.Size = New System.Drawing.Size(204, 20)
+        Me.txtDireccion.TabIndex = 21
         '
         'GroupBox1
         '
         Me.GroupBox1.Controls.Add(Me.rdbRazonSocial)
         Me.GroupBox1.Controls.Add(Me.rdbMujer)
         Me.GroupBox1.Controls.Add(Me.rdbHombre)
-        Me.GroupBox1.Location = New System.Drawing.Point(342, 88)
+        Me.GroupBox1.Location = New System.Drawing.Point(385, 66)
         Me.GroupBox1.Name = "GroupBox1"
         Me.GroupBox1.Size = New System.Drawing.Size(198, 51)
         Me.GroupBox1.TabIndex = 33
@@ -305,127 +487,12 @@ Partial Class Actualizar_Cliente
         Me.rdbHombre.Text = "Hombre"
         Me.rdbHombre.UseVisualStyleBackColor = True
         '
-        'bntActualizar
-        '
-        Me.bntActualizar.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.bntActualizar.Image = CType(resources.GetObject("bntActualizar.Image"), System.Drawing.Image)
-        Me.bntActualizar.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
-        Me.bntActualizar.Location = New System.Drawing.Point(480, 161)
-        Me.bntActualizar.Name = "bntActualizar"
-        Me.bntActualizar.Size = New System.Drawing.Size(111, 39)
-        Me.bntActualizar.TabIndex = 16
-        Me.bntActualizar.Text = "Actualizar"
-        Me.bntActualizar.TextAlign = System.Drawing.ContentAlignment.MiddleRight
-        Me.bntActualizar.UseVisualStyleBackColor = True
-        '
-        'Label15
-        '
-        Me.Label15.AutoSize = True
-        Me.Label15.Location = New System.Drawing.Point(3, 44)
-        Me.Label15.Name = "Label15"
-        Me.Label15.Size = New System.Drawing.Size(71, 13)
-        Me.Label15.TabIndex = 29
-        Me.Label15.Text = "Codigo postal"
-        '
-        'btnCancelar
-        '
-        Me.btnCancelar.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.btnCancelar.Image = CType(resources.GetObject("btnCancelar.Image"), System.Drawing.Image)
-        Me.btnCancelar.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
-        Me.btnCancelar.Location = New System.Drawing.Point(363, 161)
-        Me.btnCancelar.Name = "btnCancelar"
-        Me.btnCancelar.Size = New System.Drawing.Size(111, 39)
-        Me.btnCancelar.TabIndex = 15
-        Me.btnCancelar.Text = "     Salir"
-        Me.btnCancelar.UseVisualStyleBackColor = True
-        '
-        'txtCodigoPostal
-        '
-        Me.txtCodigoPostal.Location = New System.Drawing.Point(80, 44)
-        Me.txtCodigoPostal.Name = "txtCodigoPostal"
-        Me.txtCodigoPostal.Size = New System.Drawing.Size(204, 20)
-        Me.txtCodigoPostal.TabIndex = 30
-        '
-        'Label6
-        '
-        Me.Label6.AutoSize = True
-        Me.Label6.Location = New System.Drawing.Point(339, 65)
-        Me.Label6.Name = "Label6"
-        Me.Label6.Size = New System.Drawing.Size(40, 13)
-        Me.Label6.TabIndex = 28
-        Me.Label6.Text = "Estado"
-        '
-        'Label14
-        '
-        Me.Label14.AutoSize = True
-        Me.Label14.Location = New System.Drawing.Point(339, 40)
-        Me.Label14.Name = "Label14"
-        Me.Label14.Size = New System.Drawing.Size(52, 13)
-        Me.Label14.TabIndex = 28
-        Me.Label14.Text = "Municipio"
-        '
-        'txtMunicipio
-        '
-        Me.txtMunicipio.Location = New System.Drawing.Point(397, 36)
-        Me.txtMunicipio.Name = "txtMunicipio"
-        Me.txtMunicipio.Size = New System.Drawing.Size(138, 20)
-        Me.txtMunicipio.TabIndex = 27
-        '
-        'Label13
-        '
-        Me.Label13.AutoSize = True
-        Me.Label13.Location = New System.Drawing.Point(338, 16)
-        Me.Label13.Name = "Label13"
-        Me.Label13.Size = New System.Drawing.Size(32, 13)
-        Me.Label13.TabIndex = 26
-        Me.Label13.Text = "Email"
-        '
-        'txtEmail
-        '
-        Me.txtEmail.Location = New System.Drawing.Point(397, 10)
-        Me.txtEmail.Name = "txtEmail"
-        Me.txtEmail.Size = New System.Drawing.Size(138, 20)
-        Me.txtEmail.TabIndex = 25
-        '
-        'Label12
-        '
-        Me.Label12.AutoSize = True
-        Me.Label12.Location = New System.Drawing.Point(3, 76)
-        Me.Label12.Name = "Label12"
-        Me.Label12.Size = New System.Drawing.Size(49, 13)
-        Me.Label12.TabIndex = 24
-        Me.Label12.Text = "Telefono"
-        '
-        'txtTelefono
-        '
-        Me.txtTelefono.Location = New System.Drawing.Point(80, 76)
-        Me.txtTelefono.Name = "txtTelefono"
-        Me.txtTelefono.Size = New System.Drawing.Size(138, 20)
-        Me.txtTelefono.TabIndex = 23
-        Me.txtTelefono.Text = "355-000-0000"
-        '
-        'Label4
-        '
-        Me.Label4.AutoSize = True
-        Me.Label4.Location = New System.Drawing.Point(3, 17)
-        Me.Label4.Name = "Label4"
-        Me.Label4.Size = New System.Drawing.Size(52, 13)
-        Me.Label4.TabIndex = 19
-        Me.Label4.Text = "Direccion"
-        '
-        'txtDireccion
-        '
-        Me.txtDireccion.Location = New System.Drawing.Point(80, 14)
-        Me.txtDireccion.Name = "txtDireccion"
-        Me.txtDireccion.Size = New System.Drawing.Size(204, 20)
-        Me.txtDireccion.TabIndex = 21
-        '
         'lbl22
         '
         Me.lbl22.AutoSize = True
         Me.lbl22.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.lbl22.ForeColor = System.Drawing.Color.Red
-        Me.lbl22.Location = New System.Drawing.Point(584, 76)
+        Me.lbl22.Location = New System.Drawing.Point(584, 46)
         Me.lbl22.Name = "lbl22"
         Me.lbl22.Size = New System.Drawing.Size(15, 20)
         Me.lbl22.TabIndex = 35
@@ -434,7 +501,7 @@ Partial Class Actualizar_Cliente
         'Label8
         '
         Me.Label8.AutoSize = True
-        Me.Label8.Location = New System.Drawing.Point(386, 80)
+        Me.Label8.Location = New System.Drawing.Point(386, 46)
         Me.Label8.Name = "Label8"
         Me.Label8.Size = New System.Drawing.Size(29, 13)
         Me.Label8.TabIndex = 17
@@ -442,18 +509,18 @@ Partial Class Actualizar_Cliente
         '
         'txtAlias
         '
-        Me.txtAlias.Location = New System.Drawing.Point(427, 76)
+        Me.txtAlias.Location = New System.Drawing.Point(427, 42)
         Me.txtAlias.Name = "txtAlias"
         Me.txtAlias.Size = New System.Drawing.Size(156, 20)
         Me.txtAlias.TabIndex = 20
         '
         'Panel1
         '
-        Me.Panel1.Controls.Add(Me.chbActivo)
         Me.Panel1.Controls.Add(Me.lbl22)
         Me.Panel1.Controls.Add(Me.txtNombre)
         Me.Panel1.Controls.Add(Me.lbl19)
         Me.Panel1.Controls.Add(Me.lbl18)
+        Me.Panel1.Controls.Add(Me.GroupBox1)
         Me.Panel1.Controls.Add(Me.Label7)
         Me.Panel1.Controls.Add(Me.cmbTipoPersona)
         Me.Panel1.Controls.Add(Me.Label1)
@@ -467,16 +534,6 @@ Partial Class Actualizar_Cliente
         Me.Panel1.Name = "Panel1"
         Me.Panel1.Size = New System.Drawing.Size(602, 120)
         Me.Panel1.TabIndex = 29
-        '
-        'chbActivo
-        '
-        Me.chbActivo.AutoSize = True
-        Me.chbActivo.Location = New System.Drawing.Point(427, 46)
-        Me.chbActivo.Name = "chbActivo"
-        Me.chbActivo.Size = New System.Drawing.Size(56, 17)
-        Me.chbActivo.TabIndex = 21
-        Me.chbActivo.Text = "Activo"
-        Me.chbActivo.UseVisualStyleBackColor = True
         '
         'txtNombre
         '
@@ -568,6 +625,16 @@ Partial Class Actualizar_Cliente
         Me.txtrfc.TabIndex = 10
         Me.txtrfc.Text = "XAXX010101000"
         '
+        'chbActivo
+        '
+        Me.chbActivo.AutoSize = True
+        Me.chbActivo.Location = New System.Drawing.Point(558, 9)
+        Me.chbActivo.Name = "chbActivo"
+        Me.chbActivo.Size = New System.Drawing.Size(56, 17)
+        Me.chbActivo.TabIndex = 21
+        Me.chbActivo.Text = "Activo"
+        Me.chbActivo.UseVisualStyleBackColor = True
+        '
         'Label5
         '
         Me.Label5.AutoSize = True
@@ -576,21 +643,12 @@ Partial Class Actualizar_Cliente
         Me.Label5.Size = New System.Drawing.Size(0, 13)
         Me.Label5.TabIndex = 28
         '
-        'chbActivarCredito
-        '
-        Me.chbActivarCredito.AutoSize = True
-        Me.chbActivarCredito.Location = New System.Drawing.Point(504, 3)
-        Me.chbActivarCredito.Name = "chbActivarCredito"
-        Me.chbActivarCredito.Size = New System.Drawing.Size(95, 17)
-        Me.chbActivarCredito.TabIndex = 41
-        Me.chbActivarCredito.Text = "Activar Credito"
-        Me.chbActivarCredito.UseVisualStyleBackColor = True
-        '
         'Actualizar_Cliente
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(624, 493)
+        Me.Controls.Add(Me.chbActivo)
         Me.Controls.Add(Me.Label9)
         Me.Controls.Add(Me.Label16)
         Me.Controls.Add(Me.Panel3)
@@ -661,6 +719,12 @@ Partial Class Actualizar_Cliente
     Friend WithEvents chbActivo As CheckBox
     Friend WithEvents Label17 As Label
     Friend WithEvents txtSaldo As TextBox
-    Friend WithEvents Button1 As Button
     Friend WithEvents chbActivarCredito As CheckBox
+    Friend WithEvents lblDireccion2 As Label
+    Friend WithEvents txtDireccion2 As TextBox
+    Friend WithEvents txtTelefono2 As TextBox
+    Friend WithEvents lblTelefono2 As Label
+    Friend WithEvents lblEmail2 As Label
+    Friend WithEvents txtEmail2 As TextBox
+    Friend WithEvents chbActivarAcomposExtras As CheckBox
 End Class

@@ -1,7 +1,7 @@
 ﻿Public Class ConsultarEmpleado
     Dim dv As New DataView
-    Public datosEmple(8) As String
-    Public nombreV, sexoV, salarioV, telV, direccionV, BodegaV, horarioV, PuestoV As String
+    Public datosEm(10) As String
+
 
     Public Sub Consul()
         Dim fun As New MetodosEmpleado
@@ -69,10 +69,10 @@
             If tblEmple.CurrentRow IsNot Nothing Then
                 Dim con As Int16 = 0
                 For Each cell As DataGridViewCell In tblEmple.CurrentRow.Cells
-                    datosEmple(con) = cell.Value.ToString
+                    datosEm(con) = cell.Value.ToString
                     con += 1
                 Next
-                eliEm.EliminarEmple(datosEmple)
+                eliEm.EliminarEmple(datosEm)
             Else
                 MsgBox("No se ha seleccionado un empleado")
             End If
@@ -85,49 +85,30 @@
 
     Private Sub btnActualizarEmple_Click(sender As Object, e As EventArgs) Handles btnActualizarEmple.Click
         Try
-
-            Dim nombre As String = Convert.ToString(tblEmple.CurrentRow.Cells(0).Value)
-            Dim sexo As String = Convert.ToString(tblEmple.CurrentRow.Cells(1).Value)
-            Dim sala As String = Convert.ToString(tblEmple.CurrentRow.Cells(2).Value)
-            Dim tel As String = Convert.ToString(tblEmple.CurrentRow.Cells(3).Value)
-            Dim dire As String = Convert.ToString(tblEmple.CurrentRow.Cells(4).Value)
-            Dim bodega As String = Convert.ToString(tblEmple.CurrentRow.Cells(5).Value)
-            Dim horario As String = Convert.ToString(tblEmple.CurrentRow.Cells(6).Value)
-            Dim puesto As String = Convert.ToString(tblEmple.CurrentRow.Cells(7).Value)
-            nombreV = nombre
-            sexoV = sexo
-            salarioV = sala
-            telV = tel
-            direccionV = dire
-            BodegaV = bodega
-            horarioV = horario
-            PuestoV = puesto
-
-            ActualizarEmpleados.txtEmNombre.Text = nombre
-            If ActualizarEmpleados.rbuEmFemenino.Equals(sexo) = True Then
-                ActualizarEmpleados.rbuEmFemenino.Select()
-            ElseIf ActualizarEmpleados.rbuEmMasculino.Equals(sexo) = True Then
-                ActualizarEmpleados.rbuEmMasculino.Select()
+            If tblEmple.CurrentRow IsNot Nothing Then
+                Dim cont As Int16 = 0
+                For Each cell As DataGridViewCell In tblEmple.CurrentRow.Cells
+                    datosEm(cont) = cell.Value.ToString
+                    cont += 1
+                Next
+            Else
+                MsgBox("No se ha seleccionado un proveedor")
             End If
-            ActualizarEmpleados.txtEmSalario.Text = sala
-            ActualizarEmpleados.txtEmTelefono.Text = tel
-            ActualizarEmpleados.txtEmDireccion.Text = dire
-            ActualizarEmpleados.cboEmBodega.Text = bodega
-            ActualizarEmpleados.cboEmHorario.Text = horario
-            ActualizarEmpleados.cboEmPuesto.Text = puesto
-            ActualizarEmpleados.nombre = nombreV
-            ActualizarEmpleados.sexo = sexoV
-            ActualizarEmpleados.sala = salarioV
-            ActualizarEmpleados.telefono = telV
-            ActualizarEmpleados.dire = direccionV
-            ActualizarEmpleados.bodega = BodegaV
-            ActualizarEmpleados.horario = horarioV
-            ActualizarEmpleados.puesto = PuestoV
-            ActualizarEmpleados.Show()
-
         Catch ex As Exception
-            MsgBox("No seleccionaste un reglon")
+            MsgBox(ex.Message)
         End Try
+        ActualizarEmpleados.Show()
+    End Sub
 
+    Private Sub tblEmple_CellClick(sender As Object, e As DataGridViewCellEventArgs) Handles tblEmple.CellClick
+        If tblEmple.CurrentRow IsNot Nothing Then
+            Dim p As Integer = 0
+            For Each cell As DataGridViewCell In tblEmple.CurrentRow.Cells
+                datosEm(p) = CStr(cell.Value.ToString)
+                p += 1
+            Next
+        Else
+            MsgBox("No se ha seleccionado un proveedor")
+        End If
     End Sub
 End Class

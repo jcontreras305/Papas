@@ -233,6 +233,12 @@
     <Compile Include="Formularios\Reclasificacion.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="Formularios\Reclasificar.Designer.vb">
+      <DependentUpon>Reclasificar.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Formularios\Reclasificar.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="Formularios\Registrar_Bodega.Designer.vb">
       <DependentUpon>Registrar_Bodega.vb</DependentUpon>
     </Compile>
@@ -318,10 +324,10 @@
     <Compile Include="Formularios\Reporte_de_ventas.vb">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Formularios\Transpasos.Designer.vb">
-      <DependentUpon>Transpasos.vb</DependentUpon>
+    <Compile Include="Formularios\Reubicacion.Designer.vb">
+      <DependentUpon>Reubicacion.vb</DependentUpon>
     </Compile>
-    <Compile Include="Formularios\Transpasos.vb">
+    <Compile Include="Formularios\Reubicacion.vb">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Formularios\Usuarios.Designer.vb">
@@ -353,9 +359,9 @@
     <Compile Include="Metodos\MetodosMatrizCiudad.vb" />
     <Compile Include="Metodos\MetodosPerfiles.vb" />
     <Compile Include="Metodos\MetodosProducto.vb" />
-    <Compile Include="Metodos\MetodosProductos.vb" />
     <Compile Include="Metodos\MetodosProveedor.vb" />
-    <Compile Include="Metodos\MetodosTranspasos.vb" />
+    <Compile Include="Metodos\MetodosReclasificacion.vb" />
+    <Compile Include="Metodos\MetodosReubicacion.vb" />
     <Compile Include="Metodos\MetodosUsuarios.vb" />
     <Compile Include="Metodos\MetodosVenta.vb" />
     <Compile Include="My Project\AssemblyInfo.vb" />
@@ -392,6 +398,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Formularios\Actualizar_Producto.resx">
       <DependentUpon>Actualizar_Producto.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formularios\Actualizar_Proveedor.resx">
+      <DependentUpon>Actualizar_Proveedor.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formularios\Caja.resx">
+      <DependentUpon>Caja.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Formularios\Catálogo.resx">
       <DependentUpon>Catálogo.vb</DependentUpon>
@@ -447,6 +459,12 @@
     <EmbeddedResource Include="Formularios\PerfilesDeLosUsuarios.resx">
       <DependentUpon>PerfilesDeLosUsuarios.vb</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Formularios\Reclasificacion.resx">
+      <DependentUpon>Reclasificacion.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formularios\Reclasificar.resx">
+      <DependentUpon>Reclasificar.vb</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Formularios\Registrar_Bodega.resx">
       <DependentUpon>Registrar_Bodega.vb</DependentUpon>
     </EmbeddedResource>
@@ -486,8 +504,8 @@
     <EmbeddedResource Include="Formularios\Registro_productos.resx">
       <DependentUpon>Registro_productos.vb</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Formularios\Transpasos.resx">
-      <DependentUpon>Transpasos.vb</DependentUpon>
+    <EmbeddedResource Include="Formularios\Reubicacion.resx">
+      <DependentUpon>Reubicacion.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Formularios\Usuarios.resx">
       <DependentUpon>Usuarios.vb</DependentUpon>
@@ -523,6 +541,8 @@
   <ItemGroup>
     <Content Include="Documentos\CambioTablasClienteContactoCredito02-08-19.sql" />
     <Content Include="Documentos\inserciones.sql" />
+    <Content Include="Documentos\ISAAC.sql" />
+    <Content Include="Documentos\LARIGZA.sql" />
     <Content Include="Documentos\PS_ACTUAL1.0.sql" />
     <Content Include="Imagenes\ACTUALIZAR.png" />
     <Content Include="Imagenes\ALMACEN.jpg" />
