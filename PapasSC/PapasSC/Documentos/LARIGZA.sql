@@ -9,9 +9,11 @@ alter table proveedores drop column  telefono
 alter table proveedores drop column  email
 
 -----------Agregar columnas a la tabla de proveedor------------
+alter table proveedores add estatus char(1) 
 alter table proveedores add rfc varchar(13) 
-
 alter table proveedores add razonSocial varchar(100) 
+alter table proveedores add idTipoCliente varchar (36)
+alter table proveedores add fechaRegistro date
 
 alter table proveedores
 add constraint fk_idTipoCliente_Proveedor
@@ -50,6 +52,19 @@ references proveedores(idProveedor)
 alter table credito
 add saldo float null
 
+-----------------------Consultar proveedores---------------------------
+
+create procedure sp_Consultar_Proveedores
+as
+begin 
+select p.nombre as Nombre,  c.nombre as Alias, p.rfc as RFC, p.razonSocial as RazónSocial,t.tipo as Tipo, c.genero as Sexo, 
+c.direccion as Dirección, 
+c.telefono as Teléfono,c.email as Email, 
+c.direccion2 as Dirección2,c.telefono2 as Teléfono2, c.email2 as EmailAlternativo, ci.nombre as OrigenMatriz,c.estado as Estado,c.municipio as Municipio,
+c.codigoPostal as CodigoPostal from proveedores p inner join
+conctatoProveedor c on p.idProveedor = c.idProveedor inner join  tipoCliente t on p.idTipoCliente  = t.idTipoCliente  inner join ciudad ci on 
+ci.idCiudad = p.idCiudad where  p.estatus='A'
+end
 
 ---------------------------------------------Insertar un proveedor---------------------------------------------
 
@@ -83,7 +98,7 @@ declare @flag int
 			select @idProveedor = NEWID ()
 			select @idCiudad=idCiudad from ciudad where nombre = @nombreCiu 
 			select @idtipoPersona = idTipoCliente  from tipoCliente where tipo = @TipoPer 
-			insert into proveedores values (@idProveedor,@nombre,@idCiudad,@estatus,@rfc,@razonSocial,@idtipoPersona,GETDATE())
+			insert into proveedores values (@idProveedor,@nombre,@idCiudad,@estatus,@rfc,@razonSocial,@idtipoPersona,GETDATE())--
 			if @@ERROR <> 0 begin set @flag = @@ERROR end 
 			insert into conctatoProveedor  values (NEWID (),@NomContacto,@genero,@direccion,@direccion2,@telefono,@telefono2,@email,
 			@email2,@estado,@municipio,@codigoPostal,@idProveedor)
@@ -100,8 +115,6 @@ declare @flag int
 			print 'ERROR'
 		end
 	end
-
-
 ------------------------------------------------------Actualizar un proveedor---------------------------------------------
 
 create procedure sp_Actualizar_ProveedorNuevo
@@ -169,6 +182,7 @@ end
 
 create procedure sp_Consultar_Proveedores
 as
+begin 
 select p.nombre as Nombre,  c.nombre as Alias, p.rfc as RFC, p.razonSocial as RazónSocial,t.tipo as Tipo, c.genero as Sexo, 
 c.direccion as Dirección, 
 c.telefono as Teléfono,c.email as Email, 
@@ -176,12 +190,13 @@ c.direccion2 as Dirección2,c.telefono2 as Teléfono2, c.email2 as EmailAlternativ
 c.codigoPostal as CodigoPostal from proveedores p inner join
 conctatoProveedor c on p.idProveedor = c.idProveedor inner join  tipoCliente t on p.idTipoCliente  = t.idTipoCliente  inner join ciudad ci on 
 ci.idCiudad = p.idCiudad where  p.estatus='A'
-
+end
 execute sp_Consultar_Proveedores 
 
 ---------------------------------------------------------------------------------------------------------------------------------------------------------
 create procedure sp_Consultar_ProveedoresTodos
 as
+begin 
 select p.nombre as Nombre,  c.nombre as Alias, p.rfc as RFC, p.razonSocial as RazónSocial,t.tipo as Tipo, c.genero as Sexo, 
 c.direccion as Dirección, 
 c.telefono as Teléfono,c.email as Email, 
@@ -189,7 +204,7 @@ c.direccion2 as Dirección2,c.telefono2 as Teléfono2, c.email2 as EmailAlternativ
 c.codigoPostal as CodigoPostal from proveedores p inner join
 conctatoProveedor c on p.idProveedor = c.idProveedor inner join  tipoCliente t on p.idTipoCliente  = t.idTipoCliente  inner join ciudad ci on 
 ci.idCiudad = p.idCiudad 
-
+end
 execute sp_Consultar_ProveedoresTodos 
 
 select * from proveedores 
@@ -199,6 +214,7 @@ select * from proveedores
 create procedure sp_BuscarOrigenCiudad
 @nombreCiu varchar(50)
 as
+begin
 select p.nombre as Nombre,  c.nombre as Alias, p.rfc as RFC, p.razonSocial as RazónSocial,t.tipo as Tipo, c.genero as Sexo, 
 c.direccion as Dirección, 
 c.telefono as Teléfono,c.email as Email, 
@@ -206,7 +222,7 @@ c.direccion2 as Dirección2,c.telefono2 as Teléfono2, c.email2 as EmailAlternativ
 c.codigoPostal as CodigoPostal from proveedores p inner join
 conctatoProveedor c on p.idProveedor = c.idProveedor inner join  tipoCliente t on p.idTipoCliente  = t.idTipoCliente  inner join ciudad ci on 
 ci.idCiudad = p.idCiudad where ci.nombre like '%'+@nombreCiu+'%'   and   p.estatus='A' 
-
+end
 execute sp_BuscarOrigenCiudad 'za'
 
 ----------------------------------------------------------------------------------------------------------------------------------------------------------
@@ -214,6 +230,7 @@ execute sp_BuscarOrigenCiudad 'za'
 create procedure sp_BucarProveedor
 @nombrePro varchar(50)
 as
+begin
 select p.nombre as Nombre,  c.nombre as Alias, p.rfc as RFC, p.razonSocial as RazónSocial,t.tipo as Tipo, c.genero as Sexo, 
 c.direccion as Dirección, 
 c.telefono as Teléfono,c.email as Email, 
@@ -221,6 +238,7 @@ c.direccion2 as Dirección2,c.telefono2 as Teléfono2, c.email2 as EmailAlternativ
 c.codigoPostal as CodigoPostal from proveedores p inner join
 conctatoProveedor c on p.idProveedor = c.idProveedor inner join  tipoCliente t on p.idTipoCliente  = t.idTipoCliente  inner join ciudad ci on 
 ci.idCiudad = p.idCiudad where p.nombre like '%'+@nombrePro+'%'   and   p.estatus='A' 
+end
 
 execute sp_BucarProveedor 'Lu'
 
@@ -228,6 +246,7 @@ execute sp_BucarProveedor 'Lu'
 create procedure Buscar_TipoCliente_Empleado
 @TipoPersona varchar(10)
 as
+begin 
 select p.nombre as Nombre,  c.nombre as Alias, p.rfc as RFC, p.razonSocial as RazónSocial,t.tipo as Tipo, c.genero as Sexo, 
 c.direccion as Dirección, 
 c.telefono as Teléfono,c.email as Email, 
@@ -235,13 +254,14 @@ c.direccion2 as Dirección2,c.telefono2 as Teléfono2, c.email2 as EmailAlternativ
 c.codigoPostal as CodigoPostal from proveedores p inner join
 conctatoProveedor c on p.idProveedor = c.idProveedor inner join  tipoCliente t on p.idTipoCliente  = t.idTipoCliente  inner join ciudad ci on 
 ci.idCiudad = p.idCiudad where t.tipo like '%'+@TipoPersona+'%'   and   p.estatus='A' 
-
+end
 exec Buscar_TipoCliente_Empleado 'M'
 
 ----------------------------------------------------------------------------------------------------------------------------------------------------------
 create procedure Buscar_RazonSocial_Empleado
 @Rasocial varchar(10)
 as
+begin
 select p.nombre as Nombre,  c.nombre as Alias, p.rfc as RFC, p.razonSocial as RazónSocial,t.tipo as Tipo, c.genero as Sexo, 
 c.direccion as Dirección, 
 c.telefono as Teléfono,c.email as Email, 
@@ -249,7 +269,7 @@ c.direccion2 as Dirección2,c.telefono2 as Teléfono2, c.email2 as EmailAlternativ
 c.codigoPostal as CodigoPostal from proveedores p inner join
 conctatoProveedor c on p.idProveedor = c.idProveedor inner join  tipoCliente t on p.idTipoCliente  = t.idTipoCliente  inner join ciudad ci on 
 ci.idCiudad = p.idCiudad where p.razonSocial  like '%'+@Rasocial+'%'   and   p.estatus='A' 
-
+end
 exec Buscar_RazonSocial_Empleado ''
 
 ---------------------------------------------------------------------------------------------------------------------------------------------------------
@@ -257,6 +277,7 @@ exec Buscar_RazonSocial_Empleado ''
 create procedure Buscar_AliasContacto_Empleado
 @AliasCont varchar(10)
 as
+begin
 select p.nombre as Nombre,  c.nombre as Alias, p.rfc as RFC, p.razonSocial as RazónSocial,t.tipo as Tipo, c.genero as Sexo, 
 c.direccion as Dirección, 
 c.telefono as Teléfono,c.email as Email, 
@@ -264,7 +285,7 @@ c.direccion2 as Dirección2,c.telefono2 as Teléfono2, c.email2 as EmailAlternativ
 c.codigoPostal as CodigoPostal from proveedores p inner join
 conctatoProveedor c on p.idProveedor = c.idProveedor inner join  tipoCliente t on p.idTipoCliente  = t.idTipoCliente  inner join ciudad ci on 
 ci.idCiudad = p.idCiudad where c.nombre   like '%'+@AliasCont +'%'   and   p.estatus='A' 
-
+end
 
 exec Buscar_AliasContacto_Empleado ''
 
@@ -273,6 +294,7 @@ exec Buscar_AliasContacto_Empleado ''
 create procedure Buscar_RFC_Empleado
 @rfc varchar(10)
 as
+begin 
 select p.nombre as Nombre,  c.nombre as Alias, p.rfc as RFC, p.razonSocial as RazónSocial,t.tipo as Tipo, c.genero as Sexo, 
 c.direccion as Dirección, 
 c.telefono as Teléfono,c.email as Email, 
@@ -280,6 +302,7 @@ c.direccion2 as Dirección2,c.telefono2 as Teléfono2, c.email2 as EmailAlternativ
 c.codigoPostal as CodigoPostal from proveedores p inner join
 conctatoProveedor c on p.idProveedor = c.idProveedor inner join  tipoCliente t on p.idTipoCliente  = t.idTipoCliente  inner join ciudad ci on 
 ci.idCiudad = p.idCiudad where p.rfc  like '%'+@rfc+'%'   and   p.estatus='A' 
+end
 
 exec Buscar_RFC_Empleado ''
 
@@ -433,8 +456,15 @@ end
 execute sp_select_CiudadEmple
 
 
--------------------------------------------------------------------------------------------------------------------------------------------------------------
+--------------------------------------------------------------------------------------------------------------------------------------------------------------
+create proc sp_select_CiudadPro
+as
+begin 
+	select nombre from ciudad where estatus like 'A' order by nombre asc
+end
+execute sp_select_CiudadPro
 
+--------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 create procedure sp_Insertar_Empleado
 @nombre varchar(80),
