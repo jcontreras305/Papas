@@ -22,18 +22,18 @@ Partial Class tickets
     'No lo modifique con el editor de código.
     <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
-        Me.DataGridView1 = New System.Windows.Forms.DataGridView()
+        Me.tblVentas = New System.Windows.Forms.DataGridView()
         Me.btnPruebaTicket = New System.Windows.Forms.Button()
-        CType(Me.DataGridView1, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.tblVentas, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
-        'DataGridView1
+        'tblVentas
         '
-        Me.DataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
-        Me.DataGridView1.Location = New System.Drawing.Point(19, 195)
-        Me.DataGridView1.Name = "DataGridView1"
-        Me.DataGridView1.Size = New System.Drawing.Size(769, 212)
-        Me.DataGridView1.TabIndex = 0
+        Me.tblVentas.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
+        Me.tblVentas.Location = New System.Drawing.Point(19, 195)
+        Me.tblVentas.Name = "tblVentas"
+        Me.tblVentas.Size = New System.Drawing.Size(769, 212)
+        Me.tblVentas.TabIndex = 0
         '
         'btnPruebaTicket
         '
@@ -50,14 +50,14 @@ Partial Class tickets
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(800, 450)
         Me.Controls.Add(Me.btnPruebaTicket)
-        Me.Controls.Add(Me.DataGridView1)
+        Me.Controls.Add(Me.tblVentas)
         Me.Name = "tickets"
         Me.Text = "tickets"
-        CType(Me.DataGridView1, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.tblVentas, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
 
     End Sub
 
-    Friend WithEvents DataGridView1 As DataGridView
+    Friend WithEvents tblVentas As DataGridView
     Friend WithEvents btnPruebaTicket As Button
 End Class

@@ -128,3 +128,24 @@ add idCaja varchar(36)
 alter table venta 
 add constraint fk_idCaja_venta
 foreign key (idCaja) references caja(idCaja)
+
+alter table venta 
+add folio int
+
+alter table venta 
+add idTicket varchar(36)
+
+create table ticket(
+	idTicket varchar(36) primary key not null,
+	idBodega varchar(36),
+	clave varchar(20),
+	nombre varchar(50),
+	tipoFuente varchar(30),
+	tamañoFuente int,
+	textoEnbezado varchar(50),
+	textoPie varchar(100)
+)
+
+alter table venta
+add constraint fk_ticket_venta
+foreign key (idTicket) references ticket(idTicket)
