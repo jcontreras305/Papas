@@ -133,8 +133,14 @@
         If (formulario IsNot Nothing) Then
             formulario.Close()
             formulario = Nothing
+            MenuVentas.nombre = NombreUsuario.Text
             AbrirFormEnPanel(Of MenuVentas)()
+            formulario.Tag = NombreUsuario
+
+
+
         Else
+
             AbrirFormEnPanel(Of MenuVentas)()
         End If
     End Sub

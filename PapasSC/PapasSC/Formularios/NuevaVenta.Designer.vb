@@ -23,59 +23,69 @@ Partial Class NuevaVenta
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
         Me.components = New System.ComponentModel.Container()
-        Me.General = New System.Windows.Forms.CheckBox()
-        Me.DataGridView1 = New System.Windows.Forms.DataGridView()
+        Me.cbxRealizaventa = New System.Windows.Forms.CheckBox()
+        Me.tblventa = New System.Windows.Forms.DataGridView()
         Me.Label1 = New System.Windows.Forms.Label()
-        Me.ComboBox1 = New System.Windows.Forms.ComboBox()
-        Me.ComboBox2 = New System.Windows.Forms.ComboBox()
+        Me.cmbProducto = New System.Windows.Forms.ComboBox()
         Me.Label2 = New System.Windows.Forms.Label()
-        Me.NumericUpDown1 = New System.Windows.Forms.NumericUpDown()
-        Me.NumericUpDown2 = New System.Windows.Forms.NumericUpDown()
-        Me.Label3 = New System.Windows.Forms.Label()
+        Me.npdprecio = New System.Windows.Forms.NumericUpDown()
+        Me.npdkilos = New System.Windows.Forms.NumericUpDown()
         Me.Button1 = New System.Windows.Forms.Button()
-        Me.Label4 = New System.Windows.Forms.Label()
         Me.l = New System.Windows.Forms.Label()
         Me.fecha_hoy = New System.Windows.Forms.Timer(Me.components)
-        Me.Label5 = New System.Windows.Forms.Label()
-        Me.ComboBox4 = New System.Windows.Forms.ComboBox()
         Me.TabControl1 = New System.Windows.Forms.TabControl()
         Me.TabPage1 = New System.Windows.Forms.TabPage()
-        Me.TabPage2 = New System.Windows.Forms.TabPage()
-        Me.ComboBox3 = New System.Windows.Forms.ComboBox()
-        Me.DataGridView2 = New System.Windows.Forms.DataGridView()
-        Me.Label6 = New System.Windows.Forms.Label()
-        Me.CheckBox1 = New System.Windows.Forms.CheckBox()
-        Me.Button3 = New System.Windows.Forms.Button()
+        Me.cbxBodega = New System.Windows.Forms.CheckBox()
+        Me.Label5 = New System.Windows.Forms.Label()
+        Me.cmbBodega = New System.Windows.Forms.ComboBox()
+        Me.Label8 = New System.Windows.Forms.Label()
+        Me.npdCantidadPagada = New System.Windows.Forms.NumericUpDown()
+        Me.cmbFormaPago = New System.Windows.Forms.ComboBox()
+        Me.Label7 = New System.Windows.Forms.Label()
         Me.Button2 = New System.Windows.Forms.Button()
-        CType(Me.DataGridView1, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.NumericUpDown1, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.NumericUpDown2, System.ComponentModel.ISupportInitialize).BeginInit()
+        Me.Button3 = New System.Windows.Forms.Button()
+        Me.cbxEspera = New System.Windows.Forms.CheckBox()
+        Me.lblTotal = New System.Windows.Forms.Label()
+        Me.cmbCliente = New System.Windows.Forms.ComboBox()
+        Me.Label3 = New System.Windows.Forms.Label()
+        Me.TabPage2 = New System.Windows.Forms.TabPage()
+        Me.Button7 = New System.Windows.Forms.Button()
+        Me.Button6 = New System.Windows.Forms.Button()
+        Me.ComboBox5 = New System.Windows.Forms.ComboBox()
+        Me.TextBox1 = New System.Windows.Forms.TextBox()
+        Me.Button5 = New System.Windows.Forms.Button()
+        Me.Button4 = New System.Windows.Forms.Button()
+        Me.DataGridView2 = New System.Windows.Forms.DataGridView()
+        CType(Me.tblventa, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.npdprecio, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.npdkilos, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.TabControl1.SuspendLayout()
         Me.TabPage1.SuspendLayout()
+        CType(Me.npdCantidadPagada, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.TabPage2.SuspendLayout()
         CType(Me.DataGridView2, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
-        'General
+        'cbxRealizaventa
         '
-        Me.General.AutoSize = True
-        Me.General.Location = New System.Drawing.Point(16, 26)
-        Me.General.Name = "General"
-        Me.General.Size = New System.Drawing.Size(132, 17)
-        Me.General.TabIndex = 0
-        Me.General.Text = "Venta Publico General"
-        Me.General.UseVisualStyleBackColor = True
+        Me.cbxRealizaventa.AutoSize = True
+        Me.cbxRealizaventa.Location = New System.Drawing.Point(16, 26)
+        Me.cbxRealizaventa.Name = "cbxRealizaventa"
+        Me.cbxRealizaventa.Size = New System.Drawing.Size(132, 17)
+        Me.cbxRealizaventa.TabIndex = 0
+        Me.cbxRealizaventa.Text = "Venta Publico General"
+        Me.cbxRealizaventa.UseVisualStyleBackColor = True
         '
-        'DataGridView1
+        'tblventa
         '
-        Me.DataGridView1.AllowUserToAddRows = False
-        Me.DataGridView1.AllowUserToDeleteRows = False
-        Me.DataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
-        Me.DataGridView1.Location = New System.Drawing.Point(337, 26)
-        Me.DataGridView1.Name = "DataGridView1"
-        Me.DataGridView1.ReadOnly = True
-        Me.DataGridView1.Size = New System.Drawing.Size(232, 398)
-        Me.DataGridView1.TabIndex = 2
+        Me.tblventa.AllowUserToAddRows = False
+        Me.tblventa.AllowUserToDeleteRows = False
+        Me.tblventa.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
+        Me.tblventa.Location = New System.Drawing.Point(319, 26)
+        Me.tblventa.Name = "tblventa"
+        Me.tblventa.ReadOnly = True
+        Me.tblventa.Size = New System.Drawing.Size(250, 398)
+        Me.tblventa.TabIndex = 2
         '
         'Label1
         '
@@ -86,21 +96,14 @@ Partial Class NuevaVenta
         Me.Label1.TabIndex = 3
         Me.Label1.Text = "Kilogramos" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10)
         '
-        'ComboBox1
+        'cmbProducto
         '
-        Me.ComboBox1.FormattingEnabled = True
-        Me.ComboBox1.Location = New System.Drawing.Point(16, 73)
-        Me.ComboBox1.Name = "ComboBox1"
-        Me.ComboBox1.Size = New System.Drawing.Size(193, 21)
-        Me.ComboBox1.TabIndex = 4
-        '
-        'ComboBox2
-        '
-        Me.ComboBox2.FormattingEnabled = True
-        Me.ComboBox2.Location = New System.Drawing.Point(16, 122)
-        Me.ComboBox2.Name = "ComboBox2"
-        Me.ComboBox2.Size = New System.Drawing.Size(193, 21)
-        Me.ComboBox2.TabIndex = 5
+        Me.cmbProducto.FormattingEnabled = True
+        Me.cmbProducto.Location = New System.Drawing.Point(16, 122)
+        Me.cmbProducto.Name = "cmbProducto"
+        Me.cmbProducto.Size = New System.Drawing.Size(193, 21)
+        Me.cmbProducto.TabIndex = 5
+        Me.cmbProducto.Text = "Selecciona"
         '
         'Label2
         '
@@ -111,28 +114,19 @@ Partial Class NuevaVenta
         Me.Label2.TabIndex = 6
         Me.Label2.Text = "Precio de Venta"
         '
-        'NumericUpDown1
+        'npdprecio
         '
-        Me.NumericUpDown1.Location = New System.Drawing.Point(105, 256)
-        Me.NumericUpDown1.Name = "NumericUpDown1"
-        Me.NumericUpDown1.Size = New System.Drawing.Size(120, 20)
-        Me.NumericUpDown1.TabIndex = 7
+        Me.npdprecio.Location = New System.Drawing.Point(105, 256)
+        Me.npdprecio.Name = "npdprecio"
+        Me.npdprecio.Size = New System.Drawing.Size(120, 20)
+        Me.npdprecio.TabIndex = 7
         '
-        'NumericUpDown2
+        'npdkilos
         '
-        Me.NumericUpDown2.Location = New System.Drawing.Point(74, 215)
-        Me.NumericUpDown2.Name = "NumericUpDown2"
-        Me.NumericUpDown2.Size = New System.Drawing.Size(120, 20)
-        Me.NumericUpDown2.TabIndex = 8
-        '
-        'Label3
-        '
-        Me.Label3.AutoSize = True
-        Me.Label3.Location = New System.Drawing.Point(16, 57)
-        Me.Label3.Name = "Label3"
-        Me.Label3.Size = New System.Drawing.Size(42, 13)
-        Me.Label3.TabIndex = 9
-        Me.Label3.Text = "Cliente "
+        Me.npdkilos.Location = New System.Drawing.Point(74, 215)
+        Me.npdkilos.Name = "npdkilos"
+        Me.npdkilos.Size = New System.Drawing.Size(120, 20)
+        Me.npdkilos.TabIndex = 8
         '
         'Button1
         '
@@ -143,15 +137,6 @@ Partial Class NuevaVenta
         Me.Button1.Text = "Guardar " & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10)
         Me.Button1.UseVisualStyleBackColor = True
         '
-        'Label4
-        '
-        Me.Label4.AutoSize = True
-        Me.Label4.Location = New System.Drawing.Point(16, 295)
-        Me.Label4.Name = "Label4"
-        Me.Label4.Size = New System.Drawing.Size(59, 13)
-        Me.Label4.TabIndex = 13
-        Me.Label4.Text = "Descuento"
-        '
         'l
         '
         Me.l.AutoSize = True
@@ -160,23 +145,6 @@ Partial Class NuevaVenta
         Me.l.Size = New System.Drawing.Size(50, 13)
         Me.l.TabIndex = 14
         Me.l.Text = "Producto"
-        '
-        'Label5
-        '
-        Me.Label5.AutoSize = True
-        Me.Label5.Location = New System.Drawing.Point(14, 162)
-        Me.Label5.Name = "Label5"
-        Me.Label5.Size = New System.Drawing.Size(44, 13)
-        Me.Label5.TabIndex = 16
-        Me.Label5.Text = "Bodega"
-        '
-        'ComboBox4
-        '
-        Me.ComboBox4.FormattingEnabled = True
-        Me.ComboBox4.Location = New System.Drawing.Point(16, 178)
-        Me.ComboBox4.Name = "ComboBox4"
-        Me.ComboBox4.Size = New System.Drawing.Size(193, 21)
-        Me.ComboBox4.TabIndex = 15
         '
         'TabControl1
         '
@@ -190,24 +158,27 @@ Partial Class NuevaVenta
         '
         'TabPage1
         '
+        Me.TabPage1.Controls.Add(Me.cbxBodega)
+        Me.TabPage1.Controls.Add(Me.Label5)
+        Me.TabPage1.Controls.Add(Me.cmbBodega)
+        Me.TabPage1.Controls.Add(Me.Label8)
+        Me.TabPage1.Controls.Add(Me.npdCantidadPagada)
+        Me.TabPage1.Controls.Add(Me.cmbFormaPago)
+        Me.TabPage1.Controls.Add(Me.Label7)
         Me.TabPage1.Controls.Add(Me.Button2)
         Me.TabPage1.Controls.Add(Me.Button3)
-        Me.TabPage1.Controls.Add(Me.CheckBox1)
-        Me.TabPage1.Controls.Add(Me.Label6)
-        Me.TabPage1.Controls.Add(Me.ComboBox3)
-        Me.TabPage1.Controls.Add(Me.General)
-        Me.TabPage1.Controls.Add(Me.Label5)
-        Me.TabPage1.Controls.Add(Me.DataGridView1)
-        Me.TabPage1.Controls.Add(Me.ComboBox4)
+        Me.TabPage1.Controls.Add(Me.cbxEspera)
+        Me.TabPage1.Controls.Add(Me.lblTotal)
+        Me.TabPage1.Controls.Add(Me.cbxRealizaventa)
+        Me.TabPage1.Controls.Add(Me.tblventa)
         Me.TabPage1.Controls.Add(Me.Label1)
         Me.TabPage1.Controls.Add(Me.l)
-        Me.TabPage1.Controls.Add(Me.ComboBox1)
-        Me.TabPage1.Controls.Add(Me.Label4)
-        Me.TabPage1.Controls.Add(Me.ComboBox2)
+        Me.TabPage1.Controls.Add(Me.cmbCliente)
+        Me.TabPage1.Controls.Add(Me.cmbProducto)
         Me.TabPage1.Controls.Add(Me.Label2)
-        Me.TabPage1.Controls.Add(Me.NumericUpDown1)
+        Me.TabPage1.Controls.Add(Me.npdprecio)
         Me.TabPage1.Controls.Add(Me.Button1)
-        Me.TabPage1.Controls.Add(Me.NumericUpDown2)
+        Me.TabPage1.Controls.Add(Me.npdkilos)
         Me.TabPage1.Controls.Add(Me.Label3)
         Me.TabPage1.Location = New System.Drawing.Point(4, 22)
         Me.TabPage1.Name = "TabPage1"
@@ -217,63 +188,68 @@ Partial Class NuevaVenta
         Me.TabPage1.Text = "PDV"
         Me.TabPage1.UseVisualStyleBackColor = True
         '
-        'TabPage2
+        'cbxBodega
         '
-        Me.TabPage2.Controls.Add(Me.DataGridView2)
-        Me.TabPage2.Location = New System.Drawing.Point(4, 22)
-        Me.TabPage2.Name = "TabPage2"
-        Me.TabPage2.Padding = New System.Windows.Forms.Padding(3)
-        Me.TabPage2.Size = New System.Drawing.Size(714, 439)
-        Me.TabPage2.TabIndex = 1
-        Me.TabPage2.Text = "Detalles de Venta"
-        Me.TabPage2.UseVisualStyleBackColor = True
+        Me.cbxBodega.AutoSize = True
+        Me.cbxBodega.Location = New System.Drawing.Point(19, 322)
+        Me.cbxBodega.Name = "cbxBodega"
+        Me.cbxBodega.Size = New System.Drawing.Size(97, 17)
+        Me.cbxBodega.TabIndex = 28
+        Me.cbxBodega.Text = "Generar Ticket"
+        Me.cbxBodega.UseVisualStyleBackColor = True
         '
-        'ComboBox3
+        'Label5
         '
-        Me.ComboBox3.FormattingEnabled = True
-        Me.ComboBox3.Location = New System.Drawing.Point(88, 287)
-        Me.ComboBox3.Name = "ComboBox3"
-        Me.ComboBox3.Size = New System.Drawing.Size(121, 21)
-        Me.ComboBox3.TabIndex = 17
+        Me.Label5.AutoSize = True
+        Me.Label5.Location = New System.Drawing.Point(16, 159)
+        Me.Label5.Name = "Label5"
+        Me.Label5.Size = New System.Drawing.Size(44, 13)
+        Me.Label5.TabIndex = 27
+        Me.Label5.Text = "Bodega"
         '
-        'DataGridView2
+        'cmbBodega
         '
-        Me.DataGridView2.AllowUserToAddRows = False
-        Me.DataGridView2.AllowUserToDeleteRows = False
-        Me.DataGridView2.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
-        Me.DataGridView2.Location = New System.Drawing.Point(28, 32)
-        Me.DataGridView2.Name = "DataGridView2"
-        Me.DataGridView2.ReadOnly = True
-        Me.DataGridView2.Size = New System.Drawing.Size(662, 196)
-        Me.DataGridView2.TabIndex = 0
+        Me.cmbBodega.FormattingEnabled = True
+        Me.cmbBodega.Location = New System.Drawing.Point(18, 175)
+        Me.cmbBodega.Name = "cmbBodega"
+        Me.cmbBodega.Size = New System.Drawing.Size(193, 21)
+        Me.cmbBodega.TabIndex = 26
+        Me.cmbBodega.Text = "Selecciona"
         '
-        'Label6
+        'Label8
         '
-        Me.Label6.AutoSize = True
-        Me.Label6.Location = New System.Drawing.Point(575, 346)
-        Me.Label6.Name = "Label6"
-        Me.Label6.Size = New System.Drawing.Size(82, 13)
-        Me.Label6.TabIndex = 18
-        Me.Label6.Text = "Cantidad Total: "
+        Me.Label8.AutoSize = True
+        Me.Label8.Location = New System.Drawing.Point(578, 101)
+        Me.Label8.Name = "Label8"
+        Me.Label8.Size = New System.Drawing.Size(89, 13)
+        Me.Label8.TabIndex = 25
+        Me.Label8.Text = "Cantidad Pagada"
         '
-        'CheckBox1
+        'npdCantidadPagada
         '
-        Me.CheckBox1.AutoSize = True
-        Me.CheckBox1.Location = New System.Drawing.Point(17, 332)
-        Me.CheckBox1.Name = "CheckBox1"
-        Me.CheckBox1.Size = New System.Drawing.Size(77, 17)
-        Me.CheckBox1.TabIndex = 19
-        Me.CheckBox1.Text = "En espera."
-        Me.CheckBox1.UseVisualStyleBackColor = True
+        Me.npdCantidadPagada.Location = New System.Drawing.Point(581, 122)
+        Me.npdCantidadPagada.Name = "npdCantidadPagada"
+        Me.npdCantidadPagada.Size = New System.Drawing.Size(106, 20)
+        Me.npdCantidadPagada.TabIndex = 24
         '
-        'Button3
+        'cmbFormaPago
         '
-        Me.Button3.Location = New System.Drawing.Point(256, 207)
-        Me.Button3.Name = "Button3"
-        Me.Button3.Size = New System.Drawing.Size(75, 23)
-        Me.Button3.TabIndex = 20
-        Me.Button3.Text = ">>"
-        Me.Button3.UseVisualStyleBackColor = True
+        Me.cmbFormaPago.FormattingEnabled = True
+        Me.cmbFormaPago.Items.AddRange(New Object() {"Credito", "Contado"})
+        Me.cmbFormaPago.Location = New System.Drawing.Point(581, 57)
+        Me.cmbFormaPago.Name = "cmbFormaPago"
+        Me.cmbFormaPago.Size = New System.Drawing.Size(106, 21)
+        Me.cmbFormaPago.TabIndex = 22
+        Me.cmbFormaPago.Text = "Selecione "
+        '
+        'Label7
+        '
+        Me.Label7.AutoSize = True
+        Me.Label7.Location = New System.Drawing.Point(578, 41)
+        Me.Label7.Name = "Label7"
+        Me.Label7.Size = New System.Drawing.Size(82, 13)
+        Me.Label7.TabIndex = 23
+        Me.Label7.Text = "Forma de Pago "
         '
         'Button2
         '
@@ -284,6 +260,131 @@ Partial Class NuevaVenta
         Me.Button2.Text = "Cancelar"
         Me.Button2.UseVisualStyleBackColor = True
         '
+        'Button3
+        '
+        Me.Button3.Location = New System.Drawing.Point(238, 207)
+        Me.Button3.Name = "Button3"
+        Me.Button3.Size = New System.Drawing.Size(75, 23)
+        Me.Button3.TabIndex = 20
+        Me.Button3.Text = ">>"
+        Me.Button3.UseVisualStyleBackColor = True
+        '
+        'cbxEspera
+        '
+        Me.cbxEspera.AutoSize = True
+        Me.cbxEspera.Location = New System.Drawing.Point(19, 299)
+        Me.cbxEspera.Name = "cbxEspera"
+        Me.cbxEspera.Size = New System.Drawing.Size(77, 17)
+        Me.cbxEspera.TabIndex = 19
+        Me.cbxEspera.Text = "En espera."
+        Me.cbxEspera.UseVisualStyleBackColor = True
+        '
+        'lblTotal
+        '
+        Me.lblTotal.AutoSize = True
+        Me.lblTotal.Location = New System.Drawing.Point(575, 378)
+        Me.lblTotal.Name = "lblTotal"
+        Me.lblTotal.Size = New System.Drawing.Size(82, 13)
+        Me.lblTotal.TabIndex = 18
+        Me.lblTotal.Text = "Cantidad Total: "
+        '
+        'cmbCliente
+        '
+        Me.cmbCliente.FormattingEnabled = True
+        Me.cmbCliente.Location = New System.Drawing.Point(16, 73)
+        Me.cmbCliente.Name = "cmbCliente"
+        Me.cmbCliente.Size = New System.Drawing.Size(193, 21)
+        Me.cmbCliente.TabIndex = 4
+        Me.cmbCliente.Text = "Selecciona"
+        '
+        'Label3
+        '
+        Me.Label3.AutoSize = True
+        Me.Label3.Location = New System.Drawing.Point(16, 57)
+        Me.Label3.Name = "Label3"
+        Me.Label3.Size = New System.Drawing.Size(42, 13)
+        Me.Label3.TabIndex = 9
+        Me.Label3.Text = "Cliente "
+        '
+        'TabPage2
+        '
+        Me.TabPage2.Controls.Add(Me.Button7)
+        Me.TabPage2.Controls.Add(Me.Button6)
+        Me.TabPage2.Controls.Add(Me.ComboBox5)
+        Me.TabPage2.Controls.Add(Me.TextBox1)
+        Me.TabPage2.Controls.Add(Me.Button5)
+        Me.TabPage2.Controls.Add(Me.Button4)
+        Me.TabPage2.Controls.Add(Me.DataGridView2)
+        Me.TabPage2.Location = New System.Drawing.Point(4, 22)
+        Me.TabPage2.Name = "TabPage2"
+        Me.TabPage2.Padding = New System.Windows.Forms.Padding(3)
+        Me.TabPage2.Size = New System.Drawing.Size(714, 439)
+        Me.TabPage2.TabIndex = 1
+        Me.TabPage2.Text = "Detalles de Venta"
+        Me.TabPage2.UseVisualStyleBackColor = True
+        '
+        'Button7
+        '
+        Me.Button7.Location = New System.Drawing.Point(309, 288)
+        Me.Button7.Name = "Button7"
+        Me.Button7.Size = New System.Drawing.Size(123, 23)
+        Me.Button7.TabIndex = 6
+        Me.Button7.Text = "Cambio o Devolucion"
+        Me.Button7.UseVisualStyleBackColor = True
+        '
+        'Button6
+        '
+        Me.Button6.Location = New System.Drawing.Point(551, 37)
+        Me.Button6.Name = "Button6"
+        Me.Button6.Size = New System.Drawing.Size(107, 23)
+        Me.Button6.TabIndex = 5
+        Me.Button6.Text = "Busqueda"
+        Me.Button6.UseVisualStyleBackColor = True
+        '
+        'ComboBox5
+        '
+        Me.ComboBox5.FormattingEnabled = True
+        Me.ComboBox5.Location = New System.Drawing.Point(35, 38)
+        Me.ComboBox5.Name = "ComboBox5"
+        Me.ComboBox5.Size = New System.Drawing.Size(121, 21)
+        Me.ComboBox5.TabIndex = 4
+        '
+        'TextBox1
+        '
+        Me.TextBox1.Location = New System.Drawing.Point(162, 39)
+        Me.TextBox1.Name = "TextBox1"
+        Me.TextBox1.Size = New System.Drawing.Size(384, 20)
+        Me.TextBox1.TabIndex = 3
+        '
+        'Button5
+        '
+        Me.Button5.Location = New System.Drawing.Point(583, 287)
+        Me.Button5.Name = "Button5"
+        Me.Button5.Size = New System.Drawing.Size(75, 23)
+        Me.Button5.TabIndex = 2
+        Me.Button5.Text = "Editar Venta"
+        Me.Button5.UseVisualStyleBackColor = True
+        '
+        'Button4
+        '
+        Me.Button4.Location = New System.Drawing.Point(438, 287)
+        Me.Button4.Name = "Button4"
+        Me.Button4.Size = New System.Drawing.Size(139, 24)
+        Me.Button4.TabIndex = 1
+        Me.Button4.Text = "Cancelar Venta en Espera"
+        Me.Button4.UseVisualStyleBackColor = True
+        '
+        'DataGridView2
+        '
+        Me.DataGridView2.AllowUserToAddRows = False
+        Me.DataGridView2.AllowUserToDeleteRows = False
+        Me.DataGridView2.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
+        Me.DataGridView2.Location = New System.Drawing.Point(35, 80)
+        Me.DataGridView2.Name = "DataGridView2"
+        Me.DataGridView2.ReadOnly = True
+        Me.DataGridView2.Size = New System.Drawing.Size(623, 201)
+        Me.DataGridView2.TabIndex = 0
+        '
         'NuevaVenta
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
@@ -292,40 +393,51 @@ Partial Class NuevaVenta
         Me.Controls.Add(Me.TabControl1)
         Me.Name = "NuevaVenta"
         Me.Text = "NuevaVenta"
-        CType(Me.DataGridView1, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.NumericUpDown1, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.NumericUpDown2, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.tblventa, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.npdprecio, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.npdkilos, System.ComponentModel.ISupportInitialize).EndInit()
         Me.TabControl1.ResumeLayout(False)
         Me.TabPage1.ResumeLayout(False)
         Me.TabPage1.PerformLayout()
+        CType(Me.npdCantidadPagada, System.ComponentModel.ISupportInitialize).EndInit()
         Me.TabPage2.ResumeLayout(False)
+        Me.TabPage2.PerformLayout()
         CType(Me.DataGridView2, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
 
     End Sub
 
-    Friend WithEvents General As CheckBox
-    Friend WithEvents DataGridView1 As DataGridView
+    Friend WithEvents cbxRealizaventa As CheckBox
+    Friend WithEvents tblventa As DataGridView
     Friend WithEvents Label1 As Label
-    Friend WithEvents ComboBox1 As ComboBox
-    Friend WithEvents ComboBox2 As ComboBox
+    Friend WithEvents cmbProducto As ComboBox
     Friend WithEvents Label2 As Label
-    Friend WithEvents NumericUpDown1 As NumericUpDown
-    Friend WithEvents NumericUpDown2 As NumericUpDown
-    Friend WithEvents Label3 As Label
+    Friend WithEvents npdprecio As NumericUpDown
+    Friend WithEvents npdkilos As NumericUpDown
     Friend WithEvents Button1 As Button
-    Friend WithEvents Label4 As Label
     Friend WithEvents l As Label
     Friend WithEvents fecha_hoy As Timer
-    Friend WithEvents Label5 As Label
-    Friend WithEvents ComboBox4 As ComboBox
     Friend WithEvents TabControl1 As TabControl
     Friend WithEvents TabPage1 As TabPage
-    Friend WithEvents Label6 As Label
-    Friend WithEvents ComboBox3 As ComboBox
+    Friend WithEvents lblTotal As Label
     Friend WithEvents TabPage2 As TabPage
     Friend WithEvents DataGridView2 As DataGridView
     Friend WithEvents Button2 As Button
     Friend WithEvents Button3 As Button
-    Friend WithEvents CheckBox1 As CheckBox
+    Friend WithEvents cbxEspera As CheckBox
+    Friend WithEvents Button7 As Button
+    Friend WithEvents Button6 As Button
+    Friend WithEvents ComboBox5 As ComboBox
+    Friend WithEvents TextBox1 As TextBox
+    Friend WithEvents Button5 As Button
+    Friend WithEvents Button4 As Button
+    Friend WithEvents cmbFormaPago As ComboBox
+    Friend WithEvents Label7 As Label
+    Friend WithEvents Label8 As Label
+    Friend WithEvents npdCantidadPagada As NumericUpDown
+    Friend WithEvents Label5 As Label
+    Friend WithEvents cmbBodega As ComboBox
+    Friend WithEvents cbxBodega As CheckBox
+    Friend WithEvents cmbCliente As ComboBox
+    Friend WithEvents Label3 As Label
 End Class

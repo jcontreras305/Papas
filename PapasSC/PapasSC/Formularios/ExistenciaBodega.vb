@@ -1,6 +1,6 @@
 ﻿Public Class ExistenciaBodega
     Private Sub Button6_Click(sender As Object, e As EventArgs) Handles Reclasificacion.Click
-
+        Reclasificacion.Show()
     End Sub
 
     Private Sub Button2_Click(sender As Object, e As EventArgs) Handles Button2.Click
