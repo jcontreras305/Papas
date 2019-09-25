@@ -1,6 +1,18 @@
 use PapaSC
 go
 
+ALTER proc [dbo].[sp_licencias_usuarios]
+@nombre varchar(20),
+@contrasenia varchar (50)
+as
+begin 
+	select top 1 tus.tipo, us.nombreUsuario, em.nombre, tus.clave from usuarios as us left join tipoUsuario as tus 
+		on us.idTipoUsuario = tus.idTipoUsuario
+		left join empleado as em 
+		on em.idEmpleado = us.idEmpleado
+		where nombreUsuario like  @nombre and contrasenia like @contrasenia
+end
+
 --########################################################################
 --########### PROCEDIMINETO PARA LA INTERFAZ DE REUBICACION ##############
 --########################################################################
@@ -149,3 +161,4 @@ create table ticket(
 alter table venta
 add constraint fk_ticket_venta
 foreign key (idTicket) references ticket(idTicket)
+
