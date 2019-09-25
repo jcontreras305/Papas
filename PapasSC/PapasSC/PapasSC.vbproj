@@ -48,14 +48,31 @@
     <OptionInfer>On</OptionInfer>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Microsoft.ReportViewer.Common, Version=14.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.ReportingServices.ReportViewerControl.Winforms.140.340.80\lib\net40\Microsoft.ReportViewer.Common.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.ReportViewer.DataVisualization, Version=14.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.ReportingServices.ReportViewerControl.Winforms.140.340.80\lib\net40\Microsoft.ReportViewer.DataVisualization.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.ReportViewer.Design, Version=14.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.ReportingServices.ReportViewerControl.Winforms.140.340.80\lib\net40\Microsoft.ReportViewer.Design.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.ReportViewer.ProcessingObjectModel, Version=14.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.ReportingServices.ReportViewerControl.Winforms.140.340.80\lib\net40\Microsoft.ReportViewer.ProcessingObjectModel.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.ReportViewer.WinForms, Version=14.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.ReportingServices.ReportViewerControl.Winforms.140.340.80\lib\net40\Microsoft.ReportViewer.WinForms.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.SqlServer.Types, Version=14.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.SqlServer.Types.14.0.314.76\lib\net40\Microsoft.SqlServer.Types.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Deployment" />
+    <Reference Include="System.DirectoryServices" />
     <Reference Include="System.Drawing" />
     <Reference Include="System.Management" />
+    <Reference Include="System.Web.Services" />
     <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml" />
     <Reference Include="System.Core" />
@@ -333,6 +350,12 @@
     <Compile Include="Formularios\Reubicacion.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="Formularios\Tickets.Designer.vb">
+      <DependentUpon>Tickets.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Formularios\Tickets.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="Formularios\Usuarios.Designer.vb">
       <DependentUpon>Usuarios.vb</DependentUpon>
     </Compile>
@@ -360,12 +383,12 @@
     <Compile Include="Metodos\MetodosEmpleado.vb" />
     <Compile Include="Metodos\MetodosInventario.vb" />
     <Compile Include="Metodos\MetodosMatrizCiudad.vb" />
-    <Compile Include="Metodos\MetodosNuevaVenta.vb" />
     <Compile Include="Metodos\MetodosPerfiles.vb" />
     <Compile Include="Metodos\MetodosProducto.vb" />
     <Compile Include="Metodos\MetodosProveedor.vb" />
     <Compile Include="Metodos\MetodosReclasificacion.vb" />
     <Compile Include="Metodos\MetodosReubicacion.vb" />
+    <Compile Include="Metodos\MetodosTicket.vb" />
     <Compile Include="Metodos\MetodosUsuarios.vb" />
     <Compile Include="Metodos\MetodosVenta.vb" />
     <Compile Include="My Project\AssemblyInfo.vb" />
@@ -387,6 +410,17 @@
       <DependentUpon>pantallaCargador.vb</DependentUpon>
     </Compile>
     <Compile Include="Formularios\pantallaCargador.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="PapaSCDataSet.Designer.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>PapaSCDataSet.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="Reportes\VerTicket.Designer.vb">
+      <DependentUpon>VerTicket.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Reportes\VerTicket.vb">
       <SubType>Form</SubType>
     </Compile>
   </ItemGroup>
@@ -511,6 +545,9 @@
     <EmbeddedResource Include="Formularios\Reubicacion.resx">
       <DependentUpon>Reubicacion.vb</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Formularios\Tickets.resx">
+      <DependentUpon>Tickets.vb</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Formularios\Usuarios.resx">
       <DependentUpon>Usuarios.vb</DependentUpon>
     </EmbeddedResource>
@@ -529,6 +566,10 @@
     <EmbeddedResource Include="Formularios\pantallaCargador.resx">
       <DependentUpon>pantallaCargador.vb</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Reportes\Ticket.rdlc" />
+    <EmbeddedResource Include="Reportes\VerTicket.resx">
+      <DependentUpon>VerTicket.vb</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
     <None Include="My Project\Application.myapp">
@@ -542,6 +583,17 @@
     </None>
     <None Include="Documentos\App.config" />
     <None Include="packages.config" />
+    <None Include="PapaSCDataSet.xsc">
+      <DependentUpon>PapaSCDataSet.xsd</DependentUpon>
+    </None>
+    <None Include="PapaSCDataSet.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>PapaSCDataSet.Designer.vb</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="PapaSCDataSet.xss">
+      <DependentUpon>PapaSCDataSet.xsd</DependentUpon>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <Content Include="Documentos\CambioTablasClienteContactoCredito02-08-19.sql" />
