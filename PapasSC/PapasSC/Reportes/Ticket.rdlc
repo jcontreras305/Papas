@@ -5,48 +5,6 @@
     <ReportSection>
       <Body>
         <ReportItems>
-          <Textbox Name="Titulo">
-            <CanGrow>true</CanGrow>
-            <KeepTogether>true</KeepTogether>
-            <Paragraphs>
-              <Paragraph>
-                <TextRuns>
-                  <TextRun>
-                    <Value>Produtoras de Papas</Value>
-                    <Style>
-                      <FontSize>20pt</FontSize>
-                    </Style>
-                  </TextRun>
-                </TextRuns>
-                <Style />
-              </Paragraph>
-              <Paragraph>
-                <TextRuns>
-                  <TextRun>
-                    <Value>       Santa Cruz</Value>
-                    <Style>
-                      <FontSize>20pt</FontSize>
-                    </Style>
-                  </TextRun>
-                </TextRuns>
-                <Style />
-              </Paragraph>
-            </Paragraphs>
-            <rd:DefaultName>Titulo</rd:DefaultName>
-            <Top>0.34078cm</Top>
-            <Left>0.26458cm</Left>
-            <Height>2.00229cm</Height>
-            <Width>7.02438cm</Width>
-            <Style>
-              <Border>
-                <Style>None</Style>
-              </Border>
-              <PaddingLeft>2pt</PaddingLeft>
-              <PaddingRight>2pt</PaddingRight>
-              <PaddingTop>2pt</PaddingTop>
-              <PaddingBottom>2pt</PaddingBottom>
-            </Style>
-          </Textbox>
           <Textbox Name="Direccion">
             <CanGrow>true</CanGrow>
             <KeepTogether>true</KeepTogether>
@@ -71,11 +29,10 @@
               </Paragraph>
             </Paragraphs>
             <rd:DefaultName>Direccion</rd:DefaultName>
-            <Top>2.63412cm</Top>
-            <Left>0.26458cm</Left>
+            <Top>1.22618cm</Top>
+            <Left>0.29106cm</Left>
             <Height>1.02333cm</Height>
             <Width>9.29979cm</Width>
-            <ZIndex>1</ZIndex>
             <Style>
               <Border>
                 <Style>None</Style>
@@ -101,11 +58,11 @@
               </Paragraph>
             </Paragraphs>
             <rd:DefaultName>Fecha</rd:DefaultName>
-            <Top>6.44439cm</Top>
-            <Left>7.06438cm</Left>
+            <Top>4.6845cm</Top>
+            <Left>7.09085cm</Left>
             <Height>0.6cm</Height>
             <Width>2.5cm</Width>
-            <ZIndex>2</ZIndex>
+            <ZIndex>1</ZIndex>
             <Style>
               <Border>
                 <Style>None</Style>
@@ -131,11 +88,11 @@
               </Paragraph>
             </Paragraphs>
             <rd:DefaultName>TipoImprecion</rd:DefaultName>
-            <Top>3.96613cm</Top>
-            <Left>0.26458cm</Left>
+            <Top>2.39062cm</Top>
+            <Left>0.29105cm</Left>
             <Height>0.6cm</Height>
             <Width>9.29979cm</Width>
-            <ZIndex>3</ZIndex>
+            <ZIndex>2</ZIndex>
             <Style>
               <Border>
                 <Style>None</Style>
@@ -161,11 +118,11 @@
               </Paragraph>
             </Paragraphs>
             <rd:DefaultName>PuntoVenta</rd:DefaultName>
-            <Top>4.96217cm</Top>
-            <Left>7.06438cm</Left>
+            <Top>3.20228cm</Top>
+            <Left>7.09085cm</Left>
             <Height>0.6cm</Height>
             <Width>2.5cm</Width>
-            <ZIndex>4</ZIndex>
+            <ZIndex>3</ZIndex>
             <Style>
               <Border>
                 <Style>None</Style>
@@ -200,11 +157,11 @@
               </Paragraph>
             </Paragraphs>
             <rd:DefaultName>FolioTicket</rd:DefaultName>
-            <Top>1.39912cm</Top>
-            <Left>7.28896cm</Left>
+            <Top>0.10583cm</Top>
+            <Left>7.31543cm</Left>
             <Height>0.94396cm</Height>
             <Width>2.47262cm</Width>
-            <ZIndex>5</ZIndex>
+            <ZIndex>4</ZIndex>
             <Style>
               <Border>
                 <Style>None</Style>
@@ -230,11 +187,11 @@
               </Paragraph>
             </Paragraphs>
             <rd:DefaultName>Empleado</rd:DefaultName>
-            <Top>5.66801cm</Top>
-            <Left>7.06438cm</Left>
+            <Top>3.90812cm</Top>
+            <Left>7.09085cm</Left>
             <Height>0.6cm</Height>
             <Width>2.5cm</Width>
-            <ZIndex>6</ZIndex>
+            <ZIndex>5</ZIndex>
             <Style>
               <Border>
                 <Style>None</Style>
@@ -260,10 +217,11 @@
               </Paragraph>
             </Paragraphs>
             <rd:DefaultName>InicioProductos</rd:DefaultName>
-            <Top>7.29134cm</Top>
+            <Top>5.53145cm</Top>
+            <Left>0.02647cm</Left>
             <Height>0.6cm</Height>
             <Width>9.56438cm</Width>
-            <ZIndex>7</ZIndex>
+            <ZIndex>6</ZIndex>
             <Style>
               <Border>
                 <Style>None</Style>
@@ -289,11 +247,11 @@
               </Paragraph>
             </Paragraphs>
             <rd:DefaultName>lblPuntoVanta</rd:DefaultName>
-            <Top>4.89162cm</Top>
-            <Left>0.7112cm</Left>
+            <Top>3.13173cm</Top>
+            <Left>0.73767cm</Left>
             <Height>0.6cm</Height>
             <Width>2.5cm</Width>
-            <ZIndex>8</ZIndex>
+            <ZIndex>7</ZIndex>
             <Style>
               <Border>
                 <Style>None</Style>
@@ -319,11 +277,11 @@
               </Paragraph>
             </Paragraphs>
             <rd:DefaultName>lblEmpleado</rd:DefaultName>
-            <Top>5.66801cm</Top>
-            <Left>0.7112cm</Left>
+            <Top>3.90812cm</Top>
+            <Left>0.73767cm</Left>
             <Height>0.6cm</Height>
             <Width>2.5cm</Width>
-            <ZIndex>9</ZIndex>
+            <ZIndex>8</ZIndex>
             <Style>
               <Border>
                 <Style>None</Style>
@@ -349,11 +307,11 @@
               </Paragraph>
             </Paragraphs>
             <rd:DefaultName>lblFechaHora</rd:DefaultName>
-            <Top>6.51495cm</Top>
-            <Left>0.7112cm</Left>
+            <Top>4.75506cm</Top>
+            <Left>0.73767cm</Left>
             <Height>0.6cm</Height>
             <Width>2.5cm</Width>
-            <ZIndex>10</ZIndex>
+            <ZIndex>9</ZIndex>
             <Style>
               <Border>
                 <Style>None</Style>
@@ -379,11 +337,11 @@
               </Paragraph>
             </Paragraphs>
             <rd:DefaultName>lblLimite1</rd:DefaultName>
-            <Top>13.04078cm</Top>
+            <Top>11.31617cm</Top>
             <Left>0.26458cm</Left>
             <Height>0.6cm</Height>
             <Width>9.29979cm</Width>
-            <ZIndex>11</ZIndex>
+            <ZIndex>10</ZIndex>
             <Style>
               <Border>
                 <Style>None</Style>
@@ -411,10 +369,10 @@
               </Paragraph>
             </Paragraphs>
             <rd:DefaultName>lblproductos</rd:DefaultName>
-            <Top>8.03245cm</Top>
+            <Top>6.30784cm</Top>
             <Height>0.6cm</Height>
             <Width>9.56438cm</Width>
-            <ZIndex>12</ZIndex>
+            <ZIndex>11</ZIndex>
             <Style>
               <Border>
                 <Style>None</Style>
@@ -440,40 +398,10 @@
               </Paragraph>
             </Paragraphs>
             <rd:DefaultName>lblLimite2</rd:DefaultName>
-            <Top>8.70301cm</Top>
+            <Top>6.9784cm</Top>
             <Height>0.6cm</Height>
             <Width>9.56438cm</Width>
-            <ZIndex>13</ZIndex>
-            <Style>
-              <Border>
-                <Style>None</Style>
-              </Border>
-              <PaddingLeft>2pt</PaddingLeft>
-              <PaddingRight>2pt</PaddingRight>
-              <PaddingTop>2pt</PaddingTop>
-              <PaddingBottom>2pt</PaddingBottom>
-            </Style>
-          </Textbox>
-          <Textbox Name="lblMensajeDespedida">
-            <CanGrow>true</CanGrow>
-            <KeepTogether>true</KeepTogether>
-            <Paragraphs>
-              <Paragraph>
-                <TextRuns>
-                  <TextRun>
-                    <Value>Gracias por su compra, vuelaba pronto </Value>
-                    <Style />
-                  </TextRun>
-                </TextRuns>
-                <Style />
-              </Paragraph>
-            </Paragraphs>
-            <rd:DefaultName>lblMensajeDespedida</rd:DefaultName>
-            <Top>13.94037cm</Top>
-            <Left>2.82787cm</Left>
-            <Height>1.28792cm</Height>
-            <Width>4.06104cm</Width>
-            <ZIndex>14</ZIndex>
+            <ZIndex>12</ZIndex>
             <Style>
               <Border>
                 <Style>None</Style>
@@ -485,11 +413,106 @@
             </Style>
           </Textbox>
         </ReportItems>
-        <Height>6.20833in</Height>
+        <Height>4.82291in</Height>
         <Style />
       </Body>
-      <Width>3.91009in</Width>
+      <Width>3.92051in</Width>
       <Page>
+        <PageHeader>
+          <Height>2.97807cm</Height>
+          <PrintOnFirstPage>true</PrintOnFirstPage>
+          <PrintOnLastPage>true</PrintOnLastPage>
+          <ReportItems>
+            <Textbox Name="Titulo1">
+              <CanGrow>true</CanGrow>
+              <KeepTogether>true</KeepTogether>
+              <Paragraphs>
+                <Paragraph>
+                  <TextRuns>
+                    <TextRun>
+                      <Value>Produtoras de Papas</Value>
+                      <Style>
+                        <FontSize>20pt</FontSize>
+                      </Style>
+                    </TextRun>
+                  </TextRuns>
+                  <Style />
+                </Paragraph>
+                <Paragraph>
+                  <TextRuns>
+                    <TextRun>
+                      <Value>       Santa Cruz</Value>
+                      <Style>
+                        <FontSize>20pt</FontSize>
+                      </Style>
+                    </TextRun>
+                  </TextRuns>
+                  <Style />
+                </Paragraph>
+              </Paragraphs>
+              <rd:DefaultName>Titulo1</rd:DefaultName>
+              <Top>0.44662cm</Top>
+              <Left>0.73767cm</Left>
+              <Height>2.21396cm</Height>
+              <Width>7.02438cm</Width>
+              <Style>
+                <Border>
+                  <Style>None</Style>
+                </Border>
+                <PaddingLeft>2pt</PaddingLeft>
+                <PaddingRight>2pt</PaddingRight>
+                <PaddingTop>2pt</PaddingTop>
+                <PaddingBottom>2pt</PaddingBottom>
+              </Style>
+            </Textbox>
+          </ReportItems>
+          <Style>
+            <Border>
+              <Style>None</Style>
+            </Border>
+          </Style>
+        </PageHeader>
+        <PageFooter>
+          <Height>2.54cm</Height>
+          <PrintOnFirstPage>true</PrintOnFirstPage>
+          <PrintOnLastPage>true</PrintOnLastPage>
+          <ReportItems>
+            <Textbox Name="lblPiePagina">
+              <CanGrow>true</CanGrow>
+              <KeepTogether>true</KeepTogether>
+              <Paragraphs>
+                <Paragraph>
+                  <TextRuns>
+                    <TextRun>
+                      <Value>Gracias por su compra, vuelaba pronto </Value>
+                      <Style />
+                    </TextRun>
+                  </TextRuns>
+                  <Style />
+                </Paragraph>
+              </Paragraphs>
+              <rd:DefaultName>lblPiePagina</rd:DefaultName>
+              <Top>0.2996cm</Top>
+              <Left>1.02871cm</Left>
+              <Height>1.92292cm</Height>
+              <Width>8.24463cm</Width>
+              <Style>
+                <Border>
+                  <Style>None</Style>
+                </Border>
+                <PaddingLeft>2pt</PaddingLeft>
+                <PaddingRight>2pt</PaddingRight>
+                <PaddingTop>2pt</PaddingTop>
+                <PaddingBottom>2pt</PaddingBottom>
+              </Style>
+            </Textbox>
+          </ReportItems>
+          <Style>
+            <Border>
+              <Style>None</Style>
+            </Border>
+          </Style>
+        </PageFooter>
         <PageHeight>29.7cm</PageHeight>
         <PageWidth>21cm</PageWidth>
         <LeftMargin>2cm</LeftMargin>
@@ -569,6 +592,12 @@
       <DataType>String</DataType>
       <Prompt>ReportParameter1</Prompt>
     </ReportParameter>
+    <ReportParameter Name="lblPiePagina">
+      <DataType>String</DataType>
+      <Nullable>true</Nullable>
+      <AllowBlank>true</AllowBlank>
+      <Prompt>ReportParameter1</Prompt>
+    </ReportParameter>
   </ReportParameters>
   <ReportParametersLayout>
     <GridLayoutDefinition>
@@ -644,6 +673,11 @@
           <ColumnIndex>1</ColumnIndex>
           <RowIndex>3</RowIndex>
           <ParameterName>lblMensajeDespedida</ParameterName>
+        </CellDefinition>
+        <CellDefinition>
+          <ColumnIndex>2</ColumnIndex>
+          <RowIndex>3</RowIndex>
+          <ParameterName>lblPiePagina</ParameterName>
         </CellDefinition>
       </CellDefinitions>
     </GridLayoutDefinition>

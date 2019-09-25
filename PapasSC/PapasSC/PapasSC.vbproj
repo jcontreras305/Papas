@@ -121,6 +121,12 @@
     <Compile Include="Formularios\Actualizar_Proveedor.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="Formularios\AgregarEditarTicket.Designer.vb">
+      <DependentUpon>AgregarEditarTicket.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Formularios\AgregarEditarTicket.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="Formularios\Caja.Designer.vb">
       <DependentUpon>Caja.vb</DependentUpon>
     </Compile>
@@ -439,6 +445,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Formularios\Actualizar_Proveedor.resx">
       <DependentUpon>Actualizar_Proveedor.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formularios\AgregarEditarTicket.resx">
+      <DependentUpon>AgregarEditarTicket.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Formularios\Caja.resx">
       <DependentUpon>Caja.vb</DependentUpon>
