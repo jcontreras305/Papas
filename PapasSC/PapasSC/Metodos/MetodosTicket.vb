@@ -21,7 +21,7 @@ Public Class MetodosTicket
     Public Sub cargarBodega(ByVal cmbBodega As ComboBox)
         Try
             conectar()
-            Dim cmd As New SqlCommand("selct nombre, idBodega from bodega", conn)
+            Dim cmd As New SqlCommand("select nombre, idBodega from bodega ", conn)
             Dim reader As SqlDataReader = cmd.ExecuteReader
 
             If listIdBodega.Count > 0 Then
@@ -45,6 +45,7 @@ Public Class MetodosTicket
             Dim cont As Int16 = 0
             For Each item In listNoBodega
                 If item = datos(0) Then
+
                     Exit For
                 Else
                     cont += 1
@@ -73,12 +74,23 @@ Public Class MetodosTicket
 on vt.idVenta = vd.idVenta 
 left join producto as pd 
 on vd.idProducto = pd.idProducto where vt.folio = " + folio, conn)
-
-
         Catch ex As Exception
 
         End Try
         desconectar()
+    End Sub
+
+    Public Sub verFormatosTickets(ByVal tblTicket As DataGridView)
+        Try
+            conectar()
+            Dim cmd As New SqlCommand("select clave, bg.nombre as bodega , tk.nombre, tipoFuente, tamañoFuente, textoEnbezado as Encabezado, textoPie as Pie  from ticket as tk left join bodega as bg  on tk.idBodega = bg.idBodega ", conn)
+            Dim dt As New DataTable
+            Dim da As New SqlDataAdapter
+            da.Fill(dt)
+            tblTicket.DataSource = dt
+        Catch ex As Exception
+            MsgBox(ex.Message)
+        End Try
     End Sub
 
 End Class

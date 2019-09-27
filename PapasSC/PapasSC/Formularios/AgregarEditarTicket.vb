@@ -15,7 +15,7 @@ Public Class AgregarEditarTicket
             sprTamanio.Minimum = 5
             sprTamanio.Value = 10
             txtEncabezado.Text = "Produtoras de Papas" + vbCrLf + "   Santa Cruz"
-            txtPie.Text = ""
+            txtPie.Text = "Prodctora de Papas Santa Cruz agradece su compra"
         Catch ex As Exception
 
         End Try
@@ -50,14 +50,11 @@ Public Class AgregarEditarTicket
             If txtNombre.Text = String.Empty Then
                 flag = False
             End If
-
-
             Return flag
-
-
-
         Catch ex As Exception
             Return False
         End Try
     End Function
+
+
 End Class

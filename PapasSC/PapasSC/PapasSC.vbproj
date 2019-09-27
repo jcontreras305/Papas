@@ -48,20 +48,13 @@
     <OptionInfer>On</OptionInfer>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Microsoft.ReportViewer.Common, Version=14.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
-      <HintPath>..\packages\Microsoft.ReportingServices.ReportViewerControl.Winforms.140.340.80\lib\net40\Microsoft.ReportViewer.Common.dll</HintPath>
-    </Reference>
-    <Reference Include="Microsoft.ReportViewer.DataVisualization, Version=14.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
-      <HintPath>..\packages\Microsoft.ReportingServices.ReportViewerControl.Winforms.140.340.80\lib\net40\Microsoft.ReportViewer.DataVisualization.dll</HintPath>
-    </Reference>
-    <Reference Include="Microsoft.ReportViewer.Design, Version=14.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
-      <HintPath>..\packages\Microsoft.ReportingServices.ReportViewerControl.Winforms.140.340.80\lib\net40\Microsoft.ReportViewer.Design.dll</HintPath>
-    </Reference>
-    <Reference Include="Microsoft.ReportViewer.ProcessingObjectModel, Version=14.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
-      <HintPath>..\packages\Microsoft.ReportingServices.ReportViewerControl.Winforms.140.340.80\lib\net40\Microsoft.ReportViewer.ProcessingObjectModel.dll</HintPath>
-    </Reference>
-    <Reference Include="Microsoft.ReportViewer.WinForms, Version=14.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
-      <HintPath>..\packages\Microsoft.ReportingServices.ReportViewerControl.Winforms.140.340.80\lib\net40\Microsoft.ReportViewer.WinForms.dll</HintPath>
+    <Reference Include="CrystalDecisions.CrystalReports.Engine, Version=13.0.3500.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL" />
+    <Reference Include="CrystalDecisions.ReportSource, Version=13.0.3500.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL" />
+    <Reference Include="CrystalDecisions.Shared, Version=13.0.3500.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL" />
+    <Reference Include="CrystalDecisions.Windows.Forms, Version=13.0.3500.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL" />
+    <Reference Include="FlashControlV71, Version=1.0.3187.32366, Culture=neutral, PublicKeyToken=692fbea5521e1304" />
+    <Reference Include="log4net, Version=1.2.10.0, Culture=neutral, PublicKeyToken=1b44e1d426115821, processorArchitecture=MSIL">
+      <HintPath>..\packages\log4net.1.2.10\lib\2.0\log4net.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.SqlServer.Types, Version=14.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.SqlServer.Types.14.0.314.76\lib\net40\Microsoft.SqlServer.Types.dll</HintPath>
@@ -72,6 +65,7 @@
     <Reference Include="System.DirectoryServices" />
     <Reference Include="System.Drawing" />
     <Reference Include="System.Management" />
+    <Reference Include="System.Web" />
     <Reference Include="System.Web.Services" />
     <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml" />
@@ -396,8 +390,10 @@
     <Compile Include="Metodos\MetodosEmpleado.vb" />
     <Compile Include="Metodos\MetodosInventario.vb" />
     <Compile Include="Metodos\MetodosMatrizCiudad.vb" />
+    <Compile Include="Metodos\MetodosNuevaVenta.vb" />
     <Compile Include="Metodos\MetodosPerfiles.vb" />
     <Compile Include="Metodos\MetodosProducto.vb" />
+    <Compile Include="Metodos\MetodosProductos.vb" />
     <Compile Include="Metodos\MetodosProveedor.vb" />
     <Compile Include="Metodos\MetodosReclasificacion.vb" />
     <Compile Include="Metodos\MetodosReubicacion.vb" />
@@ -426,16 +422,17 @@
     <Compile Include="Formularios\pantallaCargador.vb">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="PapaSCDataSet.Designer.vb">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>PapaSCDataSet.xsd</DependentUpon>
-    </Compile>
     <Compile Include="Reportes\VerTicket.Designer.vb">
       <DependentUpon>VerTicket.vb</DependentUpon>
     </Compile>
     <Compile Include="Reportes\VerTicket.vb">
       <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Reportes\Ticket.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Ticket.rpt</DependentUpon>
+      <SubType>Component</SubType>
     </Compile>
   </ItemGroup>
   <ItemGroup>
@@ -592,6 +589,10 @@
     <EmbeddedResource Include="Reportes\VerTicket.resx">
       <DependentUpon>VerTicket.vb</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Reportes\Ticket.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>Ticket.vb</LastGenOutput>
+    </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
     <None Include="My Project\Application.myapp">
@@ -605,17 +606,6 @@
     </None>
     <None Include="Documentos\App.config" />
     <None Include="packages.config" />
-    <None Include="PapaSCDataSet.xsc">
-      <DependentUpon>PapaSCDataSet.xsd</DependentUpon>
-    </None>
-    <None Include="PapaSCDataSet.xsd">
-      <Generator>MSDataSetGenerator</Generator>
-      <LastGenOutput>PapaSCDataSet.Designer.vb</LastGenOutput>
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="PapaSCDataSet.xss">
-      <DependentUpon>PapaSCDataSet.xsd</DependentUpon>
-    </None>
   </ItemGroup>
   <ItemGroup>
     <Content Include="Documentos\CambioTablasClienteContactoCredito02-08-19.sql" />
@@ -683,6 +673,8 @@
     <Content Include="Imagenes\UTILERIAS.jpg" />
     <Content Include="Imagenes\VALORES X REFERENCIA.jpg" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Service Include="{C0C07587-41A7-46C8-8FBD-3F9C8EBE2DDC}" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.VisualBasic.targets" />
 </Project>
