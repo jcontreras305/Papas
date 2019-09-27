@@ -36,7 +36,7 @@ Partial Class ConsultarEmpleado
         'tblEmple
         '
         Me.tblEmple.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
-        Me.tblEmple.Location = New System.Drawing.Point(31, 65)
+        Me.tblEmple.Location = New System.Drawing.Point(31, 54)
         Me.tblEmple.Name = "tblEmple"
         Me.tblEmple.Size = New System.Drawing.Size(739, 292)
         Me.tblEmple.TabIndex = 0
@@ -52,7 +52,7 @@ Partial Class ConsultarEmpleado
         '
         'btnNombreE
         '
-        Me.btnNombreE.Location = New System.Drawing.Point(519, 15)
+        Me.btnNombreE.Location = New System.Drawing.Point(561, 15)
         Me.btnNombreE.Name = "btnNombreE"
         Me.btnNombreE.Size = New System.Drawing.Size(112, 23)
         Me.btnNombreE.TabIndex = 4
@@ -73,7 +73,7 @@ Partial Class ConsultarEmpleado
         '
         Me.txtNombreEm.Location = New System.Drawing.Point(309, 17)
         Me.txtNombreEm.Name = "txtNombreEm"
-        Me.txtNombreEm.Size = New System.Drawing.Size(192, 20)
+        Me.txtNombreEm.Size = New System.Drawing.Size(234, 20)
         Me.txtNombreEm.TabIndex = 8
         '
         'btnEliminarEm

@@ -25,7 +25,7 @@ Partial Class MenuUtilerias
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(MenuUtilerias))
         Me.Label2 = New System.Windows.Forms.Label()
         Me.Label1 = New System.Windows.Forms.Label()
-        Me.Button2 = New System.Windows.Forms.Button()
+        Me.btnConfiguracionDB = New System.Windows.Forms.Button()
         Me.Button1 = New System.Windows.Forms.Button()
         Me.SuspendLayout()
         '
@@ -51,14 +51,14 @@ Partial Class MenuUtilerias
         Me.Label1.TabIndex = 12
         Me.Label1.Text = "Utilerias"
         '
-        'Button2
+        'btnConfiguracionDB
         '
-        Me.Button2.Image = CType(resources.GetObject("Button2.Image"), System.Drawing.Image)
-        Me.Button2.Location = New System.Drawing.Point(555, 228)
-        Me.Button2.Name = "Button2"
-        Me.Button2.Size = New System.Drawing.Size(167, 166)
-        Me.Button2.TabIndex = 15
-        Me.Button2.UseVisualStyleBackColor = True
+        Me.btnConfiguracionDB.Image = CType(resources.GetObject("btnConfiguracionDB.Image"), System.Drawing.Image)
+        Me.btnConfiguracionDB.Location = New System.Drawing.Point(555, 228)
+        Me.btnConfiguracionDB.Name = "btnConfiguracionDB"
+        Me.btnConfiguracionDB.Size = New System.Drawing.Size(167, 166)
+        Me.btnConfiguracionDB.TabIndex = 15
+        Me.btnConfiguracionDB.UseVisualStyleBackColor = True
         '
         'Button1
         '
@@ -77,7 +77,7 @@ Partial Class MenuUtilerias
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackColor = System.Drawing.Color.White
         Me.ClientSize = New System.Drawing.Size(875, 465)
-        Me.Controls.Add(Me.Button2)
+        Me.Controls.Add(Me.btnConfiguracionDB)
         Me.Controls.Add(Me.Button1)
         Me.Controls.Add(Me.Label2)
         Me.Controls.Add(Me.Label1)
@@ -91,6 +91,6 @@ Partial Class MenuUtilerias
 
     Friend WithEvents Label2 As Label
     Friend WithEvents Label1 As Label
-    Friend WithEvents Button2 As Button
+    Friend WithEvents btnConfiguracionDB As Button
     Friend WithEvents Button1 As Button
 End Class
