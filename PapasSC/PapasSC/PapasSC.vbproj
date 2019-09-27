@@ -139,6 +139,12 @@
     <Compile Include="Formularios\Catálogo.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="Formularios\ComfiguracionDB2.Designer.vb">
+      <DependentUpon>ComfiguracionDB2.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Formularios\ComfiguracionDB2.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="Formularios\ConfiguracionBD1.Designer.vb">
       <DependentUpon>ConfiguracionBD1.vb</DependentUpon>
     </Compile>
@@ -382,6 +388,7 @@
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="LogeoMetodos.vb" />
+    <Compile Include="Metodos\Configuracion.vb" />
     <Compile Include="Metodos\MetodoExistenciaProducto.vb" />
     <Compile Include="Metodos\MetodosBodega.vb" />
     <Compile Include="Metodos\MetodosCliente.vb" />
@@ -397,6 +404,7 @@
     <Compile Include="Metodos\MetodosTicket.vb" />
     <Compile Include="Metodos\MetodosUsuarios.vb" />
     <Compile Include="Metodos\MetodosVenta.vb" />
+    <Compile Include="Metodos\Metodos_PreciosXdefecto.vb" />
     <Compile Include="My Project\AssemblyInfo.vb" />
     <Compile Include="My Project\Application.Designer.vb">
       <AutoGen>True</AutoGen>
@@ -455,6 +463,9 @@
     <EmbeddedResource Include="Formularios\Catálogo.resx">
       <DependentUpon>Catálogo.vb</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Formularios\ComfiguracionDB2.resx">
+      <DependentUpon>ComfiguracionDB2.vb</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Formularios\ConfiguracionBD1.resx">
       <DependentUpon>ConfiguracionBD1.vb</DependentUpon>
     </EmbeddedResource>
@@ -505,6 +516,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Formularios\PerfilesDeLosUsuarios.resx">
       <DependentUpon>PerfilesDeLosUsuarios.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formularios\Precios_por_defecto.resx">
+      <DependentUpon>Precios_por_defecto.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Formularios\Reclasificacion.resx">
       <DependentUpon>Reclasificacion.vb</DependentUpon>
@@ -575,7 +589,6 @@
     <EmbeddedResource Include="Formularios\pantallaCargador.resx">
       <DependentUpon>pantallaCargador.vb</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Reportes\Ticket.rdlc" />
     <EmbeddedResource Include="Reportes\VerTicket.resx">
       <DependentUpon>VerTicket.vb</DependentUpon>
     </EmbeddedResource>
