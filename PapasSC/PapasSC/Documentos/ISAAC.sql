@@ -1,3 +1,4 @@
+
 use PapaSC
 go
 
@@ -147,6 +148,8 @@ add folio int
 alter table venta 
 add idTicket varchar(36)
 
+
+
 create table ticket(
 	idTicket varchar(36) primary key not null,
 	idBodega varchar(36),
@@ -154,8 +157,9 @@ create table ticket(
 	nombre varchar(50),
 	tipoFuente varchar(30),
 	tamañoFuente int,
-	textoEnbezado varchar(50),
-	textoPie varchar(100)
+	textoEncabezado varchar(50),
+	textoPie varchar(100),
+	textoDireccion varchar(150)
 )
 
 alter table venta

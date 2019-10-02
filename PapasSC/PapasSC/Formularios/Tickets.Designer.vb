@@ -26,7 +26,7 @@ Partial Class tickets
         Me.btnPruebaTicket = New System.Windows.Forms.Button()
         Me.btnSalir = New System.Windows.Forms.Button()
         Me.btnAgregar = New System.Windows.Forms.Button()
-        Me.Button3 = New System.Windows.Forms.Button()
+        Me.btnModificar = New System.Windows.Forms.Button()
         CType(Me.tblFormatostTicket, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
@@ -35,6 +35,7 @@ Partial Class tickets
         Me.tblFormatostTicket.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
         Me.tblFormatostTicket.Location = New System.Drawing.Point(19, 75)
         Me.tblFormatostTicket.Name = "tblFormatostTicket"
+        Me.tblFormatostTicket.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect
         Me.tblFormatostTicket.Size = New System.Drawing.Size(570, 198)
         Me.tblFormatostTicket.TabIndex = 0
         '
@@ -71,24 +72,24 @@ Partial Class tickets
         Me.btnAgregar.TextAlign = System.Drawing.ContentAlignment.MiddleRight
         Me.btnAgregar.UseVisualStyleBackColor = True
         '
-        'Button3
+        'btnModificar
         '
-        Me.Button3.Image = Global.PapasSC.My.Resources.Resources.ACTUALIZAR
-        Me.Button3.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
-        Me.Button3.Location = New System.Drawing.Point(499, 279)
-        Me.Button3.Name = "Button3"
-        Me.Button3.Size = New System.Drawing.Size(90, 38)
-        Me.Button3.TabIndex = 4
-        Me.Button3.Text = "Modificar"
-        Me.Button3.TextAlign = System.Drawing.ContentAlignment.MiddleRight
-        Me.Button3.UseVisualStyleBackColor = True
+        Me.btnModificar.Image = Global.PapasSC.My.Resources.Resources.ACTUALIZAR
+        Me.btnModificar.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
+        Me.btnModificar.Location = New System.Drawing.Point(499, 279)
+        Me.btnModificar.Name = "btnModificar"
+        Me.btnModificar.Size = New System.Drawing.Size(90, 38)
+        Me.btnModificar.TabIndex = 4
+        Me.btnModificar.Text = "Modificar"
+        Me.btnModificar.TextAlign = System.Drawing.ContentAlignment.MiddleRight
+        Me.btnModificar.UseVisualStyleBackColor = True
         '
         'tickets
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(599, 323)
-        Me.Controls.Add(Me.Button3)
+        Me.Controls.Add(Me.btnModificar)
         Me.Controls.Add(Me.btnAgregar)
         Me.Controls.Add(Me.btnSalir)
         Me.Controls.Add(Me.btnPruebaTicket)
@@ -99,10 +100,9 @@ Partial Class tickets
         Me.ResumeLayout(False)
 
     End Sub
-
-    Friend WithEvents tblFormatostTicket As DataGridView
     Friend WithEvents btnPruebaTicket As Button
     Friend WithEvents btnSalir As Button
     Friend WithEvents btnAgregar As Button
-    Friend WithEvents Button3 As Button
+    Friend WithEvents btnModificar As Button
+    Public WithEvents tblFormatostTicket As DataGridView
 End Class
