@@ -1,8 +1,16 @@
 ﻿Public Class tickets
 
     Dim mtdMetodosTicket As New MetodosTicket
+    Dim ticket As New Ticket
+
 
     Private Sub btnPruebaTicket_Click(sender As Object, e As EventArgs) Handles btnPruebaTicket.Click
+        'If tblFormatostTicket.Rows.Count > 0 Then
+        '    Dim clave As String = tblFormatostTicket.SelectedCells().Item(0).Value
+        '    Dim nombre As String = tblFormatostTicket.SelectedCells().Item(2).Value
+
+        'End If
+
         VerTicket.Show()
     End Sub
 

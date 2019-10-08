@@ -36,7 +36,7 @@ Partial Class VerTicket
         Me.CrystalReportViewer1.Name = "CrystalReportViewer1"
         Me.CrystalReportViewer1.ReportSource = Me.Ticket1
         Me.CrystalReportViewer1.ShowLogo = False
-        Me.CrystalReportViewer1.Size = New System.Drawing.Size(462, 450)
+        Me.CrystalReportViewer1.Size = New System.Drawing.Size(458, 450)
         Me.CrystalReportViewer1.TabIndex = 0
         Me.CrystalReportViewer1.ToolPanelView = CrystalDecisions.Windows.Forms.ToolPanelViewType.None
         '
@@ -44,7 +44,7 @@ Partial Class VerTicket
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(462, 450)
+        Me.ClientSize = New System.Drawing.Size(458, 450)
         Me.Controls.Add(Me.CrystalReportViewer1)
         Me.Name = "VerTicket"
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen

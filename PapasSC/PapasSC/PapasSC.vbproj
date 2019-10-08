@@ -115,6 +115,12 @@
     <Compile Include="Formularios\Actualizar_Proveedor.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="Formularios\AgregarEditarCaja.Designer.vb">
+      <DependentUpon>AgregarEditarCaja.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Formularios\AgregarEditarCaja.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="Formularios\AgregarEditarTicket.Designer.vb">
       <DependentUpon>AgregarEditarTicket.vb</DependentUpon>
     </Compile>
@@ -143,6 +149,12 @@
       <DependentUpon>ConfiguracionBD1.vb</DependentUpon>
     </Compile>
     <Compile Include="Formularios\ConfiguracionBD1.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formularios\ConfiguracionCaja.Designer.vb">
+      <DependentUpon>ConfiguracionCaja.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Formularios\ConfiguracionCaja.vb">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Formularios\Consultar_Proveedores.Designer.vb">
@@ -385,6 +397,7 @@
     <Compile Include="Metodos\Configuracion.vb" />
     <Compile Include="Metodos\MetodoExistenciaProducto.vb" />
     <Compile Include="Metodos\MetodosBodega.vb" />
+    <Compile Include="Metodos\MetodosCaja.vb" />
     <Compile Include="Metodos\MetodosCliente.vb" />
     <Compile Include="Metodos\MetodosClientes.vb" />
     <Compile Include="Metodos\MetodosEmpleado.vb" />
@@ -451,6 +464,9 @@
     <EmbeddedResource Include="Formularios\Actualizar_Proveedor.resx">
       <DependentUpon>Actualizar_Proveedor.vb</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Formularios\AgregarEditarCaja.resx">
+      <DependentUpon>AgregarEditarCaja.vb</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Formularios\AgregarEditarTicket.resx">
       <DependentUpon>AgregarEditarTicket.vb</DependentUpon>
     </EmbeddedResource>
@@ -465,6 +481,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Formularios\ConfiguracionBD1.resx">
       <DependentUpon>ConfiguracionBD1.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formularios\ConfiguracionCaja.resx">
+      <DependentUpon>ConfiguracionCaja.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Formularios\Consultar_Proveedores.resx">
       <DependentUpon>Consultar_Proveedores.vb</DependentUpon>
