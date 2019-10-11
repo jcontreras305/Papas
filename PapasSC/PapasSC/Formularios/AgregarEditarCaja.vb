@@ -21,7 +21,7 @@
 
     Private Sub btnGuardar_Click(sender As Object, e As EventArgs) Handles btnGuardar.Click
         Try
-            Dim datos(5) As String
+            Dim datos(6) As String
 
             datos(0) = txtNombre.Text
             datos(1) = txtReferencia.Text
@@ -34,6 +34,11 @@
             datos(4) = CStr(sprEfectivo.Value)
             Dim index As Int32 = cmbBodega.FindString(cmbBodega.Text)
             datos(5) = idsBodega(index)
+            If chbExplicito.Checked Then
+                datos(6) = "A"
+            Else
+                datos(6) = "B"
+            End If
             If Me.Text.Equals("Agregar") Then
                 mtdCaja.insertarCaja(datos)
             ElseIf Me.Text.Equals("Actualizar") Then
@@ -45,6 +50,6 @@
     End Sub
 
     Private Sub txtReferencia_KeyPress(sender As Object, e As KeyPressEventArgs) Handles txtReferencia.KeyPress
-        e.Handled = Not IsNumeric(e.KeyChar) And Not Char.IsControl(e.KeyChar) Or txtNombre.Text.Length > 5
+        e.Handled = Not IsNumeric(e.KeyChar) And Not Char.IsControl(e.KeyChar)
     End Sub
 End Class

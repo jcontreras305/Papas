@@ -43,7 +43,7 @@ Partial Class ConfiguracionCaja
         Me.tblCaja.Location = New System.Drawing.Point(12, 44)
         Me.tblCaja.Name = "tblCaja"
         Me.tblCaja.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect
-        Me.tblCaja.Size = New System.Drawing.Size(776, 346)
+        Me.tblCaja.Size = New System.Drawing.Size(681, 346)
         Me.tblCaja.TabIndex = 0
         '
         'txtFiltro
@@ -66,7 +66,7 @@ Partial Class ConfiguracionCaja
         '
         Me.btnSalir.Image = Global.PapasSC.My.Resources.Resources.CANCELAR
         Me.btnSalir.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
-        Me.btnSalir.Location = New System.Drawing.Point(713, 396)
+        Me.btnSalir.Location = New System.Drawing.Point(623, 396)
         Me.btnSalir.Name = "btnSalir"
         Me.btnSalir.Size = New System.Drawing.Size(75, 37)
         Me.btnSalir.TabIndex = 5
@@ -78,7 +78,7 @@ Partial Class ConfiguracionCaja
         '
         Me.btnEliminar.Image = Global.PapasSC.My.Resources.Resources.BORRAR
         Me.btnEliminar.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
-        Me.btnEliminar.Location = New System.Drawing.Point(610, 396)
+        Me.btnEliminar.Location = New System.Drawing.Point(520, 396)
         Me.btnEliminar.Name = "btnEliminar"
         Me.btnEliminar.Size = New System.Drawing.Size(87, 37)
         Me.btnEliminar.TabIndex = 4
@@ -90,7 +90,7 @@ Partial Class ConfiguracionCaja
         '
         Me.btnEditar.Image = Global.PapasSC.My.Resources.Resources.ACTUALIZAR
         Me.btnEditar.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
-        Me.btnEditar.Location = New System.Drawing.Point(519, 396)
+        Me.btnEditar.Location = New System.Drawing.Point(429, 396)
         Me.btnEditar.Name = "btnEditar"
         Me.btnEditar.Size = New System.Drawing.Size(75, 37)
         Me.btnEditar.TabIndex = 3
@@ -103,7 +103,7 @@ Partial Class ConfiguracionCaja
         Me.btnAgregar.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center
         Me.btnAgregar.Image = Global.PapasSC.My.Resources.Resources.NUEVO
         Me.btnAgregar.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
-        Me.btnAgregar.Location = New System.Drawing.Point(419, 396)
+        Me.btnAgregar.Location = New System.Drawing.Point(329, 396)
         Me.btnAgregar.Name = "btnAgregar"
         Me.btnAgregar.Size = New System.Drawing.Size(83, 37)
         Me.btnAgregar.TabIndex = 2
@@ -115,7 +115,7 @@ Partial Class ConfiguracionCaja
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(800, 439)
+        Me.ClientSize = New System.Drawing.Size(705, 439)
         Me.Controls.Add(Me.btnSalir)
         Me.Controls.Add(Me.btnEliminar)
         Me.Controls.Add(Me.btnEditar)

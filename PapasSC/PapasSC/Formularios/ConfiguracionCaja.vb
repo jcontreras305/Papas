@@ -44,6 +44,11 @@
             aeCaja.sprEfectivo.Value = tblCaja.CurrentRow.Cells("limiteEfectivo").Value.ToString()
             aeCaja.Text = "Actualizar"
             aeCaja.idCajaActualizar = tblCaja.CurrentRow.Cells("idCaja").Value.ToString()
+            If tblCaja.CurrentRow.Cells("ValoresExplicitos").Value.Equals("A") Then
+                aeCaja.chbExplicito.Checked = True
+            Else
+                aeCaja.chbExplicito.Checked = False
+            End If
             aeCaja.ShowDialog()
             mtdCaja.seleccioarCajas(tblCaja)
         Catch ex As Exception
@@ -65,6 +70,11 @@
             End If
             aeCaja.sprEfectivo.Value = tblCaja.CurrentRow.Cells("limiteEfectivo").Value.ToString()
             aeCaja.Text = "Actualizar"
+            If tblCaja.CurrentRow.Cells("ValoresExplicitos").Value.Equals("A") Then
+                aeCaja.chbExplicito.Checked = True
+            Else
+                aeCaja.chbExplicito.Checked = False
+            End If
             aeCaja.idCajaActualizar = tblCaja.CurrentRow.Cells("idCaja").Value.ToString()
             aeCaja.ShowDialog()
             mtdCaja.seleccioarCajas(tblCaja)

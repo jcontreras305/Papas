@@ -38,12 +38,16 @@ Partial Class AgregarEditarCaja
         Me.Label1 = New System.Windows.Forms.Label()
         Me.btnCancelar = New System.Windows.Forms.Button()
         Me.btnGuardar = New System.Windows.Forms.Button()
+        Me.Label8 = New System.Windows.Forms.Label()
+        Me.chbExplicito = New System.Windows.Forms.CheckBox()
         Me.GroupBox1.SuspendLayout()
         CType(Me.sprEfectivo, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'GroupBox1
         '
+        Me.GroupBox1.Controls.Add(Me.chbExplicito)
+        Me.GroupBox1.Controls.Add(Me.Label8)
         Me.GroupBox1.Controls.Add(Me.sprEfectivo)
         Me.GroupBox1.Controls.Add(Me.Label7)
         Me.GroupBox1.Controls.Add(Me.chbActivo)
@@ -59,7 +63,7 @@ Partial Class AgregarEditarCaja
         Me.GroupBox1.Controls.Add(Me.Label1)
         Me.GroupBox1.Location = New System.Drawing.Point(21, 12)
         Me.GroupBox1.Name = "GroupBox1"
-        Me.GroupBox1.Size = New System.Drawing.Size(273, 202)
+        Me.GroupBox1.Size = New System.Drawing.Size(273, 248)
         Me.GroupBox1.TabIndex = 0
         Me.GroupBox1.TabStop = False
         Me.GroupBox1.Text = "Datos"
@@ -113,6 +117,7 @@ Partial Class AgregarEditarCaja
         'txtNombre
         '
         Me.txtNombre.Location = New System.Drawing.Point(89, 48)
+        Me.txtNombre.MaxLength = 20
         Me.txtNombre.Name = "txtNombre"
         Me.txtNombre.Size = New System.Drawing.Size(144, 20)
         Me.txtNombre.TabIndex = 7
@@ -120,6 +125,7 @@ Partial Class AgregarEditarCaja
         'txtReferencia
         '
         Me.txtReferencia.Location = New System.Drawing.Point(89, 16)
+        Me.txtReferencia.MaxLength = 5
         Me.txtReferencia.Name = "txtReferencia"
         Me.txtReferencia.Size = New System.Drawing.Size(144, 20)
         Me.txtReferencia.TabIndex = 6
@@ -181,7 +187,7 @@ Partial Class AgregarEditarCaja
         '
         Me.btnCancelar.Image = Global.PapasSC.My.Resources.Resources.CANCELAR
         Me.btnCancelar.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
-        Me.btnCancelar.Location = New System.Drawing.Point(207, 228)
+        Me.btnCancelar.Location = New System.Drawing.Point(206, 278)
         Me.btnCancelar.Name = "btnCancelar"
         Me.btnCancelar.Size = New System.Drawing.Size(87, 39)
         Me.btnCancelar.TabIndex = 2
@@ -193,7 +199,7 @@ Partial Class AgregarEditarCaja
         '
         Me.btnGuardar.Image = Global.PapasSC.My.Resources.Resources.ACEPTAR
         Me.btnGuardar.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
-        Me.btnGuardar.Location = New System.Drawing.Point(122, 228)
+        Me.btnGuardar.Location = New System.Drawing.Point(121, 278)
         Me.btnGuardar.Name = "btnGuardar"
         Me.btnGuardar.Size = New System.Drawing.Size(79, 39)
         Me.btnGuardar.TabIndex = 1
@@ -201,11 +207,30 @@ Partial Class AgregarEditarCaja
         Me.btnGuardar.TextAlign = System.Drawing.ContentAlignment.MiddleRight
         Me.btnGuardar.UseVisualStyleBackColor = True
         '
+        'Label8
+        '
+        Me.Label8.AutoSize = True
+        Me.Label8.Location = New System.Drawing.Point(15, 213)
+        Me.Label8.Name = "Label8"
+        Me.Label8.Size = New System.Drawing.Size(48, 13)
+        Me.Label8.TabIndex = 13
+        Me.Label8.Text = "Explícito"
+        '
+        'chbExplicito
+        '
+        Me.chbExplicito.AutoSize = True
+        Me.chbExplicito.Location = New System.Drawing.Point(89, 213)
+        Me.chbExplicito.Name = "chbExplicito"
+        Me.chbExplicito.Size = New System.Drawing.Size(130, 17)
+        Me.chbExplicito.TabIndex = 14
+        Me.chbExplicito.Text = "Pedir la denominación"
+        Me.chbExplicito.UseVisualStyleBackColor = True
+        '
         'AgregarEditarCaja
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(306, 282)
+        Me.ClientSize = New System.Drawing.Size(306, 337)
         Me.Controls.Add(Me.btnCancelar)
         Me.Controls.Add(Me.btnGuardar)
         Me.Controls.Add(Me.GroupBox1)
@@ -234,4 +259,6 @@ Partial Class AgregarEditarCaja
     Public WithEvents cmbBodega As ComboBox
     Public WithEvents txtNombre As TextBox
     Public WithEvents txtReferencia As TextBox
+    Friend WithEvents chbExplicito As CheckBox
+    Friend WithEvents Label8 As Label
 End Class

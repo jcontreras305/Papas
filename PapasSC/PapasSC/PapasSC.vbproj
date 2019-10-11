@@ -223,6 +223,12 @@
     <Compile Include="Formularios\Impresoras.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="Formularios\IniciarCaja.Designer.vb">
+      <DependentUpon>IniciarCaja.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Formularios\IniciarCaja.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="Formularios\Invertario.Designer.vb">
       <DependentUpon>Invertario.vb</DependentUpon>
     </Compile>
@@ -514,6 +520,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Formularios\Impresoras.resx">
       <DependentUpon>Impresoras.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formularios\IniciarCaja.resx">
+      <DependentUpon>IniciarCaja.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Formularios\Invertario.resx">
       <DependentUpon>Invertario.vb</DependentUpon>
