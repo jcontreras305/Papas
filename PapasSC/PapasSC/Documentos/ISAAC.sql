@@ -160,5 +160,5 @@ create table ticket(
 
 alter table venta
 add constraint fk_ticket_venta
-foreign key (idTicket) references ticket(idTicket)
+foreign key (idTicket) references ticket(idTicket) 
 

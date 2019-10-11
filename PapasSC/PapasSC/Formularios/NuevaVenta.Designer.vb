@@ -22,8 +22,6 @@ Partial Class NuevaVenta
     'No lo modifique con el editor de código.
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
-        Me.components = New System.ComponentModel.Container()
-        Me.cbxRealizaventa = New System.Windows.Forms.CheckBox()
         Me.tblventa = New System.Windows.Forms.DataGridView()
         Me.Label1 = New System.Windows.Forms.Label()
         Me.cmbProducto = New System.Windows.Forms.ComboBox()
@@ -32,10 +30,8 @@ Partial Class NuevaVenta
         Me.npdkilos = New System.Windows.Forms.NumericUpDown()
         Me.Button1 = New System.Windows.Forms.Button()
         Me.l = New System.Windows.Forms.Label()
-        Me.fecha_hoy = New System.Windows.Forms.Timer(Me.components)
         Me.TabControl1 = New System.Windows.Forms.TabControl()
         Me.TabPage1 = New System.Windows.Forms.TabPage()
-        Me.cbxBodega = New System.Windows.Forms.CheckBox()
         Me.Label5 = New System.Windows.Forms.Label()
         Me.cmbBodega = New System.Windows.Forms.ComboBox()
         Me.Label8 = New System.Windows.Forms.Label()
@@ -51,11 +47,12 @@ Partial Class NuevaVenta
         Me.TabPage2 = New System.Windows.Forms.TabPage()
         Me.Button7 = New System.Windows.Forms.Button()
         Me.Button6 = New System.Windows.Forms.Button()
-        Me.ComboBox5 = New System.Windows.Forms.ComboBox()
-        Me.TextBox1 = New System.Windows.Forms.TextBox()
+        Me.cmbFiltroVenta = New System.Windows.Forms.ComboBox()
+        Me.tbxBusquedaFiltrada = New System.Windows.Forms.TextBox()
         Me.Button5 = New System.Windows.Forms.Button()
         Me.Button4 = New System.Windows.Forms.Button()
-        Me.DataGridView2 = New System.Windows.Forms.DataGridView()
+        Me.tblDetalleVenta = New System.Windows.Forms.DataGridView()
+        Me.Button9 = New System.Windows.Forms.Button()
         CType(Me.tblventa, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.npdprecio, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.npdkilos, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -63,18 +60,8 @@ Partial Class NuevaVenta
         Me.TabPage1.SuspendLayout()
         CType(Me.npdCantidadPagada, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.TabPage2.SuspendLayout()
-        CType(Me.DataGridView2, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.tblDetalleVenta, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
-        '
-        'cbxRealizaventa
-        '
-        Me.cbxRealizaventa.AutoSize = True
-        Me.cbxRealizaventa.Location = New System.Drawing.Point(16, 26)
-        Me.cbxRealizaventa.Name = "cbxRealizaventa"
-        Me.cbxRealizaventa.Size = New System.Drawing.Size(132, 17)
-        Me.cbxRealizaventa.TabIndex = 0
-        Me.cbxRealizaventa.Text = "Venta Publico General"
-        Me.cbxRealizaventa.UseVisualStyleBackColor = True
         '
         'tblventa
         '
@@ -150,7 +137,7 @@ Partial Class NuevaVenta
         '
         Me.TabControl1.Controls.Add(Me.TabPage1)
         Me.TabControl1.Controls.Add(Me.TabPage2)
-        Me.TabControl1.Location = New System.Drawing.Point(12, 12)
+        Me.TabControl1.Location = New System.Drawing.Point(8, 10)
         Me.TabControl1.Name = "TabControl1"
         Me.TabControl1.SelectedIndex = 0
         Me.TabControl1.Size = New System.Drawing.Size(722, 465)
@@ -158,7 +145,6 @@ Partial Class NuevaVenta
         '
         'TabPage1
         '
-        Me.TabPage1.Controls.Add(Me.cbxBodega)
         Me.TabPage1.Controls.Add(Me.Label5)
         Me.TabPage1.Controls.Add(Me.cmbBodega)
         Me.TabPage1.Controls.Add(Me.Label8)
@@ -169,7 +155,6 @@ Partial Class NuevaVenta
         Me.TabPage1.Controls.Add(Me.Button3)
         Me.TabPage1.Controls.Add(Me.cbxEspera)
         Me.TabPage1.Controls.Add(Me.lblTotal)
-        Me.TabPage1.Controls.Add(Me.cbxRealizaventa)
         Me.TabPage1.Controls.Add(Me.tblventa)
         Me.TabPage1.Controls.Add(Me.Label1)
         Me.TabPage1.Controls.Add(Me.l)
@@ -187,16 +172,6 @@ Partial Class NuevaVenta
         Me.TabPage1.TabIndex = 0
         Me.TabPage1.Text = "PDV"
         Me.TabPage1.UseVisualStyleBackColor = True
-        '
-        'cbxBodega
-        '
-        Me.cbxBodega.AutoSize = True
-        Me.cbxBodega.Location = New System.Drawing.Point(19, 322)
-        Me.cbxBodega.Name = "cbxBodega"
-        Me.cbxBodega.Size = New System.Drawing.Size(97, 17)
-        Me.cbxBodega.TabIndex = 28
-        Me.cbxBodega.Text = "Generar Ticket"
-        Me.cbxBodega.UseVisualStyleBackColor = True
         '
         'Label5
         '
@@ -240,7 +215,7 @@ Partial Class NuevaVenta
         Me.cmbFormaPago.Name = "cmbFormaPago"
         Me.cmbFormaPago.Size = New System.Drawing.Size(106, 21)
         Me.cmbFormaPago.TabIndex = 22
-        Me.cmbFormaPago.Text = "Selecione "
+        Me.cmbFormaPago.Text = "Seleccione"
         '
         'Label7
         '
@@ -308,13 +283,14 @@ Partial Class NuevaVenta
         '
         'TabPage2
         '
+        Me.TabPage2.Controls.Add(Me.Button9)
         Me.TabPage2.Controls.Add(Me.Button7)
         Me.TabPage2.Controls.Add(Me.Button6)
-        Me.TabPage2.Controls.Add(Me.ComboBox5)
-        Me.TabPage2.Controls.Add(Me.TextBox1)
+        Me.TabPage2.Controls.Add(Me.cmbFiltroVenta)
+        Me.TabPage2.Controls.Add(Me.tbxBusquedaFiltrada)
         Me.TabPage2.Controls.Add(Me.Button5)
         Me.TabPage2.Controls.Add(Me.Button4)
-        Me.TabPage2.Controls.Add(Me.DataGridView2)
+        Me.TabPage2.Controls.Add(Me.tblDetalleVenta)
         Me.TabPage2.Location = New System.Drawing.Point(4, 22)
         Me.TabPage2.Name = "TabPage2"
         Me.TabPage2.Padding = New System.Windows.Forms.Padding(3)
@@ -325,7 +301,7 @@ Partial Class NuevaVenta
         '
         'Button7
         '
-        Me.Button7.Location = New System.Drawing.Point(309, 288)
+        Me.Button7.Location = New System.Drawing.Point(162, 290)
         Me.Button7.Name = "Button7"
         Me.Button7.Size = New System.Drawing.Size(123, 23)
         Me.Button7.TabIndex = 6
@@ -341,20 +317,22 @@ Partial Class NuevaVenta
         Me.Button6.Text = "Busqueda"
         Me.Button6.UseVisualStyleBackColor = True
         '
-        'ComboBox5
+        'cmbFiltroVenta
         '
-        Me.ComboBox5.FormattingEnabled = True
-        Me.ComboBox5.Location = New System.Drawing.Point(35, 38)
-        Me.ComboBox5.Name = "ComboBox5"
-        Me.ComboBox5.Size = New System.Drawing.Size(121, 21)
-        Me.ComboBox5.TabIndex = 4
+        Me.cmbFiltroVenta.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
+        Me.cmbFiltroVenta.FormattingEnabled = True
+        Me.cmbFiltroVenta.Items.AddRange(New Object() {"Cliente", "Clave Venta", "Empleado", "Fecha", "Total de Venta", "Producto", "Cantidad", "Bodega"})
+        Me.cmbFiltroVenta.Location = New System.Drawing.Point(35, 38)
+        Me.cmbFiltroVenta.Name = "cmbFiltroVenta"
+        Me.cmbFiltroVenta.Size = New System.Drawing.Size(121, 21)
+        Me.cmbFiltroVenta.TabIndex = 4
         '
-        'TextBox1
+        'tbxBusquedaFiltrada
         '
-        Me.TextBox1.Location = New System.Drawing.Point(162, 39)
-        Me.TextBox1.Name = "TextBox1"
-        Me.TextBox1.Size = New System.Drawing.Size(384, 20)
-        Me.TextBox1.TabIndex = 3
+        Me.tbxBusquedaFiltrada.Location = New System.Drawing.Point(162, 39)
+        Me.tbxBusquedaFiltrada.Name = "tbxBusquedaFiltrada"
+        Me.tbxBusquedaFiltrada.Size = New System.Drawing.Size(384, 20)
+        Me.tbxBusquedaFiltrada.TabIndex = 3
         '
         'Button5
         '
@@ -374,16 +352,25 @@ Partial Class NuevaVenta
         Me.Button4.Text = "Cancelar Venta en Espera"
         Me.Button4.UseVisualStyleBackColor = True
         '
-        'DataGridView2
+        'tblDetalleVenta
         '
-        Me.DataGridView2.AllowUserToAddRows = False
-        Me.DataGridView2.AllowUserToDeleteRows = False
-        Me.DataGridView2.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
-        Me.DataGridView2.Location = New System.Drawing.Point(35, 80)
-        Me.DataGridView2.Name = "DataGridView2"
-        Me.DataGridView2.ReadOnly = True
-        Me.DataGridView2.Size = New System.Drawing.Size(623, 201)
-        Me.DataGridView2.TabIndex = 0
+        Me.tblDetalleVenta.AllowUserToAddRows = False
+        Me.tblDetalleVenta.AllowUserToDeleteRows = False
+        Me.tblDetalleVenta.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
+        Me.tblDetalleVenta.Location = New System.Drawing.Point(35, 80)
+        Me.tblDetalleVenta.Name = "tblDetalleVenta"
+        Me.tblDetalleVenta.ReadOnly = True
+        Me.tblDetalleVenta.Size = New System.Drawing.Size(623, 201)
+        Me.tblDetalleVenta.TabIndex = 0
+        '
+        'Button9
+        '
+        Me.Button9.Location = New System.Drawing.Point(293, 289)
+        Me.Button9.Name = "Button9"
+        Me.Button9.Size = New System.Drawing.Size(139, 24)
+        Me.Button9.TabIndex = 8
+        Me.Button9.Text = "Activar Venta en Espera"
+        Me.Button9.UseVisualStyleBackColor = True
         '
         'NuevaVenta
         '
@@ -402,12 +389,10 @@ Partial Class NuevaVenta
         CType(Me.npdCantidadPagada, System.ComponentModel.ISupportInitialize).EndInit()
         Me.TabPage2.ResumeLayout(False)
         Me.TabPage2.PerformLayout()
-        CType(Me.DataGridView2, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.tblDetalleVenta, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
 
     End Sub
-
-    Friend WithEvents cbxRealizaventa As CheckBox
     Friend WithEvents tblventa As DataGridView
     Friend WithEvents Label1 As Label
     Friend WithEvents cmbProducto As ComboBox
@@ -416,19 +401,18 @@ Partial Class NuevaVenta
     Friend WithEvents npdkilos As NumericUpDown
     Friend WithEvents Button1 As Button
     Friend WithEvents l As Label
-    Friend WithEvents fecha_hoy As Timer
     Friend WithEvents TabControl1 As TabControl
     Friend WithEvents TabPage1 As TabPage
     Friend WithEvents lblTotal As Label
     Friend WithEvents TabPage2 As TabPage
-    Friend WithEvents DataGridView2 As DataGridView
+    Friend WithEvents tblDetalleVenta As DataGridView
     Friend WithEvents Button2 As Button
     Friend WithEvents Button3 As Button
     Friend WithEvents cbxEspera As CheckBox
     Friend WithEvents Button7 As Button
     Friend WithEvents Button6 As Button
-    Friend WithEvents ComboBox5 As ComboBox
-    Friend WithEvents TextBox1 As TextBox
+    Friend WithEvents cmbFiltroVenta As ComboBox
+    Friend WithEvents tbxBusquedaFiltrada As TextBox
     Friend WithEvents Button5 As Button
     Friend WithEvents Button4 As Button
     Friend WithEvents cmbFormaPago As ComboBox
@@ -437,7 +421,7 @@ Partial Class NuevaVenta
     Friend WithEvents npdCantidadPagada As NumericUpDown
     Friend WithEvents Label5 As Label
     Friend WithEvents cmbBodega As ComboBox
-    Friend WithEvents cbxBodega As CheckBox
     Friend WithEvents cmbCliente As ComboBox
     Friend WithEvents Label3 As Label
+    Friend WithEvents Button9 As Button
 End Class
