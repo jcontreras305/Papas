@@ -17,10 +17,10 @@ Public Class Configuracion
         Try
             conn.Open()
             cmd.ExecuteNonQuery()
-            MsgBox("La copia de seguridad de la Base de Datos papas Santa Cruz se realizo correctamente")
+            MsgBox("La copia de seguridad de la Base de Datos papas Santa Cruz (PapaSC) se realizo correctamente")
 
         Catch ex As Exception
-            MsgBox("Se desea realizar otra copia, cierre esta ventana y vuelva a intentarlo")
+            MsgBox("Se desea realizar otra copia se seguridad, vuelva a intentarlo")
         Finally
             conn.Close()
             conn.Dispose()
@@ -51,6 +51,38 @@ Public Class Configuracion
         End Try
 
 
+
+    End Sub
+
+    Public Sub Restaurar()
+
+        Dim ruta As String
+        Dim conRest As New SqlConnection("data source=localhost; initial catalog=master; integrated security=true")
+
+
+        Try
+
+            Dim archivo As New OpenFileDialog
+
+            archivo.Filter = "BAK|*.bak"
+            If archivo.ShowDialog = Windows.Forms.DialogResult.OK Then
+                ruta = archivo.FileName()
+                Dim comando As String = "RESTORE DATABASE [PapaSC] FROM  DISK = N'" & ruta & "' WITH  FILE = 1,  NOUNLOAD,  STATS = 5"
+
+                Dim cmd As SqlCommand = New SqlCommand(comando, conRest)
+
+                conRest.Open()
+                cmd.ExecuteNonQuery()
+                MsgBox("Se restauro correctamente la base de datos 'Papas Santa Cruz (PapaSC) '")
+            End If
+
+
+        Catch ex As Exception
+            MsgBox("No se restauro la base de datos 'Papas Santa Cruz (PapaSC) ', vuelva intentarlo")
+        Finally
+            conRest.Close()
+            conRest.Dispose()
+        End Try
 
     End Sub
 

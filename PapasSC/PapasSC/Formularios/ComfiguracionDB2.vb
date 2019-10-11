@@ -36,4 +36,11 @@ Public Class ComfiguracionDB2
 
         index.IndexBd()
     End Sub
+
+    Private Sub btnRestaurar_Click(sender As Object, e As EventArgs) Handles btnRestaurar.Click
+        Dim res As New Configuracion
+
+        res.Restaurar()
+
+    End Sub
 End Class

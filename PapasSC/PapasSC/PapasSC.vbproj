@@ -217,6 +217,12 @@
     <Compile Include="Formularios\GenerarNomina.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="Formularios\Horario.Designer.vb">
+      <DependentUpon>Horario.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Formularios\Horario.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="Formularios\Impresoras.Designer.vb">
       <DependentUpon>Impresoras.vb</DependentUpon>
     </Compile>
@@ -402,6 +408,8 @@
     <Compile Include="LogeoMetodos.vb" />
     <Compile Include="Metodos\Configuracion.vb" />
     <Compile Include="Metodos\MetodoExistenciaProducto.vb" />
+    <Compile Include="Metodos\MetodoHorario.vb" />
+    <Compile Include="Metodos\MetodoNomina.vb" />
     <Compile Include="Metodos\MetodosBodega.vb" />
     <Compile Include="Metodos\MetodosCaja.vb" />
     <Compile Include="Metodos\MetodosCliente.vb" />
@@ -517,6 +525,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Formularios\GenerarNomina.resx">
       <DependentUpon>GenerarNomina.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formularios\Horario.resx">
+      <DependentUpon>Horario.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Formularios\Impresoras.resx">
       <DependentUpon>Impresoras.vb</DependentUpon>
