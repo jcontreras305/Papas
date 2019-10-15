@@ -18,6 +18,7 @@ Public Class MetodosProducto
     isnull(bo.nombre,'No asignada') as Nombre_Bodega,
     isnull(ep.cantidad,'0')  As  Cantidad,
     pr.version as Producto,
+    pr.clave as Clave,
     pr.precio  as Precio
     From bodega bo right Join existenciaProductos ep on bo.idBodega   = ep.idBodega  
     right join producto pr on pr.idProducto = ep.idProducto  where pr.estado = 'A'", cn.conn)
@@ -38,10 +39,11 @@ Public Class MetodosProducto
     isnull(bo.nombre,'No asignada') as Nombre_Bodega,
     isnull(ep.cantidad,'0')  As  Cantidad,
     pr.version as Producto,
+    pr.clave as Clave,
     pr.precio  as Precio
     From bodega bo right Join existenciaProductos ep on bo.idBodega   = ep.idBodega  
     right join producto pr on pr.idProducto = ep.idProducto  where pr.estado = 'A'
- and pl.version like '" + filtro + "%'", cn.conn)
+    and pr.version like '" + filtro + "%'", cn.conn)
             dt = New DataTable
             adaptador.Fill(dt)
             dgv.DataSource = dt
@@ -59,6 +61,7 @@ Public Class MetodosProducto
     bo.nombre as Nombre_Bodega,
     ep.cantidad  As  Cantidad,
      pr.version as Producto,
+      pr.clave as Clave,
     pr.precio  as Precio
     From bodega bo inner Join existenciaProductos ep on bo.idBodega   = ep.idBodega  
     inner Join producto pr on pr.idProducto = ep.idProducto  where pr.estado like '" + filtro + "%'", cn.conn)
@@ -79,10 +82,11 @@ Public Class MetodosProducto
     isnull(bo.nombre,'No asignada') as Nombre_Bodega,
     isnull(ep.cantidad,'0')  As  Cantidad,
     pr.version as Producto,
+      pr.clave as Clave,
     pr.precio  as Precio
     From bodega bo right Join existenciaProductos ep on bo.idBodega   = ep.idBodega  
     right join producto pr on pr.idProducto = ep.idProducto  where pr.estado = 'A'
- and pl.idProducto like '" + filtro + "%'", cn.conn)
+    and pr.idProducto like '" + filtro + "%'", cn.conn)
             dt = New DataTable
             adaptador.Fill(dt)
             dgv.DataSource = dt
@@ -99,10 +103,11 @@ Public Class MetodosProducto
     isnull(bo.nombre,'No asignada') as Nombre_Bodega,
     isnull(ep.cantidad,'0')  As  Cantidad,
     pr.version as Producto,
+      pr.clave as Clave,
     pr.precio  as Precio
     From bodega bo right Join existenciaProductos ep on bo.idBodega   = ep.idBodega  
     right join producto pr on pr.idProducto = ep.idProducto  where pr.estado = 'A'
- and pl.clave like '" + filtro + "%'", cn.conn)
+    and pr.clave like '" + filtro + "%'", cn.conn)
             dt = New DataTable
             adaptador.Fill(dt)
             dgv.DataSource = dt

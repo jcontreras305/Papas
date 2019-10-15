@@ -18,7 +18,7 @@
         tablaprecios.ReadOnly = True
         Dim MTCLI As New MetodosProducto
         If TextBox1.Text = "" Or TextBox1.Text = Nothing Then
-            MTCLI.llenarDatagridviewlistaprecio(tablaprecios)
+            MTCLI.llenarDatagridview(tablaprecios)
 
         ElseIf filtroproductos.SelectedIndex = 0 Then
             MTCLI.llenarDatagridview_filtroEstado(tablaprecios, TextBox1.Text)
@@ -41,7 +41,7 @@
 
 
                 MTCLI.updateprecio(id, npd.Value)
-                MTCLI.llenarDatagridviewlistaprecio(tablaprecios)
+                MTCLI.llenarDatagridview(tablaprecios)
             End If
         Catch
             MsgBox("Seleciona un renglos")

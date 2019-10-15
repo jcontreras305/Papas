@@ -2,6 +2,8 @@
     Dim listIdsEmpleados, listIdsCajas, listEstatusCaja As New List(Of String)
     Dim mtdCaja As New MetodosCaja
     Dim mtdLogeo As New LogeoMetodos
+    Public vn As Boolean = False
+    Public user As String
     Private Sub IniciarCaja_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         Try
             Dim mtdCaja As New MetodosCaja
@@ -77,6 +79,17 @@
                         caja.txtCaja.Text = cmbCajas.Text
                         caja.txtEmpleado.Text = cmbEmpleados.Text
                         caja.ShowDialog()
+
+                        If vn Then
+                            NuevaVenta.user = user
+                            NuevaVenta.idCaja = idCaja
+                            NuevaVenta.Show()
+                        Else
+                            caja.pnlEstatus.BackColor = Color.Green
+                            caja.txtCaja.Text = cmbCajas.Text
+                            caja.txtEmpleado.Text = cmbEmpleados.Text
+                            caja.ShowDialog()
+                        End If
                     End If
                 Else
                     'SEGUIR CON LA CAJA CERRADA

@@ -13,11 +13,13 @@
 
 
             Dim id As String = Convert.ToString(TablaProductos.CurrentRow.Cells(0).Value)
-            Dim version As String = Convert.ToString(TablaProductos.CurrentRow.Cells(1).Value)
-            Dim clave As String = Convert.ToString(TablaProductos.CurrentRow.Cells(3).Value)
+            Dim version As String = Convert.ToString(TablaProductos.CurrentRow.Cells(3).Value)
+            Dim clave As String = Convert.ToString(TablaProductos.CurrentRow.Cells(4).Value)
+
             Actualizar_Producto.id = id
             Actualizar_Producto.txtversion.Text = version
             Actualizar_Producto.txtClave.Text = clave
+            Actualizar_Producto.npd.Value = Convert.ToDouble(TablaProductos.CurrentRow.Cells(5).Value)
             Actualizar_Producto.Show()
         Catch
         End Try

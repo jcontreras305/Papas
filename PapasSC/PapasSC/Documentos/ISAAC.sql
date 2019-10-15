@@ -391,7 +391,7 @@ set @fecha = SYSDATETIME()
 print @fecha
 
 
-create proc sp_Iniciar_Caja
+create alter proc sp_Iniciar_Caja
 	@montoInicial float,
 	@fechaInicio smalldatetime,
 	@idCaja varchar(36),
@@ -443,7 +443,7 @@ begin
 		begin catch
 			goto resolver
 		end catch
-	``commit tran
+	commit tran
 	resolver:
 	if @error <>0 begin
 		rollback	
