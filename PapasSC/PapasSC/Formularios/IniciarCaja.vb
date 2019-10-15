@@ -61,12 +61,18 @@
                     caja.txtEmpleado.Text = cmbEmpleados.Text
                     mtdCaja.cerrar_Caja(listIdsCajas(cmbCajas.FindString(cmbCajas.Text)))
                     mtdCaja.cajasEstatus(cmbCajas, listIdsCajas, listEstatusCaja)
-                    caja.ShowDialog()
                 ElseIf Windows.Forms.DialogResult.No Then
                     'SEGUIR SIN HACER CORTE
                     caja.pnlEstatus.BackColor = Color.Green
                     caja.txtCaja.Text = cmbCajas.Text
                     caja.txtEmpleado.Text = cmbEmpleados.Text
+                End If
+                If vn = True Then
+                    NuevaVenta.user = user
+                    NuevaVenta.idCaja = listIdsCajas(cmbCajas.FindString(cmbCajas.Text))
+                    NuevaVenta.ShowDialog()
+                    vn = False
+                Else
                     caja.ShowDialog()
                 End If
             Else
