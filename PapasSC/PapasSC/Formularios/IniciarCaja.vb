@@ -77,15 +77,12 @@
                     Dim dinero As Double = CDbl(InputBox("Ingresa la cantidad Inicial " + vbCrLf + "Solo numeros por favor"))
                     If mtdCaja.iniciar_Caja(idCaja, idEmpleado, dinero.ToString) Then
                         mtdCaja.cajasEstatus(cmbCajas, listIdsCajas, listEstatusCaja)
-                        caja.pnlEstatus.BackColor = Color.Green
-                        caja.txtCaja.Text = cmbCajas.Text
-                        caja.txtEmpleado.Text = cmbEmpleados.Text
-                        caja.ShowDialog()
 
                         If vn Then
                             NuevaVenta.user = user
                             NuevaVenta.idCaja = idCaja
                             NuevaVenta.Show()
+                            vn = False
                         Else
                             caja.pnlEstatus.BackColor = Color.Green
                             caja.txtCaja.Text = cmbCajas.Text
