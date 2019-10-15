@@ -6,23 +6,38 @@ Public Class MetodosVenta
         Public adaptador As SqlDataAdapter
         Public dt As DataTable
 
-        Public Sub llenarDatagridview(ByVal dgv As DataGridView)
-            cn.conectar()
-            Try
+    Public Sub llenarDatagridview(ByVal dgv As DataGridView)
+        cn.conectar()
+        Try
             adaptador = New SqlDataAdapter("select vn.idVenta, bo.nombre, pr.version, expr.cantidad, pr.precio, vn.cantidadPagada, vn.totalPagar, vd.total, vd.totalNeto, vn.fecha, em.nombre, cl.nombre  from venta vn inner join ventaDetalle vd on vn.idVenta = vd.idVenta inner join producto pr on vd.idProducto = pr.idProducto 
 inner join bodega bo on bo.idBodega =vn.idBodega  inner join cliente cl on cl.idCliente = vn.idCliente inner join empleado em
 on em.idEmpleado = vn.idEmpleado inner join existenciaProductos expr on expr.idBodega =bo.idBodega where vn.estatus='A'", cn.conn)
             dt = New DataTable
-                adaptador.Fill(dt)
-                dgv.DataSource = dt
-            Catch ex As Exception
-                MessageBox.Show("No se lleno el Datagridview debido a: " + ex.ToString)
-            End Try
-        End Sub
+            adaptador.Fill(dt)
+            dgv.DataSource = dt
+        Catch ex As Exception
+            MessageBox.Show("No se lleno el Datagridview debido a: " + ex.ToString)
+        End Try
+    End Sub
+
+
+    Public Sub llenarDatagridview(ByVal dgv As DataGridView, ByVal id As String)
+        cn.conectar()
+        Try
+            adaptador = New SqlDataAdapter("select  bo.nombre, pr.version, expr.cantidad, pr.precio, vn.cantidadPagada, vn.totalPagar, vd.total, vd.totalNeto, vn.fecha, em.nombre, cl.nombre  from venta vn inner join ventaDetalle vd on vn.idVenta = vd.idVenta inner join producto pr on vd.idProducto = pr.idProducto 
+inner join bodega bo on bo.idBodega =vn.idBodega  inner join cliente cl on cl.idCliente = vn.idCliente inner join empleado em
+on em.idEmpleado = vn.idEmpleado inner join existenciaProductos expr on expr.idBodega =bo.idBodega where vn.estatus='A' and vn.idVenta='" + id + "'", cn.conn)
+            dt = New DataTable
+            adaptador.Fill(dt)
+            dgv.DataSource = dt
+        Catch ex As Exception
+            MessageBox.Show("No se lleno el Datagridview debido a: " + ex.ToString)
+        End Try
+    End Sub
 
 
 
-        Public Sub llenarDatagridviewB(ByVal dgv As DataGridView)
+    Public Sub llenarDatagridviewB(ByVal dgv As DataGridView)
             cn.conectar()
             Try
             adaptador = New SqlDataAdapter("select vn.idVenta, bo.nombre, pr.version, expr.cantidad, pr.precio, vn.cantidadPagada, vn.totalPagar, vd.total, vd.totalNeto, vn.fecha, em.nombre, cl.nombre  from venta vn inner join ventaDetalle vd on vn.idVenta = vd.idVenta inner join producto pr on vd.idProducto = pr.idProducto 
@@ -155,7 +170,7 @@ on em.idEmpleado = vn.idEmpleado inner join existenciaProductos expr on expr.idB
             MessageBox.Show("No se lleno el Datagridview debido a: " + ex.ToString)
         End Try
     End Sub
-    Public Sub llenarDatagridview_filtroIdVenta(ByVal dgv As DataGridView, ByVal filtro As String)
+    Public Sub  (ByVal dgv As DataGridView, ByVal filtro As String)
         cn.conectar()
         Try
             adaptador = New SqlDataAdapter("select vn.idVenta, bo.nombre, pr.version, expr.cantidad, pr.precio, vn.cantidadPagada, vn.totalPagar, vd.total, vd.totalNeto, vn.fecha, em.nombre, cl.nombre  from venta vn inner join ventaDetalle vd on vn.idVenta = vd.idVenta inner join producto pr on vd.idProducto = pr.idProducto 
