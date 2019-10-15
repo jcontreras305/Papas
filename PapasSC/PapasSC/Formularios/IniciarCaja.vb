@@ -1,7 +1,8 @@
 ﻿Public Class IniciarCaja
     Dim listIdsEmpleados, listIdsCajas, listEstatusCaja As New List(Of String)
     Dim mtdCaja As New MetodosCaja
-
+    Public user As String
+    Public vn As Boolean = False
     Private Sub IniciarCaja_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         Try
             Dim mtdCaja As New MetodosCaja
@@ -42,7 +43,7 @@
 
 
         If cmbCajas.BackColor = Color.Green Then
-            If MessageBox.Show("¿Dessea Realizar el corte de Caja?", "Apertura y Cierre de Caja", MessageBoxButtons.YesNoCancel, MessageBoxIcon.Question) = Windows.Forms.DialogResult.Yes Then
+            If MessageBox.Show("¿Desea Realizar el corte de Caja?", "Apertura y Cierre de Caja", MessageBoxButtons.YesNoCancel, MessageBoxIcon.Question) = Windows.Forms.DialogResult.Yes Then
                 'REALIZAR CORTE DE CAJA 
                 caja.pnlEstatus.BackColor = Color.Green
                 caja.txtCaja.Text = cmbCajas.Text
@@ -53,7 +54,7 @@
 
             End If
         Else
-            If MessageBox.Show("¿Dessea Iniciar la Caja" + cmbCajas.Text + "?", "Apertura y Cierre de Caja", MessageBoxButtons.YesNoCancel, MessageBoxIcon.Question) = Windows.Forms.DialogResult.Yes Then
+            If MessageBox.Show("¿Desea Iniciar la Caja" + cmbCajas.Text + "?", "Apertura y Cierre de Caja", MessageBoxButtons.YesNoCancel, MessageBoxIcon.Question) = Windows.Forms.DialogResult.Yes Then
                 'INICIAR LA CAJA
                 Dim idCaja As String = listIdsCajas(cmbCajas.FindString(cmbCajas.Text))
                 Dim idEmpleado As String = listIdsEmpleados(cmbEmpleados.FindString(cmbEmpleados.Text))
@@ -63,6 +64,11 @@
                     caja.txtCaja.Text = cmbCajas.Text
                     caja.txtEmpleado.Text = cmbEmpleados.Text
                     caja.ShowDialog()
+                    If vn Then
+                        NuevaVenta.Show()
+                        NuevaVenta.user = user
+                        NuevaVenta.idCaja = idCaja
+                    End If
                 End If
             Else
                 'SEGUIR CON LA CAJA CERRADA

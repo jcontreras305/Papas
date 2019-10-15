@@ -2,6 +2,8 @@
     Public user As String
     Dim savef As String
     Dim flag As Boolean = False
+    Public idCaja As String
+    Dim folio As Int16
     Dim mtdv As New MetodosVenta
     Private Sub NuevaVenta_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         mtdv.llenarDatagridview(tblDetalleVenta)
@@ -92,7 +94,8 @@
         If cmbBodega.Text <> "Selecciona" And cmbCliente.Text <> "Selecciona" And cmbFormaPago.Text <> "Selecciona" And cmbProducto.Text <> "Selecciona" And tblventa.RowCount > 0 And npdCantidadPagada.Value > 0 Then
 
             If cbxEspera.Checked Then
-                mtdv.insertarVenta(savef.ToString, t, npdCantidadPagada.Value, cmbCliente.Text, user, cmbBodega.Text, "E")
+
+                mtdv.insertarVenta(savef.ToString, t, npdCantidadPagada.Value, cmbCliente.Text, user, cmbBodega.Text, "E", cmbFormaPago.Text, idCaja)
                 Dim i As Integer
 
                 MsgBox(tblventa.RowCount)
@@ -104,8 +107,7 @@
                                           Convert.ToString(tblventa.Rows(i - 1).Cells(7).Value))
                 Next
             Else
-                mtdv.insertarVenta(savef.ToString, t, npdCantidadPagada.Value, cmbCliente.Text, user, cmbBodega.Text, "A")
-
+                mtdv.insertarVenta(savef.ToString, t, npdCantidadPagada.Value, cmbCliente.Text, user, cmbBodega.Text, "E", cmbFormaPago.Text, idCaja)
                 MsgBox(tblventa.RowCount)
                 For i = 1 To tblventa.RowCount
 

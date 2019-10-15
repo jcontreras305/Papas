@@ -318,7 +318,7 @@ on em.idEmpleado = vn.idEmpleado inner join existenciaProductos expr on expr.idB
 
     Dim clave As String
 
-    Public Sub insertarVenta(ByVal fecha As String, ByVal totalpagar As String, ByVal cantidadPagada As String, ByVal cliente As String, ByVal Empleado As String, ByVal Bodega As String, ByVal estatus As String, ByVal formapago As String, ByVal idCaja As String, ByVal folio As String, ByVal idticket As String)
+    Public Sub insertarVenta(ByVal fecha As String, ByVal totalpagar As String, ByVal cantidadPagada As String, ByVal cliente As String, ByVal Empleado As String, ByVal Bodega As String, ByVal estatus As String, ByVal formapago As String, ByVal idCaja As String)
         Try
             clave = ""
             cn.conectar()
@@ -340,13 +340,16 @@ on em.idEmpleado = vn.idEmpleado inner join existenciaProductos expr on expr.idB
 
             cn.conectar()
             Dim Sql1 As String = "select idcliente from cliente where nombre ='" + cliente + "' and estatus = 'A'"
-
             Com = New SqlCommand(Sql1, cn.conn)
             Rs = Com.ExecuteReader()
             Rs.Read()
             idCliente = Rs(0).ToString
             Rs.Close()
             cn.desconectar()
+
+
+
+
 
             cn.conectar()
             Dim Sql2 As String = "select top 1 idempleado from empleado where nombre ='" + Empleado + "' and estatus= 'A'"
@@ -364,6 +367,29 @@ on em.idEmpleado = vn.idEmpleado inner join existenciaProductos expr on expr.idB
             Rs = Com.ExecuteReader()
             Rs.Read()
             idbodega = Rs(0).ToString
+            Rs.Close()
+            cn.desconectar()
+
+
+            cn.conectar()
+            Dim Sql5 As String = "select idTicket from cliente where idBodega='" + idbodega + "' and  nombre like 'Venta' and estatus = 'A'"
+            Com = New SqlCommand(Sql1, cn.conn)
+            Rs = Com.ExecuteReader()
+            Rs.Read()
+            Dim idticket As String
+            idticket = Rs(0).ToString
+            Rs.Close()
+            cn.desconectar()
+
+            cn.conectar()
+            Dim Sql6 As String = "select Max(folio) from Venta"
+            Com = New SqlCommand(Sql1, cn.conn)
+            Rs = Com.ExecuteReader()
+            Rs.Read()
+            Dim Folio As Int64
+
+            Folio = Convert.ToInt64(If(Rs(0).ToString Is Nothing, 0, Rs(0).ToString)) + 1
+
             Rs.Close()
             cn.desconectar()
 
@@ -393,7 +419,7 @@ INSERT INTO [dbo].[venta]
            ,'" + idbodega + "'
            ,'" + formapago + "'
            ,'" + idCaja + "'
-           ," + folio + "
+           ," + Folio + "
            ,'" + idticket + "')"
             MsgBox(cadena)
             Com = New SqlCommand(cadena, cn.conn)

@@ -23,7 +23,6 @@ Public Class MetodosTicket
             conectar()
             Dim cmd As New SqlCommand("select nombre, idBodega from bodega ", conn)
             Dim reader As SqlDataReader = cmd.ExecuteReader
-
             If listIdBodega.Count > 0 Then
                 listIdBodega.Clear()
             End If

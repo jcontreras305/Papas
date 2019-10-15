@@ -3,10 +3,17 @@
     Private Sub Label2_Click(sender As Object, e As EventArgs) Handles Label2.Click
         Me.Close()
     End Sub
-
+    Dim abierta As Boolean = True
     Private Sub Button1_Click(sender As Object, e As EventArgs) Handles Button1.Click
-        NuevaVenta.Show()
-        NuevaVenta.user = nombre
+        If abierta Then
+            IniciarCaja.Show()
+            IniciarCaja.user = nombre
+            IniciarCaja.vn = True
+
+        Else
+            NuevaVenta.Show()
+            NuevaVenta.user = nombre
+        End If
     End Sub
 
     Private Sub Button2_Click(sender As Object, e As EventArgs) Handles Button2.Click

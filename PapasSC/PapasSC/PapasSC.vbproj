@@ -51,6 +51,7 @@
     <Reference Include="CrystalDecisions.CrystalReports.Engine, Version=13.0.3500.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL" />
     <Reference Include="CrystalDecisions.ReportSource, Version=13.0.3500.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL" />
     <Reference Include="CrystalDecisions.Shared, Version=13.0.3500.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL" />
+    <Reference Include="CrystalDecisions.Windows.Forms, Version=13.0.3500.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL" />
     <Reference Include="Microsoft.ReportViewer.Common, Version=14.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.ReportingServices.ReportViewerControl.Winforms.140.340.80\lib\net40\Microsoft.ReportViewer.Common.dll</HintPath>
     </Reference>
@@ -130,6 +131,12 @@
     <Compile Include="Formularios\Actualizar_Venta.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="Formularios\AgregarEditarCaja.Designer.vb">
+      <DependentUpon>AgregarEditarCaja.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Formularios\AgregarEditarCaja.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="Formularios\AgregarEditarTicket.Designer.vb">
       <DependentUpon>AgregarEditarTicket.vb</DependentUpon>
     </Compile>
@@ -154,10 +161,28 @@
     <Compile Include="Formularios\Catálogo.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="Formularios\ComfiguracionDB2.Designer.vb">
+      <DependentUpon>ComfiguracionDB2.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Formularios\ComfiguracionDB2.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="Formularios\ConfiguracionBD1.Designer.vb">
       <DependentUpon>ConfiguracionBD1.vb</DependentUpon>
     </Compile>
     <Compile Include="Formularios\ConfiguracionBD1.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formularios\ConfiguracionCaja.Designer.vb">
+      <DependentUpon>ConfiguracionCaja.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Formularios\ConfiguracionCaja.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formularios\ConfiguracionDB.Designer.vb">
+      <DependentUpon>ConfiguracionDB.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Formularios\ConfiguracionDB.vb">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Formularios\Consultar_Proveedores.Designer.vb">
@@ -224,6 +249,12 @@
       <DependentUpon>Impresoras.vb</DependentUpon>
     </Compile>
     <Compile Include="Formularios\Impresoras.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formularios\IniciarCaja.Designer.vb">
+      <DependentUpon>IniciarCaja.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Formularios\IniciarCaja.vb">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Formularios\Invertario.Designer.vb">
@@ -397,21 +428,26 @@
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="LogeoMetodos.vb" />
+    <Compile Include="Metodos\Configuracion.vb" />
     <Compile Include="Metodos\MetodoExistenciaProducto.vb" />
     <Compile Include="Metodos\MetodosBodega.vb" />
+    <Compile Include="Metodos\MetodosCaja.vb" />
     <Compile Include="Metodos\MetodosCliente.vb" />
     <Compile Include="Metodos\MetodosClientes.vb" />
     <Compile Include="Metodos\MetodosEmpleado.vb" />
     <Compile Include="Metodos\MetodosInventario.vb" />
     <Compile Include="Metodos\MetodosMatrizCiudad.vb" />
+    <Compile Include="Metodos\MetodosNuevaVenta.vb" />
     <Compile Include="Metodos\MetodosPerfiles.vb" />
     <Compile Include="Metodos\MetodosProducto.vb" />
+    <Compile Include="Metodos\MetodosProductos.vb" />
     <Compile Include="Metodos\MetodosProveedor.vb" />
     <Compile Include="Metodos\MetodosReclasificacion.vb" />
     <Compile Include="Metodos\MetodosReubicacion.vb" />
     <Compile Include="Metodos\MetodosTicket.vb" />
     <Compile Include="Metodos\MetodosUsuarios.vb" />
     <Compile Include="Metodos\MetodosVenta.vb" />
+    <Compile Include="Metodos\Metodos_PreciosXdefecto.vb" />
     <Compile Include="My Project\AssemblyInfo.vb" />
     <Compile Include="My Project\Application.Designer.vb">
       <AutoGen>True</AutoGen>
@@ -433,15 +469,10 @@
     <Compile Include="Formularios\pantallaCargador.vb">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="PapaSCDataSet.Designer.vb">
+    <Compile Include="Reportes\Ticket1.vb">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>PapaSCDataSet.xsd</DependentUpon>
-    </Compile>
-    <Compile Include="Reportes\CrystalReport1.vb">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>CrystalReport1.rpt</DependentUpon>
+      <DependentUpon>Ticket.rpt</DependentUpon>
       <SubType>Component</SubType>
     </Compile>
     <Compile Include="Reportes\VerTicket.Designer.vb">
@@ -470,6 +501,9 @@
     <EmbeddedResource Include="Formularios\Actualizar_Venta.resx">
       <DependentUpon>Actualizar_Venta.vb</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Formularios\AgregarEditarCaja.resx">
+      <DependentUpon>AgregarEditarCaja.vb</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Formularios\AgregarEditarTicket.resx">
       <DependentUpon>AgregarEditarTicket.vb</DependentUpon>
     </EmbeddedResource>
@@ -479,8 +513,17 @@
     <EmbeddedResource Include="Formularios\Catálogo.resx">
       <DependentUpon>Catálogo.vb</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Formularios\ComfiguracionDB2.resx">
+      <DependentUpon>ComfiguracionDB2.vb</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Formularios\ConfiguracionBD1.resx">
       <DependentUpon>ConfiguracionBD1.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formularios\ConfiguracionCaja.resx">
+      <DependentUpon>ConfiguracionCaja.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formularios\ConfiguracionDB.resx">
+      <DependentUpon>ConfiguracionDB.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Formularios\Consultar_Proveedores.resx">
       <DependentUpon>Consultar_Proveedores.vb</DependentUpon>
@@ -511,6 +554,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Formularios\Impresoras.resx">
       <DependentUpon>Impresoras.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formularios\IniciarCaja.resx">
+      <DependentUpon>IniciarCaja.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Formularios\Invertario.resx">
       <DependentUpon>Invertario.vb</DependentUpon>
@@ -599,11 +645,10 @@
     <EmbeddedResource Include="Formularios\pantallaCargador.resx">
       <DependentUpon>pantallaCargador.vb</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Reportes\CrystalReport1.rpt">
+    <EmbeddedResource Include="Reportes\Ticket.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
-      <LastGenOutput>CrystalReport1.vb</LastGenOutput>
+      <LastGenOutput>Ticket1.vb</LastGenOutput>
     </EmbeddedResource>
-    <EmbeddedResource Include="Reportes\Ticket.rdlc" />
     <EmbeddedResource Include="Reportes\VerTicket.resx">
       <DependentUpon>VerTicket.vb</DependentUpon>
     </EmbeddedResource>
@@ -620,17 +665,6 @@
     </None>
     <None Include="Documentos\App.config" />
     <None Include="packages.config" />
-    <None Include="PapaSCDataSet.xsc">
-      <DependentUpon>PapaSCDataSet.xsd</DependentUpon>
-    </None>
-    <None Include="PapaSCDataSet.xsd">
-      <Generator>MSDataSetGenerator</Generator>
-      <LastGenOutput>PapaSCDataSet.Designer.vb</LastGenOutput>
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="PapaSCDataSet.xss">
-      <DependentUpon>PapaSCDataSet.xsd</DependentUpon>
-    </None>
   </ItemGroup>
   <ItemGroup>
     <Content Include="Documentos\CambioTablasClienteContactoCredito02-08-19.sql" />
