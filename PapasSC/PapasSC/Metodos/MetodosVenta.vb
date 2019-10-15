@@ -170,7 +170,7 @@ on em.idEmpleado = vn.idEmpleado inner join existenciaProductos expr on expr.idB
             MessageBox.Show("No se lleno el Datagridview debido a: " + ex.ToString)
         End Try
     End Sub
-    Public Sub  (ByVal dgv As DataGridView, ByVal filtro As String)
+    Public Sub llenardatagridactualiza(ByVal dgv As DataGridView, ByVal filtro As String)
         cn.conectar()
         Try
             adaptador = New SqlDataAdapter("select vn.idVenta, bo.nombre, pr.version, expr.cantidad, pr.precio, vn.cantidadPagada, vn.totalPagar, vd.total, vd.totalNeto, vn.fecha, em.nombre, cl.nombre  from venta vn inner join ventaDetalle vd on vn.idVenta = vd.idVenta inner join producto pr on vd.idProducto = pr.idProducto 
