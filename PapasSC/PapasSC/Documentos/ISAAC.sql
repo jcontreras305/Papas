@@ -306,7 +306,7 @@ select idCaja , cj.nombre,cj.clave, cj.estatus,cj.fase , cj.limiteEfectivo, bd.n
 on cj.idBodega = bd.idBodega 
 
 select * from caja
-create proc sp_Insertar_Caja
+create  proc sp_Insertar_Caja
 	@nombre varchar(20),
 	@clave varchar(5),
 	@estatus char(1),
@@ -322,11 +322,14 @@ begin
 		begin try	
 			set @idCaja = NEWID()
 			insert into caja values(@idCaja,@nombre,@clave,@estatus,@fase,@limiteEfectivo,@idBodega,@explicito)
-			if @@ERROR <>0
-			begin 
-				set @error = @error
-				goto solucionar
+			if @@ERROR <>0 begin set @error = @error goto solucionar end
+			if @explicito = 'A' begin
+				insert into contabilidadCaja  values(NEWID(),@idCaja,0.0,0,0,0,0,0,0,0,0,0,0,0,0)
 			end
+			else begin 
+				insert into contabilidadCaja  values(NEWID(),@idCaja,0.0,null,null,null,null,null,null,null,null,null,null,null,null)
+			end
+			if @@ERROR <>0 begin set @error = @error goto solucionar end
 		end try
 		begin catch
 			goto solucionar
@@ -389,7 +392,7 @@ print @fecha
 
 
 create proc sp_Iniciar_Caja
-	@montoIncial float,
+	@montoInicial float,
 	@fechaInicio smalldatetime,
 	@idCaja varchar(36),
 	@idEmpleado varchar(36)
@@ -401,9 +404,9 @@ begin
 		begin try
 			select @cont = count(*) from empleado where idEmpleado = @idEmpleado
 			if @cont = 1 begin 
-				insert into corteCaja values(NEWID(),@montoIncial,null,@fechaInicio,null,@idCaja,@idEmpleado)
+				insert into corteCaja values(NEWID(),@montoInicial,null,@fechaInicio,null,@idCaja,@idEmpleado)
 				if @@ERROR <> 0 begin set @error = @@ERROR goto resolver end
-				update caja set estatus = 'A' where idCaja = @idCaja
+				update caja set fase = 'Abierta' where idCaja = @idCaja
 				if @@ERROR <> 0 begin set @error = @@ERROR goto resolver end
 			end
 		end try
@@ -420,34 +423,72 @@ go
 
 create proc  sp_Cerrar_Caja
 	@fechaFin smalldatetime,
-	@idCaja varchar(36),
-	@idEmpleado varchar(36)
+	@idCaja varchar(36)
 as 
 declare @error int
 declare @cont int 
 declare @montoFinal float
 begin
 	begin tran 
-		begin try
-			select @cont = count(*) from empleado where idEmpleado = @idEmpleado
-			select @montoFinal = total from contabilidadCaja where idCaja = @idCaja
-
+		begin try	
+			select cont=count(*) from caja where idCaja = @idCaja and estatus = 'A'
 			if @cont = 1 begin 
+				select @montoFinal = total from contabilidadCaja where idCaja = @idCaja
 				update corteCaja set montoFinal = @montoFinal , fechaFin = @fechaFin where idCaja = @idCaja 
 				if @@ERROR <> 0 begin set @error = @@ERROR goto resolver end
-				update caja set estatus = 'I' where idCaja = @idCaja
+				update caja set fase = 'Cerrada' where idCaja = @idCaja
 				if @@ERROR <> 0 begin set @error = @@ERROR goto resolver end
 			end
 		end try
 		begin catch
 			goto resolver
 		end catch
-	commit tran
+	``commit tran
 	resolver:
 	if @error <>0 begin
 		rollback	
 	end
 end
+go
+	
+	
+select * from empleado
+select * from cliente
+select * from caja 
+select * from contabilidadCaja 
+select * from tipoCliente
+select * from venta
+
+select vt.folio as Clave, case 
+							when cl.nombre= NULL then cl.razonSocial 
+							when cl.razonSocial = null then cl.nombre
+							else cl.RFC end as RazonSocial,
+							tcl.tipo as Tipo,
+							ct.limiteCredito as LimitaCrédito,
+							ct.diasCredito as DíasCrédito,
+							ct.saldo as Saldo,
+							case when cl.estatus = 'A' then 'Activo'
+								 when cl.estatus = 'I' then 'Inactivo'
+								 when cl.estatus = 'B' then 'Bloqueado'
+								 else 'Borrado' end as Estatus
+								  from 
+venta vt inner join caja as cj on vt.idCaja = cj.idCaja
+left join cliente as cl on vt.idCliente = cl.idCliente
+left join tipoCliente as tcl on cl.idTipoCliente = tcl.idTipoCliente 
+left join credito as ct on ct.idCliente = cl.idCliente
+where cl.nombre like '' 
+or	cl.razonSocial like ''
+or cl.RFC like ''
+or limiteCredito like ''
+or saldo like ''
+and cj.nombre = ''
+or vt.fecha between @fecha1 and @fecha2
+
+
+select * from corteCaja
+insert into contabilidadCaja values (NEWID(),'387FA85C-77E1-49AA-A1E1-C7D8438769A3',0.0,0,0,0,0,0,0,0,0,0,0,0,0),(NEWID(),'DE63F853-BF3F-4692-9B09-A21A6178F30F',0.0,0,0,0,0,0,0,0,0,0,0,0,0)
+
+select total from contabilidadCaja
 
 create table contabilidadCaja (
 	idCont varchar(36) primary key not null,
@@ -475,3 +516,55 @@ select * from ticket
 select * from venta
 
 select idCaja , cj.nombre as Caja,cj.clave as Referencia, cj.estatus as Estatus,cj.fase as Fase, cj.limiteEfectivo, bd.nombre as Bodega, cj.explicito as ValoresExplicitos from caja as  cj left join bodega as bd on cj.idBodega = bd.idBodega where not cj.estatus = 'B'
+
+
+
+select vt.folio as Clave, case 
+							when cl.nombre= NULL then cl.razonSocial 
+							when cl.razonSocial = null then cl.nombre
+							else cl.RFC end as RazonSocial,
+							tcl.tipo as Tipo,
+							ct.limiteCredito as LimitaCrédito,
+							ct.diasCredito as DíasCrédito,
+							ct.saldo as Saldo,
+							case when cl.estatus = 'A' then 'Activo'
+								 when cl.estatus = 'I' then 'Inactivo'
+								 when cl.estatus = 'B' then 'Bloqueado'
+								 else '' end as Estatus
+								  from 
+venta vt inner join caja as cj on vt.idCaja = cj.idCaja
+left join cliente as cl on vt.idCliente = cl.idCliente
+left join tipoCliente as tcl on cl.idTipoCliente = tcl.idTipoCliente 
+left join credito as ct on ct.idCliente = cl.idCliente where cl.nombre like '' 
+or	cl.razonSocial like '%'
+or cl.RFC like '%'
+or limiteCredito like '%'
+or saldo like '%'
+and cj.nombre =  'cajaIsaac'
+go
+
+select vt.folio as clave, cl.RFC, case 
+							when cl.nombre= NULL then cl.razonSocial 
+							when cl.razonSocial = null then cl.nombre
+							else cl.RFC end as RazonSocial,
+							cn.nombre as Contacto,
+							case 
+								when cn.telefono = null then telefono2
+								when cn.telefono <> null then telefono
+								else 'ND' end as Telefono,
+							case 
+								when cn.email = NULL then cn.email2
+								when cn.email <> '' then cn.email
+								else 'ND' end as Email,
+							ct.limiteCredito as LimiteCredito,
+							ct.diasCredito as Días ,
+							ct.limiteCredito - ct.saldo as Cobraza
+							
+from 
+venta as vt inner join caja as cj on vt.idCaja = cj.idCaja
+left join  cliente as cl on vt.idCliente = cl.idCliente
+left join contacto as cn on cn.idCliente = cl.idCliente
+left join tipoCliente as tcl on cl.idTipoCliente = tcl.idTipoCliente 
+left join credito as ct on ct.idCliente = cl.idCliente
+where cj.idCaja = '' and vt.estatus = 'P'
+

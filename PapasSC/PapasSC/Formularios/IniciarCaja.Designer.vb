@@ -30,6 +30,7 @@ Partial Class IniciarCaja
         Me.txtContraseña = New System.Windows.Forms.TextBox()
         Me.btnAbrirCaja = New System.Windows.Forms.Button()
         Me.btnSalir = New System.Windows.Forms.Button()
+        Me.chbVer = New System.Windows.Forms.CheckBox()
         Me.SuspendLayout()
         '
         'Label1
@@ -61,6 +62,7 @@ Partial Class IniciarCaja
         '
         'cmbCajas
         '
+        Me.cmbCajas.ForeColor = System.Drawing.Color.Black
         Me.cmbCajas.FormattingEnabled = True
         Me.cmbCajas.Location = New System.Drawing.Point(96, 22)
         Me.cmbCajas.Name = "cmbCajas"
@@ -107,11 +109,22 @@ Partial Class IniciarCaja
         Me.btnSalir.TextAlign = System.Drawing.ContentAlignment.MiddleRight
         Me.btnSalir.UseVisualStyleBackColor = True
         '
+        'chbVer
+        '
+        Me.chbVer.AutoSize = True
+        Me.chbVer.Location = New System.Drawing.Point(247, 105)
+        Me.chbVer.Name = "chbVer"
+        Me.chbVer.Size = New System.Drawing.Size(42, 17)
+        Me.chbVer.TabIndex = 10
+        Me.chbVer.Text = "Ver"
+        Me.chbVer.UseVisualStyleBackColor = True
+        '
         'IniciarCaja
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(270, 217)
+        Me.ClientSize = New System.Drawing.Size(343, 217)
+        Me.Controls.Add(Me.chbVer)
         Me.Controls.Add(Me.btnSalir)
         Me.Controls.Add(Me.btnAbrirCaja)
         Me.Controls.Add(Me.txtContraseña)
@@ -135,4 +148,5 @@ Partial Class IniciarCaja
     Friend WithEvents txtContraseña As TextBox
     Friend WithEvents btnAbrirCaja As Button
     Friend WithEvents btnSalir As Button
+    Friend WithEvents chbVer As CheckBox
 End Class
