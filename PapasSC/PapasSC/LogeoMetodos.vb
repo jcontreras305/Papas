@@ -36,5 +36,33 @@ Public Class LogeoMetodos
         Else
             Return False
         End If
+        desconectar()
+    End Function
+
+    Public Function validarUsuarioCaja(user As String, pass As String) As Boolean
+        Try
+            conectar()
+            Dim cmd As New SqlCommand("sp_licencias_usuarios", conn)
+            cmd.CommandType = CommandType.StoredProcedure
+            cmd.Parameters.AddWithValue("@nombre", user)
+            cmd.Parameters.AddWithValue("@contrasenia", pass)
+            If cmd.ExecuteNonQuery Then
+                Dim dt As New DataTable
+                Dim da As New SqlDataAdapter(cmd)
+                da.Fill(dt)
+                If dt.Rows.Count() = 1 Then
+                    Return True ' si hay solo un usuario con lo que se ingreso
+                Else
+                    Return False ' si no existe
+                End If
+            Else
+                Return False ' si no se ejecuta
+            End If
+        Catch ex As Exception
+
+            MsgBox(ex.Message)
+            Return False ' si hay error 
+        End Try
+        desconectar()
     End Function
 End Class

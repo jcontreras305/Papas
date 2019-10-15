@@ -30,6 +30,7 @@ Partial Class AgregarEmpleados
         Me.ErrorIcono = New System.Windows.Forms.ErrorProvider(Me.components)
         Me.Label6 = New System.Windows.Forms.Label()
         Me.GroupBox1 = New System.Windows.Forms.GroupBox()
+        Me.Button1 = New System.Windows.Forms.Button()
         Me.lblCam2 = New System.Windows.Forms.Label()
         Me.lblCam1 = New System.Windows.Forms.Label()
         Me.lblCam = New System.Windows.Forms.Label()
@@ -61,7 +62,7 @@ Partial Class AgregarEmpleados
         Me.btnEmAceptar.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.btnEmAceptar.Image = CType(resources.GetObject("btnEmAceptar.Image"), System.Drawing.Image)
         Me.btnEmAceptar.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
-        Me.btnEmAceptar.Location = New System.Drawing.Point(366, 276)
+        Me.btnEmAceptar.Location = New System.Drawing.Point(458, 276)
         Me.btnEmAceptar.Name = "btnEmAceptar"
         Me.btnEmAceptar.Size = New System.Drawing.Size(108, 37)
         Me.btnEmAceptar.TabIndex = 19
@@ -74,7 +75,7 @@ Partial Class AgregarEmpleados
         Me.btnEmCancelar.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.btnEmCancelar.Image = CType(resources.GetObject("btnEmCancelar.Image"), System.Drawing.Image)
         Me.btnEmCancelar.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
-        Me.btnEmCancelar.Location = New System.Drawing.Point(480, 276)
+        Me.btnEmCancelar.Location = New System.Drawing.Point(579, 276)
         Me.btnEmCancelar.Name = "btnEmCancelar"
         Me.btnEmCancelar.Size = New System.Drawing.Size(108, 37)
         Me.btnEmCancelar.TabIndex = 20
@@ -87,7 +88,7 @@ Partial Class AgregarEmpleados
         Me.Label9.AutoSize = True
         Me.Label9.Font = New System.Drawing.Font("Arial", 15.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label9.ForeColor = System.Drawing.SystemColors.ButtonShadow
-        Me.Label9.Location = New System.Drawing.Point(588, -2)
+        Me.Label9.Location = New System.Drawing.Point(678, 7)
         Me.Label9.Name = "Label9"
         Me.Label9.Size = New System.Drawing.Size(24, 24)
         Me.Label9.TabIndex = 28
@@ -110,6 +111,7 @@ Partial Class AgregarEmpleados
         '
         'GroupBox1
         '
+        Me.GroupBox1.Controls.Add(Me.Button1)
         Me.GroupBox1.Controls.Add(Me.lblCam2)
         Me.GroupBox1.Controls.Add(Me.lblCam1)
         Me.GroupBox1.Controls.Add(Me.lblCam)
@@ -131,10 +133,19 @@ Partial Class AgregarEmpleados
         Me.GroupBox1.Controls.Add(Me.lblEmNombre)
         Me.GroupBox1.Location = New System.Drawing.Point(26, 45)
         Me.GroupBox1.Name = "GroupBox1"
-        Me.GroupBox1.Size = New System.Drawing.Size(562, 225)
+        Me.GroupBox1.Size = New System.Drawing.Size(661, 225)
         Me.GroupBox1.TabIndex = 30
         Me.GroupBox1.TabStop = False
         Me.GroupBox1.Text = "Datos Principales"
+        '
+        'Button1
+        '
+        Me.Button1.Location = New System.Drawing.Point(546, 73)
+        Me.Button1.Name = "Button1"
+        Me.Button1.Size = New System.Drawing.Size(97, 23)
+        Me.Button1.TabIndex = 50
+        Me.Button1.Text = "Descripcion"
+        Me.Button1.UseVisualStyleBackColor = True
         '
         'lblCam2
         '
@@ -333,7 +344,7 @@ Partial Class AgregarEmpleados
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(613, 332)
+        Me.ClientSize = New System.Drawing.Size(705, 332)
         Me.Controls.Add(Me.GroupBox1)
         Me.Controls.Add(Me.Label6)
         Me.Controls.Add(Me.Label9)
@@ -342,7 +353,7 @@ Partial Class AgregarEmpleados
         Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None
         Me.Name = "AgregarEmpleados"
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
-        Me.Text = "AgregarEmpleados"
+        Me.Text = " "
         CType(Me.ErrorIcono, System.ComponentModel.ISupportInitialize).EndInit()
         Me.GroupBox1.ResumeLayout(False)
         Me.GroupBox1.PerformLayout()
@@ -379,4 +390,5 @@ Partial Class AgregarEmpleados
     Friend WithEvents lblCam2 As Label
     Friend WithEvents lblCam1 As Label
     Friend WithEvents lblCam As Label
+    Friend WithEvents Button1 As Button
 End Class
