@@ -50,7 +50,7 @@
               <Paragraph>
                 <TextRuns>
                   <TextRun>
-                    <Value>=Parameters!Fecha.Value</Value>
+                    <Value />
                     <Style />
                   </TextRun>
                 </TextRuns>
@@ -110,7 +110,7 @@
               <Paragraph>
                 <TextRuns>
                   <TextRun>
-                    <Value>=Parameters!PuntoVenta.Value</Value>
+                    <Value />
                     <Style />
                   </TextRun>
                 </TextRuns>
@@ -146,15 +146,6 @@
                 </TextRuns>
                 <Style />
               </Paragraph>
-              <Paragraph>
-                <TextRuns>
-                  <TextRun>
-                    <Value />
-                    <Style />
-                  </TextRun>
-                </TextRuns>
-                <Style />
-              </Paragraph>
             </Paragraphs>
             <rd:DefaultName>FolioTicket</rd:DefaultName>
             <Top>0.10583cm</Top>
@@ -179,7 +170,7 @@
               <Paragraph>
                 <TextRuns>
                   <TextRun>
-                    <Value>=Parameters!Empleado.Value</Value>
+                    <Value />
                     <Style />
                   </TextRun>
                 </TextRuns>
@@ -338,7 +329,7 @@
             </Paragraphs>
             <rd:DefaultName>lblLimite1</rd:DefaultName>
             <Top>11.31617cm</Top>
-            <Left>0.26458cm</Left>
+            <Left>0.29106cm</Left>
             <Height>0.6cm</Height>
             <Width>9.29979cm</Width>
             <ZIndex>10</ZIndex>

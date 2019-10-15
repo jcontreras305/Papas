@@ -39,6 +39,8 @@ Partial Class AgregarEditarTicket
         Me.txtEncabezado = New System.Windows.Forms.RichTextBox()
         Me.GroupBox3 = New System.Windows.Forms.GroupBox()
         Me.txtPie = New System.Windows.Forms.RichTextBox()
+        Me.Label6 = New System.Windows.Forms.Label()
+        Me.txtDireccion = New System.Windows.Forms.TextBox()
         Me.GroupBox1.SuspendLayout()
         CType(Me.sprTamanio, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.GroupBox2.SuspendLayout()
@@ -117,14 +119,14 @@ Partial Class AgregarEditarTicket
         '
         Me.txtNombre.Location = New System.Drawing.Point(88, 87)
         Me.txtNombre.Name = "txtNombre"
-        Me.txtNombre.Size = New System.Drawing.Size(100, 20)
+        Me.txtNombre.Size = New System.Drawing.Size(118, 20)
         Me.txtNombre.TabIndex = 6
         '
         'txtClave
         '
         Me.txtClave.Location = New System.Drawing.Point(88, 51)
         Me.txtClave.Name = "txtClave"
-        Me.txtClave.Size = New System.Drawing.Size(100, 20)
+        Me.txtClave.Size = New System.Drawing.Size(118, 20)
         Me.txtClave.TabIndex = 5
         '
         'Label5
@@ -175,16 +177,16 @@ Partial Class AgregarEditarTicket
         'GroupBox2
         '
         Me.GroupBox2.Controls.Add(Me.txtEncabezado)
-        Me.GroupBox2.Location = New System.Drawing.Point(12, 188)
+        Me.GroupBox2.Location = New System.Drawing.Point(12, 221)
         Me.GroupBox2.Name = "GroupBox2"
-        Me.GroupBox2.Size = New System.Drawing.Size(229, 100)
+        Me.GroupBox2.Size = New System.Drawing.Size(229, 111)
         Me.GroupBox2.TabIndex = 1
         Me.GroupBox2.TabStop = False
         Me.GroupBox2.Text = "Encabezado"
         '
         'txtEncabezado
         '
-        Me.txtEncabezado.Location = New System.Drawing.Point(6, 13)
+        Me.txtEncabezado.Location = New System.Drawing.Point(6, 19)
         Me.txtEncabezado.Name = "txtEncabezado"
         Me.txtEncabezado.Size = New System.Drawing.Size(217, 81)
         Me.txtEncabezado.TabIndex = 0
@@ -193,26 +195,44 @@ Partial Class AgregarEditarTicket
         'GroupBox3
         '
         Me.GroupBox3.Controls.Add(Me.txtPie)
-        Me.GroupBox3.Location = New System.Drawing.Point(247, 188)
+        Me.GroupBox3.Location = New System.Drawing.Point(247, 221)
         Me.GroupBox3.Name = "GroupBox3"
-        Me.GroupBox3.Size = New System.Drawing.Size(243, 100)
+        Me.GroupBox3.Size = New System.Drawing.Size(243, 111)
         Me.GroupBox3.TabIndex = 2
         Me.GroupBox3.TabStop = False
         Me.GroupBox3.Text = "Pie"
         '
         'txtPie
         '
-        Me.txtPie.Location = New System.Drawing.Point(6, 13)
+        Me.txtPie.Location = New System.Drawing.Point(6, 19)
         Me.txtPie.Name = "txtPie"
         Me.txtPie.Size = New System.Drawing.Size(231, 81)
         Me.txtPie.TabIndex = 0
         Me.txtPie.Text = ""
         '
+        'Label6
+        '
+        Me.Label6.AutoSize = True
+        Me.Label6.Location = New System.Drawing.Point(24, 191)
+        Me.Label6.Name = "Label6"
+        Me.Label6.Size = New System.Drawing.Size(52, 13)
+        Me.Label6.TabIndex = 3
+        Me.Label6.Text = "Direccion"
+        '
+        'txtDireccion
+        '
+        Me.txtDireccion.Location = New System.Drawing.Point(76, 188)
+        Me.txtDireccion.Name = "txtDireccion"
+        Me.txtDireccion.Size = New System.Drawing.Size(408, 20)
+        Me.txtDireccion.TabIndex = 4
+        '
         'AgregarEditarTicket
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(520, 296)
+        Me.ClientSize = New System.Drawing.Size(520, 342)
+        Me.Controls.Add(Me.txtDireccion)
+        Me.Controls.Add(Me.Label6)
         Me.Controls.Add(Me.GroupBox3)
         Me.Controls.Add(Me.GroupBox2)
         Me.Controls.Add(Me.GroupBox1)
@@ -224,6 +244,7 @@ Partial Class AgregarEditarTicket
         Me.GroupBox2.ResumeLayout(False)
         Me.GroupBox3.ResumeLayout(False)
         Me.ResumeLayout(False)
+        Me.PerformLayout()
 
     End Sub
 
@@ -234,14 +255,16 @@ Partial Class AgregarEditarTicket
     Friend WithEvents Label2 As Label
     Friend WithEvents Label1 As Label
     Friend WithEvents GroupBox2 As GroupBox
-    Friend WithEvents txtNombre As TextBox
-    Friend WithEvents txtClave As TextBox
     Friend WithEvents GroupBox3 As GroupBox
-    Friend WithEvents sprTamanio As NumericUpDown
-    Friend WithEvents cmbBodega As ComboBox
-    Friend WithEvents cmbFuente As ComboBox
     Friend WithEvents btnSalir As Button
     Friend WithEvents btnGuardar As Button
-    Friend WithEvents txtEncabezado As RichTextBox
-    Friend WithEvents txtPie As RichTextBox
+    Friend WithEvents Label6 As Label
+    Public WithEvents txtNombre As TextBox
+    Public WithEvents txtClave As TextBox
+    Public WithEvents sprTamanio As NumericUpDown
+    Public WithEvents cmbBodega As ComboBox
+    Public WithEvents cmbFuente As ComboBox
+    Public WithEvents txtEncabezado As RichTextBox
+    Public WithEvents txtPie As RichTextBox
+    Public WithEvents txtDireccion As TextBox
 End Class

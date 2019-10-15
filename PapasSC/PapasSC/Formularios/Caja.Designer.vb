@@ -22,17 +22,17 @@ Partial Class Caja
     'No lo modifique con el editor de código.
     <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
-        Me.TextBox1 = New System.Windows.Forms.TextBox()
-        Me.TextBox2 = New System.Windows.Forms.TextBox()
+        Me.txtCaja = New System.Windows.Forms.TextBox()
+        Me.txtEmpleado = New System.Windows.Forms.TextBox()
         Me.TabControl1 = New System.Windows.Forms.TabControl()
         Me.pnlGeneral = New System.Windows.Forms.TabPage()
+        Me.DataGridView1 = New System.Windows.Forms.DataGridView()
         Me.Label3 = New System.Windows.Forms.Label()
         Me.txtFechaFinal = New System.Windows.Forms.TextBox()
         Me.cldFechaFinal = New System.Windows.Forms.MonthCalendar()
         Me.Label1 = New System.Windows.Forms.Label()
         Me.txtFechainicial = New System.Windows.Forms.TextBox()
         Me.cldFechaInicial = New System.Windows.Forms.MonthCalendar()
-        Me.btnActualizar = New System.Windows.Forms.Button()
         Me.TextBox4 = New System.Windows.Forms.TextBox()
         Me.TextBox3 = New System.Windows.Forms.TextBox()
         Me.Label2 = New System.Windows.Forms.Label()
@@ -42,25 +42,29 @@ Partial Class Caja
         Me.pnlAbonosyAnticipos = New System.Windows.Forms.TabPage()
         Me.pnlCuentasPorCobrar = New System.Windows.Forms.TabPage()
         Me.pnlComplementoPago = New System.Windows.Forms.TabPage()
-        Me.DataGridView1 = New System.Windows.Forms.DataGridView()
+        Me.Label4 = New System.Windows.Forms.Label()
+        Me.Label5 = New System.Windows.Forms.Label()
+        Me.btnActualizar = New System.Windows.Forms.Button()
+        Me.pnlEstatus = New System.Windows.Forms.Panel()
         Me.TabControl1.SuspendLayout()
         Me.pnlGeneral.SuspendLayout()
         CType(Me.DataGridView1, System.ComponentModel.ISupportInitialize).BeginInit()
+        Me.pnlEstatus.SuspendLayout()
         Me.SuspendLayout()
         '
-        'TextBox1
+        'txtCaja
         '
-        Me.TextBox1.Location = New System.Drawing.Point(40, 12)
-        Me.TextBox1.Name = "TextBox1"
-        Me.TextBox1.Size = New System.Drawing.Size(100, 20)
-        Me.TextBox1.TabIndex = 0
+        Me.txtCaja.Location = New System.Drawing.Point(65, 9)
+        Me.txtCaja.Name = "txtCaja"
+        Me.txtCaja.Size = New System.Drawing.Size(100, 20)
+        Me.txtCaja.TabIndex = 0
         '
-        'TextBox2
+        'txtEmpleado
         '
-        Me.TextBox2.Location = New System.Drawing.Point(40, 38)
-        Me.TextBox2.Name = "TextBox2"
-        Me.TextBox2.Size = New System.Drawing.Size(100, 20)
-        Me.TextBox2.TabIndex = 1
+        Me.txtEmpleado.Location = New System.Drawing.Point(65, 35)
+        Me.txtEmpleado.Name = "txtEmpleado"
+        Me.txtEmpleado.Size = New System.Drawing.Size(100, 20)
+        Me.txtEmpleado.TabIndex = 1
         '
         'TabControl1
         '
@@ -97,6 +101,14 @@ Partial Class Caja
         Me.pnlGeneral.TabIndex = 0
         Me.pnlGeneral.Text = "General"
         Me.pnlGeneral.UseVisualStyleBackColor = True
+        '
+        'DataGridView1
+        '
+        Me.DataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
+        Me.DataGridView1.Location = New System.Drawing.Point(18, 99)
+        Me.DataGridView1.Name = "DataGridView1"
+        Me.DataGridView1.Size = New System.Drawing.Size(764, 381)
+        Me.DataGridView1.TabIndex = 13
         '
         'Label3
         '
@@ -143,18 +155,6 @@ Partial Class Caja
         Me.cldFechaInicial.Name = "cldFechaInicial"
         Me.cldFechaInicial.TabIndex = 7
         Me.cldFechaInicial.Visible = False
-        '
-        'btnActualizar
-        '
-        Me.btnActualizar.Image = Global.PapasSC.My.Resources.Resources.ACTUALIZAR
-        Me.btnActualizar.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
-        Me.btnActualizar.Location = New System.Drawing.Point(691, 6)
-        Me.btnActualizar.Name = "btnActualizar"
-        Me.btnActualizar.Size = New System.Drawing.Size(91, 43)
-        Me.btnActualizar.TabIndex = 6
-        Me.btnActualizar.Text = "Actualizar"
-        Me.btnActualizar.TextAlign = System.Drawing.ContentAlignment.MiddleRight
-        Me.btnActualizar.UseVisualStyleBackColor = True
         '
         'TextBox4
         '
@@ -213,7 +213,7 @@ Partial Class Caja
         Me.pnlAbonosyAnticipos.Location = New System.Drawing.Point(4, 22)
         Me.pnlAbonosyAnticipos.Name = "pnlAbonosyAnticipos"
         Me.pnlAbonosyAnticipos.Padding = New System.Windows.Forms.Padding(3)
-        Me.pnlAbonosyAnticipos.Size = New System.Drawing.Size(788, 486)
+        Me.pnlAbonosyAnticipos.Size = New System.Drawing.Size(803, 486)
         Me.pnlAbonosyAnticipos.TabIndex = 1
         Me.pnlAbonosyAnticipos.Text = "Abonos y Anticipos"
         Me.pnlAbonosyAnticipos.UseVisualStyleBackColor = True
@@ -223,7 +223,7 @@ Partial Class Caja
         Me.pnlCuentasPorCobrar.Location = New System.Drawing.Point(4, 22)
         Me.pnlCuentasPorCobrar.Name = "pnlCuentasPorCobrar"
         Me.pnlCuentasPorCobrar.Padding = New System.Windows.Forms.Padding(3)
-        Me.pnlCuentasPorCobrar.Size = New System.Drawing.Size(788, 486)
+        Me.pnlCuentasPorCobrar.Size = New System.Drawing.Size(803, 486)
         Me.pnlCuentasPorCobrar.TabIndex = 2
         Me.pnlCuentasPorCobrar.Text = "Cuentas por Cobrar"
         Me.pnlCuentasPorCobrar.UseVisualStyleBackColor = True
@@ -233,40 +233,73 @@ Partial Class Caja
         Me.pnlComplementoPago.Location = New System.Drawing.Point(4, 22)
         Me.pnlComplementoPago.Name = "pnlComplementoPago"
         Me.pnlComplementoPago.Padding = New System.Windows.Forms.Padding(3)
-        Me.pnlComplementoPago.Size = New System.Drawing.Size(788, 486)
+        Me.pnlComplementoPago.Size = New System.Drawing.Size(803, 486)
         Me.pnlComplementoPago.TabIndex = 3
         Me.pnlComplementoPago.Text = "Complemento de Pago"
         Me.pnlComplementoPago.UseVisualStyleBackColor = True
         '
-        'DataGridView1
+        'Label4
         '
-        Me.DataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
-        Me.DataGridView1.Location = New System.Drawing.Point(18, 99)
-        Me.DataGridView1.Name = "DataGridView1"
-        Me.DataGridView1.Size = New System.Drawing.Size(764, 381)
-        Me.DataGridView1.TabIndex = 13
+        Me.Label4.AutoSize = True
+        Me.Label4.Location = New System.Drawing.Point(10, 12)
+        Me.Label4.Name = "Label4"
+        Me.Label4.Size = New System.Drawing.Size(28, 13)
+        Me.Label4.TabIndex = 3
+        Me.Label4.Text = "Caja"
+        '
+        'Label5
+        '
+        Me.Label5.AutoSize = True
+        Me.Label5.Location = New System.Drawing.Point(6, 38)
+        Me.Label5.Name = "Label5"
+        Me.Label5.Size = New System.Drawing.Size(43, 13)
+        Me.Label5.TabIndex = 4
+        Me.Label5.Text = "Atiende"
+        '
+        'btnActualizar
+        '
+        Me.btnActualizar.Image = Global.PapasSC.My.Resources.Resources.ACTUALIZAR
+        Me.btnActualizar.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
+        Me.btnActualizar.Location = New System.Drawing.Point(691, 6)
+        Me.btnActualizar.Name = "btnActualizar"
+        Me.btnActualizar.Size = New System.Drawing.Size(91, 43)
+        Me.btnActualizar.TabIndex = 6
+        Me.btnActualizar.Text = "Actualizar"
+        Me.btnActualizar.TextAlign = System.Drawing.ContentAlignment.MiddleRight
+        Me.btnActualizar.UseVisualStyleBackColor = True
+        '
+        'pnlEstatus
+        '
+        Me.pnlEstatus.Controls.Add(Me.Label4)
+        Me.pnlEstatus.Controls.Add(Me.Label5)
+        Me.pnlEstatus.Controls.Add(Me.txtCaja)
+        Me.pnlEstatus.Controls.Add(Me.txtEmpleado)
+        Me.pnlEstatus.Location = New System.Drawing.Point(25, 10)
+        Me.pnlEstatus.Name = "pnlEstatus"
+        Me.pnlEstatus.Size = New System.Drawing.Size(807, 60)
+        Me.pnlEstatus.TabIndex = 5
         '
         'Caja
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(848, 626)
+        Me.Controls.Add(Me.pnlEstatus)
         Me.Controls.Add(Me.TabControl1)
-        Me.Controls.Add(Me.TextBox2)
-        Me.Controls.Add(Me.TextBox1)
         Me.Name = "Caja"
         Me.Text = "Caja"
         Me.TabControl1.ResumeLayout(False)
         Me.pnlGeneral.ResumeLayout(False)
         Me.pnlGeneral.PerformLayout()
         CType(Me.DataGridView1, System.ComponentModel.ISupportInitialize).EndInit()
+        Me.pnlEstatus.ResumeLayout(False)
+        Me.pnlEstatus.PerformLayout()
         Me.ResumeLayout(False)
-        Me.PerformLayout()
 
     End Sub
 
-    Friend WithEvents TextBox1 As TextBox
-    Friend WithEvents TextBox2 As TextBox
+    Friend WithEvents txtCaja As TextBox
+    Friend WithEvents txtEmpleado As TextBox
     Friend WithEvents TabControl1 As TabControl
     Friend WithEvents pnlGeneral As TabPage
     Friend WithEvents TextBox4 As TextBox
@@ -286,4 +319,7 @@ Partial Class Caja
     Friend WithEvents Label1 As Label
     Friend WithEvents txtFechainicial As TextBox
     Friend WithEvents DataGridView1 As DataGridView
+    Friend WithEvents Label4 As Label
+    Friend WithEvents Label5 As Label
+    Friend WithEvents pnlEstatus As Panel
 End Class

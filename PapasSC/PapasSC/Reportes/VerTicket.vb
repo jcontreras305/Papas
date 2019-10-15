@@ -1,5 +1,3 @@
 ﻿Public Class VerTicket
-    Private Sub VerTicket_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-
-    End Sub
+    Public clave, nombre, idVenta As String
 End Class

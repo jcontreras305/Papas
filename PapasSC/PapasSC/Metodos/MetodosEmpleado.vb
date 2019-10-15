@@ -290,4 +290,21 @@ Public Class MetodosEmpleado
         End Try
     End Sub
 
+    Public Sub seleccionarNombreEmpleado(ByVal cmbEmpleado As ComboBox, ByVal listIds As List(Of String))
+        Try
+            conectar()
+            Dim cmd As New SqlCommand("select nombre, idEmpleado from empleado where not estatus = 'I' or not estatus = 'B'", conn)
+            Dim rd As SqlDataReader = cmd.ExecuteReader
+            listIds.Clear()
+            Dim cont As Int16 = 0
+            While rd.Read
+                cmbEmpleado.Items.Add(rd("nombre"))
+                listIds.Add(rd("idEmpleado"))
+                cont += 1
+            End While
+        Catch ex As Exception
+            MsgBox(ex.Message)
+        End Try
+    End Sub
+
 End Class
