@@ -45,6 +45,7 @@ Partial Class NuevaVenta
         Me.cmbCliente = New System.Windows.Forms.ComboBox()
         Me.Label3 = New System.Windows.Forms.Label()
         Me.TabPage2 = New System.Windows.Forms.TabPage()
+        Me.Button9 = New System.Windows.Forms.Button()
         Me.Button7 = New System.Windows.Forms.Button()
         Me.Button6 = New System.Windows.Forms.Button()
         Me.cmbFiltroVenta = New System.Windows.Forms.ComboBox()
@@ -52,7 +53,7 @@ Partial Class NuevaVenta
         Me.Button5 = New System.Windows.Forms.Button()
         Me.Button4 = New System.Windows.Forms.Button()
         Me.tblDetalleVenta = New System.Windows.Forms.DataGridView()
-        Me.Button9 = New System.Windows.Forms.Button()
+        Me.cbxRazon = New System.Windows.Forms.CheckBox()
         CType(Me.tblventa, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.npdprecio, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.npdkilos, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -145,6 +146,7 @@ Partial Class NuevaVenta
         '
         'TabPage1
         '
+        Me.TabPage1.Controls.Add(Me.cbxRazon)
         Me.TabPage1.Controls.Add(Me.Label5)
         Me.TabPage1.Controls.Add(Me.cmbBodega)
         Me.TabPage1.Controls.Add(Me.Label8)
@@ -299,6 +301,15 @@ Partial Class NuevaVenta
         Me.TabPage2.Text = "Detalles de Venta"
         Me.TabPage2.UseVisualStyleBackColor = True
         '
+        'Button9
+        '
+        Me.Button9.Location = New System.Drawing.Point(293, 289)
+        Me.Button9.Name = "Button9"
+        Me.Button9.Size = New System.Drawing.Size(139, 24)
+        Me.Button9.TabIndex = 8
+        Me.Button9.Text = "Activar Venta en Espera"
+        Me.Button9.UseVisualStyleBackColor = True
+        '
         'Button7
         '
         Me.Button7.Location = New System.Drawing.Point(162, 290)
@@ -363,14 +374,15 @@ Partial Class NuevaVenta
         Me.tblDetalleVenta.Size = New System.Drawing.Size(623, 201)
         Me.tblDetalleVenta.TabIndex = 0
         '
-        'Button9
+        'cbxRazon
         '
-        Me.Button9.Location = New System.Drawing.Point(293, 289)
-        Me.Button9.Name = "Button9"
-        Me.Button9.Size = New System.Drawing.Size(139, 24)
-        Me.Button9.TabIndex = 8
-        Me.Button9.Text = "Activar Venta en Espera"
-        Me.Button9.UseVisualStyleBackColor = True
+        Me.cbxRazon.AutoSize = True
+        Me.cbxRazon.Location = New System.Drawing.Point(19, 26)
+        Me.cbxRazon.Name = "cbxRazon"
+        Me.cbxRazon.Size = New System.Drawing.Size(147, 17)
+        Me.cbxRazon.TabIndex = 28
+        Me.cbxRazon.Text = "Clientes por Razon Social"
+        Me.cbxRazon.UseVisualStyleBackColor = True
         '
         'NuevaVenta
         '
@@ -424,4 +436,5 @@ Partial Class NuevaVenta
     Friend WithEvents cmbCliente As ComboBox
     Friend WithEvents Label3 As Label
     Friend WithEvents Button9 As Button
+    Friend WithEvents cbxRazon As CheckBox
 End Class

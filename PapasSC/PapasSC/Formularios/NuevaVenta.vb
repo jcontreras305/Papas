@@ -18,7 +18,7 @@
         npdprecio.ThousandsSeparator = True
         mtdv.llenarComboBodega(cmbBodega)
         mtdv.llenarComboProducto(cmbProducto, cmbBodega.Text)
-        mtdv.llenarComboCliente(cmbCliente)
+        mtdv.llenarComboCliente(cmbCliente, False)
         savef = DateTime.Now.ToString("dd/MM/yyyy")
         flag = True
         cmbBodega.DropDownStyle = 2
@@ -229,6 +229,15 @@
     End Sub
 
     Private Sub npdprecio_ValueChanged(sender As Object, e As EventArgs) Handles npdprecio.ValueChanged
+
+    End Sub
+
+    Private Sub cbxRazon_CheckedChanged(sender As Object, e As EventArgs) Handles cbxRazon.CheckedChanged
+        If cbxRazon.Checked Then
+            mtdv.llenarComboCliente(cmbCliente, True)
+        Else
+            mtdv.llenarComboCliente(cmbCliente, False)
+        End If
 
     End Sub
 End Class

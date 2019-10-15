@@ -56,10 +56,11 @@
             If cmbCajas.BackColor = Color.Green Then
                 If MessageBox.Show("¿Dessea Realizar el corte de Caja?", "Apertura y Cierre de Caja", MessageBoxButtons.YesNoCancel, MessageBoxIcon.Question) = Windows.Forms.DialogResult.Yes Then
                     'REALIZAR CORTE DE CAJA 
-                    caja.pnlEstatus.BackColor = Color.Green
+                    caja.pnlEstatus.BackColor = Color.Orange
                     caja.txtCaja.Text = cmbCajas.Text
                     caja.txtEmpleado.Text = cmbEmpleados.Text
                     mtdCaja.cerrar_Caja(listIdsCajas(cmbCajas.FindString(cmbCajas.Text)))
+                    mtdCaja.cajasEstatus(cmbCajas, listIdsCajas, listEstatusCaja)
                     caja.ShowDialog()
                 ElseIf Windows.Forms.DialogResult.No Then
                     'SEGUIR SIN HACER CORTE
@@ -75,6 +76,7 @@
                     Dim idEmpleado As String = listIdsEmpleados(cmbEmpleados.FindString(cmbEmpleados.Text))
                     Dim dinero As Double = CDbl(InputBox("Ingresa la cantidad Inicial " + vbCrLf + "Solo numeros por favor"))
                     If mtdCaja.iniciar_Caja(idCaja, idEmpleado, dinero.ToString) Then
+                        mtdCaja.cajasEstatus(cmbCajas, listIdsCajas, listEstatusCaja)
                         caja.pnlEstatus.BackColor = Color.Green
                         caja.txtCaja.Text = cmbCajas.Text
                         caja.txtEmpleado.Text = cmbEmpleados.Text

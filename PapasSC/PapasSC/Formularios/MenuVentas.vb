@@ -5,15 +5,15 @@
     End Sub
     Dim abierta As Boolean = True
     Private Sub Button1_Click(sender As Object, e As EventArgs) Handles Button1.Click
-        If abierta Then
-            IniciarCaja.Show()
-            IniciarCaja.user = nombre
-            IniciarCaja.vn = True
+        ''  If abierta Then
+        'IniciarCaja.Show()
+        'IniciarCaja.user = nombre
+        'IniciarCaja.vn = True
 
-        Else
-            NuevaVenta.Show()
+        '        Else
+        NuevaVenta.Show()
             NuevaVenta.user = nombre
-        End If
+        '       End If
     End Sub
 
     Private Sub Button2_Click(sender As Object, e As EventArgs) Handles Button2.Click

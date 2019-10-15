@@ -216,12 +216,11 @@ on em.idEmpleado = vn.idEmpleado inner join existenciaProductos expr on expr.idB
     Public Sub llenarComboBodega(ByVal dgv As ComboBox)
         cn.conectar()
         Try
-            adaptador = New SqlDataAdapter("select bo.nombre as Bodega, bo.idBodega from empleado em inner join  bodega bo on em.idBodega = bo.idBodega where bo.estatus = 'A'", cn.conn)
+            adaptador = New SqlDataAdapter("select bo.nombre as Bodega from empleado em inner join  bodega bo on em.idBodega = bo.idBodega where bo.estatus = 'A'", cn.conn)
             Dim ds As New DataSet
             adaptador.Fill(ds)
             dgv.DataSource = ds.Tables(0)
             dgv.DisplayMember = "Bodega"
-            dgv.ValueMember = "idBodega"
             dgv.SelectedIndex = 0
         Catch ex As Exception
             MessageBox.Show("No se lleno el Datagridview debido a: " + ex.Message)
@@ -231,19 +230,31 @@ on em.idEmpleado = vn.idEmpleado inner join existenciaProductos expr on expr.idB
 
 
 
-    Public Sub llenarComboCliente(ByVal dgv As ComboBox)
+    Public Sub llenarComboCliente(ByVal dgv As ComboBox, ByVal rs As Boolean)
         cn.conectar()
         Try
+            If rs Then
+                adaptador = New SqlDataAdapter("select razonSocial from cliente where estatus = 'A'", cn.conn)
+                Dim ds As New DataSet
+                adaptador.Fill(ds)
+                dgv.DataSource = ds.Tables(0)
+                dgv.DisplayMember = "nombre"
+                dgv.SelectedIndex = 0
+            Else
 
-            adaptador = New SqlDataAdapter("select nombre from cliente where estatus = 'A'", cn.conn)
-            Dim ds As New DataSet
-            adaptador.Fill(ds)
-            dgv.DataSource = ds.Tables(0).DefaultView
-            dgv.DisplayMember = "nombre"
+                adaptador = New SqlDataAdapter("select nombre from cliente where estatus = 'A'", cn.conn)
+                Dim ds As New DataSet
+                adaptador.Fill(ds)
+                dgv.DataSource = ds.Tables(0)
+                dgv.DisplayMember = "nombre"
+                dgv.SelectedIndex = 0
+            End If
         Catch ex As Exception
             MessageBox.Show("No se lleno el Datagridview debido a: " + ex.Message)
         End Try
     End Sub
+
+
 
 
 
@@ -257,10 +268,10 @@ on em.idEmpleado = vn.idEmpleado inner join existenciaProductos expr on expr.idB
     and bo.nombre='" + t + "'", cn.conn)
                 Dim ds As New DataSet
                 adaptador.Fill(ds)
-                dgv.DataSource = ds.Tables(0)
-                dgv.DisplayMember = "Producto"
-
-            Catch ex As Exception
+            dgv.DataSource = ds.Tables(0)
+            dgv.DisplayMember = "producto"
+            dgv.SelectedIndex = 0
+        Catch ex As Exception
                 MessageBox.Show("No se lleno el Datagridview debido a: " + ex.Message)
             End Try
         End Sub

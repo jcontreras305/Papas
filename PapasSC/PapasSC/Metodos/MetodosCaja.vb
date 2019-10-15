@@ -170,6 +170,7 @@ left join credito as ct on ct.idCliente = cl.idCliente "
             Dim rd As SqlDataReader = cmd.ExecuteReader()
             idsCaja.Clear()
             listEstatus.Clear()
+            cmbCaja.Items.Clear()
             While rd.Read
                 cmbCaja.Items.Add(rd("nombre"))
                 idsCaja.Add(rd("idCaja"))

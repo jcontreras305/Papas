@@ -431,7 +431,7 @@ declare @montoFinal float
 begin
 	begin tran 
 		begin try	
-			select cont=count(*) from caja where idCaja = @idCaja and estatus = 'A'
+			select @cont= count(*) from caja where idCaja = @idCaja and estatus = 'A'
 			if @cont = 1 begin 
 				select @montoFinal = total from contabilidadCaja where idCaja = @idCaja
 				update corteCaja set montoFinal = @montoFinal , fechaFin = @fechaFin where idCaja = @idCaja 
