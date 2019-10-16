@@ -104,7 +104,7 @@ Partial Class Caja
         'cmbTipoPersona
         '
         Me.cmbTipoPersona.FormattingEnabled = True
-        Me.cmbTipoPersona.Items.AddRange(New Object() {"Física", "Moral"})
+        Me.cmbTipoPersona.Items.AddRange(New Object() {"Venta", "Factura", "NC", "Nota de Campo"})
         Me.cmbTipoPersona.Location = New System.Drawing.Point(159, 13)
         Me.cmbTipoPersona.Name = "cmbTipoPersona"
         Me.cmbTipoPersona.Size = New System.Drawing.Size(100, 21)
@@ -127,9 +127,9 @@ Partial Class Caja
         'tblVentas
         '
         Me.tblVentas.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
-        Me.tblVentas.Location = New System.Drawing.Point(18, 99)
+        Me.tblVentas.Location = New System.Drawing.Point(18, 87)
         Me.tblVentas.Name = "tblVentas"
-        Me.tblVentas.Size = New System.Drawing.Size(764, 381)
+        Me.tblVentas.Size = New System.Drawing.Size(764, 393)
         Me.tblVentas.TabIndex = 13
         '
         'Label3
@@ -272,7 +272,7 @@ Partial Class Caja
         Me.pnlEstatus.Controls.Add(Me.txtEmpleado)
         Me.pnlEstatus.Location = New System.Drawing.Point(25, 10)
         Me.pnlEstatus.Name = "pnlEstatus"
-        Me.pnlEstatus.Size = New System.Drawing.Size(807, 60)
+        Me.pnlEstatus.Size = New System.Drawing.Size(811, 60)
         Me.pnlEstatus.TabIndex = 5
         '
         'Caja
