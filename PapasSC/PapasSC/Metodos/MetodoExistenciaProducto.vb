@@ -427,4 +427,54 @@ Public Class MetodoExistenciaProducto
         End Try
     End Sub
 
+
+    Public Sub updatebodegaA(ByVal claveb As String, ByVal clavep As String)
+        Try
+
+
+            Dim Rs As SqlDataReader
+            Dim Com As New SqlCommand
+            cn.conectar()
+            Dim idbodega As String
+            Dim idproducto As String
+            Dim Sql As String = "select idBodega from bodega where nombre ='" + claveb + "' and estatus = 'A'"
+
+            Com = New SqlCommand(Sql, cn.conn)
+
+            Rs = Com.ExecuteReader()
+            Rs.Read()
+            idbodega = Rs(0).ToString
+
+            Rs.Close()
+            cn.desconectar()
+
+            cn.conectar()
+            Dim Sql2 As String = "select idproducto from producto where version ='" + clavep + "' and estado= 'A'"
+            Com = New SqlCommand(Sql2, cn.conn)
+            Rs = Com.ExecuteReader()
+            Rs.Read()
+            idproducto = Rs(0).ToString
+
+            Rs.Close()
+            cn.desconectar()
+
+            cn.conectar()
+
+            Dim cadena As String = "
+       UPDATE [dbo].[existenciaProductos]
+       SET [estatus] = 'A'
+       WHERE [idBodega] = '" + idbodega + "' and [idProducto] = '" + idproducto + "'"
+            MsgBox(cadena)
+            Rs.Close()
+            cn.desconectar()
+            cn.conectar()
+            Com = New SqlCommand(cadena, cn.conn)
+            MsgBox("cade")
+            Com.ExecuteNonQuery()
+            MsgBox("pus si salio carnal")
+        Catch ex As Exception
+            MessageBox.Show("No se actualizo debido a: " + ex.ToString)
+        End Try
+    End Sub
+
 End Class

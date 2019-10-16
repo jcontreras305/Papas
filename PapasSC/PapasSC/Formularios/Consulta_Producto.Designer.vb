@@ -23,6 +23,7 @@ Partial Class Consulta_Producto
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
         Me.Panel1 = New System.Windows.Forms.Panel()
+        Me.CheckBox1 = New System.Windows.Forms.CheckBox()
         Me.Button4 = New System.Windows.Forms.Button()
         Me.Button3 = New System.Windows.Forms.Button()
         Me.Button2 = New System.Windows.Forms.Button()
@@ -31,13 +32,14 @@ Partial Class Consulta_Producto
         Me.TextBox1 = New System.Windows.Forms.TextBox()
         Me.Label1 = New System.Windows.Forms.Label()
         Me.TablaProductos = New System.Windows.Forms.DataGridView()
-        Me.CheckBox1 = New System.Windows.Forms.CheckBox()
+        Me.btnActivar = New System.Windows.Forms.Button()
         Me.Panel1.SuspendLayout()
         CType(Me.TablaProductos, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'Panel1
         '
+        Me.Panel1.Controls.Add(Me.btnActivar)
         Me.Panel1.Controls.Add(Me.CheckBox1)
         Me.Panel1.Controls.Add(Me.Button4)
         Me.Panel1.Controls.Add(Me.Button3)
@@ -51,6 +53,16 @@ Partial Class Consulta_Producto
         Me.Panel1.Name = "Panel1"
         Me.Panel1.Size = New System.Drawing.Size(800, 449)
         Me.Panel1.TabIndex = 0
+        '
+        'CheckBox1
+        '
+        Me.CheckBox1.AutoSize = True
+        Me.CheckBox1.Location = New System.Drawing.Point(19, 55)
+        Me.CheckBox1.Name = "CheckBox1"
+        Me.CheckBox1.Size = New System.Drawing.Size(150, 17)
+        Me.CheckBox1.TabIndex = 12
+        Me.CheckBox1.Text = "Productos Dados de Baja "
+        Me.CheckBox1.UseVisualStyleBackColor = True
         '
         'Button4
         '
@@ -122,15 +134,14 @@ Partial Class Consulta_Producto
         Me.TablaProductos.Size = New System.Drawing.Size(776, 313)
         Me.TablaProductos.TabIndex = 0
         '
-        'CheckBox1
+        'btnActivar
         '
-        Me.CheckBox1.AutoSize = True
-        Me.CheckBox1.Location = New System.Drawing.Point(19, 55)
-        Me.CheckBox1.Name = "CheckBox1"
-        Me.CheckBox1.Size = New System.Drawing.Size(150, 17)
-        Me.CheckBox1.TabIndex = 12
-        Me.CheckBox1.Text = "Productos Dados de Baja "
-        Me.CheckBox1.UseVisualStyleBackColor = True
+        Me.btnActivar.Location = New System.Drawing.Point(167, 51)
+        Me.btnActivar.Name = "btnActivar"
+        Me.btnActivar.Size = New System.Drawing.Size(138, 23)
+        Me.btnActivar.TabIndex = 13
+        Me.btnActivar.Text = "Activar"
+        Me.btnActivar.UseVisualStyleBackColor = True
         '
         'Consulta_Producto
         '
@@ -157,4 +168,5 @@ Partial Class Consulta_Producto
     Friend WithEvents Button3 As Button
     Friend WithEvents Button2 As Button
     Friend WithEvents CheckBox1 As CheckBox
+    Friend WithEvents btnActivar As Button
 End Class

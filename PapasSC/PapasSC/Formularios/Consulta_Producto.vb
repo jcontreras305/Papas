@@ -46,7 +46,7 @@
     End Sub
 
     Private Sub Consulta_Producto_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-
+        btnActivar.Enabled = False
     End Sub
 
     Private Sub TextBox1_KeyDown(sender As Object, e As KeyEventArgs) Handles TextBox1.KeyDown
@@ -78,5 +78,35 @@
         ElseIf filtroproductos.SelectedIndex = 3 Then
             MTCLI.llenarDatagridview_filtroID(TablaProductos, TextBox1.Text)
         End If
+    End Sub
+
+    Private Sub CheckBox1_CheckedChanged(sender As Object, e As EventArgs) Handles CheckBox1.CheckedChanged
+        Dim mtdp As New MetodosProducto
+
+        If CheckBox1.Checked Then
+            mtdp.llenarDatagridviewB(TablaProductos)
+            btnActivar.Enabled = True
+
+        Else
+            mtdp.llenarDatagridview(TablaProductos)
+            btnActivar.Enabled = False
+        End If
+    End Sub
+
+    Private Sub btnActivar_Click(sender As Object, e As EventArgs) Handles btnActivar.Click
+        Try
+            Dim id As String = Convert.ToString(TablaProductos.CurrentRow.Cells(0).Value)
+            Dim MTCLI As New MetodosProducto
+
+            If MessageBox.Show("¿Desea Activar Producto?", "Atención", MessageBoxButtons.YesNo, MessageBoxIcon.Question) = Windows.Forms.DialogResult.Yes Then
+                MTCLI.updateProducto(id)
+
+                MTCLI.llenarDatagridview(TablaProductos
+                                     )
+
+            End If
+        Catch
+            MsgBox("Seleciona un renglos")
+        End Try
     End Sub
 End Class

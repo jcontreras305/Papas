@@ -30,6 +30,31 @@ Public Class MetodosProducto
         End Try
     End Sub
 
+    Public Sub llenarDatagridviewB(ByVal dgv As DataGridView)
+        cn.conectar()
+        Try
+            'adaptador = New SqlDataAdapter(
+            '"select idProducto as Clave_Producto, version as Version,
+            'estado as Estatus, clave as Clave, precio as Precio
+            'From producto where estado ='A'", cn.conn)
+
+            adaptador = New SqlDataAdapter("
+    Select pr.idProducto as  Clave_del_Producto,
+    isnull(bo.nombre,'No asignada') as Nombre_Bodega,
+    isnull(ep.cantidad,'0')  As  Cantidad,
+    pr.version as Producto,
+    pr.clave as Clave,
+    pr.precio  as Precio
+    From bodega bo right Join existenciaProductos ep on bo.idBodega   = ep.idBodega  
+    right join producto pr on pr.idProducto = ep.idProducto  where pr.estado = 'B'", cn.conn)
+            dt = New DataTable
+            adaptador.Fill(dt)
+            dgv.DataSource = dt
+        Catch ex As Exception
+            MessageBox.Show("No se lleno el Datagridview debido a: " + ex.ToString)
+        End Try
+    End Sub
+
     Public Sub llenarDatagridview_filtroVersion(ByVal dgv As DataGridView, ByVal filtro As String)
         cn.conectar()
         Try
@@ -160,6 +185,22 @@ Public Class MetodosProducto
       SET [version] = '" + Version + "'
       ,[clave] = '" + clave + "'
       ,[precio] = '" + precio + "'
+      WHERE [idProducto] = '" + id + "'"
+            Dim comando = New SqlCommand(cadena, cn.conn)
+            comando.ExecuteNonQuery()
+            MsgBox("pus si salio carnal")
+        Catch ex As Exception
+            MessageBox.Show("No se inserto debido a: " + ex.ToString)
+        End Try
+    End Sub
+
+
+    Public Sub updateProducto(ByVal id As String)
+        Try
+            MsgBox("pus si entro carnal")
+            cn.conectar()
+            Dim cadena As String = "UPDATE [dbo].[producto]
+      SET [Estado] = 'B'
       WHERE [idProducto] = '" + id + "'"
             Dim comando = New SqlCommand(cadena, cn.conn)
             comando.ExecuteNonQuery()
