@@ -253,7 +253,7 @@ on em.idEmpleado = vn.idEmpleado inner join existenciaProductos expr on expr.idB
                 Dim ds As New DataSet
                 adaptador.Fill(ds)
                 dgv.DataSource = ds.Tables(0)
-                dgv.DisplayMember = "nombre"
+                dgv.DisplayMember = "razonSocial"
                 dgv.SelectedIndex = 0
             Else
 
