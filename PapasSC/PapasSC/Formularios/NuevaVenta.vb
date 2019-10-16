@@ -5,6 +5,9 @@
     Public idCaja As String
     Dim folio As Int16
     Dim mtdv As New MetodosVenta
+    Public idCliente, nombreCliente As String
+
+
     Private Sub NuevaVenta_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         mtdv.llenarDatagridview(tblDetalleVenta)
         npdCantidadPagada.Increment = 0.01
@@ -19,24 +22,30 @@
         npdprecio.ThousandsSeparator = True
         mtdv.llenarComboBodega(cmbBodega)
         mtdv.llenarComboProducto(tblProductos, cmbBodega.Text)
-        mtdv.llenarComboCliente(cmbCliente, False)
+
         savef = DateTime.Now.ToString("dd/MM/yyyy")
         flag = True
         cmbBodega.DropDownStyle = 2
-        cmbCliente.DropDownStyle = 2
+
         cmbFormaPago.DropDownStyle = 2
 
         npdkilos.Value = 1.0
         cmbBodega.Text = "Selecciona"
 
-        cmbCliente.Text = "Selecciona"
+
         npdprecio.Value = Convert.ToDecimal(Convert.ToString(tblProductos.CurrentRow.Cells(1).Value))
+
+        If tblventa.RowCount < 1 Then
+            tblventa.Columns.Add("Cliente", "Cliente")
+            tblventa.Columns.Add("Producto", "Producto")
+            tblventa.Columns.Add("Kilogramos", "Kilogramos")
+            tblventa.Columns.Add("Precio", "Precio")
+            tblventa.Columns.Add("Pago", "Pago")
+            tblventa.Columns.Add("Empleado", "Empleado")
+            tblventa.Columns.Add("Tipo de pago", "Tipo de pago")
+            tblventa.Columns.Add("Bodega", "Bodega")
+        End If
     End Sub
-
-
-
-
-
 
     Private Sub cmbFormaPago_SelectedIndexChanged(sender As Object, e As EventArgs) Handles cmbFormaPago.SelectedIndexChanged
         If cmbFormaPago.SelectedIndex = 0 Then
@@ -49,46 +58,40 @@
     End Sub
     Dim t As Double
     Private Sub Button3_Click(sender As Object, e As EventArgs) Handles Button3.Click
-
-
-        If tblventa.RowCount < 1 Then
-                    tblventa.Columns.Add("Cliente", "Cliente")
-                    tblventa.Columns.Add("Producto", "Producto")
-                    tblventa.Columns.Add("Kilogramos", "Kilogramos")
-                    tblventa.Columns.Add("Precio", "Precio")
-                    tblventa.Columns.Add("Pago", "Pago")
-                    tblventa.Columns.Add("Empleado", "Empleado")
-                    tblventa.Columns.Add("Tipo de pago", "Tipo de pago")
-                    tblventa.Columns.Add("Bodega", "Bodega")
-                End If
-        tblventa.Rows.Add(cmbCliente.Text, Convert.ToString(tblProductos.CurrentRow.Cells(0).Value), npdkilos.Value, (npdprecio.Value * npdkilos.Value), npdCantidadPagada.Value, user, cmbFormaPago.Text, cmbBodega.Text)
-
+        'If tblventa.RowCount < 1 Then
+        '    tblventa.Columns.Add("Cliente", "Cliente")
+        '    tblventa.Columns.Add("Producto", "Producto")
+        '    tblventa.Columns.Add("Kilogramos", "Kilogramos")
+        '    tblventa.Columns.Add("Precio", "Precio")
+        '    tblventa.Columns.Add("Pago", "Pago")
+        '    tblventa.Columns.Add("Empleado", "Empleado")
+        '    tblventa.Columns.Add("Tipo de pago", "Tipo de pago")
+        '    tblventa.Columns.Add("Bodega", "Bodega")
+        'End If
+        tblventa.Rows.Add(txtNombreCliente.Text, Convert.ToString(tblProductos.CurrentRow.Cells(0).Value), npdkilos.Value, (npdprecio.Value * npdkilos.Value), npdCantidadPagada.Value, user, cmbFormaPago.Text, cmbBodega.Text)
         If tblventa.RowCount > 1 Then
-                    Dim i As Integer
-                    Dim total As Double
-                    For i = 1 To tblventa.RowCount
-                        total += Convert.ToDecimal(Convert.ToString(tblventa.Rows(i - 1).Cells(3).Value))
-                        t = total
-                    Next
-                    lblTotal.Text = "Cantidad Total:"
-                    lblTotal.Text = lblTotal.Text + " " + Convert.ToString(total)
-                Else
-                    lblTotal.Text = Convert.ToString(lblTotal.Text + " " + Convert.ToString((npdprecio.Value * npdkilos.Value)))
-                    t = (npdprecio.Value * npdkilos.Value)
-                End If
-
-
-
+            Dim i As Integer
+            Dim total As Double
+            For i = 1 To tblventa.RowCount
+                total += Convert.ToDecimal(Convert.ToString(tblventa.Rows(i - 1).Cells(3).Value))
+                t = total
+            Next
+            lblTotal.Text = "Cantidad Total:"
+            lblTotal.Text = lblTotal.Text + " " + Convert.ToString(total)
+        Else
+            lblTotal.Text = Convert.ToString(lblTotal.Text + " " + Convert.ToString((npdprecio.Value * npdkilos.Value)))
+            t = (npdprecio.Value * npdkilos.Value)
+        End If
     End Sub
 
 
 
     Private Sub Button1_Click(sender As Object, e As EventArgs) Handles Button1.Click
-        If cmbBodega.Text <> "Selecciona" And cmbCliente.Text <> "Selecciona" And cmbFormaPago.Text <> "Selecciona" And tblventa.RowCount > 0 And npdCantidadPagada.Value > 0 Then
+        If txtNombreCliente.Text <> String.Empty And cmbFormaPago.Text <> "Selecciona" And tblventa.RowCount > 0 And npdCantidadPagada.Value > 0 Then
 
             If cbxEspera.Checked Then
 
-                mtdv.insertarVenta(savef.ToString, t, npdCantidadPagada.Value, cmbCliente.Text, user, cmbBodega.Text, "E", cmbFormaPago.Text, idCaja)
+                mtdv.insertarVenta(savef.ToString, t, npdCantidadPagada.Value, txtNombreCliente.Text, user, cmbBodega.Text, "E", cmbFormaPago.Text, idCaja)
                 Dim i As Integer
 
                 MsgBox(tblventa.RowCount)
@@ -100,7 +103,7 @@
                                           Convert.ToString(tblventa.Rows(i - 1).Cells(7).Value))
                 Next
             Else
-                mtdv.insertarVenta(savef.ToString, t, npdCantidadPagada.Value, cmbCliente.Text, user, cmbBodega.Text, "E", cmbFormaPago.Text, idCaja)
+                mtdv.insertarVenta(savef.ToString, t, npdCantidadPagada.Value, txtNombreCliente.Text, user, cmbBodega.Text, "E", cmbFormaPago.Text, idCaja)
                 MsgBox(tblventa.RowCount)
                 For i = 1 To tblventa.RowCount
 
@@ -227,9 +230,9 @@
 
     Private Sub cbxRazon_CheckedChanged(sender As Object, e As EventArgs) Handles cbxRazon.CheckedChanged
         If cbxRazon.Checked Then
-            mtdv.llenarComboCliente(cmbCliente, True)
+
         Else
-            mtdv.llenarComboCliente(cmbCliente, False)
+
         End If
 
     End Sub
@@ -246,5 +249,11 @@
 
     Private Sub lblTotal_TextChanged(sender As Object, e As EventArgs) Handles lblTotal.TextChanged
         npdCantidadPagada.Value = t
+    End Sub
+
+    Private Sub btnBuscarCliente_Click(sender As Object, e As EventArgs) Handles btnBuscarCliente.Click
+        Dim bc As New BuscaCliente
+        AddOwnedForm(bc)
+        bc.ShowDialog()
     End Sub
 End Class

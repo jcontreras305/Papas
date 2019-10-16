@@ -143,6 +143,12 @@
     <Compile Include="Formularios\AgregarEditarTicket.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="Formularios\BuscaCliente.Designer.vb">
+      <DependentUpon>BuscaCliente.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Formularios\BuscaCliente.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="Formularios\Caja.Designer.vb">
       <DependentUpon>Caja.vb</DependentUpon>
     </Compile>
@@ -514,6 +520,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Formularios\AgregarEditarTicket.resx">
       <DependentUpon>AgregarEditarTicket.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formularios\BuscaCliente.resx">
+      <DependentUpon>BuscaCliente.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Formularios\Caja.resx">
       <DependentUpon>Caja.vb</DependentUpon>
