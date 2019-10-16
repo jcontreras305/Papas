@@ -273,23 +273,57 @@ on em.idEmpleado = vn.idEmpleado inner join existenciaProductos expr on expr.idB
 
 
 
-    Public Sub llenarComboProducto(ByVal dgv As ComboBox, ByVal t As String)
-            cn.conectar()
-            Try
-                adaptador = New SqlDataAdapter("select  
-    pr.version as producto
+    'Public Sub llenarComboProducto(ByVal dgv As ComboBox, ByVal t As String)
+    '    cn.conectar()
+    '    Try
+    '        adaptador = New SqlDataAdapter("select  
+    'pr.version as producto
+    'from bodega bo inner join existenciaProductos ep on bo.idBodega   = ep.idBodega  
+    'inner join producto pr on pr.idProducto = ep.idProducto  where ep.estatus = 'A'
+    'and bo.nombre='" + t + "'", cn.conn)
+    '        Dim ds As New DataSet
+    '        adaptador.Fill(ds)
+    '        dgv.DataSource = ds.Tables(0)
+    '        dgv.DisplayMember = "producto"
+    '        dgv.SelectedIndex = 0
+    '    Catch ex As Exception
+    '        MessageBox.Show("No se lleno el Datagridview debido a: " + ex.Message)
+    '    End Try
+    'End Sub
+
+    Public Sub llenarComboProducto(ByVal dgv As DataGridView, ByVal t As String)
+        cn.conectar()
+        Try
+            adaptador = New SqlDataAdapter("select  
+    pr.version as Producto,
+  pr.Precio as Precio
     from bodega bo inner join existenciaProductos ep on bo.idBodega   = ep.idBodega  
     inner join producto pr on pr.idProducto = ep.idProducto  where ep.estatus = 'A'
     and bo.nombre='" + t + "'", cn.conn)
-                Dim ds As New DataSet
-                adaptador.Fill(ds)
-            dgv.DataSource = ds.Tables(0)
-            dgv.DisplayMember = "producto"
-            dgv.SelectedIndex = 0
+            dt = New DataTable
+            adaptador.Fill(dt)
+            dgv.DataSource = dt
         Catch ex As Exception
-                MessageBox.Show("No se lleno el Datagridview debido a: " + ex.Message)
-            End Try
-        End Sub
+            MessageBox.Show("No se lleno el Datagridview debido a: " + ex.Message)
+        End Try
+    End Sub
+
+    Public Sub llenarComboProductofiltro(ByVal dgv As DataGridView, ByVal t As String, ByVal pr As String)
+        cn.conectar()
+        Try
+            adaptador = New SqlDataAdapter("select  
+    pr.version as Producto,
+    pr.Precio as Precio
+    from bodega bo inner join existenciaProductos ep on bo.idBodega   = ep.idBodega  
+    inner join producto pr on pr.idProducto = ep.idProducto  where ep.estatus = 'A'
+    and bo.nombre='" + t + "' and pr.version like '" + pr + "%'", cn.conn)
+            dt = New DataTable
+            adaptador.Fill(dt)
+            dgv.DataSource = dt
+        Catch ex As Exception
+            MessageBox.Show("No se lleno el Datagridview debido a: " + ex.Message)
+        End Try
+    End Sub
 
     Public Function PrecioProductos(ByVal filtro As String) As String
         cn.conectar()

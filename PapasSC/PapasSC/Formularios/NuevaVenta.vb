@@ -9,6 +9,7 @@
         mtdv.llenarDatagridview(tblDetalleVenta)
         npdCantidadPagada.Increment = 0.01
         npdCantidadPagada.DecimalPlaces = 2
+        cmbFormaPago.SelectedIndex = 1
         npdCantidadPagada.ThousandsSeparator = True
         npdkilos.Increment = 0.01
         npdkilos.DecimalPlaces = 2
@@ -17,25 +18,23 @@
         npdprecio.DecimalPlaces = 2
         npdprecio.ThousandsSeparator = True
         mtdv.llenarComboBodega(cmbBodega)
-        mtdv.llenarComboProducto(cmbProducto, cmbBodega.Text)
+        mtdv.llenarComboProducto(tblProductos, cmbBodega.Text)
         mtdv.llenarComboCliente(cmbCliente, False)
         savef = DateTime.Now.ToString("dd/MM/yyyy")
         flag = True
         cmbBodega.DropDownStyle = 2
         cmbCliente.DropDownStyle = 2
         cmbFormaPago.DropDownStyle = 2
-        cmbProducto.DropDownStyle = 2
+
         npdkilos.Value = 1.0
         cmbBodega.Text = "Selecciona"
-        cmbProducto.Text = "Selecciona"
+
         cmbCliente.Text = "Selecciona"
+        npdprecio.Value = Convert.ToDecimal(Convert.ToString(tblProductos.CurrentRow.Cells(1).Value))
     End Sub
 
 
 
-    Private Sub ComboBox1_SelectedIndexChanged(sender As Object, e As EventArgs) Handles cmbCliente.SelectedIndexChanged
-
-    End Sub
 
 
 
@@ -45,7 +44,7 @@
 
         Else
             npdCantidadPagada.Enabled = False
-
+            npdCantidadPagada.Value = t
         End If
     End Sub
     Dim t As Double
@@ -62,9 +61,9 @@
                     tblventa.Columns.Add("Tipo de pago", "Tipo de pago")
                     tblventa.Columns.Add("Bodega", "Bodega")
                 End If
-                tblventa.Rows.Add(cmbCliente.Text, cmbProducto.Text, npdkilos.Value, (npdprecio.Value * npdkilos.Value), npdCantidadPagada.Value, user, cmbFormaPago.Text, cmbBodega.Text)
+        tblventa.Rows.Add(cmbCliente.Text, Convert.ToString(tblProductos.CurrentRow.Cells(0).Value), npdkilos.Value, (npdprecio.Value * npdkilos.Value), npdCantidadPagada.Value, user, cmbFormaPago.Text, cmbBodega.Text)
 
-                If tblventa.RowCount > 1 Then
+        If tblventa.RowCount > 1 Then
                     Dim i As Integer
                     Dim total As Double
                     For i = 1 To tblventa.RowCount
@@ -82,16 +81,10 @@
 
     End Sub
 
-    Private Sub cmbProducto_SelectedIndexChanged(sender As Object, e As EventArgs) Handles cmbProducto.SelectedIndexChanged
-        If flag Then
 
-            npdprecio.Value = Convert.ToDouble(mtdv.PrecioProductos(cmbProducto.Text))
-
-        End If
-    End Sub
 
     Private Sub Button1_Click(sender As Object, e As EventArgs) Handles Button1.Click
-        If cmbBodega.Text <> "Selecciona" And cmbCliente.Text <> "Selecciona" And cmbFormaPago.Text <> "Selecciona" And cmbProducto.Text <> "Selecciona" And tblventa.RowCount > 0 And npdCantidadPagada.Value > 0 Then
+        If cmbBodega.Text <> "Selecciona" And cmbCliente.Text <> "Selecciona" And cmbFormaPago.Text <> "Selecciona" And tblventa.RowCount > 0 And npdCantidadPagada.Value > 0 Then
 
             If cbxEspera.Checked Then
 
@@ -239,5 +232,19 @@
             mtdv.llenarComboCliente(cmbCliente, False)
         End If
 
+    End Sub
+
+    Private Sub TextBox2_TextChanged(sender As Object, e As EventArgs) Handles txbFiltro.TextChanged
+        mtdv.llenarComboProductofiltro(tblProductos, cmbBodega.Text, txbFiltro.Text)
+    End Sub
+
+    Private Sub tblProductos_CellContentClick(sender As Object, e As DataGridViewCellEventArgs) Handles tblProductos.CellContentClick
+        npdprecio.Value = Convert.ToDecimal(Convert.ToString(tblProductos.CurrentRow.Cells(1).Value))
+    End Sub
+
+
+
+    Private Sub lblTotal_TextChanged(sender As Object, e As EventArgs) Handles lblTotal.TextChanged
+        npdCantidadPagada.Value = t
     End Sub
 End Class
