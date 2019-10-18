@@ -31,20 +31,23 @@ Partial Class NuevaVenta
         Me.TabControl1 = New System.Windows.Forms.TabControl()
         Me.TabPage1 = New System.Windows.Forms.TabPage()
         Me.GroupBox1 = New System.Windows.Forms.GroupBox()
+        Me.txtNombreCliente = New System.Windows.Forms.TextBox()
+        Me.btnBuscarCliente = New System.Windows.Forms.Button()
+        Me.lblTotal = New System.Windows.Forms.Label()
         Me.Label3 = New System.Windows.Forms.Label()
         Me.cbxRazon = New System.Windows.Forms.CheckBox()
+        Me.cmbFormaPago = New System.Windows.Forms.ComboBox()
+        Me.Label7 = New System.Windows.Forms.Label()
+        Me.cbxEspera = New System.Windows.Forms.CheckBox()
+        Me.Label8 = New System.Windows.Forms.Label()
+        Me.lbl = New System.Windows.Forms.Label()
+        Me.npdCantidadPagada = New System.Windows.Forms.NumericUpDown()
         Me.txbFiltro = New System.Windows.Forms.TextBox()
         Me.tblProductos = New System.Windows.Forms.DataGridView()
         Me.Label5 = New System.Windows.Forms.Label()
         Me.cmbBodega = New System.Windows.Forms.ComboBox()
-        Me.Label8 = New System.Windows.Forms.Label()
-        Me.npdCantidadPagada = New System.Windows.Forms.NumericUpDown()
-        Me.cmbFormaPago = New System.Windows.Forms.ComboBox()
-        Me.Label7 = New System.Windows.Forms.Label()
         Me.Button2 = New System.Windows.Forms.Button()
         Me.Button3 = New System.Windows.Forms.Button()
-        Me.cbxEspera = New System.Windows.Forms.CheckBox()
-        Me.lblTotal = New System.Windows.Forms.Label()
         Me.TabPage2 = New System.Windows.Forms.TabPage()
         Me.Button9 = New System.Windows.Forms.Button()
         Me.Button7 = New System.Windows.Forms.Button()
@@ -54,17 +57,14 @@ Partial Class NuevaVenta
         Me.Button5 = New System.Windows.Forms.Button()
         Me.Button4 = New System.Windows.Forms.Button()
         Me.tblDetalleVenta = New System.Windows.Forms.DataGridView()
-        Me.Label4 = New System.Windows.Forms.Label()
-        Me.txtNombreCliente = New System.Windows.Forms.TextBox()
-        Me.btnBuscarCliente = New System.Windows.Forms.Button()
         CType(Me.tblventa, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.npdprecio, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.npdkilos, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.TabControl1.SuspendLayout()
         Me.TabPage1.SuspendLayout()
         Me.GroupBox1.SuspendLayout()
-        CType(Me.tblProductos, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.npdCantidadPagada, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.tblProductos, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.TabPage2.SuspendLayout()
         CType(Me.tblDetalleVenta, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
@@ -83,7 +83,7 @@ Partial Class NuevaVenta
         'Label1
         '
         Me.Label1.AutoSize = True
-        Me.Label1.Location = New System.Drawing.Point(260, 50)
+        Me.Label1.Location = New System.Drawing.Point(281, 49)
         Me.Label1.Name = "Label1"
         Me.Label1.Size = New System.Drawing.Size(58, 13)
         Me.Label1.TabIndex = 3
@@ -92,7 +92,7 @@ Partial Class NuevaVenta
         'Label2
         '
         Me.Label2.AutoSize = True
-        Me.Label2.Location = New System.Drawing.Point(260, 78)
+        Me.Label2.Location = New System.Drawing.Point(281, 77)
         Me.Label2.Name = "Label2"
         Me.Label2.Size = New System.Drawing.Size(83, 13)
         Me.Label2.TabIndex = 6
@@ -100,21 +100,21 @@ Partial Class NuevaVenta
         '
         'npdprecio
         '
-        Me.npdprecio.Location = New System.Drawing.Point(343, 74)
+        Me.npdprecio.Location = New System.Drawing.Point(364, 73)
         Me.npdprecio.Name = "npdprecio"
         Me.npdprecio.Size = New System.Drawing.Size(120, 20)
         Me.npdprecio.TabIndex = 7
         '
         'npdkilos
         '
-        Me.npdkilos.Location = New System.Drawing.Point(343, 48)
+        Me.npdkilos.Location = New System.Drawing.Point(364, 47)
         Me.npdkilos.Name = "npdkilos"
         Me.npdkilos.Size = New System.Drawing.Size(120, 20)
         Me.npdkilos.TabIndex = 8
         '
         'Button1
         '
-        Me.Button1.Location = New System.Drawing.Point(958, 435)
+        Me.Button1.Location = New System.Drawing.Point(926, 401)
         Me.Button1.Name = "Button1"
         Me.Button1.Size = New System.Drawing.Size(93, 46)
         Me.Button1.TabIndex = 10
@@ -140,7 +140,6 @@ Partial Class NuevaVenta
         Me.TabPage1.Controls.Add(Me.cmbBodega)
         Me.TabPage1.Controls.Add(Me.Button2)
         Me.TabPage1.Controls.Add(Me.Button3)
-        Me.TabPage1.Controls.Add(Me.cbxEspera)
         Me.TabPage1.Controls.Add(Me.tblventa)
         Me.TabPage1.Controls.Add(Me.Label1)
         Me.TabPage1.Controls.Add(Me.Label2)
@@ -159,20 +158,49 @@ Partial Class NuevaVenta
         '
         Me.GroupBox1.Controls.Add(Me.txtNombreCliente)
         Me.GroupBox1.Controls.Add(Me.btnBuscarCliente)
-        Me.GroupBox1.Controls.Add(Me.Label4)
+        Me.GroupBox1.Controls.Add(Me.lblTotal)
         Me.GroupBox1.Controls.Add(Me.Label3)
         Me.GroupBox1.Controls.Add(Me.cbxRazon)
         Me.GroupBox1.Controls.Add(Me.cmbFormaPago)
         Me.GroupBox1.Controls.Add(Me.Label7)
+        Me.GroupBox1.Controls.Add(Me.cbxEspera)
         Me.GroupBox1.Controls.Add(Me.Label8)
-        Me.GroupBox1.Controls.Add(Me.lblTotal)
+        Me.GroupBox1.Controls.Add(Me.lbl)
         Me.GroupBox1.Controls.Add(Me.npdCantidadPagada)
-        Me.GroupBox1.Location = New System.Drawing.Point(907, 48)
+        Me.GroupBox1.Location = New System.Drawing.Point(907, 11)
         Me.GroupBox1.Name = "GroupBox1"
         Me.GroupBox1.Size = New System.Drawing.Size(241, 358)
         Me.GroupBox1.TabIndex = 33
         Me.GroupBox1.TabStop = False
         Me.GroupBox1.Text = "GroupBox1"
+        '
+        'txtNombreCliente
+        '
+        Me.txtNombreCliente.Location = New System.Drawing.Point(16, 33)
+        Me.txtNombreCliente.Name = "txtNombreCliente"
+        Me.txtNombreCliente.Size = New System.Drawing.Size(147, 20)
+        Me.txtNombreCliente.TabIndex = 31
+        '
+        'btnBuscarCliente
+        '
+        Me.btnBuscarCliente.Image = Global.PapasSC.My.Resources.Resources.empleadosButton
+        Me.btnBuscarCliente.Location = New System.Drawing.Point(169, 10)
+        Me.btnBuscarCliente.Name = "btnBuscarCliente"
+        Me.btnBuscarCliente.Size = New System.Drawing.Size(48, 53)
+        Me.btnBuscarCliente.TabIndex = 30
+        Me.btnBuscarCliente.UseVisualStyleBackColor = True
+        '
+        'lblTotal
+        '
+        Me.lblTotal.AutoSize = True
+        Me.lblTotal.BackColor = System.Drawing.Color.Blue
+        Me.lblTotal.Font = New System.Drawing.Font("Microsoft Sans Serif", 24.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.lblTotal.ForeColor = System.Drawing.Color.Yellow
+        Me.lblTotal.Location = New System.Drawing.Point(89, 264)
+        Me.lblTotal.Name = "lblTotal"
+        Me.lblTotal.Size = New System.Drawing.Size(84, 37)
+        Me.lblTotal.TabIndex = 29
+        Me.lblTotal.Text = "0,00"
         '
         'Label3
         '
@@ -193,6 +221,61 @@ Partial Class NuevaVenta
         Me.cbxRazon.Text = "Clientes por Razon Social"
         Me.cbxRazon.UseVisualStyleBackColor = True
         '
+        'cmbFormaPago
+        '
+        Me.cmbFormaPago.FormattingEnabled = True
+        Me.cmbFormaPago.Items.AddRange(New Object() {"Credito", "Contado"})
+        Me.cmbFormaPago.Location = New System.Drawing.Point(96, 84)
+        Me.cmbFormaPago.Name = "cmbFormaPago"
+        Me.cmbFormaPago.Size = New System.Drawing.Size(106, 21)
+        Me.cmbFormaPago.TabIndex = 22
+        Me.cmbFormaPago.Text = "Seleccione"
+        '
+        'Label7
+        '
+        Me.Label7.AutoSize = True
+        Me.Label7.Location = New System.Drawing.Point(8, 87)
+        Me.Label7.Name = "Label7"
+        Me.Label7.Size = New System.Drawing.Size(82, 13)
+        Me.Label7.TabIndex = 23
+        Me.Label7.Text = "Forma de Pago "
+        '
+        'cbxEspera
+        '
+        Me.cbxEspera.AutoSize = True
+        Me.cbxEspera.Location = New System.Drawing.Point(19, 341)
+        Me.cbxEspera.Name = "cbxEspera"
+        Me.cbxEspera.Size = New System.Drawing.Size(77, 17)
+        Me.cbxEspera.TabIndex = 19
+        Me.cbxEspera.Text = "En espera."
+        Me.cbxEspera.UseVisualStyleBackColor = True
+        '
+        'Label8
+        '
+        Me.Label8.AutoSize = True
+        Me.Label8.Location = New System.Drawing.Point(13, 163)
+        Me.Label8.Name = "Label8"
+        Me.Label8.Size = New System.Drawing.Size(89, 13)
+        Me.Label8.TabIndex = 25
+        Me.Label8.Text = "Cantidad Pagada"
+        '
+        'lbl
+        '
+        Me.lbl.AutoSize = True
+        Me.lbl.Font = New System.Drawing.Font("Microsoft Sans Serif", 15.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.lbl.Location = New System.Drawing.Point(14, 264)
+        Me.lbl.Name = "lbl"
+        Me.lbl.Size = New System.Drawing.Size(79, 25)
+        Me.lbl.TabIndex = 18
+        Me.lbl.Text = "Total: "
+        '
+        'npdCantidadPagada
+        '
+        Me.npdCantidadPagada.Location = New System.Drawing.Point(108, 161)
+        Me.npdCantidadPagada.Name = "npdCantidadPagada"
+        Me.npdCantidadPagada.Size = New System.Drawing.Size(106, 20)
+        Me.npdCantidadPagada.TabIndex = 24
+        '
         'txbFiltro
         '
         Me.txbFiltro.Location = New System.Drawing.Point(6, 23)
@@ -208,13 +291,13 @@ Partial Class NuevaVenta
         Me.tblProductos.Location = New System.Drawing.Point(6, 49)
         Me.tblProductos.Name = "tblProductos"
         Me.tblProductos.ReadOnly = True
-        Me.tblProductos.Size = New System.Drawing.Size(248, 398)
+        Me.tblProductos.Size = New System.Drawing.Size(269, 398)
         Me.tblProductos.TabIndex = 29
         '
         'Label5
         '
         Me.Label5.AutoSize = True
-        Me.Label5.Location = New System.Drawing.Point(583, 11)
+        Me.Label5.Location = New System.Drawing.Point(520, 30)
         Me.Label5.Name = "Label5"
         Me.Label5.Size = New System.Drawing.Size(44, 13)
         Me.Label5.TabIndex = 27
@@ -223,50 +306,15 @@ Partial Class NuevaVenta
         'cmbBodega
         '
         Me.cmbBodega.FormattingEnabled = True
-        Me.cmbBodega.Location = New System.Drawing.Point(666, 6)
+        Me.cmbBodega.Location = New System.Drawing.Point(570, 27)
         Me.cmbBodega.Name = "cmbBodega"
-        Me.cmbBodega.Size = New System.Drawing.Size(193, 21)
+        Me.cmbBodega.Size = New System.Drawing.Size(151, 21)
         Me.cmbBodega.TabIndex = 26
         Me.cmbBodega.Text = "Selecciona"
         '
-        'Label8
-        '
-        Me.Label8.AutoSize = True
-        Me.Label8.Location = New System.Drawing.Point(13, 163)
-        Me.Label8.Name = "Label8"
-        Me.Label8.Size = New System.Drawing.Size(89, 13)
-        Me.Label8.TabIndex = 25
-        Me.Label8.Text = "Cantidad Pagada"
-        '
-        'npdCantidadPagada
-        '
-        Me.npdCantidadPagada.Location = New System.Drawing.Point(108, 161)
-        Me.npdCantidadPagada.Name = "npdCantidadPagada"
-        Me.npdCantidadPagada.Size = New System.Drawing.Size(106, 20)
-        Me.npdCantidadPagada.TabIndex = 24
-        '
-        'cmbFormaPago
-        '
-        Me.cmbFormaPago.FormattingEnabled = True
-        Me.cmbFormaPago.Items.AddRange(New Object() {"Credito", "Contado"})
-        Me.cmbFormaPago.Location = New System.Drawing.Point(92, 79)
-        Me.cmbFormaPago.Name = "cmbFormaPago"
-        Me.cmbFormaPago.Size = New System.Drawing.Size(106, 21)
-        Me.cmbFormaPago.TabIndex = 22
-        Me.cmbFormaPago.Text = "Seleccione"
-        '
-        'Label7
-        '
-        Me.Label7.AutoSize = True
-        Me.Label7.Location = New System.Drawing.Point(9, 83)
-        Me.Label7.Name = "Label7"
-        Me.Label7.Size = New System.Drawing.Size(82, 13)
-        Me.Label7.TabIndex = 23
-        Me.Label7.Text = "Forma de Pago "
-        '
         'Button2
         '
-        Me.Button2.Location = New System.Drawing.Point(1058, 435)
+        Me.Button2.Location = New System.Drawing.Point(1031, 401)
         Me.Button2.Name = "Button2"
         Me.Button2.Size = New System.Drawing.Size(93, 46)
         Me.Button2.TabIndex = 21
@@ -275,32 +323,12 @@ Partial Class NuevaVenta
         '
         'Button3
         '
-        Me.Button3.Location = New System.Drawing.Point(328, 189)
+        Me.Button3.Location = New System.Drawing.Point(298, 112)
         Me.Button3.Name = "Button3"
-        Me.Button3.Size = New System.Drawing.Size(135, 72)
+        Me.Button3.Size = New System.Drawing.Size(186, 44)
         Me.Button3.TabIndex = 20
         Me.Button3.Text = ">>"
         Me.Button3.UseVisualStyleBackColor = True
-        '
-        'cbxEspera
-        '
-        Me.cbxEspera.AutoSize = True
-        Me.cbxEspera.Location = New System.Drawing.Point(960, 412)
-        Me.cbxEspera.Name = "cbxEspera"
-        Me.cbxEspera.Size = New System.Drawing.Size(77, 17)
-        Me.cbxEspera.TabIndex = 19
-        Me.cbxEspera.Text = "En espera."
-        Me.cbxEspera.UseVisualStyleBackColor = True
-        '
-        'lblTotal
-        '
-        Me.lblTotal.AutoSize = True
-        Me.lblTotal.Font = New System.Drawing.Font("Microsoft Sans Serif", 15.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.lblTotal.Location = New System.Drawing.Point(6, 326)
-        Me.lblTotal.Name = "lblTotal"
-        Me.lblTotal.Size = New System.Drawing.Size(79, 25)
-        Me.lblTotal.TabIndex = 18
-        Me.lblTotal.Text = "Total: "
         '
         'TabPage2
         '
@@ -393,39 +421,11 @@ Partial Class NuevaVenta
         Me.tblDetalleVenta.Size = New System.Drawing.Size(623, 201)
         Me.tblDetalleVenta.TabIndex = 0
         '
-        'Label4
-        '
-        Me.Label4.AutoSize = True
-        Me.Label4.BackColor = System.Drawing.Color.Blue
-        Me.Label4.Font = New System.Drawing.Font("Microsoft Sans Serif", 24.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label4.ForeColor = System.Drawing.Color.Yellow
-        Me.Label4.Location = New System.Drawing.Point(79, 314)
-        Me.Label4.Name = "Label4"
-        Me.Label4.Size = New System.Drawing.Size(84, 37)
-        Me.Label4.TabIndex = 29
-        Me.Label4.Text = "0,00"
-        '
-        'txtNombreCliente
-        '
-        Me.txtNombreCliente.Location = New System.Drawing.Point(16, 33)
-        Me.txtNombreCliente.Name = "txtNombreCliente"
-        Me.txtNombreCliente.Size = New System.Drawing.Size(147, 20)
-        Me.txtNombreCliente.TabIndex = 31
-        '
-        'btnBuscarCliente
-        '
-        Me.btnBuscarCliente.Image = Global.PapasSC.My.Resources.Resources.empleadosButton
-        Me.btnBuscarCliente.Location = New System.Drawing.Point(169, 10)
-        Me.btnBuscarCliente.Name = "btnBuscarCliente"
-        Me.btnBuscarCliente.Size = New System.Drawing.Size(48, 53)
-        Me.btnBuscarCliente.TabIndex = 30
-        Me.btnBuscarCliente.UseVisualStyleBackColor = True
-        '
         'NuevaVenta
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(1183, 587)
+        Me.ClientSize = New System.Drawing.Size(1183, 505)
         Me.Controls.Add(Me.TabControl1)
         Me.Name = "NuevaVenta"
         Me.Text = "NuevaVenta"
@@ -437,8 +437,8 @@ Partial Class NuevaVenta
         Me.TabPage1.PerformLayout()
         Me.GroupBox1.ResumeLayout(False)
         Me.GroupBox1.PerformLayout()
-        CType(Me.tblProductos, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.npdCantidadPagada, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.tblProductos, System.ComponentModel.ISupportInitialize).EndInit()
         Me.TabPage2.ResumeLayout(False)
         Me.TabPage2.PerformLayout()
         CType(Me.tblDetalleVenta, System.ComponentModel.ISupportInitialize).EndInit()
@@ -453,7 +453,7 @@ Partial Class NuevaVenta
     Friend WithEvents Button1 As Button
     Friend WithEvents TabControl1 As TabControl
     Friend WithEvents TabPage1 As TabPage
-    Friend WithEvents lblTotal As Label
+    Friend WithEvents lbl As Label
     Friend WithEvents TabPage2 As TabPage
     Friend WithEvents tblDetalleVenta As DataGridView
     Friend WithEvents Button2 As Button
@@ -477,7 +477,7 @@ Partial Class NuevaVenta
     Friend WithEvents txbFiltro As TextBox
     Friend WithEvents tblProductos As DataGridView
     Friend WithEvents GroupBox1 As GroupBox
-    Friend WithEvents Label4 As Label
+    Friend WithEvents lblTotal As Label
     Friend WithEvents btnBuscarCliente As Button
     Public WithEvents txtNombreCliente As TextBox
 End Class

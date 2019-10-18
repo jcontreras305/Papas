@@ -12,7 +12,9 @@
         mtdv.llenarDatagridview(tblDetalleVenta)
         npdCantidadPagada.Increment = 0.01
         npdCantidadPagada.DecimalPlaces = 2
+        npdCantidadPagada.Maximum = 9999
         cmbFormaPago.SelectedIndex = 1
+        cmbFiltroVenta.SelectedIndex = 0
         npdCantidadPagada.ThousandsSeparator = True
         npdkilos.Increment = 0.01
         npdkilos.DecimalPlaces = 2
@@ -56,62 +58,67 @@
             npdCantidadPagada.Value = t
         End If
     End Sub
+
     Dim t As Double
+
     Private Sub Button3_Click(sender As Object, e As EventArgs) Handles Button3.Click
-        'If tblventa.RowCount < 1 Then
-        '    tblventa.Columns.Add("Cliente", "Cliente")
-        '    tblventa.Columns.Add("Producto", "Producto")
-        '    tblventa.Columns.Add("Kilogramos", "Kilogramos")
-        '    tblventa.Columns.Add("Precio", "Precio")
-        '    tblventa.Columns.Add("Pago", "Pago")
-        '    tblventa.Columns.Add("Empleado", "Empleado")
-        '    tblventa.Columns.Add("Tipo de pago", "Tipo de pago")
-        '    tblventa.Columns.Add("Bodega", "Bodega")
-        'End If
-        tblventa.Rows.Add(txtNombreCliente.Text, Convert.ToString(tblProductos.CurrentRow.Cells(0).Value), npdkilos.Value, (npdprecio.Value * npdkilos.Value), npdCantidadPagada.Value, user, cmbFormaPago.Text, cmbBodega.Text)
-        If tblventa.RowCount > 1 Then
+        If txtNombreCliente.Text <> String.Empty Then
+            tblventa.Rows.Add(txtNombreCliente.Text, Convert.ToString(tblProductos.CurrentRow.Cells(0).Value), npdkilos.Value, (npdprecio.Value * npdkilos.Value), npdCantidadPagada.Value, user, cmbFormaPago.Text, cmbBodega.Text)
+        Else
+            MsgBox("Seleccione un Cliente")
+        End If
+        If tblventa.RowCount > 1 And txtNombreCliente.Text <> String.Empty Then
             Dim i As Integer
             Dim total As Double
             For i = 1 To tblventa.RowCount
                 total += Convert.ToDecimal(Convert.ToString(tblventa.Rows(i - 1).Cells(3).Value))
                 t = total
             Next
-            lblTotal.Text = "Cantidad Total:"
-            lblTotal.Text = lblTotal.Text + " " + Convert.ToString(total)
-        Else
-            lblTotal.Text = Convert.ToString(lblTotal.Text + " " + Convert.ToString((npdprecio.Value * npdkilos.Value)))
-            t = (npdprecio.Value * npdkilos.Value)
-        End If
+            lblTotal.Text = Convert.ToString(total)
+        ElseIf txtNombreCliente.Text <> String.Empty Then
+            lblTotal.Text = Convert.ToString(Convert.ToString((npdprecio.Value * npdkilos.Value)))
+                t = (npdprecio.Value * npdkilos.Value)
+            End If
     End Sub
 
 
 
     Private Sub Button1_Click(sender As Object, e As EventArgs) Handles Button1.Click
-        If txtNombreCliente.Text <> String.Empty And cmbFormaPago.Text <> "Selecciona" And tblventa.RowCount > 0 And npdCantidadPagada.Value > 0 Then
+        If txtNombreCliente.Text <> String.Empty And tblventa.RowCount > 0 And npdCantidadPagada.Value > 0 Then
 
             If cbxEspera.Checked Then
 
-                mtdv.insertarVenta(savef.ToString, t, npdCantidadPagada.Value, txtNombreCliente.Text, user, cmbBodega.Text, "E", cmbFormaPago.Text, idCaja)
+                mtdv.insertarVenta(savef.ToString, t.ToString, npdCantidadPagada.Value, txtNombreCliente.Text, user, cmbBodega.Text, "E", cmbFormaPago.Text, idCaja, idCliente)
                 Dim i As Integer
 
                 MsgBox(tblventa.RowCount)
-                For i = 1 To tblventa.RowCount
+                Try
+                    For i = 1 To tblventa.RowCount
 
-                    mtdv.insertarVentaDetalle(Convert.ToString(tblventa.Rows(i - 1).Cells(1).Value),
+
+
+                        mtdv.insertarVentaDetalle(Convert.ToString(tblventa.Rows(i - 1).Cells(1).Value),
                                           Convert.ToString(tblventa.Rows(i - 1).Cells(2).Value),
                                           Convert.ToString(tblventa.Rows(i - 1).Cells(3).Value),
                                           Convert.ToString(tblventa.Rows(i - 1).Cells(7).Value))
-                Next
+                    Next
+                Catch ex As Exception
+                    MsgBox("Actualizar_Producto duplicado")
+                End Try
             Else
-                mtdv.insertarVenta(savef.ToString, t, npdCantidadPagada.Value, txtNombreCliente.Text, user, cmbBodega.Text, "E", cmbFormaPago.Text, idCaja)
+                mtdv.insertarVenta(savef.ToString, t, npdCantidadPagada.Value, txtNombreCliente.Text, user, cmbBodega.Text, "A", cmbFormaPago.Text, idCaja, idCliente)
                 MsgBox(tblventa.RowCount)
-                For i = 1 To tblventa.RowCount
+                Try
+                    For i = 1 To tblventa.RowCount
 
-                    mtdv.insertarVentaDetalle(Convert.ToString(tblventa.Rows(i - 1).Cells(1).Value),
+                        mtdv.insertarVentaDetalle(Convert.ToString(tblventa.Rows(i - 1).Cells(1).Value),
                                           Convert.ToString(tblventa.Rows(i - 1).Cells(2).Value),
                                           Convert.ToString(tblventa.Rows(i - 1).Cells(3).Value),
                                           Convert.ToString(tblventa.Rows(i - 1).Cells(7).Value))
-                Next
+                    Next
+                Catch ex As Exception
+                    MsgBox("Actualizar_Producto duplicado")
+                End Try
             End If
         Else
             MsgBox("Completa los campos")
@@ -246,9 +253,15 @@
     End Sub
 
 
+    Private Sub npdCantidadPagada_ValueChanged(sender As Object, e As EventArgs) Handles npdCantidadPagada.ValueChanged
+
+    End Sub
 
     Private Sub lblTotal_TextChanged(sender As Object, e As EventArgs) Handles lblTotal.TextChanged
-        npdCantidadPagada.Value = t
+        If cmbFormaPago.Text = "Contado" Then
+            npdCantidadPagada.Value = Convert.ToDecimal(lblTotal.Text)
+        End If
+
     End Sub
 
     Private Sub btnBuscarCliente_Click(sender As Object, e As EventArgs) Handles btnBuscarCliente.Click

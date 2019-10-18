@@ -9,9 +9,9 @@ Public Class MetodosVenta
     Public Sub llenarDatagridview(ByVal dgv As DataGridView)
         cn.conectar()
         Try
-            adaptador = New SqlDataAdapter("select vn.idVenta, bo.nombre, pr.version, expr.cantidad, pr.precio, vn.cantidadPagada, vn.totalPagar, vd.total, vd.totalNeto, vn.fecha, em.nombre, cl.nombre  from venta vn inner join ventaDetalle vd on vn.idVenta = vd.idVenta inner join producto pr on vd.idProducto = pr.idProducto 
-inner join bodega bo on bo.idBodega =vn.idBodega  inner join cliente cl on cl.idCliente = vn.idCliente inner join empleado em
-on em.idEmpleado = vn.idEmpleado inner join existenciaProductos expr on expr.idBodega =bo.idBodega where vn.estatus='A'", cn.conn)
+            adaptador = New SqlDataAdapter("select vn.idVenta, bo.nombre, pr.version, ex.cantidad, pr.precio, vn.cantidadPagada, vn.totalPagar, vd.total, vd.totalNeto, vn.fecha, em.nombre, cl.nombre   from  bodega bo  inner join venta vn on vn.idBodega = bo.idBodega inner join ventaDetalle  vd on vd.idVenta = vn.idVenta inner join producto 
+pr on pr.idProducto = vd.idProducto inner join existenciaProductos ex on  ex.idProducto = pr.idProducto and ex.idBodega = bo.idBodega inner join empleado as em on em.idEmpleado = vn.idEmpleado
+inner join cliente as cl on cl.idCliente = vn.idCliente", cn.conn)
             dt = New DataTable
             adaptador.Fill(dt)
             dgv.DataSource = dt
@@ -24,9 +24,9 @@ on em.idEmpleado = vn.idEmpleado inner join existenciaProductos expr on expr.idB
     Public Sub llenarDatagridview(ByVal dgv As DataGridView, ByVal id As String)
         cn.conectar()
         Try
-            adaptador = New SqlDataAdapter("select  bo.nombre, pr.version, expr.cantidad, pr.precio, vn.cantidadPagada, vn.totalPagar, vd.total, vd.totalNeto, vn.fecha, em.nombre, cl.nombre  from venta vn inner join ventaDetalle vd on vn.idVenta = vd.idVenta inner join producto pr on vd.idProducto = pr.idProducto 
-inner join bodega bo on bo.idBodega =vn.idBodega  inner join cliente cl on cl.idCliente = vn.idCliente inner join empleado em
-on em.idEmpleado = vn.idEmpleado inner join existenciaProductos expr on expr.idBodega =bo.idBodega where vn.estatus='A' and vn.idVenta='" + id + "'", cn.conn)
+            adaptador = New SqlDataAdapter("select vn.idVenta, bo.nombre, pr.version, ex.cantidad, pr.precio, vn.cantidadPagada, vn.totalPagar, vd.total, vd.totalNeto, vn.fecha, em.nombre, cl.nombre   from  bodega bo  inner join venta vn on vn.idBodega = bo.idBodega inner join ventaDetalle  vd on vd.idVenta = vn.idVenta inner join producto 
+pr on pr.idProducto = vd.idProducto inner join existenciaProductos ex on  ex.idProducto = pr.idProducto and ex.idBodega = bo.idBodega inner join empleado as em on em.idEmpleado = vn.idEmpleado
+inner join cliente as cl on cl.idCliente = vn.idCliente where vn.idVenta='" + id + "'", cn.conn)
             dt = New DataTable
             adaptador.Fill(dt)
             dgv.DataSource = dt
@@ -40,9 +40,9 @@ on em.idEmpleado = vn.idEmpleado inner join existenciaProductos expr on expr.idB
     Public Sub llenarDatagridviewB(ByVal dgv As DataGridView)
             cn.conectar()
             Try
-            adaptador = New SqlDataAdapter("select vn.idVenta, bo.nombre, pr.version, expr.cantidad, pr.precio, vn.cantidadPagada, vn.totalPagar, vd.total, vd.totalNeto, vn.fecha, em.nombre, cl.nombre  from venta vn inner join ventaDetalle vd on vn.idVenta = vd.idVenta inner join producto pr on vd.idProducto = pr.idProducto 
-inner join bodega bo on bo.idBodega =vn.idBodega  inner join cliente cl on cl.idCliente = vn.idCliente inner join empleado em
-on em.idEmpleado = vn.idEmpleado inner join existenciaProductos expr on expr.idBodega =bo.idBodega where ep.estatus = 'B'
+            adaptador = New SqlDataAdapter("select vn.idVenta, bo.nombre, pr.version, ex.cantidad, pr.precio, vn.cantidadPagada, vn.totalPagar, vd.total, vd.totalNeto, vn.fecha, em.nombre, cl.nombre   from  bodega bo  inner join venta vn on vn.idBodega = bo.idBodega inner join ventaDetalle  vd on vd.idVenta = vn.idVenta inner join producto 
+pr on pr.idProducto = vd.idProducto inner join existenciaProductos ex on  ex.idProducto = pr.idProducto and ex.idBodega = bo.idBodega inner join empleado as em on em.idEmpleado = vn.idEmpleado
+inner join cliente as cl on cl.idCliente = vn.idCliente where vn.estatus='A'
 ", cn.conn)
             dt = New DataTable
                 adaptador.Fill(dt)
@@ -58,10 +58,10 @@ on em.idEmpleado = vn.idEmpleado inner join existenciaProductos expr on expr.idB
     Public Sub llenarDatagridview_filtroBodega(ByVal dgv As DataGridView, ByVal filtro As String)
         cn.conectar()
         Try
-            adaptador = New SqlDataAdapter("select vn.idVenta, bo.nombre, pr.version, expr.cantidad, pr.precio, vn.cantidadPagada, vn.totalPagar, vd.total, vd.totalNeto, vn.fecha, em.nombre, cl.nombre  from venta vn inner join ventaDetalle vd on vn.idVenta = vd.idVenta inner join producto pr on vd.idProducto = pr.idProducto 
-            inner join bodega bo on bo.idBodega =vn.idBodega  inner join cliente cl on cl.idCliente = vn.idCliente inner join empleado em
-            on em.idEmpleado = vn.idEmpleado inner join existenciaProductos expr on expr.idBodega =bo.idBodega
-            and bo.nombre like '" + filtro + "%' and vn.estatus='A'", cn.conn)
+            adaptador = New SqlDataAdapter("select vn.idVenta, bo.nombre, pr.version, ex.cantidad, pr.precio, vn.cantidadPagada, vn.totalPagar, vd.total, vd.totalNeto, vn.fecha, em.nombre, cl.nombre   from  bodega bo  inner join venta vn on vn.idBodega = bo.idBodega inner join ventaDetalle  vd on vd.idVenta = vn.idVenta inner join producto 
+pr on pr.idProducto = vd.idProducto inner join existenciaProductos ex on  ex.idProducto = pr.idProducto and ex.idBodega = bo.idBodega inner join empleado as em on em.idEmpleado = vn.idEmpleado
+inner join cliente as cl on cl.idCliente = vn.idCliente where
+            and bo.nombre like '" + filtro + "%'", cn.conn)
             dt = New DataTable
             adaptador.Fill(dt)
             dgv.DataSource = dt
@@ -73,10 +73,10 @@ on em.idEmpleado = vn.idEmpleado inner join existenciaProductos expr on expr.idB
     Public Sub llenarDatagridview_filtroFecha(ByVal dgv As DataGridView, ByVal filtro As String)
         cn.conectar()
         Try
-            adaptador = New SqlDataAdapter("select vn.idVenta, bo.nombre, pr.version, expr.cantidad, pr.precio, vn.cantidadPagada, vn.totalPagar, vd.total, vd.totalNeto, vn.fecha, em.nombre, cl.nombre  from venta vn inner join ventaDetalle vd on vn.idVenta = vd.idVenta inner join producto pr on vd.idProducto = pr.idProducto 
-            inner join bodega bo on bo.idBodega =vn.idBodega  inner join cliente cl on cl.idCliente = vn.idCliente inner join empleado em
-            on em.idEmpleado = vn.idEmpleado inner join existenciaProductos expr on expr.idBodega =bo.idBodega
-            where vn.fecha like '" + filtro + "%' and vn.estatus='A'", cn.conn)
+            adaptador = New SqlDataAdapter("select vn.idVenta, bo.nombre, pr.version, ex.cantidad, pr.precio, vn.cantidadPagada, vn.totalPagar, vd.total, vd.totalNeto, vn.fecha, em.nombre, cl.nombre   from  bodega bo  inner join venta vn on vn.idBodega = bo.idBodega inner join ventaDetalle  vd on vd.idVenta = vn.idVenta inner join producto 
+pr on pr.idProducto = vd.idProducto inner join existenciaProductos ex on  ex.idProducto = pr.idProducto and ex.idBodega = bo.idBodega inner join empleado as em on em.idEmpleado = vn.idEmpleado
+inner join cliente as cl on cl.idCliente = vn.idCliente
+            where vn.fecha like '" + filtro + "%'", cn.conn)
             dt = New DataTable
             adaptador.Fill(dt)
             dgv.DataSource = dt
@@ -89,10 +89,10 @@ on em.idEmpleado = vn.idEmpleado inner join existenciaProductos expr on expr.idB
     Public Sub llenarDatagridview_filtroCantidad(ByVal dgv As DataGridView, ByVal filtro As String)
             cn.conectar()
             Try
-            adaptador = New SqlDataAdapter("select vn.idVenta, bo.nombre, pr.version, expr.cantidad, pr.precio, vn.cantidadPagada, vn.totalPagar, vd.total, vd.totalNeto, vn.fecha, em.nombre, cl.nombre  from venta vn inner join ventaDetalle vd on vn.idVenta = vd.idVenta inner join producto pr on vd.idProducto = pr.idProducto 
-inner join bodega bo on bo.idBodega =vn.idBodega  inner join cliente cl on cl.idCliente = vn.idCliente inner join empleado em
-on em.idEmpleado = vn.idEmpleado inner join existenciaProductos expr on expr.idBodega =bo.idBodega  where 
-     expr.cantidad like '" + filtro + "%' and vn.estatus='A'", cn.conn)
+            adaptador = New SqlDataAdapter("select vn.idVenta, bo.nombre, pr.version, ex.cantidad, pr.precio, vn.cantidadPagada, vn.totalPagar, vd.total, vd.totalNeto, vn.fecha, em.nombre, cl.nombre   from  bodega bo  inner join venta vn on vn.idBodega = bo.idBodega inner join ventaDetalle  vd on vd.idVenta = vn.idVenta inner join producto 
+pr on pr.idProducto = vd.idProducto inner join existenciaProductos ex on  ex.idProducto = pr.idProducto and ex.idBodega = bo.idBodega inner join empleado as em on em.idEmpleado = vn.idEmpleado
+inner join cliente as cl on cl.idCliente = vn.idCliente  where 
+     ex.cantidad like '" + filtro + "%'", cn.conn)
             dt = New DataTable
                 adaptador.Fill(dt)
                 dgv.DataSource = dt
@@ -104,10 +104,10 @@ on em.idEmpleado = vn.idEmpleado inner join existenciaProductos expr on expr.idB
         Public Sub llenarDatagridview_filtroVersion(ByVal dgv As DataGridView, ByVal filtro As String)
             cn.conectar()
             Try
-            adaptador = New SqlDataAdapter("select vn.idVenta, bo.nombre, pr.version, expr.cantidad, pr.precio, vn.cantidadPagada, vn.totalPagar, vd.total, vd.totalNeto, vn.fecha, em.nombre, cl.nombre  from venta vn inner join ventaDetalle vd on vn.idVenta = vd.idVenta inner join producto pr on vd.idProducto = pr.idProducto 
-inner join bodega bo on bo.idBodega =vn.idBodega  inner join cliente cl on cl.idCliente = vn.idCliente inner join empleado em
-on em.idEmpleado = vn.idEmpleado inner join existenciaProductos expr on expr.idBodega =bo.idBodega  where 
-     pr.version like '" + filtro + "%' and vn.estatus='A'", cn.conn)
+            adaptador = New SqlDataAdapter("select vn.idVenta, bo.nombre, pr.version, ex.cantidad, pr.precio, vn.cantidadPagada, vn.totalPagar, vd.total, vd.totalNeto, vn.fecha, em.nombre, cl.nombre   from  bodega bo  inner join venta vn on vn.idBodega = bo.idBodega inner join ventaDetalle  vd on vd.idVenta = vn.idVenta inner join producto 
+pr on pr.idProducto = vd.idProducto inner join existenciaProductos ex on  ex.idProducto = pr.idProducto and ex.idBodega = bo.idBodega inner join empleado as em on em.idEmpleado = vn.idEmpleado
+inner join cliente as cl on cl.idCliente = vn.idCliente  where 
+     pr.version like '" + filtro + "%'", cn.conn)
             dt = New DataTable
                 adaptador.Fill(dt)
                 dgv.DataSource = dt
@@ -119,10 +119,9 @@ on em.idEmpleado = vn.idEmpleado inner join existenciaProductos expr on expr.idB
     Public Sub llenarDatagridview_filtroPrecio(ByVal dgv As DataGridView, ByVal filtro As String)
         cn.conectar()
         Try
-            adaptador = New SqlDataAdapter("select vn.idVenta, bo.nombre, pr.version, expr.cantidad, pr.precio, vn.cantidadPagada, vn.totalPagar, vd.total, vd.totalNeto, vn.fecha, em.nombre, cl.nombre  from venta vn inner join ventaDetalle vd on vn.idVenta = vd.idVenta inner join producto pr on vd.idProducto = pr.idProducto 
-inner join bodega bo on bo.idBodega =vn.idBodega  inner join cliente cl on cl.idCliente = vn.idCliente inner join empleado em
-on em.idEmpleado = vn.idEmpleado inner join existenciaProductos expr on expr.idBodega =bo.idBodega  where pr.precio like '" + filtro + "%'
-and vn.estatus='A'", cn.conn)
+            adaptador = New SqlDataAdapter("select vn.idVenta, bo.nombre, pr.version, ex.cantidad, pr.precio, vn.cantidadPagada, vn.totalPagar, vd.total, vd.totalNeto, vn.fecha, em.nombre, cl.nombre   from  bodega bo  inner join venta vn on vn.idBodega = bo.idBodega inner join ventaDetalle  vd on vd.idVenta = vn.idVenta inner join producto 
+pr on pr.idProducto = vd.idProducto inner join existenciaProductos ex on  ex.idProducto = pr.idProducto and ex.idBodega = bo.idBodega inner join empleado as em on em.idEmpleado = vn.idEmpleado
+inner join cliente as cl on cl.idCliente = vn.idCliente where pr.precio like '" + filtro + "%'", cn.conn)
             dt = New DataTable
             adaptador.Fill(dt)
             dgv.DataSource = dt
@@ -134,9 +133,9 @@ and vn.estatus='A'", cn.conn)
     Public Sub llenarDatagridview_filtroEmpleado(ByVal dgv As DataGridView, ByVal filtro As String)
         cn.conectar()
         Try
-            adaptador = New SqlDataAdapter("select vn.idVenta, bo.nombre, pr.version, expr.cantidad, pr.precio, vn.cantidadPagada, vn.totalPagar, vd.total, vd.totalNeto, vn.fecha, em.nombre, cl.nombre  from venta vn inner join ventaDetalle vd on vn.idVenta = vd.idVenta inner join producto pr on vd.idProducto = pr.idProducto 
-inner join bodega bo on bo.idBodega =vn.idBodega  inner join cliente cl on cl.idCliente = vn.idCliente inner join empleado em
-on em.idEmpleado = vn.idEmpleado inner join existenciaProductos expr on expr.idBodega =bo.idBodega  where em.nombre like '" + filtro + "%' and vn.estatus='A'", cn.conn)
+            adaptador = New SqlDataAdapter("select vn.idVenta, bo.nombre, pr.version, ex.cantidad, pr.precio, vn.cantidadPagada, vn.totalPagar, vd.total, vd.totalNeto, vn.fecha, em.nombre, cl.nombre   from  bodega bo  inner join venta vn on vn.idBodega = bo.idBodega inner join ventaDetalle  vd on vd.idVenta = vn.idVenta inner join producto 
+pr on pr.idProducto = vd.idProducto inner join existenciaProductos ex on  ex.idProducto = pr.idProducto and ex.idBodega = bo.idBodega inner join empleado as em on em.idEmpleado = vn.idEmpleado
+inner join cliente as cl on cl.idCliente = vn.idCliente  where em.nombre like '" + filtro + "%'", cn.conn)
             dt = New DataTable
             adaptador.Fill(dt)
             dgv.DataSource = dt
@@ -147,9 +146,9 @@ on em.idEmpleado = vn.idEmpleado inner join existenciaProductos expr on expr.idB
     Public Sub llenarDatagridview_filtroCliente(ByVal dgv As DataGridView, ByVal filtro As String)
         cn.conectar()
         Try
-            adaptador = New SqlDataAdapter("select vn.idVenta, bo.nombre, pr.version, expr.cantidad, pr.precio, vn.cantidadPagada, vn.totalPagar, vd.total, vd.totalNeto, vn.fecha, em.nombre, cl.nombre  from venta vn inner join ventaDetalle vd on vn.idVenta = vd.idVenta inner join producto pr on vd.idProducto = pr.idProducto 
-inner join bodega bo on bo.idBodega =vn.idBodega  inner join cliente cl on cl.idCliente = vn.idCliente inner join empleado em
-on em.idEmpleado = vn.idEmpleado inner join existenciaProductos expr on expr.idBodega =bo.idBodega  where cl.nombre like '" + filtro + "%' and vn.estatus='A'", cn.conn)
+            adaptador = New SqlDataAdapter("select vn.idVenta, bo.nombre, pr.version, ex.cantidad, pr.precio, vn.cantidadPagada, vn.totalPagar, vd.total, vd.totalNeto, vn.fecha, em.nombre, cl.nombre   from  bodega bo  inner join venta vn on vn.idBodega = bo.idBodega inner join ventaDetalle  vd on vd.idVenta = vn.idVenta inner join producto 
+pr on pr.idProducto = vd.idProducto inner join existenciaProductos ex on  ex.idProducto = pr.idProducto and ex.idBodega = bo.idBodega inner join empleado as em on em.idEmpleado = vn.idEmpleado
+inner join cliente as cl on cl.idCliente = vn.idCliente  where cl.nombre like '" + filtro + "%'", cn.conn)
             dt = New DataTable
             adaptador.Fill(dt)
             dgv.DataSource = dt
@@ -160,9 +159,9 @@ on em.idEmpleado = vn.idEmpleado inner join existenciaProductos expr on expr.idB
     Public Sub llenarDatagridview_filtroTotal(ByVal dgv As DataGridView, ByVal filtro As String)
         cn.conectar()
         Try
-            adaptador = New SqlDataAdapter("select , bo.nombre, pr.version, expr.cantidad, pr.precio, vn.cantidadPagada, vn.totalPagar, vd.total, vd.totalNeto, vn.fecha, em.nombre, cl.nombre  from venta vn inner join ventaDetalle vd on vn.idVenta = vd.idVenta inner join producto pr on vd.idProducto = pr.idProducto 
-inner join bodega bo on bo.idBodega =vn.idBodega  inner join cliente cl on cl.idCliente = vn.idCliente inner join empleado em
-on em.idEmpleado = vn.idEmpleado inner join existenciaProductos expr on expr.idBodega =bo.idBodega  where vn. like '" + filtro + "%' and vn.estatus='A'", cn.conn)
+            adaptador = New SqlDataAdapter("select vn.idVenta, bo.nombre, pr.version, ex.cantidad, pr.precio, vn.cantidadPagada, vn.totalPagar, vd.total, vd.totalNeto, vn.fecha, em.nombre, cl.nombre   from  bodega bo  inner join venta vn on vn.idBodega = bo.idBodega inner join ventaDetalle  vd on vd.idVenta = vn.idVenta inner join producto 
+pr on pr.idProducto = vd.idProducto inner join existenciaProductos ex on  ex.idProducto = pr.idProducto and ex.idBodega = bo.idBodega inner join empleado as em on em.idEmpleado = vn.idEmpleado
+inner join cliente as cl on cl.idCliente = vn.idCliente where vn. like '" + filtro + "%'", cn.conn)
             dt = New DataTable
             adaptador.Fill(dt)
             dgv.DataSource = dt
@@ -173,9 +172,9 @@ on em.idEmpleado = vn.idEmpleado inner join existenciaProductos expr on expr.idB
     Public Sub llenarDatagridview_filtroIdVenta(ByVal dgv As DataGridView, ByVal filtro As String)
         cn.conectar()
         Try
-            adaptador = New SqlDataAdapter("select vn.idVenta, bo.nombre, pr.version, expr.cantidad, pr.precio, vn.cantidadPagada, vn.totalPagar, vd.total, vd.totalNeto, vn.fecha, em.nombre, cl.nombre  from venta vn inner join ventaDetalle vd on vn.idVenta = vd.idVenta inner join producto pr on vd.idProducto = pr.idProducto 
-inner join bodega bo on bo.idBodega =vn.idBodega  inner join cliente cl on cl.idCliente = vn.idCliente inner join empleado em
-on em.idEmpleado = vn.idEmpleado inner join existenciaProductos expr on expr.idBodega =bo.idBodega  where vn.idVenta like '" + filtro + "%' and vn.estatus='A'", cn.conn)
+            adaptador = New SqlDataAdapter("select vn.idVenta, bo.nombre, pr.version, ex.cantidad, pr.precio, vn.cantidadPagada, vn.totalPagar, vd.total, vd.totalNeto, vn.fecha, em.nombre, cl.nombre   from  bodega bo  inner join venta vn on vn.idBodega = bo.idBodega inner join ventaDetalle  vd on vd.idVenta = vn.idVenta inner join producto 
+pr on pr.idProducto = vd.idProducto inner join existenciaProductos ex on  ex.idProducto = pr.idProducto and ex.idBodega = bo.idBodega inner join empleado as em on em.idEmpleado = vn.idEmpleado
+inner join cliente as cl on cl.idCliente = vn.idCliente  where vn.idVenta like '" + filtro + "%'", cn.conn)
             dt = New DataTable
             adaptador.Fill(dt)
             dgv.DataSource = dt
@@ -295,13 +294,13 @@ on em.idEmpleado = vn.idEmpleado inner join existenciaProductos expr on expr.idB
 
     Dim clave As String
 
-    Public Sub insertarVenta(ByVal fecha As String, ByVal totalpagar As String, ByVal cantidadPagada As String, ByVal cliente As String, ByVal Empleado As String, ByVal Bodega As String, ByVal estatus As String, ByVal formapago As String, ByVal idCaja As String)
+    Public Sub insertarVenta(ByVal fecha As String, ByVal totalpagar As String, ByVal cantidadPagada As String, ByVal cliente As String, ByVal Empleado As String, ByVal Bodega As String, ByVal estatus As String, ByVal formapago As String, ByVal idCaja As String, ByVal idCliente As String)
         Try
             clave = ""
             cn.conectar()
             MsgBox("entro")
 
-            Dim idCliente As String
+
             Dim idempleado As String
             Dim idbodega As String
 
@@ -315,14 +314,6 @@ on em.idEmpleado = vn.idEmpleado inner join existenciaProductos expr on expr.idB
             clave = Rs(0).ToString
             Rs.Close()
 
-            cn.conectar()
-            Dim Sql1 As String = "select idcliente from cliente where nombre ='" + cliente + "' and estatus = 'A'"
-            Com = New SqlCommand(Sql1, cn.conn)
-            Rs = Com.ExecuteReader()
-            Rs.Read()
-            idCliente = Rs(0).ToString
-            Rs.Close()
-            cn.desconectar()
 
 
 
@@ -349,8 +340,8 @@ on em.idEmpleado = vn.idEmpleado inner join existenciaProductos expr on expr.idB
 
 
             cn.conectar()
-            Dim Sql5 As String = "select idTicket from cliente where idBodega='" + idbodega + "' and  nombre like 'Venta' and estatus = 'A'"
-            Com = New SqlCommand(Sql1, cn.conn)
+            Dim Sql5 As String = "select idTicket from ticket where nombre like 'Venta'"
+            Com = New SqlCommand(Sql5, cn.conn)
             Rs = Com.ExecuteReader()
             Rs.Read()
             Dim idticket As String
@@ -360,19 +351,25 @@ on em.idEmpleado = vn.idEmpleado inner join existenciaProductos expr on expr.idB
 
             cn.conectar()
             Dim Sql6 As String = "select Max(folio) from Venta"
-            Com = New SqlCommand(Sql1, cn.conn)
+            Com = New SqlCommand(Sql6, cn.conn)
             Rs = Com.ExecuteReader()
             Rs.Read()
             Dim Folio As Int64
 
-            Folio = Convert.ToInt64(If(Rs(0).ToString Is Nothing, 0, Rs(0).ToString)) + 1
+            If Rs(0).ToString <> String.Empty Then
+                Folio = Convert.ToString(Convert.ToInt64(Convert.ToString(Rs(0).ToString)) + 1)
+            Else
+                Folio = Convert.ToString(1)
+            End If
+
 
             Rs.Close()
             cn.desconectar()
 
             cn.conectar()
-            Dim cadena As String = "
-INSERT INTO [dbo].[venta]
+
+            Com = New SqlCommand("
+            INSERT INTO [dbo].[venta]
            ([idVenta]
            ,[fecha]
            ,[totalPagar]
@@ -385,21 +382,19 @@ INSERT INTO [dbo].[venta]
            ,[idCaja]
            ,[folio]
            ,[idTicket])
-     VALUES
-           ('" + clave + "'
+            VALUES
+           ('" + Convert.ToString(clave) + "'
            , getdate()
-              ," + totalpagar + "
-           ," + cantidadPagada + "
-                 ,'" + estatus + "'
-            ,'" + idCliente + "'
-           ,'" + idempleado + "'
-           ,'" + idbodega + "'
-           ,'" + formapago + "'
-           ,'" + idCaja + "'
-           ," + Folio + "
-           ,'" + idticket + "')"
-            MsgBox(cadena)
-            Com = New SqlCommand(cadena, cn.conn)
+           ," + Convert.ToString(totalpagar) + "
+           ," + Convert.ToString(cantidadPagada) + "
+           ,'" + Convert.ToString(estatus) + "'
+           ,'" + Convert.ToString(idCliente) + "'
+           ,'" + Convert.ToString(idempleado) + "'
+           ,'" + Convert.ToString(idbodega) + "'
+           ,'" + Convert.ToString(formapago) + "'
+           ,'" + Convert.ToString(idCaja) + "'
+           ," + Convert.ToString(Folio) + "
+           ,'" + Convert.ToString(idticket) + "')", cn.conn)
             Com.ExecuteNonQuery()
             cn.desconectar()
 
