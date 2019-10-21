@@ -49,6 +49,10 @@
     End Sub
 
     Private Sub btnActualizar_Click(sender As Object, e As EventArgs) Handles btnActualizar.Click
+        Try
 
+        Catch ex As Exception
+
+        End Try
     End Sub
 End Class
