@@ -34,9 +34,9 @@
         npdkilos.Value = 1.0
         cmbBodega.Text = "Selecciona"
 
-
-        npdprecio.Value = Convert.ToDecimal(Convert.ToString(tblProductos.CurrentRow.Cells(1).Value))
-
+        If tblProductos.RowCount > 1 Then
+            npdprecio.Value = Convert.ToDecimal(Convert.ToString(tblProductos.CurrentRow.Cells(1).Value))
+        End If
         If tblventa.RowCount < 1 Then
             tblventa.Columns.Add("Cliente", "Cliente")
             tblventa.Columns.Add("Producto", "Producto")
@@ -236,26 +236,12 @@
 
     End Sub
 
-    Private Sub cbxRazon_CheckedChanged(sender As Object, e As EventArgs) Handles cbxRazon.CheckedChanged
-        If cbxRazon.Checked Then
-
-        Else
-
-        End If
-
-    End Sub
 
     Private Sub TextBox2_TextChanged(sender As Object, e As EventArgs) Handles txbFiltro.TextChanged
         mtdv.llenarComboProductofiltro(tblProductos, cmbBodega.Text, txbFiltro.Text)
     End Sub
 
-    Private Sub tblProductos_CellContentClick(sender As Object, e As DataGridViewCellEventArgs) Handles tblProductos.CellContentClick
-    End Sub
 
-
-    Private Sub npdCantidadPagada_ValueChanged(sender As Object, e As EventArgs) Handles npdCantidadPagada.ValueChanged
-
-    End Sub
 
     Private Sub lblTotal_TextChanged(sender As Object, e As EventArgs) Handles lblTotal.TextChanged
         If cmbFormaPago.Text = "Contado" Then
@@ -265,9 +251,7 @@
 
     End Sub
 
-    Private Sub TabPage1_Click(sender As Object, e As EventArgs) Handles TabPage1.Click
 
-    End Sub
 
     Private Sub tblProductos_CellClick(sender As Object, e As DataGridViewCellEventArgs) Handles tblProductos.CellClick
         npdprecio.Value = Convert.ToDecimal(Convert.ToString(tblProductos.CurrentRow.Cells(1).Value))

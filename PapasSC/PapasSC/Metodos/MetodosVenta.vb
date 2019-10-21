@@ -373,6 +373,10 @@ inner join cliente as cl on cl.idCliente = vn.idCliente
 
             cn.conectar()
 
+
+
+
+
             Com = New SqlCommand("
             INSERT INTO [dbo].[venta]
            ([idVenta]
@@ -526,6 +530,69 @@ inner join cliente as cl on cl.idCliente = vn.idCliente
     End Sub
 
 
+    Public Sub updateVentas(ByVal id As String, ByVal producto As String, ByVal cantidad As String, ByVal totalneto As String, ByVal Bodega As String)
+        Try
+
+            cn.conectar()
+            MsgBox("entro")
+
+            Dim idProducto As String
+
+
+            Dim Rs As SqlDataReader
+            Dim Com As New SqlCommand
+
+
+
+
+            Dim Sql1 As String = "select idProducto from producto where version ='" + producto + "' and estado = 'A'"
+
+            Com = New SqlCommand(Sql1, cn.conn)
+            Rs = Com.ExecuteReader()
+            Rs.Read()
+            idProducto = Rs(0).ToString
+            Rs.Close()
+            cn.desconectar()
+            cn.conectar()
+            Dim total As String
+            Dim sql2 As String = "select precio from producto where version ='" + producto + "' and estado = 'A'"
+
+            Com = New SqlCommand(sql2, cn.conn)
+            Rs = Com.ExecuteReader()
+            Rs.Read()
+            total = Rs(0).ToString
+            Rs.Close()
+            cn.desconectar()
+
+            Convert.ToDouble(total)
+
+
+            cn.conectar()
+            Dim cadena As String =
+      "UPDATE [dbo].[venta]
+    
+       [fecha] = '" + +"'
+      ,[totalPagar]=" + +"
+      ,[cantidadPagada] = " + +"
+      ,[estatus] = '" + +"'
+      ,[idCliente] ='" + +"'
+      ,[idEmpleado] = '" + +"'
+      ,[idBodega] = '" + +"'
+      ,[idCaja] = '" + +"'
+      ,[tipoPago] = '" + +"'
+      ,[folio] = " + +"
+	  ,[idTicket] = '" + +"' where idventa = '" + id + "'"
+            Com = New SqlCommand(cadena, cn.conn)
+            Com.ExecuteNonQuery()
+            cn.desconectar()
+            updateExistencia(Bodega, producto, cantidad)
+
+            MsgBox("cade")
+        Catch ex As Exception
+            MessageBox.Show("No se inserto debido a: " + ex.ToString)
+
+        End Try
+    End Sub
 
 
 

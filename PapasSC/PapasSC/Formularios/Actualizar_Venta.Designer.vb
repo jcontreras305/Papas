@@ -35,7 +35,7 @@ Partial Class Actualizar_Venta
         Me.cmbFormaPago = New System.Windows.Forms.ComboBox()
         Me.npdCantidadPagada = New System.Windows.Forms.NumericUpDown()
         Me.Label8 = New System.Windows.Forms.Label()
-        Me.Label4 = New System.Windows.Forms.Label()
+        Me.lbltotal = New System.Windows.Forms.Label()
         Me.lbl = New System.Windows.Forms.Label()
         Me.txtNombreCliente = New System.Windows.Forms.TextBox()
         Me.Label6 = New System.Windows.Forms.Label()
@@ -52,7 +52,7 @@ Partial Class Actualizar_Venta
         '
         'npdkilos
         '
-        Me.npdkilos.Location = New System.Drawing.Point(92, 210)
+        Me.npdkilos.Location = New System.Drawing.Point(89, 211)
         Me.npdkilos.Name = "npdkilos"
         Me.npdkilos.Size = New System.Drawing.Size(120, 20)
         Me.npdkilos.TabIndex = 35
@@ -68,7 +68,7 @@ Partial Class Actualizar_Venta
         '
         'npdprecio
         '
-        Me.npdprecio.Location = New System.Drawing.Point(123, 251)
+        Me.npdprecio.Location = New System.Drawing.Point(116, 252)
         Me.npdprecio.Name = "npdprecio"
         Me.npdprecio.Size = New System.Drawing.Size(120, 20)
         Me.npdprecio.TabIndex = 34
@@ -76,7 +76,7 @@ Partial Class Actualizar_Venta
         'Label2
         '
         Me.Label2.AutoSize = True
-        Me.Label2.Location = New System.Drawing.Point(31, 258)
+        Me.Label2.Location = New System.Drawing.Point(31, 254)
         Me.Label2.Name = "Label2"
         Me.Label2.Size = New System.Drawing.Size(83, 13)
         Me.Label2.TabIndex = 33
@@ -96,10 +96,10 @@ Partial Class Actualizar_Venta
         Me.tblventaActualizar.AllowUserToAddRows = False
         Me.tblventaActualizar.AllowUserToDeleteRows = False
         Me.tblventaActualizar.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
-        Me.tblventaActualizar.Location = New System.Drawing.Point(458, 31)
+        Me.tblventaActualizar.Location = New System.Drawing.Point(458, 12)
         Me.tblventaActualizar.Name = "tblventaActualizar"
         Me.tblventaActualizar.ReadOnly = True
-        Me.tblventaActualizar.Size = New System.Drawing.Size(469, 398)
+        Me.tblventaActualizar.Size = New System.Drawing.Size(568, 417)
         Me.tblventaActualizar.TabIndex = 29
         '
         'Button2
@@ -150,7 +150,7 @@ Partial Class Actualizar_Venta
         '
         'npdCantidadPagada
         '
-        Me.npdCantidadPagada.Location = New System.Drawing.Point(272, 133)
+        Me.npdCantidadPagada.Location = New System.Drawing.Point(252, 116)
         Me.npdCantidadPagada.Name = "npdCantidadPagada"
         Me.npdCantidadPagada.Size = New System.Drawing.Size(106, 20)
         Me.npdCantidadPagada.TabIndex = 52
@@ -158,29 +158,29 @@ Partial Class Actualizar_Venta
         'Label8
         '
         Me.Label8.AutoSize = True
-        Me.Label8.Location = New System.Drawing.Point(269, 112)
+        Me.Label8.Location = New System.Drawing.Point(251, 99)
         Me.Label8.Name = "Label8"
         Me.Label8.Size = New System.Drawing.Size(89, 13)
         Me.Label8.TabIndex = 53
         Me.Label8.Text = "Cantidad Pagada"
         '
-        'Label4
+        'lbltotal
         '
-        Me.Label4.AutoSize = True
-        Me.Label4.BackColor = System.Drawing.Color.Blue
-        Me.Label4.Font = New System.Drawing.Font("Microsoft Sans Serif", 24.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label4.ForeColor = System.Drawing.Color.Yellow
-        Me.Label4.Location = New System.Drawing.Point(368, 392)
-        Me.Label4.Name = "Label4"
-        Me.Label4.Size = New System.Drawing.Size(84, 37)
-        Me.Label4.TabIndex = 54
-        Me.Label4.Text = "0,00"
+        Me.lbltotal.AutoSize = True
+        Me.lbltotal.BackColor = System.Drawing.Color.Blue
+        Me.lbltotal.Font = New System.Drawing.Font("Microsoft Sans Serif", 24.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.lbltotal.ForeColor = System.Drawing.Color.Yellow
+        Me.lbltotal.Location = New System.Drawing.Point(362, 387)
+        Me.lbltotal.Name = "lbltotal"
+        Me.lbltotal.Size = New System.Drawing.Size(84, 37)
+        Me.lbltotal.TabIndex = 54
+        Me.lbltotal.Text = "0,00"
         '
         'lbl
         '
         Me.lbl.AutoSize = True
         Me.lbl.Font = New System.Drawing.Font("Microsoft Sans Serif", 15.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.lbl.Location = New System.Drawing.Point(283, 392)
+        Me.lbl.Location = New System.Drawing.Point(282, 393)
         Me.lbl.Name = "lbl"
         Me.lbl.Size = New System.Drawing.Size(79, 25)
         Me.lbl.TabIndex = 55
@@ -242,7 +242,7 @@ Partial Class Actualizar_Venta
         Me.btnBuscarCliente.Image = Global.PapasSC.My.Resources.Resources.empleadosButton
         Me.btnBuscarCliente.Location = New System.Drawing.Point(187, 22)
         Me.btnBuscarCliente.Name = "btnBuscarCliente"
-        Me.btnBuscarCliente.Size = New System.Drawing.Size(48, 53)
+        Me.btnBuscarCliente.Size = New System.Drawing.Size(59, 53)
         Me.btnBuscarCliente.TabIndex = 58
         Me.btnBuscarCliente.UseVisualStyleBackColor = True
         '
@@ -259,7 +259,7 @@ Partial Class Actualizar_Venta
         Me.Controls.Add(Me.Label6)
         Me.Controls.Add(Me.cbxRazon)
         Me.Controls.Add(Me.lbl)
-        Me.Controls.Add(Me.Label4)
+        Me.Controls.Add(Me.lbltotal)
         Me.Controls.Add(Me.Label8)
         Me.Controls.Add(Me.npdCantidadPagada)
         Me.Controls.Add(Me.cmbFormaPago)
@@ -296,7 +296,7 @@ Partial Class Actualizar_Venta
     Friend WithEvents cmbFormaPago As ComboBox
     Friend WithEvents npdCantidadPagada As NumericUpDown
     Friend WithEvents Label8 As Label
-    Friend WithEvents Label4 As Label
+    Friend WithEvents lbltotal As Label
     Friend WithEvents lbl As Label
     Public WithEvents txtNombreCliente As TextBox
     Friend WithEvents btnBuscarCliente As Button

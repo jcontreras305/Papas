@@ -59,6 +59,8 @@
         npdprecio.Value = Convert.ToDecimal(precio)
         cmbFormaPago.Text = formapago
         npdCantidadPagada.Value = Convert.ToDecimal(cantidadpagada)
+        lbltotal.Text = total
+
 
     End Sub
 
