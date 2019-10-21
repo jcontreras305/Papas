@@ -72,7 +72,7 @@ Public Class MetodosCliente
     Public Sub llenarDatagridview_filtro(ByVal dgv As DataGridView, ByVal filtro As String)
         cn.conectar()
         Try
-            adaptador = New SqlDataAdapter(consulta + " cl.nombre like '" + filtro + "%'", cn.conn)
+            adaptador = New SqlDataAdapter(consulta + " where cl.nombre like '" + filtro + "%'", cn.conn)
             dt = New DataTable
             adaptador.Fill(dt)
             dgv.DataSource = dt

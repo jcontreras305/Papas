@@ -32,7 +32,7 @@ Public Class Consulta_Cliente
     End Sub
 
 
-    Private Sub TextBox1_KeyDown(sender As Object, e As KeyEventArgs) Handles TextBox1.KeyDown
+    Private Sub TextBox1_KeyDown(sender As Object, e As KeyEventArgs) Handles TextBox1.KeyUp
         Dim MTCLI As New MetodosCliente
         TablaCLientes.ReadOnly = True
         Try
@@ -122,5 +122,6 @@ Public Class Consulta_Cliente
             MTCLI.llenarDatagridview(TablaCLientes)
         End If
     End Sub
+
 
 End Class

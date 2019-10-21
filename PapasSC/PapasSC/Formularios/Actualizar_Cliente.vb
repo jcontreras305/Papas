@@ -249,12 +249,12 @@ Public Class Actualizar_Cliente
                 flag = False
             End If
         End If
-
-        If validar_Correo(txtEmail.Text) <> True Then
-            MsgBox("El correo no es valido")
-            flag = False
+        If Not txtEmail.Text = String.Empty Then
+            If validar_Correo(txtEmail.Text) <> True Then
+                MsgBox("El correo no es valido")
+                flag = False
+            End If
         End If
-
 
         mensaje = resutado
         Return flag
