@@ -75,6 +75,7 @@
                 t = total
             Next
             lblTotal.Text = Convert.ToString(total)
+
         ElseIf txtNombreCliente.Text <> String.Empty Then
             lblTotal.Text = Convert.ToString(Convert.ToString((npdprecio.Value * npdkilos.Value)))
                 t = (npdprecio.Value * npdkilos.Value)
@@ -249,7 +250,6 @@
     End Sub
 
     Private Sub tblProductos_CellContentClick(sender As Object, e As DataGridViewCellEventArgs) Handles tblProductos.CellContentClick
-        npdprecio.Value = Convert.ToDecimal(Convert.ToString(tblProductos.CurrentRow.Cells(1).Value))
     End Sub
 
 
@@ -260,11 +260,17 @@
     Private Sub lblTotal_TextChanged(sender As Object, e As EventArgs) Handles lblTotal.TextChanged
         If cmbFormaPago.Text = "Contado" Then
             npdCantidadPagada.Value = Convert.ToDecimal(lblTotal.Text)
+            tblventa.Rows(tblventa.RowCount - 1).Cells(4).Value = npdCantidadPagada.Value
         End If
 
     End Sub
 
-    Private Sub Label3_Click(sender As Object, e As EventArgs) Handles Label3.Click
+    Private Sub TabPage1_Click(sender As Object, e As EventArgs) Handles TabPage1.Click
+
+    End Sub
+
+    Private Sub tblProductos_CellClick(sender As Object, e As DataGridViewCellEventArgs) Handles tblProductos.CellClick
+        npdprecio.Value = Convert.ToDecimal(Convert.ToString(tblProductos.CurrentRow.Cells(1).Value))
 
     End Sub
 
