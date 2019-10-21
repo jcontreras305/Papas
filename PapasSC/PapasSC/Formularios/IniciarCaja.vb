@@ -50,7 +50,6 @@
     End Sub
 
     Private Sub btnAbrirCaja_Click(sender As Object, e As EventArgs) Handles btnAbrirCaja.Click
-
         If mtdLogeo.validarUsuarioCaja(cmbEmpleados.Text, txtContraseña.Text) Then
             Dim caja As New Caja
             If cmbCajas.BackColor = Color.Green Then

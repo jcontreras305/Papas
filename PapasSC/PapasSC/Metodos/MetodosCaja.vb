@@ -307,4 +307,9 @@ and cj.nombre =  '" + nombreCaja + "'", conn)
         Return caja IsNot Nothing AndAlso
                busquedaCuentaPorPagar = caja.busquedaCuentaPorPagar
     End Function
+
+    Public Sub buscarCuentasPorPagar()
+
+    End Sub
+
 End Class
