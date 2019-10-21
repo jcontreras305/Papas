@@ -167,12 +167,12 @@ Partial Class NuevaVenta
         Me.GroupBox1.Controls.Add(Me.Label8)
         Me.GroupBox1.Controls.Add(Me.lbl)
         Me.GroupBox1.Controls.Add(Me.npdCantidadPagada)
-        Me.GroupBox1.Location = New System.Drawing.Point(907, 11)
+        Me.GroupBox1.Location = New System.Drawing.Point(917, 11)
         Me.GroupBox1.Name = "GroupBox1"
         Me.GroupBox1.Size = New System.Drawing.Size(241, 358)
         Me.GroupBox1.TabIndex = 33
         Me.GroupBox1.TabStop = False
-        Me.GroupBox1.Text = "GroupBox1"
+        Me.GroupBox1.Text = "Datos"
         '
         'txtNombreCliente
         '
@@ -263,7 +263,7 @@ Partial Class NuevaVenta
         '
         Me.lbl.AutoSize = True
         Me.lbl.Font = New System.Drawing.Font("Microsoft Sans Serif", 15.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.lbl.Location = New System.Drawing.Point(14, 264)
+        Me.lbl.Location = New System.Drawing.Point(6, 270)
         Me.lbl.Name = "lbl"
         Me.lbl.Size = New System.Drawing.Size(79, 25)
         Me.lbl.TabIndex = 18

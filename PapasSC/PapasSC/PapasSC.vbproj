@@ -311,6 +311,12 @@
     <Compile Include="Formularios\Precios_por_defecto.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="Formularios\Productos.Designer.vb">
+      <DependentUpon>Productos.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Formularios\Productos.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="Formularios\Reclasificacion.Designer.vb">
       <DependentUpon>Reclasificacion.vb</DependentUpon>
     </Compile>
@@ -595,6 +601,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Formularios\PerfilesDeLosUsuarios.resx">
       <DependentUpon>PerfilesDeLosUsuarios.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formularios\Productos.resx">
+      <DependentUpon>Productos.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Formularios\Reclasificacion.resx">
       <DependentUpon>Reclasificacion.vb</DependentUpon>
