@@ -37,10 +37,11 @@ Partial Class GenerarNomina
         Me.Label16 = New System.Windows.Forms.Label()
         Me.dtpFechaPago = New System.Windows.Forms.DateTimePicker()
         Me.nudDias = New System.Windows.Forms.NumericUpDown()
-        Me.nudHoras = New System.Windows.Forms.NumericUpDown()
         Me.Label7 = New System.Windows.Forms.Label()
         Me.Label8 = New System.Windows.Forms.Label()
         Me.GroupBox1 = New System.Windows.Forms.GroupBox()
+        Me.Button1 = New System.Windows.Forms.Button()
+        Me.txtSalarioDiario = New System.Windows.Forms.TextBox()
         Me.nudFaltas = New System.Windows.Forms.NumericUpDown()
         Me.Label12 = New System.Windows.Forms.Label()
         Me.dtpFeFin = New System.Windows.Forms.DateTimePicker()
@@ -51,7 +52,6 @@ Partial Class GenerarNomina
         Me.txtDeduciones = New System.Windows.Forms.TextBox()
         Me.txtPercepciones = New System.Windows.Forms.TextBox()
         CType(Me.nudDias, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.nudHoras, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.GroupBox1.SuspendLayout()
         CType(Me.nudFaltas, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.GroupBox2.SuspendLayout()
@@ -69,7 +69,7 @@ Partial Class GenerarNomina
         'Label2
         '
         Me.Label2.AutoSize = True
-        Me.Label2.Location = New System.Drawing.Point(332, 31)
+        Me.Label2.Location = New System.Drawing.Point(408, 32)
         Me.Label2.Name = "Label2"
         Me.Label2.Size = New System.Drawing.Size(78, 13)
         Me.Label2.TabIndex = 1
@@ -87,7 +87,7 @@ Partial Class GenerarNomina
         'Label4
         '
         Me.Label4.AutoSize = True
-        Me.Label4.Location = New System.Drawing.Point(397, 293)
+        Me.Label4.Location = New System.Drawing.Point(466, 323)
         Me.Label4.Name = "Label4"
         Me.Label4.Size = New System.Drawing.Size(69, 13)
         Me.Label4.TabIndex = 3
@@ -96,7 +96,7 @@ Partial Class GenerarNomina
         'Label5
         '
         Me.Label5.AutoSize = True
-        Me.Label5.Location = New System.Drawing.Point(12, 96)
+        Me.Label5.Location = New System.Drawing.Point(58, 94)
         Me.Label5.Name = "Label5"
         Me.Label5.Size = New System.Drawing.Size(33, 13)
         Me.Label5.TabIndex = 4
@@ -105,11 +105,11 @@ Partial Class GenerarNomina
         'Label6
         '
         Me.Label6.AutoSize = True
-        Me.Label6.Location = New System.Drawing.Point(113, 96)
+        Me.Label6.Location = New System.Drawing.Point(12, 128)
         Me.Label6.Name = "Label6"
-        Me.Label6.Size = New System.Drawing.Size(35, 13)
+        Me.Label6.Size = New System.Drawing.Size(67, 13)
         Me.Label6.TabIndex = 5
-        Me.Label6.Text = "Horas"
+        Me.Label6.Text = "Salario diario"
         '
         'txtNombre
         '
@@ -120,7 +120,7 @@ Partial Class GenerarNomina
         '
         'txtTotal
         '
-        Me.txtTotal.Location = New System.Drawing.Point(472, 290)
+        Me.txtTotal.Location = New System.Drawing.Point(541, 320)
         Me.txtTotal.Name = "txtTotal"
         Me.txtTotal.Size = New System.Drawing.Size(179, 20)
         Me.txtTotal.TabIndex = 11
@@ -129,16 +129,14 @@ Partial Class GenerarNomina
         'cboFormaPago
         '
         Me.cboFormaPago.FormattingEnabled = True
-        Me.cboFormaPago.Items.AddRange(New Object() {"Semanal", "Quincenal", "Mensual"})
-        Me.cboFormaPago.Location = New System.Drawing.Point(420, 28)
+        Me.cboFormaPago.Location = New System.Drawing.Point(498, 29)
         Me.cboFormaPago.Name = "cboFormaPago"
         Me.cboFormaPago.Size = New System.Drawing.Size(179, 21)
         Me.cboFormaPago.TabIndex = 12
-        Me.cboFormaPago.Text = "---Seleccionar---"
         '
         'btnAceptar
         '
-        Me.btnAceptar.Location = New System.Drawing.Point(420, 335)
+        Me.btnAceptar.Location = New System.Drawing.Point(489, 359)
         Me.btnAceptar.Name = "btnAceptar"
         Me.btnAceptar.Size = New System.Drawing.Size(116, 34)
         Me.btnAceptar.TabIndex = 13
@@ -147,7 +145,7 @@ Partial Class GenerarNomina
         '
         'btnCancelar
         '
-        Me.btnCancelar.Location = New System.Drawing.Point(542, 335)
+        Me.btnCancelar.Location = New System.Drawing.Point(611, 359)
         Me.btnCancelar.Name = "btnCancelar"
         Me.btnCancelar.Size = New System.Drawing.Size(109, 34)
         Me.btnCancelar.TabIndex = 14
@@ -170,7 +168,7 @@ Partial Class GenerarNomina
         Me.Label16.AutoSize = True
         Me.Label16.Font = New System.Drawing.Font("Arial", 15.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label16.ForeColor = System.Drawing.SystemColors.ButtonShadow
-        Me.Label16.Location = New System.Drawing.Point(275, 9)
+        Me.Label16.Location = New System.Drawing.Point(327, 6)
         Me.Label16.Name = "Label16"
         Me.Label16.Size = New System.Drawing.Size(86, 24)
         Me.Label16.TabIndex = 34
@@ -186,17 +184,10 @@ Partial Class GenerarNomina
         '
         'nudDias
         '
-        Me.nudDias.Location = New System.Drawing.Point(48, 94)
+        Me.nudDias.Location = New System.Drawing.Point(97, 89)
         Me.nudDias.Name = "nudDias"
         Me.nudDias.Size = New System.Drawing.Size(59, 20)
         Me.nudDias.TabIndex = 37
-        '
-        'nudHoras
-        '
-        Me.nudHoras.Location = New System.Drawing.Point(154, 94)
-        Me.nudHoras.Name = "nudHoras"
-        Me.nudHoras.Size = New System.Drawing.Size(59, 20)
-        Me.nudHoras.TabIndex = 38
         '
         'Label7
         '
@@ -218,32 +209,50 @@ Partial Class GenerarNomina
         '
         'GroupBox1
         '
+        Me.GroupBox1.Controls.Add(Me.Button1)
+        Me.GroupBox1.Controls.Add(Me.txtSalarioDiario)
         Me.GroupBox1.Controls.Add(Me.nudFaltas)
         Me.GroupBox1.Controls.Add(Me.Label12)
         Me.GroupBox1.Controls.Add(Me.dtpFeFin)
         Me.GroupBox1.Controls.Add(Me.dtpFeInicio)
         Me.GroupBox1.Controls.Add(Me.Label11)
+        Me.GroupBox1.Controls.Add(Me.Label6)
         Me.GroupBox1.Controls.Add(Me.Label10)
         Me.GroupBox1.Controls.Add(Me.txtNombre)
         Me.GroupBox1.Controls.Add(Me.Label1)
         Me.GroupBox1.Controls.Add(Me.Label2)
-        Me.GroupBox1.Controls.Add(Me.nudHoras)
         Me.GroupBox1.Controls.Add(Me.Label3)
         Me.GroupBox1.Controls.Add(Me.nudDias)
         Me.GroupBox1.Controls.Add(Me.Label5)
         Me.GroupBox1.Controls.Add(Me.dtpFechaPago)
-        Me.GroupBox1.Controls.Add(Me.Label6)
         Me.GroupBox1.Controls.Add(Me.cboFormaPago)
         Me.GroupBox1.Location = New System.Drawing.Point(37, 53)
         Me.GroupBox1.Name = "GroupBox1"
-        Me.GroupBox1.Size = New System.Drawing.Size(614, 130)
+        Me.GroupBox1.Size = New System.Drawing.Size(683, 161)
         Me.GroupBox1.TabIndex = 41
         Me.GroupBox1.TabStop = False
         Me.GroupBox1.Text = "Datos del empleado"
         '
+        'Button1
+        '
+        Me.Button1.Location = New System.Drawing.Point(294, 30)
+        Me.Button1.Name = "Button1"
+        Me.Button1.Size = New System.Drawing.Size(75, 23)
+        Me.Button1.TabIndex = 45
+        Me.Button1.Text = "Empleados"
+        Me.Button1.UseVisualStyleBackColor = True
+        '
+        'txtSalarioDiario
+        '
+        Me.txtSalarioDiario.Location = New System.Drawing.Point(97, 128)
+        Me.txtSalarioDiario.Name = "txtSalarioDiario"
+        Me.txtSalarioDiario.Size = New System.Drawing.Size(114, 20)
+        Me.txtSalarioDiario.TabIndex = 43
+        Me.txtSalarioDiario.Text = "0.00"
+        '
         'nudFaltas
         '
-        Me.nudFaltas.Location = New System.Drawing.Point(260, 94)
+        Me.nudFaltas.Location = New System.Drawing.Point(217, 89)
         Me.nudFaltas.Name = "nudFaltas"
         Me.nudFaltas.Size = New System.Drawing.Size(59, 20)
         Me.nudFaltas.TabIndex = 44
@@ -251,7 +260,7 @@ Partial Class GenerarNomina
         'Label12
         '
         Me.Label12.AutoSize = True
-        Me.Label12.Location = New System.Drawing.Point(219, 96)
+        Me.Label12.Location = New System.Drawing.Point(176, 91)
         Me.Label12.Name = "Label12"
         Me.Label12.Size = New System.Drawing.Size(35, 13)
         Me.Label12.TabIndex = 43
@@ -260,7 +269,7 @@ Partial Class GenerarNomina
         'dtpFeFin
         '
         Me.dtpFeFin.Format = System.Windows.Forms.DateTimePickerFormat.[Short]
-        Me.dtpFeFin.Location = New System.Drawing.Point(420, 89)
+        Me.dtpFeFin.Location = New System.Drawing.Point(498, 90)
         Me.dtpFeFin.Name = "dtpFeFin"
         Me.dtpFeFin.Size = New System.Drawing.Size(179, 20)
         Me.dtpFeFin.TabIndex = 42
@@ -268,7 +277,7 @@ Partial Class GenerarNomina
         'dtpFeInicio
         '
         Me.dtpFeInicio.Format = System.Windows.Forms.DateTimePickerFormat.[Short]
-        Me.dtpFeInicio.Location = New System.Drawing.Point(420, 57)
+        Me.dtpFeInicio.Location = New System.Drawing.Point(498, 58)
         Me.dtpFeInicio.Name = "dtpFeInicio"
         Me.dtpFeInicio.Size = New System.Drawing.Size(179, 20)
         Me.dtpFeInicio.TabIndex = 41
@@ -276,7 +285,7 @@ Partial Class GenerarNomina
         'Label11
         '
         Me.Label11.AutoSize = True
-        Me.Label11.Location = New System.Drawing.Point(330, 94)
+        Me.Label11.Location = New System.Drawing.Point(408, 95)
         Me.Label11.Name = "Label11"
         Me.Label11.Size = New System.Drawing.Size(69, 13)
         Me.Label11.TabIndex = 40
@@ -285,7 +294,7 @@ Partial Class GenerarNomina
         'Label10
         '
         Me.Label10.AutoSize = True
-        Me.Label10.Location = New System.Drawing.Point(330, 64)
+        Me.Label10.Location = New System.Drawing.Point(408, 65)
         Me.Label10.Name = "Label10"
         Me.Label10.Size = New System.Drawing.Size(80, 13)
         Me.Label10.TabIndex = 39
@@ -297,9 +306,9 @@ Partial Class GenerarNomina
         Me.GroupBox2.Controls.Add(Me.txtPercepciones)
         Me.GroupBox2.Controls.Add(Me.Label7)
         Me.GroupBox2.Controls.Add(Me.Label8)
-        Me.GroupBox2.Location = New System.Drawing.Point(37, 198)
+        Me.GroupBox2.Location = New System.Drawing.Point(37, 220)
         Me.GroupBox2.Name = "GroupBox2"
-        Me.GroupBox2.Size = New System.Drawing.Size(614, 86)
+        Me.GroupBox2.Size = New System.Drawing.Size(683, 83)
         Me.GroupBox2.TabIndex = 42
         Me.GroupBox2.TabStop = False
         Me.GroupBox2.Text = "Percepciones y Deducciones"
@@ -324,7 +333,7 @@ Partial Class GenerarNomina
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(694, 388)
+        Me.ClientSize = New System.Drawing.Size(760, 406)
         Me.Controls.Add(Me.GroupBox2)
         Me.Controls.Add(Me.GroupBox1)
         Me.Controls.Add(Me.Label9)
@@ -335,9 +344,8 @@ Partial Class GenerarNomina
         Me.Controls.Add(Me.Label4)
         Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None
         Me.Name = "GenerarNomina"
-        Me.Text = "GenerarNomina"
+        Me.Text = " "
         CType(Me.nudDias, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.nudHoras, System.ComponentModel.ISupportInitialize).EndInit()
         Me.GroupBox1.ResumeLayout(False)
         Me.GroupBox1.PerformLayout()
         CType(Me.nudFaltas, System.ComponentModel.ISupportInitialize).EndInit()
@@ -363,7 +371,6 @@ Partial Class GenerarNomina
     Friend WithEvents Label16 As Label
     Friend WithEvents dtpFechaPago As DateTimePicker
     Friend WithEvents nudDias As NumericUpDown
-    Friend WithEvents nudHoras As NumericUpDown
     Friend WithEvents Label7 As Label
     Friend WithEvents Label8 As Label
     Friend WithEvents GroupBox1 As GroupBox
@@ -376,4 +383,6 @@ Partial Class GenerarNomina
     Friend WithEvents Label12 As Label
     Friend WithEvents txtDeduciones As TextBox
     Friend WithEvents txtPercepciones As TextBox
+    Friend WithEvents txtSalarioDiario As TextBox
+    Friend WithEvents Button1 As Button
 End Class

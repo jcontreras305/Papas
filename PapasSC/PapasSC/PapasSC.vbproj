@@ -239,6 +239,12 @@
     <Compile Include="Formularios\Consulta_usuarios.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="Formularios\EmpleadosNomina.Designer.vb">
+      <DependentUpon>EmpleadosNomina.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Formularios\EmpleadosNomina.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="Formularios\ExistenciaBodega.Designer.vb">
       <DependentUpon>ExistenciaBodega.vb</DependentUpon>
     </Compile>
@@ -568,6 +574,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Formularios\Consulta_usuarios.resx">
       <DependentUpon>Consulta_usuarios.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formularios\EmpleadosNomina.resx">
+      <DependentUpon>EmpleadosNomina.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Formularios\ExistenciaBodega.resx">
       <DependentUpon>ExistenciaBodega.vb</DependentUpon>
