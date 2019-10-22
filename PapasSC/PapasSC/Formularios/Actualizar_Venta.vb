@@ -2,6 +2,7 @@
 
     Public id As String
     Dim mtdv As New MetodosVenta
+    Public Precio, Producto As String
 
     Public idCliente As String
 
@@ -46,6 +47,7 @@
     End Sub
 
     Private Sub tblventaActualizar_CellClick(sender As Object, e As DataGridViewCellEventArgs) Handles tblventaActualizar.CellClick
+
         Dim formapago As String = Convert.ToString(tblventaActualizar.CurrentRow.Cells(1).Value)
         Dim bodega As String = Convert.ToString(tblventaActualizar.CurrentRow.Cells(2).Value)
         Dim version As String = Convert.ToString(tblventaActualizar.CurrentRow.Cells(3).Value)
@@ -109,5 +111,9 @@
 
     Private Sub cmbBodega_MouseClick(sender As Object, e As MouseEventArgs) Handles cmbBodega.MouseClick
         mtdv.llenarComboBodega(cmbBodega)
+    End Sub
+
+    Private Sub tblventaActualizar_CellDoubleClick(sender As Object, e As DataGridViewCellEventArgs) Handles tblventaActualizar.CellDoubleClick
+
     End Sub
 End Class
