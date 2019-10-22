@@ -3,7 +3,21 @@
     Public claveb As String
     Public clavep As String
     Public kac As String
+    Dim recorrer As Double = 0
+    Dim media As Double = 0
+    Dim suma As Double = 0
     Private Sub Aceptar_Click(sender As Object, e As EventArgs) Handles Aceptar.Click
+        If npd.Value.ToString = "0" Then
+            lbltotal.Text = Media * (recorrer - 2)
+            Media = 0
+        Else
+            MsgBox("valor defecto" + ((recorrer + npd.Value) - 2).ToString)
+            Dim totalKilos As Double = 0
+            totalKilos = npd.Value * Alturacamasarpilla.Value
+            Media = Media * totalKilos
+            lbltotal.Text = Media
+            Media = 0
+        End If
         mtbo.updatebodega(cmbBodega.Text, cmbProducto.Text, lbltotal.Text, claveb, clavep)
     End Sub
 
@@ -21,9 +35,7 @@
     End Sub
 
     Private Sub Button2_Click(sender As Object, e As EventArgs)
-        Dim recorrer As Double = 0
-        Dim media As Double = 0
-        Dim suma As Double = 0
+
         MsgBox(tblpesoarpilla.RowCount)
         For recorrer = 1 To tblpesoarpilla.RowCount
             suma = Convert.ToDecimal(tblpesoarpilla.Rows(recorrer - 1).Cells(0).Value)
@@ -31,19 +43,7 @@
         Next
         media = media / ((recorrer) - 2)
         MsgBox("media entra" + media.ToString)
-        If npd.Value.ToString = "0" Then
-            lbltotal.Text = media * (recorrer - 2)
-            media = 0
-        Else
 
-            MsgBox("valor defecto" + ((recorrer + npd.Value) - 2).ToString)
-            Dim totalKilos As Double = 0
-            totalKilos = npd.Value * Alturacamasarpilla.Value
-            media = ((npd.Value + recorrer) - 2) * media
-            media = media * totalKilos
-            lbltotal.Text = media
-            media = 0
-        End If
 
 
     End Sub
@@ -97,17 +97,7 @@
         Next
         media = media / ((recorrer) - 2)
         MsgBox("media entra" + media.ToString)
-        If npd.Value.ToString = "0" Then
-            lbltotal.Text = media * (recorrer - 2)
-            media = 0
-        Else
-            MsgBox("valor defecto" + ((recorrer + npd.Value) - 2).ToString)
-            Dim totalKilos As Double = 0
-            totalKilos = npd.Value * Alturacamasarpilla.Value
-            media = media * totalKilos
-            lbltotal.Text = media
-            media = 0
-        End If
+
     End Sub
 
     Private Sub cmbBodega_SelectedIndexChanged(sender As Object, e As EventArgs) Handles cmbBodega.SelectedIndexChanged

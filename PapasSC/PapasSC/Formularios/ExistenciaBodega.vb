@@ -69,14 +69,15 @@
             Dim version As String = Convert.ToString(tblexistenciapro.CurrentRow.Cells(1).Value)
             Dim clave As String = Convert.ToString(tblexistenciapro.CurrentRow.Cells(2).Value)
             Actualizar_Existencia.cmbBodega.Text = id
-            Actualizar_Existencia.kgUpDown.Value = version
+            Actualizar_Existencia.kgUpDown.Maximum = 9999999999999
+            Actualizar_Existencia.kgUpDown.Value = Convert.ToDecimal(version)
             Actualizar_Existencia.claveb = id
             Actualizar_Existencia.clavep = clave
             Actualizar_Existencia.cmbProducto.Text = clave.ToString
             Actualizar_Existencia.kac = clave
             Actualizar_Existencia.Show()
-        Catch
-            MsgBox("Seleciona un renglos")
+        Catch exeption As Exception
+            MsgBox(exeption)
         End Try
     End Sub
 
