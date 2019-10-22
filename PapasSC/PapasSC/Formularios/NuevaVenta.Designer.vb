@@ -57,6 +57,7 @@ Partial Class NuevaVenta
         Me.Button5 = New System.Windows.Forms.Button()
         Me.Button4 = New System.Windows.Forms.Button()
         Me.tblDetalleVenta = New System.Windows.Forms.DataGridView()
+        Me.Button8 = New System.Windows.Forms.Button()
         CType(Me.tblventa, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.npdprecio, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.npdkilos, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -133,6 +134,7 @@ Partial Class NuevaVenta
         '
         'TabPage1
         '
+        Me.TabPage1.Controls.Add(Me.Button8)
         Me.TabPage1.Controls.Add(Me.GroupBox1)
         Me.TabPage1.Controls.Add(Me.txbFiltro)
         Me.TabPage1.Controls.Add(Me.tblProductos)
@@ -421,6 +423,15 @@ Partial Class NuevaVenta
         Me.tblDetalleVenta.Size = New System.Drawing.Size(623, 201)
         Me.tblDetalleVenta.TabIndex = 0
         '
+        'Button8
+        '
+        Me.Button8.Location = New System.Drawing.Point(298, 174)
+        Me.Button8.Name = "Button8"
+        Me.Button8.Size = New System.Drawing.Size(186, 44)
+        Me.Button8.TabIndex = 34
+        Me.Button8.Text = "<<"
+        Me.Button8.UseVisualStyleBackColor = True
+        '
         'NuevaVenta
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
@@ -480,4 +491,5 @@ Partial Class NuevaVenta
     Friend WithEvents lblTotal As Label
     Friend WithEvents btnBuscarCliente As Button
     Public WithEvents txtNombreCliente As TextBox
+    Friend WithEvents Button8 As Button
 End Class

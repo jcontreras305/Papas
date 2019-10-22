@@ -96,8 +96,6 @@
                 Try
                     For i = 1 To tblventa.RowCount
 
-
-
                         mtdv.insertarVentaDetalle(Convert.ToString(tblventa.Rows(i - 1).Cells(1).Value),
                                           Convert.ToString(tblventa.Rows(i - 1).Cells(2).Value),
                                           Convert.ToString(tblventa.Rows(i - 1).Cells(3).Value),
@@ -215,7 +213,7 @@
 
 
             Dim id As String = Convert.ToString(tblDetalleVenta.CurrentRow.Cells(0).Value)
-
+            Actualizar_Venta.idCliente = idCliente
             Actualizar_Venta.id = id
             Actualizar_Venta.Show()
         Catch
@@ -246,7 +244,9 @@
     Private Sub lblTotal_TextChanged(sender As Object, e As EventArgs) Handles lblTotal.TextChanged
         If cmbFormaPago.Text = "Contado" Then
             npdCantidadPagada.Value = Convert.ToDecimal(lblTotal.Text)
-            tblventa.Rows(tblventa.RowCount - 1).Cells(4).Value = npdCantidadPagada.Value
+            If tblventa.RowCount > 1 Then
+                tblventa.Rows(tblventa.RowCount - 1).Cells(4).Value = npdCantidadPagada.Value
+            End If
         End If
 
     End Sub
@@ -255,6 +255,26 @@
 
     Private Sub tblProductos_CellClick(sender As Object, e As DataGridViewCellEventArgs) Handles tblProductos.CellClick
         npdprecio.Value = Convert.ToDecimal(Convert.ToString(tblProductos.CurrentRow.Cells(1).Value))
+
+    End Sub
+
+    Private Sub Button8_Click(sender As Object, e As EventArgs) Handles Button8.Click
+        If tblventa.RowCount > 0 And txtNombreCliente.Text <> String.Empty Then
+            tblventa.Rows.Remove(tblventa.CurrentRow)
+            Dim i As Integer
+            Dim total As Double
+            For i = 1 To tblventa.RowCount
+                total += Convert.ToDecimal(Convert.ToString(tblventa.Rows(i - 1).Cells(3).Value))
+                t = total
+            Next
+
+            lblTotal.Text = Convert.ToString(total)
+
+        Else
+
+            lblTotal.Text = Convert.ToString(0)
+
+        End If
 
     End Sub
 

@@ -2,41 +2,21 @@
 
     Public id As String
     Dim mtdv As New MetodosVenta
-    Private Sub cbxBodega_CheckedChanged(sender As Object, e As EventArgs)
 
-    End Sub
-
-    Private Sub cmbFormaPago_SelectedIndexChanged(sender As Object, e As EventArgs)
-
-    End Sub
-
-    Private Sub Button2_Click(sender As Object, e As EventArgs)
-
-    End Sub
-
-    Private Sub Button3_Click(sender As Object, e As EventArgs)
-
-    End Sub
-
-    Private Sub cbxEspera_CheckedChanged(sender As Object, e As EventArgs)
-
-    End Sub
-
-    Private Sub ComboBox1_SelectedIndexChanged(sender As Object, e As EventArgs)
-
-    End Sub
-
-    Private Sub cmbProducto_SelectedIndexChanged(sender As Object, e As EventArgs)
-
-    End Sub
-
-    Private Sub Button1_Click(sender As Object, e As EventArgs)
-
-    End Sub
+    Public idCliente As String
 
     Private Sub Actualizar_Venta_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         npdkilos.Maximum = 99999999
         npdprecio.Maximum = 9999999
+        npdkilos.DecimalPlaces = 2
+        npdkilos.ThousandsSeparator = 2
+        npdprecio.DecimalPlaces = 2
+        npdprecio.ThousandsSeparator = 2
+        npdkilos.Increment = 0.5
+        npdprecio.Increment = 0.5
+        npdCantidadPagada.DecimalPlaces = 2
+        npdCantidadPagada.ThousandsSeparator = 2
+        npdCantidadPagada.Increment = 0.5
         mtdv.llenarDatagridview_filtroIdVenta(tblventaActualizar, id)
         Dim formapago As String = Convert.ToString(tblventaActualizar.CurrentRow.Cells(1).Value)
         Dim bodega As String = Convert.ToString(tblventaActualizar.CurrentRow.Cells(2).Value)
@@ -50,8 +30,7 @@
         Dim totalneto As String = Convert.ToString(tblventaActualizar.CurrentRow.Cells(10).Value)
         Dim Fecha As String = Convert.ToString(tblventaActualizar.CurrentRow.Cells(11).Value)
         Dim empleado As String = Convert.ToString(tblventaActualizar.CurrentRow.Cells(12).Value)
-        Dim cliente As String = Convert.ToString(tblventaActualizar.CurrentRow.Cells(13).Value) '
-
+        Dim cliente As String = Convert.ToString(tblventaActualizar.CurrentRow.Cells(13).Value)
         cmbBodega.Text = bodega
         txtproducto.Text = version
         txtNombreCliente.Text = cliente
@@ -59,9 +38,7 @@
         npdprecio.Value = Convert.ToDecimal(precio)
         cmbFormaPago.Text = formapago
         npdCantidadPagada.Value = Convert.ToDecimal(cantidadpagada)
-        lbltotal.Text = total
-
-
+        lbltotal.Text = totalPagar
     End Sub
 
     Private Sub tblventaActualizar_CellContentClick(sender As Object, e As DataGridViewCellEventArgs) Handles tblventaActualizar.CellContentClick
@@ -81,8 +58,7 @@
         Dim totalneto As String = Convert.ToString(tblventaActualizar.CurrentRow.Cells(10).Value)
         Dim Fecha As String = Convert.ToString(tblventaActualizar.CurrentRow.Cells(11).Value)
         Dim empleado As String = Convert.ToString(tblventaActualizar.CurrentRow.Cells(12).Value)
-        Dim cliente As String = Convert.ToString(tblventaActualizar.CurrentRow.Cells(13).Value) '
-
+        Dim cliente As String = Convert.ToString(tblventaActualizar.CurrentRow.Cells(13).Value)
         cmbBodega.Text = bodega
         txtproducto.Text = version
         txtNombreCliente.Text = cliente
@@ -91,13 +67,9 @@
         cmbFormaPago.Text = formapago
         npdCantidadPagada.Value = Convert.ToDecimal(cantidadpagada)
 
-
-
     End Sub
 
-    Private Sub cmbCliente_SelectedIndexChanged(sender As Object, e As EventArgs)
 
-    End Sub
 
     Private Sub btnBuscarCliente_Click(sender As Object, e As EventArgs) Handles btnBuscarCliente.Click
         Dim bc As New BuscaCliente
@@ -110,5 +82,32 @@
         bc.bodega = cmbBodega.Text
         AddOwnedForm(bc)
         bc.ShowDialog()
+    End Sub
+
+    Private Sub Button1_Click_1(sender As Object, e As EventArgs) Handles Button1.Click
+        'Try
+        '    For i = 1 To tblventaActualizar.RowCount
+
+
+
+        '        mtdv.insertarVentaDetalle(
+        '                          Convert.ToString(tblventaActualizar.Rows(i - 1).Cells(1).Value),
+        '                          Convert.ToString(tblventaActualizar.Rows(i - 1).Cells(2).Value),
+        '                          Convert.ToString(tblventaActualizar.Rows(i - 1).Cells(3).Value),
+        '                          Convert.ToString(tblventaActualizar.Rows(i - 1).Cells(7).Value)
+        '                          )
+        '    Next
+        'Catch ex As Exception
+        '    MsgBox("Actualizar_Producto duplicado")
+        'End Try
+        'mtdv.updateVentas()
+    End Sub
+
+    Private Sub cmbBodega_SelectedIndexChanged(sender As Object, e As EventArgs) Handles cmbBodega.SelectedIndexChanged
+
+    End Sub
+
+    Private Sub cmbBodega_MouseClick(sender As Object, e As MouseEventArgs) Handles cmbBodega.MouseClick
+        mtdv.llenarComboBodega(cmbBodega)
     End Sub
 End Class

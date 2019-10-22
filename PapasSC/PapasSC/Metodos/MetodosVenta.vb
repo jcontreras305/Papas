@@ -530,63 +530,89 @@ inner join cliente as cl on cl.idCliente = vn.idCliente
     End Sub
 
 
-    Public Sub updateVentas(ByVal id As String, ByVal producto As String, ByVal cantidad As String, ByVal totalneto As String, ByVal Bodega As String)
+    Public Sub updateVentas(ByVal id As String, ByVal fecha As String, ByVal totalPagar As String, ByVal cantidadPagada As String, ByVal idcliente As String, ByVal empleado As String, ByVal bodega As String, ByVal tipoPago As String)
         Try
-
+            clave = ""
             cn.conectar()
             MsgBox("entro")
 
-            Dim idProducto As String
+
+            Dim idempleado As String
+            Dim idbodega As String
 
 
             Dim Rs As SqlDataReader
             Dim Com As New SqlCommand
 
-
-
-
-            Dim Sql1 As String = "select idProducto from producto where version ='" + producto + "' and estado = 'A'"
-
-            Com = New SqlCommand(Sql1, cn.conn)
-            Rs = Com.ExecuteReader()
+            Com = New SqlCommand("Select newid()", cn.conn)
+            Rs = Com.ExecuteReader
             Rs.Read()
-            idProducto = Rs(0).ToString
+            clave = Rs(0).ToString
             Rs.Close()
-            cn.desconectar()
+
             cn.conectar()
-            Dim total As String
-            Dim sql2 As String = "select precio from producto where version ='" + producto + "' and estado = 'A'"
-
-            Com = New SqlCommand(sql2, cn.conn)
+            Dim Sql2 As String = "select top 1 idempleado from empleado where nombre ='" + empleado + "' and estatus= 'A'"
+            Com = New SqlCommand(Sql2, cn.conn)
             Rs = Com.ExecuteReader()
             Rs.Read()
-            total = Rs(0).ToString
+            idempleado = Rs(0).ToString
             Rs.Close()
             cn.desconectar()
 
-            Convert.ToDouble(total)
+            cn.conectar()
+            Dim Sql3 As String = "select top 1 idBodega from bodega where nombre ='" + bodega + "' and estatus = 'A'"
+            Com = New SqlCommand(Sql3, cn.conn)
+            Rs = Com.ExecuteReader()
+            Rs.Read()
+            idbodega = Rs(0).ToString
+            Rs.Close()
+            cn.desconectar()
+
+
+            cn.conectar()
+            Dim Sql5 As String = "select idTicket from ticket where nombre like 'Venta'"
+            Com = New SqlCommand(Sql5, cn.conn)
+            Rs = Com.ExecuteReader()
+            Rs.Read()
+            Dim idticket As String
+            idticket = Rs(0).ToString
+            Rs.Close()
+            cn.desconectar()
+
+            cn.conectar()
+            Dim Sql6 As String = "select Max(folio) from Venta"
+            Com = New SqlCommand(Sql6, cn.conn)
+            Rs = Com.ExecuteReader()
+            Rs.Read()
+            Dim Folio As Int64
+
+            If Rs(0).ToString <> String.Empty Then
+                Folio = Convert.ToString(Convert.ToInt64(Convert.ToString(Rs(0).ToString)) + 1)
+            Else
+                Folio = Convert.ToString(1)
+            End If
+
+
+            Rs.Close()
+            cn.desconectar()
+
+            cn.conectar()
 
 
             cn.conectar()
             Dim cadena As String =
       "UPDATE [dbo].[venta]
-    
-       [fecha] = '" + +"'
-      ,[totalPagar]=" + +"
-      ,[cantidadPagada] = " + +"
-      ,[estatus] = '" + +"'
-      ,[idCliente] ='" + +"'
-      ,[idEmpleado] = '" + +"'
-      ,[idBodega] = '" + +"'
-      ,[idCaja] = '" + +"'
-      ,[tipoPago] = '" + +"'
-      ,[folio] = " + +"
-	  ,[idTicket] = '" + +"' where idventa = '" + id + "'"
+       [fecha] = '" + fecha + "'
+      ,[totalPagar]=" + totalPagar + "
+      ,[cantidadPagada] = " + cantidadPagada + "
+      ,[idCliente] ='" + idcliente + "'
+      ,[idEmpleado] = '" + idempleado + "'
+      ,[idBodega] = '" + idbodega + "'
+      ,[tipoPago] = '" + tipoPago + "'
+	  ,[idTicket] = '" + idticket + "' where idventa = '" + id + "'"
             Com = New SqlCommand(cadena, cn.conn)
             Com.ExecuteNonQuery()
             cn.desconectar()
-            updateExistencia(Bodega, producto, cantidad)
-
             MsgBox("cade")
         Catch ex As Exception
             MessageBox.Show("No se inserto debido a: " + ex.ToString)
