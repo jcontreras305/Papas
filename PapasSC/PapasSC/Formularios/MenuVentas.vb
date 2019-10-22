@@ -6,10 +6,9 @@
     Dim abierta As Boolean = True
     Private Sub Button1_Click(sender As Object, e As EventArgs) Handles Button1.Click
         If abierta Then
-            IniciarCaja.Show()
             IniciarCaja.user = nombre
             IniciarCaja.vn = True
-
+            IniciarCaja.Show()
         Else
             NuevaVenta.Show()
             NuevaVenta.user = nombre

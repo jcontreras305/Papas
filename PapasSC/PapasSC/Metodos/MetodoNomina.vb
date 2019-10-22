@@ -6,34 +6,120 @@ Public Class MetodoNomina
     Public adaptador As SqlDataAdapter
     Public dt As DataTable
 
-    Public Function InsertarNomina(ByVal dataNomina As List(Of String))
+    Public Sub selecccionaRPago(ByVal comPago As ComboBox)
+        Try
+            conectar()
+            cmd = New SqlCommand("sp_seleccionar_FormaPago")
+            cmd.CommandType = CommandType.StoredProcedure
+            cmd.Connection = conn
+
+            If cmd.ExecuteNonQuery Then
+                Dim dt As New DataSet
+                Dim da As New SqlDataAdapter(cmd)
+                da.Fill(dt)
+
+                comPago.DataSource = dt.Tables(0)
+                comPago.DisplayMember = "tipo"
+                comPago.SelectedIndex = 0
+
+            End If
+
+            desconectar()
+        Catch ex As Exception
+
+        End Try
+    End Sub
+
+    Public Function InsertarNomina(ByVal fechapa As Date, ByVal dataNomina As List(Of String), ByVal feini As Date, ByVal fefin As Date, ByVal totalP As TextBox, ByVal totalD As TextBox,
+                                   ByVal total As TextBox)
         Try
             conectar()
             cmd = New SqlCommand("sp_insertarNomina")
             cmd.CommandType = CommandType.StoredProcedure
             cmd.Connection = conn
+            'cmd.Parameters.Add("", SqlDbType.VarChar, 100).Value = fecha
+            cmd.Parameters.AddWithValue("@fechaPago", fechapa)
 
-            cmd.Parameters.AddWithValue("@fechaPago", dataNomina.ElementAt(0))
-            cmd.Parameters.AddWithValue("@total", dataNomina.ElementAt(1))
-            cmd.Parameters.AddWithValue("@diasTrabajados", dataNomina.ElementAt(2))
-            cmd.Parameters.AddWithValue("@horasTrabajados", dataNomina.ElementAt(3))
-            cmd.Parameters.AddWithValue("@formaPago", dataNomina.ElementAt(4))
-            cmd.Parameters.AddWithValue("@NombreEm", dataNomina.ElementAt(5))
-            cmd.Parameters.AddWithValue("@totalPer", dataNomina.ElementAt(6))
-            cmd.Parameters.AddWithValue("@totalDedu", dataNomina.ElementAt(7))
-            cmd.Parameters.AddWithValue("@fechaInicio", dataNomina.ElementAt(8))
-            cmd.Parameters.AddWithValue("@fechaFin", dataNomina.ElementAt(9))
-            cmd.Parameters.AddWithValue("@faltas", dataNomina.ElementAt(10))
+            Dim diasTra As String = Replace(dataNomina.ElementAt(0), ",", ".")
+            cmd.Parameters.AddWithValue("@diasTrabajados", diasTra)
 
-            If cmd.ExecuteNonQuery Then
-                MsgBox("Se agrego corrtamente la nomina del empleado" + dataNomina(5))
-                Return True
+            Dim horasTra As String = Replace(dataNomina.ElementAt(1), ",", ".")
+            cmd.Parameters.AddWithValue("@sueldoDiario", horasTra)
+
+            cmd.Parameters.AddWithValue("@formaPago", dataNomina.ElementAt(2))
+
+            cmd.Parameters.AddWithValue("@NombreEm", dataNomina.ElementAt(3))
+
+            Dim faltas As String = Replace(dataNomina.ElementAt(4), ",", ".")
+            cmd.Parameters.AddWithValue("@faltas", faltas)
+
+            cmd.Parameters.AddWithValue("@fechaInicio", feini)
+
+            cmd.Parameters.AddWithValue("@fechaFin", fefin)
+
+            Dim rd As SqlDataReader
+            rd = cmd.ExecuteReader
+
+
+            If rd.Read() Then
+                totalD.Text = rd.Item("totalPer").ToString()
+                totalP.Text = rd.Item("totalDedu").ToString()
+                total.Text = rd.Item("total").ToString()
             End If
 
+            MsgBox("Se calculo corretamente la nomina del empleado " + dataNomina(3))
+            Return True
+
         Catch ex As Exception
+            desconectar()
+            MsgBox(ex.Message)
+            Return False
+        End Try
+    End Function
+
+    Public Function ConsultarEmpleados()
+        Try
+            conectar()
+            cmd = New SqlCommand("sp_MostrarEmpleadosNomina")
+            cmd.CommandType = CommandType.StoredProcedure
+            cmd.Connection = conn
+
+            If cmd.ExecuteNonQuery Then
+                Dim dt As New DataTable
+                Dim da As New SqlDataAdapter(cmd)
+                da.Fill(dt)
+                Return dt
+            Else
+                Return Nothing
+            End If
+        Catch ex As Exception
+            MsgBox(ex.Message)
+            Return Nothing
+        End Try
+    End Function
+
+    Public Function BuscarNombre(ByVal no As String)
+        Try
+            conectar()
+            cmd = New SqlCommand("sp_BuscarNombreEmpleadoNomina")
+            cmd.CommandType = CommandType.StoredProcedure
+            cmd.Connection = conn
+
+            cmd.Parameters.AddWithValue("@nombre", no)
+            If cmd.ExecuteNonQuery Then
+                Dim dt As New DataTable
+                Dim da As New SqlDataAdapter(cmd)
+                da.Fill(dt)
+                Return dt
+            Else
+                Return Nothing
+            End If
+        Catch ex As Exception
+            MsgBox(ex.Message)
+            Return Nothing
 
         End Try
-
     End Function
+
 
 End Class

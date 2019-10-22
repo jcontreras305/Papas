@@ -55,4 +55,12 @@
 
         End Try
     End Sub
+
+    Private Sub txtFiltro_KeyUp(sender As Object, e As KeyEventArgs) Handles txtFiltro.KeyUp
+        Try
+
+        Catch ex As Exception
+
+        End Try
+    End Sub
 End Class

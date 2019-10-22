@@ -34,13 +34,14 @@ Public Class MetodoHorario
     'End Function
 
     Public Sub seleccionarHora(ByVal textonom As TextBox, ByVal des As RichTextBox, ByVal hoi As TextBox, ByVal hofi As TextBox)
+
         Try
             conectar()
             cmd = New SqlCommand("sp_SeleccionarHorario")
             cmd.CommandType = CommandType.StoredProcedure
             cmd.Connection = conn
 
-            'cmd.Parameters.AddWithValue("@nombre", AgregarEmpleados.cboEmHorario.SelectedItem)
+            'cmd.Parameters.AddWithValue("@nombre", AgregarEmpleados.cboEmHorario.SelectedText)
 
             If cmd.ExecuteNonQuery Then
                 Dim dt As New DataSet

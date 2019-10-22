@@ -78,8 +78,8 @@
 
         ElseIf txtNombreCliente.Text <> String.Empty Then
             lblTotal.Text = Convert.ToString(Convert.ToString((npdprecio.Value * npdkilos.Value)))
-                t = (npdprecio.Value * npdkilos.Value)
-            End If
+            t = (npdprecio.Value * npdkilos.Value)
+        End If
     End Sub
 
 
