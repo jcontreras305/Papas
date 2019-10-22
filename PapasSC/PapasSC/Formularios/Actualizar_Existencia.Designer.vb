@@ -55,6 +55,7 @@ Partial Class Actualizar_Existencia
         '
         'GroupBox3
         '
+        Me.GroupBox3.Controls.Add(Me.Label7)
         Me.GroupBox3.Controls.Add(Me.Label3)
         Me.GroupBox3.Controls.Add(Me.Label5)
         Me.GroupBox3.Controls.Add(Me.npd)
@@ -109,7 +110,6 @@ Partial Class Actualizar_Existencia
         '
         'GroupBox2
         '
-        Me.GroupBox2.Controls.Add(Me.Label7)
         Me.GroupBox2.Controls.Add(Me.tblpesoarpilla)
         Me.GroupBox2.Controls.Add(Me.Label6)
         Me.GroupBox2.Controls.Add(Me.lbltotal)
@@ -126,11 +126,11 @@ Partial Class Actualizar_Existencia
         'Label7
         '
         Me.Label7.AutoSize = True
-        Me.Label7.Location = New System.Drawing.Point(407, 102)
+        Me.Label7.Location = New System.Drawing.Point(391, 37)
         Me.Label7.Name = "Label7"
-        Me.Label7.Size = New System.Drawing.Size(75, 13)
+        Me.Label7.Size = New System.Drawing.Size(66, 13)
         Me.Label7.TabIndex = 26
-        Me.Label7.Text = "KG. Promedio:"
+        Me.Label7.Text = "KG. Totales:"
         '
         'tblpesoarpilla
         '

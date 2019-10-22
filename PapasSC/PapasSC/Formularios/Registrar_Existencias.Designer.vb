@@ -24,6 +24,12 @@ Partial Class Registrar_Existencias
     Private Sub InitializeComponent()
         Me.Cancelar = New System.Windows.Forms.Button()
         Me.GroupBox1 = New System.Windows.Forms.GroupBox()
+        Me.cbxregistraspro = New System.Windows.Forms.CheckBox()
+        Me.Label4 = New System.Windows.Forms.Label()
+        Me.Label2 = New System.Windows.Forms.Label()
+        Me.Label1 = New System.Windows.Forms.Label()
+        Me.cmbProducto = New System.Windows.Forms.ComboBox()
+        Me.cmbBodega = New System.Windows.Forms.ComboBox()
         Me.Label5 = New System.Windows.Forms.Label()
         Me.Alturacamasarpilla = New System.Windows.Forms.NumericUpDown()
         Me.tblpesoarpilla = New System.Windows.Forms.DataGridView()
@@ -31,17 +37,11 @@ Partial Class Registrar_Existencias
         Me.Button2 = New System.Windows.Forms.Button()
         Me.Button1 = New System.Windows.Forms.Button()
         Me.Label6 = New System.Windows.Forms.Label()
-        Me.Label4 = New System.Windows.Forms.Label()
         Me.lbltotal = New System.Windows.Forms.Label()
         Me.kgUpDown = New System.Windows.Forms.NumericUpDown()
         Me.Label3 = New System.Windows.Forms.Label()
-        Me.Label2 = New System.Windows.Forms.Label()
-        Me.Label1 = New System.Windows.Forms.Label()
         Me.Aceptar = New System.Windows.Forms.Button()
         Me.npd = New System.Windows.Forms.NumericUpDown()
-        Me.cmbProducto = New System.Windows.Forms.ComboBox()
-        Me.cmbBodega = New System.Windows.Forms.ComboBox()
-        Me.cbxregistraspro = New System.Windows.Forms.CheckBox()
         Me.GroupBox2 = New System.Windows.Forms.GroupBox()
         Me.Label7 = New System.Windows.Forms.Label()
         Me.GroupBox3 = New System.Windows.Forms.GroupBox()
@@ -77,6 +77,59 @@ Partial Class Registrar_Existencias
         Me.GroupBox1.TabIndex = 9
         Me.GroupBox1.TabStop = False
         Me.GroupBox1.Text = "Existencias"
+        '
+        'cbxregistraspro
+        '
+        Me.cbxregistraspro.AutoSize = True
+        Me.cbxregistraspro.Location = New System.Drawing.Point(31, 46)
+        Me.cbxregistraspro.Name = "cbxregistraspro"
+        Me.cbxregistraspro.Size = New System.Drawing.Size(136, 17)
+        Me.cbxregistraspro.TabIndex = 28
+        Me.cbxregistraspro.Text = "Registrar solo Producto"
+        Me.cbxregistraspro.UseVisualStyleBackColor = True
+        '
+        'Label4
+        '
+        Me.Label4.AutoSize = True
+        Me.Label4.Location = New System.Drawing.Point(25, 130)
+        Me.Label4.Name = "Label4"
+        Me.Label4.Size = New System.Drawing.Size(0, 13)
+        Me.Label4.TabIndex = 19
+        '
+        'Label2
+        '
+        Me.Label2.AutoSize = True
+        Me.Label2.Location = New System.Drawing.Point(258, 23)
+        Me.Label2.Name = "Label2"
+        Me.Label2.Size = New System.Drawing.Size(50, 13)
+        Me.Label2.TabIndex = 14
+        Me.Label2.Text = "Producto"
+        '
+        'Label1
+        '
+        Me.Label1.AutoSize = True
+        Me.Label1.ForeColor = System.Drawing.SystemColors.ControlText
+        Me.Label1.Location = New System.Drawing.Point(28, 23)
+        Me.Label1.Name = "Label1"
+        Me.Label1.Size = New System.Drawing.Size(44, 13)
+        Me.Label1.TabIndex = 13
+        Me.Label1.Text = "Bodega"
+        '
+        'cmbProducto
+        '
+        Me.cmbProducto.FormattingEnabled = True
+        Me.cmbProducto.Location = New System.Drawing.Point(314, 20)
+        Me.cmbProducto.Name = "cmbProducto"
+        Me.cmbProducto.Size = New System.Drawing.Size(161, 21)
+        Me.cmbProducto.TabIndex = 10
+        '
+        'cmbBodega
+        '
+        Me.cmbBodega.FormattingEnabled = True
+        Me.cmbBodega.Location = New System.Drawing.Point(88, 19)
+        Me.cmbBodega.Name = "cmbBodega"
+        Me.cmbBodega.Size = New System.Drawing.Size(162, 21)
+        Me.cmbBodega.TabIndex = 9
         '
         'Label5
         '
@@ -135,14 +188,6 @@ Partial Class Registrar_Existencias
         Me.Label6.TabIndex = 21
         Me.Label6.Text = "Peso en Kg."
         '
-        'Label4
-        '
-        Me.Label4.AutoSize = True
-        Me.Label4.Location = New System.Drawing.Point(25, 130)
-        Me.Label4.Name = "Label4"
-        Me.Label4.Size = New System.Drawing.Size(0, 13)
-        Me.Label4.TabIndex = 19
-        '
         'lbltotal
         '
         Me.lbltotal.AutoSize = True
@@ -170,25 +215,6 @@ Partial Class Registrar_Existencias
         Me.Label3.TabIndex = 15
         Me.Label3.Text = "Cantidad de Arpillas en Cama"
         '
-        'Label2
-        '
-        Me.Label2.AutoSize = True
-        Me.Label2.Location = New System.Drawing.Point(258, 23)
-        Me.Label2.Name = "Label2"
-        Me.Label2.Size = New System.Drawing.Size(50, 13)
-        Me.Label2.TabIndex = 14
-        Me.Label2.Text = "Producto"
-        '
-        'Label1
-        '
-        Me.Label1.AutoSize = True
-        Me.Label1.ForeColor = System.Drawing.SystemColors.ControlText
-        Me.Label1.Location = New System.Drawing.Point(28, 23)
-        Me.Label1.Name = "Label1"
-        Me.Label1.Size = New System.Drawing.Size(44, 13)
-        Me.Label1.TabIndex = 13
-        Me.Label1.Text = "Bodega"
-        '
         'Aceptar
         '
         Me.Aceptar.Location = New System.Drawing.Point(388, 423)
@@ -205,35 +231,8 @@ Partial Class Registrar_Existencias
         Me.npd.Size = New System.Drawing.Size(120, 20)
         Me.npd.TabIndex = 11
         '
-        'cmbProducto
-        '
-        Me.cmbProducto.FormattingEnabled = True
-        Me.cmbProducto.Location = New System.Drawing.Point(314, 20)
-        Me.cmbProducto.Name = "cmbProducto"
-        Me.cmbProducto.Size = New System.Drawing.Size(161, 21)
-        Me.cmbProducto.TabIndex = 10
-        '
-        'cmbBodega
-        '
-        Me.cmbBodega.FormattingEnabled = True
-        Me.cmbBodega.Location = New System.Drawing.Point(88, 19)
-        Me.cmbBodega.Name = "cmbBodega"
-        Me.cmbBodega.Size = New System.Drawing.Size(162, 21)
-        Me.cmbBodega.TabIndex = 9
-        '
-        'cbxregistraspro
-        '
-        Me.cbxregistraspro.AutoSize = True
-        Me.cbxregistraspro.Location = New System.Drawing.Point(31, 46)
-        Me.cbxregistraspro.Name = "cbxregistraspro"
-        Me.cbxregistraspro.Size = New System.Drawing.Size(136, 17)
-        Me.cbxregistraspro.TabIndex = 28
-        Me.cbxregistraspro.Text = "Registrar solo Producto"
-        Me.cbxregistraspro.UseVisualStyleBackColor = True
-        '
         'GroupBox2
         '
-        Me.GroupBox2.Controls.Add(Me.Label7)
         Me.GroupBox2.Controls.Add(Me.tblpesoarpilla)
         Me.GroupBox2.Controls.Add(Me.Label6)
         Me.GroupBox2.Controls.Add(Me.lbltotal)
@@ -250,14 +249,15 @@ Partial Class Registrar_Existencias
         'Label7
         '
         Me.Label7.AutoSize = True
-        Me.Label7.Location = New System.Drawing.Point(407, 106)
+        Me.Label7.Location = New System.Drawing.Point(373, 56)
         Me.Label7.Name = "Label7"
-        Me.Label7.Size = New System.Drawing.Size(75, 13)
+        Me.Label7.Size = New System.Drawing.Size(66, 13)
         Me.Label7.TabIndex = 26
-        Me.Label7.Text = "KG. Promedio:"
+        Me.Label7.Text = "KG. Totales:"
         '
         'GroupBox3
         '
+        Me.GroupBox3.Controls.Add(Me.Label7)
         Me.GroupBox3.Controls.Add(Me.Label3)
         Me.GroupBox3.Controls.Add(Me.Label5)
         Me.GroupBox3.Controls.Add(Me.npd)
