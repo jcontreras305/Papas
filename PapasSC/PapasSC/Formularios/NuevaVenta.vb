@@ -215,6 +215,8 @@
             Dim id As String = Convert.ToString(tblDetalleVenta.CurrentRow.Cells(0).Value)
             Actualizar_Venta.idCliente = idCliente
             Actualizar_Venta.id = id
+            Actualizar_Venta.user = user
+
             Actualizar_Venta.Show()
         Catch
             MsgBox("Seleciona un renglos")

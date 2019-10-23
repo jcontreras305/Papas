@@ -44,22 +44,25 @@ Partial Class Actualizar_Venta
         Me.Label3 = New System.Windows.Forms.Label()
         Me.btnProducto = New System.Windows.Forms.Button()
         Me.btnBuscarCliente = New System.Windows.Forms.Button()
+        Me.btnseleccionP = New System.Windows.Forms.Button()
+        Me.tblProductosNuevos = New System.Windows.Forms.DataGridView()
         CType(Me.npdkilos, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.npdprecio, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.tblventaActualizar, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.npdCantidadPagada, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.tblProductosNuevos, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'npdkilos
         '
-        Me.npdkilos.Location = New System.Drawing.Point(89, 211)
+        Me.npdkilos.Location = New System.Drawing.Point(120, 215)
         Me.npdkilos.Name = "npdkilos"
         Me.npdkilos.Size = New System.Drawing.Size(120, 20)
         Me.npdkilos.TabIndex = 35
         '
         'Button1
         '
-        Me.Button1.Location = New System.Drawing.Point(34, 306)
+        Me.Button1.Location = New System.Drawing.Point(34, 378)
         Me.Button1.Name = "Button1"
         Me.Button1.Size = New System.Drawing.Size(93, 46)
         Me.Button1.TabIndex = 37
@@ -68,7 +71,7 @@ Partial Class Actualizar_Venta
         '
         'npdprecio
         '
-        Me.npdprecio.Location = New System.Drawing.Point(116, 252)
+        Me.npdprecio.Location = New System.Drawing.Point(120, 252)
         Me.npdprecio.Name = "npdprecio"
         Me.npdprecio.Size = New System.Drawing.Size(120, 20)
         Me.npdprecio.TabIndex = 34
@@ -85,7 +88,7 @@ Partial Class Actualizar_Venta
         'Label1
         '
         Me.Label1.AutoSize = True
-        Me.Label1.Location = New System.Drawing.Point(31, 212)
+        Me.Label1.Location = New System.Drawing.Point(31, 218)
         Me.Label1.Name = "Label1"
         Me.Label1.Size = New System.Drawing.Size(58, 13)
         Me.Label1.TabIndex = 30
@@ -96,15 +99,15 @@ Partial Class Actualizar_Venta
         Me.tblventaActualizar.AllowUserToAddRows = False
         Me.tblventaActualizar.AllowUserToDeleteRows = False
         Me.tblventaActualizar.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
-        Me.tblventaActualizar.Location = New System.Drawing.Point(458, 12)
+        Me.tblventaActualizar.Location = New System.Drawing.Point(469, 215)
         Me.tblventaActualizar.Name = "tblventaActualizar"
         Me.tblventaActualizar.ReadOnly = True
-        Me.tblventaActualizar.Size = New System.Drawing.Size(568, 417)
+        Me.tblventaActualizar.Size = New System.Drawing.Size(398, 177)
         Me.tblventaActualizar.TabIndex = 29
         '
         'Button2
         '
-        Me.Button2.Location = New System.Drawing.Point(133, 306)
+        Me.Button2.Location = New System.Drawing.Point(133, 378)
         Me.Button2.Name = "Button2"
         Me.Button2.Size = New System.Drawing.Size(93, 46)
         Me.Button2.TabIndex = 42
@@ -132,7 +135,7 @@ Partial Class Actualizar_Venta
         'Label7
         '
         Me.Label7.AutoSize = True
-        Me.Label7.Location = New System.Drawing.Point(249, 52)
+        Me.Label7.Location = New System.Drawing.Point(33, 282)
         Me.Label7.Name = "Label7"
         Me.Label7.Size = New System.Drawing.Size(82, 13)
         Me.Label7.TabIndex = 51
@@ -142,7 +145,7 @@ Partial Class Actualizar_Venta
         '
         Me.cmbFormaPago.FormattingEnabled = True
         Me.cmbFormaPago.Items.AddRange(New Object() {"Credito", "Contado"})
-        Me.cmbFormaPago.Location = New System.Drawing.Point(252, 68)
+        Me.cmbFormaPago.Location = New System.Drawing.Point(120, 279)
         Me.cmbFormaPago.Name = "cmbFormaPago"
         Me.cmbFormaPago.Size = New System.Drawing.Size(106, 21)
         Me.cmbFormaPago.TabIndex = 50
@@ -150,7 +153,7 @@ Partial Class Actualizar_Venta
         '
         'npdCantidadPagada
         '
-        Me.npdCantidadPagada.Location = New System.Drawing.Point(252, 116)
+        Me.npdCantidadPagada.Location = New System.Drawing.Point(120, 311)
         Me.npdCantidadPagada.Name = "npdCantidadPagada"
         Me.npdCantidadPagada.Size = New System.Drawing.Size(106, 20)
         Me.npdCantidadPagada.TabIndex = 52
@@ -158,7 +161,7 @@ Partial Class Actualizar_Venta
         'Label8
         '
         Me.Label8.AutoSize = True
-        Me.Label8.Location = New System.Drawing.Point(251, 99)
+        Me.Label8.Location = New System.Drawing.Point(33, 313)
         Me.Label8.Name = "Label8"
         Me.Label8.Size = New System.Drawing.Size(89, 13)
         Me.Label8.TabIndex = 53
@@ -230,9 +233,9 @@ Partial Class Actualizar_Venta
         '
         'btnProducto
         '
-        Me.btnProducto.Location = New System.Drawing.Point(187, 92)
+        Me.btnProducto.Location = New System.Drawing.Point(334, 104)
         Me.btnProducto.Name = "btnProducto"
-        Me.btnProducto.Size = New System.Drawing.Size(59, 53)
+        Me.btnProducto.Size = New System.Drawing.Size(112, 38)
         Me.btnProducto.TabIndex = 61
         Me.btnProducto.Text = "Agregar Producto"
         Me.btnProducto.UseVisualStyleBackColor = True
@@ -246,11 +249,33 @@ Partial Class Actualizar_Venta
         Me.btnBuscarCliente.TabIndex = 58
         Me.btnBuscarCliente.UseVisualStyleBackColor = True
         '
+        'btnseleccionP
+        '
+        Me.btnseleccionP.Location = New System.Drawing.Point(186, 104)
+        Me.btnseleccionP.Name = "btnseleccionP"
+        Me.btnseleccionP.Size = New System.Drawing.Size(125, 38)
+        Me.btnseleccionP.TabIndex = 63
+        Me.btnseleccionP.Text = "Seleccionar otro producto"
+        Me.btnseleccionP.UseVisualStyleBackColor = True
+        '
+        'tblProductosNuevos
+        '
+        Me.tblProductosNuevos.AllowUserToAddRows = False
+        Me.tblProductosNuevos.AllowUserToDeleteRows = False
+        Me.tblProductosNuevos.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
+        Me.tblProductosNuevos.Location = New System.Drawing.Point(469, 22)
+        Me.tblProductosNuevos.Name = "tblProductosNuevos"
+        Me.tblProductosNuevos.ReadOnly = True
+        Me.tblProductosNuevos.Size = New System.Drawing.Size(398, 165)
+        Me.tblProductosNuevos.TabIndex = 64
+        '
         'Actualizar_Venta
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(1038, 526)
+        Me.Controls.Add(Me.tblProductosNuevos)
+        Me.Controls.Add(Me.btnseleccionP)
         Me.Controls.Add(Me.txtproducto)
         Me.Controls.Add(Me.btnProducto)
         Me.Controls.Add(Me.Label3)
@@ -279,6 +304,7 @@ Partial Class Actualizar_Venta
         CType(Me.npdprecio, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.tblventaActualizar, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.npdCantidadPagada, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.tblProductosNuevos, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
@@ -305,4 +331,6 @@ Partial Class Actualizar_Venta
     Public WithEvents txtproducto As TextBox
     Friend WithEvents btnProducto As Button
     Friend WithEvents Label3 As Label
+    Friend WithEvents btnseleccionP As Button
+    Friend WithEvents tblProductosNuevos As DataGridView
 End Class

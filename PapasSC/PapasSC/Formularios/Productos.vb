@@ -16,8 +16,9 @@
             Dim nv As Actualizar_Venta = CType(Owner, Actualizar_Venta)
             version = tblProductos.CurrentRow.Cells("Producto").Value.ToString
             precio = tblProductos.CurrentRow.Cells("Precio").Value.ToString
-            nv.Producto = version
-            nv.Precio = precio
+            nv.txtproducto.Text = version
+            nv.npdprecio.Value = Convert.ToDecimal(precio)
+            nv.agrega = True
             Me.Close()
         Catch ex As Exception
             MsgBox(ex.Message)
