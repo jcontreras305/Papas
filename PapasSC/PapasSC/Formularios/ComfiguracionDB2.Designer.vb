@@ -22,6 +22,7 @@ Partial Class ComfiguracionDB2
     'No lo modifique con el editor de código.
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
+        Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(ComfiguracionDB2))
         Me.btnRespaldo = New System.Windows.Forms.Button()
         Me.btnRestaurar = New System.Windows.Forms.Button()
         Me.btnIndexacion = New System.Windows.Forms.Button()
@@ -32,29 +33,29 @@ Partial Class ComfiguracionDB2
         '
         'btnRespaldo
         '
+        Me.btnRespaldo.Image = CType(resources.GetObject("btnRespaldo.Image"), System.Drawing.Image)
         Me.btnRespaldo.Location = New System.Drawing.Point(36, 35)
         Me.btnRespaldo.Name = "btnRespaldo"
         Me.btnRespaldo.Size = New System.Drawing.Size(169, 169)
         Me.btnRespaldo.TabIndex = 0
-        Me.btnRespaldo.Text = "Respaldo de la base de datos"
         Me.btnRespaldo.UseVisualStyleBackColor = True
         '
         'btnRestaurar
         '
+        Me.btnRestaurar.Image = CType(resources.GetObject("btnRestaurar.Image"), System.Drawing.Image)
         Me.btnRestaurar.Location = New System.Drawing.Point(347, 35)
         Me.btnRestaurar.Name = "btnRestaurar"
         Me.btnRestaurar.Size = New System.Drawing.Size(169, 169)
         Me.btnRestaurar.TabIndex = 1
-        Me.btnRestaurar.Text = "Restauración"
         Me.btnRestaurar.UseVisualStyleBackColor = True
         '
         'btnIndexacion
         '
+        Me.btnIndexacion.Image = CType(resources.GetObject("btnIndexacion.Image"), System.Drawing.Image)
         Me.btnIndexacion.Location = New System.Drawing.Point(193, 219)
         Me.btnIndexacion.Name = "btnIndexacion"
         Me.btnIndexacion.Size = New System.Drawing.Size(169, 169)
         Me.btnIndexacion.TabIndex = 2
-        Me.btnIndexacion.Text = "Indexacion "
         Me.btnIndexacion.UseVisualStyleBackColor = True
         '
         'GroupBox1
@@ -84,7 +85,7 @@ Partial Class ComfiguracionDB2
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.BackColor = System.Drawing.Color.White
+        Me.BackColor = System.Drawing.SystemColors.Control
         Me.ClientSize = New System.Drawing.Size(607, 447)
         Me.Controls.Add(Me.Label15)
         Me.Controls.Add(Me.GroupBox1)

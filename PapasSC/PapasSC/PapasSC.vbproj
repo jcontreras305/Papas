@@ -173,12 +173,6 @@
     <Compile Include="Formularios\ComfiguracionDB2.vb">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Formularios\ConfiguracionBD1.Designer.vb">
-      <DependentUpon>ConfiguracionBD1.vb</DependentUpon>
-    </Compile>
-    <Compile Include="Formularios\ConfiguracionBD1.vb">
-      <SubType>Form</SubType>
-    </Compile>
     <Compile Include="Formularios\ConfiguracionCaja.Designer.vb">
       <DependentUpon>ConfiguracionCaja.vb</DependentUpon>
     </Compile>
@@ -420,6 +414,12 @@
     <Compile Include="Formularios\Reporte_de_ventas.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="Formularios\Reporte_Venta.Designer.vb">
+      <DependentUpon>Reporte_Venta.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Formularios\Reporte_Venta.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="Formularios\Reubicacion.Designer.vb">
       <DependentUpon>Reubicacion.vb</DependentUpon>
     </Compile>
@@ -545,9 +545,6 @@
     <EmbeddedResource Include="Formularios\ComfiguracionDB2.resx">
       <DependentUpon>ComfiguracionDB2.vb</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Formularios\ConfiguracionBD1.resx">
-      <DependentUpon>ConfiguracionBD1.vb</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="Formularios\ConfiguracionCaja.resx">
       <DependentUpon>ConfiguracionCaja.vb</DependentUpon>
     </EmbeddedResource>
@@ -659,6 +656,9 @@
     <EmbeddedResource Include="Formularios\Registro_productos.resx">
       <DependentUpon>Registro_productos.vb</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Formularios\Reporte_Venta.resx">
+      <DependentUpon>Reporte_Venta.vb</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Formularios\Reubicacion.resx">
       <DependentUpon>Reubicacion.vb</DependentUpon>
     </EmbeddedResource>
@@ -726,6 +726,9 @@
     <Content Include="Imagenes\Descuentos.jpg" />
     <Content Include="Imagenes\EMPLEADOS.jpg" />
     <Content Include="Imagenes\EMPLEADOS2.jpg" />
+    <Content Include="Imagenes\INDEXACIÓN.jpg" />
+    <Content Include="Imagenes\RESPALDO BD.jpg" />
+    <Content Include="Imagenes\RESTAURACIÓN.jpg" />
     <Content Include="SqlServerTypes\Loader.cs" />
     <Content Include="SqlServerTypes\readme.htm" />
     <Content Include="SqlServerTypes\x64\msvcr120.dll">
