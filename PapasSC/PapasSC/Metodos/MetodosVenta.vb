@@ -602,8 +602,7 @@ inner join cliente as cl on cl.idCliente = vn.idCliente
             cn.conectar()
             Dim cadena As String =
       "UPDATE [dbo].[venta]
-       [fecha] = '" + fecha + "'
-      ,[totalPagar]=" + totalPagar + "
+       [totalPagar]=" + totalPagar + "
       ,[cantidadPagada] = " + cantidadPagada + "
       ,[idCliente] ='" + idcliente + "'
       ,[idEmpleado] = '" + idempleado + "'

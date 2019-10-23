@@ -47,6 +47,8 @@ Partial Class Actualizar_Venta
         Me.btnseleccionP = New System.Windows.Forms.Button()
         Me.tblProductosNuevos = New System.Windows.Forms.DataGridView()
         Me.btnQuitarproducto = New System.Windows.Forms.Button()
+        Me.btnRealizarCambios = New System.Windows.Forms.Button()
+        Me.Button4 = New System.Windows.Forms.Button()
         CType(Me.npdkilos, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.npdprecio, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.tblventaActualizar, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -234,7 +236,7 @@ Partial Class Actualizar_Venta
         '
         'btnProducto
         '
-        Me.btnProducto.Location = New System.Drawing.Point(334, 104)
+        Me.btnProducto.Location = New System.Drawing.Point(351, 59)
         Me.btnProducto.Name = "btnProducto"
         Me.btnProducto.Size = New System.Drawing.Size(112, 38)
         Me.btnProducto.TabIndex = 61
@@ -272,18 +274,38 @@ Partial Class Actualizar_Venta
         '
         'btnQuitarproducto
         '
-        Me.btnQuitarproducto.Location = New System.Drawing.Point(334, 282)
+        Me.btnQuitarproducto.Location = New System.Drawing.Point(351, 313)
         Me.btnQuitarproducto.Name = "btnQuitarproducto"
         Me.btnQuitarproducto.Size = New System.Drawing.Size(112, 38)
         Me.btnQuitarproducto.TabIndex = 65
         Me.btnQuitarproducto.Text = "Quitar Producto"
         Me.btnQuitarproducto.UseVisualStyleBackColor = True
         '
+        'btnRealizarCambios
+        '
+        Me.btnRealizarCambios.Location = New System.Drawing.Point(351, 269)
+        Me.btnRealizarCambios.Name = "btnRealizarCambios"
+        Me.btnRealizarCambios.Size = New System.Drawing.Size(112, 38)
+        Me.btnRealizarCambios.TabIndex = 66
+        Me.btnRealizarCambios.Text = "Realizar Cambios"
+        Me.btnRealizarCambios.UseVisualStyleBackColor = True
+        '
+        'Button4
+        '
+        Me.Button4.Location = New System.Drawing.Point(351, 103)
+        Me.Button4.Name = "Button4"
+        Me.Button4.Size = New System.Drawing.Size(112, 38)
+        Me.Button4.TabIndex = 67
+        Me.Button4.Text = "Quitar Producto"
+        Me.Button4.UseVisualStyleBackColor = True
+        '
         'Actualizar_Venta
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(1038, 526)
+        Me.Controls.Add(Me.Button4)
+        Me.Controls.Add(Me.btnRealizarCambios)
         Me.Controls.Add(Me.btnQuitarproducto)
         Me.Controls.Add(Me.tblProductosNuevos)
         Me.Controls.Add(Me.btnseleccionP)
@@ -345,4 +367,6 @@ Partial Class Actualizar_Venta
     Friend WithEvents btnseleccionP As Button
     Friend WithEvents tblProductosNuevos As DataGridView
     Friend WithEvents btnQuitarproducto As Button
+    Friend WithEvents btnRealizarCambios As Button
+    Friend WithEvents Button4 As Button
 End Class
