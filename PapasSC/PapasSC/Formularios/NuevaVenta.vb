@@ -80,6 +80,7 @@
             lblTotal.Text = Convert.ToString(Convert.ToString((npdprecio.Value * npdkilos.Value)))
             t = (npdprecio.Value * npdkilos.Value)
         End If
+
     End Sub
 
 
@@ -246,9 +247,9 @@
     Private Sub lblTotal_TextChanged(sender As Object, e As EventArgs) Handles lblTotal.TextChanged
         If cmbFormaPago.Text = "Contado" Then
             npdCantidadPagada.Value = Convert.ToDecimal(lblTotal.Text)
-            If tblventa.RowCount > 1 Then
-                tblventa.Rows(tblventa.RowCount - 1).Cells(4).Value = npdCantidadPagada.Value
-            End If
+
+            tblventa.Rows(tblventa.RowCount - 1).Cells(4).Value = npdCantidadPagada.Value
+
         End If
 
     End Sub

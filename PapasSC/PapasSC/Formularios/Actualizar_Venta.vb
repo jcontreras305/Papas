@@ -95,14 +95,16 @@
         AddOwnedForm(bc)
         bc.ShowDialog()
     End Sub
-
+    Dim totalneto As Double = 0
     Private Sub Button3_Click_1(sender As Object, e As EventArgs) Handles btnProducto.Click
         If agrega Then
 
-            Dim totalneto As Double = 0
+
 
             If txtNombreCliente.Text <> String.Empty Then
+
                 tblProductosNuevos.Rows.Add(txtNombreCliente.Text, txtproducto.Text, npdkilos.Value, (npdprecio.Value * npdkilos.Value), npdCantidadPagada.Value, user, cmbFormaPago.Text, cmbBodega.Text)
+                lbltotal.Text = (npdprecio.Value * npdkilos.Value) + Convert.ToDecimal(lbltotal.Text)
             Else
                 MsgBox("Seleccione un Cliente")
             End If
@@ -114,14 +116,9 @@
 
                 For i = 1 To tblProductosNuevos.RowCount
                     total += Convert.ToDecimal(Convert.ToString(tblProductosNuevos.Rows(i - 1).Cells(3).Value))
-                    totalneto = total
+                    t = total
                 Next
-                t = totalneto
-                For i = 1 To tblventaActualizar.RowCount
-                    total += Convert.ToDecimal(Convert.ToString(tblventaActualizar.Rows(i - 1).Cells(3).Value))
-                    totalneto = total
-                Next
-                t = t + totalneto
+                t = totalneto + Convert.ToDecimal(lbltotal.Text)
 
                 lbltotal.Text = Convert.ToString(t)
 
@@ -172,6 +169,25 @@
         AddOwnedForm(bc)
         bc.ShowDialog()
 
+    End Sub
+
+    Private Sub btnQuitarproducto_Click(sender As Object, e As EventArgs) Handles btnQuitarproducto.Click
+        If tblventaActualizar.RowCount > 0 And txtNombreCliente.Text <> String.Empty Then
+            tblventaActualizar.Rows.Remove(tblventaActualizar.CurrentRow)
+            Dim i As Integer
+            Dim total As Double
+            For i = 1 To tblventaActualizar.RowCount
+                total += Convert.ToDecimal(Convert.ToString(tblventaActualizar.Rows(i - 1).Cells(6).Value))
+                t = total
+            Next
+
+            lbltotal.Text = Convert.ToString(t) + total
+
+        Else
+
+            lbltotal.Text = Convert.ToString(0)
+
+        End If
     End Sub
 
     Private Sub tblventaActualizar_CellDoubleClick(sender As Object, e As DataGridViewCellEventArgs) Handles tblventaActualizar.CellDoubleClick

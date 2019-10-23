@@ -46,6 +46,7 @@ Partial Class Actualizar_Venta
         Me.btnBuscarCliente = New System.Windows.Forms.Button()
         Me.btnseleccionP = New System.Windows.Forms.Button()
         Me.tblProductosNuevos = New System.Windows.Forms.DataGridView()
+        Me.btnQuitarproducto = New System.Windows.Forms.Button()
         CType(Me.npdkilos, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.npdprecio, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.tblventaActualizar, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -269,11 +270,21 @@ Partial Class Actualizar_Venta
         Me.tblProductosNuevos.Size = New System.Drawing.Size(398, 165)
         Me.tblProductosNuevos.TabIndex = 64
         '
+        'btnQuitarproducto
+        '
+        Me.btnQuitarproducto.Location = New System.Drawing.Point(334, 282)
+        Me.btnQuitarproducto.Name = "btnQuitarproducto"
+        Me.btnQuitarproducto.Size = New System.Drawing.Size(112, 38)
+        Me.btnQuitarproducto.TabIndex = 65
+        Me.btnQuitarproducto.Text = "Quitar Producto"
+        Me.btnQuitarproducto.UseVisualStyleBackColor = True
+        '
         'Actualizar_Venta
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(1038, 526)
+        Me.Controls.Add(Me.btnQuitarproducto)
         Me.Controls.Add(Me.tblProductosNuevos)
         Me.Controls.Add(Me.btnseleccionP)
         Me.Controls.Add(Me.txtproducto)
@@ -333,4 +344,5 @@ Partial Class Actualizar_Venta
     Friend WithEvents Label3 As Label
     Friend WithEvents btnseleccionP As Button
     Friend WithEvents tblProductosNuevos As DataGridView
+    Friend WithEvents btnQuitarproducto As Button
 End Class
