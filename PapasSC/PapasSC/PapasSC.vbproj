@@ -408,16 +408,16 @@
     <Compile Include="Formularios\Registro_productos.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="Formularios\ReporteVentas2.Designer.vb">
+      <DependentUpon>ReporteVentas2.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Formularios\ReporteVentas2.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="Formularios\Reporte_de_ventas.Designer.vb">
       <DependentUpon>Reporte_de_ventas.vb</DependentUpon>
     </Compile>
     <Compile Include="Formularios\Reporte_de_ventas.vb">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Formularios\Reporte_Venta.Designer.vb">
-      <DependentUpon>Reporte_Venta.vb</DependentUpon>
-    </Compile>
-    <Compile Include="Formularios\Reporte_Venta.vb">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Formularios\Reubicacion.Designer.vb">
@@ -456,6 +456,7 @@
     <Compile Include="Metodos\MetodoExistenciaProducto.vb" />
     <Compile Include="Metodos\MetodoHorario.vb" />
     <Compile Include="Metodos\MetodoNomina.vb" />
+    <Compile Include="Metodos\MetodoReportesVentas.vb" />
     <Compile Include="Metodos\MetodosBodega.vb" />
     <Compile Include="Metodos\MetodosCaja.vb" />
     <Compile Include="Metodos\MetodosCliente.vb" />
@@ -494,6 +495,12 @@
     </Compile>
     <Compile Include="Formularios\pantallaCargador.vb">
       <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Reportes\ReporteVenta.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ReporteVenta.rpt</DependentUpon>
+      <SubType>Component</SubType>
     </Compile>
     <Compile Include="Reportes\Ticket1.vb">
       <AutoGen>True</AutoGen>
@@ -656,8 +663,11 @@
     <EmbeddedResource Include="Formularios\Registro_productos.resx">
       <DependentUpon>Registro_productos.vb</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Formularios\Reporte_Venta.resx">
-      <DependentUpon>Reporte_Venta.vb</DependentUpon>
+    <EmbeddedResource Include="Formularios\ReporteVentas2.resx">
+      <DependentUpon>ReporteVentas2.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formularios\Reporte_de_ventas.resx">
+      <DependentUpon>Reporte_de_ventas.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Formularios\Reubicacion.resx">
       <DependentUpon>Reubicacion.vb</DependentUpon>
@@ -682,6 +692,10 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Formularios\pantallaCargador.resx">
       <DependentUpon>pantallaCargador.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reportes\ReporteVenta.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>ReporteVenta.vb</LastGenOutput>
     </EmbeddedResource>
     <EmbeddedResource Include="Reportes\Ticket.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>

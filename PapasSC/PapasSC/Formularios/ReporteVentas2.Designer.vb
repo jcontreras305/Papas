@@ -1,5 +1,5 @@
 ﻿<Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()> _
-Partial Class Reporte_Venta
+Partial Class ReporteVentas2
     Inherits System.Windows.Forms.Form
 
     'Form reemplaza a Dispose para limpiar la lista de componentes.
@@ -33,17 +33,18 @@ Partial Class Reporte_Venta
         Me.CrystalReportViewer1.Dock = System.Windows.Forms.DockStyle.Fill
         Me.CrystalReportViewer1.Location = New System.Drawing.Point(0, 0)
         Me.CrystalReportViewer1.Name = "CrystalReportViewer1"
+        Me.CrystalReportViewer1.ShowLogo = False
         Me.CrystalReportViewer1.Size = New System.Drawing.Size(800, 450)
         Me.CrystalReportViewer1.TabIndex = 0
         '
-        'Reporte_Venta
+        'ReporteVentas2
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(800, 450)
         Me.Controls.Add(Me.CrystalReportViewer1)
-        Me.Name = "Reporte_Venta"
-        Me.Text = "Reporte_Venta"
+        Me.Name = "ReporteVentas2"
+        Me.Text = "ReporteVentas2"
         Me.ResumeLayout(False)
 
     End Sub
