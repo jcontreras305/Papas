@@ -9,7 +9,9 @@
 
 
     Private Sub NuevaVenta_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+
         mtdv.llenarDatagridview(tblDetalleVenta)
+
         npdCantidadPagada.Increment = 0.01
         npdCantidadPagada.DecimalPlaces = 2
         npdCantidadPagada.Maximum = 9999
@@ -47,6 +49,7 @@
             tblventa.Columns.Add("Tipo de pago", "Tipo de pago")
             tblventa.Columns.Add("Bodega", "Bodega")
         End If
+        tblDetalleVenta.Columns.Item("idventadetalle").Visible = False
     End Sub
 
     Private Sub cmbFormaPago_SelectedIndexChanged(sender As Object, e As EventArgs) Handles cmbFormaPago.SelectedIndexChanged
