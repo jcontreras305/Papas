@@ -28,9 +28,10 @@ Partial Class IniciarCaja
         Me.cmbCajas = New System.Windows.Forms.ComboBox()
         Me.cmbEmpleados = New System.Windows.Forms.ComboBox()
         Me.txtContraseña = New System.Windows.Forms.TextBox()
-        Me.btnAbrirCaja = New System.Windows.Forms.Button()
-        Me.btnSalir = New System.Windows.Forms.Button()
         Me.chbVer = New System.Windows.Forms.CheckBox()
+        Me.btnLiberar = New System.Windows.Forms.Button()
+        Me.btnSalir = New System.Windows.Forms.Button()
+        Me.btnAbrirCaja = New System.Windows.Forms.Button()
         Me.SuspendLayout()
         '
         'Label1
@@ -85,30 +86,6 @@ Partial Class IniciarCaja
         Me.txtContraseña.TabIndex = 7
         Me.txtContraseña.UseSystemPasswordChar = True
         '
-        'btnAbrirCaja
-        '
-        Me.btnAbrirCaja.Image = Global.PapasSC.My.Resources.Resources.ACEPTAR
-        Me.btnAbrirCaja.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
-        Me.btnAbrirCaja.Location = New System.Drawing.Point(78, 151)
-        Me.btnAbrirCaja.Name = "btnAbrirCaja"
-        Me.btnAbrirCaja.Size = New System.Drawing.Size(75, 41)
-        Me.btnAbrirCaja.TabIndex = 8
-        Me.btnAbrirCaja.Text = "Abrir"
-        Me.btnAbrirCaja.TextAlign = System.Drawing.ContentAlignment.MiddleRight
-        Me.btnAbrirCaja.UseVisualStyleBackColor = True
-        '
-        'btnSalir
-        '
-        Me.btnSalir.Image = Global.PapasSC.My.Resources.Resources.CANCELAR
-        Me.btnSalir.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
-        Me.btnSalir.Location = New System.Drawing.Point(170, 151)
-        Me.btnSalir.Name = "btnSalir"
-        Me.btnSalir.Size = New System.Drawing.Size(75, 41)
-        Me.btnSalir.TabIndex = 9
-        Me.btnSalir.Text = "Salir"
-        Me.btnSalir.TextAlign = System.Drawing.ContentAlignment.MiddleRight
-        Me.btnSalir.UseVisualStyleBackColor = True
-        '
         'chbVer
         '
         Me.chbVer.AutoSize = True
@@ -119,11 +96,48 @@ Partial Class IniciarCaja
         Me.chbVer.Text = "Ver"
         Me.chbVer.UseVisualStyleBackColor = True
         '
+        'btnLiberar
+        '
+        Me.btnLiberar.Image = Global.PapasSC.My.Resources.Resources.LIBERAR
+        Me.btnLiberar.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
+        Me.btnLiberar.Location = New System.Drawing.Point(236, 151)
+        Me.btnLiberar.Name = "btnLiberar"
+        Me.btnLiberar.Size = New System.Drawing.Size(75, 41)
+        Me.btnLiberar.TabIndex = 11
+        Me.btnLiberar.Text = "Liberar"
+        Me.btnLiberar.TextAlign = System.Drawing.ContentAlignment.MiddleRight
+        Me.btnLiberar.UseVisualStyleBackColor = True
+        '
+        'btnSalir
+        '
+        Me.btnSalir.Image = Global.PapasSC.My.Resources.Resources.CANCELAR
+        Me.btnSalir.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
+        Me.btnSalir.Location = New System.Drawing.Point(141, 151)
+        Me.btnSalir.Name = "btnSalir"
+        Me.btnSalir.Size = New System.Drawing.Size(75, 41)
+        Me.btnSalir.TabIndex = 9
+        Me.btnSalir.Text = "Salir"
+        Me.btnSalir.TextAlign = System.Drawing.ContentAlignment.MiddleRight
+        Me.btnSalir.UseVisualStyleBackColor = True
+        '
+        'btnAbrirCaja
+        '
+        Me.btnAbrirCaja.Image = Global.PapasSC.My.Resources.Resources.ACEPTAR
+        Me.btnAbrirCaja.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
+        Me.btnAbrirCaja.Location = New System.Drawing.Point(49, 151)
+        Me.btnAbrirCaja.Name = "btnAbrirCaja"
+        Me.btnAbrirCaja.Size = New System.Drawing.Size(75, 41)
+        Me.btnAbrirCaja.TabIndex = 8
+        Me.btnAbrirCaja.Text = "Abrir"
+        Me.btnAbrirCaja.TextAlign = System.Drawing.ContentAlignment.MiddleRight
+        Me.btnAbrirCaja.UseVisualStyleBackColor = True
+        '
         'IniciarCaja
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(343, 217)
+        Me.Controls.Add(Me.btnLiberar)
         Me.Controls.Add(Me.chbVer)
         Me.Controls.Add(Me.btnSalir)
         Me.Controls.Add(Me.btnAbrirCaja)
@@ -149,4 +163,5 @@ Partial Class IniciarCaja
     Friend WithEvents btnAbrirCaja As Button
     Friend WithEvents btnSalir As Button
     Friend WithEvents chbVer As CheckBox
+    Friend WithEvents btnLiberar As Button
 End Class

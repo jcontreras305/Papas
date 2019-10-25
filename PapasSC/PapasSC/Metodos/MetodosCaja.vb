@@ -163,10 +163,10 @@ left join credito as ct on ct.idCliente = cl.idCliente "
         desconectar()
     End Sub
 
-    Public Sub cajasEstatus(ByVal cmbCaja As ComboBox, ByVal idsCaja As List(Of String), ByVal listEstatus As List(Of String))
+    Public Sub cajasEstatus(ByVal cmbCaja As ComboBox, ByVal idsCaja As List(Of String), ByVal listEstatus As List(Of String), ByVal listCajaExplicito As List(Of String))
         Try
             conectar()
-            Dim cmd As New SqlCommand("select nombre, idCaja, fase from caja where not estatus='B'", conn)
+            Dim cmd As New SqlCommand("select nombre, idCaja, fase , explicito from caja where not estatus='B'", conn)
             Dim rd As SqlDataReader = cmd.ExecuteReader()
             idsCaja.Clear()
             listEstatus.Clear()
@@ -175,12 +175,47 @@ left join credito as ct on ct.idCliente = cl.idCliente "
                 cmbCaja.Items.Add(rd("nombre"))
                 idsCaja.Add(rd("idCaja"))
                 listEstatus.Add(rd("fase"))
+                listCajaExplicito.Add(rd("explicito"))
             End While
         Catch ex As Exception
             MsgBox(ex.Message)
         End Try
         desconectar()
     End Sub
+
+    Public Function iniciar_Caja_Explicito(ByVal idCaja As String, ByVal idEmpleado As String, ByVal montoInicial As String, ByVal arrayMonedas() As Integer) As Boolean
+        Try
+            conectar()
+            Dim cmd As New SqlCommand("sp_abrirCaja_Explicito", conn)
+            cmd.CommandType = CommandType.StoredProcedure
+            cmd.Parameters.Add("@idCaja", SqlDbType.VarChar, 36).Value = idCaja
+            cmd.Parameters.Add("@idEmpleado", SqlDbType.VarChar, 36).Value = idEmpleado
+            cmd.Parameters.Add("@montoInicial", SqlDbType.Float).Value = montoInicial
+            Dim fechaInc As String = DateTime.Now.ToString("yyyy/MM/dd hh:mm:ss")
+            cmd.Parameters.Add("@fechaInicio", SqlDbType.SmallDateTime).Value = fechaInc
+            cmd.Parameters.Add("@b1000", SqlDbType.Int).Value = arrayMonedas(0)
+            cmd.Parameters.Add("@b500", SqlDbType.Int).Value = arrayMonedas(1)
+            cmd.Parameters.Add("@b200", SqlDbType.Int).Value = arrayMonedas(2)
+            cmd.Parameters.Add("@b100", SqlDbType.Int).Value = arrayMonedas(3)
+            cmd.Parameters.Add("@b50", SqlDbType.Int).Value = arrayMonedas(4)
+            cmd.Parameters.Add("@b20", SqlDbType.Int).Value = arrayMonedas(5)
+            cmd.Parameters.Add("@m20", SqlDbType.Int).Value = arrayMonedas(6)
+            cmd.Parameters.Add("@m10", SqlDbType.Int).Value = arrayMonedas(7)
+            cmd.Parameters.Add("@m5", SqlDbType.Int).Value = arrayMonedas(8)
+            cmd.Parameters.Add("@m2", SqlDbType.Int).Value = arrayMonedas(9)
+            cmd.Parameters.Add("@m1", SqlDbType.Int).Value = arrayMonedas(10)
+            cmd.Parameters.Add("@m05", SqlDbType.Int).Value = arrayMonedas(11)
+            If cmd.ExecuteNonQuery Then
+                MsgBox("Listo")
+            Else
+                MsgBox("Error")
+            End If
+        Catch ex As Exception
+            MsgBox(ex.Message)
+        End Try
+        Return Nothing
+    End Function
+
 
     Public Function iniciar_Caja(ByVal idCaja As String, ByVal empleado As String, ByVal montoInicial As String) As Boolean
         Try
@@ -308,8 +343,110 @@ and cj.nombre =  '" + nombreCaja + "'", conn)
                busquedaCuentaPorPagar = caja.busquedaCuentaPorPagar
     End Function
 
-    Public Sub buscarCuentasPorPagar()
+    Dim consultaCPP As String = "select cl.nombre , vt.folio , vt.cantidadPagada, vt.totalPagar , vt.fecha, cj.nombre from 
+venta as vt inner join cliente cl on vt.idCliente = cl.idCliente
+left join caja as cj on vt.idCaja = cj.idCaja "
 
+    Public Sub buscarCuentasPorPagar(ByVal tablas As DataGridView, fecha1 As String, fecha2 As String, cliente As String, caja As String, ByVal folio As String, ByVal todos As Boolean)
+        Try
+            conectar()
+            Dim consulta As String = consultaCPP + "  where "
+            Dim cont As Int16 = 0
+            If todos = False Then
+                If fecha1 <> String.Empty And fecha2 <> String.Empty Then
+                    consulta = consulta + " (vt.fecha between '" + fecha1 + "' and '" + fecha2 + "') "
+                    cont += 1
+                End If
+                If caja <> String.Empty Then
+                    If cont <> 0 Then
+                        consulta = consulta + " and cj.nombre like '%" + caja + "' "
+                        cont += 1
+                    Else
+                        consulta = consulta + " cj.nombre like '%" + caja + "' "
+                        cont += 1
+                    End If
+                End If
+                If cliente <> String.Empty Then
+                    If cont <> 0 Then
+                        consulta = consulta + " and cl.nombre = '%" + cliente + "' "
+                        cont += 1
+                    Else
+                        consulta = consulta + " cl.nombre = '%" + cliente + "' "
+                        cont += 1
+                    End If
+                End If
+                If folio <> String.Empty Then
+                    If cont <> 0 Then
+                        consulta = consulta + " vt.folio = " + folio + " "
+                        cont += 1
+                    Else
+                        consulta = consulta + " and vt.folio = " + folio + " "
+                        cont += 1
+                    End If
+                End If
+            Else
+                consulta = consulta + " vt.cantidadPagada <> vt.totalPagar and vt.estatus <> 'A' "
+            End If
+            Dim cmd As New SqlCommand(consulta, conn)
+            If cmd.ExecuteNonQuery Then
+                Dim da As New SqlDataAdapter(cmd)
+                Dim dt As New DataTable
+                da.Fill(dt)
+                tablas.DataSource = dt
+            End If
+        Catch ex As Exception
+            MsgBox(ex.Message)
+        End Try
     End Sub
 
+    Public Function TotalEfectivoCajaDeducido(ByVal idcaja As String) As Double
+        Try
+            conectar()
+            Dim cmd As New SqlCommand("select isnull( SUM(cantidadPagada) - (select montoInicial from corteCaja where fechaInicio = (select  MAX(fechaInicio) from corteCaja where idCaja = '" + idcaja + "' )), 0.0) as Total 
+from venta as vt left join caja as cj on vt.idCaja = cj.idCaja 
+left join corteCaja as ctj on cj.idCaja = ctj.idCaja
+where vt.fecha between  (select  MAX(fechaInicio) from corteCaja where idCaja = '" + idcaja + "' ) and (select  MAX(fechaFin) from corteCaja where idCaja = '" + idcaja + "' )", conn)
+            Dim total As String = ""
+            Using rd = cmd.ExecuteReader
+                If rd.HasRows Then
+                    While rd.Read
+                        total = rd.Item("Total").ToString
+                    End While
+                End If
+            End Using
+            Return CDbl(total)
+        Catch ex As Exception
+            MsgBox(ex.Message)
+            Return Nothing
+        End Try
+        Return Nothing
+    End Function
+
+    Public Function validarUsuarioCorteCaja(ByVal idEmpleado As String, ByVal idCaja As String) As Boolean
+        Try
+            conectar()
+            Dim cmd As New SqlCommand("select top 1 idEmpleado from corteCaja where fechaInicio = (select  top 1 MAX(fechaInicio) from corteCaja where idCaja = '" + idCaja + "')", conn)
+            Dim idemp As String = ""
+            Using rd = cmd.ExecuteReader
+                If rd.HasRows Then
+                    While rd.Read
+                        idemp = rd.Item("idEmpleado").ToString
+                    End While
+                    If idEmpleado.Equals(idemp) Then
+                        desconectar()
+                        Return True
+                    Else
+                        desconectar()
+                        Return False
+                    End If
+                Else
+                    Return False
+                End If
+            End Using
+        Catch ex As Exception
+            MsgBox(ex.Message)
+            desconectar()
+            Return False
+        End Try
+    End Function
 End Class
