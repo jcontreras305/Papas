@@ -161,6 +161,12 @@
     <Compile Include="Formularios\Cancelar_Venta.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="Formularios\CantidadMonetariaExplicitaInicio.Designer.vb">
+      <DependentUpon>CantidadMonetariaExplicitaInicio.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Formularios\CantidadMonetariaExplicitaInicio.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="Formularios\Catálogo.designer.vb">
       <DependentUpon>Catálogo.vb</DependentUpon>
     </Compile>
@@ -408,16 +414,16 @@
     <Compile Include="Formularios\Registro_productos.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="Formularios\ReporteVentas2.Designer.vb">
+      <DependentUpon>ReporteVentas2.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Formularios\ReporteVentas2.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="Formularios\Reporte_de_ventas.Designer.vb">
       <DependentUpon>Reporte_de_ventas.vb</DependentUpon>
     </Compile>
     <Compile Include="Formularios\Reporte_de_ventas.vb">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Formularios\Reporte_Venta.Designer.vb">
-      <DependentUpon>Reporte_Venta.vb</DependentUpon>
-    </Compile>
-    <Compile Include="Formularios\Reporte_Venta.vb">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Formularios\Reubicacion.Designer.vb">
@@ -456,6 +462,7 @@
     <Compile Include="Metodos\MetodoExistenciaProducto.vb" />
     <Compile Include="Metodos\MetodoHorario.vb" />
     <Compile Include="Metodos\MetodoNomina.vb" />
+    <Compile Include="Metodos\MetodoReportesVentas.vb" />
     <Compile Include="Metodos\MetodosBodega.vb" />
     <Compile Include="Metodos\MetodosCaja.vb" />
     <Compile Include="Metodos\MetodosCliente.vb" />
@@ -494,6 +501,12 @@
     </Compile>
     <Compile Include="Formularios\pantallaCargador.vb">
       <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Reportes\ReporteVenta.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ReporteVenta.rpt</DependentUpon>
+      <SubType>Component</SubType>
     </Compile>
     <Compile Include="Reportes\Ticket1.vb">
       <AutoGen>True</AutoGen>
@@ -538,6 +551,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Formularios\Caja.resx">
       <DependentUpon>Caja.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formularios\CantidadMonetariaExplicitaInicio.resx">
+      <DependentUpon>CantidadMonetariaExplicitaInicio.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Formularios\Catálogo.resx">
       <DependentUpon>Catálogo.vb</DependentUpon>
@@ -656,8 +672,8 @@
     <EmbeddedResource Include="Formularios\Registro_productos.resx">
       <DependentUpon>Registro_productos.vb</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Formularios\Reporte_Venta.resx">
-      <DependentUpon>Reporte_Venta.vb</DependentUpon>
+    <EmbeddedResource Include="Formularios\ReporteVentas2.resx">
+      <DependentUpon>ReporteVentas2.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Formularios\Reubicacion.resx">
       <DependentUpon>Reubicacion.vb</DependentUpon>
@@ -682,6 +698,10 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Formularios\pantallaCargador.resx">
       <DependentUpon>pantallaCargador.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reportes\ReporteVenta.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>ReporteVenta.vb</LastGenOutput>
     </EmbeddedResource>
     <EmbeddedResource Include="Reportes\Ticket.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
@@ -713,6 +733,7 @@
     <Content Include="Documentos\PS_ACTUAL1.0.sql" />
     <Content Include="Imagenes\ACTUALIZAR.png" />
     <Content Include="Imagenes\ALMACEN.jpg" />
+    <Content Include="Imagenes\BILLETE.png" />
     <Content Include="Imagenes\BODEGAS.jpg" />
     <Content Include="Imagenes\BORRAR.png" />
     <Content Include="Imagenes\CAJA.jpg" />
@@ -726,9 +747,10 @@
     <Content Include="Imagenes\Descuentos.jpg" />
     <Content Include="Imagenes\EMPLEADOS.jpg" />
     <Content Include="Imagenes\EMPLEADOS2.jpg" />
-    <Content Include="Imagenes\INDEXACIÓN.jpg" />
-    <Content Include="Imagenes\RESPALDO BD.jpg" />
-    <Content Include="Imagenes\RESTAURACIÓN.jpg" />
+    <Content Include="Imagenes\IMPRIMIR.png" />
+    <Content Include="Imagenes\LIBERAR.png" />
+    <Content Include="Imagenes\MONEDA.png" />
+    <Content Include="Imagenes\SALIR.png" />
     <Content Include="SqlServerTypes\Loader.cs" />
     <Content Include="SqlServerTypes\readme.htm" />
     <Content Include="SqlServerTypes\x64\msvcr120.dll">

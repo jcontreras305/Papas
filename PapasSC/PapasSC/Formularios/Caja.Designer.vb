@@ -28,6 +28,10 @@ Partial Class Caja
         Me.Label5 = New System.Windows.Forms.Label()
         Me.pnlEstatus = New System.Windows.Forms.Panel()
         Me.pnlCuentasPorCobrar = New System.Windows.Forms.TabPage()
+        Me.chbTodosCPP = New System.Windows.Forms.CheckBox()
+        Me.cmbFiltar = New System.Windows.Forms.ComboBox()
+        Me.txtFiltro = New System.Windows.Forms.TextBox()
+        Me.Label8 = New System.Windows.Forms.Label()
         Me.Label7 = New System.Windows.Forms.Label()
         Me.Label6 = New System.Windows.Forms.Label()
         Me.dtpFechaInicio = New System.Windows.Forms.DateTimePicker()
@@ -49,14 +53,17 @@ Partial Class Caja
         Me.chbCobrados = New System.Windows.Forms.CheckBox()
         Me.chbTodos = New System.Windows.Forms.CheckBox()
         Me.TabControl1 = New System.Windows.Forms.TabControl()
-        Me.Label8 = New System.Windows.Forms.Label()
-        Me.txtFiltro = New System.Windows.Forms.TextBox()
+        Me.pnlPrecorte = New System.Windows.Forms.TabPage()
+        Me.btnImprimir = New System.Windows.Forms.Button()
+        Me.tblPrecorte = New System.Windows.Forms.DataGridView()
         Me.pnlEstatus.SuspendLayout()
         Me.pnlCuentasPorCobrar.SuspendLayout()
         CType(Me.tblCuentasPorPagar, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.pnlGeneral.SuspendLayout()
         CType(Me.tblVentas, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.TabControl1.SuspendLayout()
+        Me.pnlPrecorte.SuspendLayout()
+        CType(Me.tblPrecorte, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'txtCaja
@@ -104,6 +111,8 @@ Partial Class Caja
         '
         'pnlCuentasPorCobrar
         '
+        Me.pnlCuentasPorCobrar.Controls.Add(Me.chbTodosCPP)
+        Me.pnlCuentasPorCobrar.Controls.Add(Me.cmbFiltar)
         Me.pnlCuentasPorCobrar.Controls.Add(Me.txtFiltro)
         Me.pnlCuentasPorCobrar.Controls.Add(Me.Label8)
         Me.pnlCuentasPorCobrar.Controls.Add(Me.Label7)
@@ -119,6 +128,41 @@ Partial Class Caja
         Me.pnlCuentasPorCobrar.TabIndex = 2
         Me.pnlCuentasPorCobrar.Text = "Cuentas por Cobrar"
         Me.pnlCuentasPorCobrar.UseVisualStyleBackColor = True
+        '
+        'chbTodosCPP
+        '
+        Me.chbTodosCPP.AutoSize = True
+        Me.chbTodosCPP.Location = New System.Drawing.Point(19, 41)
+        Me.chbTodosCPP.Name = "chbTodosCPP"
+        Me.chbTodosCPP.Size = New System.Drawing.Size(56, 17)
+        Me.chbTodosCPP.TabIndex = 9
+        Me.chbTodosCPP.Text = "Todos"
+        Me.chbTodosCPP.UseVisualStyleBackColor = True
+        '
+        'cmbFiltar
+        '
+        Me.cmbFiltar.FormattingEnabled = True
+        Me.cmbFiltar.Items.AddRange(New Object() {"Cliente", "Folio", "Caja"})
+        Me.cmbFiltar.Location = New System.Drawing.Point(54, 13)
+        Me.cmbFiltar.Name = "cmbFiltar"
+        Me.cmbFiltar.Size = New System.Drawing.Size(107, 21)
+        Me.cmbFiltar.TabIndex = 8
+        '
+        'txtFiltro
+        '
+        Me.txtFiltro.Location = New System.Drawing.Point(167, 13)
+        Me.txtFiltro.Name = "txtFiltro"
+        Me.txtFiltro.Size = New System.Drawing.Size(151, 20)
+        Me.txtFiltro.TabIndex = 7
+        '
+        'Label8
+        '
+        Me.Label8.AutoSize = True
+        Me.Label8.Location = New System.Drawing.Point(16, 16)
+        Me.Label8.Name = "Label8"
+        Me.Label8.Size = New System.Drawing.Size(32, 13)
+        Me.Label8.TabIndex = 6
+        Me.Label8.Text = "Filtrar"
         '
         'Label7
         '
@@ -155,7 +199,7 @@ Partial Class Caja
         '
         'Button1
         '
-        Me.Button1.Location = New System.Drawing.Point(667, 13)
+        Me.Button1.Location = New System.Drawing.Point(691, 16)
         Me.Button1.Name = "Button1"
         Me.Button1.Size = New System.Drawing.Size(86, 33)
         Me.Button1.TabIndex = 1
@@ -228,7 +272,7 @@ Partial Class Caja
         'tblVentas
         '
         Me.tblVentas.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
-        Me.tblVentas.Location = New System.Drawing.Point(18, 87)
+        Me.tblVentas.Location = New System.Drawing.Point(9, 74)
         Me.tblVentas.Name = "tblVentas"
         Me.tblVentas.Size = New System.Drawing.Size(764, 393)
         Me.tblVentas.TabIndex = 13
@@ -313,33 +357,49 @@ Partial Class Caja
         Me.TabControl1.Controls.Add(Me.pnlGeneral)
         Me.TabControl1.Controls.Add(Me.pnlAbonosyAnticipos)
         Me.TabControl1.Controls.Add(Me.pnlCuentasPorCobrar)
+        Me.TabControl1.Controls.Add(Me.pnlPrecorte)
         Me.TabControl1.Location = New System.Drawing.Point(25, 76)
         Me.TabControl1.Name = "TabControl1"
         Me.TabControl1.SelectedIndex = 0
         Me.TabControl1.Size = New System.Drawing.Size(811, 512)
         Me.TabControl1.TabIndex = 2
         '
-        'Label8
+        'pnlPrecorte
         '
-        Me.Label8.AutoSize = True
-        Me.Label8.Location = New System.Drawing.Point(16, 16)
-        Me.Label8.Name = "Label8"
-        Me.Label8.Size = New System.Drawing.Size(32, 13)
-        Me.Label8.TabIndex = 6
-        Me.Label8.Text = "Filtrar"
+        Me.pnlPrecorte.Controls.Add(Me.tblPrecorte)
+        Me.pnlPrecorte.Location = New System.Drawing.Point(4, 22)
+        Me.pnlPrecorte.Name = "pnlPrecorte"
+        Me.pnlPrecorte.Size = New System.Drawing.Size(803, 486)
+        Me.pnlPrecorte.TabIndex = 3
+        Me.pnlPrecorte.Text = "Pre-Corte "
+        Me.pnlPrecorte.UseVisualStyleBackColor = True
         '
-        'txtFiltro
+        'btnImprimir
         '
-        Me.txtFiltro.Location = New System.Drawing.Point(61, 13)
-        Me.txtFiltro.Name = "txtFiltro"
-        Me.txtFiltro.Size = New System.Drawing.Size(151, 20)
-        Me.txtFiltro.TabIndex = 7
+        Me.btnImprimir.Image = Global.PapasSC.My.Resources.Resources.IMPRIMIR1
+        Me.btnImprimir.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
+        Me.btnImprimir.Location = New System.Drawing.Point(733, 595)
+        Me.btnImprimir.Name = "btnImprimir"
+        Me.btnImprimir.Size = New System.Drawing.Size(78, 37)
+        Me.btnImprimir.TabIndex = 6
+        Me.btnImprimir.Text = "Imprimir"
+        Me.btnImprimir.TextAlign = System.Drawing.ContentAlignment.MiddleRight
+        Me.btnImprimir.UseVisualStyleBackColor = True
+        '
+        'tblPrecorte
+        '
+        Me.tblPrecorte.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
+        Me.tblPrecorte.Location = New System.Drawing.Point(9, 74)
+        Me.tblPrecorte.Name = "tblPrecorte"
+        Me.tblPrecorte.Size = New System.Drawing.Size(779, 393)
+        Me.tblPrecorte.TabIndex = 0
         '
         'Caja
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(848, 626)
+        Me.ClientSize = New System.Drawing.Size(848, 644)
+        Me.Controls.Add(Me.btnImprimir)
         Me.Controls.Add(Me.pnlEstatus)
         Me.Controls.Add(Me.TabControl1)
         Me.Name = "Caja"
@@ -353,6 +413,8 @@ Partial Class Caja
         Me.pnlGeneral.PerformLayout()
         CType(Me.tblVentas, System.ComponentModel.ISupportInitialize).EndInit()
         Me.TabControl1.ResumeLayout(False)
+        Me.pnlPrecorte.ResumeLayout(False)
+        CType(Me.tblPrecorte, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
 
     End Sub
@@ -386,4 +448,9 @@ Partial Class Caja
     Friend WithEvents dtpFechaFin As DateTimePicker
     Friend WithEvents txtFiltro As TextBox
     Friend WithEvents Label8 As Label
+    Friend WithEvents chbTodosCPP As CheckBox
+    Friend WithEvents cmbFiltar As ComboBox
+    Friend WithEvents btnImprimir As Button
+    Friend WithEvents pnlPrecorte As TabPage
+    Friend WithEvents tblPrecorte As DataGridView
 End Class

@@ -2,16 +2,15 @@
 
     Dim mtdMetodosTicket As New MetodosTicket
     Dim ticket As New Ticket
-
+    Dim clave, nombre As String
 
     Private Sub btnPruebaTicket_Click(sender As Object, e As EventArgs) Handles btnPruebaTicket.Click
-        'If tblFormatostTicket.Rows.Count > 0 Then
-        '    Dim clave As String = tblFormatostTicket.SelectedCells().Item(0).Value
-        '    Dim nombre As String = tblFormatostTicket.SelectedCells().Item(2).Value
-
-        'End If
-
-        VerTicket.Show()
+        clave = tblFormatostTicket.CurrentRow.Cells(0).Value
+        nombre = tblFormatostTicket.CurrentRow.Cells(1).Value
+        Dim verticket As New VerTicket
+        verticket.clave = clave
+        verticket.nombre = nombre
+        verticket.ShowDialog()
     End Sub
 
     Private Sub tickets_Load(sender As Object, e As EventArgs) Handles MyBase.Load

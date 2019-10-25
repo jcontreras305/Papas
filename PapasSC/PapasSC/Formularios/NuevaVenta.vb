@@ -1,7 +1,8 @@
 ﻿Public Class NuevaVenta
-    Public user As String
+    Public user, idEmpleado As String
     Dim savef As String
     Dim flag As Boolean = False
+    Public explicita As Boolean
     Public idCaja As String
     Dim folio As Int16
     Dim mtdv As New MetodosVenta
