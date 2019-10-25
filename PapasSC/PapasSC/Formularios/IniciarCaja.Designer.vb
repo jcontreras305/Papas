@@ -100,7 +100,7 @@ Partial Class IniciarCaja
         '
         Me.btnLiberar.Image = Global.PapasSC.My.Resources.Resources.LIBERAR
         Me.btnLiberar.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
-        Me.btnLiberar.Location = New System.Drawing.Point(236, 151)
+        Me.btnLiberar.Location = New System.Drawing.Point(237, 151)
         Me.btnLiberar.Name = "btnLiberar"
         Me.btnLiberar.Size = New System.Drawing.Size(75, 41)
         Me.btnLiberar.TabIndex = 11
