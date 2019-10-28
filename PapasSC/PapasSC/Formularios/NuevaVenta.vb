@@ -6,6 +6,7 @@
     Public idCaja As String
     Dim folio As Int16
     Dim mtdv As New MetodosVenta
+
     Public idCliente, nombreCliente As String
 
 
@@ -27,6 +28,11 @@
         npdprecio.ThousandsSeparator = True
         mtdv.llenarComboBodega(cmbBodega)
         mtdv.llenarComboProducto(tblProductos, cmbBodega.Text)
+        Dim i As Int64
+
+        For i = 0 To tblDetalleVenta.RowCount
+
+        Next
 
         savef = DateTime.Now.ToString("dd/MM/yyyy")
         flag = True
@@ -129,13 +135,7 @@
         End If
     End Sub
 
-    Private Sub cbxEspera_CheckedChanged(sender As Object, e As EventArgs) Handles cbxEspera.CheckedChanged
 
-    End Sub
-
-    Private Sub cbxBodega_CheckedChanged(sender As Object, e As EventArgs)
-
-    End Sub
 
     Private Sub Button2_Click(sender As Object, e As EventArgs) Handles Button2.Click
         Me.Close()
@@ -208,21 +208,21 @@
         End If
     End Sub
 
-    Private Sub tbxBusquedaFiltrada_TextChanged(sender As Object, e As EventArgs) Handles tbxBusquedaFiltrada.TextChanged
 
-    End Sub
 
     Private Sub Button5_Click(sender As Object, e As EventArgs) Handles Button5.Click
 
         Try
-
-
             Dim id As String = Convert.ToString(tblDetalleVenta.CurrentRow.Cells(0).Value)
-            Actualizar_Venta.idCliente = idCliente
-            Actualizar_Venta.id = id
-            Actualizar_Venta.user = user
-
-            Actualizar_Venta.Show()
+            Dim estatus As String = Convert.ToString(tblDetalleVenta.CurrentRow.Cells("estatus").Value)
+            If estatus <> "A" Then
+                Actualizar_Venta.idCliente = idCliente
+                Actualizar_Venta.id = id
+                Actualizar_Venta.user = user
+                Actualizar_Venta.Show()
+            Else
+                MsgBox("venta Cobrada, no es posible realizar alteraciones.")
+            End If
         Catch
             MsgBox("Seleciona un renglos")
         End Try

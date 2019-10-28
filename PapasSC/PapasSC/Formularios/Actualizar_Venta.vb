@@ -6,6 +6,7 @@
     Public agrega As Boolean = False
     Public user As String
     Public idCliente As String
+    Public estatus As String
     Dim t As Double = 0
 
     Private Sub Actualizar_Venta_Load(sender As Object, e As EventArgs) Handles MyBase.Load
@@ -145,23 +146,24 @@
                                             Convert.ToString(tblventaActualizar.Rows(i - 1).Cells(3).Value),
                                             Convert.ToString(tblventaActualizar.Rows(i - 1).Cells(4).Value),
                                             Convert.ToString(tblventaActualizar.Rows(i - 1).Cells(8).Value),
-                                            Convert.ToString(tblventaActualizar.Rows(i - 1).Cells(2).Value))
-                Next
+                                            Convert.ToString(tblventaActualizar.Rows(i - 1).Cells(2).Value), If(i = 1, True, False))
 
-                For i = 1 To tblventaActualizar.RowCount
+                Next
+                Dim cade As String = tblventaActualizar.Rows(0).Cells(0).Value
+                For i = 1 To tblProductosNuevos.RowCount
 
 
 
                     mtdv.insertarVentaDetalleUpdate(
-                                      Convert.ToString(tblventaActualizar.Rows(0).Cells(0).Value),
+                                      cade,
                                       Convert.ToString(tblProductosNuevos.Rows(i - 1).Cells(1).Value),
                                       Convert.ToString(tblProductosNuevos.Rows(i - 1).Cells(2).Value),
-                                      Convert.ToString(tblProductosNuevos.Rows(i - 1).Cells(10).Value),
+                                      Convert.ToString(tblProductosNuevos.Rows(i - 1).Cells(3).Value),
                                       Convert.ToString(tblProductosNuevos.Rows(i - 1).Cells(7).Value)
                                       )
                 Next
 
-                mtdv.updateVentas(tblventaActualizar.Rows(1).Cells(0).Value.ToString, DateTime.Now.ToString("dd/MM/yyyy"), lbltotal.Text, npdCantidadPagada.Value.ToString, txtNombreCliente.Text, user, cmbBodega.Text, cmbFormaPago.Text)
+                mtdv.updateVentas(tblventaActualizar.Rows(0).Cells(0).Value.ToString, DateTime.Now.ToString("dd/MM/yyyy"), lbltotal.Text, npdCantidadPagada.Value.ToString, txtNombreCliente.Text, user, cmbBodega.Text, cmbFormaPago.Text)
             Else
 
                 For i = 1 To tblventaActualizar.RowCount
@@ -172,9 +174,9 @@
                                             Convert.ToString(tblventaActualizar.Rows(i - 1).Cells(3).Value),
                                             Convert.ToString(tblventaActualizar.Rows(i - 1).Cells(4).Value),
                                             Convert.ToString(tblventaActualizar.Rows(i - 1).Cells(8).Value),
-                                            Convert.ToString(tblventaActualizar.Rows(i - 1).Cells(2).Value))
+                                            Convert.ToString(tblventaActualizar.Rows(i - 1).Cells(2).Value), If(i = 1, True, False))
                 Next
-                mtdv.updateVentas(tblventaActualizar.Rows(1).Cells(0).Value.ToString, DateTime.Now.ToString("dd/MM/yyyy"), lbltotal.Text, npdCantidadPagada.Value.ToString, txtNombreCliente.Text, user, cmbBodega.Text, cmbFormaPago.Text)
+                mtdv.updateVentas(tblventaActualizar.Rows(0).Cells(0).Value.ToString, DateTime.Now.ToString("dd/MM/yyyy"), lbltotal.Text, npdCantidadPagada.Value.ToString, txtNombreCliente.Text, user, cmbBodega.Text, cmbFormaPago.Text)
             End If
 
         Catch ex As Exception
@@ -226,7 +228,7 @@
     End Sub
 
     Private Sub Button4_Click(sender As Object, e As EventArgs) Handles Button4.Click
-        tblProductosNuevos.Rows.Remove(tblventaActualizar.CurrentRow)
+        tblProductosNuevos.Rows.Remove(tblProductosNuevos.CurrentRow)
     End Sub
 
     Private Sub btnRealizarCambios_Click(sender As Object, e As EventArgs) Handles btnRealizarCambios.Click

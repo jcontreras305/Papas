@@ -30,6 +30,7 @@ Partial Class NuevaVenta
         Me.Button1 = New System.Windows.Forms.Button()
         Me.TabControl1 = New System.Windows.Forms.TabControl()
         Me.TabPage1 = New System.Windows.Forms.TabPage()
+        Me.Button8 = New System.Windows.Forms.Button()
         Me.GroupBox1 = New System.Windows.Forms.GroupBox()
         Me.txtNombreCliente = New System.Windows.Forms.TextBox()
         Me.btnBuscarCliente = New System.Windows.Forms.Button()
@@ -57,7 +58,6 @@ Partial Class NuevaVenta
         Me.Button5 = New System.Windows.Forms.Button()
         Me.Button4 = New System.Windows.Forms.Button()
         Me.tblDetalleVenta = New System.Windows.Forms.DataGridView()
-        Me.Button8 = New System.Windows.Forms.Button()
         CType(Me.tblventa, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.npdprecio, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.npdkilos, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -155,6 +155,15 @@ Partial Class NuevaVenta
         Me.TabPage1.TabIndex = 0
         Me.TabPage1.Text = "PDV"
         Me.TabPage1.UseVisualStyleBackColor = True
+        '
+        'Button8
+        '
+        Me.Button8.Location = New System.Drawing.Point(298, 174)
+        Me.Button8.Name = "Button8"
+        Me.Button8.Size = New System.Drawing.Size(186, 44)
+        Me.Button8.TabIndex = 34
+        Me.Button8.Text = "<<"
+        Me.Button8.UseVisualStyleBackColor = True
         '
         'GroupBox1
         '
@@ -352,7 +361,7 @@ Partial Class NuevaVenta
         '
         'Button9
         '
-        Me.Button9.Location = New System.Drawing.Point(293, 289)
+        Me.Button9.Location = New System.Drawing.Point(554, 289)
         Me.Button9.Name = "Button9"
         Me.Button9.Size = New System.Drawing.Size(139, 24)
         Me.Button9.TabIndex = 8
@@ -361,7 +370,7 @@ Partial Class NuevaVenta
         '
         'Button7
         '
-        Me.Button7.Location = New System.Drawing.Point(162, 290)
+        Me.Button7.Location = New System.Drawing.Point(423, 290)
         Me.Button7.Name = "Button7"
         Me.Button7.Size = New System.Drawing.Size(123, 23)
         Me.Button7.TabIndex = 6
@@ -396,7 +405,7 @@ Partial Class NuevaVenta
         '
         'Button5
         '
-        Me.Button5.Location = New System.Drawing.Point(583, 287)
+        Me.Button5.Location = New System.Drawing.Point(844, 287)
         Me.Button5.Name = "Button5"
         Me.Button5.Size = New System.Drawing.Size(75, 23)
         Me.Button5.TabIndex = 2
@@ -405,7 +414,7 @@ Partial Class NuevaVenta
         '
         'Button4
         '
-        Me.Button4.Location = New System.Drawing.Point(438, 287)
+        Me.Button4.Location = New System.Drawing.Point(699, 287)
         Me.Button4.Name = "Button4"
         Me.Button4.Size = New System.Drawing.Size(139, 24)
         Me.Button4.TabIndex = 1
@@ -420,17 +429,8 @@ Partial Class NuevaVenta
         Me.tblDetalleVenta.Location = New System.Drawing.Point(35, 80)
         Me.tblDetalleVenta.Name = "tblDetalleVenta"
         Me.tblDetalleVenta.ReadOnly = True
-        Me.tblDetalleVenta.Size = New System.Drawing.Size(623, 201)
+        Me.tblDetalleVenta.Size = New System.Drawing.Size(884, 201)
         Me.tblDetalleVenta.TabIndex = 0
-        '
-        'Button8
-        '
-        Me.Button8.Location = New System.Drawing.Point(298, 174)
-        Me.Button8.Name = "Button8"
-        Me.Button8.Size = New System.Drawing.Size(186, 44)
-        Me.Button8.TabIndex = 34
-        Me.Button8.Text = "<<"
-        Me.Button8.UseVisualStyleBackColor = True
         '
         'NuevaVenta
         '
