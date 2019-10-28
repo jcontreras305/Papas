@@ -103,9 +103,9 @@ Partial Class Reclasificar
         Me.Raclasificación.Controls.Add(Me.cmbBodega)
         Me.Raclasificación.Controls.Add(Me.tblProductosExistencias)
         Me.Raclasificación.Controls.Add(Me.Label1)
-        Me.Raclasificación.Location = New System.Drawing.Point(30, 45)
+        Me.Raclasificación.Location = New System.Drawing.Point(31, 12)
         Me.Raclasificación.Name = "Raclasificación"
-        Me.Raclasificación.Size = New System.Drawing.Size(541, 437)
+        Me.Raclasificación.Size = New System.Drawing.Size(554, 437)
         Me.Raclasificación.TabIndex = 0
         Me.Raclasificación.TabStop = False
         '
@@ -209,7 +209,7 @@ Partial Class Reclasificar
         Me.GroupBox2.Controls.Add(Me.tblCambios)
         Me.GroupBox2.Location = New System.Drawing.Point(282, 205)
         Me.GroupBox2.Name = "GroupBox2"
-        Me.GroupBox2.Size = New System.Drawing.Size(253, 216)
+        Me.GroupBox2.Size = New System.Drawing.Size(265, 216)
         Me.GroupBox2.TabIndex = 15
         Me.GroupBox2.TabStop = False
         Me.GroupBox2.Text = "Cambios a realizar"
@@ -220,7 +220,7 @@ Partial Class Reclasificar
         Me.tblCambios.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.Producto, Me.Cambio, Me.Cantidad, Me.Eliminar})
         Me.tblCambios.Location = New System.Drawing.Point(6, 37)
         Me.tblCambios.Name = "tblCambios"
-        Me.tblCambios.Size = New System.Drawing.Size(238, 168)
+        Me.tblCambios.Size = New System.Drawing.Size(247, 168)
         Me.tblCambios.TabIndex = 13
         '
         'Producto
@@ -288,7 +288,7 @@ Partial Class Reclasificar
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(583, 494)
+        Me.ClientSize = New System.Drawing.Size(609, 456)
         Me.Controls.Add(Me.Raclasificación)
         Me.Name = "Reclasificar"
         Me.Text = "Reclasificar"

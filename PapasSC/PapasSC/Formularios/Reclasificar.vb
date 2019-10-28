@@ -26,7 +26,6 @@
                     sprKilosMas.Value = 0
                     sprKilosMenos.Value = 0
                     lblCantidad.Text = "Existencia"
-
                     mtd.llenar_TblBodega(tblProductosExistencias, cmbBodega.Text)
                     colorear_Filas(tblProductosExistencias)
                     mtd.cargar_prodcutos_Bodega(cmbBodega.Text, cmbProdcutos)
@@ -57,10 +56,12 @@
                 datos(cont) = item.Value
                 cont += 1
             Next
+
             lblCantidad.Text = "Kg " + datos(2)
             txtProducto.Text = datos(1)
             sprKilosMenos.Maximum = CDbl(datos(2))
             sprKilosMas.Maximum = CDbl(datos(2))
+            mtd.cargar_prodcutos_Bodega(cmbBodega.Text, cmbProdcutos)
         Catch ex As Exception
             MsgBox(ex.Message)
         End Try
@@ -90,8 +91,13 @@
     End Function
 
     Private Sub cmbProdcutos_SelectedIndexChanged(sender As Object, e As EventArgs) Handles cmbProdcutos.SelectedIndexChanged
-        If cmbBodega.Text.Equals(txtProducto) Then
+        If cmbProdcutos.Text.Equals(txtProducto.Text) Then
             MsgBox("No puedes escoger el mismo prodcuto")
+            If cmbProdcutos.FindString(cmbProdcutos.Text) <> 0 Then
+                cmbProdcutos.SelectedIndex = 0
+            Else
+                cmbProdcutos.SelectedIndex = 1
+            End If
         End If
     End Sub
 
@@ -145,6 +151,7 @@
                     Dim prodcuto2 As String = row.Cells("Cambio").Value
                     Dim cantidad As String = row.Cells("Cantidad").Value
                     'cantidad = cantidad.Replace(",", ".")
+                    bodega = cmbBodega.Text
                     mtd.insertar_reubicaciones(bodega, producto1, prodcuto2, cantidad)
                     cont = cont - 1
                 Else

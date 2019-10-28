@@ -121,7 +121,7 @@
                 If vn Then ' venta: si vn = true entonces inicio el form desde el boton de venta
                     Dim vt As New NuevaVenta
                     Me.AddOwnedForm(vt)
-                    vt.idEmpleado = listCajasExplicito(cmbEmpleados.FindString(cmbEmpleados.Text))
+                    vt.idEmpleado = listIdsEmpleados(cmbEmpleados.FindString(cmbEmpleados.Text))
                     Me.Visible = False
                     vt.ShowDialog()
                     Me.Visible = True
