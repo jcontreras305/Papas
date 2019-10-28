@@ -22,8 +22,8 @@ Partial Class Reubicacion
     'No lo modifique con el editor de código.
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
-        Dim DataGridViewCellStyle1 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle2 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle3 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle4 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Me.cmbproducto1 = New System.Windows.Forms.ComboBox()
         Me.Label2 = New System.Windows.Forms.Label()
         Me.sprKg1 = New System.Windows.Forms.NumericUpDown()
@@ -49,6 +49,8 @@ Partial Class Reubicacion
         Me.sprAmarillo = New System.Windows.Forms.NumericUpDown()
         Me.sprVerde = New System.Windows.Forms.NumericUpDown()
         Me.ValoresMinimos = New System.Windows.Forms.GroupBox()
+        Me.btnGuardar = New System.Windows.Forms.Button()
+        Me.btnSalir = New System.Windows.Forms.Button()
         CType(Me.sprKg1, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.sprKg2, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.GroupBox1.SuspendLayout()
@@ -97,7 +99,7 @@ Partial Class Reubicacion
         'cmbproducto2
         '
         Me.cmbproducto2.FormattingEnabled = True
-        Me.cmbproducto2.Location = New System.Drawing.Point(479, 24)
+        Me.cmbproducto2.Location = New System.Drawing.Point(486, 24)
         Me.cmbproducto2.Name = "cmbproducto2"
         Me.cmbproducto2.Size = New System.Drawing.Size(149, 21)
         Me.cmbproducto2.TabIndex = 1
@@ -115,7 +117,7 @@ Partial Class Reubicacion
         'Label8
         '
         Me.Label8.AutoSize = True
-        Me.Label8.Location = New System.Drawing.Point(408, 28)
+        Me.Label8.Location = New System.Drawing.Point(415, 28)
         Me.Label8.Name = "Label8"
         Me.Label8.Size = New System.Drawing.Size(50, 13)
         Me.Label8.TabIndex = 3
@@ -123,7 +125,7 @@ Partial Class Reubicacion
         '
         'sprKg2
         '
-        Me.sprKg2.Location = New System.Drawing.Point(480, 66)
+        Me.sprKg2.Location = New System.Drawing.Point(487, 66)
         Me.sprKg2.Maximum = New Decimal(New Integer() {10000, 0, 0, 0})
         Me.sprKg2.Name = "sprKg2"
         Me.sprKg2.Size = New System.Drawing.Size(148, 20)
@@ -132,7 +134,7 @@ Partial Class Reubicacion
         'Label9
         '
         Me.Label9.AutoSize = True
-        Me.Label9.Location = New System.Drawing.Point(398, 68)
+        Me.Label9.Location = New System.Drawing.Point(405, 68)
         Me.Label9.Name = "Label9"
         Me.Label9.Size = New System.Drawing.Size(58, 13)
         Me.Label9.TabIndex = 5
@@ -140,7 +142,9 @@ Partial Class Reubicacion
         '
         'btnTraspasoIzq
         '
-        Me.btnTraspasoIzq.Location = New System.Drawing.Point(287, 16)
+        Me.btnTraspasoIzq.Font = New System.Drawing.Font("Microsoft Sans Serif", 14.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.btnTraspasoIzq.ForeColor = System.Drawing.Color.FromArgb(CType(CType(72, Byte), Integer), CType(CType(201, Byte), Integer), CType(CType(176, Byte), Integer))
+        Me.btnTraspasoIzq.Location = New System.Drawing.Point(291, 61)
         Me.btnTraspasoIzq.Name = "btnTraspasoIzq"
         Me.btnTraspasoIzq.Size = New System.Drawing.Size(75, 37)
         Me.btnTraspasoIzq.TabIndex = 6
@@ -149,7 +153,9 @@ Partial Class Reubicacion
         '
         'btnTraspasoDer
         '
-        Me.btnTraspasoDer.Location = New System.Drawing.Point(287, 59)
+        Me.btnTraspasoDer.Font = New System.Drawing.Font("Microsoft Sans Serif", 14.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.btnTraspasoDer.ForeColor = System.Drawing.Color.FromArgb(CType(CType(72, Byte), Integer), CType(CType(201, Byte), Integer), CType(CType(176, Byte), Integer))
+        Me.btnTraspasoDer.Location = New System.Drawing.Point(291, 14)
         Me.btnTraspasoDer.Name = "btnTraspasoDer"
         Me.btnTraspasoDer.Size = New System.Drawing.Size(75, 41)
         Me.btnTraspasoDer.TabIndex = 13
@@ -172,7 +178,7 @@ Partial Class Reubicacion
         Me.GroupBox1.Controls.Add(Me.sprKg1)
         Me.GroupBox1.Location = New System.Drawing.Point(37, 259)
         Me.GroupBox1.Name = "GroupBox1"
-        Me.GroupBox1.Size = New System.Drawing.Size(653, 153)
+        Me.GroupBox1.Size = New System.Drawing.Size(669, 153)
         Me.GroupBox1.TabIndex = 14
         Me.GroupBox1.TabStop = False
         Me.GroupBox1.Text = "Cambios"
@@ -190,7 +196,7 @@ Partial Class Reubicacion
         '
         Me.txtDescripcion.Location = New System.Drawing.Point(89, 108)
         Me.txtDescripcion.Name = "txtDescripcion"
-        Me.txtDescripcion.Size = New System.Drawing.Size(539, 20)
+        Me.txtDescripcion.Size = New System.Drawing.Size(559, 20)
         Me.txtDescripcion.TabIndex = 14
         '
         'tblExisitenciaBodega1
@@ -198,15 +204,15 @@ Partial Class Reubicacion
         Me.tblExisitenciaBodega1.AllowUserToAddRows = False
         Me.tblExisitenciaBodega1.AllowUserToDeleteRows = False
         Me.tblExisitenciaBodega1.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill
-        DataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
-        DataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Window
-        DataGridViewCellStyle1.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        DataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.ControlText
-        DataGridViewCellStyle1.NullValue = "ND"
-        DataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight
-        DataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText
-        DataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.[False]
-        Me.tblExisitenciaBodega1.DefaultCellStyle = DataGridViewCellStyle1
+        DataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
+        DataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Window
+        DataGridViewCellStyle3.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        DataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.ControlText
+        DataGridViewCellStyle3.NullValue = "ND"
+        DataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight
+        DataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText
+        DataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.[False]
+        Me.tblExisitenciaBodega1.DefaultCellStyle = DataGridViewCellStyle3
         Me.tblExisitenciaBodega1.Location = New System.Drawing.Point(23, 99)
         Me.tblExisitenciaBodega1.Name = "tblExisitenciaBodega1"
         Me.tblExisitenciaBodega1.ReadOnly = True
@@ -235,15 +241,15 @@ Partial Class Reubicacion
         Me.tblExistenciaBodega2.AllowUserToAddRows = False
         Me.tblExistenciaBodega2.AllowUserToDeleteRows = False
         Me.tblExistenciaBodega2.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill
-        DataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.TopCenter
-        DataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window
-        DataGridViewCellStyle2.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        DataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.ControlText
-        DataGridViewCellStyle2.NullValue = "ND"
-        DataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight
-        DataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText
-        DataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.[False]
-        Me.tblExistenciaBodega2.DefaultCellStyle = DataGridViewCellStyle2
+        DataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.TopCenter
+        DataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.Window
+        DataGridViewCellStyle4.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        DataGridViewCellStyle4.ForeColor = System.Drawing.SystemColors.ControlText
+        DataGridViewCellStyle4.NullValue = "ND"
+        DataGridViewCellStyle4.SelectionBackColor = System.Drawing.SystemColors.Highlight
+        DataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.HighlightText
+        DataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.[False]
+        Me.tblExistenciaBodega2.DefaultCellStyle = DataGridViewCellStyle4
         Me.tblExistenciaBodega2.Location = New System.Drawing.Point(379, 99)
         Me.tblExistenciaBodega2.Name = "tblExistenciaBodega2"
         Me.tblExistenciaBodega2.ReadOnly = True
@@ -320,12 +326,38 @@ Partial Class Reubicacion
         Me.ValoresMinimos.TabStop = False
         Me.ValoresMinimos.Text = "Valores minimos"
         '
+        'btnGuardar
+        '
+        Me.btnGuardar.Image = Global.PapasSC.My.Resources.Resources.GUARDAR
+        Me.btnGuardar.ImageAlign = System.Drawing.ContentAlignment.BottomLeft
+        Me.btnGuardar.Location = New System.Drawing.Point(615, 418)
+        Me.btnGuardar.Name = "btnGuardar"
+        Me.btnGuardar.Size = New System.Drawing.Size(91, 37)
+        Me.btnGuardar.TabIndex = 30
+        Me.btnGuardar.Text = "Guardar"
+        Me.btnGuardar.TextAlign = System.Drawing.ContentAlignment.MiddleRight
+        Me.btnGuardar.UseVisualStyleBackColor = True
+        '
+        'btnSalir
+        '
+        Me.btnSalir.Image = Global.PapasSC.My.Resources.Resources.CANCELAR
+        Me.btnSalir.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
+        Me.btnSalir.Location = New System.Drawing.Point(523, 418)
+        Me.btnSalir.Name = "btnSalir"
+        Me.btnSalir.Size = New System.Drawing.Size(81, 37)
+        Me.btnSalir.TabIndex = 31
+        Me.btnSalir.Text = "Salir"
+        Me.btnSalir.TextAlign = System.Drawing.ContentAlignment.MiddleRight
+        Me.btnSalir.UseVisualStyleBackColor = True
+        '
         'Reubicacion
         '
         Me.AcceptButton = Me.btnTraspasoIzq
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(727, 445)
+        Me.ClientSize = New System.Drawing.Size(727, 467)
+        Me.Controls.Add(Me.btnSalir)
+        Me.Controls.Add(Me.btnGuardar)
         Me.Controls.Add(Me.ValoresMinimos)
         Me.Controls.Add(Me.lblNombreUsuario)
         Me.Controls.Add(Me.Label1)
@@ -376,4 +408,6 @@ Partial Class Reubicacion
     Friend WithEvents sprAmarillo As NumericUpDown
     Friend WithEvents sprVerde As NumericUpDown
     Friend WithEvents ValoresMinimos As GroupBox
+    Friend WithEvents btnGuardar As Button
+    Friend WithEvents btnSalir As Button
 End Class
