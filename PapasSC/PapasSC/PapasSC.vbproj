@@ -502,6 +502,12 @@
     <Compile Include="Formularios\pantallaCargador.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="Reportes\ReporteDeReubicaciones.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ReporteDeReubicaciones.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="Reportes\ReporteVenta.vb">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -513,6 +519,12 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Ticket.rpt</DependentUpon>
       <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Reportes\verReporteReubicacion.Designer.vb">
+      <DependentUpon>verReporteReubicacion.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Reportes\verReporteReubicacion.vb">
+      <SubType>Form</SubType>
     </Compile>
     <Compile Include="Reportes\VerTicket.Designer.vb">
       <DependentUpon>VerTicket.vb</DependentUpon>
@@ -699,6 +711,10 @@
     <EmbeddedResource Include="Formularios\pantallaCargador.resx">
       <DependentUpon>pantallaCargador.vb</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Reportes\ReporteDeReubicaciones.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>ReporteDeReubicaciones.vb</LastGenOutput>
+    </EmbeddedResource>
     <EmbeddedResource Include="Reportes\ReporteVenta.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
       <LastGenOutput>ReporteVenta.vb</LastGenOutput>
@@ -706,6 +722,9 @@
     <EmbeddedResource Include="Reportes\Ticket.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
       <LastGenOutput>Ticket1.vb</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reportes\verReporteReubicacion.resx">
+      <DependentUpon>verReporteReubicacion.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Reportes\VerTicket.resx">
       <DependentUpon>VerTicket.vb</DependentUpon>

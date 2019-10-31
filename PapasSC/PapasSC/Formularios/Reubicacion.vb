@@ -2,16 +2,18 @@
     Dim mdt As New MetodosReubicacion
     Dim nombreBodega1, nombreBodega2, producto1, producto2 As String
     Dim datosRow1(3), datosRow2(3) As String
+    Dim w As Integer = 740
+    Dim h As Integer = 500
     Public usuario As String
     Dim cantidad1, cantidad2 As Double
     Dim verde, amarillo As Integer
+    Dim flagsalir As Boolean = False
+
     Dim tablaReubicaciones As New DataTable
 
     Private Sub Transpasos_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-        'mdt.llenarComboBodega(cmbBodega1)
-        'mdt.llenarComboBodega(cmbBodega2)
+
         tablaReubicaciones.Columns.Add("Producto")
-        tablaReubicaciones.Columns.Add("Descripcion")
         tablaReubicaciones.Columns.Add("Bodega1")
         tablaReubicaciones.Columns.Add("Bodega2")
         tablaReubicaciones.Columns.Add("Usuario")
@@ -28,7 +30,7 @@
 
         llenarTabla(tblExisitenciaBodega1, nombreBodega1)
         llenarTabla(tblExistenciaBodega2, nombreBodega2)
-        actualizarTablas()
+
         sprKg1.Increment = 0.5
         sprKg1.DecimalPlaces = 2
         sprKg1.ThousandsSeparator = False
@@ -39,6 +41,8 @@
 
         verde = 100
         amarillo = 50
+
+        Me.Size = New Drawing.Size(w, h)
 
     End Sub
 
@@ -185,6 +189,8 @@
         End Try
     End Sub
 
+
+
     Private Sub cmbproducto1_SelectedIndexChanged(sender As Object, e As EventArgs) Handles cmbproducto1.SelectedIndexChanged
         Try
             Dim nombreProducto As String = cmbproducto1.Text
@@ -195,6 +201,7 @@
                     Exit For
                 End If
             Next
+
             sprKg1.Maximum = cantidad
             sprKg1.Value = cantidad
             cantidad1 = cantidad
@@ -222,6 +229,124 @@
         End Try
     End Sub
 
+    Private Sub chbVerCambios_CheckedChanged(sender As Object, e As EventArgs) Handles chbVerCambios.CheckedChanged
+        If chbVerCambios.Checked = True Then
+            unirDatatableYDatagrid()
+            agrandarFrom()
+        Else
+            tamanioNormal()
+        End If
+    End Sub
+
+    Private Function unirDatatableYDatagrid() As Boolean
+        Try
+            tblListaCambios.Rows.Clear()
+            For Each row As DataRow In tablaReubicaciones.Rows
+                tblListaCambios.Rows.Add(row.Item(0).ToString, row.Item(1).ToString, row.Item(2).ToString, row.Item(4).ToString)
+            Next
+        Catch ex As Exception
+
+        End Try
+        Return Nothing
+    End Function
+
+    Private Sub btnQuitar_Click(sender As Object, e As EventArgs) Handles btnQuitar.Click
+        Try
+            For Each row As DataGridViewRow In tblListaCambios.Rows
+                Dim index As Int32 = row.Index
+                If Convert.ToBoolean(row.Cells("Eliminar").Value) = True Then
+                    Dim cantidad As Double = Convert.ToDouble(row.Cells("Kilogramos").Value)
+                    Dim bodega1 As String = row.Cells("Envia").Value
+                    Dim bodega2 As String = row.Cells("Recibe").Value
+                    Dim producto As String = row.Cells("Producto").Value
+                    If bodega1.Equals(cmbConsultaBodega1.Text) Then
+                        If regresarValores(cantidad, tblExisitenciaBodega1, tblExistenciaBodega2, producto) Then
+                            tblListaCambios.Rows.Remove(row)
+                            tablaReubicaciones.Rows.RemoveAt(index)
+                        End If
+                    Else
+                        If regresarValores(cantidad, tblExistenciaBodega2, tblExisitenciaBodega1, producto) Then
+                            tblListaCambios.Rows.Remove(row)
+                            tablaReubicaciones.Rows.RemoveAt(index)
+                        End If
+                    End If
+                End If
+            Next
+        Catch ex As Exception
+
+        End Try
+    End Sub
+
+    Private Function regresarValores(ByVal cantidad As Double, ByVal bodega1 As DataGridView, ByVal bodega2 As DataGridView, ByVal producto As String) As Boolean
+        Try
+            Dim cont As Int16 = 0
+            Dim flag As Boolean = False
+            For Each row As DataGridViewRow In bodega1.Rows
+                If row.Cells("version").Value.Equals(producto) Then
+                    bodega1.Rows(cont).Cells("cantidad").Value = CStr(CDbl(bodega1.Rows(cont).Cells("cantidad").Value) + cantidad)
+                    flag = True
+                    Exit For
+                Else
+                    cont += 1
+                End If
+            Next
+            If flag Then
+                cont = 0
+                For Each row As DataGridViewRow In bodega2.Rows
+                    If row.Cells("version").Value.Equals(producto) Then
+                        bodega2.Rows(cont).Cells("cantidad").Value = CStr(CDbl(bodega2.Rows(cont).Cells("cantidad").Value) - cantidad)
+                        flag = True
+                        Exit For
+                    Else
+                        cont += 1
+                    End If
+                Next
+            End If
+        Catch ex As Exception
+            Return False
+        End Try
+        Return True
+    End Function
+
+    Private Sub btnLimpiar_Click(sender As Object, e As EventArgs) Handles btnLimpiar.Click
+        Try
+            If MessageBox.Show("Se borraran todos los cambios hechos." + vbCrLf + "¿Desea continuar?", "Adventencia", MessageBoxButtons.OKCancel, MessageBoxIcon.Warning) = DialogResult.OK Then
+                For Each row As DataGridViewRow In tblListaCambios.Rows
+                    Dim index As Int32 = row.Index
+                    Dim cantidad As Double = Convert.ToDouble(row.Cells("Kilogramos").Value)
+                    Dim bodega1 As String = row.Cells("Envia").Value
+                    Dim bodega2 As String = row.Cells("Recibe").Value
+                    Dim producto As String = row.Cells("Producto").Value
+                    If bodega1.Equals(cmbConsultaBodega1.Text) Then
+                        If regresarValores(cantidad, tblExisitenciaBodega1, tblExistenciaBodega2, producto) Then
+
+                        End If
+                    Else
+                        If regresarValores(cantidad, tblExistenciaBodega2, tblExisitenciaBodega1, producto) Then
+
+                        End If
+                    End If
+                Next
+                tblListaCambios.Rows.Clear()
+                tablaReubicaciones.Rows.Clear()
+            End If
+        Catch ex As Exception
+
+        End Try
+    End Sub
+
+    Private Function agrandarFrom() As Boolean
+        Me.Size = New Drawing.Size(w, h + 164)
+        Return True
+    End Function
+
+
+
+    Private Function tamanioNormal() As Boolean
+        Me.Size = New Drawing.Size(w, h)
+        Return True
+    End Function
+
     Private Sub btnTraspasoDer_Click(sender As Object, e As EventArgs) Handles btnTraspasoDer.Click
         Try
             If CDbl(sprKg1.Value) > cantidad1 Then
@@ -229,16 +354,26 @@
             ElseIf cmbConsultaBodega1.Text.Equals(cmbConsultaBodega2.Text) Then
                 MsgBox("No puede hacer la un movimiento de este tipo a la misma Bodega")
             Else
-                'If MessageBox.Show("¿Desea enviar " + CStr(sprKg1.Value) + " Kg de la bodega " + nombreBodega1 + " a la bodega " + nombreBodega2 + "? ", "Advertencia", MessageBoxButtons.OKCancel, MessageBoxIcon.Question) = 1 Then
-                If validarCampos(1, datosRow1(1)) Then
-
+                If cmbConsultaBodega1.Enabled = True Or cmbConsultaBodega2.Enabled = True Then
+                    cmbConsultaBodega1.Enabled = False
+                    cmbConsultaBodega2.Enabled = False
+                End If
+                If validarCampos(1, sprKg1.Maximum) Then
                     Dim cont As Int16 = 0
                     Dim flag1 As Boolean = True
                     For Each row As DataGridViewRow In tblExistenciaBodega2.Rows
                         If row.Cells(0).Value.Equals(cmbproducto1.Text) Then
                             tblExistenciaBodega2.Rows(cont).Cells(1).Value = CStr(CDbl(row.Cells(1).Value) + CDbl(sprKg1.Value))
-                            tblExisitenciaBodega1.Rows(cont).Cells(1).Value = CStr(CDbl(row.Cells(1).Value) - CDbl(sprKg1.Value))
-                            flag1 = False ' si no entra entonces no existe el producto en la otra bodega. 
+                            cont = 0
+                            For Each row1 As DataGridViewRow In tblExisitenciaBodega1.Rows
+                                If row1.Cells(0).Value.Equals(cmbproducto1.Text) Then
+                                    tblExisitenciaBodega1.Rows(cont).Cells(1).Value = CStr(CDbl(row1.Cells(1).Value) - CDbl(sprKg1.Value))
+                                    flag1 = False ' si no entra entonces no existe el producto en la otra bodega. 
+                                    Exit For
+                                Else
+                                    cont += 1
+                                End If
+                            Next
                             Exit For
                         Else
                             cont += 1
@@ -250,30 +385,19 @@
                     Else ' si entro solo se agrega a la tabla de cambios
                         Dim renglon As DataRow = tablaReubicaciones.NewRow()
                         renglon("Producto") = cmbproducto1.Text
-                        renglon("Descripcion") = txtDescripcion.Text
+                        'renglon("Descripcion") = txtDescripcion.Text
                         renglon("Bodega1") = cmbConsultaBodega1.Text
                         renglon("Bodega2") = cmbConsultaBodega2.Text
                         renglon("Usuario") = usuario
                         renglon("Cantidad") = CStr(sprKg1.Value)
+                        tablaReubicaciones.Rows.Add(renglon)
                     End If
-
-                    'Dim datos(5) As String
-                    'datos(0) = cmbproducto1.Text
-                    'datos(1) = txtDescripcion.Text
-                    'datos(2) = cmbConsultaBodega1.Text
-                    'datos(3) = cmbConsultaBodega2.Text
-                    'datos(4) = usuario
-                    'datos(5) = CStr(sprKg1.Value)
-                    'mdt.insertar_reubicacion(datos)
                 End If
-                    'End If
-                End If
+            End If
         Catch ex As Exception
             MsgBox(ex.Message)
         End Try
-        'actualizarTablas()
-        'sprKg2.Value = 0
-        'sprKg1.Value = 0
+        unirDatatableYDatagrid()
     End Sub
 
     Private Sub btnTraspasoIzq_Click(sender As Object, e As EventArgs) Handles btnTraspasoIzq.Click
@@ -284,48 +408,49 @@
                 MsgBox("No puede hacer la un movimiento de este tipo a la misma Bodega")
             Else
                 'If MessageBox.Show("¿Desea enviar " + CStr(sprKg2.Value) + " Kg de la bodega " + nombreBodega2 + " a la bodega " + nombreBodega1 + "? ", "Advertencia", MessageBoxButtons.OKCancel, MessageBoxIcon.Question) = 1 Then
-                If validarCampos(2, datosRow2(1)) Then
+                If cmbConsultaBodega1.Enabled = True Or cmbConsultaBodega2.Enabled = True Then
+                    cmbConsultaBodega1.Enabled = False
+                    cmbConsultaBodega2.Enabled = False
+                End If
+                If validarCampos(2, sprKg2.Maximum) Then
                     Dim cont As Int16 = 0
                     Dim flag2 As Boolean = True
                     For Each row As DataGridViewRow In tblExisitenciaBodega1.Rows
                         If row.Cells(0).Value.Equals(cmbproducto2.Text) Then
                             tblExisitenciaBodega1.Rows(cont).Cells(1).Value = CStr(CDbl(row.Cells(1).Value) + CDbl(sprKg2.Value))
-                            tblExistenciaBodega2.Rows(cont).Cells(1).Value = CStr(CDbl(row.Cells(1).Value) - CDbl(sprKg2.Value))
-                            flag2 = False ' si no entra entonces no existe el producto en la otra bodega. 
+                            cont = 0
+                            For Each row1 As DataGridViewRow In tblExistenciaBodega2.Rows
+                                If row1.Cells(0).Value.Equals(cmbproducto2.Text) Then
+                                    tblExistenciaBodega2.Rows(cont).Cells(1).Value = CStr(CDbl(row1.Cells(1).Value) - CDbl(sprKg2.Value))
+                                    flag2 = False ' si no entra entonces no existe el producto en la otra bodega. 
+                                    Exit For
+                                Else
+                                    cont += 1
+                                End If
+                            Next
                             Exit For
                         Else
                             cont += 1
                         End If
                     Next
-
                     If flag2 Then ' NO se encontro el producto la en la tabla 1
                         MsgBox("No existe el producto en la Bodega " + cmbConsultaBodega1.Text + ", debe ser agregado entes.")
                     Else ' si entro solo se agrega a la tabla de cambios
                         Dim renglon As DataRow = tablaReubicaciones.NewRow()
                         renglon("Producto") = cmbproducto2.Text
-                        renglon("Descripcion") = txtDescripcion.Text
+                        'renglon("Descripcion") = txtDescripcion.Text
                         renglon("Bodega1") = cmbConsultaBodega2.Text
                         renglon("Bodega2") = cmbConsultaBodega1.Text
                         renglon("Usuario") = usuario
                         renglon("Cantidad") = CStr(sprKg2.Value)
+                        tablaReubicaciones.Rows.Add(renglon)
                     End If
-
-                    'datos(0) = cmbproducto2.Text
-                    'datos(1) = txtDescripcion.Text
-                    'datos(2) = cmbConsultaBodega2.Text
-                    'datos(3) = cmbConsultaBodega1.Text
-                    'datos(4) = usuario
-                    'datos(5) = CStr(sprKg2.Value)
-                    'mdt.insertar_reubicacion(datos)
                 End If
-                'End If
             End If
         Catch ex As Exception
             MsgBox(ex.Message)
         End Try
-        actualizarTablas()
-        'sprKg1.Value = 0
-        'sprKg2.Value = 0
+        unirDatatableYDatagrid()
     End Sub
 
     Private Function validarCampos(lado As Int16, maximo As Integer) As Boolean
@@ -340,11 +465,6 @@
                     flag = False
                 End If
             End If
-
-            If txtDescripcion.Text = String.Empty Then
-                flag = False
-                MsgBox("Por favor describa la razón de hacer la reubicación")
-            End If
             Return flag
         Catch ex As Exception
             Return False
@@ -352,20 +472,31 @@
         End Try
     End Function
 
-    Private Function actualizarTablas() As Boolean
+    Private Sub btnGuardar_Click(sender As Object, e As EventArgs) Handles btnGuardar.Click
+        Try
+            If txtDescripcion.Text = String.Empty Then
+                MsgBox("Por favor describa la razón de hacer la reubicación")
+            Else
+                Dim idReubicacion As String = mdt.insertar_reubicacion(tablaReubicaciones, txtDescripcion.Text)
+                If Not idReubicacion.Equals(Nothing) Then
+                    Dim reportReubicacion As New verReporteReubicacion
+                    reportReubicacion.idReubicacion = idReubicacion
+                    reportReubicacion.ShowDialog()
+                    flagsalir = True
+                End If
+            End If
+        Catch ex As Exception
 
+        End Try
+    End Sub
 
+    Private Sub btnSalir_Click(sender As Object, e As EventArgs) Handles btnSalir.Click
+        If flagsalir = False Then
+            If MessageBox.Show("Si desea continuar, se perderan los cambios realizados.", "Advertencia", MessageBoxButtons.OKCancel, MessageBoxIcon.Warning) = DialogResult.OK Then
+                Me.Close()
+            End If
+        Else
 
-
-        'llenarTabla(tblExisitenciaBodega1, nombreBodega1)
-        'Dim cont As Int16 = tblExisitenciaBodega1.Rows.Count
-        'Dim row As DataGridViewRow = tblExisitenciaBodega1.Rows(cont - 1)
-        'tblExisitenciaBodega1.Rows.Remove(row)
-        'llenarTabla(tblExistenciaBodega2, nombreBodega2)
-        'cont = tblExistenciaBodega2.Rows.Count
-        'row = tblExistenciaBodega2.Rows(cont - 1)
-        'tblExistenciaBodega2.Rows.Remove(row)
-        Return True
-    End Function
-
+        End If
+    End Sub
 End Class
