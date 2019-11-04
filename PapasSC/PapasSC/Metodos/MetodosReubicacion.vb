@@ -71,27 +71,66 @@ Public Class MetodosReubicacion
         desconectar()
     End Sub
 
-    Public Sub insertar_reubicacion(ByVal datosReubicacion() As String)
+    Public Function insertar_reubicacion(ByVal datosReubicacion As DataTable, ByVal descripcion As String) As String
         Try
             conectar()
-            Dim cmd As New SqlCommand("sp_insertar_reubicacion")
-            cmd.CommandType = CommandType.StoredProcedure
-            cmd.Parameters.Add("@producto", SqlDbType.VarChar, 100).Value = datosReubicacion(0)
-            cmd.Parameters.Add("@descripcion", SqlDbType.VarChar, 200).Value = datosReubicacion(1)
-            cmd.Parameters.Add("@bodega1", SqlDbType.VarChar, 50).Value = datosReubicacion(2)
-            cmd.Parameters.Add("@bodega2", SqlDbType.VarChar, 50).Value = datosReubicacion(3)
-            cmd.Parameters.Add("@nombreUsuario", SqlDbType.VarChar, 20).Value = datosReubicacion(4)
-            'Dim kilos As String = Replace(datosReubicacion(5), ",", ".")
-            cmd.Parameters.Add("@cantidad", SqlDbType.Float).Value = datosReubicacion(5)
-            cmd.Parameters.Add("@msg", SqlDbType.VarChar, 100).Direction = ParameterDirection.Output
-            cmd.Connection = conn
-            If cmd.ExecuteNonQuery Then
-                Dim resultado As String = cmd.Parameters("@msg").Value
-                MsgBox(resultado)
+            Dim tran As SqlTransaction = conn.BeginTransaction("Transaction1")
+            Dim cmd1 As New SqlCommand("sp_insertar_reubicar", conn)
+            cmd1.Transaction = tran
+            cmd1.CommandType = CommandType.StoredProcedure
+            Dim flag As Boolean = False
+            Dim bodega1 As String = datosReubicacion.Rows(0).Item(1).ToString
+            Dim bodega2 As String = datosReubicacion.Rows(0).Item(2).ToString
+            Dim usuario As String = datosReubicacion.Rows(0).Item(3).ToString
+            cmd1.Parameters.Add("@descripcion", SqlDbType.VarChar, 200).Value = descripcion
+            cmd1.Parameters.Add("@bodega1", SqlDbType.VarChar, 50).Value = bodega1
+            cmd1.Parameters.Add("@bodega2", SqlDbType.VarChar, 50).Value = bodega2
+            cmd1.Parameters.Add("@nombreUsuario", SqlDbType.VarChar, 20).Value = usuario
+            Dim fechaInc As String = DateTime.Now.ToString("yyyy/MM/dd hh:mm:ss")
+            cmd1.Parameters.Add("@fecha", SqlDbType.SmallDateTime).Value = fechaInc
+            cmd1.Parameters.Add("@idReubicacion", SqlDbType.VarChar, 36).Direction = ParameterDirection.Output
+            cmd1.Parameters.Add("@msg", SqlDbType.VarChar, 300).Direction = ParameterDirection.Output
+            cmd1.ExecuteNonQuery()
+            Dim idreubicaion As String = cmd1.Parameters("@idReubicacion").Value
+            Dim msg1 As String = cmd1.Parameters("@msg").Value
+            If idreubicaion <> String.Empty And Not msg1.Equals("false") Then
+
+                For Each row As DataRow In datosReubicacion.Rows
+                    Dim cmd2 As New SqlCommand("sp_insert_detalleReubicacion", conn)
+                    cmd2.Transaction = tran
+                    cmd2.CommandType = CommandType.StoredProcedure
+                    cmd2.Parameters.Add("@idReubicacion", SqlDbType.VarChar, 36).Value = idreubicaion
+                    cmd2.Parameters.Add("@producto", SqlDbType.VarChar, 100).Value = row.Item(0).ToString
+                    cmd2.Parameters.Add("@cantidad", SqlDbType.Float).Value = row.Item(4).ToString
+                    cmd2.Parameters.Add("@bodega1", SqlDbType.VarChar, 50).Value = bodega1
+                    cmd2.Parameters.Add("@bodega2", SqlDbType.VarChar, 50).Value = bodega2
+                    cmd2.Parameters.Add("@msg", SqlDbType.VarChar, 50).Direction = ParameterDirection.Output
+                    cmd2.ExecuteNonQuery()
+                    Dim msg As String = cmd2.Parameters("@msg").Value
+                    If Not msg.Equals("true") Then
+                        flag = True
+                        Exit For
+                    End If
+                Next
+                If Not flag Then
+                    tran.Commit()
+                    MsgBox("Los cambios se realizarion correctamente")
+                    Return idreubicaion
+                Else
+                    tran.Rollback()
+                    MsgBox("Ocurrio un problema ")
+                    Return Nothing
+                End If
+            Else
+                tran.Rollback()
+                MsgBox("Ocurrio un problema ")
+                Return Nothing
             End If
-            desconectar()
         Catch ex As Exception
-            MsgBox(ex.Message + "2")
+            MsgBox("Ocurrio un problema " = ex.Message)
+            Return Nothing
+            'MsgBox("Ocurrio un problema ")
         End Try
-    End Sub
+        desconectar()
+    End Function
 End Class

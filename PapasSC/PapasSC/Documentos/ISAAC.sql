@@ -567,3 +567,106 @@ left join tipoCliente as tcl on cl.idTipoCliente = tcl.idTipoCliente
 left join credito as ct on ct.idCliente = cl.idCliente
 where cj.idCaja = '' and vt.estatus = 'P'
 
+--===================================================================================================
+--========================== Cambios en la interfaz de REUBICACIONES ================================
+--===================================================================================================
+--FUE NECESARIO HACER EL CAMBIO DE LA COLUMNA FEHCA DE TIPO DATE A SMALLDATETIME POR PRACTICIDAD
+alter table reubicacion
+alter column fecha smalldatetime
+
+-- AHORA SON DOS PROCEDIMIENTOS 
+--===================================================================================================
+--===================== PROC PARA INSERTAR UNA REUBICACION ==========================================
+--===================================================================================================
+
+create proc sp_insertar_reubicar
+@descripcion varchar(200),
+@bodega1 varchar(50),
+@bodega2 varchar(50),
+@nombreUsuario varchar(20),
+@fecha smalldatetime ,
+@idReubicacion  as varchar (36) output, 
+@msg as varchar (300) output
+as 
+declare @error int
+declare @idBodega1 varchar(36)
+declare @idBodega2 varchar(36)
+declare @idUsuario varchar(36)
+begin 
+	set @msg = 'true'
+	begin try
+		select @idBodega1 = idBodega  from bodega where nombre = @bodega1
+		select @idBodega2 = idBodega  from bodega where nombre = @bodega2
+		select @idUsuario = idUsuario from usuarios where nombreUsuario = @nombreUsuario
+		set @idReubicacion = NEWID()
+		-- realizo el registro de la reubicaion 
+		insert into reubicacion values (@idReubicacion, @fecha,@descripcion,@idBodega1,@idBodega2,@idUsuario)
+	end try 
+	begin catch 
+		set @msg = 'flase'
+	end catch 
+end
+--===================================================================================================
+--===================== PROC PARA INSERTAR LOS DETALLE DE REUBICACION  ==============================
+--===================================================================================================
+create proc sp_insert_detalleReubicacion
+	@idReubicacion varchar(36),
+	@producto varchar(100),
+	@cantidad float,
+	@bodega1 varchar(50),
+	@bodega2 varchar(50),
+	@msg varchar(50) output
+as
+declare @idProducto varchar(36)
+declare @idBodega1 varchar(36)
+declare @idBodega2 varchar(36)
+declare @diferencia float
+declare @error int
+begin 
+	begin try
+			set @msg = 'true'
+			--obtengo los datos
+			select @idProducto = idProducto from producto where version = @producto 
+			select @idBodega1 = idBodega from bodega where nombre = @bodega1
+			select @idBodega2 = idBodega from bodega where nombre = @bodega2
+			--insercion del detalle de la reubicacion
+			insert into detalleReubicacion values (NEWID(), @idProducto , @idReubicacion , @cantidad)
+			--actualizar los datos de la bodega 1 
+			select @diferencia = cantidad - @cantidad from existenciaProductos where idBodega = @idBodega1 and idProducto = @idProducto
+			update existenciaProductos set cantidad = @diferencia where idBodega = @idBodega1 and idProducto = @idProducto 
+			--actualizar los datos de la bodega 2
+			select @diferencia = cantidad + @cantidad from existenciaProductos where idBodega = @idBodega2 and idProducto = @idProducto
+			update existenciaProductos set cantidad = @diferencia  where idBodega = @idBodega2 and idProducto = @idProducto
+		end try
+		begin catch
+			set @msg = 'false'
+		end catch
+end
+
+--===================================================================================================
+--========================= PROCEDIMIENTOS PARA REPORTE DE REUBICACIONES ============================
+--===================================================================================================
+
+create proc sp_report_Reubicacio_GRu
+@idReubicacion as varchar(36)
+as
+begin
+select fecha , descripcion , (select top 1 nombre from empleado where usr.idUsuario = ru.idUsuario) as Empleado from 
+	reubicacion as ru  left join usuarios as usr on ru.idUsuario = usr.idUsuario
+	left join empleado as emp on usr.idEmpleado = emp.idEmpleado
+	where ru.idReubicacion = @idReubicacion
+end
+
+create proc sp_report_Reubicacion_DRu
+@idReubicacion	varchar (36)
+as
+begin
+	select pdr.version as Producto ,pdr.clave as 'Clave del Producto' , bdg1.nombre as Envia , bdg2.nombre as Recibe , dru.cantidad as Kilogramos  from 
+	reubicacion as ru inner join detalleReubicacion as dru on ru.idReubicacion = dru.idReubicacion
+	left join usuarios as usr on ru.idUsuario = usr.idUsuario
+	left join producto as pdr on dru.idProducto = pdr.idProducto 
+	left join bodega as bdg1 on ru.idBodegaOrigen = bdg1.idBodega 
+	left join bodega as bdg2 on ru.idBodegaDestino = bdg2.idBodega
+	where ru.idReubicacion = @idReubicacion	
+end
+

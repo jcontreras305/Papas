@@ -51,6 +51,16 @@ Partial Class Reubicacion
         Me.ValoresMinimos = New System.Windows.Forms.GroupBox()
         Me.btnGuardar = New System.Windows.Forms.Button()
         Me.btnSalir = New System.Windows.Forms.Button()
+        Me.chbVerCambios = New System.Windows.Forms.CheckBox()
+        Me.tblListaCambios = New System.Windows.Forms.DataGridView()
+        Me.Producto = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.Envia = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.Recibe = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.Kilogramos = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.Eliminar = New System.Windows.Forms.DataGridViewCheckBoxColumn()
+        Me.btnLimpiar = New System.Windows.Forms.Button()
+        Me.btnQuitar = New System.Windows.Forms.Button()
+        Me.GroupBox2 = New System.Windows.Forms.GroupBox()
         CType(Me.sprKg1, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.sprKg2, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.GroupBox1.SuspendLayout()
@@ -59,6 +69,8 @@ Partial Class Reubicacion
         CType(Me.sprAmarillo, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.sprVerde, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.ValoresMinimos.SuspendLayout()
+        CType(Me.tblListaCambios, System.ComponentModel.ISupportInitialize).BeginInit()
+        Me.GroupBox2.SuspendLayout()
         Me.SuspendLayout()
         '
         'cmbproducto1
@@ -176,9 +188,9 @@ Partial Class Reubicacion
         Me.GroupBox1.Controls.Add(Me.Label2)
         Me.GroupBox1.Controls.Add(Me.Label3)
         Me.GroupBox1.Controls.Add(Me.sprKg1)
-        Me.GroupBox1.Location = New System.Drawing.Point(37, 259)
+        Me.GroupBox1.Location = New System.Drawing.Point(23, 259)
         Me.GroupBox1.Name = "GroupBox1"
-        Me.GroupBox1.Size = New System.Drawing.Size(669, 153)
+        Me.GroupBox1.Size = New System.Drawing.Size(683, 153)
         Me.GroupBox1.TabIndex = 14
         Me.GroupBox1.TabStop = False
         Me.GroupBox1.Text = "Cambios"
@@ -350,12 +362,106 @@ Partial Class Reubicacion
         Me.btnSalir.TextAlign = System.Drawing.ContentAlignment.MiddleRight
         Me.btnSalir.UseVisualStyleBackColor = True
         '
+        'chbVerCambios
+        '
+        Me.chbVerCambios.AutoSize = True
+        Me.chbVerCambios.Location = New System.Drawing.Point(23, 429)
+        Me.chbVerCambios.Name = "chbVerCambios"
+        Me.chbVerCambios.Size = New System.Drawing.Size(85, 17)
+        Me.chbVerCambios.TabIndex = 32
+        Me.chbVerCambios.Text = "Ver Cambios"
+        Me.chbVerCambios.UseVisualStyleBackColor = True
+        '
+        'tblListaCambios
+        '
+        Me.tblListaCambios.AllowUserToAddRows = False
+        Me.tblListaCambios.AllowUserToDeleteRows = False
+        Me.tblListaCambios.AllowUserToResizeRows = False
+        Me.tblListaCambios.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
+        Me.tblListaCambios.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.Producto, Me.Envia, Me.Recibe, Me.Kilogramos, Me.Eliminar})
+        Me.tblListaCambios.Location = New System.Drawing.Point(13, 18)
+        Me.tblListaCambios.Name = "tblListaCambios"
+        Me.tblListaCambios.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect
+        Me.tblListaCambios.Size = New System.Drawing.Size(493, 136)
+        Me.tblListaCambios.TabIndex = 33
+        '
+        'Producto
+        '
+        Me.Producto.HeaderText = "Producto"
+        Me.Producto.Name = "Producto"
+        Me.Producto.ReadOnly = True
+        '
+        'Envia
+        '
+        Me.Envia.HeaderText = "Envia"
+        Me.Envia.Name = "Envia"
+        Me.Envia.ReadOnly = True
+        '
+        'Recibe
+        '
+        Me.Recibe.HeaderText = "Recibe"
+        Me.Recibe.Name = "Recibe"
+        Me.Recibe.ReadOnly = True
+        '
+        'Kilogramos
+        '
+        Me.Kilogramos.HeaderText = "Kilogramos"
+        Me.Kilogramos.Name = "Kilogramos"
+        Me.Kilogramos.ReadOnly = True
+        '
+        'Eliminar
+        '
+        Me.Eliminar.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells
+        Me.Eliminar.HeaderText = "Eliminar"
+        Me.Eliminar.Name = "Eliminar"
+        Me.Eliminar.Resizable = System.Windows.Forms.DataGridViewTriState.[True]
+        Me.Eliminar.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic
+        Me.Eliminar.Width = 68
+        '
+        'btnLimpiar
+        '
+        Me.btnLimpiar.Image = Global.PapasSC.My.Resources.Resources.BORRAR
+        Me.btnLimpiar.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
+        Me.btnLimpiar.Location = New System.Drawing.Point(551, 96)
+        Me.btnLimpiar.Name = "btnLimpiar"
+        Me.btnLimpiar.Size = New System.Drawing.Size(97, 41)
+        Me.btnLimpiar.TabIndex = 34
+        Me.btnLimpiar.Text = "Limpiar"
+        Me.btnLimpiar.TextAlign = System.Drawing.ContentAlignment.MiddleRight
+        Me.btnLimpiar.UseVisualStyleBackColor = True
+        '
+        'btnQuitar
+        '
+        Me.btnQuitar.Image = Global.PapasSC.My.Resources.Resources.SALIR
+        Me.btnQuitar.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
+        Me.btnQuitar.Location = New System.Drawing.Point(551, 37)
+        Me.btnQuitar.Name = "btnQuitar"
+        Me.btnQuitar.Size = New System.Drawing.Size(97, 41)
+        Me.btnQuitar.TabIndex = 35
+        Me.btnQuitar.Text = "Quitar"
+        Me.btnQuitar.TextAlign = System.Drawing.ContentAlignment.MiddleRight
+        Me.btnQuitar.UseVisualStyleBackColor = True
+        '
+        'GroupBox2
+        '
+        Me.GroupBox2.Controls.Add(Me.tblListaCambios)
+        Me.GroupBox2.Controls.Add(Me.btnQuitar)
+        Me.GroupBox2.Controls.Add(Me.btnLimpiar)
+        Me.GroupBox2.Location = New System.Drawing.Point(24, 459)
+        Me.GroupBox2.Name = "GroupBox2"
+        Me.GroupBox2.Size = New System.Drawing.Size(682, 166)
+        Me.GroupBox2.TabIndex = 36
+        Me.GroupBox2.TabStop = False
+        Me.GroupBox2.Text = "Elminar Cambios"
+        '
         'Reubicacion
         '
         Me.AcceptButton = Me.btnTraspasoIzq
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(727, 467)
+        Me.ClientSize = New System.Drawing.Size(724, 625)
+        Me.Controls.Add(Me.GroupBox2)
+        Me.Controls.Add(Me.chbVerCambios)
         Me.Controls.Add(Me.btnSalir)
         Me.Controls.Add(Me.btnGuardar)
         Me.Controls.Add(Me.ValoresMinimos)
@@ -379,6 +485,8 @@ Partial Class Reubicacion
         CType(Me.sprVerde, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ValoresMinimos.ResumeLayout(False)
         Me.ValoresMinimos.PerformLayout()
+        CType(Me.tblListaCambios, System.ComponentModel.ISupportInitialize).EndInit()
+        Me.GroupBox2.ResumeLayout(False)
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
@@ -410,4 +518,14 @@ Partial Class Reubicacion
     Friend WithEvents ValoresMinimos As GroupBox
     Friend WithEvents btnGuardar As Button
     Friend WithEvents btnSalir As Button
+    Friend WithEvents chbVerCambios As CheckBox
+    Friend WithEvents tblListaCambios As DataGridView
+    Friend WithEvents btnLimpiar As Button
+    Friend WithEvents btnQuitar As Button
+    Friend WithEvents Producto As DataGridViewTextBoxColumn
+    Friend WithEvents Envia As DataGridViewTextBoxColumn
+    Friend WithEvents Recibe As DataGridViewTextBoxColumn
+    Friend WithEvents Kilogramos As DataGridViewTextBoxColumn
+    Friend WithEvents Eliminar As DataGridViewCheckBoxColumn
+    Friend WithEvents GroupBox2 As GroupBox
 End Class

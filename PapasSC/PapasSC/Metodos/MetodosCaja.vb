@@ -190,7 +190,7 @@ left join credito as ct on ct.idCliente = cl.idCliente "
             cmd.CommandType = CommandType.StoredProcedure
             cmd.Parameters.Add("@idCaja", SqlDbType.VarChar, 36).Value = idCaja
             cmd.Parameters.Add("@idEmpleado", SqlDbType.VarChar, 36).Value = idEmpleado
-            cmd.Parameters.Add("@montoInicial", SqlDbType.Float).Value = montoInicial
+            cmd.Parameters.Add("@monotoInicial", SqlDbType.Float).Value = montoInicial
             Dim fechaInc As String = DateTime.Now.ToString("yyyy/MM/dd hh:mm:ss")
             cmd.Parameters.Add("@fechaInicio", SqlDbType.SmallDateTime).Value = fechaInc
             cmd.Parameters.Add("@b1000", SqlDbType.Int).Value = arrayMonedas(0)
@@ -322,7 +322,7 @@ and cj.nombre =  '" + nombreCaja + "'", conn)
     Public Sub select_CuentaPorCobrar(ByVal tblCuentasPorPagar As DataGridView, ByVal caja As String)
         Try
             conectar()
-            Dim cmd As New SqlCommand(busquedaCuentaPorPagar + " where cj.nombre = '" + caja + "' and vt.estatus = 'P'", conn)
+            Dim cmd As New SqlCommand(busquedaCuentaPorPagar + " where cj.nombre = '" + caja + "' and vt.estatus = 'D'", conn)
             If cmd.ExecuteNonQuery Then
                 Dim dt As New DataTable
                 Dim da As New SqlDataAdapter(cmd)
