@@ -6,9 +6,11 @@
     Public arrayMonedas() As Integer = {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0}
 
     Private Sub CantidadMonetariaExplicitaInicio_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+        totalpagar.ReadOnly = True
         Try
             DineroTotal = CDbl(txtTotal.Text)
             txtTotal.ReadOnly = True
+
             flag = True
             btnQuitar.Text = "Agregar"
         Catch ex As Exception
@@ -100,10 +102,14 @@
         End If
     End Function
 
+
+
     Private Sub btnContinuar_Click(sender As Object, e As EventArgs) Handles btnContinuar.Click
-        mtdCaja.iniciar_Caja_Explicito(idCaja, idEmpleado, CStr(DineroTotal), arrayMonedas)
-        Dim ic As IniciarCaja = CType(Owner, IniciarCaja)
-        Me.Close()
+        If txtTotal.Text = totalpagar.Text Then
+            mtdCaja.iniciar_Caja_Explicito(idCaja, idEmpleado, CStr(DineroTotal), arrayMonedas)
+            Dim ic As IniciarCaja = CType(Owner, IniciarCaja)
+            Me.Close()
+        End If
     End Sub
 
     Private Sub btnCanelar_Click(sender As Object, e As EventArgs) Handles btnCanelar.Click

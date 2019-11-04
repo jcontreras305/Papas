@@ -7,6 +7,7 @@
     Public user As String
     Public idCliente As String
     Public estatus As String
+    Dim tbl As DataGridView
     Dim t As Double = 0
 
     Private Sub Actualizar_Venta_Load(sender As Object, e As EventArgs) Handles MyBase.Load
@@ -59,11 +60,10 @@
         npdCantidadPagada.Value = Convert.ToDecimal(cantidadpagada)
         lbltotal.Text = totalPagar
         tblventaActualizar.Columns.Item("idventadetalle").Visible = False
+
+        tbl = tblventaActualizar
     End Sub
 
-    Private Sub tblventaActualizar_CellContentClick(sender As Object, e As DataGridViewCellEventArgs) Handles tblventaActualizar.CellContentClick
-
-    End Sub
 
     Private Sub tblventaActualizar_CellClick(sender As Object, e As DataGridViewCellEventArgs) Handles tblventaActualizar.CellClick
 
@@ -145,11 +145,13 @@
                                             Convert.ToString(tblventaActualizar.Rows(i - 1).Cells("idventadetalle").Value),
                                             Convert.ToString(tblventaActualizar.Rows(i - 1).Cells(3).Value),
                                             Convert.ToString(tblventaActualizar.Rows(i - 1).Cells(4).Value),
-                                            Convert.ToString(tblventaActualizar.Rows(i - 1).Cells(8).Value),
-                                            Convert.ToString(tblventaActualizar.Rows(i - 1).Cells(2).Value), If(i = 1, True, False))
+                                            Convert.ToString(tblventaActualizar.Rows(i - 1).Cells(10).Value),
+                                            Convert.ToString(tblventaActualizar.Rows(i - 1).Cells(2).Value), If(i = 1, True, False), If(tblventaActualizar.Rows(i - 1).Cells(4).Value = tbl.Rows(i - 1).Cells(4).Value, False, True))
 
                 Next
+
                 Dim cade As String = tblventaActualizar.Rows(0).Cells(0).Value
+
                 For i = 1 To tblProductosNuevos.RowCount
 
 
@@ -173,8 +175,8 @@
                                             Convert.ToString(tblventaActualizar.Rows(i - 1).Cells("idventadetalle").Value),
                                             Convert.ToString(tblventaActualizar.Rows(i - 1).Cells(3).Value),
                                             Convert.ToString(tblventaActualizar.Rows(i - 1).Cells(4).Value),
-                                            Convert.ToString(tblventaActualizar.Rows(i - 1).Cells(8).Value),
-                                            Convert.ToString(tblventaActualizar.Rows(i - 1).Cells(2).Value), If(i = 1, True, False))
+                                            Convert.ToString(tblventaActualizar.Rows(i - 1).Cells(10).Value),
+                                            Convert.ToString(tblventaActualizar.Rows(i - 1).Cells(2).Value), If(i = 1, True, False), If(tblventaActualizar.Rows(i - 1).Cells(4).Value = tbl.Rows(i - 1).Cells(4).Value, False, True))
                 Next
                 mtdv.updateVentas(tblventaActualizar.Rows(0).Cells(0).Value.ToString, DateTime.Now.ToString("dd/MM/yyyy"), lbltotal.Text, npdCantidadPagada.Value.ToString, txtNombreCliente.Text, user, cmbBodega.Text, cmbFormaPago.Text)
             End If
@@ -205,12 +207,12 @@
     Private Sub btnQuitarproducto_Click(sender As Object, e As EventArgs) Handles btnQuitarproducto.Click
 
         If tblventaActualizar.RowCount > 0 And txtNombreCliente.Text <> String.Empty Then
-            mtdv.quitarventa(tblventaActualizar.CurrentRow.Cells("idventadetalle").Value)
 
+            tblventaActualizar.Rows.Remove(tblventaActualizar.CurrentRow)
             Dim i As Integer
             Dim total As Double
             For i = 1 To tblventaActualizar.RowCount
-                total += Convert.ToDecimal(Convert.ToString(tblventaActualizar.Rows(i - 1).Cells(6).Value))
+                total += Convert.ToDecimal(Convert.ToString(tblventaActualizar.Rows(i - 1).Cells(10).Value))
                 t = total
             Next
             If tblventaActualizar.RowCount < 1 Then
@@ -228,7 +230,35 @@
     End Sub
 
     Private Sub Button4_Click(sender As Object, e As EventArgs) Handles Button4.Click
-        tblProductosNuevos.Rows.Remove(tblProductosNuevos.CurrentRow)
+
+
+        If tblventaActualizar.RowCount > 0 And txtNombreCliente.Text <> String.Empty Then
+
+            tblProductosNuevos.Rows.Remove(tblProductosNuevos.CurrentRow)
+
+            Dim i As Integer
+            Dim total As Double
+            For i = 1 To tblventaActualizar.RowCount
+                total += Convert.ToDecimal(Convert.ToString(tblventaActualizar.Rows(i - 1).Cells(10).Value))
+                t = total
+            Next
+            Dim total2 As Double
+            For i = 1 To tblProductosNuevos.RowCount
+                total2 += Convert.ToDecimal(Convert.ToString(tblProductosNuevos.Rows(i - 1).Cells(3).Value))
+                t = total + total2
+            Next
+            If tblventaActualizar.RowCount < 1 Then
+                lbltotal.Text = "0"
+                txtproducto.Text = ""
+                npdkilos.Value = 1.0
+                npdprecio.Value = 0.00
+                cmbFormaPago.SelectedIndex = 1
+                npdCantidadPagada.Value = Convert.ToDecimal(0)
+            Else
+                lbltotal.Text = Convert.ToString(t)
+            End If
+        End If
+
     End Sub
 
     Private Sub btnRealizarCambios_Click(sender As Object, e As EventArgs) Handles btnRealizarCambios.Click
@@ -238,16 +268,38 @@
 
                 tblventaActualizar.Rows(i - 1).Cells(6).Value = npdprecio.Value
                 tblventaActualizar.Rows(i - 1).Cells(4).Value = npdkilos.Value
-                tblventaActualizar.Rows(i - 1).Cells(8).Value = Convert.ToDecimal(tblventaActualizar.Rows(i - 1).Cells(4).Value) * Convert.ToDecimal(tblventaActualizar.Rows(i - 1).Cells(6).Value)
+                tblventaActualizar.Rows(i - 1).Cells(10).Value = Convert.ToDecimal(tblventaActualizar.Rows(i - 1).Cells(4).Value) * Convert.ToDecimal(tblventaActualizar.Rows(i - 1).Cells(6).Value)
 
             End If
-            total += Convert.ToDecimal(Convert.ToString(tblventaActualizar.Rows(i - 1).Cells(8).Value))
+            total += Convert.ToDecimal(Convert.ToString(tblventaActualizar.Rows(i - 1).Cells(10).Value))
             t = total
         Next
 
         lbltotal.Text = Convert.ToString(total)
 
 
+    End Sub
+
+    Private Sub cmbFormaPago_SelectedIndexChanged(sender As Object, e As EventArgs) Handles cmbFormaPago.SelectedIndexChanged
+        If cmbFormaPago.SelectedIndex = 1 Then
+            npdCantidadPagada.Enabled = False
+
+        Else
+            npdCantidadPagada.Enabled = True
+        End If
+    End Sub
+
+    Private Sub lbltotal_Click(sender As Object, e As EventArgs) Handles lbltotal.Click
+
+    End Sub
+
+    Private Sub lbltotal_TextChanged(sender As Object, e As EventArgs) Handles lbltotal.TextChanged
+        If cmbFormaPago.SelectedIndex = 1 Then
+            npdCantidadPagada.Value = Convert.ToDecimal(lbltotal.Text)
+
+        Else
+            npdCantidadPagada.Enabled = True
+        End If
     End Sub
 
     Private Sub tblventaActualizar_CellEnter(sender As Object, e As DataGridViewCellEventArgs) Handles tblventaActualizar.CellEnter

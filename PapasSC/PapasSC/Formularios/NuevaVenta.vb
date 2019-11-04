@@ -7,6 +7,7 @@
     Dim folio As Int16
     Dim mtdv As New MetodosVenta
 
+
     Public idCliente, nombreCliente As String
 
 
@@ -97,10 +98,19 @@
 
     Private Sub Button1_Click(sender As Object, e As EventArgs) Handles Button1.Click
         If txtNombreCliente.Text <> String.Empty And tblventa.RowCount > 0 And npdCantidadPagada.Value > 0 Then
+            CantidadMonetariaExplicitaInicio.totalpagar.Text = lblTotal.Text
+            CantidadMonetariaExplicitaInicio.Show()
+
+
+
 
             If cbxEspera.Checked Then
 
-                mtdv.insertarVenta(savef.ToString, t.ToString, npdCantidadPagada.Value, txtNombreCliente.Text, user, cmbBodega.Text, "E", cmbFormaPago.Text, idCaja, idCliente)
+                If cmbFormaPago.Text = "Credito" Then
+                    mtdv.insertarVenta(savef.ToString, t.ToString, npdCantidadPagada.Value, txtNombreCliente.Text, user, cmbBodega.Text, "D", cmbFormaPago.Text, idCaja, idCliente)
+                Else
+                    mtdv.insertarVenta(savef.ToString, t.ToString, npdCantidadPagada.Value, txtNombreCliente.Text, user, cmbBodega.Text, "E", cmbFormaPago.Text, idCaja, idCliente)
+                End If
                 Dim i As Integer
 
                 MsgBox(tblventa.RowCount)
@@ -116,7 +126,13 @@
                     MsgBox("Actualizar_Producto duplicado")
                 End Try
             Else
-                mtdv.insertarVenta(savef.ToString, t, npdCantidadPagada.Value, txtNombreCliente.Text, user, cmbBodega.Text, "A", cmbFormaPago.Text, idCaja, idCliente)
+                If cmbFormaPago.Text = "Credito" Then
+                    mtdv.insertarVenta(savef.ToString, t.ToString, npdCantidadPagada.Value, txtNombreCliente.Text, user, cmbBodega.Text, "D", cmbFormaPago.Text, idCaja, idCliente)
+                Else
+                    mtdv.insertarVenta(savef.ToString, t.ToString, npdCantidadPagada.Value, txtNombreCliente.Text, user, cmbBodega.Text, "P", cmbFormaPago.Text, idCaja, idCliente)
+                End If
+
+
                 MsgBox(tblventa.RowCount)
                 Try
                     For i = 1 To tblventa.RowCount
@@ -215,10 +231,10 @@
         Try
             Dim id As String = Convert.ToString(tblDetalleVenta.CurrentRow.Cells(0).Value)
             Dim estatus As String = Convert.ToString(tblDetalleVenta.CurrentRow.Cells("estatus").Value)
-            If estatus <> "A" Then
+            If estatus <> "P" Then
                 Actualizar_Venta.idCliente = idCliente
                 Actualizar_Venta.id = id
-                Actualizar_Venta.user = user
+                Actualizar_Venta.user = idEmpleado
                 Actualizar_Venta.Show()
             Else
                 MsgBox("venta Cobrada, no es posible realizar alteraciones.")
@@ -233,7 +249,7 @@
 
     End Sub
 
-    Private Sub Button4_Click(sender As Object, e As EventArgs) Handles Button4.Click
+    Private Sub Button4_Click(sender As Object, e As EventArgs)
 
     End Sub
 
@@ -262,6 +278,30 @@
 
     Private Sub tblProductos_CellClick(sender As Object, e As DataGridViewCellEventArgs) Handles tblProductos.CellClick
         npdprecio.Value = Convert.ToDecimal(Convert.ToString(tblProductos.CurrentRow.Cells(1).Value))
+
+    End Sub
+
+
+    Private Sub Button9_Click(sender As Object, e As EventArgs) Handles Button9.Click
+        Dim clave As String = tblDetalleVenta.CurrentRow.Cells(0).Value
+        If tblDetalleVenta.CurrentRow.Cells("estatus").Value = "E" Then
+            For i = 1 To tblDetalleVenta.RowCount
+                If clave = tblDetalleVenta.Rows(i - 1).Cells(0).Value Then
+                    mtdv.updateExistencia(tblDetalleVenta.Rows(i - 1).Cells(2).Value, tblDetalleVenta.Rows(i - 1).Cells(3).Value, tblDetalleVenta.Rows(i - 1).Cells(4).Value, tblDetalleVenta.CurrentRow.Cells(0).Value)
+                End If
+            Next
+        ElseIf tblDetalleVenta.CurrentRow.Cells("Estatus").Value = "D" Then
+            MsgBox("Debe saldar la cuenta")
+        Else
+            MsgBox("La venta esta saldada")
+        End If
+    End Sub
+
+    Private Sub TabPage2_Click(sender As Object, e As EventArgs) Handles TabPage2.Click
+
+    End Sub
+
+    Private Sub tblDetalleVenta_CellContentClick(sender As Object, e As DataGridViewCellEventArgs) Handles tblDetalleVenta.CellContentClick
 
     End Sub
 

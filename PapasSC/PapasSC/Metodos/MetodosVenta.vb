@@ -9,7 +9,7 @@ Public Class MetodosVenta
     Public Sub llenarDatagridview(ByVal dgv As DataGridView)
         cn.conectar()
         Try
-            adaptador = New SqlDataAdapter("select vn.idVenta,vn.tipoPago , bo.nombre, pr.version, vd.cantidad as Kilogramos, ex.cantidad, pr.precio, vn.cantidadPagada, vn.totalPagar, vd.total, vd.totalNeto, vn.fecha, em.nombre as Empleado, cl.nombre as Cliente, vd.idventadetalle, vn.estatus  from  bodega bo  inner join venta vn on vn.idBodega = bo.idBodega inner join ventaDetalle  vd on vd.idVenta = vn.idVenta inner join producto 
+            adaptador = New SqlDataAdapter("select vn.idVenta,vn.tipoPago as 'Forma Pago' , bo.nombre, pr.version, vd.cantidad as Kilogramos, ex.cantidad, pr.precio, vn.cantidadPagada, vn.totalPagar, vd.total, vd.totalNeto, vn.fecha, em.nombre as Empleado, cl.nombre as Cliente, vd.idventadetalle, vn.estatus  from  bodega bo  inner join venta vn on vn.idBodega = bo.idBodega inner join ventaDetalle  vd on vd.idVenta = vn.idVenta inner join producto 
 pr on pr.idProducto = vd.idProducto inner join existenciaProductos ex on  ex.idProducto = pr.idProducto and ex.idBodega = bo.idBodega inner join empleado as em on em.idEmpleado = vn.idEmpleado
 inner join cliente as cl on cl.idCliente = vn.idCliente", cn.conn)
             dt = New DataTable
@@ -37,20 +37,6 @@ inner join cliente as cl on cl.idCliente = vn.idCliente where vn.idVenta='" + id
 
 
 
-    Public Sub llenarDatagridviewB(ByVal dgv As DataGridView)
-            cn.conectar()
-            Try
-            adaptador = New SqlDataAdapter("select vn.idVenta,vn.tipoPago , bo.nombre, pr.version, vd.cantidad as Kilogramos, ex.cantidad, pr.precio, vn.cantidadPagada, vn.totalPagar, vd.total, vd.totalNeto, vn.fecha, em.nombre as Empleado, cl.nombre as Cliente, vd.idventadetalle, vn.estatus from  bodega bo  inner join venta vn on vn.idBodega = bo.idBodega inner join ventaDetalle  vd on vd.idVenta = vn.idVenta inner join producto 
-pr on pr.idProducto = vd.idProducto inner join existenciaProductos ex on  ex.idProducto = pr.idProducto and ex.idBodega = bo.idBodega inner join empleado as em on em.idEmpleado = vn.idEmpleado
-inner join cliente as cl on cl.idCliente = vn.idCliente where vn.estatus='B'
-", cn.conn)
-            dt = New DataTable
-                adaptador.Fill(dt)
-                dgv.DataSource = dt
-            Catch ex As Exception
-                MessageBox.Show("No se lleno el Datagridview debido a: " + ex.ToString)
-            End Try
-        End Sub
 
 
 
@@ -525,6 +511,77 @@ inner join cliente as cl on cl.idCliente = vn.idCliente
             Com = New SqlCommand(cadena, cn.conn)
             MsgBox("cade")
             Com.ExecuteNonQuery()
+
+
+
+            Rs.Close()
+            cn.desconectar()
+
+
+            MsgBox("pus si salio carnal")
+        Catch ex As Exception
+            MessageBox.Show("No se actualizo debido a: " + ex.ToString)
+        End Try
+    End Sub
+
+    Public Sub updateExistencia(ByVal bodega As String, ByVal producto As String, ByVal kilosvendidos As String, ByVal venta As String)
+        Try
+
+
+            Dim Rs As SqlDataReader
+            Dim Com As New SqlCommand
+            cn.conectar()
+            Dim idbodega As String
+            Dim idproducto As String
+            Dim Sql As String = "select idBodega from bodega where nombre ='" + bodega + "' and estatus = 'A'"
+
+            Com = New SqlCommand(Sql, cn.conn)
+
+            Rs = Com.ExecuteReader()
+            Rs.Read()
+            idbodega = Rs(0).ToString
+            MsgBox(idbodega)
+            Rs.Close()
+            cn.desconectar()
+
+            cn.conectar()
+            Dim Sql2 As String = "select idproducto from producto where version ='" + producto + "' and estado= 'A'"
+            Com = New SqlCommand(Sql2, cn.conn)
+            Rs = Com.ExecuteReader()
+            Rs.Read()
+            idproducto = Rs(0).ToString
+            MsgBox(idproducto)
+            Rs.Close()
+            cn.desconectar()
+
+
+            Dim cadena As String = "
+             UPDATE [dbo].[existenciaProductos]
+             SET [cantidad] =  (cantidad - " + kilosvendidos + ") 
+             WHERE [idBodega] = '" + idbodega + "' 
+             and [idProducto] = '" + idproducto + "'"
+            MsgBox(cadena)
+            Rs.Close()
+            cn.desconectar()
+            cn.conectar()
+            Com = New SqlCommand(cadena, cn.conn)
+            MsgBox("cade")
+            Com.ExecuteNonQuery()
+            cn.desconectar()
+
+            Dim cadena2 As String = "
+             UPDATE [dbo].[venta]
+             SET [estatus] = 'P m                                                                   n       m                                                                                                  '
+             WHERE [idventa] = '" + venta + "'"
+
+            Rs.Close()
+            cn.desconectar()
+            cn.conectar()
+            Com = New SqlCommand(cadena2, cn.conn)
+            MsgBox("cade")
+            Com.ExecuteNonQuery()
+            cn.desconectar()
+
             MsgBox("pus si salio carnal")
         Catch ex As Exception
             MessageBox.Show("No se actualizo debido a: " + ex.ToString)
@@ -536,31 +593,14 @@ inner join cliente as cl on cl.idCliente = vn.idCliente
         Try
             clave = ""
             cn.conectar()
-            MsgBox("entro")
-
-
-            Dim idempleado As String
             Dim idbodega As String
-
-
             Dim Rs As SqlDataReader
             Dim Com As New SqlCommand
-
             Com = New SqlCommand("Select newid()", cn.conn)
             Rs = Com.ExecuteReader
             Rs.Read()
             clave = Rs(0).ToString
             Rs.Close()
-
-            cn.conectar()
-            Dim Sql2 As String = "select top 1 idempleado from empleado where nombre ='" + empleado + "' and estatus= 'A'"
-            Com = New SqlCommand(Sql2, cn.conn)
-            Rs = Com.ExecuteReader()
-            Rs.Read()
-            idempleado = Rs(0).ToString
-            Rs.Close()
-            cn.desconectar()
-
             cn.conectar()
             Dim Sql3 As String = "select top 1 idBodega from bodega where nombre ='" + bodega + "' and estatus = 'A'"
             Com = New SqlCommand(Sql3, cn.conn)
@@ -589,24 +629,7 @@ inner join cliente as cl on cl.idCliente = vn.idCliente
             Rs.Close()
             cn.desconectar()
 
-            cn.conectar()
-            Dim Sql6 As String = "select Max(folio) from Venta"
-            Com = New SqlCommand(Sql6, cn.conn)
-            Rs = Com.ExecuteReader()
-            Rs.Read()
-            Dim Folio As Int64
 
-            If Rs(0).ToString <> String.Empty Then
-                Folio = Convert.ToString(Convert.ToInt64(Convert.ToString(Rs(0).ToString)) + 1)
-            Else
-                Folio = Convert.ToString(1)
-            End If
-
-
-            Rs.Close()
-            cn.desconectar()
-
-            cn.conectar()
 
 
             cn.conectar()
@@ -616,7 +639,7 @@ inner join cliente as cl on cl.idCliente = vn.idCliente
        [totalPagar] = " + totalPagar + "
       ,[cantidadPagada] = " + cantidadPagada + "
       ,[idCliente] ='" + idcliente + "'
-      ,[idEmpleado] = '" + idempleado + "'
+      ,[idEmpleado] = '" + empleado + "'
       ,[idBodega] = '" + idbodega + "'
       ,[tipoPago] = '" + tipoPago + "'
 	  ,[idTicket] = '" + idticket + "' where idventa = '" + id + "'"
@@ -715,8 +738,6 @@ inner join cliente as cl on cl.idCliente = vn.idCliente
             Com = New SqlCommand(cadena, cn.conn)
             Com.ExecuteNonQuery()
             cn.desconectar()
-            updateExistencia(Bodega, producto, cantidad)
-
             MsgBox("cade")
         Catch ex As Exception
             MessageBox.Show("No se inserto debido a: " + ex.ToString)
@@ -725,7 +746,7 @@ inner join cliente as cl on cl.idCliente = vn.idCliente
     End Sub
 
 
-    Public Sub VentaDetalleUpdate(ByVal clavev As String, ByVal clavevd As String, ByVal producto As String, ByVal cantidad As String, ByVal totalneto As String, ByVal Bodega As String, ByVal flag As Boolean)
+    Public Sub VentaDetalleUpdate(ByVal clavev As String, ByVal clavevd As String, ByVal producto As String, ByVal cantidad As String, ByVal totalneto As String, ByVal Bodega As String, ByVal flag As Boolean, ByVal act As Boolean)
         Try
 
             cn.conectar()
@@ -787,11 +808,6 @@ inner join cliente as cl on cl.idCliente = vn.idCliente
             Com = New SqlCommand(cadena, cn.conn)
             Com.ExecuteNonQuery()
             cn.desconectar()
-
-
-
-
-            updateExistencia(Bodega, producto, cantidad)
 
             MsgBox("cade")
         Catch ex As Exception

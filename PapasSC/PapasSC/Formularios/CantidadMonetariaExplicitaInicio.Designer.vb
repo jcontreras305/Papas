@@ -53,6 +53,8 @@ Partial Class CantidadMonetariaExplicitaInicio
         Me.btnContinuar = New System.Windows.Forms.Button()
         Me.btnQuitar = New System.Windows.Forms.Button()
         Me.btnCanelar = New System.Windows.Forms.Button()
+        Me.totalpagar = New System.Windows.Forms.TextBox()
+        Me.Label13 = New System.Windows.Forms.Label()
         Me.GroupBox1.SuspendLayout()
         Me.GroupBox2.SuspendLayout()
         Me.SuspendLayout()
@@ -386,7 +388,7 @@ Partial Class CantidadMonetariaExplicitaInicio
         '
         Me.btnQuitar.Image = Global.PapasSC.My.Resources.Resources.SALIR
         Me.btnQuitar.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
-        Me.btnQuitar.Location = New System.Drawing.Point(733, 67)
+        Me.btnQuitar.Location = New System.Drawing.Point(733, 109)
         Me.btnQuitar.Name = "btnQuitar"
         Me.btnQuitar.Size = New System.Drawing.Size(78, 28)
         Me.btnQuitar.TabIndex = 15
@@ -406,11 +408,32 @@ Partial Class CantidadMonetariaExplicitaInicio
         Me.btnCanelar.TextAlign = System.Drawing.ContentAlignment.MiddleRight
         Me.btnCanelar.UseVisualStyleBackColor = True
         '
+        'totalpagar
+        '
+        Me.totalpagar.Font = New System.Drawing.Font("Microsoft Sans Serif", 15.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.totalpagar.Location = New System.Drawing.Point(700, 58)
+        Me.totalpagar.Name = "totalpagar"
+        Me.totalpagar.Size = New System.Drawing.Size(111, 31)
+        Me.totalpagar.TabIndex = 19
+        Me.totalpagar.Text = "0,00"
+        Me.totalpagar.TextAlign = System.Windows.Forms.HorizontalAlignment.Right
+        '
+        'Label13
+        '
+        Me.Label13.AutoSize = True
+        Me.Label13.Location = New System.Drawing.Point(624, 64)
+        Me.Label13.Name = "Label13"
+        Me.Label13.Size = New System.Drawing.Size(70, 13)
+        Me.Label13.TabIndex = 18
+        Me.Label13.Text = "Total a pagar"
+        '
         'CantidadMonetariaExplicitaInicio
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(823, 209)
+        Me.Controls.Add(Me.totalpagar)
+        Me.Controls.Add(Me.Label13)
         Me.Controls.Add(Me.btnCanelar)
         Me.Controls.Add(Me.btnContinuar)
         Me.Controls.Add(Me.btnQuitar)
@@ -460,4 +483,6 @@ Partial Class CantidadMonetariaExplicitaInicio
     Friend WithEvents btnQuitar As Button
     Friend WithEvents btnContinuar As Button
     Friend WithEvents btnCanelar As Button
+    Friend WithEvents totalpagar As TextBox
+    Friend WithEvents Label13 As Label
 End Class

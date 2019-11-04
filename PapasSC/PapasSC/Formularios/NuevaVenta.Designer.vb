@@ -56,7 +56,6 @@ Partial Class NuevaVenta
         Me.cmbFiltroVenta = New System.Windows.Forms.ComboBox()
         Me.tbxBusquedaFiltrada = New System.Windows.Forms.TextBox()
         Me.Button5 = New System.Windows.Forms.Button()
-        Me.Button4 = New System.Windows.Forms.Button()
         Me.tblDetalleVenta = New System.Windows.Forms.DataGridView()
         CType(Me.tblventa, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.npdprecio, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -349,7 +348,6 @@ Partial Class NuevaVenta
         Me.TabPage2.Controls.Add(Me.cmbFiltroVenta)
         Me.TabPage2.Controls.Add(Me.tbxBusquedaFiltrada)
         Me.TabPage2.Controls.Add(Me.Button5)
-        Me.TabPage2.Controls.Add(Me.Button4)
         Me.TabPage2.Controls.Add(Me.tblDetalleVenta)
         Me.TabPage2.Location = New System.Drawing.Point(4, 22)
         Me.TabPage2.Name = "TabPage2"
@@ -361,25 +359,25 @@ Partial Class NuevaVenta
         '
         'Button9
         '
-        Me.Button9.Location = New System.Drawing.Point(554, 289)
+        Me.Button9.Location = New System.Drawing.Point(898, 411)
         Me.Button9.Name = "Button9"
-        Me.Button9.Size = New System.Drawing.Size(139, 24)
+        Me.Button9.Size = New System.Drawing.Size(143, 50)
         Me.Button9.TabIndex = 8
         Me.Button9.Text = "Activar Venta en Espera"
         Me.Button9.UseVisualStyleBackColor = True
         '
         'Button7
         '
-        Me.Button7.Location = New System.Drawing.Point(423, 290)
+        Me.Button7.Location = New System.Drawing.Point(769, 412)
         Me.Button7.Name = "Button7"
-        Me.Button7.Size = New System.Drawing.Size(123, 23)
+        Me.Button7.Size = New System.Drawing.Size(127, 49)
         Me.Button7.TabIndex = 6
         Me.Button7.Text = "Cambio o Devolucion"
         Me.Button7.UseVisualStyleBackColor = True
         '
         'Button6
         '
-        Me.Button6.Location = New System.Drawing.Point(551, 37)
+        Me.Button6.Location = New System.Drawing.Point(1015, 33)
         Me.Button6.Name = "Button6"
         Me.Button6.Size = New System.Drawing.Size(107, 23)
         Me.Button6.TabIndex = 5
@@ -391,35 +389,26 @@ Partial Class NuevaVenta
         Me.cmbFiltroVenta.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
         Me.cmbFiltroVenta.FormattingEnabled = True
         Me.cmbFiltroVenta.Items.AddRange(New Object() {"Cliente", "Clave Venta", "Empleado", "Fecha", "Total de Venta", "Producto", "Cantidad", "Bodega"})
-        Me.cmbFiltroVenta.Location = New System.Drawing.Point(35, 38)
+        Me.cmbFiltroVenta.Location = New System.Drawing.Point(22, 36)
         Me.cmbFiltroVenta.Name = "cmbFiltroVenta"
         Me.cmbFiltroVenta.Size = New System.Drawing.Size(121, 21)
         Me.cmbFiltroVenta.TabIndex = 4
         '
         'tbxBusquedaFiltrada
         '
-        Me.tbxBusquedaFiltrada.Location = New System.Drawing.Point(162, 39)
+        Me.tbxBusquedaFiltrada.Location = New System.Drawing.Point(149, 36)
         Me.tbxBusquedaFiltrada.Name = "tbxBusquedaFiltrada"
-        Me.tbxBusquedaFiltrada.Size = New System.Drawing.Size(384, 20)
+        Me.tbxBusquedaFiltrada.Size = New System.Drawing.Size(860, 20)
         Me.tbxBusquedaFiltrada.TabIndex = 3
         '
         'Button5
         '
-        Me.Button5.Location = New System.Drawing.Point(844, 287)
+        Me.Button5.Location = New System.Drawing.Point(1043, 412)
         Me.Button5.Name = "Button5"
-        Me.Button5.Size = New System.Drawing.Size(75, 23)
+        Me.Button5.Size = New System.Drawing.Size(79, 49)
         Me.Button5.TabIndex = 2
         Me.Button5.Text = "Editar Venta"
         Me.Button5.UseVisualStyleBackColor = True
-        '
-        'Button4
-        '
-        Me.Button4.Location = New System.Drawing.Point(699, 287)
-        Me.Button4.Name = "Button4"
-        Me.Button4.Size = New System.Drawing.Size(139, 24)
-        Me.Button4.TabIndex = 1
-        Me.Button4.Text = "Cancelar Venta en Espera"
-        Me.Button4.UseVisualStyleBackColor = True
         '
         'tblDetalleVenta
         '
@@ -429,7 +418,7 @@ Partial Class NuevaVenta
         Me.tblDetalleVenta.Location = New System.Drawing.Point(35, 80)
         Me.tblDetalleVenta.Name = "tblDetalleVenta"
         Me.tblDetalleVenta.ReadOnly = True
-        Me.tblDetalleVenta.Size = New System.Drawing.Size(884, 201)
+        Me.tblDetalleVenta.Size = New System.Drawing.Size(1087, 302)
         Me.tblDetalleVenta.TabIndex = 0
         '
         'NuevaVenta
@@ -475,7 +464,6 @@ Partial Class NuevaVenta
     Friend WithEvents cmbFiltroVenta As ComboBox
     Friend WithEvents tbxBusquedaFiltrada As TextBox
     Friend WithEvents Button5 As Button
-    Friend WithEvents Button4 As Button
     Friend WithEvents cmbFormaPago As ComboBox
     Friend WithEvents Label7 As Label
     Friend WithEvents Label8 As Label
