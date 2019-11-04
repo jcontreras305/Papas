@@ -101,12 +101,21 @@
     End Function
 
     Private Sub btnContinuar_Click(sender As Object, e As EventArgs) Handles btnContinuar.Click
-        mtdCaja.iniciar_Caja_Explicito(idCaja, idEmpleado, CStr(DineroTotal), arrayMonedas)
-        Dim ic As IniciarCaja = CType(Owner, IniciarCaja)
-        Me.Close()
+        If Not DineroTotal > 0.0 Then
+            MessageBox.Show("Debes introducir dinero para iniciar la caja.", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.None)
+        Else
+            mtdCaja.iniciar_Caja_Explicito(idCaja, idEmpleado, CStr(DineroTotal), arrayMonedas)
+            Dim ic As IniciarCaja = CType(Owner, IniciarCaja)
+            Me.Close()
+        End If
     End Sub
 
     Private Sub btnCanelar_Click(sender As Object, e As EventArgs) Handles btnCanelar.Click
-        Me.Close()
+        If Not DineroTotal > 0.0 Then
+            MessageBox.Show("Debes introducir dinero para iniciar la caja.", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.None)
+        Else
+            Me.Close()
+        End If
+
     End Sub
 End Class

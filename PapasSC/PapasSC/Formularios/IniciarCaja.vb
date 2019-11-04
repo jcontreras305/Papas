@@ -61,12 +61,14 @@
     End Sub
 
     Private Function cortecajaIniciar() As Boolean
-        If MessageBox.Show("¿Dessea iniciar caja?", "Apertura y Cierre de Caja", MessageBoxButtons.YesNoCancel, MessageBoxIcon.Question) = Windows.Forms.DialogResult.Yes Then
+        If MessageBox.Show("¿Desea iniciar caja?", "Apertura y Cierre de Caja", MessageBoxButtons.YesNoCancel, MessageBoxIcon.Question) = Windows.Forms.DialogResult.Yes Then
             If listCajasExplicito(cmbCajas.FindString(cmbCajas.Text)).Equals("A") Then ' DE FORMA EXPLICITA
                 Dim cme As New CantidadMonetariaExplicitaInicio
                 Me.AddOwnedForm(cme)
+                cme.idCaja = listIdsCajas(cmbCajas.FindString(cmbCajas.Text))
+                cme.idEmpleado = listIdsEmpleados(cmbEmpleados.FindString(cmbEmpleados.Text))
                 cme.ShowDialog()
-                mtdCaja.iniciar_Caja_Explicito(listIdsCajas(cmbCajas.FindString(cmbCajas.Text)), listIdsEmpleados(cmbEmpleados.FindString(cmbEmpleados.Text)), CStr(cme.DineroTotal), cme.arrayMonedas)
+                'mtdCaja.iniciar_Caja_Explicito(listIdsCajas(cmbCajas.FindString(cmbCajas.Text)), listIdsEmpleados(cmbEmpleados.FindString(cmbEmpleados.Text)), CStr(cme.DineroTotal), cme.arrayMonedas)
                 mtdCaja.cajasEstatus(cmbCajas, listIdsCajas, listEstatusCaja, listCajasExplicito)
                 coloresCombo()
                 Return True
