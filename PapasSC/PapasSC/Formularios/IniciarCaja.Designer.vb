@@ -63,6 +63,7 @@ Partial Class IniciarCaja
         '
         'cmbCajas
         '
+        Me.cmbCajas.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
         Me.cmbCajas.ForeColor = System.Drawing.Color.Black
         Me.cmbCajas.FormattingEnabled = True
         Me.cmbCajas.Location = New System.Drawing.Point(96, 22)
@@ -72,6 +73,7 @@ Partial Class IniciarCaja
         '
         'cmbEmpleados
         '
+        Me.cmbEmpleados.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
         Me.cmbEmpleados.FormattingEnabled = True
         Me.cmbEmpleados.Location = New System.Drawing.Point(96, 61)
         Me.cmbEmpleados.Name = "cmbEmpleados"

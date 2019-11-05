@@ -207,13 +207,15 @@ left join credito as ct on ct.idCliente = cl.idCliente "
             cmd.Parameters.Add("@m05", SqlDbType.Int).Value = arrayMonedas(11)
             If cmd.ExecuteNonQuery Then
                 MsgBox("Listo")
+                Return True
             Else
                 MsgBox("Error")
+                Return False
             End If
         Catch ex As Exception
             MsgBox(ex.Message)
+            Return False
         End Try
-        Return Nothing
     End Function
 
 

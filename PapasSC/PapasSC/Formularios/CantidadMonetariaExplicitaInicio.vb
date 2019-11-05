@@ -2,8 +2,9 @@
     Dim mtdCaja As New MetodosCaja
     Public idEmpleado, idCaja As String
     Public DineroTotal As Double
-    Dim flag, vn As Boolean
+    Public vn As Boolean
     Public arrayMonedas() As Integer = {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0}
+    Public flag, flagCancelar As Boolean
 
     Private Sub CantidadMonetariaExplicitaInicio_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         Try
@@ -104,18 +105,30 @@
         If Not DineroTotal > 0.0 Then
             MessageBox.Show("Debes introducir dinero para iniciar la caja.", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.None)
         Else
-            mtdCaja.iniciar_Caja_Explicito(idCaja, idEmpleado, CStr(DineroTotal), arrayMonedas)
-            Dim ic As IniciarCaja = CType(Owner, IniciarCaja)
-            Me.Close()
+            If vn Then
+                'esto es cuando esta en ventas
+
+            Else 'aqui es para iniciar caja desda boton de venta y caja
+                If mtdCaja.iniciar_Caja_Explicito(idCaja, idEmpleado, CStr(DineroTotal), arrayMonedas) Then
+                    Dim ic As IniciarCaja = CType(Owner, IniciarCaja)
+                    ic.flagCanelar = True
+                Else
+                    Dim ic As IniciarCaja = CType(Owner, IniciarCaja)
+                    ic.flagCanelar = False
+                End If
+                Me.Close()
+            End If
         End If
     End Sub
 
     Private Sub btnCanelar_Click(sender As Object, e As EventArgs) Handles btnCanelar.Click
+        Dim ic As IniciarCaja = CType(Owner, IniciarCaja)
         If Not DineroTotal > 0.0 Then
-            MessageBox.Show("Debes introducir dinero para iniciar la caja.", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.None)
+            ic.flagCanelar = False
         Else
-            Me.Close()
+            ic.flagCanelar = True
         End If
-
+        Me.Close()
     End Sub
+
 End Class

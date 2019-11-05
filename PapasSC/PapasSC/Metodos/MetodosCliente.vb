@@ -32,7 +32,10 @@ Public Class MetodosCliente
     Public Sub buscarCliente(ByVal tbl As DataGridView, ByVal nombre As String)
         Try
             conectar()
-            Dim cmd As New SqlCommand("select case when  cl.nombre = '' then cl.razonSocial else cl.nombre end as Nombre, cn.nombre as Contacto, cl.idCliente from cliente as cl left join contacto as cn on cl.idCliente = cn.idCliente where cl.nombre like '%" + nombre + "%' or cn.nombre like '%" + nombre + "%' or cl.razonSocial like '%" + nombre + "%'", conn)
+            Dim cmd As New SqlCommand("select case when  cl.nombre = '' then cl.razonSocial else cl.nombre end as Nombre, cn.nombre as Contacto, cl.idCliente , cr.limiteCredito, cr.saldo
+from cliente as cl left join contacto as cn on cl.idCliente = cn.idCliente 
+left join credito as cr on cr.idCliente = cn.idCliente
+where cl.nombre like '%" + nombre + "%' or cn.nombre like '%" + nombre + "%' or cl.razonSocial like '%" + nombre + "%'", conn)
             If cmd.ExecuteNonQuery Then
                 Dim dt As New DataTable
                 Dim da As New SqlDataAdapter(cmd)
