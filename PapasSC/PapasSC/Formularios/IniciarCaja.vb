@@ -17,7 +17,6 @@
                 End If
             End If
             cmbCajas.SelectedIndex = 0
-
             mtdEmpleados.seleccionarNombreEmpleado(cmbEmpleados, listIdsEmpleados)
             If listIdsCajas.Count = 0 Then
                 If MessageBox.Show("No se cuenta con empleados registrados o que esten Activos" + vbCrLf + "¿Desea agregar uno?", "Advertencia", MessageBoxButtons.YesNo, MessageBoxIcon.Warning) = Windows.Forms.DialogResult.Yes Then

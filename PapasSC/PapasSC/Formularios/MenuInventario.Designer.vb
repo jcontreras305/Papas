@@ -82,11 +82,11 @@ Partial Class MenuInventario
         '
         'btnTranspasos
         '
+        Me.btnTranspasos.Image = CType(resources.GetObject("btnTranspasos.Image"), System.Drawing.Image)
         Me.btnTranspasos.Location = New System.Drawing.Point(589, 353)
         Me.btnTranspasos.Name = "btnTranspasos"
         Me.btnTranspasos.Size = New System.Drawing.Size(172, 169)
         Me.btnTranspasos.TabIndex = 9
-        Me.btnTranspasos.Text = "Reubicación"
         Me.btnTranspasos.UseVisualStyleBackColor = True
         '
         'MenuInventario

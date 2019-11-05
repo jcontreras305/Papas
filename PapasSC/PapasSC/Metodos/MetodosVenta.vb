@@ -459,6 +459,8 @@ inner join cliente as cl on cl.idCliente = vn.idCliente
             Com = New SqlCommand(cadena, cn.conn)
             Com.ExecuteNonQuery()
             cn.desconectar()
+
+
             updateExistencia(Bodega, producto, cantidad)
 
             MsgBox("cade")

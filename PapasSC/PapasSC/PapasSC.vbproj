@@ -769,6 +769,7 @@
     <Content Include="Imagenes\IMPRIMIR.png" />
     <Content Include="Imagenes\LIBERAR.png" />
     <Content Include="Imagenes\MONEDA.png" />
+    <Content Include="Imagenes\Reubicacion.jpeg" />
     <Content Include="Imagenes\SALIR.png" />
     <Content Include="SqlServerTypes\Loader.cs" />
     <Content Include="SqlServerTypes\readme.htm" />

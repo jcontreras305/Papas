@@ -1,5 +1,4 @@
 ﻿Public Class Actualizar_Venta
-
     Public id As String
     Dim mtdv As New MetodosVenta
     Public Precio, Producto As String
@@ -26,7 +25,7 @@
         npdCantidadPagada.Maximum = 99999999999999
         btnProducto.Enabled = False
         npdkilos.Maximum = 9999999999
-        npdprecio.Maximum = 999999999
+        npdprecio.Maximum = 9999999999
         npdkilos.DecimalPlaces = 2
         npdkilos.ThousandsSeparator = 2
         npdprecio.DecimalPlaces = 2
@@ -56,17 +55,14 @@
         npdkilos.Value = Convert.ToDecimal(kilos)
         npdprecio.Value = Convert.ToDecimal(precio)
         cmbFormaPago.Text = formapago
-
         npdCantidadPagada.Value = Convert.ToDecimal(cantidadpagada)
         lbltotal.Text = totalPagar
         tblventaActualizar.Columns.Item("idventadetalle").Visible = False
-
         tbl = tblventaActualizar
     End Sub
 
 
     Private Sub tblventaActualizar_CellClick(sender As Object, e As DataGridViewCellEventArgs) Handles tblventaActualizar.CellClick
-
         Dim formapago As String = Convert.ToString(tblventaActualizar.CurrentRow.Cells(1).Value)
         Dim bodega As String = Convert.ToString(tblventaActualizar.CurrentRow.Cells(2).Value)
         Dim version As String = Convert.ToString(tblventaActualizar.CurrentRow.Cells(3).Value)
@@ -88,7 +84,6 @@
         cmbFormaPago.Text = formapago
         npdCantidadPagada.Value = Convert.ToDecimal(cantidadpagada)
         tblventaActualizar.Columns.Item("idventadetalle").Visible = False
-
     End Sub
 
 
@@ -101,34 +96,22 @@
     Dim totalneto As Double = 0
     Private Sub Button3_Click_1(sender As Object, e As EventArgs) Handles btnProducto.Click
         If agrega Then
-
-
-
             If txtNombreCliente.Text <> String.Empty Then
-
                 tblProductosNuevos.Rows.Add(txtNombreCliente.Text, txtproducto.Text, npdkilos.Value, (npdprecio.Value * npdkilos.Value), npdCantidadPagada.Value, user, cmbFormaPago.Text, cmbBodega.Text)
                 lbltotal.Text = (npdprecio.Value * npdkilos.Value) + Convert.ToDecimal(lbltotal.Text)
             Else
                 MsgBox("Seleccione un Cliente")
             End If
-
             If tblProductosNuevos.RowCount > 1 And txtNombreCliente.Text <> String.Empty Then
-
                 Dim i As Integer
                 Dim total As Double
-
                 For i = 1 To tblProductosNuevos.RowCount
                     total += Convert.ToDecimal(Convert.ToString(tblProductosNuevos.Rows(i - 1).Cells(3).Value))
                     t = total
                 Next
                 t = totalneto + Convert.ToDecimal(lbltotal.Text)
-
                 lbltotal.Text = Convert.ToString(t)
-
-
             End If
-
-
         End If
     End Sub
 
@@ -138,24 +121,15 @@
             If agrega Then
 
                 For i = 1 To tblventaActualizar.RowCount
-
-
-
                     mtdv.VentaDetalleUpdate(Convert.ToString(tblventaActualizar.Rows(0).Cells(0).Value),
                                             Convert.ToString(tblventaActualizar.Rows(i - 1).Cells("idventadetalle").Value),
                                             Convert.ToString(tblventaActualizar.Rows(i - 1).Cells(3).Value),
                                             Convert.ToString(tblventaActualizar.Rows(i - 1).Cells(4).Value),
                                             Convert.ToString(tblventaActualizar.Rows(i - 1).Cells(10).Value),
                                             Convert.ToString(tblventaActualizar.Rows(i - 1).Cells(2).Value), If(i = 1, True, False), If(tblventaActualizar.Rows(i - 1).Cells(4).Value = tbl.Rows(i - 1).Cells(4).Value, False, True))
-
                 Next
-
                 Dim cade As String = tblventaActualizar.Rows(0).Cells(0).Value
-
                 For i = 1 To tblProductosNuevos.RowCount
-
-
-
                     mtdv.insertarVentaDetalleUpdate(
                                       cade,
                                       Convert.ToString(tblProductosNuevos.Rows(i - 1).Cells(1).Value),
@@ -164,13 +138,9 @@
                                       Convert.ToString(tblProductosNuevos.Rows(i - 1).Cells(7).Value)
                                       )
                 Next
-
                 mtdv.updateVentas(tblventaActualizar.Rows(0).Cells(0).Value.ToString, DateTime.Now.ToString("dd/MM/yyyy"), lbltotal.Text, npdCantidadPagada.Value.ToString, txtNombreCliente.Text, user, cmbBodega.Text, cmbFormaPago.Text)
             Else
-
                 For i = 1 To tblventaActualizar.RowCount
-
-
                     mtdv.VentaDetalleUpdate(Convert.ToString(tblventaActualizar.Rows(0).Cells(0).Value),
                                             Convert.ToString(tblventaActualizar.Rows(i - 1).Cells("idventadetalle").Value),
                                             Convert.ToString(tblventaActualizar.Rows(i - 1).Cells(3).Value),
@@ -180,15 +150,9 @@
                 Next
                 mtdv.updateVentas(tblventaActualizar.Rows(0).Cells(0).Value.ToString, DateTime.Now.ToString("dd/MM/yyyy"), lbltotal.Text, npdCantidadPagada.Value.ToString, txtNombreCliente.Text, user, cmbBodega.Text, cmbFormaPago.Text)
             End If
-
         Catch ex As Exception
             MsgBox("Actualizar_Producto duplicado")
         End Try
-
-    End Sub
-
-    Private Sub cmbBodega_SelectedIndexChanged(sender As Object, e As EventArgs) Handles cmbBodega.SelectedIndexChanged
-
     End Sub
 
     Private Sub cmbBodega_MouseClick(sender As Object, e As MouseEventArgs) Handles cmbBodega.MouseClick
@@ -201,13 +165,10 @@
         bc.bodega = cmbBodega.Text
         AddOwnedForm(bc)
         bc.ShowDialog()
-
     End Sub
 
     Private Sub btnQuitarproducto_Click(sender As Object, e As EventArgs) Handles btnQuitarproducto.Click
-
         If tblventaActualizar.RowCount > 0 And txtNombreCliente.Text <> String.Empty Then
-
             tblventaActualizar.Rows.Remove(tblventaActualizar.CurrentRow)
             Dim i As Integer
             Dim total As Double
@@ -226,16 +187,11 @@
                 lbltotal.Text = Convert.ToString(t)
             End If
         End If
-
     End Sub
 
     Private Sub Button4_Click(sender As Object, e As EventArgs) Handles Button4.Click
-
-
         If tblventaActualizar.RowCount > 0 And txtNombreCliente.Text <> String.Empty Then
-
             tblProductosNuevos.Rows.Remove(tblProductosNuevos.CurrentRow)
-
             Dim i As Integer
             Dim total As Double
             For i = 1 To tblventaActualizar.RowCount
