@@ -1,5 +1,5 @@
 ﻿Public Class NuevaVenta
-    Public user, idEmpleado As String
+    Public user, idEmpleado, lim, saldo As String
     Dim savef As String
     Dim flag As Boolean = False
     Public explicita As Boolean

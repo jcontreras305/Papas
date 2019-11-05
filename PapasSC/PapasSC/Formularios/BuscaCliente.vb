@@ -37,7 +37,8 @@
             nv.nombreCliente = nombreCliente
             nv.idCliente = idCliente
             nv.txtNombreCliente.Text = nombreCliente
-
+            nv.lim = limiteCredito
+            nv.saldo = saldo
             Me.Close()
         Catch ex As Exception
             MsgBox(ex.Message)
