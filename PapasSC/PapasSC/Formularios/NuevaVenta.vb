@@ -99,6 +99,7 @@
     Private Sub Button1_Click(sender As Object, e As EventArgs) Handles Button1.Click
         If txtNombreCliente.Text <> String.Empty And tblventa.RowCount > 0 And npdCantidadPagada.Value > 0 Then
             CantidadMonetariaExplicitaInicio.txtTotalPagar.Text = lblTotal.Text
+            CantidadMonetariaExplicitaInicio.vn = True
             CantidadMonetariaExplicitaInicio.ShowDialog()
 
             If cbxEspera.Checked Then
@@ -246,13 +247,7 @@
 
     End Sub
 
-    Private Sub Button4_Click(sender As Object, e As EventArgs)
 
-    End Sub
-
-    Private Sub npdprecio_ValueChanged(sender As Object, e As EventArgs) Handles npdprecio.ValueChanged
-
-    End Sub
 
 
     Private Sub TextBox2_TextChanged(sender As Object, e As EventArgs) Handles txbFiltro.TextChanged
@@ -323,8 +318,23 @@
     End Sub
 
     Private Sub btnBuscarCliente_Click(sender As Object, e As EventArgs) Handles btnBuscarCliente.Click
-        Dim bc As New BuscaCliente
-        AddOwnedForm(bc)
-        bc.ShowDialog()
+        If tblventa.Rows.Count > 0 Then
+            MsgBox("No puedes cambiar de Cliente en un venta." + vbCrLf + "Puedes poner en espera o concretar la venta")
+        Else
+            Dim bc As New BuscaCliente
+            AddOwnedForm(bc)
+            bc.ShowDialog()
+            If lim > 0 And saldo < lim Then
+                cmbFormaPago.Items.Clear()
+                cmbFormaPago.Items.Add("Contado")
+                cmbFormaPago.Items.Add("Credito")
+                cmbFormaPago.SelectedIndex = 1
+            Else
+                MsgBox("Es probable que el cliente no tenga autorizado un credito o " + vbCrLf + "el saldo es insuficiente." + vbCrLf + "Limiite de credito: " + CDbl(lim).ToString("N") + " Saldo al día: " + CDbl(saldo).ToString("N"))
+                cmbFormaPago.Items.Clear()
+                cmbFormaPago.Items.Add("Contado")
+                cmbFormaPago.SelectedIndex = 0
+            End If
+        End If
     End Sub
 End Class
