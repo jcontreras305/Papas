@@ -63,32 +63,33 @@
 
     Private Function cortecajaIniciar() As Boolean
         If MessageBox.Show("¿Desea iniciar caja?", "Apertura y Cierre de Caja", MessageBoxButtons.YesNoCancel, MessageBoxIcon.Question) = Windows.Forms.DialogResult.Yes Then
-            If listCajasExplicito(cmbCajas.FindString(cmbCajas.Text)).Equals("A") Then 'DE FORMA EXPLICITA
-                Dim cme As New CantidadMonetariaExplicitaInicio
-                Me.AddOwnedForm(cme) 'aqui hacemos que muestre la interfaz de monedas y billetes para iniciar la caja
-                cme.idCaja = listIdsCajas(cmbCajas.FindString(cmbCajas.Text))
-                cme.idEmpleado = listIdsEmpleados(cmbEmpleados.FindString(cmbEmpleados.Text))
-                cme.lblTotalPagar.Visible = False
-                cme.txtTotalPagar.Visible = False
-                cme.ShowDialog()
-                If flagCanelar = True Then
-                    mtdCaja.cajasEstatus(cmbCajas, listIdsCajas, listEstatusCaja, listCajasExplicito)
-                    cmbCajas.SelectedIndex = 0
-                    coloresCombo()
-                    Return True
-                Else
-                    Return False
-                End If
-            Else ' DE FORMA NORMAL
-                Dim montoInicial As Double = 0.0
-                Do
-                    montoInicial = CDbl(InputBox("Ingresa la cantidad Inicial. " + vbCrLf + "Solo numeros por favor."))
-                Loop While (montoInicial - montoInicial) <> 0 And Not montoInicial > 0
-                mtdCaja.iniciar_Caja(listCajasExplicito(cmbCajas.FindString(cmbCajas.Text)), listIdsEmpleados(cmbEmpleados.FindString(cmbEmpleados.Text)), montoInicial)
-                coloresCombo()
+            'If listCajasExplicito(cmbCajas.FindString(cmbCajas.Text)).Equals("A") Then 'DE FORMA EXPLICITA
+            Dim cme As New CantidadMonetariaExplicitaInicio
+            Me.AddOwnedForm(cme) 'aqui hacemos que muestre la interfaz de monedas y billetes para iniciar la caja
+            cme.idCaja = listIdsCajas(cmbCajas.FindString(cmbCajas.Text))
+            cme.idEmpleado = listIdsEmpleados(cmbEmpleados.FindString(cmbEmpleados.Text))
+            cme.lblTotalPagar.Visible = False
+            cme.txtTotalPagar.Visible = False
+            cme.txtCambio.Visible = False
+            cme.ShowDialog()
+            If flagCanelar = True Then
                 mtdCaja.cajasEstatus(cmbCajas, listIdsCajas, listEstatusCaja, listCajasExplicito)
+                cmbCajas.SelectedIndex = 0
+                coloresCombo()
                 Return True
+            Else
+                Return False
             End If
+            'Else ' DE FORMA NORMAL
+            'Dim montoInicial As Double = 0.0
+            '    Do
+            '        montoInicial = CDbl(InputBox("Ingresa la cantidad Inicial. " + vbCrLf + "Solo numeros por favor."))
+            '    Loop While (montoInicial - montoInicial) <> 0 And Not montoInicial > 0
+            '    mtdCaja.iniciar_Caja(listCajasExplicito(cmbCajas.FindString(cmbCajas.Text)), listIdsEmpleados(cmbEmpleados.FindString(cmbEmpleados.Text)), montoInicial)
+            '    coloresCombo()
+            '    mtdCaja.cajasEstatus(cmbCajas, listIdsCajas, listEstatusCaja, listCajasExplicito)
+            '    Return True
+            'End If
         ElseIf Windows.Forms.DialogResult.No Then
             Return False
         ElseIf Windows.Forms.DialogResult.Cancel Then
@@ -101,20 +102,21 @@
         If listEstatusCaja(cmbCajas.FindString(cmbCajas.Text)).Equals("Cerrada") Then ' LA CAJA ESTA CERRADA
             If mtdLogeo.validarUsuarioCaja(cmbEmpleados.Text, txtContraseña.Text) Then ' COMPARO LA CAJA Y EL USARIO
                 If vn Then ' venta: si vn = true entonces inicio el form desde el boton de venta
-                    cortecajaIniciar() 'aqui abre la caja y pregunta si es explisita o no 
-                    Dim nv As New NuevaVenta
-                    Me.AddOwnedForm(nv)
-                    nv.idEmpleado = listIdsEmpleados(cmbEmpleados.FindString(cmbEmpleados.Text))
-                    nv.idCaja = listIdsCajas(cmbCajas.FindString(cmbCajas.Text))
-                    If listCajasExplicito(cmbCajas.FindString(cmbCajas.Text)).Equals("A") Then
-                        nv.explicita = True
-                    Else
-                        nv.explicita = False
+                    If cortecajaIniciar() Then 'aqui abre la caja y pregunta si es explisita o no 
+                        Dim nv As New NuevaVenta
+                        Me.AddOwnedForm(nv)
+                        nv.idEmpleado = listIdsEmpleados(cmbEmpleados.FindString(cmbEmpleados.Text))
+                        nv.idCaja = listIdsCajas(cmbCajas.FindString(cmbCajas.Text))
+                        If listCajasExplicito(cmbCajas.FindString(cmbCajas.Text)).Equals("A") Then
+                            nv.explicita = True
+                        Else
+                            nv.explicita = False
+                        End If
+                        nv.user = user
+                        Me.Visible = False
+                        nv.ShowDialog()
+                        Me.Visible = True
                     End If
-                    nv.user = user
-                    Me.Visible = False
-                    nv.ShowDialog()
-                    Me.Visible = True
                 Else ' caja: si vn es falso se inicia el from desde el boton de caja
                     Dim caja As New Caja
                     Me.AddOwnedForm(caja)

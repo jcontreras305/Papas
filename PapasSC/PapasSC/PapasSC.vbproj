@@ -760,6 +760,7 @@
     <Content Include="Documentos\LARIGZA.sql" />
     <Content Include="Documentos\PS_ACTUAL1.0.sql" />
     <Content Include="Imagenes\ACTUALIZAR.png" />
+    <Content Include="Imagenes\agregar.png" />
     <Content Include="Imagenes\ALMACEN.jpg" />
     <Content Include="Imagenes\BILLETE.png" />
     <Content Include="Imagenes\BODEGAS.jpg" />

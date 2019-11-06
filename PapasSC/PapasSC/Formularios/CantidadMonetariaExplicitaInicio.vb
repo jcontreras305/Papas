@@ -8,10 +8,14 @@
 
     Private Sub CantidadMonetariaExplicitaInicio_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         Try
+
             DineroTotal = CDbl(txtTotal.Text)
-            txtTotal.ReadOnly = True
+
             flag = True
             btnQuitar.Text = "Agregar"
+            txtCambio.ReadOnly = True
+            txtTotal.ReadOnly = True
+            txtTotalPagar.ReadOnly = True
         Catch ex As Exception
 
         End Try
@@ -70,9 +74,11 @@
             If flag Then
                 flag = False
                 btnQuitar.Text = "Quitar"
+                btnQuitar.Image = PapasSC.My.Resources.SALIR
             Else
                 flag = True
                 btnQuitar.Text = "Agregar"
+                btnQuitar.Image = PapasSC.My.Resources.agregar
             End If
         Catch ex As Exception
 
@@ -101,14 +107,72 @@
         End If
     End Function
 
-    Private Sub btnContinuar_Click(sender As Object, e As EventArgs) Handles btnContinuar.Click
-        If Not DineroTotal > 0.0 Then
-            MessageBox.Show("Debes introducir dinero para iniciar la caja.", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.None)
-        Else
-            If vn Then
-                'esto es cuando esta en ventas
+    Private Function btnDineros_KeyUp(sender As Object, e As KeyPressEventArgs) Handles btnB1000.KeyPress, btnB500.KeyPress, btnB200.KeyPress, btnB100.KeyPress, btnB50.KeyPress, btnB20.KeyPress, btnM20.KeyPress, btnM10.KeyPress, btnM5.KeyPress, btnM2.KeyPress, btnM1.KeyPress, btnM05.KeyPress
+        e.Handled = Not IsNumeric(e.KeyChar) And Not Char.IsControl(e.KeyChar)
+        If IsNumeric(e.KeyChar) Then
+            If sender Is btnB1000 Then
+                btnB1000.Text = e.KeyChar.ToString()
+            ElseIf sender Is btnB500 Then
+                btnB500.Text = e.KeyChar.ToString()
+            ElseIf sender Is btnB200 Then
+                btnB200.Text = e.KeyChar.ToString()
+            ElseIf sender Is btnB100 Then
+                btnB100.Text = e.KeyChar.ToString()
+            ElseIf sender Is btnB50 Then
+                btnB50.Text = e.KeyChar.ToString()
+            ElseIf sender Is btnB20 Then
+                btnB20.Text = e.KeyChar.ToString()
+            ElseIf sender Is btnM20 Then
+                btnM20.Text = e.KeyChar.ToString()
+            ElseIf sender Is btnM10 Then
+                btnM10.Text = e.KeyChar.ToString()
+            ElseIf sender Is btnM5 Then
+                btnM5.Text = e.KeyChar.ToString()
+            ElseIf sender Is btnM2 Then
+                btnM2.Text = e.KeyChar.ToString()
+            ElseIf sender Is btnM1 Then
+                btnM1.Text = e.KeyChar.ToString()
+            ElseIf sender Is btnM05 Then
+                btnM05.Text = e.KeyChar.ToString()
+            End If
 
-            Else 'aqui es para iniciar caja desda boton de venta y caja
+        End If
+        calcular()
+    End Function
+
+    Private Function calcular() As Boolean
+        Dim arraybotones As Object = {btnB1000, btnB500, btnB200, btnB100, btnB50, btnB20, btnM20, btnM10, btnM5, btnM2, btnM1, btnM05}
+        Dim arrayValores() As Double = {1000, 500, 200, 100, 50, 20, 20, 10, 5, 2, 1, 0.5}
+        Dim cont As Int16 = 0
+        Dim total As Double = 0
+        For Each btn As Button In arraybotones
+            Dim cant As Int16 = CInt(btn.Text)
+            Dim mul = arrayValores(cont)
+            total = total + CDbl((mul * cant))
+            cont += 1
+        Next
+        DineroTotal = total
+        txtTotal.Text = DineroTotal.ToString("N")
+        Return Nothing
+    End Function
+
+    Private Sub btns_KeyUp(sender As Object, e As KeyPressEventArgs) Handles btnM5.KeyPress, btnM20.KeyPress, btnM2.KeyPress, btnM10.KeyPress, btnM1.KeyPress, btnM05.KeyPress, btnB500.KeyPress, btnB50.KeyPress, btnB200.KeyPress, btnB20.KeyPress, btnB1000.KeyPress, btnB100.KeyPress
+
+    End Sub
+
+    Private Sub txtCambio_TextChanged(sender As Object, e As EventArgs) Handles txtCambio.TextChanged
+        txtCambio.Text.ToString("N")
+    End Sub
+
+    Private Sub btnContinuar_Click(sender As Object, e As EventArgs) Handles btnContinuar.Click
+        If vn Then
+            'esto es cuando esta en ventas
+
+            Me.Close()
+        Else 'aqui es para iniciar caja desda boton de venta y caja
+            If Not DineroTotal > 0.0 Then
+                MessageBox.Show("Debes introducir dinero para iniciar la caja.", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.None)
+            Else
                 If mtdCaja.iniciar_Caja_Explicito(idCaja, idEmpleado, CStr(DineroTotal), arrayMonedas) Then
                     Dim ic As IniciarCaja = CType(Owner, IniciarCaja)
                     ic.flagCanelar = True
@@ -122,11 +186,14 @@
     End Sub
 
     Private Sub btnCanelar_Click(sender As Object, e As EventArgs) Handles btnCanelar.Click
-        Dim ic As IniciarCaja = CType(Owner, IniciarCaja)
-        If Not DineroTotal > 0.0 Then
-            ic.flagCanelar = False
-        Else
-            ic.flagCanelar = True
+        If MessageBox.Show("Si desea continuar no se guardaran los cambios.", "Advertencia", MessageBoxButtons.OKCancel, MessageBoxIcon.Warning) = DialogResult.OK Then
+            If vn Then
+                Dim nv As NuevaVenta = CType(Owner, NuevaVenta)
+                nv.explicita = False
+            Else
+                Dim ic As IniciarCaja = CType(Owner, IniciarCaja)
+                ic.flagCanelar = False
+            End If
         End If
         Me.Close()
     End Sub

@@ -28,13 +28,13 @@
     End Sub
 
     Private Sub tabControl1_SelectedIndex(sender As Object, e As EventArgs) Handles TabControl1.SelectedIndexChanged
-        If TabControl1.SelectedIndex = 0 Then
+        If TabControl1.SelectedIndex = 0 Then 'General
             mtdCaja.select_ventasCajas(tblVentas, cmbTipoPersona.Text, txtCaja.Text, stpFechaInicio.Value.ToLongDateString, stpFechaFin.Value.ToLongDateString)
-        ElseIf TabControl1.SelectedIndex = 1 Then
+        ElseIf TabControl1.SelectedIndex = 1 Then ' Abonos y anticipos
 
-        ElseIf TabControl1.SelectedIndex = 2 Then
+        ElseIf TabControl1.SelectedIndex = 2 Then ' Cuentas por cobrar
             mtdCaja.select_CuentaPorCobrar(tblCuentasPorPagar, txtCaja.Text)
-        ElseIf TabControl1.SelectedIndex = 3 Then
+        ElseIf TabControl1.SelectedIndex = 3 Then ' Pre-corte
 
         End If
     End Sub

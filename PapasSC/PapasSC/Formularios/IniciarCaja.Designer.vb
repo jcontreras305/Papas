@@ -102,11 +102,11 @@ Partial Class IniciarCaja
         '
         Me.btnLiberar.Image = Global.PapasSC.My.Resources.Resources.LIBERAR
         Me.btnLiberar.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
-        Me.btnLiberar.Location = New System.Drawing.Point(237, 151)
+        Me.btnLiberar.Location = New System.Drawing.Point(220, 151)
         Me.btnLiberar.Name = "btnLiberar"
-        Me.btnLiberar.Size = New System.Drawing.Size(75, 41)
+        Me.btnLiberar.Size = New System.Drawing.Size(92, 41)
         Me.btnLiberar.TabIndex = 11
-        Me.btnLiberar.Text = "Liberar"
+        Me.btnLiberar.Text = "Corte Caja"
         Me.btnLiberar.TextAlign = System.Drawing.ContentAlignment.MiddleRight
         Me.btnLiberar.UseVisualStyleBackColor = True
         '
@@ -114,7 +114,7 @@ Partial Class IniciarCaja
         '
         Me.btnSalir.Image = Global.PapasSC.My.Resources.Resources.CANCELAR
         Me.btnSalir.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
-        Me.btnSalir.Location = New System.Drawing.Point(141, 151)
+        Me.btnSalir.Location = New System.Drawing.Point(125, 151)
         Me.btnSalir.Name = "btnSalir"
         Me.btnSalir.Size = New System.Drawing.Size(75, 41)
         Me.btnSalir.TabIndex = 9
@@ -126,7 +126,7 @@ Partial Class IniciarCaja
         '
         Me.btnAbrirCaja.Image = Global.PapasSC.My.Resources.Resources.ACEPTAR
         Me.btnAbrirCaja.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
-        Me.btnAbrirCaja.Location = New System.Drawing.Point(49, 151)
+        Me.btnAbrirCaja.Location = New System.Drawing.Point(33, 151)
         Me.btnAbrirCaja.Name = "btnAbrirCaja"
         Me.btnAbrirCaja.Size = New System.Drawing.Size(75, 41)
         Me.btnAbrirCaja.TabIndex = 8
@@ -138,7 +138,7 @@ Partial Class IniciarCaja
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(343, 217)
+        Me.ClientSize = New System.Drawing.Size(336, 217)
         Me.Controls.Add(Me.btnLiberar)
         Me.Controls.Add(Me.chbVer)
         Me.Controls.Add(Me.btnSalir)

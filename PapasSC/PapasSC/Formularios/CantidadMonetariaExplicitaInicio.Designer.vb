@@ -50,11 +50,12 @@ Partial Class CantidadMonetariaExplicitaInicio
         Me.btnM20 = New System.Windows.Forms.Button()
         Me.lbl13 = New System.Windows.Forms.Label()
         Me.txtTotal = New System.Windows.Forms.TextBox()
-        Me.btnContinuar = New System.Windows.Forms.Button()
-        Me.btnQuitar = New System.Windows.Forms.Button()
-        Me.btnCanelar = New System.Windows.Forms.Button()
         Me.txtTotalPagar = New System.Windows.Forms.TextBox()
         Me.lblTotalPagar = New System.Windows.Forms.Label()
+        Me.btnCanelar = New System.Windows.Forms.Button()
+        Me.btnContinuar = New System.Windows.Forms.Button()
+        Me.btnQuitar = New System.Windows.Forms.Button()
+        Me.txtCambio = New System.Windows.Forms.TextBox()
         Me.GroupBox1.SuspendLayout()
         Me.GroupBox2.SuspendLayout()
         Me.SuspendLayout()
@@ -75,7 +76,7 @@ Partial Class CantidadMonetariaExplicitaInicio
         Me.GroupBox1.Controls.Add(Me.btnB1000)
         Me.GroupBox1.Location = New System.Drawing.Point(12, 12)
         Me.GroupBox1.Name = "GroupBox1"
-        Me.GroupBox1.Size = New System.Drawing.Size(609, 83)
+        Me.GroupBox1.Size = New System.Drawing.Size(609, 94)
         Me.GroupBox1.TabIndex = 1
         Me.GroupBox1.TabStop = False
         Me.GroupBox1.Text = "Cantidad de Billetes"
@@ -220,9 +221,9 @@ Partial Class CantidadMonetariaExplicitaInicio
         Me.GroupBox2.Controls.Add(Me.Label11)
         Me.GroupBox2.Controls.Add(Me.Label12)
         Me.GroupBox2.Controls.Add(Me.btnM20)
-        Me.GroupBox2.Location = New System.Drawing.Point(12, 111)
+        Me.GroupBox2.Location = New System.Drawing.Point(12, 122)
         Me.GroupBox2.Name = "GroupBox2"
-        Me.GroupBox2.Size = New System.Drawing.Size(609, 83)
+        Me.GroupBox2.Size = New System.Drawing.Size(609, 93)
         Me.GroupBox2.TabIndex = 12
         Me.GroupBox2.TabStop = False
         Me.GroupBox2.Text = "Cantidad de Monedas"
@@ -367,53 +368,17 @@ Partial Class CantidadMonetariaExplicitaInicio
         Me.txtTotal.Font = New System.Drawing.Font("Microsoft Sans Serif", 15.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.txtTotal.Location = New System.Drawing.Point(666, 16)
         Me.txtTotal.Name = "txtTotal"
-        Me.txtTotal.Size = New System.Drawing.Size(145, 31)
+        Me.txtTotal.Size = New System.Drawing.Size(173, 31)
         Me.txtTotal.TabIndex = 14
         Me.txtTotal.Text = "0,00"
         Me.txtTotal.TextAlign = System.Windows.Forms.HorizontalAlignment.Right
-        '
-        'btnContinuar
-        '
-        Me.btnContinuar.Image = Global.PapasSC.My.Resources.Resources.GUARDAR
-        Me.btnContinuar.ImageAlign = System.Drawing.ContentAlignment.TopLeft
-        Me.btnContinuar.Location = New System.Drawing.Point(722, 143)
-        Me.btnContinuar.Name = "btnContinuar"
-        Me.btnContinuar.Size = New System.Drawing.Size(89, 44)
-        Me.btnContinuar.TabIndex = 16
-        Me.btnContinuar.Text = "Continuar"
-        Me.btnContinuar.TextAlign = System.Drawing.ContentAlignment.MiddleRight
-        Me.btnContinuar.UseVisualStyleBackColor = True
-        '
-        'btnQuitar
-        '
-        Me.btnQuitar.Image = Global.PapasSC.My.Resources.Resources.SALIR
-        Me.btnQuitar.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
-        Me.btnQuitar.Location = New System.Drawing.Point(733, 109)
-        Me.btnQuitar.Name = "btnQuitar"
-        Me.btnQuitar.Size = New System.Drawing.Size(78, 28)
-        Me.btnQuitar.TabIndex = 15
-        Me.btnQuitar.Text = "Quitar"
-        Me.btnQuitar.TextAlign = System.Drawing.ContentAlignment.MiddleRight
-        Me.btnQuitar.UseVisualStyleBackColor = True
-        '
-        'btnCanelar
-        '
-        Me.btnCanelar.Image = Global.PapasSC.My.Resources.Resources.CANCELAR
-        Me.btnCanelar.ImageAlign = System.Drawing.ContentAlignment.TopLeft
-        Me.btnCanelar.Location = New System.Drawing.Point(627, 143)
-        Me.btnCanelar.Name = "btnCanelar"
-        Me.btnCanelar.Size = New System.Drawing.Size(89, 44)
-        Me.btnCanelar.TabIndex = 17
-        Me.btnCanelar.Text = "Cancelar"
-        Me.btnCanelar.TextAlign = System.Drawing.ContentAlignment.MiddleRight
-        Me.btnCanelar.UseVisualStyleBackColor = True
         '
         'txtTotalPagar
         '
         Me.txtTotalPagar.Font = New System.Drawing.Font("Microsoft Sans Serif", 15.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.txtTotalPagar.Location = New System.Drawing.Point(700, 58)
         Me.txtTotalPagar.Name = "txtTotalPagar"
-        Me.txtTotalPagar.Size = New System.Drawing.Size(111, 31)
+        Me.txtTotalPagar.Size = New System.Drawing.Size(139, 31)
         Me.txtTotalPagar.TabIndex = 19
         Me.txtTotalPagar.Text = "0,00"
         Me.txtTotalPagar.TextAlign = System.Windows.Forms.HorizontalAlignment.Right
@@ -427,11 +392,56 @@ Partial Class CantidadMonetariaExplicitaInicio
         Me.lblTotalPagar.TabIndex = 18
         Me.lblTotalPagar.Text = "Total a pagar"
         '
+        'btnCanelar
+        '
+        Me.btnCanelar.Image = Global.PapasSC.My.Resources.Resources.CANCELAR
+        Me.btnCanelar.ImageAlign = System.Drawing.ContentAlignment.TopLeft
+        Me.btnCanelar.Location = New System.Drawing.Point(658, 164)
+        Me.btnCanelar.Name = "btnCanelar"
+        Me.btnCanelar.Size = New System.Drawing.Size(89, 44)
+        Me.btnCanelar.TabIndex = 17
+        Me.btnCanelar.Text = "Cancelar"
+        Me.btnCanelar.TextAlign = System.Drawing.ContentAlignment.MiddleRight
+        Me.btnCanelar.UseVisualStyleBackColor = True
+        '
+        'btnContinuar
+        '
+        Me.btnContinuar.Image = Global.PapasSC.My.Resources.Resources.GUARDAR
+        Me.btnContinuar.ImageAlign = System.Drawing.ContentAlignment.TopLeft
+        Me.btnContinuar.Location = New System.Drawing.Point(753, 164)
+        Me.btnContinuar.Name = "btnContinuar"
+        Me.btnContinuar.Size = New System.Drawing.Size(89, 44)
+        Me.btnContinuar.TabIndex = 16
+        Me.btnContinuar.Text = "Continuar"
+        Me.btnContinuar.TextAlign = System.Drawing.ContentAlignment.MiddleRight
+        Me.btnContinuar.UseVisualStyleBackColor = True
+        '
+        'btnQuitar
+        '
+        Me.btnQuitar.Image = Global.PapasSC.My.Resources.Resources.agregar
+        Me.btnQuitar.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
+        Me.btnQuitar.Location = New System.Drawing.Point(753, 109)
+        Me.btnQuitar.Name = "btnQuitar"
+        Me.btnQuitar.Size = New System.Drawing.Size(89, 42)
+        Me.btnQuitar.TabIndex = 15
+        Me.btnQuitar.Text = "Agregar"
+        Me.btnQuitar.TextAlign = System.Drawing.ContentAlignment.MiddleRight
+        Me.btnQuitar.UseVisualStyleBackColor = True
+        '
+        'txtCambio
+        '
+        Me.txtCambio.Font = New System.Drawing.Font("Microsoft Sans Serif", 15.75!)
+        Me.txtCambio.Location = New System.Drawing.Point(636, 113)
+        Me.txtCambio.Name = "txtCambio"
+        Me.txtCambio.Size = New System.Drawing.Size(100, 31)
+        Me.txtCambio.TabIndex = 20
+        '
         'CantidadMonetariaExplicitaInicio
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(823, 209)
+        Me.ClientSize = New System.Drawing.Size(851, 229)
+        Me.Controls.Add(Me.txtCambio)
         Me.Controls.Add(Me.txtTotalPagar)
         Me.Controls.Add(Me.lblTotalPagar)
         Me.Controls.Add(Me.btnCanelar)
@@ -485,4 +495,5 @@ Partial Class CantidadMonetariaExplicitaInicio
     Friend WithEvents btnCanelar As Button
     Friend WithEvents txtTotalPagar As TextBox
     Friend WithEvents lblTotalPagar As Label
+    Friend WithEvents txtCambio As TextBox
 End Class

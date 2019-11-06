@@ -451,4 +451,6 @@ where vt.fecha between  (select  MAX(fechaInicio) from corteCaja where idCaja = 
             Return False
         End Try
     End Function
+
+
 End Class
