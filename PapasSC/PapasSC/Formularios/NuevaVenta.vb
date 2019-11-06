@@ -6,7 +6,7 @@
     Public idCaja As String
     Dim folio As Int16
     Dim mtdv As New MetodosVenta
-
+    Public descuentoC As String
 
     Public idCliente, nombreCliente As String
 
@@ -91,61 +91,79 @@
             lblTotal.Text = Convert.ToString(Convert.ToString((npdprecio.Value * npdkilos.Value)))
             t = (npdprecio.Value * npdkilos.Value)
         End If
-
     End Sub
 
 
 
     Private Sub Button1_Click(sender As Object, e As EventArgs) Handles Button1.Click
         If txtNombreCliente.Text <> String.Empty And tblventa.RowCount > 0 And npdCantidadPagada.Value > 0 Then
-            CantidadMonetariaExplicitaInicio.txtTotalPagar.Text = lblTotal.Text
-            CantidadMonetariaExplicitaInicio.vn = True
-            CantidadMonetariaExplicitaInicio.ShowDialog()
+            If Convert.ToDecimal(lim) > t And txtNombreCliente.Text <> "Publico General" Then
 
-            If cbxEspera.Checked Then
+                If Convert.ToDecimal(saldo) <> 0 Then
 
-                If cmbFormaPago.Text = "Credito" Then
-                    mtdv.insertarVenta(savef.ToString, t.ToString, npdCantidadPagada.Value, txtNombreCliente.Text, user, cmbBodega.Text, "D", cmbFormaPago.Text, idCaja, idCliente)
-                Else
-                    mtdv.insertarVenta(savef.ToString, t.ToString, npdCantidadPagada.Value, txtNombreCliente.Text, user, cmbBodega.Text, "E", cmbFormaPago.Text, idCaja, idCliente)
+                    If MessageBox.Show("¿Desea utilizar su saldo?", "Atención", MessageBoxButtons.YesNo, MessageBoxIcon.Question) = Windows.Forms.DialogResult.Yes Then
+                        AddOwnedForm(Montocredito)
+                        Montocredito.maximo = saldo
+                        Montocredito.ShowDialog()
+                        mtdv.actualizar_credito(idCliente, descuentoC)
+                        mtdv.actualizar_totalpagado(descuentoC)
+                    End If
+
                 End If
-                Dim i As Integer
 
-                MsgBox(tblventa.RowCount)
-                Try
-                    For i = 1 To tblventa.RowCount
 
-                        mtdv.insertarVentaDetalle(Convert.ToString(tblventa.Rows(i - 1).Cells(1).Value),
+                CantidadMonetariaExplicitaInicio.txtTotalPagar.Text = lblTotal.Text
+                    CantidadMonetariaExplicitaInicio.vn = True
+                    CantidadMonetariaExplicitaInicio.ShowDialog()
+
+                    If cbxEspera.Checked Then
+
+                        If cmbFormaPago.Text = "Credito" Then
+                            mtdv.insertarVenta(savef.ToString, t.ToString, npdCantidadPagada.Value, txtNombreCliente.Text, idEmpleado, cmbBodega.Text, "D", cmbFormaPago.Text, idCaja, idCliente)
+                        Else
+                            mtdv.insertarVenta(savef.ToString, t.ToString, npdCantidadPagada.Value, txtNombreCliente.Text, idEmpleado, cmbBodega.Text, "E", cmbFormaPago.Text, idCaja, idCliente)
+                        End If
+                        Dim i As Integer
+
+                        MsgBox(tblventa.RowCount)
+                        Try
+                            For i = 1 To tblventa.RowCount
+
+                                mtdv.insertarVentaDetalle(Convert.ToString(tblventa.Rows(i - 1).Cells(1).Value),
                                           Convert.ToString(tblventa.Rows(i - 1).Cells(2).Value),
                                           Convert.ToString(tblventa.Rows(i - 1).Cells(3).Value),
                                           Convert.ToString(tblventa.Rows(i - 1).Cells(7).Value))
-                    Next
-                Catch ex As Exception
-                    MsgBox("Actualizar_Producto duplicado")
-                End Try
+                            Next
+                        Catch ex As Exception
+                            MsgBox("Actualizar_Producto duplicado")
+                        End Try
+                    Else
+                        If cmbFormaPago.Text = "Credito" Then
+                            mtdv.insertarVenta(savef.ToString, t.ToString, npdCantidadPagada.Value, txtNombreCliente.Text, idEmpleado, cmbBodega.Text, "D", cmbFormaPago.Text, idCaja, idCliente)
+                        Else
+                            mtdv.insertarVenta(savef.ToString, t.ToString, npdCantidadPagada.Value, txtNombreCliente.Text, idEmpleado, cmbBodega.Text, "P", cmbFormaPago.Text, idCaja, idCliente)
+                        End If
+
+
+                        MsgBox(tblventa.RowCount)
+                        Try
+                            For i = 1 To tblventa.RowCount
+
+                                mtdv.insertarVentaDetalle(Convert.ToString(tblventa.Rows(i - 1).Cells(1).Value),
+                                          Convert.ToString(tblventa.Rows(i - 1).Cells(2).Value),
+                                          Convert.ToString(tblventa.Rows(i - 1).Cells(3).Value),
+                                          Convert.ToString(tblventa.Rows(i - 1).Cells(7).Value))
+                            Next
+                        Catch ex As Exception
+                            MsgBox("Actualizar_Producto duplicado")
+                        End Try
+                    End If
+
+                Else
+
+                End If
             Else
-                If cmbFormaPago.Text = "Credito" Then
-                    mtdv.insertarVenta(savef.ToString, t.ToString, npdCantidadPagada.Value, txtNombreCliente.Text, user, cmbBodega.Text, "D", cmbFormaPago.Text, idCaja, idCliente)
-                Else
-                    mtdv.insertarVenta(savef.ToString, t.ToString, npdCantidadPagada.Value, txtNombreCliente.Text, user, cmbBodega.Text, "P", cmbFormaPago.Text, idCaja, idCliente)
-                End If
-
-
-                MsgBox(tblventa.RowCount)
-                Try
-                    For i = 1 To tblventa.RowCount
-
-                        mtdv.insertarVentaDetalle(Convert.ToString(tblventa.Rows(i - 1).Cells(1).Value),
-                                          Convert.ToString(tblventa.Rows(i - 1).Cells(2).Value),
-                                          Convert.ToString(tblventa.Rows(i - 1).Cells(3).Value),
-                                          Convert.ToString(tblventa.Rows(i - 1).Cells(7).Value))
-                    Next
-                Catch ex As Exception
-                    MsgBox("Actualizar_Producto duplicado")
-                End Try
-            End If
-        Else
-            MsgBox("Completa los campos")
+                MsgBox("Completa los campos")
         End If
     End Sub
 
@@ -243,8 +261,19 @@
     End Sub
 
     Private Sub Button7_Click(sender As Object, e As EventArgs) Handles Button7.Click
-        Cancelar_Venta.Show()
 
+        If Convert.ToDecimal(saldo) <> 0 And tblDetalleVenta.CurrentRow.Cells("estatus").Value = "D" Then
+
+            If MessageBox.Show("¿Desea utilizar su saldo?", "Atención", MessageBoxButtons.YesNo, MessageBoxIcon.Question) = Windows.Forms.DialogResult.Yes Then
+                AddOwnedForm(Montocredito)
+                Montocredito.maximo = saldo
+                Montocredito.ShowDialog()
+                mtdv.actualizar_credito(idCliente, descuentoC)
+                mtdv.actualizar_totalpagado(descuentoC, tblDetalleVenta.CurrentRow.Cells(0).Value)
+            End If
+        Else
+            MessageBox.Show("Este empleado no cuenta con saldo", "Atención", MessageBoxButtons.OK, MessageBoxIcon.Information)
+        End If
     End Sub
 
 

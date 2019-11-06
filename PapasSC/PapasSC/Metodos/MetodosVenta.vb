@@ -71,6 +71,9 @@ inner join cliente as cl on cl.idCliente = vn.idCliente
         End Try
     End Sub
 
+    Friend Sub actualizar_credito()
+        Throw New NotImplementedException()
+    End Sub
 
     Public Sub llenarDatagridview_filtroCantidad(ByVal dgv As DataGridView, ByVal filtro As String)
             cn.conectar()
@@ -292,7 +295,7 @@ inner join cliente as cl on cl.idCliente = vn.idCliente
             MsgBox("entro")
 
 
-            Dim idempleado As String
+
             Dim idbodega As String
 
 
@@ -306,18 +309,6 @@ inner join cliente as cl on cl.idCliente = vn.idCliente
             Rs.Close()
 
 
-
-
-
-
-            cn.conectar()
-            Dim Sql2 As String = "select top 1 idempleado from empleado where nombre ='" + Empleado + "' and estatus= 'A'"
-            Com = New SqlCommand(Sql2, cn.conn)
-            Rs = Com.ExecuteReader()
-            Rs.Read()
-            idempleado = Rs(0).ToString
-            Rs.Close()
-            cn.desconectar()
 
 
             cn.conectar()
@@ -384,7 +375,7 @@ inner join cliente as cl on cl.idCliente = vn.idCliente
            ," + Convert.ToString(cantidadPagada) + "
            ,'" + Convert.ToString(estatus) + "'
            ,'" + Convert.ToString(idCliente) + "'
-           ,'" + Convert.ToString(idempleado) + "'
+           ,'" + Convert.ToString(Empleado) + "'
            ,'" + Convert.ToString(idbodega) + "'
            ,'" + Convert.ToString(formapago) + "'
            ,'" + Convert.ToString(idCaja) + "'
@@ -817,6 +808,65 @@ inner join cliente as cl on cl.idCliente = vn.idCliente
 
         End Try
     End Sub
+
+    Public Sub actualizar_credito(ByVal idcliente As String, ByVal saldo As String)
+        Try
+
+            Dim Rs As SqlDataReader
+            Dim Com As New SqlCommand
+
+            cn.conectar()
+
+            Dim cadena As String = "
+UPDATE [dbo].[credito]
+   SET saldo = saldo - (" + saldo + ")  WHERE [idCliente] = '" + idcliente + "'"
+
+            MsgBox(cadena)
+            Com = New SqlCommand(cadena, cn.conn)
+            Com.ExecuteNonQuery()
+            cn.desconectar()
+        Catch ex As Exception
+            MessageBox.Show("No se inserto debido a: " + ex.ToString)
+
+        End Try
+    End Sub
+
+    Public Sub actualizar_totalpagado(ByVal saldo As String)
+        Try
+
+            Dim Com As New SqlCommand
+            cn.conectar()
+            Dim cadena As String = "UPDATE [dbo].[venta] SET saldo = cantidadPagada + (" + saldo + ")  WHERE [idCliente] = '" + clave + "'"
+
+            MsgBox(cadena)
+            Com = New SqlCommand(cadena, cn.conn)
+            Com.ExecuteNonQuery()
+            cn.desconectar()
+        Catch ex As Exception
+            MessageBox.Show("No se inserto debido a: " + ex.ToString)
+
+        End Try
+    End Sub
+
+
+
+    Public Sub actualizar_totalpagado(ByVal saldo As String, ByVal idv As String)
+        Try
+
+            Dim Com As New SqlCommand
+            cn.conectar()
+            Dim cadena As String = "UPDATE [dbo].[venta] SET saldo = cantidadPagada + (" + saldo + ")  WHERE [idCliente] = '" + idv + "'"
+
+            MsgBox(cadena)
+            Com = New SqlCommand(cadena, cn.conn)
+            Com.ExecuteNonQuery()
+            cn.desconectar()
+        Catch ex As Exception
+            MessageBox.Show("No se inserto debido a: " + ex.ToString)
+
+        End Try
+    End Sub
+
 
 End Class
 
