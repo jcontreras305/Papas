@@ -372,7 +372,7 @@ Partial Class NuevaVenta
         Me.Button7.Name = "Button7"
         Me.Button7.Size = New System.Drawing.Size(127, 49)
         Me.Button7.TabIndex = 6
-        Me.Button7.Text = "Cambio o Devolucion"
+        Me.Button7.Text = "Utilizar saldo"
         Me.Button7.UseVisualStyleBackColor = True
         '
         'Button6

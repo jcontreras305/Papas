@@ -819,7 +819,7 @@ inner join cliente as cl on cl.idCliente = vn.idCliente
 
             Dim cadena As String = "
 UPDATE [dbo].[credito]
-   SET saldo = saldo - (" + saldo + ")  WHERE [idCliente] = '" + idcliente + "'"
+   SET saldo = saldo + (" + saldo + ")  WHERE [idCliente] = '" + idcliente + "'"
 
             MsgBox(cadena)
             Com = New SqlCommand(cadena, cn.conn)
