@@ -101,6 +101,10 @@ Partial Class Actualizar_Venta
         '
         Me.tblventaActualizar.AllowUserToAddRows = False
         Me.tblventaActualizar.AllowUserToDeleteRows = False
+        Me.tblventaActualizar.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
+            Or System.Windows.Forms.AnchorStyles.Left) _
+            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.tblventaActualizar.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill
         Me.tblventaActualizar.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
         Me.tblventaActualizar.Location = New System.Drawing.Point(469, 215)
         Me.tblventaActualizar.Name = "tblventaActualizar"
@@ -265,6 +269,10 @@ Partial Class Actualizar_Venta
         '
         Me.tblProductosNuevos.AllowUserToAddRows = False
         Me.tblProductosNuevos.AllowUserToDeleteRows = False
+        Me.tblProductosNuevos.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
+            Or System.Windows.Forms.AnchorStyles.Left) _
+            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.tblProductosNuevos.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill
         Me.tblProductosNuevos.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
         Me.tblProductosNuevos.Location = New System.Drawing.Point(469, 22)
         Me.tblProductosNuevos.Name = "tblProductosNuevos"

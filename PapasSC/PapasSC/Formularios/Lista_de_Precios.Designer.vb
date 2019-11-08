@@ -36,6 +36,10 @@ Partial Class Lista_de_Precios
         '
         'tablaprecios
         '
+        Me.tablaprecios.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
+            Or System.Windows.Forms.AnchorStyles.Left) _
+            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.tablaprecios.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill
         Me.tablaprecios.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
         Me.tablaprecios.Location = New System.Drawing.Point(12, 71)
         Me.tablaprecios.Name = "tablaprecios"

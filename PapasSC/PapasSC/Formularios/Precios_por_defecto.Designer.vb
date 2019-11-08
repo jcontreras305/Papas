@@ -69,6 +69,10 @@ Partial Class Precios_por_defecto
         '
         'tblPreciosDefecto
         '
+        Me.tblPreciosDefecto.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
+            Or System.Windows.Forms.AnchorStyles.Left) _
+            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.tblPreciosDefecto.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill
         Me.tblPreciosDefecto.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
         Me.tblPreciosDefecto.Location = New System.Drawing.Point(35, 69)
         Me.tblPreciosDefecto.Name = "tblPreciosDefecto"
