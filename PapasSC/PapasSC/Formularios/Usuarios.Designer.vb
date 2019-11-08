@@ -78,6 +78,7 @@ Partial Class Usuarios
         '
         'tblUsuarios
         '
+        Me.tblUsuarios.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill
         Me.tblUsuarios.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
         Me.tblUsuarios.Location = New System.Drawing.Point(7, 87)
         Me.tblUsuarios.Name = "tblUsuarios"

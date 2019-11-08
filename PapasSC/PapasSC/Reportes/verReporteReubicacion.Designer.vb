@@ -35,6 +35,7 @@ Partial Class verReporteReubicacion
         Me.CrystalReportViewer1.Location = New System.Drawing.Point(0, 0)
         Me.CrystalReportViewer1.Name = "CrystalReportViewer1"
         Me.CrystalReportViewer1.ReportSource = Me.ReporteDeReubicaciones1
+        Me.CrystalReportViewer1.ShowLogo = False
         Me.CrystalReportViewer1.Size = New System.Drawing.Size(1041, 574)
         Me.CrystalReportViewer1.TabIndex = 0
         '

@@ -39,6 +39,7 @@ Partial Class ConfiguracionCaja
         Me.tblCaja.AllowUserToOrderColumns = True
         Me.tblCaja.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
             Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.tblCaja.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill
         Me.tblCaja.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
         Me.tblCaja.Location = New System.Drawing.Point(12, 44)
         Me.tblCaja.Name = "tblCaja"

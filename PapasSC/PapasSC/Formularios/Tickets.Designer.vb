@@ -32,6 +32,10 @@ Partial Class tickets
         '
         'tblFormatostTicket
         '
+        Me.tblFormatostTicket.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
+            Or System.Windows.Forms.AnchorStyles.Left) _
+            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.tblFormatostTicket.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill
         Me.tblFormatostTicket.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
         Me.tblFormatostTicket.Location = New System.Drawing.Point(19, 75)
         Me.tblFormatostTicket.Name = "tblFormatostTicket"
