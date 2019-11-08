@@ -40,10 +40,6 @@ Partial Class Invertario
         '
         DataGridViewCellStyle1.Padding = New System.Windows.Forms.Padding(20, 0, 0, 0)
         Me.tblInventario.AlternatingRowsDefaultCellStyle = DataGridViewCellStyle1
-        Me.tblInventario.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
-            Or System.Windows.Forms.AnchorStyles.Left) _
-            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.tblInventario.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill
         Me.tblInventario.BackgroundColor = System.Drawing.SystemColors.ActiveBorder
         Me.tblInventario.BorderStyle = System.Windows.Forms.BorderStyle.None
         DataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
@@ -59,6 +55,7 @@ Partial Class Invertario
         Me.tblInventario.GridColor = System.Drawing.SystemColors.MenuHighlight
         Me.tblInventario.Location = New System.Drawing.Point(30, 148)
         Me.tblInventario.Name = "tblInventario"
+        Me.tblInventario.ReadOnly = True
         Me.tblInventario.RowHeadersVisible = False
         Me.tblInventario.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect
         Me.tblInventario.Size = New System.Drawing.Size(619, 237)

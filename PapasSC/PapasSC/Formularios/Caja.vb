@@ -3,9 +3,12 @@
 
     Private Sub Caja_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         Try
-            mtdCaja.select_ventasCajas(tblVentas, "%", txtCaja.Text)
             cmbTipoPersona.SelectedIndex = 0
-
+            Dim d1 As Date = Date.Now
+            Dim d2 As Date = d1.AddMonths(-1)
+            txtFecha1.Text = String.Format(d1.ToShortDateString(), "dd,MM,yyyy")
+            txtFecha2.Text = String.Format(d2.ToShortDateString(), "dd,MM,yyyy")
+            mtdCaja.select_ventasCajas(tblVentas, "", "", txtCaja.Text, txtFecha1.Text, txtFecha2.Text, False)
         Catch ex As Exception
 
         End Try
@@ -13,13 +16,17 @@
 
     Private Sub chbTodos_CheckedChanged(sender As Object, e As EventArgs) Handles chbTodos.CheckedChanged
         Try
-            mtdCaja.select_ventasCajas(tblVentas, "%", txtCaja.Text)
+            If chbTodos.Checked Then
+                mtdCaja.select_ventasCajas(tblVentas, "", "", txtCaja.Text, txtFecha1.Text, txtFecha2.Text, True) 'stpFechaInicio.Value.ToLongDateString, stpFechaFin.Value.ToLongDateString)
+            Else
+                mtdCaja.select_ventasCajas(tblVentas, "", "", txtCaja.Text, txtFecha1.Text, txtFecha2.Text, False) 'stpFechaInicio.Value.ToLongDateString, stpFechaFin.Value.ToLongDateString)
+            End If
         Catch ex As Exception
 
         End Try
     End Sub
 
-    Private Sub chbCobrados_CheckedChanged(sender As Object, e As EventArgs) Handles chbCobrados.CheckedChanged
+    Private Sub chbCobrados_CheckedChanged(sender As Object, e As EventArgs)
         Try
             mtdCaja.select_ventasCajas(tblVentas, "%", txtCaja.Text)
         Catch ex As Exception
@@ -29,7 +36,8 @@
 
     Private Sub tabControl1_SelectedIndex(sender As Object, e As EventArgs) Handles TabControl1.SelectedIndexChanged
         If TabControl1.SelectedIndex = 0 Then 'General
-            mtdCaja.select_ventasCajas(tblVentas, cmbTipoPersona.Text, txtCaja.Text, stpFechaInicio.Value.ToLongDateString, stpFechaFin.Value.ToLongDateString)
+            chbTodos.Checked = False
+            mtdCaja.select_ventasCajas(tblVentas, cmbTipoPersona.Text, txtFiltro1.Text, txtCaja.Text, txtFecha1.Text, txtFecha2.Text, False) 'stpFechaInicio.Value.ToLongDateString, stpFechaFin.Value.ToLongDateString)
         ElseIf TabControl1.SelectedIndex = 1 Then ' Abonos y anticipos
 
         ElseIf TabControl1.SelectedIndex = 2 Then ' Cuentas por cobrar
@@ -39,9 +47,10 @@
         End If
     End Sub
 
-    Private Sub stpFechaInicio_ValueChanged(sender As Object, e As EventArgs) Handles stpFechaInicio.ValueChanged
+    Private Sub stpFechaInicio_ValueChanged(sender As Object, e As EventArgs)
         Try
-            Dim fecha1 = stpFechaInicio.Value
+            'Dim fecha1 = stpFechaInicio.Value
+
         Catch ex As Exception
 
         End Try
@@ -49,17 +58,14 @@
 
     Private Sub btnActualizar_Click(sender As Object, e As EventArgs) Handles btnActualizar.Click
         Try
-            If chbTodosCPP.Checked = True Then
-                mtdCaja.buscarCuentasPorPagar(tblCuentasPorPagar, "", "", "", "", "", True)
-            Else
-                If cmbFiltar.SelectedIndex = 0 Then ' cliente
-                    mtdCaja.buscarCuentasPorPagar(tblCuentasPorPagar, dtpFechaInicio.Value.ToString("yyyy-MM-dd"), dtpFechaFin.Value.ToString("yyyy-MM-dd"), txtFiltro.Text, "", "", False)
-                ElseIf cmbFiltar.SelectedIndex = 1 Then ' Folio
-                    mtdCaja.buscarCuentasPorPagar(tblCuentasPorPagar, dtpFechaInicio.Value.ToString("yyyy-MM-dd"), dtpFechaFin.Value.ToString("yyyy-MM-dd"), "", "", txtFiltro.Text, False)
-                ElseIf cmbFiltar.SelectedIndex = 2 Then ' Caja
-                    mtdCaja.buscarCuentasPorPagar(tblCuentasPorPagar, dtpFechaInicio.Value.ToString("yyyy-MM-dd"), dtpFechaFin.Value.ToString("yyyy-MM-dd"), "", txtFiltro.Text, "", False)
-                End If
-            End If
+            chbTodos.Checked = False
+            cmbFiltar.SelectedIndex = 0
+            txtFiltro1.Text = ""
+            Dim d1 As Date = Date.Now
+            Dim d2 As Date = d1.AddMonths(-1)
+            txtFecha1.Text = String.Format(d1.ToShortDateString(), "dd,MM,yyyy")
+            txtFecha2.Text = String.Format(d2.ToShortDateString(), "dd,MM,yyyy")
+            mtdCaja.select_ventasCajas(tblVentas, "", "", txtCaja.Text, txtFecha1.Text, txtFecha2.Text, False)
         Catch ex As Exception
 
         End Try
@@ -91,7 +97,7 @@
         End Try
     End Sub
 
-    Private Sub dtpFechaInicio_ValueChanged(sender As Object, e As EventArgs) Handles dtpFechaInicio.ValueChanged
+    Private Sub dtpFechaInicio_ValueChanged(sender As Object, e As EventArgs)
         Try
             If chbTodosCPP.Checked = True Then
                 mtdCaja.buscarCuentasPorPagar(tblCuentasPorPagar, "", "", "", "", "", True)
@@ -109,7 +115,7 @@
         End Try
     End Sub
 
-    Private Sub dtpFechaFin_ValueChanged(sender As Object, e As EventArgs) Handles dtpFechaFin.ValueChanged
+    Private Sub dtpFechaFin_ValueChanged(sender As Object, e As EventArgs)
         Try
             If chbTodosCPP.Checked = True Then
                 mtdCaja.buscarCuentasPorPagar(tblCuentasPorPagar, "", "", "", "", "", True)
@@ -141,8 +147,70 @@
         End Try
     End Sub
 
-    Private Sub TextBox4_KeyUp(sender As Object, e As KeyEventArgs) Handles TextBox4.KeyUp
+    Private Sub txtFolio_KeyUp(sender As Object, e As KeyEventArgs) Handles txtFiltro1.KeyUp
         Try
+
+            If chbTodos.Checked Then
+                mtdCaja.select_ventasCajas(tblVentas, cmbTipoPersona.Text, txtFiltro1.Text, txtCaja.Text, txtFecha2.Text, txtFecha1.Text, True)
+            Else
+                mtdCaja.select_ventasCajas(tblVentas, cmbTipoPersona.Text, txtFiltro1.Text, txtCaja.Text, txtFecha2.Text, txtFecha1.Text, False)
+            End If
+        Catch ex As Exception
+
+        End Try
+    End Sub
+
+    Private Sub txtFecha1_Click(sender As Object, e As EventArgs) Handles txtFecha1.Click
+        Try
+            txtFecha1.Visible = False
+            mtcFecha1.Visible = True
+            txtFecha2.Visible = False
+        Catch ex As Exception
+
+        End Try
+    End Sub
+
+    Private Sub mtcFecha1_DateSelected(sender As Object, e As DateRangeEventArgs) Handles mtcFecha1.DateSelected
+
+    End Sub
+
+    Private Sub txtFecha2_Click(sender As Object, e As EventArgs) Handles txtFecha2.Click
+        Try
+            txtFecha2.Visible = False
+            mtcFecha2.Visible = True
+        Catch ex As Exception
+
+        End Try
+    End Sub
+
+
+
+
+    Private Sub mtcFecha2_DateChanged(sender As Object, e As DateRangeEventArgs) Handles mtcFecha2.DateChanged
+        Try
+            txtFecha2.Visible = True
+            mtcFecha2.Visible = False
+            Dim d2 As String = Convert.ToDateTime(mtcFecha2.SelectionEnd.ToShortDateString())
+            txtFecha2.Text = d2
+            mtdCaja.select_ventasCajas(tblVentas, cmbTipoPersona.Text, txtFiltro1.Text, txtCaja.Text, txtFecha2.Text, txtFecha1.Text, False)
+        Catch ex As Exception
+
+        End Try
+    End Sub
+
+    Private Sub mtcFecha1_DateChanged(sender As Object, e As DateRangeEventArgs) Handles mtcFecha1.DateChanged
+        Try
+            txtFecha1.Visible = True
+            txtFecha2.Visible = True
+            mtcFecha1.Visible = False
+            Dim d1 As String = Convert.ToDateTime(mtcFecha1.SelectionEnd.ToShortDateString())
+            txtFecha1.Text = d1
+
+            If chbTodos.Checked Then
+                mtdCaja.select_ventasCajas(tblVentas, cmbTipoPersona.Text, txtFiltro1.Text, txtCaja.Text, txtFecha2.Text, txtFecha1.Text, True)
+            Else
+                mtdCaja.select_ventasCajas(tblVentas, cmbTipoPersona.Text, txtFiltro1.Text, txtCaja.Text, txtFecha2.Text, txtFecha1.Text, False)
+            End If
 
         Catch ex As Exception
 

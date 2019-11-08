@@ -15,6 +15,7 @@
         sprKilosMas.Increment = 0.5
         sprKilosMas.ThousandsSeparator = True
         lblCantidad.Text = "Existencia"
+        tblProductosExistencias.ReadOnly = True
     End Sub
 
     Private Sub cmbBodega_SelectedIndexChanged(sender As Object, e As EventArgs) Handles cmbBodega.SelectedIndexChanged

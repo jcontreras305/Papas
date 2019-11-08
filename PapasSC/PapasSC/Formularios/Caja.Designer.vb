@@ -34,28 +34,31 @@ Partial Class Caja
         Me.Label8 = New System.Windows.Forms.Label()
         Me.Label7 = New System.Windows.Forms.Label()
         Me.Label6 = New System.Windows.Forms.Label()
-        Me.dtpFechaInicio = New System.Windows.Forms.DateTimePicker()
-        Me.dtpFechaFin = New System.Windows.Forms.DateTimePicker()
-        Me.Button1 = New System.Windows.Forms.Button()
         Me.tblCuentasPorPagar = New System.Windows.Forms.DataGridView()
         Me.pnlAbonosyAnticipos = New System.Windows.Forms.TabPage()
         Me.pnlGeneral = New System.Windows.Forms.TabPage()
+        Me.txtFecha2 = New System.Windows.Forms.TextBox()
+        Me.txtFecha1 = New System.Windows.Forms.TextBox()
+        Me.mtcFecha1 = New System.Windows.Forms.MonthCalendar()
+        Me.mtcFecha2 = New System.Windows.Forms.MonthCalendar()
         Me.cmbTipoPersona = New System.Windows.Forms.ComboBox()
-        Me.stpFechaFin = New System.Windows.Forms.DateTimePicker()
-        Me.stpFechaInicio = New System.Windows.Forms.DateTimePicker()
         Me.tblVentas = New System.Windows.Forms.DataGridView()
         Me.Label3 = New System.Windows.Forms.Label()
         Me.Label1 = New System.Windows.Forms.Label()
         Me.btnActualizar = New System.Windows.Forms.Button()
-        Me.TextBox4 = New System.Windows.Forms.TextBox()
+        Me.txtFiltro1 = New System.Windows.Forms.TextBox()
         Me.Label2 = New System.Windows.Forms.Label()
         Me.lblTipo = New System.Windows.Forms.Label()
-        Me.chbCobrados = New System.Windows.Forms.CheckBox()
         Me.chbTodos = New System.Windows.Forms.CheckBox()
         Me.TabControl1 = New System.Windows.Forms.TabControl()
         Me.pnlPrecorte = New System.Windows.Forms.TabPage()
-        Me.btnImprimir = New System.Windows.Forms.Button()
         Me.tblPrecorte = New System.Windows.Forms.DataGridView()
+        Me.btnImprimir = New System.Windows.Forms.Button()
+        Me.mtcFechaFin = New System.Windows.Forms.MonthCalendar()
+        Me.mtcFechaInicio = New System.Windows.Forms.MonthCalendar()
+        Me.txtFechaInicio = New System.Windows.Forms.TextBox()
+        Me.txtFechaFin = New System.Windows.Forms.TextBox()
+        Me.btnActualizaCPC = New System.Windows.Forms.Button()
         Me.pnlEstatus.SuspendLayout()
         Me.pnlCuentasPorCobrar.SuspendLayout()
         CType(Me.tblCuentasPorPagar, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -70,6 +73,7 @@ Partial Class Caja
         '
         Me.txtCaja.Location = New System.Drawing.Point(65, 9)
         Me.txtCaja.Name = "txtCaja"
+        Me.txtCaja.ReadOnly = True
         Me.txtCaja.Size = New System.Drawing.Size(100, 20)
         Me.txtCaja.TabIndex = 0
         '
@@ -77,6 +81,7 @@ Partial Class Caja
         '
         Me.txtEmpleado.Location = New System.Drawing.Point(65, 35)
         Me.txtEmpleado.Name = "txtEmpleado"
+        Me.txtEmpleado.ReadOnly = True
         Me.txtEmpleado.Size = New System.Drawing.Size(100, 20)
         Me.txtEmpleado.TabIndex = 1
         '
@@ -111,15 +116,17 @@ Partial Class Caja
         '
         'pnlCuentasPorCobrar
         '
+        Me.pnlCuentasPorCobrar.Controls.Add(Me.btnActualizaCPC)
+        Me.pnlCuentasPorCobrar.Controls.Add(Me.txtFechaFin)
+        Me.pnlCuentasPorCobrar.Controls.Add(Me.txtFechaInicio)
+        Me.pnlCuentasPorCobrar.Controls.Add(Me.mtcFechaInicio)
+        Me.pnlCuentasPorCobrar.Controls.Add(Me.mtcFechaFin)
         Me.pnlCuentasPorCobrar.Controls.Add(Me.chbTodosCPP)
         Me.pnlCuentasPorCobrar.Controls.Add(Me.cmbFiltar)
         Me.pnlCuentasPorCobrar.Controls.Add(Me.txtFiltro)
         Me.pnlCuentasPorCobrar.Controls.Add(Me.Label8)
         Me.pnlCuentasPorCobrar.Controls.Add(Me.Label7)
         Me.pnlCuentasPorCobrar.Controls.Add(Me.Label6)
-        Me.pnlCuentasPorCobrar.Controls.Add(Me.dtpFechaInicio)
-        Me.pnlCuentasPorCobrar.Controls.Add(Me.dtpFechaFin)
-        Me.pnlCuentasPorCobrar.Controls.Add(Me.Button1)
         Me.pnlCuentasPorCobrar.Controls.Add(Me.tblCuentasPorPagar)
         Me.pnlCuentasPorCobrar.Location = New System.Drawing.Point(4, 22)
         Me.pnlCuentasPorCobrar.Name = "pnlCuentasPorCobrar"
@@ -182,30 +189,6 @@ Partial Class Caja
         Me.Label6.TabIndex = 4
         Me.Label6.Text = "Fecha Inicio"
         '
-        'dtpFechaInicio
-        '
-        Me.dtpFechaInicio.Location = New System.Drawing.Point(437, 6)
-        Me.dtpFechaInicio.Name = "dtpFechaInicio"
-        Me.dtpFechaInicio.Size = New System.Drawing.Size(200, 20)
-        Me.dtpFechaInicio.TabIndex = 3
-        Me.dtpFechaInicio.Value = New Date(2019, 10, 21, 11, 24, 9, 0)
-        '
-        'dtpFechaFin
-        '
-        Me.dtpFechaFin.Location = New System.Drawing.Point(437, 36)
-        Me.dtpFechaFin.Name = "dtpFechaFin"
-        Me.dtpFechaFin.Size = New System.Drawing.Size(200, 20)
-        Me.dtpFechaFin.TabIndex = 2
-        '
-        'Button1
-        '
-        Me.Button1.Location = New System.Drawing.Point(691, 16)
-        Me.Button1.Name = "Button1"
-        Me.Button1.Size = New System.Drawing.Size(86, 33)
-        Me.Button1.TabIndex = 1
-        Me.Button1.Text = "Imprimir"
-        Me.Button1.UseVisualStyleBackColor = True
-        '
         'tblCuentasPorPagar
         '
         Me.tblCuentasPorPagar.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
@@ -226,17 +209,18 @@ Partial Class Caja
         '
         'pnlGeneral
         '
+        Me.pnlGeneral.Controls.Add(Me.txtFecha2)
+        Me.pnlGeneral.Controls.Add(Me.txtFecha1)
+        Me.pnlGeneral.Controls.Add(Me.mtcFecha1)
+        Me.pnlGeneral.Controls.Add(Me.mtcFecha2)
         Me.pnlGeneral.Controls.Add(Me.cmbTipoPersona)
-        Me.pnlGeneral.Controls.Add(Me.stpFechaFin)
-        Me.pnlGeneral.Controls.Add(Me.stpFechaInicio)
         Me.pnlGeneral.Controls.Add(Me.tblVentas)
         Me.pnlGeneral.Controls.Add(Me.Label3)
         Me.pnlGeneral.Controls.Add(Me.Label1)
         Me.pnlGeneral.Controls.Add(Me.btnActualizar)
-        Me.pnlGeneral.Controls.Add(Me.TextBox4)
+        Me.pnlGeneral.Controls.Add(Me.txtFiltro1)
         Me.pnlGeneral.Controls.Add(Me.Label2)
         Me.pnlGeneral.Controls.Add(Me.lblTipo)
-        Me.pnlGeneral.Controls.Add(Me.chbCobrados)
         Me.pnlGeneral.Controls.Add(Me.chbTodos)
         Me.pnlGeneral.Location = New System.Drawing.Point(4, 22)
         Me.pnlGeneral.Name = "pnlGeneral"
@@ -246,41 +230,65 @@ Partial Class Caja
         Me.pnlGeneral.Text = "General"
         Me.pnlGeneral.UseVisualStyleBackColor = True
         '
+        'txtFecha2
+        '
+        Me.txtFecha2.Location = New System.Drawing.Point(485, 42)
+        Me.txtFecha2.Name = "txtFecha2"
+        Me.txtFecha2.Size = New System.Drawing.Size(192, 20)
+        Me.txtFecha2.TabIndex = 19
+        '
+        'txtFecha1
+        '
+        Me.txtFecha1.Location = New System.Drawing.Point(485, 16)
+        Me.txtFecha1.Name = "txtFecha1"
+        Me.txtFecha1.Size = New System.Drawing.Size(192, 20)
+        Me.txtFecha1.TabIndex = 18
+        '
+        'mtcFecha1
+        '
+        Me.mtcFecha1.Location = New System.Drawing.Point(485, 12)
+        Me.mtcFecha1.MaxSelectionCount = 1
+        Me.mtcFecha1.Name = "mtcFecha1"
+        Me.mtcFecha1.ShowToday = False
+        Me.mtcFecha1.TabIndex = 17
+        Me.mtcFecha1.Visible = False
+        '
+        'mtcFecha2
+        '
+        Me.mtcFecha2.Location = New System.Drawing.Point(485, 43)
+        Me.mtcFecha2.MaxSelectionCount = 1
+        Me.mtcFecha2.Name = "mtcFecha2"
+        Me.mtcFecha2.ShowToday = False
+        Me.mtcFecha2.TabIndex = 7
+        Me.mtcFecha2.Visible = False
+        '
         'cmbTipoPersona
         '
         Me.cmbTipoPersona.FormattingEnabled = True
-        Me.cmbTipoPersona.Items.AddRange(New Object() {"Venta", "Factura", "NC", "Nota de Campo"})
+        Me.cmbTipoPersona.Items.AddRange(New Object() {"Empleado", "Folio", "Cliente", "Razon Social"})
         Me.cmbTipoPersona.Location = New System.Drawing.Point(159, 13)
         Me.cmbTipoPersona.Name = "cmbTipoPersona"
         Me.cmbTipoPersona.Size = New System.Drawing.Size(100, 21)
         Me.cmbTipoPersona.TabIndex = 16
         '
-        'stpFechaFin
-        '
-        Me.stpFechaFin.Location = New System.Drawing.Point(479, 44)
-        Me.stpFechaFin.Name = "stpFechaFin"
-        Me.stpFechaFin.Size = New System.Drawing.Size(206, 20)
-        Me.stpFechaFin.TabIndex = 15
-        '
-        'stpFechaInicio
-        '
-        Me.stpFechaInicio.Location = New System.Drawing.Point(479, 14)
-        Me.stpFechaInicio.Name = "stpFechaInicio"
-        Me.stpFechaInicio.Size = New System.Drawing.Size(206, 20)
-        Me.stpFechaInicio.TabIndex = 14
-        '
         'tblVentas
         '
+        Me.tblVentas.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
+            Or System.Windows.Forms.AnchorStyles.Left) _
+            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.tblVentas.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill
         Me.tblVentas.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
         Me.tblVentas.Location = New System.Drawing.Point(9, 74)
         Me.tblVentas.Name = "tblVentas"
+        Me.tblVentas.ReadOnly = True
+        Me.tblVentas.ShowCellErrors = False
         Me.tblVentas.Size = New System.Drawing.Size(764, 393)
         Me.tblVentas.TabIndex = 13
         '
         'Label3
         '
         Me.Label3.AutoSize = True
-        Me.Label3.Location = New System.Drawing.Point(406, 44)
+        Me.Label3.Location = New System.Drawing.Point(411, 21)
         Me.Label3.Name = "Label3"
         Me.Label3.Size = New System.Drawing.Size(62, 13)
         Me.Label3.TabIndex = 12
@@ -289,7 +297,7 @@ Partial Class Caja
         'Label1
         '
         Me.Label1.AutoSize = True
-        Me.Label1.Location = New System.Drawing.Point(406, 18)
+        Me.Label1.Location = New System.Drawing.Point(406, 45)
         Me.Label1.Name = "Label1"
         Me.Label1.Size = New System.Drawing.Size(67, 13)
         Me.Label1.TabIndex = 9
@@ -307,12 +315,12 @@ Partial Class Caja
         Me.btnActualizar.TextAlign = System.Drawing.ContentAlignment.MiddleRight
         Me.btnActualizar.UseVisualStyleBackColor = True
         '
-        'TextBox4
+        'txtFiltro1
         '
-        Me.TextBox4.Location = New System.Drawing.Point(300, 14)
-        Me.TextBox4.Name = "TextBox4"
-        Me.TextBox4.Size = New System.Drawing.Size(100, 20)
-        Me.TextBox4.TabIndex = 5
+        Me.txtFiltro1.Location = New System.Drawing.Point(300, 14)
+        Me.txtFiltro1.Name = "txtFiltro1"
+        Me.txtFiltro1.Size = New System.Drawing.Size(100, 20)
+        Me.txtFiltro1.TabIndex = 5
         '
         'Label2
         '
@@ -321,7 +329,7 @@ Partial Class Caja
         Me.Label2.Name = "Label2"
         Me.Label2.Size = New System.Drawing.Size(29, 13)
         Me.Label2.TabIndex = 3
-        Me.Label2.Text = "Folio"
+        Me.Label2.Text = "Filtro"
         '
         'lblTipo
         '
@@ -331,16 +339,6 @@ Partial Class Caja
         Me.lblTipo.Size = New System.Drawing.Size(28, 13)
         Me.lblTipo.TabIndex = 2
         Me.lblTipo.Text = "Tipo"
-        '
-        'chbCobrados
-        '
-        Me.chbCobrados.AutoSize = True
-        Me.chbCobrados.Location = New System.Drawing.Point(15, 40)
-        Me.chbCobrados.Name = "chbCobrados"
-        Me.chbCobrados.Size = New System.Drawing.Size(102, 17)
-        Me.chbCobrados.TabIndex = 1
-        Me.chbCobrados.Text = "Incluir Cobrados"
-        Me.chbCobrados.UseVisualStyleBackColor = True
         '
         'chbTodos
         '
@@ -374,6 +372,14 @@ Partial Class Caja
         Me.pnlPrecorte.Text = "Pre-Corte "
         Me.pnlPrecorte.UseVisualStyleBackColor = True
         '
+        'tblPrecorte
+        '
+        Me.tblPrecorte.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
+        Me.tblPrecorte.Location = New System.Drawing.Point(9, 74)
+        Me.tblPrecorte.Name = "tblPrecorte"
+        Me.tblPrecorte.Size = New System.Drawing.Size(779, 393)
+        Me.tblPrecorte.TabIndex = 0
+        '
         'btnImprimir
         '
         Me.btnImprimir.Image = Global.PapasSC.My.Resources.Resources.IMPRIMIR1
@@ -386,13 +392,43 @@ Partial Class Caja
         Me.btnImprimir.TextAlign = System.Drawing.ContentAlignment.MiddleRight
         Me.btnImprimir.UseVisualStyleBackColor = True
         '
-        'tblPrecorte
+        'mtcFechaFin
         '
-        Me.tblPrecorte.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
-        Me.tblPrecorte.Location = New System.Drawing.Point(9, 74)
-        Me.tblPrecorte.Name = "tblPrecorte"
-        Me.tblPrecorte.Size = New System.Drawing.Size(779, 393)
-        Me.tblPrecorte.TabIndex = 0
+        Me.mtcFechaFin.Location = New System.Drawing.Point(456, 40)
+        Me.mtcFechaFin.Name = "mtcFechaFin"
+        Me.mtcFechaFin.TabIndex = 10
+        '
+        'mtcFechaInicio
+        '
+        Me.mtcFechaInicio.Location = New System.Drawing.Point(456, 9)
+        Me.mtcFechaInicio.Name = "mtcFechaInicio"
+        Me.mtcFechaInicio.TabIndex = 11
+        '
+        'txtFechaInicio
+        '
+        Me.txtFechaInicio.Location = New System.Drawing.Point(456, 10)
+        Me.txtFechaInicio.Name = "txtFechaInicio"
+        Me.txtFechaInicio.Size = New System.Drawing.Size(192, 20)
+        Me.txtFechaInicio.TabIndex = 12
+        '
+        'txtFechaFin
+        '
+        Me.txtFechaFin.Location = New System.Drawing.Point(456, 37)
+        Me.txtFechaFin.Name = "txtFechaFin"
+        Me.txtFechaFin.Size = New System.Drawing.Size(192, 20)
+        Me.txtFechaFin.TabIndex = 13
+        '
+        'btnActualizaCPC
+        '
+        Me.btnActualizaCPC.Image = Global.PapasSC.My.Resources.Resources.ACTUALIZAR
+        Me.btnActualizaCPC.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
+        Me.btnActualizaCPC.Location = New System.Drawing.Point(691, 12)
+        Me.btnActualizaCPC.Name = "btnActualizaCPC"
+        Me.btnActualizaCPC.Size = New System.Drawing.Size(91, 43)
+        Me.btnActualizaCPC.TabIndex = 14
+        Me.btnActualizaCPC.Text = "Actualizar"
+        Me.btnActualizaCPC.TextAlign = System.Drawing.ContentAlignment.MiddleRight
+        Me.btnActualizaCPC.UseVisualStyleBackColor = True
         '
         'Caja
         '
@@ -425,27 +461,20 @@ Partial Class Caja
     Friend WithEvents Label5 As Label
     Friend WithEvents pnlEstatus As Panel
     Friend WithEvents pnlCuentasPorCobrar As TabPage
-    Friend WithEvents Button1 As Button
     Friend WithEvents tblCuentasPorPagar As DataGridView
     Friend WithEvents pnlAbonosyAnticipos As TabPage
     Friend WithEvents pnlGeneral As TabPage
     Friend WithEvents cmbTipoPersona As ComboBox
-    Friend WithEvents stpFechaFin As DateTimePicker
-    Friend WithEvents stpFechaInicio As DateTimePicker
-    Friend WithEvents tblVentas As DataGridView
     Friend WithEvents Label3 As Label
     Friend WithEvents Label1 As Label
     Friend WithEvents btnActualizar As Button
-    Friend WithEvents TextBox4 As TextBox
+    Friend WithEvents txtFiltro1 As TextBox
     Friend WithEvents Label2 As Label
     Friend WithEvents lblTipo As Label
-    Friend WithEvents chbCobrados As CheckBox
     Friend WithEvents chbTodos As CheckBox
     Friend WithEvents TabControl1 As TabControl
     Friend WithEvents Label7 As Label
     Friend WithEvents Label6 As Label
-    Friend WithEvents dtpFechaInicio As DateTimePicker
-    Friend WithEvents dtpFechaFin As DateTimePicker
     Friend WithEvents txtFiltro As TextBox
     Friend WithEvents Label8 As Label
     Friend WithEvents chbTodosCPP As CheckBox
@@ -453,4 +482,14 @@ Partial Class Caja
     Friend WithEvents btnImprimir As Button
     Friend WithEvents pnlPrecorte As TabPage
     Friend WithEvents tblPrecorte As DataGridView
+    Friend WithEvents txtFecha2 As TextBox
+    Friend WithEvents txtFecha1 As TextBox
+    Friend WithEvents mtcFecha1 As MonthCalendar
+    Friend WithEvents mtcFecha2 As MonthCalendar
+    Protected Friend WithEvents tblVentas As DataGridView
+    Friend WithEvents txtFechaFin As TextBox
+    Friend WithEvents txtFechaInicio As TextBox
+    Friend WithEvents mtcFechaInicio As MonthCalendar
+    Friend WithEvents mtcFechaFin As MonthCalendar
+    Friend WithEvents btnActualizaCPC As Button
 End Class
