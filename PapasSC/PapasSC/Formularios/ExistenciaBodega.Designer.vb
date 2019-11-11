@@ -42,6 +42,10 @@ Partial Class ExistenciaBodega
         '
         Me.tblexistenciapro.AllowUserToAddRows = False
         Me.tblexistenciapro.AllowUserToDeleteRows = False
+        Me.tblexistenciapro.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
+            Or System.Windows.Forms.AnchorStyles.Left) _
+            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.tblexistenciapro.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill
         Me.tblexistenciapro.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
         Me.tblexistenciapro.Location = New System.Drawing.Point(25, 81)
         Me.tblexistenciapro.Name = "tblexistenciapro"

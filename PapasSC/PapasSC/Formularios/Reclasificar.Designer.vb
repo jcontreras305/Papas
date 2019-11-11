@@ -60,10 +60,14 @@ Partial Class Reclasificar
         Me.tblProductosExistencias.AllowUserToAddRows = False
         Me.tblProductosExistencias.AllowUserToDeleteRows = False
         Me.tblProductosExistencias.AllowUserToOrderColumns = True
+        Me.tblProductosExistencias.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
+            Or System.Windows.Forms.AnchorStyles.Left) _
+            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.tblProductosExistencias.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill
         Me.tblProductosExistencias.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
         Me.tblProductosExistencias.Location = New System.Drawing.Point(19, 49)
         Me.tblProductosExistencias.Name = "tblProductosExistencias"
+        Me.tblProductosExistencias.ReadOnly = True
         Me.tblProductosExistencias.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect
         Me.tblProductosExistencias.Size = New System.Drawing.Size(516, 150)
         Me.tblProductosExistencias.TabIndex = 1
@@ -220,6 +224,7 @@ Partial Class Reclasificar
         Me.tblCambios.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.Producto, Me.Cambio, Me.Cantidad, Me.Eliminar})
         Me.tblCambios.Location = New System.Drawing.Point(6, 37)
         Me.tblCambios.Name = "tblCambios"
+        Me.tblCambios.ReadOnly = True
         Me.tblCambios.Size = New System.Drawing.Size(247, 168)
         Me.tblCambios.TabIndex = 13
         '
@@ -228,6 +233,7 @@ Partial Class Reclasificar
         Me.Producto.FillWeight = 80.0!
         Me.Producto.HeaderText = "Producto"
         Me.Producto.Name = "Producto"
+        Me.Producto.ReadOnly = True
         Me.Producto.Width = 54
         '
         'Cambio
@@ -242,6 +248,7 @@ Partial Class Reclasificar
         Me.Cantidad.FillWeight = 80.0!
         Me.Cantidad.HeaderText = "Cantidad"
         Me.Cantidad.Name = "Cantidad"
+        Me.Cantidad.ReadOnly = True
         Me.Cantidad.Width = 54
         '
         'Eliminar
@@ -249,6 +256,7 @@ Partial Class Reclasificar
         Me.Eliminar.FillWeight = 30.0!
         Me.Eliminar.HeaderText = "Eliminar"
         Me.Eliminar.Name = "Eliminar"
+        Me.Eliminar.ReadOnly = True
         Me.Eliminar.Width = 30
         '
         'btnEliminar

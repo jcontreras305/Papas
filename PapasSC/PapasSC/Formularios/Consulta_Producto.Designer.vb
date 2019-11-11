@@ -23,6 +23,7 @@ Partial Class Consulta_Producto
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
         Me.Panel1 = New System.Windows.Forms.Panel()
+        Me.btnActivar = New System.Windows.Forms.Button()
         Me.CheckBox1 = New System.Windows.Forms.CheckBox()
         Me.Button4 = New System.Windows.Forms.Button()
         Me.Button3 = New System.Windows.Forms.Button()
@@ -32,7 +33,6 @@ Partial Class Consulta_Producto
         Me.TextBox1 = New System.Windows.Forms.TextBox()
         Me.Label1 = New System.Windows.Forms.Label()
         Me.TablaProductos = New System.Windows.Forms.DataGridView()
-        Me.btnActivar = New System.Windows.Forms.Button()
         Me.Panel1.SuspendLayout()
         CType(Me.TablaProductos, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
@@ -53,6 +53,15 @@ Partial Class Consulta_Producto
         Me.Panel1.Name = "Panel1"
         Me.Panel1.Size = New System.Drawing.Size(800, 449)
         Me.Panel1.TabIndex = 0
+        '
+        'btnActivar
+        '
+        Me.btnActivar.Location = New System.Drawing.Point(167, 51)
+        Me.btnActivar.Name = "btnActivar"
+        Me.btnActivar.Size = New System.Drawing.Size(138, 23)
+        Me.btnActivar.TabIndex = 13
+        Me.btnActivar.Text = "Activar"
+        Me.btnActivar.UseVisualStyleBackColor = True
         '
         'CheckBox1
         '
@@ -128,20 +137,15 @@ Partial Class Consulta_Producto
         '
         'TablaProductos
         '
+        Me.TablaProductos.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
+            Or System.Windows.Forms.AnchorStyles.Left) _
+            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.TablaProductos.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill
         Me.TablaProductos.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
         Me.TablaProductos.Location = New System.Drawing.Point(12, 78)
         Me.TablaProductos.Name = "TablaProductos"
         Me.TablaProductos.Size = New System.Drawing.Size(776, 313)
         Me.TablaProductos.TabIndex = 0
-        '
-        'btnActivar
-        '
-        Me.btnActivar.Location = New System.Drawing.Point(167, 51)
-        Me.btnActivar.Name = "btnActivar"
-        Me.btnActivar.Size = New System.Drawing.Size(138, 23)
-        Me.btnActivar.TabIndex = 13
-        Me.btnActivar.Text = "Activar"
-        Me.btnActivar.UseVisualStyleBackColor = True
         '
         'Consulta_Producto
         '

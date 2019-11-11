@@ -31,23 +31,7 @@ left join contacto as cn on cn.idCliente = cl.idCliente
 left join tipoCliente as tcl on cl.idTipoCliente = tcl.idTipoCliente 
 left join credito as ct on ct.idCliente = cl.idCliente"
 
-    Private busquedaVentasCaja As String = "select vt.folio as Clave, case 
-							when cl.nombre= NULL then cl.razonSocial 
-							when cl.razonSocial = null then cl.nombre
-							else cl.RFC end as RazonSocial,
-							tcl.tipo as Tipo,
-							ct.limiteCredito as LimitaCrédito,
-							ct.diasCredito as DíasCrédito,
-							ct.saldo as Saldo,
-							case when cl.estatus = 'A' then 'Activo'
-								 when cl.estatus = 'I' then 'Inactivo'
-								 when cl.estatus = 'B' then 'Bloqueado'
-								 else '' end as Estatus
-								  from 
-venta vt inner join caja as cj on vt.idCaja = cj.idCaja
-left join cliente as cl on vt.idCliente = cl.idCliente
-left join tipoCliente as tcl on cl.idTipoCliente = tcl.idTipoCliente 
-left join credito as ct on ct.idCliente = cl.idCliente "
+
 
     Public Sub seleccioarCajas(ByVal tblCaja As DataGridView)
         Try
@@ -278,19 +262,93 @@ left join credito as ct on ct.idCliente = cl.idCliente "
         End Try
     End Sub
 
-    Public Sub select_ventasCajas(ByVal tblVentasCaja As DataGridView, ByVal filtro As String, ByVal nombreCaja As String, ByVal fecha1 As String, ByVal fecha2 As String)
+    Private busquedaVentasCaja As String = "
+select folio ,  case when vt.estatus = 'D' then 'Deuda' when vt.estatus = 'P' then 'Pagada' else 'Espera' end as estatus ,  case when  cl.nombre = '' then cl.razonSocial else cl.nombre end as Nombre , fecha ,vt.cantidadPagada , vt.totalPagar
+from venta as vt left join cliente as cl on cl.idCliente = vt.idCliente 
+left join caja as cj on cj.idCaja = vt.idCaja
+left join credito as cr on cr.idCliente = cl.idCliente
+left join empleado as emp on emp.idEmpleado = vt.idEmpleado
+"
+
+    Private busquedaVentasCajaB As String = "select vt.folio as Clave, case 
+							when cl.nombre= NULL then cl.razonSocial 
+							when cl.razonSocial = null then cl.nombre
+							else cl.RFC end as RazonSocial,
+							tcl.tipo as Tipo,
+							ct.limiteCredito as LimitaCrédito,
+							ct.diasCredito as DíasCrédito,
+							ct.saldo as Saldo,
+							case when cl.estatus = 'A' then 'Activo'
+								 when cl.estatus = 'I' then 'Inactivo'
+								 when cl.estatus = 'B' then 'Bloqueado'
+								 else '' end as Estatus
+								  from 
+venta vt inner join caja as cj on vt.idCaja = cj.idCaja
+left join cliente as cl on vt.idCliente = cl.idCliente
+left join tipoCliente as tcl on cl.idTipoCliente = tcl.idTipoCliente 
+left join credito as ct on ct.idCliente = cl.idCliente "
+
+
+    Public Sub select_ventasCajas(ByVal tblVentasCaja As DataGridView, ByVal busqueda As String, ByVal filtro As String, ByVal nombreCaja As String, ByVal fecha1 As String, ByVal fecha2 As String, ByVal todos As Boolean)
         Try
             conectar()
-            Dim cmd As New SqlCommand(busquedaVentasCaja + "where cl.nombre like '' 
-or	cl.razonSocial like '" + filtro + "'
-or cl.RFC like '" + filtro + "'
-or limiteCredito like '" + filtro + "'
-or saldo like '" + filtro + "'
-or vt.fecha between " + fecha1 + " and " + fecha2 + "
-and cj.nombre = '" + nombreCaja + "'", conn)
+            Dim cmd As New SqlCommand("")
+            Dim consulta As String = busquedaVentasCaja
+            Select Case busqueda
+                Case "Folio"
+
+                    consulta = consulta + If(filtro = String.Empty, " where vt.fecha between '" + fecha2 + "' and '" + fecha1 + "'",
+                        " where vt.folio = " + filtro + " and vt.fecha between '" + fecha1 + "' and '" + fecha2 + "'")
+                    Exit Select
+                Case "Empleado"
+                    consulta = consulta + " where  emp.nombre like '%" + filtro + "%'
+                    and vt.fecha between '" + fecha1 + "' and '" + fecha2 + "'"
+                    Exit Select
+                Case "Cliente"
+                    consulta = consulta + " where cl.nombre = '%" + filtro + "'
+                    and vt.fecha between '" + fecha2 + "' and '" + fecha1 + "'"
+                    Exit Select
+                Case "Razon Social"
+                    consulta = consulta + " where cl.razonSocial = '%" + filtro + "'
+                    and vt.fecha between '" + fecha2 + "' and '" + fecha1 + "'"
+                    Exit Select
+                Case Else
+                    consulta = consulta + "where vt.fecha between '" + fecha2 + "' and '" + fecha1 + "'"
+                    Exit Select
+            End Select
+
+            consulta = consulta + If(todos = False, " and vt.estatus = 'D'", " and vt.estatus like '%'") + "and cj.nombre = '" + nombreCaja + "'"
+            cmd.CommandText = consulta
+            cmd.Connection = conn
+
+            '            cmd.CommandText = If(todos = True,
+            '            busquedaVentasCaja + " where cl.nombre like '' 
+            'or	cl.razonSocial like '" + filtro + "'
+            'or cl.RFC like '" + filtro + "'
+            'or limiteCredito like '" + filtro + "'
+            'or saldo like '" + filtro + "'
+            'or vt.fecha between '" + fecha1 + "' and '" + fecha2 + "' 
+            'and cj.nombre = '" + nombreCaja + "'",
+            '            busquedaVentasCaja + " where cl.nombre like '' 
+            'or	cl.razonSocial like '" + filtro + "'
+            'or cl.RFC like '" + filtro + "'
+            'or limiteCredito like '" + filtro + "'
+            'or saldo like '" + filtro + "'
+            'or vt.fecha between '" + fecha1 + "' and '" + fecha2 + "' 
+            'and cj.nombre = '" + nombreCaja + "' " + " and vt.estatus = 'P'")
+            '            cmd.Connection = conn
+
+            '            Dim cmd As New SqlCommand(busquedaVentasCaja + " where cl.nombre like '' 
+            'or	cl.razonSocial like '" + filtro + "'
+            'or cl.RFC like '" + filtro + "'
+            'or limiteCredito like '" + filtro + "'
+            'or saldo like '" + filtro + "'
+            'or vt.fecha between " + fecha1 + " and " + fecha2 + "
+            'and cj.nombre = '" + nombreCaja + "'")
+
             If cmd.ExecuteNonQuery Then
                 Dim dt As New DataTable
-                Dim da As New SqlDataAdapter
+                Dim da As New SqlDataAdapter(cmd)
                 da.Fill(dt)
                 tblVentasCaja.DataSource = dt
             End If
@@ -303,12 +361,12 @@ and cj.nombre = '" + nombreCaja + "'", conn)
     Public Sub select_ventasCajas(ByVal tblVentasCaja As DataGridView, ByVal filtro As String, ByVal nombreCaja As String)
         Try
             conectar()
-            Dim cmd As New SqlCommand(busquedaVentasCaja + "where cl.nombre like '' 
+            Dim cmd As New SqlCommand(busquedaVentasCaja + " where cl.nombre like '" + filtro + "' 
 or	cl.razonSocial like '" + filtro + "'
 or cl.RFC like '" + filtro + "'
 or limiteCredito like '" + filtro + "'
 or saldo like '" + filtro + "'
-and cj.nombre =  '" + nombreCaja + "'", conn)
+and cj.nombre =  '" + nombreCaja + "'" + " ", conn)
             If cmd.ExecuteNonQuery Then
                 Dim dt As New DataTable
                 Dim da As New SqlDataAdapter(cmd)
@@ -320,6 +378,8 @@ and cj.nombre =  '" + nombreCaja + "'", conn)
         End Try
         desconectar()
     End Sub
+
+
 
     Public Sub select_CuentaPorCobrar(ByVal tblCuentasPorPagar As DataGridView, ByVal caja As String)
         Try

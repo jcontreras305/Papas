@@ -23,13 +23,13 @@ Partial Class Actualizar_Existencia
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
         Me.GroupBox3 = New System.Windows.Forms.GroupBox()
+        Me.Label7 = New System.Windows.Forms.Label()
         Me.Label3 = New System.Windows.Forms.Label()
         Me.Label5 = New System.Windows.Forms.Label()
         Me.npd = New System.Windows.Forms.NumericUpDown()
         Me.Alturacamasarpilla = New System.Windows.Forms.NumericUpDown()
         Me.Cancelar = New System.Windows.Forms.Button()
         Me.GroupBox2 = New System.Windows.Forms.GroupBox()
-        Me.Label7 = New System.Windows.Forms.Label()
         Me.tblpesoarpilla = New System.Windows.Forms.DataGridView()
         Me.numero1 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.Label6 = New System.Windows.Forms.Label()
@@ -66,6 +66,15 @@ Partial Class Actualizar_Existencia
         Me.GroupBox3.TabIndex = 34
         Me.GroupBox3.TabStop = False
         Me.GroupBox3.Text = "Calculo del Total en Kilos"
+        '
+        'Label7
+        '
+        Me.Label7.AutoSize = True
+        Me.Label7.Location = New System.Drawing.Point(391, 37)
+        Me.Label7.Name = "Label7"
+        Me.Label7.Size = New System.Drawing.Size(66, 13)
+        Me.Label7.TabIndex = 26
+        Me.Label7.Text = "KG. Totales:"
         '
         'Label3
         '
@@ -123,17 +132,12 @@ Partial Class Actualizar_Existencia
         Me.GroupBox2.TabStop = False
         Me.GroupBox2.Text = "Calcular estimado del peso promedio"
         '
-        'Label7
-        '
-        Me.Label7.AutoSize = True
-        Me.Label7.Location = New System.Drawing.Point(391, 37)
-        Me.Label7.Name = "Label7"
-        Me.Label7.Size = New System.Drawing.Size(66, 13)
-        Me.Label7.TabIndex = 26
-        Me.Label7.Text = "KG. Totales:"
-        '
         'tblpesoarpilla
         '
+        Me.tblpesoarpilla.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
+            Or System.Windows.Forms.AnchorStyles.Left) _
+            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.tblpesoarpilla.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill
         Me.tblpesoarpilla.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
         Me.tblpesoarpilla.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.numero1})
         Me.tblpesoarpilla.Location = New System.Drawing.Point(242, 19)

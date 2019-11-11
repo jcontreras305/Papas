@@ -139,8 +139,8 @@ Partial Class IniciarCaja
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(336, 217)
-        Me.Controls.Add(Me.btnLiberar)
         Me.Controls.Add(Me.chbVer)
+        Me.Controls.Add(Me.btnLiberar)
         Me.Controls.Add(Me.btnSalir)
         Me.Controls.Add(Me.btnAbrirCaja)
         Me.Controls.Add(Me.txtContraseña)
