@@ -10,7 +10,6 @@
     End Sub
 
     Private Sub Montocredito_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-        npdCredito.Maximum = Convert.ToDecimal(maximo)
         npdCredito.DecimalPlaces = 2
         npdCredito.ThousandsSeparator = True
         npdCredito.Increment = 0.5
