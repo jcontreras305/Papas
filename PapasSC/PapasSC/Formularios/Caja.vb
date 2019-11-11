@@ -77,11 +77,11 @@
                 mtdCaja.buscarCuentasPorPagar(tblCuentasPorPagar, "", "", "", "", "", True)
             Else
                 If cmbFiltar.SelectedIndex = 0 Then ' cliente
-                    mtdCaja.buscarCuentasPorPagar(tblCuentasPorPagar, dtpFechaInicio.Value.ToString("yyyy-MM-dd"), dtpFechaFin.Value.ToString("yyyy-MM-dd"), txtFiltro.Text, "", "", False)
+                    mtdCaja.buscarCuentasPorPagar(tblCuentasPorPagar, txtFechaInicio.Text, txtFechaFin.Text, txtFiltro.Text, "", "", False)
                 ElseIf cmbFiltar.SelectedIndex = 1 Then ' Folio
-                    mtdCaja.buscarCuentasPorPagar(tblCuentasPorPagar, dtpFechaInicio.Value.ToString("yyyy-MM-dd"), dtpFechaFin.Value.ToString("yyyy-MM-dd"), "", "", txtFiltro.Text, False)
+                    mtdCaja.buscarCuentasPorPagar(tblCuentasPorPagar, txtFechaInicio.Text, txtFechaFin.Text, "", "", txtFiltro.Text, False)
                 ElseIf cmbFiltar.SelectedIndex = 2 Then ' Caja
-                    mtdCaja.buscarCuentasPorPagar(tblCuentasPorPagar, dtpFechaInicio.Value.ToString("yyyy-MM-dd"), dtpFechaFin.Value.ToString("yyyy-MM-dd"), "", txtFiltro.Text, "", False)
+                    mtdCaja.buscarCuentasPorPagar(tblCuentasPorPagar, txtFechaInicio.Text, txtFechaFin.Text, "", txtFiltro.Text, "", False)
                 End If
             End If
         Catch ex As Exception
@@ -103,11 +103,11 @@
                 mtdCaja.buscarCuentasPorPagar(tblCuentasPorPagar, "", "", "", "", "", True)
             Else
                 If cmbFiltar.SelectedIndex = 0 Then ' cliente
-                    mtdCaja.buscarCuentasPorPagar(tblCuentasPorPagar, dtpFechaInicio.Value.ToString("yyyy-MM-dd"), dtpFechaFin.Value.ToString("yyyy-MM-dd"), txtFiltro.Text, "", "", False)
+                    mtdCaja.buscarCuentasPorPagar(tblCuentasPorPagar, txtFechaInicio.Text, txtFechaFin.Text, txtFiltro.Text, "", "", False)
                 ElseIf cmbFiltar.SelectedIndex = 1 Then ' Folio
-                    mtdCaja.buscarCuentasPorPagar(tblCuentasPorPagar, dtpFechaInicio.Value.ToString("yyyy-MM-dd"), dtpFechaFin.Value.ToString("yyyy-MM-dd"), "", "", txtFiltro.Text, False)
+                    mtdCaja.buscarCuentasPorPagar(tblCuentasPorPagar, txtFechaInicio.Text, txtFechaFin.Text, "", "", txtFiltro.Text, False)
                 ElseIf cmbFiltar.SelectedIndex = 2 Then ' Caja
-                    mtdCaja.buscarCuentasPorPagar(tblCuentasPorPagar, dtpFechaInicio.Value.ToString("yyyy-MM-dd"), dtpFechaFin.Value.ToString("yyyy-MM-dd"), "", txtFiltro.Text, "", False)
+                    mtdCaja.buscarCuentasPorPagar(tblCuentasPorPagar, txtFechaInicio.Text, txtFechaFin.Text, "", txtFiltro.Text, "", False)
                 End If
             End If
         Catch ex As Exception
@@ -121,11 +121,11 @@
                 mtdCaja.buscarCuentasPorPagar(tblCuentasPorPagar, "", "", "", "", "", True)
             Else
                 If cmbFiltar.SelectedIndex = 0 Then ' cliente
-                    mtdCaja.buscarCuentasPorPagar(tblCuentasPorPagar, dtpFechaInicio.Value.ToString("yyyy-MM-dd"), dtpFechaFin.Value.ToString("yyyy-MM-dd"), txtFiltro.Text, "", "", False)
+                    mtdCaja.buscarCuentasPorPagar(tblCuentasPorPagar, txtFechaInicio.Text, txtFechaFin.Text, txtFiltro.Text, "", "", False)
                 ElseIf cmbFiltar.SelectedIndex = 1 Then ' Folio
-                    mtdCaja.buscarCuentasPorPagar(tblCuentasPorPagar, dtpFechaInicio.Value.ToString("yyyy-MM-dd"), dtpFechaFin.Value.ToString("yyyy-MM-dd"), "", "", txtFiltro.Text, False)
+                    mtdCaja.buscarCuentasPorPagar(tblCuentasPorPagar, txtFechaInicio.Text, txtFechaFin.Text, "", "", txtFiltro.Text, False)
                 ElseIf cmbFiltar.SelectedIndex = 2 Then ' Caja
-                    mtdCaja.buscarCuentasPorPagar(tblCuentasPorPagar, dtpFechaInicio.Value.ToString("yyyy-MM-dd"), dtpFechaFin.Value.ToString("yyyy-MM-dd"), "", txtFiltro.Text, "", False)
+                    mtdCaja.buscarCuentasPorPagar(tblCuentasPorPagar, txtFechaInicio.Text, txtFechaFin.Text, "", txtFiltro.Text, "", False)
                 End If
             End If
         Catch ex As Exception
