@@ -292,9 +292,6 @@ inner join cliente as cl on cl.idCliente = vn.idCliente
         Try
             clave = ""
             cn.conectar()
-            MsgBox("entro")
-
-
 
             Dim idbodega As String
 
@@ -384,7 +381,7 @@ inner join cliente as cl on cl.idCliente = vn.idCliente
             Com.ExecuteNonQuery()
             cn.desconectar()
 
-            MsgBox("cade")
+
         Catch ex As Exception
             MessageBox.Show("No se inserto debido a: " + ex.ToString)
 
@@ -396,7 +393,7 @@ inner join cliente as cl on cl.idCliente = vn.idCliente
         Try
 
             cn.conectar()
-            MsgBox("entro")
+
 
             Dim idProducto As String
 
@@ -458,7 +455,7 @@ inner join cliente as cl on cl.idCliente = vn.idCliente
             If pagado Then
                 updateExistencia(Bodega, producto, cantidad)
             End If
-            MsgBox("cade")
+
         Catch ex As Exception
             MessageBox.Show("No se inserto debido a: " + ex.ToString)
 
@@ -506,16 +503,9 @@ inner join cliente as cl on cl.idCliente = vn.idCliente
             cn.desconectar()
             cn.conectar()
             Com = New SqlCommand(cadena, cn.conn)
-            MsgBox("cade")
             Com.ExecuteNonQuery()
-
-
-
             Rs.Close()
             cn.desconectar()
-
-
-            MsgBox("pus si salio carnal")
         Catch ex As Exception
             MessageBox.Show("No se actualizo debido a: " + ex.ToString)
         End Try
@@ -562,7 +552,7 @@ inner join cliente as cl on cl.idCliente = vn.idCliente
             cn.desconectar()
             cn.conectar()
             Com = New SqlCommand(cadena, cn.conn)
-            MsgBox("cade")
+
             Com.ExecuteNonQuery()
             cn.desconectar()
 
@@ -575,11 +565,11 @@ inner join cliente as cl on cl.idCliente = vn.idCliente
             cn.desconectar()
             cn.conectar()
             Com = New SqlCommand(cadena2, cn.conn)
-            MsgBox("cade")
+
             Com.ExecuteNonQuery()
             cn.desconectar()
 
-            MsgBox("pus si salio carnal")
+
         Catch ex As Exception
             MessageBox.Show("No se actualizo debido a: " + ex.ToString)
         End Try
@@ -634,7 +624,7 @@ inner join cliente as cl on cl.idCliente = vn.idCliente
             Com = New SqlCommand(cadena, cn.conn)
             Com.ExecuteNonQuery()
             cn.desconectar()
-            MsgBox("cade")
+
         Catch ex As Exception
             MessageBox.Show("No se inserto debido a: " + ex.ToString)
 
@@ -649,7 +639,6 @@ inner join cliente as cl on cl.idCliente = vn.idCliente
         Try
 
             cn.conectar()
-            MsgBox("entro")
 
             Dim idProducto As String
 
@@ -703,7 +692,7 @@ inner join cliente as cl on cl.idCliente = vn.idCliente
             Com = New SqlCommand(cadena, cn.conn)
             Com.ExecuteNonQuery()
             cn.desconectar()
-            MsgBox("cade")
+
         Catch ex As Exception
             MessageBox.Show("No se inserto debido a: " + ex.ToString)
 
@@ -715,7 +704,7 @@ inner join cliente as cl on cl.idCliente = vn.idCliente
         Try
 
             cn.conectar()
-            MsgBox("entro")
+
 
             Dim idProducto As String
 
@@ -774,7 +763,6 @@ inner join cliente as cl on cl.idCliente = vn.idCliente
             Com.ExecuteNonQuery()
             cn.desconectar()
 
-            MsgBox("cade")
         Catch ex As Exception
             MessageBox.Show("No se inserto debido a: " + ex.ToString)
 
