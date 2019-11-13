@@ -23,7 +23,7 @@
 
     Private Sub btnB1000_Click(sender As Object, e As EventArgs) Handles btnB1000.Click
         agregarQuitar(1000, btnB1000, 0)
-        If txtCambio.Text = Convert.ToDecimal(txtTotal.Text) < Convert.ToDecimal(txtTotalPagar.Text) Then
+        If Convert.ToDecimal(txtTotal.Text) > Convert.ToDecimal(txtTotalPagar.Text) Then
             txtCambio.Text = Convert.ToDecimal(txtTotal.Text) - Convert.ToDecimal(txtTotalPagar.Text)
         Else
             txtCambio.Text = 0
@@ -32,7 +32,7 @@
 
     Private Sub btnB500_Click(sender As Object, e As EventArgs) Handles btnB500.Click
         agregarQuitar(500, btnB500, 1)
-        If txtCambio.Text = Convert.ToDecimal(txtTotal.Text) < Convert.ToDecimal(txtTotalPagar.Text) Then
+        If Convert.ToDecimal(txtTotal.Text) > Convert.ToDecimal(txtTotalPagar.Text) Then
             txtCambio.Text = Convert.ToDecimal(txtTotal.Text) - Convert.ToDecimal(txtTotalPagar.Text)
         Else
             txtCambio.Text = 0
@@ -41,7 +41,7 @@
 
     Private Sub btnB200_Click(sender As Object, e As EventArgs) Handles btnB200.Click
         agregarQuitar(200, btnB200, 2)
-        If txtCambio.Text = Convert.ToDecimal(txtTotal.Text) < Convert.ToDecimal(txtTotalPagar.Text) Then
+        If CDbl(txtTotal.Text) > CDbl(txtTotalPagar.Text) Then
             txtCambio.Text = Convert.ToDecimal(txtTotal.Text) - Convert.ToDecimal(txtTotalPagar.Text)
         Else
             txtCambio.Text = 0
@@ -50,7 +50,7 @@
 
     Private Sub btnB100_Click(sender As Object, e As EventArgs) Handles btnB100.Click
         agregarQuitar(100, btnB100, 3)
-        If txtCambio.Text = Convert.ToDecimal(txtTotal.Text) < Convert.ToDecimal(txtTotalPagar.Text) Then
+        If Convert.ToDecimal(txtTotal.Text) > Convert.ToDecimal(txtTotalPagar.Text) Then
             txtCambio.Text = Convert.ToDecimal(txtTotal.Text) - Convert.ToDecimal(txtTotalPagar.Text)
         Else
             txtCambio.Text = 0
@@ -59,12 +59,16 @@
 
     Private Sub btnB50_Click(sender As Object, e As EventArgs) Handles btnB50.Click
         agregarQuitar(50, btnB50, 4)
-        txtCambio.Text = Convert.ToDecimal(txtTotal.Text) - Convert.ToDecimal(txtTotalPagar.Text)
+        If Convert.ToDecimal(txtTotal.Text) > Convert.ToDecimal(txtTotalPagar.Text) Then
+            txtCambio.Text = Convert.ToDecimal(txtTotal.Text) - Convert.ToDecimal(txtTotalPagar.Text)
+        Else
+            txtCambio.Text = 0
+        End If
     End Sub
 
     Private Sub btnB20_Click(sender As Object, e As EventArgs) Handles btnB20.Click
         agregarQuitar(20, btnB20, 5)
-        If txtCambio.Text = Convert.ToDecimal(txtTotal.Text) < Convert.ToDecimal(txtTotalPagar.Text) Then
+        If Convert.ToDecimal(txtTotal.Text) > Convert.ToDecimal(txtTotalPagar.Text) Then
             txtCambio.Text = Convert.ToDecimal(txtTotal.Text) - Convert.ToDecimal(txtTotalPagar.Text)
         Else
             txtCambio.Text = 0
@@ -73,7 +77,7 @@
 
     Private Sub btnM20_Click(sender As Object, e As EventArgs) Handles btnM20.Click
         agregarQuitar(20, btnM20, 6)
-        If txtCambio.Text = Convert.ToDecimal(txtTotal.Text) < Convert.ToDecimal(txtTotalPagar.Text) Then
+        If Convert.ToDecimal(txtTotal.Text) > Convert.ToDecimal(txtTotalPagar.Text) Then
             txtCambio.Text = Convert.ToDecimal(txtTotal.Text) - Convert.ToDecimal(txtTotalPagar.Text)
         Else
             txtCambio.Text = 0
@@ -82,7 +86,7 @@
 
     Private Sub btnM10_Click(sender As Object, e As EventArgs) Handles btnM10.Click
         agregarQuitar(10, btnM10, 7)
-        If txtCambio.Text = Convert.ToDecimal(txtTotal.Text) < Convert.ToDecimal(txtTotalPagar.Text) Then
+        If Convert.ToDecimal(txtTotal.Text) > Convert.ToDecimal(txtTotalPagar.Text) Then
             txtCambio.Text = Convert.ToDecimal(txtTotal.Text) - Convert.ToDecimal(txtTotalPagar.Text)
         Else
             txtCambio.Text = 0
@@ -91,7 +95,7 @@
 
     Private Sub btnM5_Click(sender As Object, e As EventArgs) Handles btnM5.Click
         agregarQuitar(5, btnM5, 8)
-        If txtCambio.Text = Convert.ToDecimal(txtTotal.Text) < Convert.ToDecimal(txtTotalPagar.Text) Then
+        If Convert.ToDecimal(txtTotal.Text) > Convert.ToDecimal(txtTotalPagar.Text) Then
             txtCambio.Text = Convert.ToDecimal(txtTotal.Text) - Convert.ToDecimal(txtTotalPagar.Text)
         Else
             txtCambio.Text = 0
@@ -100,7 +104,7 @@
 
     Private Sub btnM2_Click(sender As Object, e As EventArgs) Handles btnM2.Click
         agregarQuitar(2, btnM2, 9)
-        If txtCambio.Text = Convert.ToDecimal(txtTotal.Text) < Convert.ToDecimal(txtTotalPagar.Text) Then
+        If Convert.ToDecimal(txtTotal.Text) > Convert.ToDecimal(txtTotalPagar.Text) Then
             txtCambio.Text = Convert.ToDecimal(txtTotal.Text) - Convert.ToDecimal(txtTotalPagar.Text)
         Else
             txtCambio.Text = 0
@@ -109,7 +113,7 @@
 
     Private Sub btnM1_Click(sender As Object, e As EventArgs) Handles btnM1.Click
         agregarQuitar(1, btnM1, 10)
-        If txtCambio.Text = Convert.ToDecimal(txtTotal.Text) < Convert.ToDecimal(txtTotalPagar.Text) Then
+        If Convert.ToDecimal(txtTotal.Text) > Convert.ToDecimal(txtTotalPagar.Text) Then
             txtCambio.Text = Convert.ToDecimal(txtTotal.Text) - Convert.ToDecimal(txtTotalPagar.Text)
         Else
             txtCambio.Text = 0
@@ -118,7 +122,7 @@
 
     Private Sub btnM05_Click(sender As Object, e As EventArgs) Handles btnM05.Click
         agregarQuitar(0.5, btnM05, 11)
-        If txtCambio.Text = Convert.ToDecimal(txtTotal.Text) < Convert.ToDecimal(txtTotalPagar.Text) Then
+        If Convert.ToDecimal(txtTotal.Text) > Convert.ToDecimal(txtTotalPagar.Text) Then
             txtCambio.Text = Convert.ToDecimal(txtTotal.Text) - Convert.ToDecimal(txtTotalPagar.Text)
         Else
             txtCambio.Text = 0
@@ -168,90 +172,47 @@
         If IsNumeric(e.KeyChar) Then
             If sender Is btnB1000 Then
                 btnB1000.Text = e.KeyChar.ToString()
-                If txtCambio.Text = Convert.ToDecimal(txtTotal.Text) < Convert.ToDecimal(txtTotalPagar.Text) Then
-                    txtCambio.Text = Convert.ToDecimal(txtTotal.Text) - Convert.ToDecimal(txtTotalPagar.Text)
-                Else
-                    txtCambio.Text = 0
-                End If
+
             ElseIf sender Is btnB500 Then
                 btnB500.Text = e.KeyChar.ToString()
-                If txtCambio.Text = Convert.ToDecimal(txtTotal.Text) < Convert.ToDecimal(txtTotalPagar.Text) Then
-                    txtCambio.Text = Convert.ToDecimal(txtTotal.Text) - Convert.ToDecimal(txtTotalPagar.Text)
-                Else
-                    txtCambio.Text = 0
-                End If
+
             ElseIf sender Is btnB200 Then
                 btnB200.Text = e.KeyChar.ToString()
-                If txtCambio.Text = Convert.ToDecimal(txtTotal.Text) < Convert.ToDecimal(txtTotalPagar.Text) Then
-                    txtCambio.Text = Convert.ToDecimal(txtTotal.Text) - Convert.ToDecimal(txtTotalPagar.Text)
-                Else
-                    txtCambio.Text = 0
-                End If
+
             ElseIf sender Is btnB100 Then
                 btnB100.Text = e.KeyChar.ToString()
-                If txtCambio.Text = Convert.ToDecimal(txtTotal.Text) < Convert.ToDecimal(txtTotalPagar.Text) Then
-                    txtCambio.Text = Convert.ToDecimal(txtTotal.Text) - Convert.ToDecimal(txtTotalPagar.Text)
-                Else
-                    txtCambio.Text = 0
-                End If
+
             ElseIf sender Is btnB50 Then
                 btnB50.Text = e.KeyChar.ToString()
-                If txtCambio.Text = Convert.ToDecimal(txtTotal.Text) < Convert.ToDecimal(txtTotalPagar.Text) Then
-                    txtCambio.Text = Convert.ToDecimal(txtTotal.Text) - Convert.ToDecimal(txtTotalPagar.Text)
-                Else
-                    txtCambio.Text = 0
-                End If
+
             ElseIf sender Is btnB20 Then
                 btnB20.Text = e.KeyChar.ToString()
-                If txtCambio.Text = Convert.ToDecimal(txtTotal.Text) < Convert.ToDecimal(txtTotalPagar.Text) Then
-                    txtCambio.Text = Convert.ToDecimal(txtTotal.Text) - Convert.ToDecimal(txtTotalPagar.Text)
-                Else
-                    txtCambio.Text = 0
-                End If
+
             ElseIf sender Is btnM20 Then
                 btnM20.Text = e.KeyChar.ToString()
-                If txtCambio.Text = Convert.ToDecimal(txtTotal.Text) < Convert.ToDecimal(txtTotalPagar.Text) Then
-                    txtCambio.Text = Convert.ToDecimal(txtTotal.Text) - Convert.ToDecimal(txtTotalPagar.Text)
-                Else
-                    txtCambio.Text = 0
-                End If
+
             ElseIf sender Is btnM10 Then
                 btnM10.Text = e.KeyChar.ToString()
-                If txtCambio.Text = Convert.ToDecimal(txtTotal.Text) < Convert.ToDecimal(txtTotalPagar.Text) Then
-                    txtCambio.Text = Convert.ToDecimal(txtTotal.Text) - Convert.ToDecimal(txtTotalPagar.Text)
-                Else
-                    txtCambio.Text = 0
-                End If
+
             ElseIf sender Is btnM5 Then
                 btnM5.Text = e.KeyChar.ToString()
-                If txtCambio.Text = Convert.ToDecimal(txtTotal.Text) < Convert.ToDecimal(txtTotalPagar.Text) Then
-                    txtCambio.Text = Convert.ToDecimal(txtTotal.Text) - Convert.ToDecimal(txtTotalPagar.Text)
-                Else
-                    txtCambio.Text = 0
-                End If
+
             ElseIf sender Is btnM2 Then
                 btnM2.Text = e.KeyChar.ToString()
-                If txtCambio.Text = Convert.ToDecimal(txtTotal.Text) < Convert.ToDecimal(txtTotalPagar.Text) Then
-                    txtCambio.Text = Convert.ToDecimal(txtTotal.Text) - Convert.ToDecimal(txtTotalPagar.Text)
-                Else
-                    txtCambio.Text = 0
-                End If
+
             ElseIf sender Is btnM1 Then
                 btnM1.Text = e.KeyChar.ToString()
-                If txtCambio.Text = Convert.ToDecimal(txtTotal.Text) < Convert.ToDecimal(txtTotalPagar.Text) Then
-                    txtCambio.Text = Convert.ToDecimal(txtTotal.Text) - Convert.ToDecimal(txtTotalPagar.Text)
-                Else
-                    txtCambio.Text = 0
-                End If
+
             ElseIf sender Is btnM05 Then
                 btnM05.Text = e.KeyChar.ToString()
-                If txtCambio.Text = Convert.ToDecimal(txtTotal.Text) < Convert.ToDecimal(txtTotalPagar.Text) Then
-                    txtCambio.Text = Convert.ToDecimal(txtTotal.Text) - Convert.ToDecimal(txtTotalPagar.Text)
-                Else
-                    txtCambio.Text = 0
-                End If
+
             End If
 
+        End If
+        If Convert.ToDecimal(txtTotal.Text) > Convert.ToDecimal(txtTotalPagar.Text) Then
+            txtCambio.Text = Convert.ToDecimal(txtTotal.Text) - Convert.ToDecimal(txtTotalPagar.Text)
+        Else
+            txtCambio.Text = 0
         End If
         calcular()
     End Function
