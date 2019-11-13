@@ -670,3 +670,28 @@ begin
 	where ru.idReubicacion = @idReubicacion	
 end
 
+--==================================================================================================
+--================================= TABLA DE ABONO  ================================================
+--==================================================================================================
+
+create table abono (
+	idAbono varchar(36) not null primary key,
+	idCliente varchar(36),
+	idEmpleado varchar(36),
+	idVenta varchar(36),
+	fecha smalldatetime,
+	abono float,
+	bede float
+)
+
+alter table abono 
+add constraint fk_idCliente_Abono
+foreign key (idCliente)  references cliente(idCliente)
+
+alter table abono 
+add constraint fk_idEmpleado 
+foreign key (idEmpleado) references empleado(idEmpleado)
+
+alter table abono 
+add constraint fk_idVenta_Abono
+foreign key (idVenta) references venta (idVenta)

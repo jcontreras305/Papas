@@ -155,6 +155,12 @@
     <Compile Include="Formularios\Caja.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="Formularios\CajaCuentasPPD.Designer.vb">
+      <DependentUpon>CajaCuentasPPD.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Formularios\CajaCuentasPPD.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="Formularios\Cancelar_Venta.Designer.vb">
       <DependentUpon>Cancelar_Venta.vb</DependentUpon>
     </Compile>
@@ -333,12 +339,6 @@
       <DependentUpon>Productos.vb</DependentUpon>
     </Compile>
     <Compile Include="Formularios\Productos.vb">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Formularios\Reclasificacion.Designer.vb">
-      <DependentUpon>Reclasificacion.vb</DependentUpon>
-    </Compile>
-    <Compile Include="Formularios\Reclasificacion.vb">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Formularios\Reclasificar.Designer.vb">
@@ -636,6 +636,9 @@
     <EmbeddedResource Include="Formularios\Caja.resx">
       <DependentUpon>Caja.vb</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Formularios\CajaCuentasPPD.resx">
+      <DependentUpon>CajaCuentasPPD.vb</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Formularios\CantidadMonetariaExplicitaInicio.resx">
       <DependentUpon>CantidadMonetariaExplicitaInicio.vb</DependentUpon>
     </EmbeddedResource>
@@ -716,9 +719,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Formularios\Productos.resx">
       <DependentUpon>Productos.vb</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Formularios\Reclasificacion.resx">
-      <DependentUpon>Reclasificacion.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Formularios\Reclasificar.resx">
       <DependentUpon>Reclasificar.vb</DependentUpon>
