@@ -4,33 +4,11 @@ Imports PapasSC
 Public Class MetodosCaja
     Inherits conexionDB
 
+    '##########################################################################################################
+    '####################################### METODOS PARA CAJA ################################################
+    '##########################################################################################################
     Private busqueda As String = "select idCaja , cj.nombre as Caja,cj.clave as Referencia, cj.estatus as Estatus,cj.fase as Fase, cj.limiteEfectivo, bd.nombre as Bodega, cj.explicito as ValoresExplicitos from caja as  cj left join bodega as bd
 on cj.idBodega = bd.idBodega "
-
-    Private busquedaCuentaPorPagar As String = "select vt.folio as clave, cl.RFC, case 
-							when cl.nombre= NULL then cl.razonSocial 
-							when cl.razonSocial = null then cl.nombre
-							else cl.RFC end as RazonSocial,
-							cn.nombre as Contacto,
-							case 
-								when cn.telefono = null then telefono2
-								when cn.telefono <> null then telefono
-								else 'ND' end as Telefono,
-							case 
-								when cn.email = NULL then cn.email2
-								when cn.email <> '' then cn.email
-								else 'ND' end as Email,
-							ct.limiteCredito as LimiteCredito,
-							ct.diasCredito as Días ,
-							ct.limiteCredito - ct.saldo as Cobraza
-							
-from 
-venta as vt inner join caja as cj on vt.idCaja = cj.idCaja
-left join  cliente as cl on vt.idCliente = cl.idCliente
-left join contacto as cn on cn.idCliente = cl.idCliente
-left join tipoCliente as tcl on cl.idTipoCliente = tcl.idTipoCliente 
-left join credito as ct on ct.idCliente = cl.idCliente"
-
 
 
     Public Sub seleccioarCajas(ByVal tblCaja As DataGridView)
@@ -167,6 +145,54 @@ left join credito as ct on ct.idCliente = cl.idCliente"
         desconectar()
     End Sub
 
+
+
+    Public Sub seleccionarNombreCajas(ByVal cmbCaja As ComboBox, ByVal listIds As List(Of String))
+        Try
+            conectar()
+            Dim cmd As New SqlCommand("select nombre, idCaja from caja where not estatus='B'", conn)
+            Dim rd As SqlDataReader = cmd.ExecuteReader()
+            listIds.Clear()
+            While rd.Read
+                cmbCaja.Items.Add(rd("nombre"))
+                listIds.Add(rd("idCaja"))
+            End While
+        Catch ex As Exception
+            MsgBox(ex.Message)
+        End Try
+    End Sub
+
+    '##########################################################################################################
+    '################################### METODOS PARA CORTE CAJA ##############################################
+    '##########################################################################################################
+    Public Function validarUsuarioCorteCaja(ByVal idEmpleado As String, ByVal idCaja As String) As Boolean
+        Try
+            conectar()
+            Dim cmd As New SqlCommand("select top 1 idEmpleado from corteCaja where fechaInicio = (select  top 1 MAX(fechaInicio) from corteCaja where idCaja = '" + idCaja + "')", conn)
+            Dim idemp As String = ""
+            Using rd = cmd.ExecuteReader
+                If rd.HasRows Then
+                    While rd.Read
+                        idemp = rd.Item("idEmpleado").ToString
+                    End While
+                    If idEmpleado.Equals(idemp) Then
+                        desconectar()
+                        Return True
+                    Else
+                        desconectar()
+                        Return False
+                    End If
+                Else
+                    Return False
+                End If
+            End Using
+        Catch ex As Exception
+            MsgBox(ex.Message)
+            desconectar()
+            Return False
+        End Try
+    End Function
+
     Public Function iniciar_Caja_Explicito(ByVal idCaja As String, ByVal idEmpleado As String, ByVal montoInicial As String, ByVal arrayMonedas() As Integer) As Boolean
         Try
             conectar()
@@ -247,47 +273,16 @@ left join credito as ct on ct.idCliente = cl.idCliente"
         Return Nothing
     End Function
 
-    Public Sub seleccionarNombreCajas(ByVal cmbCaja As ComboBox, ByVal listIds As List(Of String))
-        Try
-            conectar()
-            Dim cmd As New SqlCommand("select nombre, idCaja from caja where not estatus='B'", conn)
-            Dim rd As SqlDataReader = cmd.ExecuteReader()
-            listIds.Clear()
-            While rd.Read
-                cmbCaja.Items.Add(rd("nombre"))
-                listIds.Add(rd("idCaja"))
-            End While
-        Catch ex As Exception
-            MsgBox(ex.Message)
-        End Try
-    End Sub
+    '##########################################################################################################
+    '################################### METODOS PARA CAJA/GENERAL ############################################
+    '##########################################################################################################
 
     Private busquedaVentasCaja As String = "
 select folio ,  case when vt.estatus = 'D' then 'Deuda' when vt.estatus = 'P' then 'Pagada' else 'Espera' end as estatus ,  case when  cl.nombre = '' then cl.razonSocial else cl.nombre end as Nombre , fecha ,vt.cantidadPagada , vt.totalPagar
 from venta as vt left join cliente as cl on cl.idCliente = vt.idCliente 
 left join caja as cj on cj.idCaja = vt.idCaja
 left join credito as cr on cr.idCliente = cl.idCliente
-left join empleado as emp on emp.idEmpleado = vt.idEmpleado
-"
-
-    Private busquedaVentasCajaB As String = "select vt.folio as Clave, case 
-							when cl.nombre= NULL then cl.razonSocial 
-							when cl.razonSocial = null then cl.nombre
-							else cl.RFC end as RazonSocial,
-							tcl.tipo as Tipo,
-							ct.limiteCredito as LimitaCrédito,
-							ct.diasCredito as DíasCrédito,
-							ct.saldo as Saldo,
-							case when cl.estatus = 'A' then 'Activo'
-								 when cl.estatus = 'I' then 'Inactivo'
-								 when cl.estatus = 'B' then 'Bloqueado'
-								 else '' end as Estatus
-								  from 
-venta vt inner join caja as cj on vt.idCaja = cj.idCaja
-left join cliente as cl on vt.idCliente = cl.idCliente
-left join tipoCliente as tcl on cl.idTipoCliente = tcl.idTipoCliente 
-left join credito as ct on ct.idCliente = cl.idCliente "
-
+left join empleado as emp on emp.idEmpleado = vt.idEmpleado "
 
     Public Sub select_ventasCajas(ByVal tblVentasCaja As DataGridView, ByVal busqueda As String, ByVal filtro As String, ByVal nombreCaja As String, ByVal fecha1 As String, ByVal fecha2 As String, ByVal todos As Boolean)
         Try
@@ -296,7 +291,6 @@ left join credito as ct on ct.idCliente = cl.idCliente "
             Dim consulta As String = busquedaVentasCaja
             Select Case busqueda
                 Case "Folio"
-
                     consulta = consulta + If(filtro = String.Empty, " where vt.fecha between '" + fecha2 + "' and '" + fecha1 + "'",
                         " where vt.folio = " + filtro + " and vt.fecha between '" + fecha1 + "' and '" + fecha2 + "'")
                     Exit Select
@@ -320,53 +314,6 @@ left join credito as ct on ct.idCliente = cl.idCliente "
             consulta = consulta + If(todos = False, " and vt.estatus = 'D'", " and vt.estatus like '%'") + "and cj.nombre = '" + nombreCaja + "'"
             cmd.CommandText = consulta
             cmd.Connection = conn
-
-            '            cmd.CommandText = If(todos = True,
-            '            busquedaVentasCaja + " where cl.nombre like '' 
-            'or	cl.razonSocial like '" + filtro + "'
-            'or cl.RFC like '" + filtro + "'
-            'or limiteCredito like '" + filtro + "'
-            'or saldo like '" + filtro + "'
-            'or vt.fecha between '" + fecha1 + "' and '" + fecha2 + "' 
-            'and cj.nombre = '" + nombreCaja + "'",
-            '            busquedaVentasCaja + " where cl.nombre like '' 
-            'or	cl.razonSocial like '" + filtro + "'
-            'or cl.RFC like '" + filtro + "'
-            'or limiteCredito like '" + filtro + "'
-            'or saldo like '" + filtro + "'
-            'or vt.fecha between '" + fecha1 + "' and '" + fecha2 + "' 
-            'and cj.nombre = '" + nombreCaja + "' " + " and vt.estatus = 'P'")
-            '            cmd.Connection = conn
-
-            '            Dim cmd As New SqlCommand(busquedaVentasCaja + " where cl.nombre like '' 
-            'or	cl.razonSocial like '" + filtro + "'
-            'or cl.RFC like '" + filtro + "'
-            'or limiteCredito like '" + filtro + "'
-            'or saldo like '" + filtro + "'
-            'or vt.fecha between " + fecha1 + " and " + fecha2 + "
-            'and cj.nombre = '" + nombreCaja + "'")
-
-            If cmd.ExecuteNonQuery Then
-                Dim dt As New DataTable
-                Dim da As New SqlDataAdapter(cmd)
-                da.Fill(dt)
-                tblVentasCaja.DataSource = dt
-            End If
-        Catch ex As Exception
-            MsgBox(ex.Message)
-        End Try
-        desconectar()
-    End Sub
-
-    Public Sub select_ventasCajas(ByVal tblVentasCaja As DataGridView, ByVal filtro As String, ByVal nombreCaja As String)
-        Try
-            conectar()
-            Dim cmd As New SqlCommand(busquedaVentasCaja + " where cl.nombre like '" + filtro + "' 
-or	cl.razonSocial like '" + filtro + "'
-or cl.RFC like '" + filtro + "'
-or limiteCredito like '" + filtro + "'
-or saldo like '" + filtro + "'
-and cj.nombre =  '" + nombreCaja + "'" + " ", conn)
             If cmd.ExecuteNonQuery Then
                 Dim dt As New DataTable
                 Dim da As New SqlDataAdapter(cmd)
@@ -380,30 +327,71 @@ and cj.nombre =  '" + nombreCaja + "'" + " ", conn)
     End Sub
 
 
+    '##########################################################################################################
+    '############################# METODOS PARA CAJA/CUENTAS POR PAGAR ########################################
+    '##########################################################################################################
 
-    Public Sub select_CuentaPorCobrar(ByVal tblCuentasPorPagar As DataGridView, ByVal caja As String)
+    Private busquedaCuentaPorPagar As String = "select 
+	cl.RFC, case 
+	when cl.nombre <> '' then cl.nombre 
+	when cl.razonSocial <> '' then cl.razonSocial
+	else cl.RFC end as Cliente,
+    cl.idCliente,
+	cr.limiteCredito as LimiteCredito,
+	cr.saldo as Saldo,
+	cr.diasCredito as 'Días de credito' ,
+	ISNULL( datediff(day ,(select top 1 fecha from venta where idCliente = cl.idCliente and venta.estatus = 'D' order by fecha desc) , convert(date,GETDATE())), 0) as 'Días',
+	ISNULL((select top 1 fecha from venta where idCliente = cl.idCliente and venta.estatus = 'D' order by fecha desc), convert( date , GETDATE()) )as 'Fecha Inicial',
+	cn.nombre as Contacto,
+	case 
+		when cn.telefono <> '' then telefono
+		when cn.telefono IS null then telefono2
+		else 'ND' end as Telefono,
+	case 
+		when cn.email = NULL then cn.email2
+		when cn.email <> '' then cn.email
+		else 'ND' end as Email
+from cliente as cl 
+inner join contacto as cn on cl.idCliente = cn.idCliente
+left join credito as cr on cr.idCliente = cl.idCliente "
+
+
+    Public Sub select_CuentaPorCobrar(ByVal tblVentasCaja As DataGridView, ByVal busqueda As String, ByVal filtro As String, ByVal fecha1 As String, ByVal fecha2 As String, ByVal todos As Boolean)
         Try
             conectar()
-            Dim cmd As New SqlCommand(busquedaCuentaPorPagar + " where cj.nombre = '" + caja + "' and vt.estatus = 'D'", conn)
+            Dim cmd As New SqlCommand("")
+            Dim consulta As String = If(todos = False, busquedaCuentaPorPagar + " where saldo > 0 ", busquedaCuentaPorPagar + " where ")
+            If filtro = String.Empty Then
+                filtro = "%"
+            End If
+            Select Case busqueda
+                Case "Cliente"
+                    consulta = consulta + " and ( cl.nombre like '%" + filtro + "%' or cl.razonSocial like '%" + filtro + "%' )   "
+                    Exit Select
+                Case "Contacto"
+                    consulta = consulta + " and (cn.nombre like '%" + filtro + "%') "
+                    Exit Select
+                Case Else
+                    consulta = consulta + " and ((saldo*100)/limiteCredito) > " + filtro
+                    Exit Select
+            End Select
+            consulta = consulta + "and (select top 1 fecha from venta where idCliente = cl.idCliente and venta.estatus = 'D' order by fecha desc) between '" + fecha2 + "'  and '" + fecha1 + "' "
+            cmd.CommandText = consulta
+            cmd.Connection = conn
             If cmd.ExecuteNonQuery Then
                 Dim dt As New DataTable
                 Dim da As New SqlDataAdapter(cmd)
                 da.Fill(dt)
-                tblCuentasPorPagar.DataSource = dt
-            Else
-                MsgBox("Error")
+                tblVentasCaja.DataSource = dt
             End If
+
         Catch ex As Exception
             MsgBox(ex.Message)
         End Try
         desconectar()
     End Sub
 
-    Public Overrides Function Equals(obj As Object) As Boolean
-        Dim caja = TryCast(obj, MetodosCaja)
-        Return caja IsNot Nothing AndAlso
-               busquedaCuentaPorPagar = caja.busquedaCuentaPorPagar
-    End Function
+
 
     Dim consultaCPP As String = "select cl.nombre , vt.folio , vt.cantidadPagada, vt.totalPagar , vt.fecha, cj.nombre from 
 venta as vt inner join cliente cl on vt.idCliente = cl.idCliente
@@ -484,33 +472,42 @@ where vt.fecha between  (select  MAX(fechaInicio) from corteCaja where idCaja = 
         Return Nothing
     End Function
 
-    Public Function validarUsuarioCorteCaja(ByVal idEmpleado As String, ByVal idCaja As String) As Boolean
+
+
+    '#########################################################################################################################
+    '######################################### METODOS PARA CUENTAS POR PAGAR ################################################
+    '#########################################################################################################################
+
+    Dim ventas_sin_pagar As String = "select 
+	vt.folio  as Folio,
+	vt.fecha as Fecha,
+	case when  cl.nombre = '' then cl.razonSocial else cl.nombre end as Cliente,
+	vt.totalPagar as Total,
+	vt.cantidadPagada as Saldado, 
+	(vt.totalPagar - vt.cantidadPagada) as Debe,
+	dateadd(DAY, cr.diasCredito ,vt.fecha)as 'Día límite' ,
+	ISNULL( datediff(day ,(select top 1 fecha from venta where idVenta = vt.idVenta order by fecha desc) , convert(date,GETDATE())), 0) as 'Días',
+	case when  vt.estatus = 'P' then 'Pagado' when vt.estatus = 'D' then 'Deuda' else 'Espera' end as Estado
+from venta as vt 
+left join cliente as cl on cl.idCliente = vt.idCliente  
+left join credito as cr on cr.idCliente = cl.idCliente 
+where vt.estatus = 'D' "
+
+    Public Sub selectVentasPendientesCliente(ByVal tblCPPCliente As DataGridView, ByVal idCliente As String)
         Try
             conectar()
-            Dim cmd As New SqlCommand("select top 1 idEmpleado from corteCaja where fechaInicio = (select  top 1 MAX(fechaInicio) from corteCaja where idCaja = '" + idCaja + "')", conn)
-            Dim idemp As String = ""
-            Using rd = cmd.ExecuteReader
-                If rd.HasRows Then
-                    While rd.Read
-                        idemp = rd.Item("idEmpleado").ToString
-                    End While
-                    If idEmpleado.Equals(idemp) Then
-                        desconectar()
-                        Return True
-                    Else
-                        desconectar()
-                        Return False
-                    End If
-                Else
-                    Return False
-                End If
-            End Using
+            Dim cmd As New SqlCommand("")
+            cmd.CommandText = ventas_sin_pagar + " and cl.idCliente = '" + idCliente + "'"
+
+            cmd.Connection = conn
+            If cmd.ExecuteNonQuery Then
+                Dim da As New SqlDataAdapter(cmd)
+                Dim dt As New DataTable
+                da.Fill(dt)
+                tblCPPCliente.DataSource = dt
+            End If
         Catch ex As Exception
             MsgBox(ex.Message)
-            desconectar()
-            Return False
         End Try
-    End Function
-
-
+    End Sub
 End Class

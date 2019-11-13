@@ -28,6 +28,11 @@ Partial Class Caja
         Me.Label5 = New System.Windows.Forms.Label()
         Me.pnlEstatus = New System.Windows.Forms.Panel()
         Me.pnlCuentasPorCobrar = New System.Windows.Forms.TabPage()
+        Me.btnActualizaCPC = New System.Windows.Forms.Button()
+        Me.txtFechaFin = New System.Windows.Forms.TextBox()
+        Me.txtFechaInicio = New System.Windows.Forms.TextBox()
+        Me.mtcFechaInicio = New System.Windows.Forms.MonthCalendar()
+        Me.mtcFechaFin = New System.Windows.Forms.MonthCalendar()
         Me.chbTodosCPP = New System.Windows.Forms.CheckBox()
         Me.cmbFiltar = New System.Windows.Forms.ComboBox()
         Me.txtFiltro = New System.Windows.Forms.TextBox()
@@ -54,11 +59,6 @@ Partial Class Caja
         Me.pnlPrecorte = New System.Windows.Forms.TabPage()
         Me.tblPrecorte = New System.Windows.Forms.DataGridView()
         Me.btnImprimir = New System.Windows.Forms.Button()
-        Me.mtcFechaFin = New System.Windows.Forms.MonthCalendar()
-        Me.mtcFechaInicio = New System.Windows.Forms.MonthCalendar()
-        Me.txtFechaInicio = New System.Windows.Forms.TextBox()
-        Me.txtFechaFin = New System.Windows.Forms.TextBox()
-        Me.btnActualizaCPC = New System.Windows.Forms.Button()
         Me.pnlEstatus.SuspendLayout()
         Me.pnlCuentasPorCobrar.SuspendLayout()
         CType(Me.tblCuentasPorPagar, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -136,6 +136,46 @@ Partial Class Caja
         Me.pnlCuentasPorCobrar.Text = "Cuentas por Cobrar"
         Me.pnlCuentasPorCobrar.UseVisualStyleBackColor = True
         '
+        'btnActualizaCPC
+        '
+        Me.btnActualizaCPC.Image = Global.PapasSC.My.Resources.Resources.ACTUALIZAR
+        Me.btnActualizaCPC.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
+        Me.btnActualizaCPC.Location = New System.Drawing.Point(691, 12)
+        Me.btnActualizaCPC.Name = "btnActualizaCPC"
+        Me.btnActualizaCPC.Size = New System.Drawing.Size(91, 43)
+        Me.btnActualizaCPC.TabIndex = 14
+        Me.btnActualizaCPC.Text = "Actualizar"
+        Me.btnActualizaCPC.TextAlign = System.Drawing.ContentAlignment.MiddleRight
+        Me.btnActualizaCPC.UseVisualStyleBackColor = True
+        '
+        'txtFechaFin
+        '
+        Me.txtFechaFin.Location = New System.Drawing.Point(456, 37)
+        Me.txtFechaFin.Name = "txtFechaFin"
+        Me.txtFechaFin.Size = New System.Drawing.Size(192, 20)
+        Me.txtFechaFin.TabIndex = 13
+        '
+        'txtFechaInicio
+        '
+        Me.txtFechaInicio.Location = New System.Drawing.Point(456, 10)
+        Me.txtFechaInicio.Name = "txtFechaInicio"
+        Me.txtFechaInicio.Size = New System.Drawing.Size(192, 20)
+        Me.txtFechaInicio.TabIndex = 12
+        '
+        'mtcFechaInicio
+        '
+        Me.mtcFechaInicio.Location = New System.Drawing.Point(456, 9)
+        Me.mtcFechaInicio.Name = "mtcFechaInicio"
+        Me.mtcFechaInicio.TabIndex = 11
+        Me.mtcFechaInicio.Visible = False
+        '
+        'mtcFechaFin
+        '
+        Me.mtcFechaFin.Location = New System.Drawing.Point(456, 40)
+        Me.mtcFechaFin.Name = "mtcFechaFin"
+        Me.mtcFechaFin.TabIndex = 10
+        Me.mtcFechaFin.Visible = False
+        '
         'chbTodosCPP
         '
         Me.chbTodosCPP.AutoSize = True
@@ -149,7 +189,7 @@ Partial Class Caja
         'cmbFiltar
         '
         Me.cmbFiltar.FormattingEnabled = True
-        Me.cmbFiltar.Items.AddRange(New Object() {"Cliente", "Folio", "Caja"})
+        Me.cmbFiltar.Items.AddRange(New Object() {"Cliente", "Contacto", "% Credito"})
         Me.cmbFiltar.Location = New System.Drawing.Point(54, 13)
         Me.cmbFiltar.Name = "cmbFiltar"
         Me.cmbFiltar.Size = New System.Drawing.Size(107, 21)
@@ -174,7 +214,7 @@ Partial Class Caja
         'Label7
         '
         Me.Label7.AutoSize = True
-        Me.Label7.Location = New System.Drawing.Point(373, 40)
+        Me.Label7.Location = New System.Drawing.Point(382, 17)
         Me.Label7.Name = "Label7"
         Me.Label7.Size = New System.Drawing.Size(57, 13)
         Me.Label7.TabIndex = 5
@@ -183,7 +223,7 @@ Partial Class Caja
         'Label6
         '
         Me.Label6.AutoSize = True
-        Me.Label6.Location = New System.Drawing.Point(369, 10)
+        Me.Label6.Location = New System.Drawing.Point(379, 45)
         Me.Label6.Name = "Label6"
         Me.Label6.Size = New System.Drawing.Size(65, 13)
         Me.Label6.TabIndex = 4
@@ -191,9 +231,12 @@ Partial Class Caja
         '
         'tblCuentasPorPagar
         '
+        Me.tblCuentasPorPagar.AllowUserToAddRows = False
         Me.tblCuentasPorPagar.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
         Me.tblCuentasPorPagar.Location = New System.Drawing.Point(9, 74)
         Me.tblCuentasPorPagar.Name = "tblCuentasPorPagar"
+        Me.tblCuentasPorPagar.ReadOnly = True
+        Me.tblCuentasPorPagar.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect
         Me.tblCuentasPorPagar.Size = New System.Drawing.Size(779, 393)
         Me.tblCuentasPorPagar.TabIndex = 0
         '
@@ -281,6 +324,7 @@ Partial Class Caja
         Me.tblVentas.Location = New System.Drawing.Point(9, 74)
         Me.tblVentas.Name = "tblVentas"
         Me.tblVentas.ReadOnly = True
+        Me.tblVentas.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect
         Me.tblVentas.ShowCellErrors = False
         Me.tblVentas.Size = New System.Drawing.Size(764, 393)
         Me.tblVentas.TabIndex = 13
@@ -391,44 +435,6 @@ Partial Class Caja
         Me.btnImprimir.Text = "Imprimir"
         Me.btnImprimir.TextAlign = System.Drawing.ContentAlignment.MiddleRight
         Me.btnImprimir.UseVisualStyleBackColor = True
-        '
-        'mtcFechaFin
-        '
-        Me.mtcFechaFin.Location = New System.Drawing.Point(456, 40)
-        Me.mtcFechaFin.Name = "mtcFechaFin"
-        Me.mtcFechaFin.TabIndex = 10
-        '
-        'mtcFechaInicio
-        '
-        Me.mtcFechaInicio.Location = New System.Drawing.Point(456, 9)
-        Me.mtcFechaInicio.Name = "mtcFechaInicio"
-        Me.mtcFechaInicio.TabIndex = 11
-        '
-        'txtFechaInicio
-        '
-        Me.txtFechaInicio.Location = New System.Drawing.Point(456, 10)
-        Me.txtFechaInicio.Name = "txtFechaInicio"
-        Me.txtFechaInicio.Size = New System.Drawing.Size(192, 20)
-        Me.txtFechaInicio.TabIndex = 12
-        '
-        'txtFechaFin
-        '
-        Me.txtFechaFin.Location = New System.Drawing.Point(456, 37)
-        Me.txtFechaFin.Name = "txtFechaFin"
-        Me.txtFechaFin.Size = New System.Drawing.Size(192, 20)
-        Me.txtFechaFin.TabIndex = 13
-        '
-        'btnActualizaCPC
-        '
-        Me.btnActualizaCPC.Image = Global.PapasSC.My.Resources.Resources.ACTUALIZAR
-        Me.btnActualizaCPC.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
-        Me.btnActualizaCPC.Location = New System.Drawing.Point(691, 12)
-        Me.btnActualizaCPC.Name = "btnActualizaCPC"
-        Me.btnActualizaCPC.Size = New System.Drawing.Size(91, 43)
-        Me.btnActualizaCPC.TabIndex = 14
-        Me.btnActualizaCPC.Text = "Actualizar"
-        Me.btnActualizaCPC.TextAlign = System.Drawing.ContentAlignment.MiddleRight
-        Me.btnActualizaCPC.UseVisualStyleBackColor = True
         '
         'Caja
         '
