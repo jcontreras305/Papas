@@ -88,7 +88,7 @@
 
 
 
-    Private Sub btnBuscarCliente_Click(sender As Object, e As EventArgs) Handles btnBuscarCliente.Click
+    Private Sub btnBuscarCliente_Click(sender As Object, e As EventArgs) 
         Dim bc As New BuscaCliente
         AddOwnedForm(bc)
         bc.ShowDialog()

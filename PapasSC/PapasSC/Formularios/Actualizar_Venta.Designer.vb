@@ -39,11 +39,9 @@ Partial Class Actualizar_Venta
         Me.lbl = New System.Windows.Forms.Label()
         Me.txtNombreCliente = New System.Windows.Forms.TextBox()
         Me.Label6 = New System.Windows.Forms.Label()
-        Me.cbxRazon = New System.Windows.Forms.CheckBox()
         Me.txtproducto = New System.Windows.Forms.TextBox()
         Me.Label3 = New System.Windows.Forms.Label()
         Me.btnProducto = New System.Windows.Forms.Button()
-        Me.btnBuscarCliente = New System.Windows.Forms.Button()
         Me.btnseleccionP = New System.Windows.Forms.Button()
         Me.tblProductosNuevos = New System.Windows.Forms.DataGridView()
         Me.btnQuitarproducto = New System.Windows.Forms.Button()
@@ -109,7 +107,7 @@ Partial Class Actualizar_Venta
         Me.tblventaActualizar.Location = New System.Drawing.Point(469, 215)
         Me.tblventaActualizar.Name = "tblventaActualizar"
         Me.tblventaActualizar.ReadOnly = True
-        Me.tblventaActualizar.Size = New System.Drawing.Size(398, 177)
+        Me.tblventaActualizar.Size = New System.Drawing.Size(557, 177)
         Me.tblventaActualizar.TabIndex = 29
         '
         'Button2
@@ -198,7 +196,7 @@ Partial Class Actualizar_Venta
         '
         'txtNombreCliente
         '
-        Me.txtNombreCliente.Location = New System.Drawing.Point(34, 45)
+        Me.txtNombreCliente.Location = New System.Drawing.Point(36, 57)
         Me.txtNombreCliente.Name = "txtNombreCliente"
         Me.txtNombreCliente.Size = New System.Drawing.Size(147, 20)
         Me.txtNombreCliente.TabIndex = 59
@@ -206,21 +204,11 @@ Partial Class Actualizar_Venta
         'Label6
         '
         Me.Label6.AutoSize = True
-        Me.Label6.Location = New System.Drawing.Point(34, 28)
+        Me.Label6.Location = New System.Drawing.Point(36, 40)
         Me.Label6.Name = "Label6"
         Me.Label6.Size = New System.Drawing.Size(42, 13)
         Me.Label6.TabIndex = 56
         Me.Label6.Text = "Cliente "
-        '
-        'cbxRazon
-        '
-        Me.cbxRazon.AutoSize = True
-        Me.cbxRazon.Location = New System.Drawing.Point(34, 71)
-        Me.cbxRazon.Name = "cbxRazon"
-        Me.cbxRazon.Size = New System.Drawing.Size(147, 17)
-        Me.cbxRazon.TabIndex = 57
-        Me.cbxRazon.Text = "Clientes por Razon Social"
-        Me.cbxRazon.UseVisualStyleBackColor = True
         '
         'txtproducto
         '
@@ -247,15 +235,6 @@ Partial Class Actualizar_Venta
         Me.btnProducto.Text = "Agregar Producto"
         Me.btnProducto.UseVisualStyleBackColor = True
         '
-        'btnBuscarCliente
-        '
-        Me.btnBuscarCliente.Image = Global.PapasSC.My.Resources.Resources.empleadosButton
-        Me.btnBuscarCliente.Location = New System.Drawing.Point(187, 22)
-        Me.btnBuscarCliente.Name = "btnBuscarCliente"
-        Me.btnBuscarCliente.Size = New System.Drawing.Size(59, 53)
-        Me.btnBuscarCliente.TabIndex = 58
-        Me.btnBuscarCliente.UseVisualStyleBackColor = True
-        '
         'btnseleccionP
         '
         Me.btnseleccionP.Location = New System.Drawing.Point(186, 104)
@@ -277,7 +256,7 @@ Partial Class Actualizar_Venta
         Me.tblProductosNuevos.Location = New System.Drawing.Point(469, 22)
         Me.tblProductosNuevos.Name = "tblProductosNuevos"
         Me.tblProductosNuevos.ReadOnly = True
-        Me.tblProductosNuevos.Size = New System.Drawing.Size(398, 165)
+        Me.tblProductosNuevos.Size = New System.Drawing.Size(557, 165)
         Me.tblProductosNuevos.TabIndex = 64
         '
         'btnQuitarproducto
@@ -321,9 +300,7 @@ Partial Class Actualizar_Venta
         Me.Controls.Add(Me.btnProducto)
         Me.Controls.Add(Me.Label3)
         Me.Controls.Add(Me.txtNombreCliente)
-        Me.Controls.Add(Me.btnBuscarCliente)
         Me.Controls.Add(Me.Label6)
-        Me.Controls.Add(Me.cbxRazon)
         Me.Controls.Add(Me.lbl)
         Me.Controls.Add(Me.lbltotal)
         Me.Controls.Add(Me.Label8)
@@ -366,9 +343,7 @@ Partial Class Actualizar_Venta
     Friend WithEvents lbltotal As Label
     Friend WithEvents lbl As Label
     Public WithEvents txtNombreCliente As TextBox
-    Friend WithEvents btnBuscarCliente As Button
     Friend WithEvents Label6 As Label
-    Friend WithEvents cbxRazon As CheckBox
     Public WithEvents txtproducto As TextBox
     Friend WithEvents btnProducto As Button
     Friend WithEvents Label3 As Label
