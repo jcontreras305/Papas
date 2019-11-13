@@ -25,7 +25,7 @@ Partial Class CajaCuentasPPD
         Me.tblVentasPendientes = New System.Windows.Forms.DataGridView()
         Me.tbnSalir = New System.Windows.Forms.Button()
         Me.Button2 = New System.Windows.Forms.Button()
-        Me.Button4 = New System.Windows.Forms.Button()
+        Me.btnImprimirVPPC = New System.Windows.Forms.Button()
         Me.Label1 = New System.Windows.Forms.Label()
         Me.Label2 = New System.Windows.Forms.Label()
         Me.txtSaldo = New System.Windows.Forms.TextBox()
@@ -70,17 +70,17 @@ Partial Class CajaCuentasPPD
         Me.Button2.TextAlign = System.Drawing.ContentAlignment.MiddleRight
         Me.Button2.UseVisualStyleBackColor = True
         '
-        'Button4
+        'btnImprimirVPPC
         '
-        Me.Button4.Image = Global.PapasSC.My.Resources.Resources.IMPRIMIR
-        Me.Button4.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
-        Me.Button4.Location = New System.Drawing.Point(799, 314)
-        Me.Button4.Name = "Button4"
-        Me.Button4.Size = New System.Drawing.Size(84, 43)
-        Me.Button4.TabIndex = 4
-        Me.Button4.Text = "Imprimir"
-        Me.Button4.TextAlign = System.Drawing.ContentAlignment.MiddleRight
-        Me.Button4.UseVisualStyleBackColor = True
+        Me.btnImprimirVPPC.Image = Global.PapasSC.My.Resources.Resources.IMPRIMIR
+        Me.btnImprimirVPPC.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
+        Me.btnImprimirVPPC.Location = New System.Drawing.Point(799, 314)
+        Me.btnImprimirVPPC.Name = "btnImprimirVPPC"
+        Me.btnImprimirVPPC.Size = New System.Drawing.Size(84, 43)
+        Me.btnImprimirVPPC.TabIndex = 4
+        Me.btnImprimirVPPC.Text = "Imprimir"
+        Me.btnImprimirVPPC.TextAlign = System.Drawing.ContentAlignment.MiddleRight
+        Me.btnImprimirVPPC.UseVisualStyleBackColor = True
         '
         'Label1
         '
@@ -147,7 +147,7 @@ Partial Class CajaCuentasPPD
         Me.Controls.Add(Me.txtSaldo)
         Me.Controls.Add(Me.Label2)
         Me.Controls.Add(Me.Label1)
-        Me.Controls.Add(Me.Button4)
+        Me.Controls.Add(Me.btnImprimirVPPC)
         Me.Controls.Add(Me.Button2)
         Me.Controls.Add(Me.tbnSalir)
         Me.Controls.Add(Me.tblVentasPendientes)
@@ -163,7 +163,7 @@ Partial Class CajaCuentasPPD
     Friend WithEvents tblVentasPendientes As DataGridView
     Friend WithEvents tbnSalir As Button
     Friend WithEvents Button2 As Button
-    Friend WithEvents Button4 As Button
+    Friend WithEvents btnImprimirVPPC As Button
     Friend WithEvents Label1 As Label
     Friend WithEvents Label2 As Label
     Friend WithEvents txtSaldo As TextBox

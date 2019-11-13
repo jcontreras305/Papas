@@ -98,6 +98,14 @@
     <Import Include="System.Threading.Tasks" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="DataSet\tablaVentasPorPagarDetalladaCliente.Designer.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>tablaVentasPorPagarDetalladaCliente.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="DataSet\tablaVentasPorPagarDetalladaCliente.vb">
+      <DependentUpon>tablaVentasPorPagarDetalladaCliente.xsd</DependentUpon>
+    </Compile>
     <Compile Include="Formularios\.Designer.vb">
       <SubType>Form</SubType>
     </Compile>
@@ -580,10 +588,22 @@
       <DependentUpon>ReporteVentas.rpt</DependentUpon>
       <SubType>Component</SubType>
     </Compile>
+    <Compile Include="Reportes\ReporteVentasPorPagarCliente.Designer.vb">
+      <DependentUpon>ReporteVentasPorPagarCliente.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Reportes\ReporteVentasPorPagarCliente.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="Reportes\Ticket1.vb">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>Ticket.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Reportes\VentasPorPagarCliente.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>VentasPorPagarCliente.rpt</DependentUpon>
       <SubType>Component</SubType>
     </Compile>
     <Compile Include="Reportes\verReporteReubicacion.Designer.vb">
@@ -829,9 +849,16 @@
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
       <LastGenOutput>ReporteVentas.vb</LastGenOutput>
     </EmbeddedResource>
+    <EmbeddedResource Include="Reportes\ReporteVentasPorPagarCliente.resx">
+      <DependentUpon>ReporteVentasPorPagarCliente.vb</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Reportes\Ticket.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
       <LastGenOutput>Ticket1.vb</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reportes\VentasPorPagarCliente.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>VentasPorPagarCliente.vb</LastGenOutput>
     </EmbeddedResource>
     <EmbeddedResource Include="Reportes\verReporteReubicacion.resx">
       <DependentUpon>verReporteReubicacion.vb</DependentUpon>
@@ -845,6 +872,17 @@
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
+    <None Include="DataSet\tablaVentasPorPagarDetalladaCliente.xsc">
+      <DependentUpon>tablaVentasPorPagarDetalladaCliente.xsd</DependentUpon>
+    </None>
+    <None Include="DataSet\tablaVentasPorPagarDetalladaCliente.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>tablaVentasPorPagarDetalladaCliente.Designer.vb</LastGenOutput>
+    </None>
+    <None Include="DataSet\tablaVentasPorPagarDetalladaCliente.xss">
+      <DependentUpon>tablaVentasPorPagarDetalladaCliente.xsd</DependentUpon>
+    </None>
     <None Include="My Project\Application.myapp">
       <Generator>MyApplicationCodeGenerator</Generator>
       <LastGenOutput>Application.Designer.vb</LastGenOutput>
