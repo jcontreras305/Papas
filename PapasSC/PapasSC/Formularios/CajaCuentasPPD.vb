@@ -5,12 +5,16 @@
 
     Private Sub tblVentasPendientes_MouseDoubleClick(sender As Object, e As MouseEventArgs) Handles tblVentasPendientes.MouseDoubleClick
         Try
-            '5
-            Dim dinero As String = tblVentasPendientes.CurrentRow.Cells("Debe").Value.ToString("N")
+
+            Dim dinero As String = tblVentasPendientes.CurrentRow.Cells("Debe").Value
             txtDebeVenta.Text = dinero
         Catch ex As Exception
-
+            MsgBox(ex.Message)
         End Try
+    End Sub
+
+    Private Sub txtSaldo_TextChanged(sender As Object, e As EventArgs) Handles txtSaldo.TextChanged
+
     End Sub
 
     Private Sub CajaCuentasPPD_Load(sender As Object, e As EventArgs) Handles MyBase.Load
@@ -26,7 +30,7 @@
                 dt = tblVentasPendientes.DataSource
                 ds.Ventas_Pendientes.Rows.Clear()
                 For Each row As DataRow In dt.Rows
-                    ds.Ventas_Pendientes.AddVentas_PendientesRow(row("Folio").ToString(), row("Fecha").ToString(), row("Cliente").ToString(), row("Total").ToString(), row("Saldado").ToString(), row("Debe").ToString(), row("Día límite").ToString(), row("Días").ToString(), row("Estado").ToString())
+                    ds.Ventas_Pendientes.AddVentas_PendientesRow(row("Folio").ToString(), row("Fecha").ToString(), row("Cliente").ToString(), row("Total").ToString(), row("Saldado").ToString(), CDbl(row("Debe").ToString()), row("Día límite").ToString(), row("Días").ToString(), row("Estado").ToString())
                 Next
                 Dim reportecppc As New VentasPorPagarCliente
                 reportecppc.SetDataSource(ds)
