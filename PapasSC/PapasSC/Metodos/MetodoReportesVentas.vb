@@ -98,51 +98,42 @@ Public Class MetodoReportesVentas
         End Try
     End Function
 
-    Public Function BuscarNombre(ByVal no As String)
+    Public Sub BuscarNombre(ByVal busEm As String, ByVal table As DataGridView)
         Try
             conectar()
             cmd = New SqlCommand("sp_BuscarNombreEmpleadoNomina")
             cmd.CommandType = CommandType.StoredProcedure
+            cmd.Parameters.AddWithValue("@nombre", busEm)
             cmd.Connection = conn
-
-            cmd.Parameters.AddWithValue("@nombre", no)
             If cmd.ExecuteNonQuery Then
-                Dim dt As New DataTable
                 Dim da As New SqlDataAdapter(cmd)
+                Dim dt = New DataTable
                 da.Fill(dt)
-                Return dt
-            Else
-                Return Nothing
+                table.DataSource = dt
             End If
         Catch ex As Exception
             MsgBox(ex.Message)
-            Return Nothing
-
         End Try
-    End Function
 
-    Public Function BuscarNombreClientes(ByVal no As String)
+    End Sub
+
+    Public Sub BuscarNombreClientes(ByVal busCli As String, ByVal tableCli As DataGridView)
         Try
             conectar()
             cmd = New SqlCommand("sp_buscarNombreCliente")
             cmd.CommandType = CommandType.StoredProcedure
+            cmd.Parameters.AddWithValue("@nombre", busCli)
             cmd.Connection = conn
-
-            cmd.Parameters.AddWithValue("@nombre", no)
             If cmd.ExecuteNonQuery Then
-                Dim dt As New DataTable
                 Dim da As New SqlDataAdapter(cmd)
+                Dim dt = New DataTable
                 da.Fill(dt)
-                Return dt
-            Else
-                Return Nothing
+                tableCli.DataSource = dt
             End If
         Catch ex As Exception
             MsgBox(ex.Message)
-            Return Nothing
-
         End Try
-    End Function
+    End Sub
 
 
 

@@ -10,6 +10,7 @@ Public Class AgregarEmpleados
         lblCam1.Visible = False
         lblCam2.Visible = False
 
+
         Try
 
             Emple.SelecionarBode(cboEmBodega)
@@ -87,13 +88,14 @@ Public Class AgregarEmpleados
         Try
             txtEmSalario.Text = txtEmSalario.Text.Replace(".", ",")
             txtEmSalario.SelectionStart = txtEmSalario.Text.Length
+
         Catch ex As Exception
 
         End Try
     End Sub
 
     Private Sub txtEmSalario_KeyPress_1(sender As Object, e As KeyPressEventArgs) Handles txtEmSalario.KeyPress
-
+        'Me.txtEmSalario.Text = Format(CType(Me.txtEmSalario.Text, Decimal), "#,##0.00")
         ValidarNumeros2(e)
         txtEmSalario.MaxLength = 10
 

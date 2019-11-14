@@ -230,16 +230,48 @@
         End If
     End Sub
 
-    Private Sub txtNombreCleintes_TextChanged(sender As Object, e As EventArgs) Handles txtNombreCleintes.TextChanged
-        If caj.BuscarNombreClientes(txtNombre.Text).rows.count > 0 Then
-            jtableNombres.DataSource = caj.BuscarNombreClientes(txtNombre.Text)
-        End If
+
+
+    Private Sub txtNombreCleintes_KeyDown(sender As Object, e As KeyEventArgs) Handles txtNombreCleintes.KeyDown
+        Try
+            Dim busCli As String = txtNombreCleintes.Text
+            caj.BuscarNombre(busCli, jtableNombres)
+        Catch ex As Exception
+
+        End Try
 
     End Sub
 
-    Private Sub txtNombre_TextChanged(sender As Object, e As EventArgs) Handles txtNombre.TextChanged
-        If caj.BuscarNombre(txtNombre.Text).rows.count > 0 Then
-            jtableNombres.DataSource = caj.BuscarNombre(txtNombre.Text)
+
+    Private Sub txtNombre_KeyDown(sender As Object, e As KeyEventArgs) Handles txtNombre.KeyDown
+        Try
+            Dim busEm As String = txtNombre.Text
+            caj.BuscarNombre(busEm, jtableNombres)
+        Catch ex As Exception
+
+        End Try
+    End Sub
+
+    Private Sub ValidarLetras(ByRef e As System.Windows.Forms.KeyPressEventArgs)
+        If Char.IsDigit(e.KeyChar) Then
+            e.Handled = True
+            MsgBox("Solo se puede ingresar valores de tipo texto", MsgBoxStyle.Exclamation, "Ingreso de Texto")
+        ElseIf Char.IsControl(e.KeyChar) Then
+            e.Handled = False
+        Else
+            e.Handled = False
         End If
+    End Sub
+
+
+    Private Sub txtNombreCleintes_KeyPress(sender As Object, e As KeyPressEventArgs) Handles txtNombreCleintes.KeyPress
+        ValidarLetras (e)
+        txtNombreCleintes.MaxLength = 50
+    End Sub
+
+    Private Sub txtNombre_KeyPress(sender As Object, e As KeyPressEventArgs) Handles txtNombre.KeyPress
+        ValidarLetras(e)
+        txtNombre.MaxLength = 50
     End Sub
 End Class
+

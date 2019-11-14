@@ -1,4 +1,6 @@
-﻿Public Class EmpleadosNomina
+﻿Imports System.ComponentModel
+
+Public Class EmpleadosNomina
 
     Dim metNomi As New MetodoNomina
     Private dv As New DataView
@@ -9,13 +11,6 @@
         Dim mos As New MetodoNomina
         tblEmpleados.DataSource = mos.ConsultarEmpleados
     End Sub
-
-    Private Sub txtBusNombre_TextChanged(sender As Object, e As EventArgs) Handles txtBusNombre.TextChanged
-        If metNomi.BuscarNombre(txtBusNombre.Text).rows.count > 0 Then
-            tblEmpleados.DataSource = metNomi.BuscarNombre(txtBusNombre.Text)
-        End If
-    End Sub
-
 
 
     Private Sub tblEmpleados_CellClick(sender As Object, e As DataGridViewCellEventArgs) Handles tblEmpleados.CellClick
@@ -38,5 +33,14 @@
 
     Private Sub Label9_Click(sender As Object, e As EventArgs) Handles Label9.Click
         Me.Close()
+    End Sub
+
+    Private Sub txtBusNombre_KeyDown(sender As Object, e As KeyEventArgs) Handles txtBusNombre.KeyDown
+        Try
+            Dim busNom As String = txtBusNombre.Text
+            metNomi.BuscarNombreNomina(busNom, tblEmpleados)
+        Catch ex As Exception
+
+        End Try
     End Sub
 End Class

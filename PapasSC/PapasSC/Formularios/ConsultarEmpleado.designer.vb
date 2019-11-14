@@ -30,6 +30,7 @@ Partial Class ConsultarEmpleado
         Me.btnEliminarEm = New System.Windows.Forms.Button()
         Me.btnActualizarEmple = New System.Windows.Forms.Button()
         Me.Label2 = New System.Windows.Forms.Label()
+        Me.chbShowEm = New System.Windows.Forms.CheckBox()
         CType(Me.tblEmple, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
@@ -40,9 +41,9 @@ Partial Class ConsultarEmpleado
             Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.tblEmple.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill
         Me.tblEmple.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
-        Me.tblEmple.Location = New System.Drawing.Point(31, 54)
+        Me.tblEmple.Location = New System.Drawing.Point(31, 80)
         Me.tblEmple.Name = "tblEmple"
-        Me.tblEmple.Size = New System.Drawing.Size(739, 292)
+        Me.tblEmple.Size = New System.Drawing.Size(739, 266)
         Me.tblEmple.TabIndex = 0
         '
         'Label1
@@ -109,11 +110,22 @@ Partial Class ConsultarEmpleado
         Me.Label2.TabIndex = 11
         Me.Label2.Text = "X"
         '
+        'chbShowEm
+        '
+        Me.chbShowEm.AutoSize = True
+        Me.chbShowEm.Location = New System.Drawing.Point(566, 57)
+        Me.chbShowEm.Name = "chbShowEm"
+        Me.chbShowEm.Size = New System.Drawing.Size(94, 17)
+        Me.chbShowEm.TabIndex = 12
+        Me.chbShowEm.Text = "Mostrar Todos"
+        Me.chbShowEm.UseVisualStyleBackColor = True
+        '
         'ConsultarEmpleado
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(800, 405)
+        Me.Controls.Add(Me.chbShowEm)
         Me.Controls.Add(Me.Label2)
         Me.Controls.Add(Me.btnActualizarEmple)
         Me.Controls.Add(Me.btnEliminarEm)
@@ -139,4 +151,5 @@ Partial Class ConsultarEmpleado
     Friend WithEvents btnEliminarEm As Button
     Friend WithEvents btnActualizarEmple As Button
     Friend WithEvents Label2 As Label
+    Friend WithEvents chbShowEm As CheckBox
 End Class

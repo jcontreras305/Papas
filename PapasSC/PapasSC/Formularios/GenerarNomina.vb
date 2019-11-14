@@ -6,6 +6,10 @@ Public Class GenerarNomina
 
     Private Sub GenerarNomina_Load(sender As Object, e As EventArgs) Handles MyBase.Load
 
+
+
+
+
         Try
             nomina.selecccionaRPago(cboFormaPago)
         Catch ex As Exception
@@ -18,18 +22,18 @@ Public Class GenerarNomina
         Me.Close()
     End Sub
 
-    Private Sub validarLetras(ByRef e As System.Windows.Forms.KeyPressEventArgs)
+    Private Sub validarNume(ByRef e As System.Windows.Forms.KeyPressEventArgs)
         If Char.IsDigit(e.KeyChar) Then
-            e.Handled = True
-            MsgBox("Solo se puede ingresar valores de tipo texto", MsgBoxStyle.Exclamation, "Ingreso de Texto")
+            e.Handled = False
         ElseIf Char.IsControl(e.KeyChar) Then
             e.Handled = False
         Else
-            e.Handled = False
+            e.Handled = True
+            MsgBox("Solo se puede ingresar valores de tipo número", MsgBoxStyle.Exclamation, "Ingreso de Número")
         End If
     End Sub
 
-    Private Sub validarNumeros(ByRef e As System.Windows.Forms.KeyPressEventArgs)
+    Private Sub validarLe(ByRef e As System.Windows.Forms.KeyPressEventArgs)
         If Char.IsDigit(e.KeyChar) Then
             e.Handled = True
             MsgBox("Solo se puede ingresar valores de tipo texto", MsgBoxStyle.Exclamation, "Ingreso de Texto")
@@ -43,27 +47,27 @@ Public Class GenerarNomina
 
 
     Private Sub txtNombre_KeyPress(sender As Object, e As KeyPressEventArgs) Handles txtNombre.KeyPress
-        validarLetras(e)
+        validarLe(e)
         txtNombre.MaxLength = 80
     End Sub
 
 
     Private Sub txtPercepciones_KeyPress(sender As Object, e As KeyPressEventArgs) Handles txtPercepciones.KeyPress
-        validarNumeros(e)
+        validarNume(e)
         txtPercepciones.MaxLength = 5
     End Sub
 
 
 
     Private Sub txtDeduciones_KeyPress(sender As Object, e As KeyPressEventArgs) Handles txtDeduciones.KeyPress
-        validarNumeros(e)
+        validarNume(e)
         txtDeduciones.MaxLength = 5
     End Sub
 
 
 
     Private Sub txtTotal_KeyPress(sender As Object, e As KeyPressEventArgs) Handles txtTotal.KeyPress
-        validarNumeros(e)
+        validarNume(e)
         txtTotal.MaxLength = 6
     End Sub
 
@@ -97,4 +101,13 @@ Public Class GenerarNomina
     Private Sub Button1_Click(sender As Object, e As EventArgs) Handles Button1.Click
         EmpleadosNomina.Show()
     End Sub
+
+
+
+    Private Sub txtSalarioDiario_KeyPress(sender As Object, e As KeyPressEventArgs) Handles txtSalarioDiario.KeyPress
+        validarNume(e)
+        txtSalarioDiario.MaxLength = 4
+    End Sub
+
+
 End Class

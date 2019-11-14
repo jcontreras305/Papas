@@ -52,6 +52,7 @@ Partial Class Consultar_Proveedores
         Me.tblProveedores.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
         Me.tblProveedores.Location = New System.Drawing.Point(34, 92)
         Me.tblProveedores.Name = "tblProveedores"
+        Me.tblProveedores.ReadOnly = True
         Me.tblProveedores.Size = New System.Drawing.Size(612, 260)
         Me.tblProveedores.TabIndex = 1
         '
