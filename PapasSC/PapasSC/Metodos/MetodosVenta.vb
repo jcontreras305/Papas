@@ -493,8 +493,7 @@ inner join cliente as cl on cl.idCliente = vn.idCliente
             cn.desconectar()
 
 
-            Dim cadena As String = "
-             UPDATE [dbo].[existenciaProductos]
+            Dim cadena As String = " UPDATE [dbo].[existenciaProductos]
              SET [cantidad] =  (cantidad - " + kilosvendidos + ") 
              WHERE [idBodega] = '" + idbodega + "' 
              and [idProducto] = '" + idproducto + "'"
@@ -758,7 +757,7 @@ inner join cliente as cl on cl.idCliente = vn.idCliente
       , [estatus] =  'A'
         WHERE [idVentaDetalle] = '" + clavevd + "'"
 
-            MsgBox(cadena)
+
             Com = New SqlCommand(cadena, cn.conn)
             Com.ExecuteNonQuery()
             cn.desconectar()
