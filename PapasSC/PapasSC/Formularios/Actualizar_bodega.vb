@@ -12,8 +12,20 @@
     Private Sub Button1_Click(sender As Object, e As EventArgs) Handles Button1.Click
         Dim mtbo As New MetodosBodega
         Try
-            mtbo.updatebodega(txtnombre.Text, cmbMatriz.Text, id)
+            If txtnombre.Text <> "" Then
+                mtbo.updatebodega(txtnombre.Text, cmbMatriz.Text, id)
+            Else
+                MsgBox("Ingrese correctamente los datos")
+            End If
         Catch
         End Try
+    End Sub
+
+    Private Sub txtnombre_Validating(sender As Object, e As System.ComponentModel.CancelEventArgs) Handles txtnombre.Validating
+        If DirectCast(sender, TextBox).Text.Length > 0 Then
+            Me.ErrorProvider1.SetError(sender, "")
+        Else
+            Me.ErrorProvider1.SetError(sender, "Ingrese campo, este dato es obligatorio")
+        End If
     End Sub
 End Class

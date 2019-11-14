@@ -169,7 +169,7 @@ Public Class MetodoExistenciaProducto
     Public Sub eliminaexistenciaproducto(ByVal filtro As String, ByVal Filtro2 As String)
         Try
             cn.conectar()
-            MsgBox("entro")
+
             Dim Rs As SqlDataReader
             Dim Com As New SqlCommand
 
@@ -195,7 +195,6 @@ Public Class MetodoExistenciaProducto
             cn.conectar()
             Com = New SqlCommand(cadena, cn.conn)
 
-            MsgBox("cade")
             Com.ExecuteNonQuery()
 
 
@@ -247,8 +246,7 @@ Public Class MetodoExistenciaProducto
             Dim idproducto As String
             Dim Rs As SqlDataReader
             Dim Com As New SqlCommand
-            MsgBox(filtro)
-            MsgBox(filtro2)
+
             Dim Sql As String = "select
             ep.cantidad 
             From bodega bo inner Join existenciaProductos ep on bo.idBodega   = ep.idBodega  
@@ -289,7 +287,7 @@ Public Class MetodoExistenciaProducto
     Public Sub insertarExitemcia(ByVal bodega As String, ByVal producto As String, ByVal version As String)
         Try
             cn.conectar()
-            MsgBox("entro")
+
             Dim idbodega As String
             Dim idproducto As String
             Dim Rs As SqlDataReader
@@ -338,7 +336,6 @@ Public Class MetodoExistenciaProducto
             Com.ExecuteNonQuery()
             cn.desconectar()
 
-            MsgBox("cade")
         Catch ex As Exception
             MessageBox.Show("No se inserto debido a: " + ex.ToString)
 
@@ -367,7 +364,7 @@ Public Class MetodoExistenciaProducto
             Rs = Com.ExecuteReader()
             Rs.Read()
             idbodega = Rs(0).ToString
-            MsgBox(idbodega)
+
             Rs.Close()
             cn.desconectar()
 
@@ -379,7 +376,7 @@ Public Class MetodoExistenciaProducto
 
 
             idproducto = Rs(0).ToString
-            MsgBox(idproducto)
+
             Rs.Close()
             cn.desconectar()
 
@@ -393,7 +390,7 @@ Public Class MetodoExistenciaProducto
             Rsn = Comn.ExecuteReader()
             Rsn.Read()
             idbodegan = Rsn(0).ToString
-            MsgBox(idbodegan)
+
             Rsn.Close()
             cn.desconectar()
 
@@ -403,7 +400,7 @@ Public Class MetodoExistenciaProducto
             Rsn = Comn.ExecuteReader()
             Rsn.Read()
             idproducton = Rsn(0).ToString
-            MsgBox(idproducton)
+
             Rsn.Close()
             cn.desconectar()
 
@@ -414,12 +411,12 @@ Public Class MetodoExistenciaProducto
       ,[cantidad] =" + version + " 
       ,[estatus] = 'A'
        WHERE [idBodega] = '" + idbodega + "' and [idProducto] = '" + idproducto + "'"
-            MsgBox(cadena)
+
             Rs.Close()
             cn.desconectar()
             cn.conectar()
             Com = New SqlCommand(cadena, cn.conn)
-            MsgBox("cade")
+
             Com.ExecuteNonQuery()
             MsgBox("pus si salio carnal")
         Catch ex As Exception
@@ -464,14 +461,14 @@ Public Class MetodoExistenciaProducto
        UPDATE [dbo].[existenciaProductos]
        SET [estatus] = 'A'
        WHERE [idBodega] = '" + idbodega + "' and [idProducto] = '" + idproducto + "'"
-            MsgBox(cadena)
+
             Rs.Close()
             cn.desconectar()
             cn.conectar()
             Com = New SqlCommand(cadena, cn.conn)
-            MsgBox("cade")
+
             Com.ExecuteNonQuery()
-            MsgBox("pus si salio carnal")
+
         Catch ex As Exception
             MessageBox.Show("No se actualizo debido a: " + ex.ToString)
         End Try

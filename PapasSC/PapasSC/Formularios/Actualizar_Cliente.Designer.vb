@@ -22,6 +22,7 @@ Partial Class Actualizar_Cliente
     'No lo modifique con el editor de código.
     <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
+        Me.components = New System.ComponentModel.Container()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(Actualizar_Cliente))
         Me.Label9 = New System.Windows.Forms.Label()
         Me.Label16 = New System.Windows.Forms.Label()
@@ -79,11 +80,13 @@ Partial Class Actualizar_Cliente
         Me.txtrfc = New System.Windows.Forms.TextBox()
         Me.chbActivo = New System.Windows.Forms.CheckBox()
         Me.Label5 = New System.Windows.Forms.Label()
+        Me.ErrorProvider1 = New System.Windows.Forms.ErrorProvider(Me.components)
         Me.Panel3.SuspendLayout()
         CType(Me.spnDiasCredito, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.Panel2.SuspendLayout()
         Me.GroupBox1.SuspendLayout()
         Me.Panel1.SuspendLayout()
+        CType(Me.ErrorProvider1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'Label9
@@ -643,6 +646,10 @@ Partial Class Actualizar_Cliente
         Me.Label5.Size = New System.Drawing.Size(0, 13)
         Me.Label5.TabIndex = 28
         '
+        'ErrorProvider1
+        '
+        Me.ErrorProvider1.ContainerControl = Me
+        '
         'Actualizar_Cliente
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
@@ -666,6 +673,7 @@ Partial Class Actualizar_Cliente
         Me.GroupBox1.PerformLayout()
         Me.Panel1.ResumeLayout(False)
         Me.Panel1.PerformLayout()
+        CType(Me.ErrorProvider1, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
@@ -727,4 +735,5 @@ Partial Class Actualizar_Cliente
     Friend WithEvents lblEmail2 As Label
     Friend WithEvents txtEmail2 As TextBox
     Friend WithEvents chbActivarAcomposExtras As CheckBox
+    Friend WithEvents ErrorProvider1 As ErrorProvider
 End Class

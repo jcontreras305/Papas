@@ -13,4 +13,12 @@
         Dim MTDPR As New MetodosProducto
         MTDPR.updateProducto(id, txtversion.Text, txtClave.Text, npd.Value)
     End Sub
+
+    Private Sub txtversion_Validating(sender As Object, e As System.ComponentModel.CancelEventArgs) Handles txtversion.Validating, txtClave.Validating
+        If DirectCast(sender, TextBox).Text.Length > 0 Then
+            Me.ErrorProvider1.SetError(sender, "")
+        Else
+            Me.ErrorProvider1.SetError(sender, "Ingrese campo, este dato es obligatorio")
+        End If
+    End Sub
 End Class

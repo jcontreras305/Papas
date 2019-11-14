@@ -18,7 +18,11 @@
             lbltotal.Text = Media
             Media = 0
         End If
-        mtbo.updatebodega(cmbBodega.Text, cmbProducto.Text, lbltotal.Text, claveb, clavep)
+        If cmbBodega.Text <> "" And cmbProducto.Text <> "" And lbltotal.Text <> "" Then
+            mtbo.updatebodega(cmbBodega.Text, cmbProducto.Text, lbltotal.Text, claveb, clavep)
+        Else
+            MsgBox("Ingrese los datos correctamente")
+        End If
     End Sub
 
     Private Sub Actualizar_Existencia_Load(sender As Object, e As EventArgs) Handles MyBase.Load
@@ -102,5 +106,17 @@
 
     Private Sub cmbBodega_SelectedIndexChanged(sender As Object, e As EventArgs) Handles cmbBodega.SelectedIndexChanged
         mtbo.llenarComboProducto(cmbProducto, cmbBodega.Text)
+    End Sub
+
+    Private Sub kgUpDown_Validating(sender As Object, e As System.ComponentModel.CancelEventArgs) Handles npd.Validating, kgUpDown.Validating, Alturacamasarpilla.Validating
+        If DirectCast(sender, NumericUpDown).Value > 0 Then
+            Me.ErrorProvider1.SetError(sender, "")
+        Else
+            Me.ErrorProvider1.SetError(sender, "Ingrese campo, este dato es obligatorio")
+        End If
+    End Sub
+
+    Private Sub Cancelar_Click(sender As Object, e As EventArgs) Handles Cancelar.Click
+        Me.Close()
     End Sub
 End Class

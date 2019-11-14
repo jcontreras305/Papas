@@ -22,12 +22,15 @@ Partial Class Registrar_Bodega
     'No lo modifique con el editor de código.
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
+        Me.components = New System.ComponentModel.Container()
         Me.Label3 = New System.Windows.Forms.Label()
         Me.Button2 = New System.Windows.Forms.Button()
         Me.Button1 = New System.Windows.Forms.Button()
         Me.txtnombre = New System.Windows.Forms.TextBox()
         Me.Label1 = New System.Windows.Forms.Label()
         Me.cmbMatriz = New System.Windows.Forms.ComboBox()
+        Me.ErrorProvider1 = New System.Windows.Forms.ErrorProvider(Me.components)
+        CType(Me.ErrorProvider1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'Label3
@@ -42,7 +45,7 @@ Partial Class Registrar_Bodega
         '
         'Button2
         '
-        Me.Button2.Location = New System.Drawing.Point(252, 40)
+        Me.Button2.Location = New System.Drawing.Point(315, 34)
         Me.Button2.Name = "Button2"
         Me.Button2.Size = New System.Drawing.Size(81, 25)
         Me.Button2.TabIndex = 11
@@ -51,7 +54,7 @@ Partial Class Registrar_Bodega
         '
         'Button1
         '
-        Me.Button1.Location = New System.Drawing.Point(339, 40)
+        Me.Button1.Location = New System.Drawing.Point(402, 34)
         Me.Button1.Name = "Button1"
         Me.Button1.Size = New System.Drawing.Size(80, 25)
         Me.Button1.TabIndex = 10
@@ -82,11 +85,15 @@ Partial Class Registrar_Bodega
         Me.cmbMatriz.Size = New System.Drawing.Size(121, 21)
         Me.cmbMatriz.TabIndex = 19
         '
+        'ErrorProvider1
+        '
+        Me.ErrorProvider1.ContainerControl = Me
+        '
         'Registrar_Bodega
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(494, 101)
+        Me.ClientSize = New System.Drawing.Size(501, 71)
         Me.Controls.Add(Me.cmbMatriz)
         Me.Controls.Add(Me.Label3)
         Me.Controls.Add(Me.Button2)
@@ -95,6 +102,7 @@ Partial Class Registrar_Bodega
         Me.Controls.Add(Me.Label1)
         Me.Name = "Registrar_Bodega"
         Me.Text = "Registrar_Bodega"
+        CType(Me.ErrorProvider1, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
@@ -105,4 +113,5 @@ Partial Class Registrar_Bodega
     Friend WithEvents txtnombre As TextBox
     Friend WithEvents Label1 As Label
     Friend WithEvents cmbMatriz As ComboBox
+    Friend WithEvents ErrorProvider1 As ErrorProvider
 End Class

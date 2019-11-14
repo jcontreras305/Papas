@@ -22,6 +22,7 @@ Partial Class Registro_productos
     'No lo modifique con el editor de código.
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
+        Me.components = New System.ComponentModel.Container()
         Me.Label1 = New System.Windows.Forms.Label()
         Me.txtVersion = New System.Windows.Forms.TextBox()
         Me.Button1 = New System.Windows.Forms.Button()
@@ -32,7 +33,9 @@ Partial Class Registro_productos
         Me.Label3 = New System.Windows.Forms.Label()
         Me.npd = New System.Windows.Forms.NumericUpDown()
         Me.Label4 = New System.Windows.Forms.Label()
+        Me.ErrorProvider1 = New System.Windows.Forms.ErrorProvider(Me.components)
         CType(Me.npd, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.ErrorProvider1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'Label1
@@ -120,6 +123,10 @@ Partial Class Registro_productos
         Me.Label4.TabIndex = 7
         Me.Label4.Text = "Precio"
         '
+        'ErrorProvider1
+        '
+        Me.ErrorProvider1.ContainerControl = Me
+        '
         'Registro_productos
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
@@ -136,6 +143,7 @@ Partial Class Registro_productos
         Me.Name = "Registro_productos"
         Me.Text = "Registro_productos"
         CType(Me.npd, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.ErrorProvider1, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
@@ -151,4 +159,5 @@ Partial Class Registro_productos
     Friend WithEvents Label3 As Label
     Friend WithEvents npd As NumericUpDown
     Friend WithEvents Label4 As Label
+    Friend WithEvents ErrorProvider1 As ErrorProvider
 End Class

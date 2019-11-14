@@ -133,15 +133,16 @@ Public Class NuevaVenta
                                 If cbxEspera.Checked Then
                                     estado = "E"
                                     mtdv.insertarVenta(savef.ToString, t.ToString, npdCantidadPagada.Value, txtNombreCliente.Text, idEmpleado, cmbBodega.Text, estado, cmbFormaPago.Text, idCaja, idCliente)
+                                    MsgBox("Venta exitosa")
                                 Else
                                     If npdCantidadPagada.Value = Convert.ToDecimal(lblTotal.Text) Then
                                         estado = "p"
                                         mtdv.insertarVenta(savef.ToString, t.ToString, npdCantidadPagada.Value, txtNombreCliente.Text, idEmpleado, cmbBodega.Text, estado, cmbFormaPago.Text, idCaja, idCliente)
-
+                                        MsgBox("Venta exitosa")
                                     Else
                                         estado = "D"
                                         mtdv.insertarVenta(savef.ToString, t.ToString, npdCantidadPagada.Value, txtNombreCliente.Text, idEmpleado, cmbBodega.Text, estado, cmbFormaPago.Text, idCaja, idCliente)
-
+                                        MsgBox("Venta exitosa")
                                     End If
                                 End If
                                 Dim i As Integer
@@ -203,9 +204,11 @@ Public Class NuevaVenta
                     If cbxEspera.Checked Then
                         estado = "E"
                         mtdv.insertarVenta(savef.ToString, t.ToString, npdCantidadPagada.Value, txtNombreCliente.Text, idEmpleado, cmbBodega.Text, "P", cmbFormaPago.Text, idCaja, idCliente)
+                        MsgBox("Venta exitosa")
                     Else
                         estado = "P"
                         mtdv.insertarVenta(savef.ToString, t.ToString, npdCantidadPagada.Value, txtNombreCliente.Text, idEmpleado, cmbBodega.Text, "E", cmbFormaPago.Text, idCaja, idCliente)
+                        MsgBox("Venta exitosa")
                     End If
 
                     Try

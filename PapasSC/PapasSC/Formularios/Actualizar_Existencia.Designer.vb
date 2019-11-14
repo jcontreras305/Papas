@@ -22,6 +22,7 @@ Partial Class Actualizar_Existencia
     'No lo modifique con el editor de código.
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
+        Me.components = New System.ComponentModel.Container()
         Me.GroupBox3 = New System.Windows.Forms.GroupBox()
         Me.Label7 = New System.Windows.Forms.Label()
         Me.Label3 = New System.Windows.Forms.Label()
@@ -44,6 +45,7 @@ Partial Class Actualizar_Existencia
         Me.Label2 = New System.Windows.Forms.Label()
         Me.Label1 = New System.Windows.Forms.Label()
         Me.cmbBodega = New System.Windows.Forms.ComboBox()
+        Me.ErrorProvider1 = New System.Windows.Forms.ErrorProvider(Me.components)
         Me.GroupBox3.SuspendLayout()
         CType(Me.npd, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.Alturacamasarpilla, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -51,6 +53,7 @@ Partial Class Actualizar_Existencia
         CType(Me.tblpesoarpilla, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.kgUpDown, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.GroupBox1.SuspendLayout()
+        CType(Me.ErrorProvider1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'GroupBox3
@@ -261,6 +264,10 @@ Partial Class Actualizar_Existencia
         Me.cmbBodega.Size = New System.Drawing.Size(162, 21)
         Me.cmbBodega.TabIndex = 9
         '
+        'ErrorProvider1
+        '
+        Me.ErrorProvider1.ContainerControl = Me
+        '
         'Actualizar_Existencia
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
@@ -283,6 +290,7 @@ Partial Class Actualizar_Existencia
         CType(Me.kgUpDown, System.ComponentModel.ISupportInitialize).EndInit()
         Me.GroupBox1.ResumeLayout(False)
         Me.GroupBox1.PerformLayout()
+        CType(Me.ErrorProvider1, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
 
     End Sub
@@ -308,4 +316,5 @@ Partial Class Actualizar_Existencia
     Friend WithEvents Label1 As Label
     Friend WithEvents cmbBodega As ComboBox
     Friend WithEvents cmbProducto As ComboBox
+    Friend WithEvents ErrorProvider1 As ErrorProvider
 End Class

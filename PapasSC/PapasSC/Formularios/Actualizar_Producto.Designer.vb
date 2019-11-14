@@ -22,6 +22,7 @@ Partial Class Actualizar_Producto
     'No lo modifique con el editor de código.
     <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
+        Me.components = New System.ComponentModel.Container()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(Actualizar_Producto))
         Me.Button2 = New System.Windows.Forms.Button()
         Me.Button1 = New System.Windows.Forms.Button()
@@ -31,7 +32,9 @@ Partial Class Actualizar_Producto
         Me.txtClave = New System.Windows.Forms.TextBox()
         Me.Label4 = New System.Windows.Forms.Label()
         Me.npd = New System.Windows.Forms.NumericUpDown()
+        Me.ErrorProvider1 = New System.Windows.Forms.ErrorProvider(Me.components)
         CType(Me.npd, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.ErrorProvider1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'Button2
@@ -101,6 +104,10 @@ Partial Class Actualizar_Producto
         Me.npd.TabIndex = 10
         Me.npd.Value = New Decimal(New Integer() {50, 0, 0, 65536})
         '
+        'ErrorProvider1
+        '
+        Me.ErrorProvider1.ContainerControl = Me
+        '
         'Actualizar_Producto
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
@@ -118,6 +125,7 @@ Partial Class Actualizar_Producto
         Me.Name = "Actualizar_Producto"
         Me.Text = "Actualizar_Producto"
         CType(Me.npd, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.ErrorProvider1, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
@@ -131,4 +139,5 @@ Partial Class Actualizar_Producto
     Friend WithEvents txtClave As TextBox
     Friend WithEvents Label4 As Label
     Friend WithEvents npd As NumericUpDown
+    Friend WithEvents ErrorProvider1 As ErrorProvider
 End Class

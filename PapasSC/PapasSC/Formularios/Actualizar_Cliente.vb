@@ -421,4 +421,20 @@ Public Class Actualizar_Cliente
 
         End Try
     End Sub
+
+    Private Sub txtNombre_Validating(sender As Object, e As System.ComponentModel.CancelEventArgs) Handles txtTelefono.Validating, txtRazonSocial.Validating, txtNombre.Validating, txtAlias.Validating, txtLimiteCredito.Validating
+        If DirectCast(sender, TextBox).Text.Length > 0 Then
+            Me.ErrorProvider1.SetError(sender, "")
+        Else
+            Me.ErrorProvider1.SetError(sender, "Ingrese campo, este dato es obligatorio")
+        End If
+    End Sub
+
+    Private Sub spnDiasCredito_Validating(sender As Object, e As System.ComponentModel.CancelEventArgs) Handles spnDiasCredito.Validating
+        If DirectCast(sender, NumericUpDown).Value > 0 Then
+            Me.ErrorProvider1.SetError(sender, "")
+        Else
+            Me.ErrorProvider1.SetError(sender, "Ingrese campo, este dato es obligatorio")
+        End If
+    End Sub
 End Class

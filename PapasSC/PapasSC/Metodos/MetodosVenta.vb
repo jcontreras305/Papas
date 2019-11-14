@@ -447,7 +447,7 @@ inner join cliente as cl on cl.idCliente = vn.idCliente
            ," + total + "
            ," + totalneto + "
            ,'A')"
-            MsgBox(cadena)
+
             Com = New SqlCommand(cadena, cn.conn)
             Com.ExecuteNonQuery()
             cn.desconectar()
@@ -478,7 +478,7 @@ inner join cliente as cl on cl.idCliente = vn.idCliente
             Rs = Com.ExecuteReader()
             Rs.Read()
             idbodega = Rs(0).ToString
-            MsgBox(idbodega)
+
             Rs.Close()
             cn.desconectar()
 
@@ -488,7 +488,7 @@ inner join cliente as cl on cl.idCliente = vn.idCliente
             Rs = Com.ExecuteReader()
             Rs.Read()
             idproducto = Rs(0).ToString
-            MsgBox(idproducto)
+
             Rs.Close()
             cn.desconectar()
 
@@ -498,7 +498,7 @@ inner join cliente as cl on cl.idCliente = vn.idCliente
              SET [cantidad] =  (cantidad - " + kilosvendidos + ") 
              WHERE [idBodega] = '" + idbodega + "' 
              and [idProducto] = '" + idproducto + "'"
-            MsgBox(cadena)
+
             Rs.Close()
             cn.desconectar()
             cn.conectar()
@@ -527,7 +527,7 @@ inner join cliente as cl on cl.idCliente = vn.idCliente
             Rs = Com.ExecuteReader()
             Rs.Read()
             idbodega = Rs(0).ToString
-            MsgBox(idbodega)
+
             Rs.Close()
             cn.desconectar()
 
@@ -537,7 +537,7 @@ inner join cliente as cl on cl.idCliente = vn.idCliente
             Rs = Com.ExecuteReader()
             Rs.Read()
             idproducto = Rs(0).ToString
-            MsgBox(idproducto)
+
             Rs.Close()
             cn.desconectar()
 
@@ -547,7 +547,7 @@ inner join cliente as cl on cl.idCliente = vn.idCliente
              SET [cantidad] =  (cantidad - " + kilosvendidos + ") 
              WHERE [idBodega] = '" + idbodega + "' 
              and [idProducto] = '" + idproducto + "'"
-            MsgBox(cadena)
+
             Rs.Close()
             cn.desconectar()
             cn.conectar()
@@ -688,7 +688,7 @@ inner join cliente as cl on cl.idCliente = vn.idCliente
            ," + total + "
            ," + totalneto + "
            ,'A')"
-            MsgBox(cadena)
+
             Com = New SqlCommand(cadena, cn.conn)
             Com.ExecuteNonQuery()
             cn.desconectar()

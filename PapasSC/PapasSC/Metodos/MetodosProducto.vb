@@ -154,7 +154,7 @@ Public Class MetodosProducto
 
     Public Sub insertarProducto(ByVal Version As String, ByVal clave As String, ByVal precio As String)
         Try
-            MsgBox("pus si entro carnal")
+
             cn.conectar()
             Dim cadena As String = "INSERT INTO [dbo].[producto]
            ([idProducto]
@@ -170,8 +170,7 @@ Public Class MetodosProducto
            ," + precio + ")"
             Dim comando = New SqlCommand(cadena, cn.conn)
             comando.ExecuteNonQuery()
-            MsgBox(cadena)
-            MsgBox("pus si salio carnal")
+
         Catch ex As Exception
             MessageBox.Show("No se inserto debido a: " + ex.ToString)
         End Try
@@ -179,7 +178,7 @@ Public Class MetodosProducto
 
     Public Sub updateProducto(ByVal id As String, ByVal Version As String, ByVal clave As String, ByVal precio As String)
         Try
-            MsgBox("pus si entro carnal")
+
             cn.conectar()
             Dim cadena As String = "UPDATE [dbo].[producto]
       SET [version] = '" + Version + "'
@@ -188,7 +187,7 @@ Public Class MetodosProducto
       WHERE [idProducto] = '" + id + "'"
             Dim comando = New SqlCommand(cadena, cn.conn)
             comando.ExecuteNonQuery()
-            MsgBox("pus si salio carnal")
+
         Catch ex As Exception
             MessageBox.Show("No se inserto debido a: " + ex.ToString)
         End Try
@@ -197,14 +196,14 @@ Public Class MetodosProducto
 
     Public Sub updateProducto(ByVal id As String)
         Try
-            MsgBox("pus si entro carnal")
+
             cn.conectar()
             Dim cadena As String = "UPDATE [dbo].[producto]
       SET [Estado] = 'B'
       WHERE [idProducto] = '" + id + "'"
             Dim comando = New SqlCommand(cadena, cn.conn)
             comando.ExecuteNonQuery()
-            MsgBox("pus si salio carnal")
+
         Catch ex As Exception
             MessageBox.Show("No se inserto debido a: " + ex.ToString)
         End Try
@@ -229,7 +228,7 @@ Public Class MetodosProducto
 
     Public Sub updateprecio(ByVal id As String, ByVal precio As String)
         Try
-            MsgBox("pus si entro carnal")
+
             cn.conectar()
             Dim cadena As String = "UPDATE [dbo].[producto]
       SET 
@@ -237,7 +236,7 @@ Public Class MetodosProducto
       WHERE [idProducto] = '" + id + "'"
             Dim comando = New SqlCommand(cadena, cn.conn)
             comando.ExecuteNonQuery()
-            MsgBox("pus si salio carnal")
+
         Catch ex As Exception
             MessageBox.Show("No se inserto debido a: " + ex.ToString)
         End Try
