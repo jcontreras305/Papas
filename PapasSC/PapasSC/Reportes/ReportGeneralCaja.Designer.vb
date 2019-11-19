@@ -47,6 +47,6 @@ Partial Class ReportGeneralCaja
         Me.ResumeLayout(False)
 
     End Sub
-
+    Friend WithEvents ReporteCajaGeneral1 As ReporteCajaGeneral
     Friend WithEvents CrystalReportViewer1 As CrystalDecisions.Windows.Forms.CrystalReportViewer
 End Class

@@ -363,7 +363,7 @@ Partial Class NuevaVenta
         Me.Button9.Name = "Button9"
         Me.Button9.Size = New System.Drawing.Size(143, 50)
         Me.Button9.TabIndex = 8
-        Me.Button9.Text = "Activar Venta en Espera"
+        Me.Button9.Text = "Saldar venta"
         Me.Button9.UseVisualStyleBackColor = True
         '
         'Button7

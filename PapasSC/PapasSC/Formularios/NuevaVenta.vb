@@ -128,22 +128,18 @@ Public Class NuevaVenta
                         If Convert.ToDecimal(saldo) < Convert.ToDecimal(lim) Then
 
                             If MessageBox.Show("¿Desea utilizar su saldo?", "Atención", MessageBoxButtons.YesNo, MessageBoxIcon.Question) = Windows.Forms.DialogResult.Yes Then
-                                mtdv.actualizar_credito(idCliente, npdCantidadPagada.Value)
+                                mtdv.actualizar_credito(idCliente, (npdCantidadPagada.Value - Convert.ToDouble(lblTotal.Text)))
 
                                 If cbxEspera.Checked Then
                                     estado = "E"
                                     mtdv.insertarVenta(savef.ToString, t.ToString, npdCantidadPagada.Value, txtNombreCliente.Text, idEmpleado, cmbBodega.Text, estado, cmbFormaPago.Text, idCaja, idCliente)
                                     MsgBox("Venta exitosa")
                                 Else
-                                    If npdCantidadPagada.Value = Convert.ToDecimal(lblTotal.Text) Then
-                                        estado = "p"
-                                        mtdv.insertarVenta(savef.ToString, t.ToString, npdCantidadPagada.Value, txtNombreCliente.Text, idEmpleado, cmbBodega.Text, estado, cmbFormaPago.Text, idCaja, idCliente)
+
+                                    estado = "D"
+                                        mtdv.insertarVenta(savef.ToString, t.ToString, lblTotal.Text, txtNombreCliente.Text, idEmpleado, cmbBodega.Text, estado, cmbFormaPago.Text, idCaja, idCliente)
                                         MsgBox("Venta exitosa")
-                                    Else
-                                        estado = "D"
-                                        mtdv.insertarVenta(savef.ToString, t.ToString, npdCantidadPagada.Value, txtNombreCliente.Text, idEmpleado, cmbBodega.Text, estado, cmbFormaPago.Text, idCaja, idCliente)
-                                        MsgBox("Venta exitosa")
-                                    End If
+                                  
                                 End If
                                 Dim i As Integer
                                 Try
@@ -165,30 +161,43 @@ Public Class NuevaVenta
                                 Catch ex As Exception
                                     MsgBox("Actualizar_Producto duplicado")
                                 End Try
-                                'mtdv.actualizar_totalpagado(npdCantidadPagada.Value)
 
-                                'Else ''la venta se hace normal
 
-                                '    If cbxEspera.Checked Then
-                                '        estado = "E"
-                                '        mtdv.insertarVenta(savef.ToString, t.ToString, npdCantidadPagada.Value, txtNombreCliente.Text, idEmpleado, cmbBodega.Text, "E", cmbFormaPago.Text, idCaja, idCliente)
-                                '    Else
-                                '        estado = "D"
-                                '        mtdv.insertarVenta(savef.ToString, t.ToString, npdCantidadPagada.Value, txtNombreCliente.Text, idEmpleado, cmbBodega.Text, "D", cmbFormaPago.Text, idCaja, idCliente)
-                                '    End If
+                            Else
+                                mtdv.actualizar_credito(idCliente, npdCantidadPagada.Value)
 
-                                '    Dim i As Integer
-                                '    Try
-                                '        For i = 1 To tblventa.RowCount
+                                If cbxEspera.Checked Then
+                                    estado = "E"
+                                    mtdv.insertarVenta(savef.ToString, t.ToString, npdCantidadPagada.Value, txtNombreCliente.Text, idEmpleado, cmbBodega.Text, estado, cmbFormaPago.Text, idCaja, idCliente)
+                                    MsgBox("Venta exitosa")
+                                Else
 
-                                '            mtdv.insertarVentaDetalle(Convert.ToString(tblventa.Rows(i - 1).Cells(1).Value),
-                                '                          Convert.ToString(tblventa.Rows(i - 1).Cells(2).Value),
-                                '                          Convert.ToString(tblventa.Rows(i - 1).Cells(3).Value),
-                                '                          Convert.ToString(tblventa.Rows(i - 1).Cells(7).Value), If(estado = "D", True, False))
-                                '        Next
-                                '    Catch ex As Exception
-                                '        MsgBox("Actualizar_Producto duplicado")
-                                '    End Try
+                                    estado = "D"
+                                        mtdv.insertarVenta(savef.ToString, t.ToString, npdCantidadPagada.Value, txtNombreCliente.Text, idEmpleado, cmbBodega.Text, estado, cmbFormaPago.Text, idCaja, idCliente)
+                                        MsgBox("Venta exitosa")
+
+                                End If
+                                Dim i As Integer
+                                Try
+                                    For i = 1 To tblventa.RowCount
+                                        c = mtdv.existenciaAlmacen(Convert.ToString(tblventa.Rows(i - 1).Cells(1).Value), cmbBodega.Text)
+                                        If c > 200 Then
+                                            mtdv.insertarVentaDetalle(Convert.ToString(tblventa.Rows(i - 1).Cells(1).Value),
+                                                      Convert.ToString(tblventa.Rows(i - 1).Cells(2).Value),
+                                                      Convert.ToString(tblventa.Rows(i - 1).Cells(3).Value),
+                                                      Convert.ToString(tblventa.Rows(i - 1).Cells(7).Value), If(estado = "P", True, False))
+                                        Else
+                                            MessageBox.Show("Tiene una existencia del producto " + Convert.ToString(tblventa.Rows(i - 1).Cells(1).Value) + " menos a 200", "Atención", MessageBoxButtons.OK, MessageBoxIcon.Information)
+                                            mtdv.insertarVentaDetalle(Convert.ToString(tblventa.Rows(i - 1).Cells(1).Value),
+                                          Convert.ToString(tblventa.Rows(i - 1).Cells(2).Value),
+                                          Convert.ToString(tblventa.Rows(i - 1).Cells(3).Value),
+                                          Convert.ToString(tblventa.Rows(i - 1).Cells(7).Value), If(estado = "P", True, False))
+                                        End If
+                                    Next
+                                Catch ex As Exception
+                                    MsgBox("Actualizar_Producto duplicado")
+                                End Try
+
 
                             End If
                         Else
@@ -352,10 +361,7 @@ Public Class NuevaVenta
                         mtdv.actualizar_totalpagado(descuentoC, tblDetalleVenta.CurrentRow.Cells(0).Value)
                         mtdv.llenarDatagridview(tblDetalleVenta)
 
-                        If tblDetalleVenta.CurrentRow.Cells("cantidadPagada").Value = tblDetalleVenta.CurrentRow.Cells("totalPagado").Value Then
-                            MsgBox("Venta Saldado")
-                            mtdv.actualizar_ventasa(tblDetalleVenta.CurrentRow.Cells(0).Value)
-                        End If
+
                     End If
 
                 End If
@@ -399,7 +405,7 @@ Public Class NuevaVenta
 
         If tblDetalleVenta.CurrentRow.Cells("estatus").Value = "E" Then
 
-            If tblDetalleVenta.CurrentRow.Cells("cantidadPagada").Value = tblDetalleVenta.CurrentRow.Cells("totalPagado").Value Then
+            If tblDetalleVenta.CurrentRow.Cells("cantidadPagada").Value = tblDetalleVenta.CurrentRow.Cells("totalPagar").Value Then
 
                 For i = 1 To tblDetalleVenta.RowCount
                     If clave = tblDetalleVenta.Rows(i - 1).Cells(0).Value Then
@@ -412,7 +418,7 @@ Public Class NuevaVenta
 
 
         Else
-            MsgBox("La venta esta saldada")
+            MsgBox("La venta debe estar en espera")
         End If
 
     End Sub

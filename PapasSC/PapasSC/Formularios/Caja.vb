@@ -137,7 +137,24 @@
     Private Sub btnImprimir_Click(sender As Object, e As EventArgs) Handles btnImprimir.Click
         Try
             If TabControl1.SelectedIndex = 0 Then ' General
-
+                Try
+                    If tblVentas.Rows.Count > 0 Then
+                        Dim ds As New CajaGeneral
+                        Dim dt As New DataTable
+                        dt = tblVentas.DataSource
+                        ds.ReportCajaGeneral.Rows.Clear()
+                        For Each row As DataRow In dt.Rows
+                            ds.ReportCajaGeneral.AddReportCajaGeneralRow(row("folio").ToString(), row("estatus").ToString(), row("Nombre").ToString(), row("fecha").ToString(), row("cantidadPagada").ToString(), row("totalPagar").ToString())
+                        Next
+                        Dim reportecppc As New ReporteCajaGeneral
+                        reportecppc.SetDataSource(ds)
+                        Dim fromreporteVPPC As New ReportGeneralCaja
+                        fromreporteVPPC.CrystalReportViewer1.ReportSource = reportecppc
+                        fromreporteVPPC.ShowDialog()
+                    End If
+                Catch ex As Exception
+                    MsgBox(ex.Message)
+                End Try
             ElseIf TabControl1.SelectedIndex = 1 Then
 
             ElseIf TabControl1.SelectedIndex = 2 Then
