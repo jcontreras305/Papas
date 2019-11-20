@@ -29,12 +29,17 @@ Partial Class ReporteVentasPorPagarCliente
         'CrystalReportViewer1
         '
         Me.CrystalReportViewer1.ActiveViewIndex = 0
+        Me.CrystalReportViewer1.AutoSize = True
         Me.CrystalReportViewer1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
         Me.CrystalReportViewer1.Cursor = System.Windows.Forms.Cursors.Default
         Me.CrystalReportViewer1.Dock = System.Windows.Forms.DockStyle.Fill
         Me.CrystalReportViewer1.Location = New System.Drawing.Point(0, 0)
         Me.CrystalReportViewer1.Name = "CrystalReportViewer1"
         Me.CrystalReportViewer1.ReportSource = Me.VentasPorPagarCliente1
+        Me.CrystalReportViewer1.ShowCloseButton = False
+        Me.CrystalReportViewer1.ShowGroupTreeButton = False
+        Me.CrystalReportViewer1.ShowLogo = False
+        Me.CrystalReportViewer1.ShowPageNavigateButtons = False
         Me.CrystalReportViewer1.Size = New System.Drawing.Size(800, 450)
         Me.CrystalReportViewer1.TabIndex = 0
         '
@@ -47,6 +52,7 @@ Partial Class ReporteVentasPorPagarCliente
         Me.Name = "ReporteVentasPorPagarCliente"
         Me.Text = "ReporteVentasPorPagarCliente"
         Me.ResumeLayout(False)
+        Me.PerformLayout()
 
     End Sub
 

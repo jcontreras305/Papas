@@ -355,7 +355,7 @@ from cliente as cl
 inner join contacto as cn on cl.idCliente = cn.idCliente
 left join credito as cr on cr.idCliente = cl.idCliente "
 
-
+    '####################### aqui
     Public Sub select_CuentaPorCobrar(ByVal tblVentasCaja As DataGridView, ByVal busqueda As String, ByVal filtro As String, ByVal fecha1 As String, ByVal fecha2 As String, ByVal todos As Boolean)
         Try
             conectar()
@@ -367,15 +367,20 @@ left join credito as cr on cr.idCliente = cl.idCliente "
             Select Case busqueda
                 Case "Cliente"
                     consulta = consulta + " and ( cl.nombre like '%" + filtro + "%' or cl.razonSocial like '%" + filtro + "%' )   "
+                    consulta = consulta + "and (select top 1 fecha from venta where idCliente = cl.idCliente and venta.estatus = 'D' order by fecha desc) between '" + fecha2 + "'  and '" + fecha1 + "' "
                     Exit Select
                 Case "Contacto"
                     consulta = consulta + " and (cn.nombre like '%" + filtro + "%') "
+                    consulta = consulta + "and (select top 1 fecha from venta where idCliente = cl.idCliente and venta.estatus = 'D' order by fecha desc) between '" + fecha2 + "'  and '" + fecha1 + "' "
+                    Exit Select
+                Case "% Credito"
+                    consulta = consulta + " and ((saldo*100)/limiteCredito) > " + filtro
+                    consulta = consulta + "and (select top 1 fecha from venta where idCliente = cl.idCliente and venta.estatus = 'D' order by fecha desc) between '" + fecha2 + "'  and '" + fecha1 + "' "
                     Exit Select
                 Case Else
-                    consulta = consulta + " and ((saldo*100)/limiteCredito) > " + filtro
+                    consulta = consulta + " saldo > 0"
                     Exit Select
             End Select
-            consulta = consulta + "and (select top 1 fecha from venta where idCliente = cl.idCliente and venta.estatus = 'D' order by fecha desc) between '" + fecha2 + "'  and '" + fecha1 + "' "
             cmd.CommandText = consulta
             cmd.Connection = conn
             If cmd.ExecuteNonQuery Then
@@ -479,6 +484,7 @@ where vt.fecha between  (select  MAX(fechaInicio) from corteCaja where idCaja = 
     '#########################################################################################################################
 
     Dim ventas_sin_pagar As String = "select 
+    vt.idVenta ,
 	vt.folio  as Folio,
 	vt.fecha as Fecha,
 	case when  cl.nombre = '' then cl.razonSocial else cl.nombre end as Cliente,
@@ -497,7 +503,7 @@ where vt.estatus = 'D' "
         Try
             conectar()
             Dim cmd As New SqlCommand("")
-            cmd.CommandText = ventas_sin_pagar + " and cl.idCliente = '" + idCliente + "'"
+            cmd.CommandText = ventas_sin_pagar + " and cl.idCliente = '" + idCliente + "' order by Fecha asc "
 
             cmd.Connection = conn
             If cmd.ExecuteNonQuery Then
@@ -505,9 +511,110 @@ where vt.estatus = 'D' "
                 Dim dt As New DataTable
                 da.Fill(dt)
                 tblCPPCliente.DataSource = dt
+                tblCPPCliente.Columns("idVenta").Visible = False
             End If
         Catch ex As Exception
             MsgBox(ex.Message)
+        End Try
+    End Sub
+
+
+    '#####################################################################################
+    '######################### Metodos para agregar abono ################################
+    '#####################################################################################
+
+    Public Sub agregarAbono(ByVal tblDatosCuentas As DataTable, ByVal abono As Double, ByVal idEmpleado As String, ByVal idCliente As String)
+        Try
+            conectar()
+            Dim cmd As New SqlCommand("")
+            Dim tran As SqlTransaction = conn.BeginTransaction("tran1")
+            cmd.Connection = conn
+            cmd.Transaction = tran
+            Dim comando As String = "insert into abono values " '(NEWID(), 'idCliente','idEmpleado','idVenta', CONVERT( DATE , GETDATE()), 0.0 , (totaldebe-abono))"
+            Try
+                Dim auxAbono As Double = abono
+                Dim listidVtPagadas As New List(Of String)
+                Dim tblVtDedbe As New DataTable
+                tblVtDedbe.Columns.Add("idVenta")
+                tblVtDedbe.Columns.Add("debe")
+                Dim values As String = ""
+                Dim contRow As Int16 = tblDatosCuentas.Rows.Count
+                Dim cont As Int16 = 1
+                For Each row As DataRow In tblDatosCuentas.Rows
+                    Dim debe As Double = CDbl(row.Item("debe").ToString)
+                    If abono >= debe Then
+                        Dim pago As String = Replace(debe.ToString(), ".", "")
+                        pago = Replace(pago, ",", ".")
+                        values = values + " (NEWID(),'" + idCliente + "','" + idEmpleado + "','" + row.Item("idVenta").ToString() + "',CONVERT( DATE , GETDATE())," + pago + ",0.0)"
+                        abono = abono - pago
+                        listidVtPagadas.Add(row.Item("idVenta").ToString)
+                    Else
+                        Dim diferencias As Double = debe - abono
+                        Dim dif As String = Replace(diferencias, ".", "")
+                        dif = Replace(dif, ",", ".")
+                        Dim pago As String = Replace(abono.ToString(), ".", "")
+                        pago = Replace(pago, ",", ".")
+                        values = values + "(NEWID(),'" + idCliente + "','" + idEmpleado + "','" + row.Item("idVenta").ToString() + "',CONVERT( DATE , GETDATE())," + pago + "," + dif + ")"
+                        tblVtDedbe.Rows.Add(row.Item("idVenta").ToString(), pago)
+                    End If
+                    If Not contRow = cont Then
+                        values = values + ","
+                    End If
+                    cont += 1
+                Next
+                cmd.CommandText = comando + values
+                If cmd.ExecuteNonQuery Then ' actualizar las ventas
+                    Dim cmd1 As New SqlCommand("")
+                    cmd1.Connection = conn
+                    cmd1.Transaction = tran
+                    Dim comando1 = "update ventas set estatus = 'P', cantidadPagada = totalPagar where idVenta = ("
+                    contRow = listidVtPagadas.Count
+                    cont = 1
+                    For Each item In listidVtPagadas
+                        comando1 = comando1 + "'" + item.ToString + "') "
+                        If Not contRow = cont Then
+                            comando1 = comando1 + ", or idVenta = ("
+                        End If
+                        cont += 1
+                    Next
+                    For Each row In tblVtDedbe.Rows
+                        Dim debe As String = row("debe").ToString
+                        debe = Replace(debe, ".", "")
+                        debe = Replace(debe, ",", ".")
+                        If listidVtPagadas.Count > 0 Then
+                            comando1 = comando1 + vbCrLf + " update venta set estatus = 'D', cantidadPagada = cantidadPagada +" + debe + " where idVenta = ('" + row("idVenta").ToString + "')"
+                        Else
+                            comando1 = " update venta set estatus = 'D', cantidadPagada = cantidadPagada +" + debe + " where idVenta = ('" + row("idVenta").ToString + "')"
+                        End If
+                    Next
+                    cmd1.CommandText = comando1
+                    If cmd1.ExecuteNonQuery Then
+                        Dim cmd2 As New SqlCommand("")
+                        cmd2.Connection = conn
+                        cmd2.Transaction = tran
+                        Dim abono1 As String = Replace(auxAbono.ToString(), ".", "")
+                        abono1 = Replace(abono1, ",", ".")
+                        Dim comando2 As String = ""
+                        comando2 = "update credito set saldo = saldo - " + abono1 + " where idCliente = '" + idCliente + "'"
+                        cmd2.CommandText = comando2
+                        If cmd2.ExecuteNonQuery Then
+                            tran.Commit
+                            MsgBox("El abono se realizó correctamente")
+                        Else
+                            tran.Rollback()
+                        End If
+                    Else
+                        tran.Rollback()
+                    End If
+                Else
+                    tran.Rollback()
+                End If
+            Catch ex As Exception
+                MsgBox(ex.Message)
+                tran.Rollback()
+            End Try
+        Catch ex As Exception
+
         End Try
     End Sub
 End Class

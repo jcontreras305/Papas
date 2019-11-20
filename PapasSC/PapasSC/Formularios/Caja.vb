@@ -1,5 +1,7 @@
 ﻿Public Class Caja
     Dim mtdCaja As New MetodosCaja
+    Public idEmpleado As String
+
 
     Private Sub Caja_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         Try
@@ -92,7 +94,7 @@
 
     Private Sub chbTodosCPP_CheckedChanged(sender As Object, e As EventArgs) Handles chbTodosCPP.CheckedChanged
         Try
-            mtdCaja.buscarCuentasPorPagar(tblCuentasPorPagar, "", "", "", "", "", True)
+            mtdCaja.select_CuentaPorCobrar(tblCuentasPorPagar, "", "", "", "", True)
         Catch ex As Exception
             MsgBox(ex.Message)
         End Try
@@ -138,9 +140,11 @@
         Try
             If TabControl1.SelectedIndex = 0 Then ' General
 
-            ElseIf TabControl1.SelectedIndex = 1 Then
+            ElseIf TabControl1.SelectedIndex = 1 Then 'Abonos
 
-            ElseIf TabControl1.SelectedIndex = 2 Then
+            ElseIf TabControl1.SelectedIndex = 2 Then 'Cuentas por pagar
+
+            Else ' precorte 
 
             End If
         Catch ex As Exception
@@ -212,7 +216,9 @@
                 For Each row As DataGridViewRow In tblCuentasPorPagar.Rows
                     If index = cont Then
                         mtdCaja.selectVentasPendientesCliente(cppd.tblVentasPendientes, row.Cells("idCliente").Value)
-                        cppd.txtSaldo.Text = row.Cells("Saldo").Value
+                        'cppd.txtSaldo.Text = row.Cells("Saldo").Value
+                        cppd.idCliente = row.Cells("idCliente").Value.ToString()
+                        cppd.idEmpleado = Me.idEmpleado
                         Exit For
                     Else
                         cont += 1
