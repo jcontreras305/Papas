@@ -451,7 +451,7 @@ Public Class NuevaVenta
             Dim bc As New BuscaCliente
             AddOwnedForm(bc)
             bc.ShowDialog()
-            If lim > 0 And saldo < lim Then
+            If lim > 0 And Convert.ToDecimal(saldo) < Convert.ToDecimal(lim) Then
                 cmbFormaPago.Items.Clear()
                 cmbFormaPago.Items.Add("Contado")
                 cmbFormaPago.Items.Add("Credito")
