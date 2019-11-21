@@ -50,14 +50,12 @@ Public Class NuevaVenta
             npdprecio.Value = Convert.ToDecimal(Convert.ToString(tblProductos.CurrentRow.Cells(1).Value))
         End If
         If tblventa.RowCount < 1 Then
-            tblventa.Columns.Add("Cliente", "Cliente")
+
             tblventa.Columns.Add("Producto", "Producto")
             tblventa.Columns.Add("Kilogramos", "Kilogramos")
             tblventa.Columns.Add("Precio", "Precio")
-            tblventa.Columns.Add("Pago", "Pago")
-            tblventa.Columns.Add("Empleado", "Empleado")
-            tblventa.Columns.Add("Tipo de pago", "Tipo de pago")
-            tblventa.Columns.Add("Bodega", "Bodega")
+
+
         End If
         tblDetalleVenta.Columns.Item("idventadetalle").Visible = False
     End Sub
@@ -80,7 +78,7 @@ Public Class NuevaVenta
 
     Private Sub Button3_Click(sender As Object, e As EventArgs) Handles Button3.Click
         If txtNombreCliente.Text <> String.Empty Then
-            tblventa.Rows.Add(txtNombreCliente.Text, Convert.ToString(tblProductos.CurrentRow.Cells(0).Value), npdkilos.Value, (npdprecio.Value * npdkilos.Value), npdCantidadPagada.Value, user, cmbFormaPago.Text, cmbBodega.Text)
+            tblventa.Rows.Add(Convert.ToString(tblProductos.CurrentRow.Cells(0).Value), npdkilos.Value, (npdprecio.Value * npdkilos.Value))
         Else
             MsgBox("Seleccione un Cliente")
         End If
@@ -88,7 +86,7 @@ Public Class NuevaVenta
             Dim i As Integer
             Dim total As Double
             For i = 1 To tblventa.RowCount
-                total += Convert.ToDecimal(Convert.ToString(tblventa.Rows(i - 1).Cells(3).Value))
+                total += Convert.ToDecimal(Convert.ToString(tblventa.Rows(i - 1).Cells(2).Value))
                 t = total
             Next
             lblTotal.Text = Convert.ToString(total)
@@ -112,7 +110,7 @@ Public Class NuevaVenta
         Dim j As Integer
         Dim existencia As Boolean = True
         For j = 1 To tblventa.RowCount
-            c = mtdv.existenciaAlmacen(Convert.ToString(tblventa.Rows(j - 1).Cells(1).Value), cmbBodega.Text)
+            c = mtdv.existenciaAlmacen(Convert.ToString(tblventa.Rows(j - 1).Cells(0).Value), cmbBodega.Text)
             If c = 0 Then
                 MessageBox.Show("Tiene una existencia del producto " + Convert.ToString(tblventa.Rows(j - 1).Cells(1).Value) + "en estado de agotado", "Atención", MessageBoxButtons.OK, MessageBoxIcon.Warning)
 
@@ -128,34 +126,34 @@ Public Class NuevaVenta
                         If Convert.ToDecimal(saldo) < Convert.ToDecimal(lim) Then
 
                             If MessageBox.Show("¿Desea utilizar su saldo?", "Atención", MessageBoxButtons.YesNo, MessageBoxIcon.Question) = Windows.Forms.DialogResult.Yes Then
-                                mtdv.actualizar_credito(idCliente, (npdCantidadPagada.Value - Convert.ToDouble(lblTotal.Text)))
+                                mtdv.actualizar_credito(idCliente, (Convert.ToDouble(lblTotal.Text.Replace(",", ".")) - npdCantidadPagada.Value))
 
                                 If cbxEspera.Checked Then
                                     estado = "E"
-                                    mtdv.insertarVenta(savef.ToString, t.ToString, npdCantidadPagada.Value, txtNombreCliente.Text, idEmpleado, cmbBodega.Text, estado, cmbFormaPago.Text, idCaja, idCliente)
+                                    mtdv.insertarVenta(savef.ToString, t.ToString.Replace(",", "."), npdCantidadPagada.Value, txtNombreCliente.Text, idEmpleado, cmbBodega.Text, estado, cmbFormaPago.Text, idCaja, idCliente)
                                     MsgBox("Venta exitosa")
                                 Else
 
                                     estado = "D"
-                                        mtdv.insertarVenta(savef.ToString, t.ToString, lblTotal.Text, txtNombreCliente.Text, idEmpleado, cmbBodega.Text, estado, cmbFormaPago.Text, idCaja, idCliente)
-                                        MsgBox("Venta exitosa")
+                                    mtdv.insertarVenta(savef.ToString, t.ToString.Replace(",", "."), lblTotal.Text.Replace(",", "."), txtNombreCliente.Text, idEmpleado, cmbBodega.Text, estado, cmbFormaPago.Text, idCaja, idCliente)
+                                    MsgBox("Venta exitosa")
                                   
                                 End If
                                 Dim i As Integer
                                 Try
                                     For i = 1 To tblventa.RowCount
-                                        c = mtdv.existenciaAlmacen(Convert.ToString(tblventa.Rows(i - 1).Cells(1).Value), cmbBodega.Text)
+                                        c = mtdv.existenciaAlmacen(Convert.ToString(tblventa.Rows(i - 1).Cells(0).Value), cmbBodega.Text)
                                         If c > 200 Then
-                                            mtdv.insertarVentaDetalle(Convert.ToString(tblventa.Rows(i - 1).Cells(1).Value),
-                                                      Convert.ToString(tblventa.Rows(i - 1).Cells(2).Value),
-                                                      Convert.ToString(tblventa.Rows(i - 1).Cells(3).Value),
-                                                      Convert.ToString(tblventa.Rows(i - 1).Cells(7).Value), If(estado = "P", True, False))
+                                            mtdv.insertarVentaDetalle(Convert.ToString(tblventa.Rows(i - 1).Cells(0).Value),
+                                                      Convert.ToString(tblventa.Rows(i - 1).Cells(1).Value).Replace(",", "."),
+                                                      Convert.ToString(tblventa.Rows(i - 1).Cells(2).Value).Replace(",", "."),
+                                                      cmbBodega.Text, If(estado = "D", True, False))
                                         Else
-                                            MessageBox.Show("Tiene una existencia del producto " + Convert.ToString(tblventa.Rows(i - 1).Cells(1).Value) + " menos a 200", "Atención", MessageBoxButtons.OK, MessageBoxIcon.Information)
-                                            mtdv.insertarVentaDetalle(Convert.ToString(tblventa.Rows(i - 1).Cells(1).Value),
-                                          Convert.ToString(tblventa.Rows(i - 1).Cells(2).Value),
-                                          Convert.ToString(tblventa.Rows(i - 1).Cells(3).Value),
-                                          Convert.ToString(tblventa.Rows(i - 1).Cells(7).Value), If(estado = "P", True, False))
+                                            MessageBox.Show("Tiene una existencia del producto " + Convert.ToString(tblventa.Rows(i - 1).Cells(0).Value) + " menos a 200", "Atención", MessageBoxButtons.OK, MessageBoxIcon.Information)
+                                            mtdv.insertarVentaDetalle(Convert.ToString(tblventa.Rows(i - 1).Cells(0).Value),
+                                                      Convert.ToString(tblventa.Rows(i - 1).Cells(1).Value).Replace(",", "."),
+                                                      Convert.ToString(tblventa.Rows(i - 1).Cells(2).Value).Replace(",", "."),
+                                                      cmbBodega.Text, If(estado = "D", True, False))
                                         End If
                                     Next
                                 Catch ex As Exception
@@ -173,25 +171,25 @@ Public Class NuevaVenta
                                 Else
 
                                     estado = "D"
-                                        mtdv.insertarVenta(savef.ToString, t.ToString, npdCantidadPagada.Value, txtNombreCliente.Text, idEmpleado, cmbBodega.Text, estado, cmbFormaPago.Text, idCaja, idCliente)
-                                        MsgBox("Venta exitosa")
+                                    mtdv.insertarVenta(savef.ToString, t.ToString, lblTotal.Text.Replace(",", "."), txtNombreCliente.Text, idEmpleado, cmbBodega.Text, estado, cmbFormaPago.Text, idCaja, idCliente)
+                                    MsgBox("Venta exitosa")
 
                                 End If
                                 Dim i As Integer
                                 Try
                                     For i = 1 To tblventa.RowCount
-                                        c = mtdv.existenciaAlmacen(Convert.ToString(tblventa.Rows(i - 1).Cells(1).Value), cmbBodega.Text)
+                                        c = mtdv.existenciaAlmacen(Convert.ToString(tblventa.Rows(i - 1).Cells(0).Value), cmbBodega.Text)
                                         If c > 200 Then
-                                            mtdv.insertarVentaDetalle(Convert.ToString(tblventa.Rows(i - 1).Cells(1).Value),
-                                                      Convert.ToString(tblventa.Rows(i - 1).Cells(2).Value),
-                                                      Convert.ToString(tblventa.Rows(i - 1).Cells(3).Value),
-                                                      Convert.ToString(tblventa.Rows(i - 1).Cells(7).Value), If(estado = "P", True, False))
+                                            mtdv.insertarVentaDetalle(Convert.ToString(tblventa.Rows(i - 1).Cells(0).Value),
+                                                      Convert.ToString(tblventa.Rows(i - 1).Cells(1).Value).Replace(",", "."),
+                                                      Convert.ToString(tblventa.Rows(i - 1).Cells(2).Value).Replace(",", "."),
+                                                      cmbBodega.Text, If(estado = "D", True, False))
                                         Else
-                                            MessageBox.Show("Tiene una existencia del producto " + Convert.ToString(tblventa.Rows(i - 1).Cells(1).Value) + " menos a 200", "Atención", MessageBoxButtons.OK, MessageBoxIcon.Information)
-                                            mtdv.insertarVentaDetalle(Convert.ToString(tblventa.Rows(i - 1).Cells(1).Value),
-                                          Convert.ToString(tblventa.Rows(i - 1).Cells(2).Value),
-                                          Convert.ToString(tblventa.Rows(i - 1).Cells(3).Value),
-                                          Convert.ToString(tblventa.Rows(i - 1).Cells(7).Value), If(estado = "P", True, False))
+                                            MessageBox.Show("Tiene una existencia del producto " + Convert.ToString(tblventa.Rows(i - 1).Cells(0).Value) + " menos a 200", "Atención", MessageBoxButtons.OK, MessageBoxIcon.Information)
+                                            mtdv.insertarVentaDetalle(Convert.ToString(tblventa.Rows(i - 1).Cells(0).Value),
+                                                      Convert.ToString(tblventa.Rows(i - 1).Cells(1).Value).Replace(",", "."),
+                                                      Convert.ToString(tblventa.Rows(i - 1).Cells(2).Value).Replace(",", "."),
+                                                      cmbBodega.Text, If(estado = "D", True, False))
                                         End If
                                     Next
                                 Catch ex As Exception
@@ -212,29 +210,29 @@ Public Class NuevaVenta
 
                     If cbxEspera.Checked Then
                         estado = "E"
-                        mtdv.insertarVenta(savef.ToString, t.ToString, npdCantidadPagada.Value, txtNombreCliente.Text, idEmpleado, cmbBodega.Text, "P", cmbFormaPago.Text, idCaja, idCliente)
+                        mtdv.insertarVenta(savef.ToString, t.ToString, npdCantidadPagada.Value, txtNombreCliente.Text, idEmpleado, cmbBodega.Text, "E", cmbFormaPago.Text, idCaja, idCliente)
                         MsgBox("Venta exitosa")
                     Else
                         estado = "P"
-                        mtdv.insertarVenta(savef.ToString, t.ToString, npdCantidadPagada.Value, txtNombreCliente.Text, idEmpleado, cmbBodega.Text, "E", cmbFormaPago.Text, idCaja, idCliente)
+                        mtdv.insertarVenta(savef.ToString, t.ToString, npdCantidadPagada.Value.ToString.Replace(",", "."), txtNombreCliente.Text, idEmpleado, cmbBodega.Text, "P", cmbFormaPago.Text, idCaja, idCliente)
                         MsgBox("Venta exitosa")
                     End If
 
                     Try
                         For i = 1 To tblventa.RowCount
-                            c = mtdv.existenciaAlmacen(Convert.ToString(tblventa.Rows(i - 1).Cells(1).Value), cmbBodega.Text)
+                            c = mtdv.existenciaAlmacen(Convert.ToString(tblventa.Rows(i - 1).Cells(0).Value), cmbBodega.Text)
                             If c > 200 Then
 
-                                mtdv.insertarVentaDetalle(Convert.ToString(tblventa.Rows(i - 1).Cells(1).Value),
-                                          Convert.ToString(tblventa.Rows(i - 1).Cells(2).Value),
-                                          Convert.ToString(tblventa.Rows(i - 1).Cells(3).Value),
-                                          Convert.ToString(tblventa.Rows(i - 1).Cells(7).Value), If(estado = "P", True, False))
+                                mtdv.insertarVentaDetalle(Convert.ToString(tblventa.Rows(i - 1).Cells(0).Value),
+                                                      Convert.ToString(tblventa.Rows(i - 1).Cells(1).Value).Replace(",", "."),
+                                                      Convert.ToString(tblventa.Rows(i - 1).Cells(2).Value).Replace(",", "."),
+                                                      cmbBodega.Text, If(estado = "P", True, False))
                             Else
-                                MessageBox.Show("Tiene una existencia del producto " + Convert.ToString(tblventa.Rows(i - 1).Cells(1).Value) + " menos a 200", "Atención", MessageBoxButtons.OK, MessageBoxIcon.Information)
-                                mtdv.insertarVentaDetalle(Convert.ToString(tblventa.Rows(i - 1).Cells(1).Value),
-                                          Convert.ToString(tblventa.Rows(i - 1).Cells(2).Value),
-                                          Convert.ToString(tblventa.Rows(i - 1).Cells(3).Value),
-                                          Convert.ToString(tblventa.Rows(i - 1).Cells(7).Value), If(estado = "P", True, False))
+                                MessageBox.Show("Tiene una existencia del producto " + Convert.ToString(tblventa.Rows(i - 1).Cells(0).Value) + " menos a 200", "Atención", MessageBoxButtons.OK, MessageBoxIcon.Information)
+                                mtdv.insertarVentaDetalle(Convert.ToString(tblventa.Rows(i - 1).Cells(0).Value),
+                                                      Convert.ToString(tblventa.Rows(i - 1).Cells(1).Value),
+                                                      Convert.ToString(tblventa.Rows(i - 1).Cells(2).Value),
+                                                      cmbBodega.Text, If(estado = "P", True, False))
                             End If
                         Next
                     Catch ex As Exception
@@ -385,9 +383,7 @@ Public Class NuevaVenta
     Private Sub lblTotal_TextChanged(sender As Object, e As EventArgs) Handles lblTotal.TextChanged
         If cmbFormaPago.Text = "Contado" Then
             npdCantidadPagada.Value = Convert.ToDecimal(lblTotal.Text)
-            If tblventa.RowCount > 0 Then
-                tblventa.Rows(tblventa.RowCount - 1).Cells(4).Value = npdCantidadPagada.Value
-            End If
+
         End If
 
     End Sub
@@ -434,7 +430,7 @@ Public Class NuevaVenta
             Dim i As Integer
             Dim total As Double
             For i = 1 To tblventa.RowCount
-                total += Convert.ToDecimal(Convert.ToString(tblventa.Rows(i - 1).Cells(3).Value))
+                total += Convert.ToDecimal(Convert.ToString(tblventa.Rows(i - 1).Cells(2).Value))
                 t = total
             Next
 
