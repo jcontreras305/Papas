@@ -128,6 +128,7 @@
                     caja.txtCaja.Text = cmbCajas.Text
                     caja.txtEmpleado.Text = cmbEmpleados.Text
                     caja.idEmpleado = listIdsEmpleados(cmbEmpleados.FindString(cmbEmpleados.Text))
+                    caja.idCaja = listIdsCajas(cmbCajas.FindString(cmbCajas.Text))
                     Me.Visible = False
                     caja.ShowDialog()
                     Me.Visible = True
@@ -158,7 +159,7 @@
                     Caja.txtCaja.Text = cmbCajas.Text
                     Caja.txtEmpleado.Text = cmbEmpleados.Text
                     Caja.idEmpleado = listIdsEmpleados(cmbEmpleados.FindString(cmbEmpleados.Text))
-
+                    Caja.idCaja = listIdsCajas(cmbCajas.FindString(cmbCajas.Text))
                     Me.Visible = False
                     Caja.ShowDialog()
                     Me.Visible = True

@@ -1,6 +1,6 @@
 ﻿Public Class Caja
     Dim mtdCaja As New MetodosCaja
-    Public idEmpleado As String
+    Public idEmpleado, idCaja As String
 
 
     Private Sub Caja_Load(sender As Object, e As EventArgs) Handles MyBase.Load
@@ -31,9 +31,24 @@
     Private Sub tabControl1_SelectedIndex(sender As Object, e As EventArgs) Handles TabControl1.SelectedIndexChanged
         If TabControl1.SelectedIndex = 0 Then 'General
             chbTodos.Checked = False
-            mtdCaja.select_ventasCajas(tblVentas, cmbTipoPersona.Text, txtFiltro1.Text, txtCaja.Text, txtFecha1.Text, txtFecha2.Text, False) 'stpFechaInicio.Value.ToLongDateString, stpFechaFin.Value.ToLongDateString)
-        ElseIf TabControl1.SelectedIndex = 1 Then ' Abonos y anticipos
+            If txtFiltro1.Text = String.Empty Then
+                mtdCaja.select_ventasCajas(tblVentas, "", "", txtCaja.Text, txtFecha1.Text, txtFecha2.Text, False) 'stpFechaInicio.Value.ToLongDateString, stpFechaFin.Value.ToLongDateString)
+            Else
+                mtdCaja.select_ventasCajas(tblVentas, cmbTipoPersona.Text, txtFiltro1.Text, txtCaja.Text, txtFecha1.Text, txtFecha2.Text, False) 'stpFechaInicio.Value.ToLongDateString, stpFechaFin.Value.ToLongDateString)
+            End If
 
+        ElseIf TabControl1.SelectedIndex = 1 Then ' Abonos y anticipos
+            cmbFiltroAA.SelectedIndex = 0
+            Dim d1 As Date = Date.Now
+            Dim d2 As Date = d1.AddMonths(-1)
+            txtDateFinal.Text = String.Format(d1.ToShortDateString(), "dd,MM,yyyy")
+            txtDateInicial.Text = String.Format(d2.ToShortDateString(), "dd,MM,yyyy")
+            chbTodosAA.Checked = False
+            If txtFiltroAA.Text = String.Empty Then
+                mtdCaja.seleccionarAbonos(tblAbonos, "", "", txtDateInicial.Text, txtDateFinal.Text, If(chbTodosAA.Checked, True, False), idCaja)
+            Else
+                mtdCaja.seleccionarAbonos(tblAbonos, cmbFiltroAA.Text, txtFiltroAA.Text, txtDateInicial.Text, txtDateFinal.Text, If(chbTodosAA.Checked, True, False), idCaja)
+            End If
         ElseIf TabControl1.SelectedIndex = 2 Then ' Cuentas por cobrar
             Dim d1 As Date = Date.Now
             Dim d2 As Date = d1.AddMonths(-1)
@@ -219,6 +234,7 @@
                         'cppd.txtSaldo.Text = row.Cells("Saldo").Value
                         cppd.idCliente = row.Cells("idCliente").Value.ToString()
                         cppd.idEmpleado = Me.idEmpleado
+                        cppd.idCaja = Me.idCaja
                         Exit For
                     Else
                         cont += 1
@@ -227,7 +243,7 @@
             End If
 
             cppd.ShowDialog()
-
+            mtdCaja.select_CuentaPorCobrar(tblCuentasPorPagar, cmbFiltar.Text, txtFiltro.Text, txtFechaInicio.Text, txtFechaFin.Text, If(chbTodosCPP.Checked, True, False))
         Catch ex As Exception
 
         End Try
@@ -284,6 +300,7 @@
     End Sub
 
 
+
     Private Sub mtcFecha2_DateSelected(sender As Object, e As DateRangeEventArgs) Handles mtcFecha2.DateSelected
         Try
             txtFecha2.Visible = True
@@ -291,6 +308,48 @@
             Dim d2 As String = Convert.ToDateTime(mtcFecha2.SelectionEnd.ToShortDateString())
             txtFecha2.Text = d2
             mtdCaja.select_ventasCajas(tblVentas, cmbTipoPersona.Text, txtFiltro1.Text, txtCaja.Text, txtFecha2.Text, txtFecha1.Text, False)
+        Catch ex As Exception
+
+        End Try
+    End Sub
+
+
+    '############################ fechas abono ############################################
+    Private Sub txtDateFinal_MouseClick(sender As Object, e As MouseEventArgs) Handles txtDateFinal.MouseClick
+        If mtcDateInicial.Visible Then
+            mtcDateInicial.Visible = False
+            txtDateInicial.Visible = False
+        End If
+        txtDateFinal.Visible = False
+        mtcDateFinal.Visible = True
+        txtDateInicial.Visible = False
+    End Sub
+
+    Private Sub txtDateInicial_MouseClick_1(sender As Object, e As MouseEventArgs) Handles txtDateInicial.MouseClick
+
+        mtcDateInicial.Visible = True
+        txtDateInicial.Visible = False
+    End Sub
+
+    Private Sub mtcDateInicial_DateSelected(sender As Object, e As DateRangeEventArgs) Handles mtcDateInicial.DateSelected
+        Try
+            mtcDateInicial.Visible = False
+            txtDateInicial.Visible = True
+            Dim d1 As String = Convert.ToDateTime(mtcDateInicial.SelectionEnd.ToShortDateString())
+            txtDateInicial.Text = d1
+        Catch ex As Exception
+
+        End Try
+    End Sub
+
+    Private Sub mtcDateFinal_DateSelected(sender As Object, e As DateRangeEventArgs) Handles mtcDateFinal.DateSelected
+        Try
+            mtcDateFinal.Visible = False
+            txtDateFinal.Visible = True
+            txtDateInicial.Visible = True
+
+            Dim d2 As String = Convert.ToDateTime(mtcDateFinal.SelectionEnd.ToShortDateString())
+            txtDateFinal.Text = d2
         Catch ex As Exception
 
         End Try
