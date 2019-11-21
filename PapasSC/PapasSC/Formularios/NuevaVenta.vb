@@ -446,6 +446,7 @@ Public Class NuevaVenta
 
     Private Sub btnBuscarCliente_Click(sender As Object, e As EventArgs) Handles btnBuscarCliente.Click
         If tblventa.Rows.Count > 0 Then
+
             MsgBox("No puedes cambiar de Cliente en un venta." + vbCrLf + "Puedes poner en espera o concretar la venta")
         Else
             Dim bc As New BuscaCliente
