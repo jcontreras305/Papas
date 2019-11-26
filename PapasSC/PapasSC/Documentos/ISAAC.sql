@@ -695,3 +695,58 @@ foreign key (idEmpleado) references empleado(idEmpleado)
 alter table abono 
 add constraint fk_idVenta_Abono
 foreign key (idVenta) references venta (idVenta)
+--##############################################################################################
+--########################## PROCEDIMEINTO PARA ELIMINAR UN ABONO ##############################
+--##############################################################################################
+create proc Eliminar_Abono
+	@idAbono  varchar(36)
+as
+declare @idCliente varchar(36)
+declare @venta varchar(36)
+declare @cantPagada float
+declare @totalPagar float
+declare @cont int 
+declare @error  int
+begin
+	begin tran 
+		begin try
+
+			select @idCliente = idCliente , @venta = idVenta from abono where idAbono = @idAbono --obtengo el id del cliente para el credito y abonos, tambien el id de al venta para alterar la cantidad pagada  
+			if @@ERROR <> 0 begin set @error = @@ERROR goto resolver end 
+			--actualizo el credito tiene que ser el credito que tiene mas el abono que estoy eliminando
+			update credito set saldo = saldo + (select top 1 abono from abono where idAbono = @idAbono) where idCliente = @idCliente
+			if @@ERROR <> 0 begin set @error = @@ERROR goto resolver end
+			--actualizo la venta en la cantidad pagada que tiene que ser la cantidad pagada menos el abono que quito
+			update venta set cantidadPagada = cantidadPagada - (select top 1 abono from abono where idAbono = @idAbono) where idVenta = @venta
+			if @@ERROR <> 0 begin set @error = @@ERROR goto resolver end
+			select @cantPagada = cantidadPagada , @totalPagar = totalPagar from venta where idVenta = @venta 
+			--si el abono se elimino correctamente la cantidad pagada deberia ser menor al total a pagar 
+			if @cantPagada < @totalPagar begin
+				--si entra la venta se actualiza su estado a DEBE o 'D' en caso de que ya hubiese estado pagada o 'P'
+				update venta set estatus = 'D' where idVenta = @venta
+				if @@ERROR <> 0 begin set @error = @@ERROR goto resolver end
+				--ahora solo tenemos que elimnar el abono
+				select @cont = COUNT(*) from abono where idVenta = @venta 
+				--si existe mas de un solo abono a la misma venta solo se deben actualizar la que se hicieron despues 
+				--al manejar solo YYYY-MM-DD no sabemos cual abono se realizo primero si se hubiese realizado el mimos dia
+				if @cont > 1 begin 
+				--si entra es que existen mas de un abono y solo de acutlaizan los que en la columna de debe sea menor 
+					update abono set bede = bede + (select top 1 abono from abono where idAbono = @idAbono  )  from abono where idVenta = @venta and bede < (select bede from abono where idAbono = @idAbono) 
+				end
+				--aqui solo eliminamos el abono que hemos seleccionado
+				delete from abono where idAbono = @idAbono
+			end 
+		end try 
+		begin catch
+			--si hay un error se dirige a "resolver" 
+			set @error = 1 
+			goto resolver
+		end catch
+		--si no hubo error solo se hace el commmit
+	commit tran
+	resolver: 
+		if @error <>0 begin 
+			--si entro solo se realiza el rollback
+			rollback tran
+		end
+end
