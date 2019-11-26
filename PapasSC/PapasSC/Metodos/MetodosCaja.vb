@@ -700,4 +700,57 @@ left join caja as cj on ab.idCaja = cj.idCaja"
         End Try
     End Sub
 
+
+    '#######################################################################################
+    '######################### METODOS PARA PRE-CORTE DE CAJA ##############################
+    '#######################################################################################
+    Dim consultaTotalPrecorte = "select SUM(cantidadPagada) as Total
+from venta as vt
+left join caja as cj on cj.idCaja = vt.idCaja
+left join corteCaja as cc on cc.idCaja= cj.idCaja
+left join cliente as cl on cl.idCliente = vt.idCliente 
+where cc.fechaInicio  = (select MAX(fechaInicio) from corteCaja where idCaja = '"
+
+    Public Function consultarTotalPreCorte(ByRef idCaja As String) As Double
+        Try
+            conectar()
+            Dim cmd As New SqlCommand(consultaTotalPrecorte + idCaja + "')", conn)
+            Dim total As Double = 0.0
+            Using rd = cmd.ExecuteReader
+                If rd.HasRows Then
+                    While rd.Read
+                        total = CDbl(rd.Item("Total").ToString)
+                    End While
+                    desconectar()
+                    Return total
+                Else
+                    MsgBox("Es probable que no se encuentra ninguna venta hecha hasta el momento désde la última apertura de la caja")
+                    Return 0.0
+                End If
+            End Using
+        Catch ex As Exception
+            Return 0.0
+        End Try
+    End Function
+
+    Dim ventasCorteCaja As String = "select  right ('00000' + CONVERT(varchar, vt.folio ), 5 )as Folio, vt.totalPagar as 'Total', vt.cantidadPagada as 'Cantidad Pagada', case when cl.nombre = '' then cl.razonSocial else cl.nombre end as Cliente from venta as vt
+left join caja as cj on cj.idCaja = vt.idCaja
+left join corteCaja as cc on cc.idCaja= cj.idCaja
+left join cliente as cl on cl.idCliente = vt.idCliente 
+where cc.fechaInicio  = (select MAX(fechaInicio) from corteCaja where idCaja = '"
+
+    Public Sub seleccionarVentasCorteCaja(ByVal tblPrecorte As DataGridView, ByVal idcaja As String)
+        Try
+            conectar()
+            Dim cmd As New SqlCommand(ventasCorteCaja + idcaja + "')", conn)
+            If cmd.ExecuteNonQuery Then
+                Dim da As New SqlDataAdapter(cmd)
+                Dim dt As New DataTable
+                da.Fill(dt)
+                tblPrecorte.DataSource = dt
+            End If
+        Catch ex As Exception
+            MsgBox(ex.Message)
+        End Try
+    End Sub
 End Class

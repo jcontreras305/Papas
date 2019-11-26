@@ -58,7 +58,8 @@
             mtdCaja.select_CuentaPorCobrar(tblCuentasPorPagar, cmbFiltar.Text, txtFiltro.Text, txtFechaInicio.Text, txtFechaFin.Text, If(chbTodosCPP.Checked, True, False))
             tblCuentasPorPagar.Columns.Item("idCliente").Visible = False
         ElseIf TabControl1.SelectedIndex = 3 Then ' Pre-corte
-
+            Dim Total As Double = mtdCaja.consultarTotalPreCorte(idCaja)
+            lblTotal.Text = CStr(Total.ToString)
         End If
     End Sub
 
@@ -385,10 +386,6 @@
         End Try
     End Sub
 
-
-
-
-
     '######################################################################################################
     '################################ Agregar o eliminar un abono  ########################################
     '######################################################################################################
@@ -415,5 +412,18 @@
             MsgBox(ex.Message)
         End Try
     End Sub
+
+    '##################################################################################################################################
+    '########################################################  Metodos para realizar precorte de caja #################################
+    '##################################################################################################################################
+
+    Private Sub btnCosuntarCorteCaja_Click(sender As Object, e As EventArgs) Handles btnCosuntarCorteCaja.Click
+        Try
+            mtdCaja.seleccionarVentasCorteCaja(tblPrecorte, idCaja)
+        Catch ex As Exception
+
+        End Try
+    End Sub
+
 
 End Class

@@ -942,6 +942,7 @@
     <Content Include="Imagenes\BILLETE.png" />
     <Content Include="Imagenes\BODEGAS.jpg" />
     <Content Include="Imagenes\BORRAR.png" />
+    <Content Include="Imagenes\BUSCAR.png" />
     <Content Include="Imagenes\CAJA.jpg" />
     <Content Include="Imagenes\CAJAS1.jpg" />
     <Content Include="Imagenes\CATALOGO.jpg" />
