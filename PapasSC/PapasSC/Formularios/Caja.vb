@@ -413,17 +413,38 @@
         End Try
     End Sub
 
-    '##################################################################################################################################
-    '########################################################  Metodos para realizar precorte de caja #################################
-    '##################################################################################################################################
-
-    Private Sub btnCosuntarCorteCaja_Click(sender As Object, e As EventArgs) Handles btnCosuntarCorteCaja.Click
+    Private Sub btnSalir_Click(sender As Object, e As EventArgs) Handles btnSalir.Click
         Try
-            mtdCaja.seleccionarVentasCorteCaja(tblPrecorte, idCaja)
+            Me.Close()
         Catch ex As Exception
 
         End Try
     End Sub
 
 
+
+
+    '##################################################################################################################################
+    '########################################################  Metodos para realizar precorte de caja #################################
+    '##################################################################################################################################
+    Public acceso As Boolean
+
+    Private Sub btnCosuntarCorteCaja_Click(sender As Object, e As EventArgs) Handles btnCosuntarCorteCaja.Click
+        Try
+            Dim acceder As New Acceder
+
+            acceder.user = txtEmpleado.Text
+            acceder.pass = ""
+            AddOwnedForm(acceder)
+            acceder.ShowDialog()
+            If acceso Then
+                mtdCaja.seleccionarVentasCorteCaja(tblPrecorte, idCaja)
+            Else
+                MsgBox("No es apto para ver el Pre-Corte de Caja")
+            End If
+
+        Catch ex As Exception
+            MsgBox(ex.Message())
+        End Try
+    End Sub
 End Class

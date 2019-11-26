@@ -28,6 +28,7 @@ Partial Class Caja
         Me.Label5 = New System.Windows.Forms.Label()
         Me.pnlEstatus = New System.Windows.Forms.Panel()
         Me.pnlCuentasPorCobrar = New System.Windows.Forms.TabPage()
+        Me.btnActualizaCPC = New System.Windows.Forms.Button()
         Me.txtFechaFin = New System.Windows.Forms.TextBox()
         Me.txtFechaInicio = New System.Windows.Forms.TextBox()
         Me.mtcFechaInicio = New System.Windows.Forms.MonthCalendar()
@@ -40,6 +41,8 @@ Partial Class Caja
         Me.Label6 = New System.Windows.Forms.Label()
         Me.tblCuentasPorPagar = New System.Windows.Forms.DataGridView()
         Me.pnlAbonosyAnticipos = New System.Windows.Forms.TabPage()
+        Me.btnEliminarAbono = New System.Windows.Forms.Button()
+        Me.btnNuevo = New System.Windows.Forms.Button()
         Me.txtDateInicial = New System.Windows.Forms.TextBox()
         Me.txtDateFinal = New System.Windows.Forms.TextBox()
         Me.mtcDateFinal = New System.Windows.Forms.MonthCalendar()
@@ -61,21 +64,19 @@ Partial Class Caja
         Me.tblVentas = New System.Windows.Forms.DataGridView()
         Me.Label3 = New System.Windows.Forms.Label()
         Me.Label1 = New System.Windows.Forms.Label()
+        Me.btnActualizar = New System.Windows.Forms.Button()
         Me.txtFiltro1 = New System.Windows.Forms.TextBox()
         Me.Label2 = New System.Windows.Forms.Label()
         Me.lblTipo = New System.Windows.Forms.Label()
         Me.chbTodos = New System.Windows.Forms.CheckBox()
         Me.TabControl1 = New System.Windows.Forms.TabControl()
         Me.pnlPrecorte = New System.Windows.Forms.TabPage()
+        Me.btnCosuntarCorteCaja = New System.Windows.Forms.Button()
         Me.Label14 = New System.Windows.Forms.Label()
         Me.lblTotal = New System.Windows.Forms.Label()
         Me.tblPrecorte = New System.Windows.Forms.DataGridView()
         Me.btnImprimir = New System.Windows.Forms.Button()
-        Me.btnActualizar = New System.Windows.Forms.Button()
-        Me.btnEliminarAbono = New System.Windows.Forms.Button()
-        Me.btnNuevo = New System.Windows.Forms.Button()
-        Me.btnActualizaCPC = New System.Windows.Forms.Button()
-        Me.btnCosuntarCorteCaja = New System.Windows.Forms.Button()
+        Me.btnSalir = New System.Windows.Forms.Button()
         Me.pnlEstatus.SuspendLayout()
         Me.pnlCuentasPorCobrar.SuspendLayout()
         CType(Me.tblCuentasPorPagar, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -154,6 +155,18 @@ Partial Class Caja
         Me.pnlCuentasPorCobrar.TabIndex = 2
         Me.pnlCuentasPorCobrar.Text = "Cuentas por Cobrar"
         Me.pnlCuentasPorCobrar.UseVisualStyleBackColor = True
+        '
+        'btnActualizaCPC
+        '
+        Me.btnActualizaCPC.Image = Global.PapasSC.My.Resources.Resources.ACTUALIZAR
+        Me.btnActualizaCPC.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
+        Me.btnActualizaCPC.Location = New System.Drawing.Point(691, 12)
+        Me.btnActualizaCPC.Name = "btnActualizaCPC"
+        Me.btnActualizaCPC.Size = New System.Drawing.Size(91, 43)
+        Me.btnActualizaCPC.TabIndex = 14
+        Me.btnActualizaCPC.Text = "Actualizar"
+        Me.btnActualizaCPC.TextAlign = System.Drawing.ContentAlignment.MiddleRight
+        Me.btnActualizaCPC.UseVisualStyleBackColor = True
         '
         'txtFechaFin
         '
@@ -270,6 +283,30 @@ Partial Class Caja
         Me.pnlAbonosyAnticipos.TabIndex = 1
         Me.pnlAbonosyAnticipos.Text = "Abonos y Anticipos"
         Me.pnlAbonosyAnticipos.UseVisualStyleBackColor = True
+        '
+        'btnEliminarAbono
+        '
+        Me.btnEliminarAbono.Image = Global.PapasSC.My.Resources.Resources.SALIR
+        Me.btnEliminarAbono.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
+        Me.btnEliminarAbono.Location = New System.Drawing.Point(609, 419)
+        Me.btnEliminarAbono.Name = "btnEliminarAbono"
+        Me.btnEliminarAbono.Size = New System.Drawing.Size(83, 48)
+        Me.btnEliminarAbono.TabIndex = 32
+        Me.btnEliminarAbono.Text = "Eliminar"
+        Me.btnEliminarAbono.TextAlign = System.Drawing.ContentAlignment.MiddleRight
+        Me.btnEliminarAbono.UseVisualStyleBackColor = True
+        '
+        'btnNuevo
+        '
+        Me.btnNuevo.Image = Global.PapasSC.My.Resources.Resources.agregar
+        Me.btnNuevo.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
+        Me.btnNuevo.Location = New System.Drawing.Point(698, 419)
+        Me.btnNuevo.Name = "btnNuevo"
+        Me.btnNuevo.Size = New System.Drawing.Size(84, 48)
+        Me.btnNuevo.TabIndex = 31
+        Me.btnNuevo.Text = "Nuevo"
+        Me.btnNuevo.TextAlign = System.Drawing.ContentAlignment.MiddleRight
+        Me.btnNuevo.UseVisualStyleBackColor = True
         '
         'txtDateInicial
         '
@@ -474,6 +511,18 @@ Partial Class Caja
         Me.Label1.TabIndex = 9
         Me.Label1.Text = "Fecha Inicial"
         '
+        'btnActualizar
+        '
+        Me.btnActualizar.Image = Global.PapasSC.My.Resources.Resources.ACTUALIZAR
+        Me.btnActualizar.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
+        Me.btnActualizar.Location = New System.Drawing.Point(682, 426)
+        Me.btnActualizar.Name = "btnActualizar"
+        Me.btnActualizar.Size = New System.Drawing.Size(91, 43)
+        Me.btnActualizar.TabIndex = 6
+        Me.btnActualizar.Text = "Actualizar"
+        Me.btnActualizar.TextAlign = System.Drawing.ContentAlignment.MiddleRight
+        Me.btnActualizar.UseVisualStyleBackColor = True
+        '
         'txtFiltro1
         '
         Me.txtFiltro1.Location = New System.Drawing.Point(300, 14)
@@ -534,6 +583,18 @@ Partial Class Caja
         Me.pnlPrecorte.Text = "Pre-Corte "
         Me.pnlPrecorte.UseVisualStyleBackColor = True
         '
+        'btnCosuntarCorteCaja
+        '
+        Me.btnCosuntarCorteCaja.Image = Global.PapasSC.My.Resources.Resources.BUSCAR
+        Me.btnCosuntarCorteCaja.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
+        Me.btnCosuntarCorteCaja.Location = New System.Drawing.Point(12, 16)
+        Me.btnCosuntarCorteCaja.Name = "btnCosuntarCorteCaja"
+        Me.btnCosuntarCorteCaja.Size = New System.Drawing.Size(106, 42)
+        Me.btnCosuntarCorteCaja.TabIndex = 3
+        Me.btnCosuntarCorteCaja.Text = "Consultar"
+        Me.btnCosuntarCorteCaja.TextAlign = System.Drawing.ContentAlignment.MiddleRight
+        Me.btnCosuntarCorteCaja.UseVisualStyleBackColor = True
+        '
         'Label14
         '
         Me.Label14.AutoSize = True
@@ -572,79 +633,32 @@ Partial Class Caja
         '
         Me.btnImprimir.Image = Global.PapasSC.My.Resources.Resources.IMPRIMIR1
         Me.btnImprimir.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
-        Me.btnImprimir.Location = New System.Drawing.Point(733, 595)
+        Me.btnImprimir.Location = New System.Drawing.Point(733, 593)
         Me.btnImprimir.Name = "btnImprimir"
-        Me.btnImprimir.Size = New System.Drawing.Size(78, 37)
+        Me.btnImprimir.Size = New System.Drawing.Size(78, 41)
         Me.btnImprimir.TabIndex = 6
         Me.btnImprimir.Text = "Imprimir"
         Me.btnImprimir.TextAlign = System.Drawing.ContentAlignment.MiddleRight
         Me.btnImprimir.UseVisualStyleBackColor = True
         '
-        'btnActualizar
+        'btnSalir
         '
-        Me.btnActualizar.Image = Global.PapasSC.My.Resources.Resources.ACTUALIZAR
-        Me.btnActualizar.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
-        Me.btnActualizar.Location = New System.Drawing.Point(682, 426)
-        Me.btnActualizar.Name = "btnActualizar"
-        Me.btnActualizar.Size = New System.Drawing.Size(91, 43)
-        Me.btnActualizar.TabIndex = 6
-        Me.btnActualizar.Text = "Actualizar"
-        Me.btnActualizar.TextAlign = System.Drawing.ContentAlignment.MiddleRight
-        Me.btnActualizar.UseVisualStyleBackColor = True
-        '
-        'btnEliminarAbono
-        '
-        Me.btnEliminarAbono.Image = Global.PapasSC.My.Resources.Resources.SALIR
-        Me.btnEliminarAbono.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
-        Me.btnEliminarAbono.Location = New System.Drawing.Point(609, 419)
-        Me.btnEliminarAbono.Name = "btnEliminarAbono"
-        Me.btnEliminarAbono.Size = New System.Drawing.Size(83, 48)
-        Me.btnEliminarAbono.TabIndex = 32
-        Me.btnEliminarAbono.Text = "Eliminar"
-        Me.btnEliminarAbono.TextAlign = System.Drawing.ContentAlignment.MiddleRight
-        Me.btnEliminarAbono.UseVisualStyleBackColor = True
-        '
-        'btnNuevo
-        '
-        Me.btnNuevo.Image = Global.PapasSC.My.Resources.Resources.agregar
-        Me.btnNuevo.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
-        Me.btnNuevo.Location = New System.Drawing.Point(698, 419)
-        Me.btnNuevo.Name = "btnNuevo"
-        Me.btnNuevo.Size = New System.Drawing.Size(84, 48)
-        Me.btnNuevo.TabIndex = 31
-        Me.btnNuevo.Text = "Nuevo"
-        Me.btnNuevo.TextAlign = System.Drawing.ContentAlignment.MiddleRight
-        Me.btnNuevo.UseVisualStyleBackColor = True
-        '
-        'btnActualizaCPC
-        '
-        Me.btnActualizaCPC.Image = Global.PapasSC.My.Resources.Resources.ACTUALIZAR
-        Me.btnActualizaCPC.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
-        Me.btnActualizaCPC.Location = New System.Drawing.Point(691, 12)
-        Me.btnActualizaCPC.Name = "btnActualizaCPC"
-        Me.btnActualizaCPC.Size = New System.Drawing.Size(91, 43)
-        Me.btnActualizaCPC.TabIndex = 14
-        Me.btnActualizaCPC.Text = "Actualizar"
-        Me.btnActualizaCPC.TextAlign = System.Drawing.ContentAlignment.MiddleRight
-        Me.btnActualizaCPC.UseVisualStyleBackColor = True
-        '
-        'btnCosuntarCorteCaja
-        '
-        Me.btnCosuntarCorteCaja.Image = Global.PapasSC.My.Resources.Resources.BUSCAR
-        Me.btnCosuntarCorteCaja.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
-        Me.btnCosuntarCorteCaja.Location = New System.Drawing.Point(12, 16)
-        Me.btnCosuntarCorteCaja.Name = "btnCosuntarCorteCaja"
-        Me.btnCosuntarCorteCaja.Size = New System.Drawing.Size(106, 42)
-        Me.btnCosuntarCorteCaja.TabIndex = 3
-        Me.btnCosuntarCorteCaja.Text = "Consultar"
-        Me.btnCosuntarCorteCaja.TextAlign = System.Drawing.ContentAlignment.MiddleRight
-        Me.btnCosuntarCorteCaja.UseVisualStyleBackColor = True
+        Me.btnSalir.Image = Global.PapasSC.My.Resources.Resources.CANCELAR
+        Me.btnSalir.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
+        Me.btnSalir.Location = New System.Drawing.Point(628, 593)
+        Me.btnSalir.Name = "btnSalir"
+        Me.btnSalir.Size = New System.Drawing.Size(75, 41)
+        Me.btnSalir.TabIndex = 7
+        Me.btnSalir.Text = "Salir"
+        Me.btnSalir.TextAlign = System.Drawing.ContentAlignment.MiddleRight
+        Me.btnSalir.UseVisualStyleBackColor = True
         '
         'Caja
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(848, 644)
+        Me.Controls.Add(Me.btnSalir)
         Me.Controls.Add(Me.btnImprimir)
         Me.Controls.Add(Me.pnlEstatus)
         Me.Controls.Add(Me.TabControl1)
@@ -723,4 +737,5 @@ Partial Class Caja
     Friend WithEvents lblTotal As Label
     Friend WithEvents btnCosuntarCorteCaja As Button
     Friend WithEvents Label14 As Label
+    Friend WithEvents btnSalir As Button
 End Class

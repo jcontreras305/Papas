@@ -114,6 +114,12 @@
     <Compile Include="Formularios\.Designer.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="Formularios\Acceder.Designer.vb">
+      <DependentUpon>Acceder.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Formularios\Acceder.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="Formularios\Actualizar_bodega.Designer.vb">
       <DependentUpon>Actualizar_bodega.vb</DependentUpon>
     </Compile>
@@ -643,6 +649,9 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="Formularios\Acceder.resx">
+      <DependentUpon>Acceder.vb</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Formularios\Actualizar_bodega.resx">
       <DependentUpon>Actualizar_bodega.vb</DependentUpon>
     </EmbeddedResource>
