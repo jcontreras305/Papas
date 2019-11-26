@@ -278,7 +278,7 @@ on cj.idBodega = bd.idBodega "
     '##########################################################################################################
 
     Private busquedaVentasCaja As String = "
-select folio as Folio,  case when vt.estatus = 'D' then 'Deuda' when vt.estatus = 'P' then 'Pagada' else 'Espera' end as Estatus ,  case when  cl.nombre = '' then cl.razonSocial else cl.nombre end as Nombre , fecha as Fecha ,vt.cantidadPagada as 'Cantidad Pagada', vt.totalPagar as 'Total a Pagar'
+select RIGHT ('00000'+CONVERT(varchar, vt.folio ),5) as Folio,  case when vt.estatus = 'D' then 'Deuda' when vt.estatus = 'P' then 'Pagada' else 'Espera' end as Estatus ,  case when  cl.nombre = '' then cl.razonSocial else cl.nombre end as Nombre , fecha as Fecha ,vt.cantidadPagada as 'Cantidad Pagada', vt.totalPagar as 'Total a Pagar'
 from venta as vt left join cliente as cl on cl.idCliente = vt.idCliente 
 left join caja as cj on cj.idCaja = vt.idCaja
 left join credito as cr on cr.idCliente = cl.idCliente
@@ -485,7 +485,7 @@ where vt.fecha between  (select  MAX(fechaInicio) from corteCaja where idCaja = 
 
     Dim ventas_sin_pagar As String = "select 
     vt.idVenta ,
-	vt.folio  as Folio,
+	RIGHT ('00000'+CONVERT(varchar, vt.folio ),5) as Folio,
 	vt.fecha as Fecha,
 	case when  cl.nombre = '' then cl.razonSocial else cl.nombre end as Cliente,
 	vt.totalPagar as Total,
@@ -623,6 +623,7 @@ where vt.estatus = 'D' "
     '######################### METODOS PARA ABONOS Y ANTICIPOS #############################
     '#######################################################################################
     Dim abonos As String = "select idAbono as Clave , 
+    cl.idCliente,
 	ab.abono as Abono,
 	(select top 1 limiteCredito from credito where idCliente = cl.idCliente) as 'Limite de Crédito',
 	case when  cl.nombre = '' then cl.razonSocial else cl.nombre end as 'Cliente' , 
@@ -681,6 +682,19 @@ left join caja as cj on ab.idCaja = cj.idCaja"
             da.Fill(dt)
             tblAbonos.DataSource = dt
             tblAbonos.Columns("Clave").Visible = False
+            tblAbonos.Columns("idCliente").Visible = False
+        Catch ex As Exception
+            MsgBox(ex.Message)
+        End Try
+    End Sub
+
+    Public Sub EliminarAbono(ByVal idAbono As String)
+        Try
+            conectar()
+            Dim cmd As New SqlCommand("Eliminar_Abono", conn)
+            cmd.CommandType = CommandType.StoredProcedure
+            cmd.Parameters.Add("@idAbono", SqlDbType.VarChar, 36).Value = idAbono
+            cmd.ExecuteNonQuery()
         Catch ex As Exception
             MsgBox(ex.Message)
         End Try

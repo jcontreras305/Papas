@@ -64,6 +64,8 @@
         End Try
     End Sub
 
+
+
     Private Sub CajaCuentasPPD_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         sprAbono.DecimalPlaces = 2
         sprAbono.ThousandsSeparator = True
@@ -101,6 +103,19 @@
             End If
         Catch ex As Exception
             MsgBox(ex.Message)
+        End Try
+    End Sub
+
+    ' ############################################################################################
+    ' ######################## IMPRIMIR CUENTAS POR CLIENTE ######################################
+    ' ############################################################################################
+
+    Private Sub btnImprimirHistorial_Click(sender As Object, e As EventArgs) Handles btnImprimirHistorial.Click
+        Try
+            Dim htac As New AbonosCliente
+            htac.idCliente = idCliente
+            htac.ShowDialog()
+        Catch ex As Exception
         End Try
     End Sub
 End Class

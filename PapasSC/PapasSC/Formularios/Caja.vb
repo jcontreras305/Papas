@@ -342,6 +342,8 @@
         End Try
     End Sub
 
+
+
     Private Sub mtcDateFinal_DateSelected(sender As Object, e As DateRangeEventArgs) Handles mtcDateFinal.DateSelected
         Try
             mtcDateFinal.Visible = False
@@ -352,6 +354,65 @@
             txtDateFinal.Text = d2
         Catch ex As Exception
 
+        End Try
+    End Sub
+
+    Private Sub txtFiltroAA_KeyUp(sender As Object, e As KeyEventArgs) Handles txtFiltroAA.KeyUp
+        Try
+            mtdCaja.seleccionarAbonos(tblAbonos, cmbFiltroAA.Text, txtFiltroAA.Text, txtDateInicial.Text, txtDateFinal.Text, If(chbTodosAA.Checked, True, False), idCaja)
+
+        Catch ex As Exception
+            MsgBox(ex.Message)
+        End Try
+    End Sub
+
+    Private Sub chbTodosAA_CheckedChanged(sender As Object, e As EventArgs) Handles chbTodosAA.CheckedChanged
+        Try
+            mtdCaja.seleccionarAbonos(tblAbonos, cmbFiltroAA.Text, txtFiltroAA.Text, txtDateInicial.Text, txtDateFinal.Text, If(chbTodosAA.Checked, True, False), idCaja)
+        Catch ex As Exception
+
+        End Try
+    End Sub
+
+    Private Sub btnEliminarAbono_Click(sender As Object, e As EventArgs) Handles btnEliminarAbono.Click
+        Try
+            If MessageBox.Show("¿Desea Elimnar el Pago hecho por el Cliente " + tblAbonos.CurrentRow.Cells("Cliente").Value + " de la Venta con Folio " + tblAbonos.CurrentRow.Cells("Folio Venta").Value, "Advertencia", MessageBoxButtons.OKCancel, MessageBoxIcon.Warning) = Windows.Forms.DialogResult.OK Then
+                mtdCaja.EliminarAbono(tblAbonos.CurrentRow.Cells("Clave").Value)
+                mtdCaja.seleccionarAbonos(tblAbonos, cmbFiltroAA.Text, txtFiltroAA.Text, txtDateInicial.Text, txtDateFinal.Text, True, idCaja)
+            End If
+        Catch ex As Exception
+            MsgBox(ex.Message)
+        End Try
+    End Sub
+
+
+
+
+
+    '######################################################################################################
+    '################################ Agregar o eliminar un abono  ########################################
+    '######################################################################################################
+
+    Private Sub btnNuevo_Click(sender As Object, e As EventArgs) Handles btnNuevo.Click
+        Try
+            If MessageBox.Show("¿Desea hacer un abono a la cuenta del Cliente " + tblAbonos.CurrentRow.Cells("Cliente").Value + "?", "Advertencia", MessageBoxButtons.OKCancel, MessageBoxIcon.Question) = Windows.Forms.DialogResult.OK Then
+                Dim cppd As New CajaCuentasPPD
+                Me.AddOwnedForm(cppd)
+
+                Dim index As Int16 = tblAbonos.CurrentRow.Index
+                Dim cont As Int16 = tblAbonos.Rows.Count
+                If cont > 0 Then
+                    cont = 0
+                    mtdCaja.selectVentasPendientesCliente(cppd.tblVentasPendientes, tblAbonos.CurrentRow.Cells("idCliente").Value)
+                    cppd.idCliente = tblAbonos.CurrentRow.Cells("idCliente").Value
+                    cppd.idEmpleado = Me.idEmpleado
+                    cppd.idCaja = Me.idCaja
+                    cppd.ShowDialog()
+                End If
+            End If
+            mtdCaja.seleccionarAbonos(tblCuentasPorPagar, cmbFiltroAA.Text, txtFiltroAA.Text, txtDateInicial.Text, txtDateFinal.Text, If(chbTodosAA.Checked, True, False), idCaja)
+        Catch ex As Exception
+            MsgBox(ex.Message)
         End Try
     End Sub
 

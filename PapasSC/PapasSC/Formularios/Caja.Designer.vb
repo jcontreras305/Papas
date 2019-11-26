@@ -41,7 +41,7 @@ Partial Class Caja
         Me.Label6 = New System.Windows.Forms.Label()
         Me.tblCuentasPorPagar = New System.Windows.Forms.DataGridView()
         Me.pnlAbonosyAnticipos = New System.Windows.Forms.TabPage()
-        Me.Button2 = New System.Windows.Forms.Button()
+        Me.btnEliminarAbono = New System.Windows.Forms.Button()
         Me.btnNuevo = New System.Windows.Forms.Button()
         Me.txtDateInicial = New System.Windows.Forms.TextBox()
         Me.txtDateFinal = New System.Windows.Forms.TextBox()
@@ -258,7 +258,7 @@ Partial Class Caja
         '
         'pnlAbonosyAnticipos
         '
-        Me.pnlAbonosyAnticipos.Controls.Add(Me.Button2)
+        Me.pnlAbonosyAnticipos.Controls.Add(Me.btnEliminarAbono)
         Me.pnlAbonosyAnticipos.Controls.Add(Me.btnNuevo)
         Me.pnlAbonosyAnticipos.Controls.Add(Me.txtDateInicial)
         Me.pnlAbonosyAnticipos.Controls.Add(Me.txtDateFinal)
@@ -280,17 +280,17 @@ Partial Class Caja
         Me.pnlAbonosyAnticipos.Text = "Abonos y Anticipos"
         Me.pnlAbonosyAnticipos.UseVisualStyleBackColor = True
         '
-        'Button2
+        'btnEliminarAbono
         '
-        Me.Button2.Image = Global.PapasSC.My.Resources.Resources.SALIR
-        Me.Button2.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
-        Me.Button2.Location = New System.Drawing.Point(609, 419)
-        Me.Button2.Name = "Button2"
-        Me.Button2.Size = New System.Drawing.Size(83, 48)
-        Me.Button2.TabIndex = 32
-        Me.Button2.Text = "Eliminar"
-        Me.Button2.TextAlign = System.Drawing.ContentAlignment.MiddleRight
-        Me.Button2.UseVisualStyleBackColor = True
+        Me.btnEliminarAbono.Image = Global.PapasSC.My.Resources.Resources.SALIR
+        Me.btnEliminarAbono.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
+        Me.btnEliminarAbono.Location = New System.Drawing.Point(609, 419)
+        Me.btnEliminarAbono.Name = "btnEliminarAbono"
+        Me.btnEliminarAbono.Size = New System.Drawing.Size(83, 48)
+        Me.btnEliminarAbono.TabIndex = 32
+        Me.btnEliminarAbono.Text = "Eliminar"
+        Me.btnEliminarAbono.TextAlign = System.Drawing.ContentAlignment.MiddleRight
+        Me.btnEliminarAbono.UseVisualStyleBackColor = True
         '
         'btnNuevo
         '
@@ -401,9 +401,12 @@ Partial Class Caja
         '
         'tblAbonos
         '
+        Me.tblAbonos.AllowUserToAddRows = False
+        Me.tblAbonos.AllowUserToDeleteRows = False
         Me.tblAbonos.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
         Me.tblAbonos.Location = New System.Drawing.Point(9, 75)
         Me.tblAbonos.Name = "tblAbonos"
+        Me.tblAbonos.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect
         Me.tblAbonos.Size = New System.Drawing.Size(773, 338)
         Me.tblAbonos.TabIndex = 0
         '
@@ -659,7 +662,7 @@ Partial Class Caja
     Friend WithEvents mtcFechaFin As MonthCalendar
     Friend WithEvents btnActualizaCPC As Button
     Friend WithEvents tblAbonos As DataGridView
-    Friend WithEvents Button2 As Button
+    Friend WithEvents btnEliminarAbono As Button
     Friend WithEvents btnNuevo As Button
     Friend WithEvents txtDateInicial As TextBox
     Friend WithEvents txtDateFinal As TextBox
