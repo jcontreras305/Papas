@@ -395,7 +395,6 @@
             If MessageBox.Show("¿Desea hacer un abono a la cuenta del Cliente " + tblAbonos.CurrentRow.Cells("Cliente").Value + "?", "Advertencia", MessageBoxButtons.OKCancel, MessageBoxIcon.Question) = Windows.Forms.DialogResult.OK Then
                 Dim cppd As New CajaCuentasPPD
                 Me.AddOwnedForm(cppd)
-
                 Dim index As Int16 = tblAbonos.CurrentRow.Index
                 Dim cont As Int16 = tblAbonos.Rows.Count
                 If cont > 0 Then

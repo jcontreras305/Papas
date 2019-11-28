@@ -73,6 +73,7 @@ Partial Class NuevaVenta
         '
         Me.tblventa.AllowUserToAddRows = False
         Me.tblventa.AllowUserToDeleteRows = False
+        Me.tblventa.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill
         Me.tblventa.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
         Me.tblventa.Location = New System.Drawing.Point(523, 49)
         Me.tblventa.Name = "tblventa"
@@ -100,6 +101,7 @@ Partial Class NuevaVenta
         '
         'npdprecio
         '
+        Me.npdprecio.Increment = New Decimal(New Integer() {5, 0, 0, 65536})
         Me.npdprecio.Location = New System.Drawing.Point(364, 73)
         Me.npdprecio.Name = "npdprecio"
         Me.npdprecio.Size = New System.Drawing.Size(120, 20)
@@ -107,6 +109,7 @@ Partial Class NuevaVenta
         '
         'npdkilos
         '
+        Me.npdkilos.Increment = New Decimal(New Integer() {10, 0, 0, 0})
         Me.npdkilos.Location = New System.Drawing.Point(364, 47)
         Me.npdkilos.Name = "npdkilos"
         Me.npdkilos.Size = New System.Drawing.Size(120, 20)
@@ -114,11 +117,14 @@ Partial Class NuevaVenta
         '
         'Button1
         '
+        Me.Button1.Image = Global.PapasSC.My.Resources.Resources.GUARDAR
+        Me.Button1.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
         Me.Button1.Location = New System.Drawing.Point(926, 401)
         Me.Button1.Name = "Button1"
         Me.Button1.Size = New System.Drawing.Size(93, 46)
         Me.Button1.TabIndex = 10
         Me.Button1.Text = "Guardar " & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10)
+        Me.Button1.TextAlign = System.Drawing.ContentAlignment.MiddleRight
         Me.Button1.UseVisualStyleBackColor = True
         '
         'TabControl1
@@ -263,7 +269,7 @@ Partial Class NuevaVenta
         'Label8
         '
         Me.Label8.AutoSize = True
-        Me.Label8.Location = New System.Drawing.Point(13, 163)
+        Me.Label8.Location = New System.Drawing.Point(32, 150)
         Me.Label8.Name = "Label8"
         Me.Label8.Size = New System.Drawing.Size(89, 13)
         Me.Label8.TabIndex = 25
@@ -281,9 +287,10 @@ Partial Class NuevaVenta
         '
         'npdCantidadPagada
         '
-        Me.npdCantidadPagada.Location = New System.Drawing.Point(108, 161)
+        Me.npdCantidadPagada.Font = New System.Drawing.Font("Microsoft Sans Serif", 14.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.npdCantidadPagada.Location = New System.Drawing.Point(26, 178)
         Me.npdCantidadPagada.Name = "npdCantidadPagada"
-        Me.npdCantidadPagada.Size = New System.Drawing.Size(106, 20)
+        Me.npdCantidadPagada.Size = New System.Drawing.Size(137, 29)
         Me.npdCantidadPagada.TabIndex = 24
         '
         'txbFiltro
@@ -297,10 +304,13 @@ Partial Class NuevaVenta
         '
         Me.tblProductos.AllowUserToAddRows = False
         Me.tblProductos.AllowUserToDeleteRows = False
+        Me.tblProductos.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill
+        Me.tblProductos.BackgroundColor = System.Drawing.Color.White
         Me.tblProductos.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
         Me.tblProductos.Location = New System.Drawing.Point(6, 49)
         Me.tblProductos.Name = "tblProductos"
         Me.tblProductos.ReadOnly = True
+        Me.tblProductos.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect
         Me.tblProductos.Size = New System.Drawing.Size(269, 398)
         Me.tblProductos.TabIndex = 29
         '
@@ -324,11 +334,14 @@ Partial Class NuevaVenta
         '
         'Button2
         '
+        Me.Button2.Image = Global.PapasSC.My.Resources.Resources.CANCELAR
+        Me.Button2.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
         Me.Button2.Location = New System.Drawing.Point(1031, 401)
         Me.Button2.Name = "Button2"
         Me.Button2.Size = New System.Drawing.Size(93, 46)
         Me.Button2.TabIndex = 21
         Me.Button2.Text = "Cancelar"
+        Me.Button2.TextAlign = System.Drawing.ContentAlignment.MiddleRight
         Me.Button2.UseVisualStyleBackColor = True
         '
         'Button3
@@ -467,7 +480,6 @@ Partial Class NuevaVenta
     Friend WithEvents cmbFormaPago As ComboBox
     Friend WithEvents Label7 As Label
     Friend WithEvents Label8 As Label
-    Friend WithEvents npdCantidadPagada As NumericUpDown
     Friend WithEvents Label5 As Label
     Friend WithEvents cmbBodega As ComboBox
     Friend WithEvents Label3 As Label
@@ -480,4 +492,5 @@ Partial Class NuevaVenta
     Friend WithEvents btnBuscarCliente As Button
     Public WithEvents txtNombreCliente As TextBox
     Friend WithEvents Button8 As Button
+    Public WithEvents npdCantidadPagada As NumericUpDown
 End Class

@@ -113,6 +113,7 @@
                             nv.explicita = False
                         End If
                         nv.user = user
+                        nv.idCaja = listIdsCajas(cmbCajas.FindString(cmbCajas.Text))
                         Me.Visible = False
                         nv.ShowDialog()
                         Me.Visible = True
@@ -148,6 +149,7 @@
                     Else
                         vt.explicita = False
                     End If
+                    vt.idCaja = listIdsCajas(cmbCajas.FindString(cmbCajas.Text))
                     Me.Visible = False
                     vt.user = user
                     vt.ShowDialog()

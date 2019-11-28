@@ -154,9 +154,10 @@
             MsgBox("Actualizar_Producto duplicado")
         End Try
     End Sub
-
+    Dim listIdBodega As New List(Of String)
     Private Sub cmbBodega_MouseClick(sender As Object, e As MouseEventArgs) Handles cmbBodega.MouseClick
-        mtdv.llenarComboBodega(cmbBodega)
+
+        mtdv.llenarComboBodega(cmbBodega, listIdBodega)
     End Sub
 
     Private Sub btnseleccionP_Click(sender As Object, e As EventArgs) Handles btnseleccionP.Click
