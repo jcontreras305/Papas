@@ -358,10 +358,7 @@ Public Class NuevaVenta
                         mtdv.actualizar_credito(datos(0), descuentoC)
                         mtdv.actualizar_totalpagado(descuentoC, tblDetalleVenta.CurrentRow.Cells(0).Value)
                         mtdv.llenarDatagridview(tblDetalleVenta)
-
-
                     End If
-
                 End If
             Else
                 MsgBox("Venta Pagada")

@@ -98,6 +98,14 @@
     <Import Include="System.Threading.Tasks" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="DataSet\CajaAbonos.Designer.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>CajaAbonos.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="DataSet\CajaAbonos.vb">
+      <DependentUpon>CajaAbonos.xsd</DependentUpon>
+    </Compile>
     <Compile Include="DataSet\CajaGeneral.Designer.vb">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -551,6 +559,18 @@
     <Compile Include="Formularios\pantallaCargador.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="Reportes\ReporteAbonosCaja1.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ReporteAbonosCaja.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Reportes\ReporteCajaAbonos.Designer.vb">
+      <DependentUpon>ReporteCajaAbonos.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Reportes\ReporteCajaAbonos.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="Reportes\ReporteCajaGeneral.vb">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -826,6 +846,13 @@
     <EmbeddedResource Include="Formularios\pantallaCargador.resx">
       <DependentUpon>pantallaCargador.vb</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Reportes\ReporteAbonosCaja.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>ReporteAbonosCaja1.vb</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reportes\ReporteCajaAbonos.resx">
+      <DependentUpon>ReporteCajaAbonos.vb</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Reportes\ReporteCajaGeneral.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
       <LastGenOutput>ReporteCajaGeneral.vb</LastGenOutput>
@@ -876,6 +903,17 @@
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
+    <None Include="DataSet\CajaAbonos.xsc">
+      <DependentUpon>CajaAbonos.xsd</DependentUpon>
+    </None>
+    <None Include="DataSet\CajaAbonos.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>CajaAbonos.Designer.vb</LastGenOutput>
+    </None>
+    <None Include="DataSet\CajaAbonos.xss">
+      <DependentUpon>CajaAbonos.xsd</DependentUpon>
+    </None>
     <None Include="DataSet\CajaGeneral.xsc">
       <DependentUpon>CajaGeneral.xsd</DependentUpon>
     </None>
