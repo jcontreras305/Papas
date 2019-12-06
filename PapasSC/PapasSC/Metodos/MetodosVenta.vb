@@ -368,8 +368,8 @@ inner join cliente as cl on cl.idCliente = vn.idCliente
             VALUES
            ('" + Convert.ToString(clave) + "'
            , getdate()
-           ," + Convert.ToString(totalpagar) + "
-           ," + Convert.ToString(cantidadPagada) + "
+           ," + Convert.ToString(Replace(totalpagar.ToString(), ",", ".")) + "
+           ," + Convert.ToString(Replace(cantidadPagada.ToString(), ",", ".")) + "
            ,'" + Convert.ToString(estatus) + "'
            ,'" + Convert.ToString(idCliente) + "'
            ,'" + Convert.ToString(Empleado) + "'
@@ -443,11 +443,11 @@ inner join cliente as cl on cl.idCliente = vn.idCliente
            (newid()
            ,'" + clave + "'
            ,'" + idProducto + "'
-           ," + cantidad + "
-           ," + total + "
-           ," + totalneto + "
+           ," + Replace(cantidad.ToString(), ",", ".") + "
+           ," + Replace(total.ToString(), ",", ".") + "
+           ," + Replace(totalneto.ToString(), ",", ".") + "
            ,'A')"
-
+            MsgBox(cadena)
             Com = New SqlCommand(cadena, cn.conn)
             Com.ExecuteNonQuery()
             cn.desconectar()
@@ -478,7 +478,7 @@ inner join cliente as cl on cl.idCliente = vn.idCliente
             Rs = Com.ExecuteReader()
             Rs.Read()
             idbodega = Rs(0).ToString
-
+            MsgBox(idbodega)
             Rs.Close()
             cn.desconectar()
 
@@ -488,16 +488,17 @@ inner join cliente as cl on cl.idCliente = vn.idCliente
             Rs = Com.ExecuteReader()
             Rs.Read()
             idproducto = Rs(0).ToString
-
+            MsgBox(idproducto)
             Rs.Close()
             cn.desconectar()
 
 
-            Dim cadena As String = " UPDATE [dbo].[existenciaProductos]
-             SET [cantidad] =  (cantidad - " + kilosvendidos + ") 
+            Dim cadena As String = "
+             UPDATE [dbo].[existenciaProductos]
+             SET [cantidad] =  (cantidad - " + Replace(kilosvendidos, ",", ".") + ") 
              WHERE [idBodega] = '" + idbodega + "' 
              and [idProducto] = '" + idproducto + "'"
-
+            MsgBox(cadena)
             Rs.Close()
             cn.desconectar()
             cn.conectar()
@@ -526,7 +527,7 @@ inner join cliente as cl on cl.idCliente = vn.idCliente
             Rs = Com.ExecuteReader()
             Rs.Read()
             idbodega = Rs(0).ToString
-
+            MsgBox(idbodega)
             Rs.Close()
             cn.desconectar()
 
@@ -536,7 +537,7 @@ inner join cliente as cl on cl.idCliente = vn.idCliente
             Rs = Com.ExecuteReader()
             Rs.Read()
             idproducto = Rs(0).ToString
-
+            MsgBox(idproducto)
             Rs.Close()
             cn.desconectar()
 
@@ -546,7 +547,7 @@ inner join cliente as cl on cl.idCliente = vn.idCliente
              SET [cantidad] =  (cantidad - " + kilosvendidos + ") 
              WHERE [idBodega] = '" + idbodega + "' 
              and [idProducto] = '" + idproducto + "'"
-
+            MsgBox(cadena)
             Rs.Close()
             cn.desconectar()
             cn.conectar()
@@ -687,7 +688,7 @@ inner join cliente as cl on cl.idCliente = vn.idCliente
            ," + total + "
            ," + totalneto + "
            ,'A')"
-
+            MsgBox(cadena)
             Com = New SqlCommand(cadena, cn.conn)
             Com.ExecuteNonQuery()
             cn.desconectar()
@@ -757,7 +758,7 @@ inner join cliente as cl on cl.idCliente = vn.idCliente
       , [estatus] =  'A'
         WHERE [idVentaDetalle] = '" + clavevd + "'"
 
-
+            MsgBox(cadena)
             Com = New SqlCommand(cadena, cn.conn)
             Com.ExecuteNonQuery()
             cn.desconectar()

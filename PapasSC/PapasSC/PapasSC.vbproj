@@ -593,12 +593,6 @@
       <DependentUpon>ReporteVenta.rpt</DependentUpon>
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="Reportes\ReporteVentas.vb">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>ReporteVentas.rpt</DependentUpon>
-      <SubType>Component</SubType>
-    </Compile>
     <Compile Include="Reportes\ReporteVentasPorPagarCliente.Designer.vb">
       <DependentUpon>ReporteVentasPorPagarCliente.vb</DependentUpon>
     </Compile>
@@ -634,12 +628,6 @@
     </Compile>
     <Compile Include="Reportes\VerTicket.vb">
       <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="ReportVenta.vb">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>ReportVenta.rpt</DependentUpon>
-      <SubType>Component</SubType>
     </Compile>
   </ItemGroup>
   <ItemGroup>
@@ -866,10 +854,6 @@
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
       <LastGenOutput>ReporteVenta.vb</LastGenOutput>
     </EmbeddedResource>
-    <EmbeddedResource Include="Reportes\ReporteVentas.rpt">
-      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
-      <LastGenOutput>ReporteVentas.vb</LastGenOutput>
-    </EmbeddedResource>
     <EmbeddedResource Include="Reportes\ReporteVentasPorPagarCliente.resx">
       <DependentUpon>ReporteVentasPorPagarCliente.vb</DependentUpon>
     </EmbeddedResource>
@@ -889,10 +873,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Reportes\VerTicket.resx">
       <DependentUpon>VerTicket.vb</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="ReportVenta.rpt">
-      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
-      <LastGenOutput>ReportVenta.vb</LastGenOutput>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>

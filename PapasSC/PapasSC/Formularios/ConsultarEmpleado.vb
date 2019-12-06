@@ -8,6 +8,13 @@
         tblEmple.DataSource = fun.Consultar
     End Sub
 
+    Public Sub ConsulTodos()
+        Dim fun As New MetodosEmpleado
+        tblEmple.DataSource = fun.ConsultarTodos
+    End Sub
+
+
+
     Private Sub ConsultarEmpleado_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         tblEmple.ReadOnly = True
         Consul()
@@ -109,6 +116,14 @@
             Next
         Else
             MsgBox("No se ha seleccionado un proveedor")
+        End If
+    End Sub
+
+    Private Sub chbShowEm_CheckedChanged(sender As Object, e As EventArgs) Handles chbShowEm.CheckedChanged
+        If chbShowEm.Checked Then
+            ConsulTodos()
+        Else
+            Consul()
         End If
     End Sub
 End Class

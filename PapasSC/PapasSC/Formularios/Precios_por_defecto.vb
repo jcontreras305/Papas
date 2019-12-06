@@ -10,6 +10,8 @@ Public Class Precios_por_defecto
 
     Private Sub Precios_por_defecto_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         consultaPrecios()
+        nupPrecio.DecimalPlaces = 2
+        nupPrecio.ThousandsSeparator = True
 
 
     End Sub
@@ -66,7 +68,7 @@ Public Class Precios_por_defecto
 
             datosNew(0) = ver
             datosNew(1) = cla
-            datosNew(2) = txtPrecio.Text
+            datosNew(2) = nupPrecio.Value
 
             If MessageBox.Show("¿Desea Actualizar precio de Producto?", "Atención", MessageBoxButtons.YesNo, MessageBoxIcon.Question) = Windows.Forms.DialogResult.Yes Then
 
@@ -90,29 +92,10 @@ Public Class Precios_por_defecto
             Next
             ver = datosPre(0)
             cla = datosPre(1)
-            txtPrecio.Text = datosPre(2)
+            nupPrecio.Value = datosPre(2)
         Catch ex As Exception
             MsgBox(ex.Message)
         End Try
     End Sub
 
-
-
-    Private Sub ValidarNumeros2(ByRef e As System.Windows.Forms.KeyPressEventArgs)
-        If Char.IsDigit(e.KeyChar) Then
-            e.Handled = False
-        ElseIf Char.IsControl(e.KeyChar) Then
-            e.Handled = False
-        Else
-            e.Handled = True
-            MsgBox("Solo se puede ingresar valores de tipo número", MsgBoxStyle.Exclamation, "Ingreso de Número")
-        End If
-
-    End Sub
-
-    Private Sub txtPrecio_KeyPress(sender As Object, e As KeyPressEventArgs) Handles txtPrecio.KeyPress
-        ValidarNumeros2(e)
-        txtPrecio.MaxLength = 4
-
-    End Sub
 End Class

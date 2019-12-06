@@ -185,6 +185,7 @@ Partial Class GenerarNomina
         'nudDias
         '
         Me.nudDias.Location = New System.Drawing.Point(97, 89)
+        Me.nudDias.Maximum = New Decimal(New Integer() {7, 0, 0, 0})
         Me.nudDias.Name = "nudDias"
         Me.nudDias.Size = New System.Drawing.Size(59, 20)
         Me.nudDias.TabIndex = 37
@@ -253,6 +254,7 @@ Partial Class GenerarNomina
         'nudFaltas
         '
         Me.nudFaltas.Location = New System.Drawing.Point(217, 89)
+        Me.nudFaltas.Maximum = New Decimal(New Integer() {4, 0, 0, 0})
         Me.nudFaltas.Name = "nudFaltas"
         Me.nudFaltas.Size = New System.Drawing.Size(59, 20)
         Me.nudFaltas.TabIndex = 44

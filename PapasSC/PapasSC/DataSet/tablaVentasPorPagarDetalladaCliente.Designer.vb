@@ -445,7 +445,7 @@ Partial Public Class tablaVentasPorPagarDetalladaCliente
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
-        Public Overloads Function AddVentas_PendientesRow(ByVal Folio As String, ByVal Fecha As String, ByVal Cliente As String, ByVal Total As String, ByVal Saldado As String, ByVal Debe As String, ByVal Día_Límite As String, ByVal Días As String, ByVal Estado As String) As Ventas_PendientesRow
+        Public Overloads Function AddVentas_PendientesRow(ByVal Folio As String, ByVal Fecha As String, ByVal Cliente As String, ByVal Total As String, ByVal Saldado As String, ByVal Debe As Double, ByVal Día_Límite As String, ByVal Días As String, ByVal Estado As String) As Ventas_PendientesRow
             Dim rowVentas_PendientesRow As Ventas_PendientesRow = CType(Me.NewRow,Ventas_PendientesRow)
             Dim columnValuesArray() As Object = New Object() {Folio, Fecha, Cliente, Total, Saldado, Debe, Día_Límite, Días, Estado}
             rowVentas_PendientesRow.ItemArray = columnValuesArray
@@ -494,7 +494,7 @@ Partial Public Class tablaVentasPorPagarDetalladaCliente
             MyBase.Columns.Add(Me.columnTotal)
             Me.columnSaldado = New Global.System.Data.DataColumn("Saldado", GetType(String), Nothing, Global.System.Data.MappingType.Element)
             MyBase.Columns.Add(Me.columnSaldado)
-            Me.columnDebe = New Global.System.Data.DataColumn("Debe", GetType(String), Nothing, Global.System.Data.MappingType.Element)
+            Me.columnDebe = New Global.System.Data.DataColumn("Debe", GetType(Double), Nothing, Global.System.Data.MappingType.Element)
             MyBase.Columns.Add(Me.columnDebe)
             Me.columnDía_Límite = New Global.System.Data.DataColumn("Día Límite", GetType(String), Nothing, Global.System.Data.MappingType.Element)
             MyBase.Columns.Add(Me.columnDía_Límite)
@@ -723,10 +723,10 @@ Partial Public Class tablaVentasPorPagarDetalladaCliente
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
-        Public Property Debe() As String
+        Public Property Debe() As Double
             Get
                 Try 
-                    Return CType(Me(Me.tableVentas_Pendientes.DebeColumn),String)
+                    Return CType(Me(Me.tableVentas_Pendientes.DebeColumn),Double)
                 Catch e As Global.System.InvalidCastException
                     Throw New Global.System.Data.StrongTypingException("El valor de la columna 'Debe' de la tabla 'Ventas_Pendientes' es DBNull.", e)
                 End Try

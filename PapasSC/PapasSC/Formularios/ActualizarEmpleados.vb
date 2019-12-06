@@ -46,8 +46,11 @@ Public Class ActualizarEmpleados
         End Try
 
         cboEmBodega.SelectedIndex = cboEmBodega.FindString(datosEmpleados2(5))
-        cboEmHorario.SelectedIndex = cboEmHorario.FindString(datosEmpleados2(6))
-        cboEmPuesto.SelectedIndex = cboEmPuesto.FindString(datosEmpleados2(7))
+        cboEmHorario.SelectedIndex = cboEmHorario.FindString(datosEmpleados2(7))
+        cboEmPuesto.SelectedIndex = cboEmPuesto.FindString(datosEmpleados2(6))
+
+
+
     End Sub
 
     Private Sub btnEmAceptar_Click(sender As Object, e As EventArgs) Handles btnEmAceptar.Click

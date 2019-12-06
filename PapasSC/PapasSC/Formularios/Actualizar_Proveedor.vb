@@ -13,6 +13,8 @@ Public Class Actualizar_Proveedor
         lblCamObli3.Visible = False
         lblCamObli4.Visible = False
 
+
+
         rdbMasculinoProvee.Checked = True
         datosPro = Consultar_Proveedores.datosProveedor
 
@@ -23,6 +25,8 @@ Public Class Actualizar_Proveedor
         Catch ex As Exception
             txtNombreProvee.Text = ""
         End Try
+
+        txtAliasProvee.Text = datosPro(1).ToString
 
 
 
@@ -37,7 +41,7 @@ Public Class Actualizar_Proveedor
         txtRfcProvee.Text = datosPro(2)
         cboTipoPersonaPro.Text = datosPro(4)
 
-        If datosPro(4) = "A" Then
+        If datosPro(16) = "A" Then
             chbActivo.Checked = True
         Else
             chbActivo.Checked = False
@@ -86,29 +90,28 @@ Public Class Actualizar_Proveedor
             lblDireccion2.Visible = False
             lblTelefono2.Visible = False
             lblEmail2.Visible = False
+            chbExtras.Checked = False
         End If
+
 
 
     End Sub
 
     Private Sub chbExtras_CheckedChanged(sender As Object, e As EventArgs) Handles chbExtras.CheckedChanged
-        If chbExtras.Checked = True Then
-            txtDireccion2.Visible = True
+        If chbExtras.Checked Then
             lblDireccion2.Visible = True
-            txtEmail2.Visible = True
-            lblEmail2.Visible = True
-            txtTelefono2.Visible = True
             lblTelefono2.Visible = True
-        ElseIf chbExtras.Checked = False Then
-            txtDireccion2.Visible = False
+            lblEmail2.Visible = True
+            txtDireccion2.Visible = True
+            txtTelefono2.Visible = True
+            txtEmail2.Visible = True
+        Else
             lblDireccion2.Visible = False
-            txtEmail2.Visible = False
-            lblEmail2.Visible = False
-            txtTelefono2.Visible = False
             lblTelefono2.Visible = False
-            txtDireccion2.Text = ""
-            txtTelefono2.Text = ""
-            txtEmail2.Text = ""
+            lblEmail2.Visible = False
+            txtDireccion2.Visible = False
+            txtTelefono2.Visible = False
+            txtEmail2.Visible = False
 
         End If
     End Sub
@@ -340,10 +343,10 @@ Public Class Actualizar_Proveedor
     Private Sub txtTelefono2_KeyUp(sender As Object, e As KeyEventArgs) Handles txtTelefono2.KeyUp
         Try
             If txtTelefono2.Text.Length = 3 Or txtTelefono2.Text.Length = 7 Then
-                txtTelefonoPro.Text = txtTelefonoPro.Text + "-"
+                txtTelefono2.Text = txtTelefono2.Text + "-"
             End If
 
-            Dim tel As String = txtTelefonoPro.Text
+            Dim tel As String = txtTelefono2.Text
             If tel.Length > 12 Then
                 tel = tel.Remove(tel.Length - 1)
                 txtTelefono2.Text = tel
@@ -366,6 +369,56 @@ Public Class Actualizar_Proveedor
             End If
             txtCodigoPostalPro.Text = txtCodigoPostalPro.Text.ToUpper
             txtCodigoPostalPro.SelectionStart = textocp.Length
+        Catch ex As Exception
+
+        End Try
+    End Sub
+
+
+
+    Private Sub ValidarLetras(ByRef e As System.Windows.Forms.KeyPressEventArgs)
+        If Char.IsDigit(e.KeyChar) Then
+            e.Handled = True
+            MsgBox("Solo se puede ingresar valores de tipo texto", MsgBoxStyle.Exclamation, "Ingreso de Texto")
+        ElseIf Char.IsControl(e.KeyChar) Then
+            e.Handled = False
+        Else
+            e.Handled = False
+        End If
+    End Sub
+
+    Private Sub txtNombreProvee_KeyPress(sender As Object, e As KeyPressEventArgs) Handles txtNombreProvee.KeyPress
+        ValidarLetras(e)
+        txtNombreProvee.MaxLength = 80
+    End Sub
+
+    Private Sub txtAliasProvee_KeyPress(sender As Object, e As KeyPressEventArgs) Handles txtAliasProvee.KeyPress
+        ValidarLetras(e)
+        txtAliasProvee.MaxLength = 80
+    End Sub
+
+
+    Private Sub txtMunicipioPro_KeyPress(sender As Object, e As KeyPressEventArgs) Handles txtMunicipioPro.KeyPress
+        ValidarLetras(e)
+        txtAliasProvee.MaxLength = 80
+    End Sub
+
+
+
+
+
+    Private Sub txtRfcProvee_KeyDown(sender As Object, e As KeyEventArgs) Handles txtRfcProvee.KeyDown
+        Try
+            Dim rfc As String = txtRfcProvee.Text
+
+            If rfc.Length >= 13 Then
+                rfc = rfc.Remove(rfc.Length - 1)
+                txtRfcProvee.Text = rfc
+            ElseIf rfc.Length > 13 Then
+                MsgBox("Solo se permiten 13 caracteres")
+            End If
+            txtRfcProvee.Text = txtRfcProvee.Text.ToUpper
+            txtRfcProvee.SelectionStart = rfc.Length
         Catch ex As Exception
 
         End Try

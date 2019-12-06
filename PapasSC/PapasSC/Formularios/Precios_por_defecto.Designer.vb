@@ -28,9 +28,10 @@ Partial Class Precios_por_defecto
         Me.btnBuscarPrecios = New System.Windows.Forms.Button()
         Me.tblPreciosDefecto = New System.Windows.Forms.DataGridView()
         Me.Label2 = New System.Windows.Forms.Label()
-        Me.txtPrecio = New System.Windows.Forms.TextBox()
         Me.btnModificarPrecio = New System.Windows.Forms.Button()
+        Me.nupPrecio = New System.Windows.Forms.NumericUpDown()
         CType(Me.tblPreciosDefecto, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.nupPrecio, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'Label1
@@ -76,6 +77,7 @@ Partial Class Precios_por_defecto
         Me.tblPreciosDefecto.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
         Me.tblPreciosDefecto.Location = New System.Drawing.Point(35, 69)
         Me.tblPreciosDefecto.Name = "tblPreciosDefecto"
+        Me.tblPreciosDefecto.ReadOnly = True
         Me.tblPreciosDefecto.Size = New System.Drawing.Size(521, 232)
         Me.tblPreciosDefecto.TabIndex = 4
         '
@@ -90,14 +92,6 @@ Partial Class Precios_por_defecto
         Me.Label2.TabIndex = 6
         Me.Label2.Text = "X"
         '
-        'txtPrecio
-        '
-        Me.txtPrecio.Location = New System.Drawing.Point(35, 308)
-        Me.txtPrecio.Name = "txtPrecio"
-        Me.txtPrecio.Size = New System.Drawing.Size(128, 20)
-        Me.txtPrecio.TabIndex = 7
-        Me.txtPrecio.Text = "0.00"
-        '
         'btnModificarPrecio
         '
         Me.btnModificarPrecio.Location = New System.Drawing.Point(169, 307)
@@ -107,13 +101,20 @@ Partial Class Precios_por_defecto
         Me.btnModificarPrecio.Text = "Modificar precio"
         Me.btnModificarPrecio.UseVisualStyleBackColor = True
         '
+        'nupPrecio
+        '
+        Me.nupPrecio.Location = New System.Drawing.Point(35, 308)
+        Me.nupPrecio.Name = "nupPrecio"
+        Me.nupPrecio.Size = New System.Drawing.Size(120, 20)
+        Me.nupPrecio.TabIndex = 9
+        '
         'Precios_por_defecto
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(596, 340)
+        Me.Controls.Add(Me.nupPrecio)
         Me.Controls.Add(Me.btnModificarPrecio)
-        Me.Controls.Add(Me.txtPrecio)
         Me.Controls.Add(Me.Label2)
         Me.Controls.Add(Me.tblPreciosDefecto)
         Me.Controls.Add(Me.btnBuscarPrecios)
@@ -124,6 +125,7 @@ Partial Class Precios_por_defecto
         Me.Name = "Precios_por_defecto"
         Me.Text = " "
         CType(Me.tblPreciosDefecto, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.nupPrecio, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
@@ -135,6 +137,6 @@ Partial Class Precios_por_defecto
     Friend WithEvents btnBuscarPrecios As Button
     Friend WithEvents tblPreciosDefecto As DataGridView
     Friend WithEvents Label2 As Label
-    Friend WithEvents txtPrecio As TextBox
     Friend WithEvents btnModificarPrecio As Button
+    Friend WithEvents nupPrecio As NumericUpDown
 End Class

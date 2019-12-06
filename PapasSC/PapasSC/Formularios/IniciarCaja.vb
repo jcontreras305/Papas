@@ -127,6 +127,7 @@
                     End If
                     caja.txtCaja.Text = cmbCajas.Text
                     caja.txtEmpleado.Text = cmbEmpleados.Text
+                    caja.idEmpleado = listIdsEmpleados(cmbEmpleados.FindString(cmbEmpleados.Text))
                     Me.Visible = False
                     caja.ShowDialog()
                     Me.Visible = True
@@ -156,6 +157,8 @@
                     Caja.pnlEstatus.BackColor = Color.Green
                     Caja.txtCaja.Text = cmbCajas.Text
                     Caja.txtEmpleado.Text = cmbEmpleados.Text
+                    Caja.idEmpleado = listIdsEmpleados(cmbEmpleados.FindString(cmbEmpleados.Text))
+
                     Me.Visible = False
                     Caja.ShowDialog()
                     Me.Visible = True

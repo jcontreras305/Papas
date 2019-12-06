@@ -30,6 +30,7 @@ Public Class Actualizar_Cliente
         Catch ex As Exception
             txtRazonSocial.Text = ""
         End Try
+
         txtrfc.Text = datosCli(2)
         cmbTipoPersona.Text = datosCli(5)
         If datosCli(6) = "A" Then
@@ -37,6 +38,7 @@ Public Class Actualizar_Cliente
         Else
             chbActivo.Checked = False
         End If
+
         If Not datosCli(7) = "" And Not datosCli(8) = "" Then
             txtLimiteCredito.Text = datosCli(7)
             txtSaldo.Text = datosCli(8)

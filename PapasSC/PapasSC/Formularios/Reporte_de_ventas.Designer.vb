@@ -147,6 +147,7 @@ Partial Class Reporte_de_ventas
         Me.jtableNombres.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
         Me.jtableNombres.Location = New System.Drawing.Point(179, 47)
         Me.jtableNombres.Name = "jtableNombres"
+        Me.jtableNombres.ReadOnly = True
         Me.jtableNombres.ShowCellErrors = False
         Me.jtableNombres.Size = New System.Drawing.Size(167, 96)
         Me.jtableNombres.TabIndex = 27

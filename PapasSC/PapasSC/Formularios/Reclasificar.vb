@@ -16,6 +16,10 @@
         sprKilosMas.ThousandsSeparator = True
         lblCantidad.Text = "Existencia"
         tblProductosExistencias.ReadOnly = True
+        tblCambios.Columns("Producto").ReadOnly = True
+        tblCambios.Columns("Cambio").ReadOnly = True
+        tblCambios.Columns("Cantidad").ReadOnly = True
+        tblCambios.Columns("Eliminar").ReadOnly = False
     End Sub
 
     Private Sub cmbBodega_SelectedIndexChanged(sender As Object, e As EventArgs) Handles cmbBodega.SelectedIndexChanged
@@ -179,4 +183,6 @@
 
         End Try
     End Sub
+
+
 End Class

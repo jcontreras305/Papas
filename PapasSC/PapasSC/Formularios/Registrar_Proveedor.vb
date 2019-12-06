@@ -98,6 +98,9 @@ Public Class Registrar_Proveedor
 
             Dim flag1 As Boolean = True
             Try
+
+
+
                 datosPro.Add(txtNombreProvee.Text)
                 datosPro.Add(txtRfcProvee.Text)
                 datosPro.Add(txtRazonSocialProvee.Text)
@@ -416,6 +419,49 @@ Public Class Registrar_Proveedor
 
         End Try
     End Sub
+
+    Private Sub validarLe(ByRef e As System.Windows.Forms.KeyPressEventArgs)
+        If Char.IsDigit(e.KeyChar) Then
+            e.Handled = True
+            MsgBox("Solo se puede ingresar valores de tipo texto", MsgBoxStyle.Exclamation, "Ingreso de Texto")
+        ElseIf Char.IsControl(e.KeyChar) Then
+            e.Handled = False
+        Else
+            e.Handled = False
+        End If
+    End Sub
+
+    Private Sub validarNume(ByRef e As System.Windows.Forms.KeyPressEventArgs)
+        If Char.IsDigit(e.KeyChar) Then
+            e.Handled = False
+        ElseIf Char.IsControl(e.KeyChar) Then
+            e.Handled = False
+        Else
+            e.Handled = True
+            MsgBox("Solo se puede ingresar valores de tipo número", MsgBoxStyle.Exclamation, "Ingreso de Número")
+        End If
+    End Sub
+
+    Private Sub txtNombreProvee_KeyPress(sender As Object, e As KeyPressEventArgs) Handles txtNombreProvee.KeyPress
+        validarLe(e)
+        txtNombreProvee.MaxLength = 50
+    End Sub
+
+
+
+    Private Sub txtMunicipioPro_KeyPress(sender As Object, e As KeyPressEventArgs) Handles txtMunicipioPro.KeyPress
+        validarLe(e)
+        txtMunicipioPro.MaxLength = 80
+    End Sub
+
+
+
+    Private Sub txtAliasProvee_KeyPress(sender As Object, e As KeyPressEventArgs) Handles txtAliasProvee.KeyPress
+        validarLe(e)
+        txtAliasProvee.MaxLength = 80
+    End Sub
+
+
 
 
 
