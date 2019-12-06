@@ -98,14 +98,6 @@
     <Import Include="System.Threading.Tasks" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="DataSet\CajaAbonos.Designer.vb">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>CajaAbonos.xsd</DependentUpon>
-    </Compile>
-    <Compile Include="DataSet\CajaAbonos.vb">
-      <DependentUpon>CajaAbonos.xsd</DependentUpon>
-    </Compile>
     <Compile Include="DataSet\CajaGeneral.Designer.vb">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -120,6 +112,12 @@
       <DependentUpon>tablaVentasPorPagarDetalladaCliente.xsd</DependentUpon>
     </Compile>
     <Compile Include="Formularios\.Designer.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formularios\Acceder.Designer.vb">
+      <DependentUpon>Acceder.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Formularios\Acceder.vb">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Formularios\Actualizar_bodega.Designer.vb">
@@ -559,16 +557,10 @@
     <Compile Include="Formularios\pantallaCargador.vb">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Reportes\ReporteAbonosCaja1.vb">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>ReporteAbonosCaja.rpt</DependentUpon>
-      <SubType>Component</SubType>
+    <Compile Include="Reportes\AbonosCliente.Designer.vb">
+      <DependentUpon>AbonosCliente.vb</DependentUpon>
     </Compile>
-    <Compile Include="Reportes\ReporteCajaAbonos.Designer.vb">
-      <DependentUpon>ReporteCajaAbonos.vb</DependentUpon>
-    </Compile>
-    <Compile Include="Reportes\ReporteCajaAbonos.vb">
+    <Compile Include="Reportes\AbonosCliente.vb">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Reportes\ReporteCajaGeneral.vb">
@@ -600,6 +592,12 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>ReporteFechas.rpt</DependentUpon>
       <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Reportes\ReporteHistorialAbonos.vb">
+      <DependentUpon>ReporteHistorialAbonos.rpt</DependentUpon>
+      <SubType>Component</SubType>
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
     </Compile>
     <Compile Include="Reportes\ReporteSucursal.vb">
       <AutoGen>True</AutoGen>
@@ -651,6 +649,9 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="Formularios\Acceder.resx">
+      <DependentUpon>Acceder.vb</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Formularios\Actualizar_bodega.resx">
       <DependentUpon>Actualizar_bodega.vb</DependentUpon>
     </EmbeddedResource>
@@ -846,12 +847,8 @@
     <EmbeddedResource Include="Formularios\pantallaCargador.resx">
       <DependentUpon>pantallaCargador.vb</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Reportes\ReporteAbonosCaja.rpt">
-      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
-      <LastGenOutput>ReporteAbonosCaja1.vb</LastGenOutput>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Reportes\ReporteCajaAbonos.resx">
-      <DependentUpon>ReporteCajaAbonos.vb</DependentUpon>
+    <EmbeddedResource Include="Reportes\AbonosCliente.resx">
+      <DependentUpon>AbonosCliente.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Reportes\ReporteCajaGeneral.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
@@ -872,6 +869,10 @@
     <EmbeddedResource Include="Reportes\ReporteFechas.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
       <LastGenOutput>ReporteFechas.vb</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reportes\ReporteHistorialAbonos.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>ReporteHistorialAbonos.vb</LastGenOutput>
     </EmbeddedResource>
     <EmbeddedResource Include="Reportes\ReporteSucursal.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
@@ -903,17 +904,6 @@
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
-    <None Include="DataSet\CajaAbonos.xsc">
-      <DependentUpon>CajaAbonos.xsd</DependentUpon>
-    </None>
-    <None Include="DataSet\CajaAbonos.xsd">
-      <SubType>Designer</SubType>
-      <Generator>MSDataSetGenerator</Generator>
-      <LastGenOutput>CajaAbonos.Designer.vb</LastGenOutput>
-    </None>
-    <None Include="DataSet\CajaAbonos.xss">
-      <DependentUpon>CajaAbonos.xsd</DependentUpon>
-    </None>
     <None Include="DataSet\CajaGeneral.xsc">
       <DependentUpon>CajaGeneral.xsd</DependentUpon>
     </None>
@@ -961,6 +951,7 @@
     <Content Include="Imagenes\BILLETE.png" />
     <Content Include="Imagenes\BODEGAS.jpg" />
     <Content Include="Imagenes\BORRAR.png" />
+    <Content Include="Imagenes\BUSCAR.png" />
     <Content Include="Imagenes\CAJA.jpg" />
     <Content Include="Imagenes\CAJAS1.jpg" />
     <Content Include="Imagenes\CATALOGO.jpg" />

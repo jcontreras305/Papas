@@ -2,6 +2,7 @@
     Dim mtdCaja As New MetodosCaja
     Public idEmpleado, idCaja As String
     Public DineroTotal As Double
+    Public formaPago As String
     Public vn As Boolean
     Public arrayMonedas() As Integer = {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0}
     Public flag, flagCancelar As Boolean
@@ -245,8 +246,18 @@
     Private Sub btnContinuar_Click(sender As Object, e As EventArgs) Handles btnContinuar.Click
         If vn Then
             'esto es cuando esta en ventas
+            Dim nv As NuevaVenta = CType(Owner, NuevaVenta)
+            If formaPago.Equals("Contado") And CDbl(txtTotal.Text) >= CDbl(txtTotalPagar.Text) Then
+                nv.cancelaventa = False
+                Me.Close()
+            ElseIf formaPago.Equals("Credito") Then
+                nv.cantidadPagadaCredito = CDbl(txtTotal.Text.ToString())
+                nv.cancelaventa = False
+                Me.Close()
+            Else
+                MsgBox("Debe ser mayor o igual el monto a pagar")
+            End If
 
-            Me.Close()
         Else 'aqui es para iniciar caja desda boton de venta y caja
             If Not DineroTotal > 0.0 Then
                 MessageBox.Show("Debes introducir dinero para iniciar la caja.", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.None)
@@ -268,6 +279,7 @@
             If vn Then
                 Dim nv As NuevaVenta = CType(Owner, NuevaVenta)
                 nv.explicita = False
+                nv.cancelaventa = True
             Else
                 Dim ic As IniciarCaja = CType(Owner, IniciarCaja)
                 ic.flagCanelar = False

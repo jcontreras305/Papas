@@ -113,6 +113,7 @@
                             nv.explicita = False
                         End If
                         nv.user = user
+                        nv.idCaja = listIdsCajas(cmbCajas.FindString(cmbCajas.Text))
                         Me.Visible = False
                         nv.ShowDialog()
                         Me.Visible = True
@@ -128,6 +129,7 @@
                     caja.txtCaja.Text = cmbCajas.Text
                     caja.txtEmpleado.Text = cmbEmpleados.Text
                     caja.idEmpleado = listIdsEmpleados(cmbEmpleados.FindString(cmbEmpleados.Text))
+                    caja.idCaja = listIdsCajas(cmbCajas.FindString(cmbCajas.Text))
                     Me.Visible = False
                     caja.ShowDialog()
                     Me.Visible = True
@@ -147,6 +149,7 @@
                     Else
                         vt.explicita = False
                     End If
+                    vt.idCaja = listIdsCajas(cmbCajas.FindString(cmbCajas.Text))
                     Me.Visible = False
                     vt.user = user
                     vt.ShowDialog()
@@ -158,7 +161,7 @@
                     Caja.txtCaja.Text = cmbCajas.Text
                     Caja.txtEmpleado.Text = cmbEmpleados.Text
                     Caja.idEmpleado = listIdsEmpleados(cmbEmpleados.FindString(cmbEmpleados.Text))
-
+                    Caja.idCaja = listIdsCajas(cmbCajas.FindString(cmbCajas.Text))
                     Me.Visible = False
                     Caja.ShowDialog()
                     Me.Visible = True

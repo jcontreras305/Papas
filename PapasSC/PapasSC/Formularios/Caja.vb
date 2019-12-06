@@ -1,6 +1,6 @@
 ﻿Public Class Caja
     Dim mtdCaja As New MetodosCaja
-    Public idEmpleado As String
+    Public idEmpleado, idCaja As String
 
 
     Private Sub Caja_Load(sender As Object, e As EventArgs) Handles MyBase.Load
@@ -31,9 +31,24 @@
     Private Sub tabControl1_SelectedIndex(sender As Object, e As EventArgs) Handles TabControl1.SelectedIndexChanged
         If TabControl1.SelectedIndex = 0 Then 'General
             chbTodos.Checked = False
-            mtdCaja.select_ventasCajas(tblVentas, cmbTipoPersona.Text, txtFiltro1.Text, txtCaja.Text, txtFecha1.Text, txtFecha2.Text, False) 'stpFechaInicio.Value.ToLongDateString, stpFechaFin.Value.ToLongDateString)
-        ElseIf TabControl1.SelectedIndex = 1 Then ' Abonos y anticipos
+            If txtFiltro1.Text = String.Empty Then
+                mtdCaja.select_ventasCajas(tblVentas, "", "", txtCaja.Text, txtFecha1.Text, txtFecha2.Text, False) 'stpFechaInicio.Value.ToLongDateString, stpFechaFin.Value.ToLongDateString)
+            Else
+                mtdCaja.select_ventasCajas(tblVentas, cmbTipoPersona.Text, txtFiltro1.Text, txtCaja.Text, txtFecha1.Text, txtFecha2.Text, False) 'stpFechaInicio.Value.ToLongDateString, stpFechaFin.Value.ToLongDateString)
+            End If
 
+        ElseIf TabControl1.SelectedIndex = 1 Then ' Abonos y anticipos
+            cmbFiltroAA.SelectedIndex = 0
+            Dim d1 As Date = Date.Now
+            Dim d2 As Date = d1.AddMonths(-1)
+            txtDateFinal.Text = String.Format(d1.ToShortDateString(), "dd,MM,yyyy")
+            txtDateInicial.Text = String.Format(d2.ToShortDateString(), "dd,MM,yyyy")
+            chbTodosAA.Checked = False
+            If txtFiltroAA.Text = String.Empty Then
+                mtdCaja.seleccionarAbonos(tblAbonos, "", "", txtDateInicial.Text, txtDateFinal.Text, If(chbTodosAA.Checked, True, False), idCaja)
+            Else
+                mtdCaja.seleccionarAbonos(tblAbonos, cmbFiltroAA.Text, txtFiltroAA.Text, txtDateInicial.Text, txtDateFinal.Text, If(chbTodosAA.Checked, True, False), idCaja)
+            End If
         ElseIf TabControl1.SelectedIndex = 2 Then ' Cuentas por cobrar
             Dim d1 As Date = Date.Now
             Dim d2 As Date = d1.AddMonths(-1)
@@ -43,7 +58,8 @@
             mtdCaja.select_CuentaPorCobrar(tblCuentasPorPagar, cmbFiltar.Text, txtFiltro.Text, txtFechaInicio.Text, txtFechaFin.Text, If(chbTodosCPP.Checked, True, False))
             tblCuentasPorPagar.Columns.Item("idCliente").Visible = False
         ElseIf TabControl1.SelectedIndex = 3 Then ' Pre-corte
-
+            Dim Total As Double = mtdCaja.consultarTotalPreCorte(idCaja)
+            lblTotal.Text = CStr(Total.ToString)
         End If
     End Sub
 
@@ -139,65 +155,11 @@
     Private Sub btnImprimir_Click(sender As Object, e As EventArgs) Handles btnImprimir.Click
         Try
             If TabControl1.SelectedIndex = 0 Then ' General
-                Try
-                    If tblVentas.Rows.Count > 0 Then
-                        Dim ds As New CajaGeneral
-                        Dim dt As New DataTable
-                        dt = tblVentas.DataSource
-                        ds.ReportCajaGeneral.Rows.Clear()
-                        For Each row As DataRow In dt.Rows
 
-                            ds.ReportCajaGeneral.AddReportCajaGeneralRow(row("folio").ToString, row("estatus").ToString, row("Nombre").ToString, row("fecha").ToString, row("cantidadPagada").ToString, row("totalPagar").ToString)
-                        Next
-                        Dim reportecppc As New ReporteCajaGeneral
-                        reportecppc.SetDataSource(ds)
-                        Dim fromreporteVPPC As New ReportGeneralCaja
-                        fromreporteVPPC.CrystalReportViewer1.ReportSource = reportecppc
-                        fromreporteVPPC.ShowDialog()
-                    End If
-                Catch ex As Exception
-                    MsgBox(ex.Message)
-                End Try
             ElseIf TabControl1.SelectedIndex = 1 Then 'Abonos
-                Try
-                    If tblVentas.Rows.Count > 0 Then
-                        Dim ds As New CajaGeneral
-                        Dim dt As New DataTable
-                        dt = tblVentas.DataSource
-                        ds.ReportCajaGeneral.Rows.Clear()
-                        For Each row As DataRow In dt.Rows
 
-                            ds.ReportCajaGeneral.AddReportCajaGeneralRow()
-                        Next
-                        Dim reportecppc As New ReporteCajaGeneral
-                        reportecppc.SetDataSource(ds)
-                        Dim fromreporteVPPC As New ReportGeneralCaja
-                        fromreporteVPPC.CrystalReportViewer1.ReportSource = reportecppc
-                        fromreporteVPPC.ShowDialog()
-                    End If
-                Catch ex As Exception
-                    MsgBox(ex.Message)
-                End Try
             ElseIf TabControl1.SelectedIndex = 2 Then 'Cuentas por pagar
-                Try
-                    If tblVentas.Rows.Count > 0 Then
-                        Dim ds As New CajaAbonos
-                        Dim dt As New DataTable
-                        dt = tblVentas.DataSource
-                        ds.Abonos.Rows.Clear()
-                        For Each row As DataRow In dt.Rows
 
-                            ds.Abonos.AddAbonosRow(row("nombre").ToString, row("folio").ToString, row("CantidadPagada").ToString, row("totalpagar").ToString, row("fecha").ToString, row("nombrecj").ToString)
-                        Next
-                        Dim reportecppc As New ReporteCajaAbonos
-                        reportecppc.SetDataSource(ds)
-                        Dim fromreporteVPPC As New ReporteAbonosCaja
-                        fromreporteVPPC.CrystalReportViewer1.ReportSource = reportecppc
-                        fromreporteVPPC.ShowDialog()
-                    End If
-                Catch ex As Exception
-                    MsgBox(ex.Message)
-                End Try
             Else ' precorte 
 
             End If
@@ -273,6 +235,7 @@
                         'cppd.txtSaldo.Text = row.Cells("Saldo").Value
                         cppd.idCliente = row.Cells("idCliente").Value.ToString()
                         cppd.idEmpleado = Me.idEmpleado
+                        cppd.idCaja = Me.idCaja
                         Exit For
                     Else
                         cont += 1
@@ -281,7 +244,7 @@
             End If
 
             cppd.ShowDialog()
-
+            mtdCaja.select_CuentaPorCobrar(tblCuentasPorPagar, cmbFiltar.Text, txtFiltro.Text, txtFechaInicio.Text, txtFechaFin.Text, If(chbTodosCPP.Checked, True, False))
         Catch ex As Exception
 
         End Try
@@ -338,6 +301,7 @@
     End Sub
 
 
+
     Private Sub mtcFecha2_DateSelected(sender As Object, e As DateRangeEventArgs) Handles mtcFecha2.DateSelected
         Try
             txtFecha2.Visible = True
@@ -351,4 +315,135 @@
     End Sub
 
 
+    '############################ fechas abono ############################################
+    Private Sub txtDateFinal_MouseClick(sender As Object, e As MouseEventArgs) Handles txtDateFinal.MouseClick
+        If mtcDateInicial.Visible Then
+            mtcDateInicial.Visible = False
+            txtDateInicial.Visible = False
+        End If
+        txtDateFinal.Visible = False
+        mtcDateFinal.Visible = True
+        txtDateInicial.Visible = False
+    End Sub
+
+    Private Sub txtDateInicial_MouseClick_1(sender As Object, e As MouseEventArgs) Handles txtDateInicial.MouseClick
+
+        mtcDateInicial.Visible = True
+        txtDateInicial.Visible = False
+    End Sub
+
+    Private Sub mtcDateInicial_DateSelected(sender As Object, e As DateRangeEventArgs) Handles mtcDateInicial.DateSelected
+        Try
+            mtcDateInicial.Visible = False
+            txtDateInicial.Visible = True
+            Dim d1 As String = Convert.ToDateTime(mtcDateInicial.SelectionEnd.ToShortDateString())
+            txtDateInicial.Text = d1
+        Catch ex As Exception
+
+        End Try
+    End Sub
+
+
+
+    Private Sub mtcDateFinal_DateSelected(sender As Object, e As DateRangeEventArgs) Handles mtcDateFinal.DateSelected
+        Try
+            mtcDateFinal.Visible = False
+            txtDateFinal.Visible = True
+            txtDateInicial.Visible = True
+
+            Dim d2 As String = Convert.ToDateTime(mtcDateFinal.SelectionEnd.ToShortDateString())
+            txtDateFinal.Text = d2
+        Catch ex As Exception
+
+        End Try
+    End Sub
+
+    Private Sub txtFiltroAA_KeyUp(sender As Object, e As KeyEventArgs) Handles txtFiltroAA.KeyUp
+        Try
+            mtdCaja.seleccionarAbonos(tblAbonos, cmbFiltroAA.Text, txtFiltroAA.Text, txtDateInicial.Text, txtDateFinal.Text, If(chbTodosAA.Checked, True, False), idCaja)
+
+        Catch ex As Exception
+            MsgBox(ex.Message)
+        End Try
+    End Sub
+
+    Private Sub chbTodosAA_CheckedChanged(sender As Object, e As EventArgs) Handles chbTodosAA.CheckedChanged
+        Try
+            mtdCaja.seleccionarAbonos(tblAbonos, cmbFiltroAA.Text, txtFiltroAA.Text, txtDateInicial.Text, txtDateFinal.Text, If(chbTodosAA.Checked, True, False), idCaja)
+        Catch ex As Exception
+
+        End Try
+    End Sub
+
+    Private Sub btnEliminarAbono_Click(sender As Object, e As EventArgs) Handles btnEliminarAbono.Click
+        Try
+            If MessageBox.Show("¿Desea Elimnar el Pago hecho por el Cliente " + tblAbonos.CurrentRow.Cells("Cliente").Value + " de la Venta con Folio " + tblAbonos.CurrentRow.Cells("Folio Venta").Value, "Advertencia", MessageBoxButtons.OKCancel, MessageBoxIcon.Warning) = Windows.Forms.DialogResult.OK Then
+                mtdCaja.EliminarAbono(tblAbonos.CurrentRow.Cells("Clave").Value)
+                mtdCaja.seleccionarAbonos(tblAbonos, cmbFiltroAA.Text, txtFiltroAA.Text, txtDateInicial.Text, txtDateFinal.Text, True, idCaja)
+            End If
+        Catch ex As Exception
+            MsgBox(ex.Message)
+        End Try
+    End Sub
+
+    '######################################################################################################
+    '################################ Agregar o eliminar un abono  ########################################
+    '######################################################################################################
+
+    Private Sub btnNuevo_Click(sender As Object, e As EventArgs) Handles btnNuevo.Click
+        Try
+            If MessageBox.Show("¿Desea hacer un abono a la cuenta del Cliente " + tblAbonos.CurrentRow.Cells("Cliente").Value + "?", "Advertencia", MessageBoxButtons.OKCancel, MessageBoxIcon.Question) = Windows.Forms.DialogResult.OK Then
+                Dim cppd As New CajaCuentasPPD
+                Me.AddOwnedForm(cppd)
+                Dim index As Int16 = tblAbonos.CurrentRow.Index
+                Dim cont As Int16 = tblAbonos.Rows.Count
+                If cont > 0 Then
+                    cont = 0
+                    mtdCaja.selectVentasPendientesCliente(cppd.tblVentasPendientes, tblAbonos.CurrentRow.Cells("idCliente").Value)
+                    cppd.idCliente = tblAbonos.CurrentRow.Cells("idCliente").Value
+                    cppd.idEmpleado = Me.idEmpleado
+                    cppd.idCaja = Me.idCaja
+                    cppd.ShowDialog()
+                End If
+            End If
+            mtdCaja.seleccionarAbonos(tblCuentasPorPagar, cmbFiltroAA.Text, txtFiltroAA.Text, txtDateInicial.Text, txtDateFinal.Text, If(chbTodosAA.Checked, True, False), idCaja)
+        Catch ex As Exception
+            MsgBox(ex.Message)
+        End Try
+    End Sub
+
+    Private Sub btnSalir_Click(sender As Object, e As EventArgs) Handles btnSalir.Click
+        Try
+            Me.Close()
+        Catch ex As Exception
+
+        End Try
+    End Sub
+
+
+
+
+    '##################################################################################################################################
+    '########################################################  Metodos para realizar precorte de caja #################################
+    '##################################################################################################################################
+    Public acceso As Boolean
+
+    Private Sub btnCosuntarCorteCaja_Click(sender As Object, e As EventArgs) Handles btnCosuntarCorteCaja.Click
+        Try
+            Dim acceder As New Acceder
+
+            acceder.user = txtEmpleado.Text
+            acceder.pass = ""
+            AddOwnedForm(acceder)
+            acceder.ShowDialog()
+            If acceso Then
+                mtdCaja.seleccionarVentasCorteCaja(tblPrecorte, idCaja)
+            Else
+                MsgBox("No es apto para ver el Pre-Corte de Caja")
+            End If
+
+        Catch ex As Exception
+            MsgBox(ex.Message())
+        End Try
+    End Sub
 End Class

@@ -32,7 +32,7 @@ Partial Class CajaCuentasPPD
         Me.sprAbono = New System.Windows.Forms.NumericUpDown()
         Me.txtDebeVenta = New System.Windows.Forms.TextBox()
         Me.Label3 = New System.Windows.Forms.Label()
-        Me.Button1 = New System.Windows.Forms.Button()
+        Me.btnImprimirHistorial = New System.Windows.Forms.Button()
         Me.Label4 = New System.Windows.Forms.Label()
         CType(Me.tblVentasPendientes, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.sprAbono, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -139,17 +139,17 @@ Partial Class CajaCuentasPPD
         Me.Label3.TabIndex = 10
         Me.Label3.Text = "Debe"
         '
-        'Button1
+        'btnImprimirHistorial
         '
-        Me.Button1.Image = Global.PapasSC.My.Resources.Resources.IMPRIMIR
-        Me.Button1.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
-        Me.Button1.Location = New System.Drawing.Point(69, 314)
-        Me.Button1.Name = "Button1"
-        Me.Button1.Size = New System.Drawing.Size(84, 43)
-        Me.Button1.TabIndex = 12
-        Me.Button1.Text = "Imprimir"
-        Me.Button1.TextAlign = System.Drawing.ContentAlignment.MiddleRight
-        Me.Button1.UseVisualStyleBackColor = True
+        Me.btnImprimirHistorial.Image = Global.PapasSC.My.Resources.Resources.IMPRIMIR
+        Me.btnImprimirHistorial.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
+        Me.btnImprimirHistorial.Location = New System.Drawing.Point(69, 314)
+        Me.btnImprimirHistorial.Name = "btnImprimirHistorial"
+        Me.btnImprimirHistorial.Size = New System.Drawing.Size(84, 43)
+        Me.btnImprimirHistorial.TabIndex = 12
+        Me.btnImprimirHistorial.Text = "Imprimir"
+        Me.btnImprimirHistorial.TextAlign = System.Drawing.ContentAlignment.MiddleRight
+        Me.btnImprimirHistorial.UseVisualStyleBackColor = True
         '
         'Label4
         '
@@ -166,7 +166,7 @@ Partial Class CajaCuentasPPD
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(895, 369)
         Me.Controls.Add(Me.Label4)
-        Me.Controls.Add(Me.Button1)
+        Me.Controls.Add(Me.btnImprimirHistorial)
         Me.Controls.Add(Me.txtDebeVenta)
         Me.Controls.Add(Me.Label3)
         Me.Controls.Add(Me.sprAbono)
@@ -196,6 +196,6 @@ Partial Class CajaCuentasPPD
     Friend WithEvents sprAbono As NumericUpDown
     Friend WithEvents txtDebeVenta As TextBox
     Friend WithEvents Label3 As Label
-    Friend WithEvents Button1 As Button
+    Friend WithEvents btnImprimirHistorial As Button
     Friend WithEvents Label4 As Label
 End Class

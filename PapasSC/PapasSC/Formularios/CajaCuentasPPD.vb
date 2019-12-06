@@ -1,5 +1,5 @@
 ﻿Public Class CajaCuentasPPD
-    Public idEmpleado, idVenta, idCliente As String
+    Public idEmpleado, idVenta, idCliente, idCaja As String
     Public mtdcaja As New MetodosCaja
 
 
@@ -13,13 +13,6 @@
         End Try
     End Sub
 
-    Private Sub txtSaldo_TextChanged(sender As Object, e As EventArgs) Handles txtSaldo.TextChanged
-        Try
-
-        Catch ex As Exception
-
-        End Try
-    End Sub
 
     Private Sub tbnSalir_Click(sender As Object, e As EventArgs) Handles tbnSalir.Click
         Try
@@ -62,25 +55,33 @@
                 For Each row As DataGridViewRow In tblVentasPendientes.SelectedRows
                     dt.Rows.Add(row.Cells("idVenta").Value, row.Cells("debe").Value)
                 Next
-                mtdcaja.agregarAbono(dt, CDbl(sprAbono.Value), idEmpleado, idCliente)
-                tblVentasPendientes.Rows.Clear()
+                mtdcaja.agregarAbono(dt, CDbl(sprAbono.Value), idEmpleado, idCliente, idCaja)
                 mtdcaja.selectVentasPendientesCliente(tblVentasPendientes, idCliente)
+                calucualarSaldo()
             End If
         Catch ex As Exception
             MsgBox(ex.Message)
         End Try
     End Sub
 
+
+
     Private Sub CajaCuentasPPD_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         sprAbono.DecimalPlaces = 2
         sprAbono.ThousandsSeparator = True
+        calucualarSaldo()
+    End Sub
+
+    Private Function calucualarSaldo() As Boolean
+        Dim flag As Boolean = False
         Dim totaldebe As Double = 0.0
         For Each row As DataGridViewRow In tblVentasPendientes.Rows
             totaldebe = totaldebe + CDbl(row.Cells("Debe").Value)
+            flag = True
         Next
-        txtSaldo.Text = totaldebe.ToString()
-
-    End Sub
+        txtSaldo.Text = totaldebe.ToString("N")
+        Return flag
+    End Function
 
     Private Sub btnImprimirVPPC_Click(sender As Object, e As EventArgs) Handles btnImprimirVPPC.Click
         Try
@@ -102,6 +103,19 @@
             End If
         Catch ex As Exception
             MsgBox(ex.Message)
+        End Try
+    End Sub
+
+    ' ############################################################################################
+    ' ######################## IMPRIMIR CUENTAS POR CLIENTE ######################################
+    ' ############################################################################################
+
+    Private Sub btnImprimirHistorial_Click(sender As Object, e As EventArgs) Handles btnImprimirHistorial.Click
+        Try
+            Dim htac As New AbonosCliente
+            htac.idCliente = idCliente
+            htac.ShowDialog()
+        Catch ex As Exception
         End Try
     End Sub
 End Class

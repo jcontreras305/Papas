@@ -183,14 +183,17 @@ inner join cliente as cl on cl.idCliente = vn.idCliente
 
 
 
-    Public Sub llenarComboBodega(ByVal dgv As ComboBox)
+    Public Sub llenarComboBodega(ByVal dgv As ComboBox, ByVal listIdBodega As List(Of String))
         cn.conectar()
         Try
-            adaptador = New SqlDataAdapter("select bo.nombre as Bodega from empleado em inner join  bodega bo on em.idBodega = bo.idBodega where bo.estatus = 'A'", cn.conn)
-            Dim ds As New DataSet
-            adaptador.Fill(ds)
-            dgv.DataSource = ds.Tables(0)
-            dgv.DisplayMember = "Bodega"
+            Dim cmd As New SqlCommand("select bo.nombre as Bodega , bo.idBodega from empleado em inner join  bodega bo on em.idBodega = bo.idBodega where bo.estatus = 'A'", cn.conn)
+            listIdBodega.Clear()
+            Dim rd As SqlDataReader = cmd.ExecuteReader()
+            dgv.Items.Clear()
+            While rd.Read
+                dgv.Items.Add(rd("Bodega"))
+                listIdBodega.Add(rd("idBodega"))
+            End While
             dgv.SelectedIndex = 0
         Catch ex As Exception
             MessageBox.Show("No se lleno el Datagridview debido a: " + ex.Message)
@@ -205,31 +208,37 @@ inner join cliente as cl on cl.idCliente = vn.idCliente
         cn.conectar()
         Try
             adaptador = New SqlDataAdapter("select  
+    pr.idProducto,
     pr.version as Producto,
-  pr.Precio as Precio
+    pr.Precio as Precio,
+    ep.cantidad as Existencia
     from bodega bo inner join existenciaProductos ep on bo.idBodega   = ep.idBodega  
     inner join producto pr on pr.idProducto = ep.idProducto  where ep.estatus = 'A'
     and bo.nombre='" + t + "'", cn.conn)
             dt = New DataTable
             adaptador.Fill(dt)
             dgv.DataSource = dt
+            dgv.Columns("idProducto").Visible = False
         Catch ex As Exception
             MessageBox.Show("No se lleno el Datagridview debido a: " + ex.Message)
         End Try
     End Sub
 
-    Public Sub llenarComboProductofiltro(ByVal dgv As DataGridView, ByVal t As String, ByVal pr As String)
+    Public Sub llenarComboProductofiltro(ByVal dgv As DataGridView, ByVal bodega As String, ByVal pr As String)
         cn.conectar()
         Try
             adaptador = New SqlDataAdapter("select  
+    pr.idProducto,
     pr.version as Producto,
-    pr.Precio as Precio
+    pr.Precio as Precio,
+    ep.cantidad as Existencia
     from bodega bo inner join existenciaProductos ep on bo.idBodega   = ep.idBodega  
     inner join producto pr on pr.idProducto = ep.idProducto  where ep.estatus = 'A'
-    and bo.nombre='" + t + "' and pr.version like '" + pr + "%'", cn.conn)
+    and bo.nombre='" + bodega + "' and pr.version like '" + pr + "%'", cn.conn)
             dt = New DataTable
             adaptador.Fill(dt)
             dgv.DataSource = dt
+            dgv.Columns("idProducto").Visible = False
         Catch ex As Exception
             MessageBox.Show("No se lleno el Datagridview debido a: " + ex.Message)
         End Try
@@ -904,6 +913,133 @@ UPDATE [dbo].[credito]
 
         Return datos
     End Function
+
+
+    Public Sub insertarVentaYVentaDetalle(ByVal tblVentaDetalle As DataGridView, ByVal formaPago As String, ByVal totalPagar As Double, ByVal cantidadPagada As Double, idCaja As String, ByVal idCliente As String, ByVal idEmpleado As String, ByVal idbodega As String, ByVal espera As Boolean)
+        Try
+            conectar()
+            Dim cmd As New SqlCommand("")
+            Dim transac As SqlTransaction = conn.BeginTransaction("tran")
+            cmd.Connection = conn
+            cmd.Transaction = transac
+            Try
+                'ByVal fecha As String, ByVal totalpagar As String, ByVal cantidadPagada As String, ByVal cliente As String, ByVal Empleado As String, ByVal Bodega As String, ByVal estatus As String, ByVal formapago As String, ByVal idCaja As String, ByVal idCliente As String
+                Dim estatus As String = If(espera, "E", If(cantidadPagada = totalPagar, "P", "D"))
+
+                Dim Com = New SqlCommand("Select newid()", cn.conn)
+                Dim idVenta As String = ""
+                Dim Rs As SqlDataReader
+                Rs = Com.ExecuteReader
+                Rs.Read()
+                idVenta = Rs(0).ToString
+                Rs.Close()
+
+                cmd = New SqlCommand("
+            INSERT INTO [dbo].[venta]
+           ([idVenta]
+           ,[fecha]
+           ,[totalPagar]
+           ,[cantidadPagada]
+           ,[estatus]
+           ,[idCliente]
+           ,[idEmpleado]
+           ,[idBodega]
+           ,[tipoPago]
+           ,[idCaja]
+           ,[folio]
+           ,[idTicket])
+            VALUES
+           ('" + idVenta + "'
+           , getdate()
+           ," + Convert.ToString(Replace(totalPagar.ToString(), ",", ".")) + "
+           ," + Convert.ToString(Replace(cantidadPagada.ToString(), ",", ".")) + "
+           ,'" + Convert.ToString(estatus) + "'
+           ,'" + Convert.ToString(idCliente) + "'
+           ,'" + Convert.ToString(idEmpleado) + "'
+           ,'" + Convert.ToString(idbodega) + "'
+           ,'" + Convert.ToString(formaPago) + "'
+           ,'" + Convert.ToString(idCaja) + "'
+           ," + "(select max(folio)+1 from venta)" + "
+           ," + "(select top 1 idTicket from ticket where nombre = 'Venta')" + ")", cn.conn)
+                If cmd.ExecuteNonQuery() Then ' ASTA AQUI SE HA REALIZADO LA VENTA
+                    Dim cmd2 As New SqlCommand("", conn)
+                    cmd2.Transaction = transac
+                    Dim insertDV As String = "insert into ventaDetalle values "
+                    Dim cont As Int16 = 0
+                    For Each row As DataGridViewRow In tblVentaDetalle.Rows
+                        Dim kilos As String = Replace(row.Cells(2).Value.ToString, ".", "")
+                        kilos = Replace(kilos, ",", ".")
+                        Dim precio As String = Replace(row.Cells(3).Value.ToString, ".", "")
+                        precio = Replace(precio, ",", ".")
+                        Dim neto As String = Replace(row.Cells(4).Value.ToString, ".", "")
+                        neto = Replace(neto, ",", ".")
+                        insertDV = insertDV + "(newid(),'" + idVenta + "','" + row.Cells(0).Value.ToString + "'," + kilos + "," + precio + "," + neto + ",'A')"
+                        cont += 1
+                        If cont = tblVentaDetalle.Rows.Count Then
+                        Else
+                            insertDV = insertDV + ","
+                        End If
+                    Next
+                    cmd2.CommandText = insertDV
+                    If cmd2.ExecuteNonQuery Then 'asta qui ya esta lo detalle de venta
+                        'actualizar exitencias de produtos
+                        Dim cmd3 As New SqlCommand("", conn)
+                        cmd3.Transaction = transac
+                        Dim updateExistencias As String = ""
+                        For Each row As DataGridViewRow In tblVentaDetalle.Rows
+                            Dim kilos As String = Replace(row.Cells(2).Value.ToString, ".", "")
+                            kilos = Replace(kilos, ",", ".")
+                            Dim idProducto As String = row.Cells(0).Value.ToString
+                            updateExistencias = updateExistencias + " update existenciaProductos set cantidad = cantidad - " + kilos + " where idProducto = '" + idProducto + "'"
+                        Next
+                        cmd3.CommandText = updateExistencias
+                        If cmd3.ExecuteNonQuery Then 'asta aqui esta la actualizacion de existencias
+                            Dim cmd4 As New SqlCommand("", conn)
+                            cmd4.Transaction = transac
+                            Dim cantpagada1 As String = Replace(cantidadPagada.ToString, ".", "")
+                            cantpagada1 = Replace(cantpagada, ",", ".")
+                            cmd4.CommandText = "update contabilidadCaja set total = total + " + cantpagada1.ToString() + " where idCaja = '" + idCaja + "'"
+                            If cmd4.ExecuteNonQuery Then
+                                If formaPago = "Credito" Then
+                                    Dim cmd5 As New SqlCommand("", conn)
+                                    cmd5.Transaction = transac
+
+                                    Dim credito As Double = totalPagar - cantidadPagada
+                                    Dim credit As String = Replace(credito.ToString, ".", "")
+                                    credit = Replace(credit, ",", ".")
+                                    cmd5.CommandText = "update credito set saldo = saldo + " + credit + " where idCliente = '" + idCliente + "'"
+                                    If cmd5.ExecuteNonQuery() Then
+                                        transac.Commit()
+                                        MsgBox("Exito")
+                                    Else
+                                        transac.Rollback()
+                                    End If
+                                Else
+                                    transac.Commit()
+                                    MsgBox("Exito")
+                                End If
+                            Else
+                                transac.Rollback()
+                            End If
+                        Else
+                            transac.Rollback()
+                        End If
+                    Else
+                        transac.Rollback()
+                    End If
+                Else
+                    transac.Rollback()
+                End If
+
+            Catch ex As Exception
+                MsgBox("No se pudo realizar la venta. Intente de nuevo." + ex.Message)
+                transac.Rollback()
+            End Try
+
+        Catch ex As Exception
+            MsgBox("Error al iniciar la Transaccion: " + ex.Message)
+        End Try
+    End Sub
 
 End Class
 

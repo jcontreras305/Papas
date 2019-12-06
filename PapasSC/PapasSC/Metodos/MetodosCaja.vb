@@ -279,7 +279,7 @@ on cj.idBodega = bd.idBodega "
     '##########################################################################################################
 
     Private busquedaVentasCaja As String = "
-select folio ,  case when vt.estatus = 'D' then 'Deuda' when vt.estatus = 'P' then 'Pagada' else 'Espera' end as estatus ,  case when  cl.nombre = '' then cl.razonSocial else cl.nombre end as Nombre , fecha ,vt.cantidadPagada , vt.totalPagar
+select RIGHT ('00000'+CONVERT(varchar, vt.folio ),5) as Folio,  case when vt.estatus = 'D' then 'Deuda' when vt.estatus = 'P' then 'Pagada' else 'Espera' end as Estatus ,  case when  cl.nombre = '' then cl.razonSocial else cl.nombre end as Nombre , fecha as Fecha ,vt.cantidadPagada as 'Cantidad Pagada', vt.totalPagar as 'Total a Pagar'
 from venta as vt left join cliente as cl on cl.idCliente = vt.idCliente 
 left join caja as cj on cj.idCaja = vt.idCaja
 left join credito as cr on cr.idCliente = cl.idCliente
@@ -367,7 +367,7 @@ left join credito as cr on cr.idCliente = cl.idCliente "
             End If
             Select Case busqueda
                 Case "Cliente"
-                    consulta = consulta + " and ( cl.nombre like '%" + filtro + "%' or cl.razonSocial like '%" + filtro + "%' )   "
+                    consulta = consulta + If(todos = False, "and", "") + " ( cl.nombre like '%" + filtro + "%' or cl.razonSocial like '%" + filtro + "%' )   "
                     consulta = consulta + "and (select top 1 fecha from venta where idCliente = cl.idCliente and venta.estatus = 'D' order by fecha desc) between '" + fecha2 + "'  and '" + fecha1 + "' "
                     Exit Select
                 Case "Contacto"
@@ -375,7 +375,7 @@ left join credito as cr on cr.idCliente = cl.idCliente "
                     consulta = consulta + "and (select top 1 fecha from venta where idCliente = cl.idCliente and venta.estatus = 'D' order by fecha desc) between '" + fecha2 + "'  and '" + fecha1 + "' "
                     Exit Select
                 Case "% Credito"
-                    consulta = consulta + " and ((saldo*100)/limiteCredito) > " + filtro
+                    consulta = consulta + If(todos = False, "and", "") + " ((saldo*100)/limiteCredito) > " + filtro
                     consulta = consulta + "and (select top 1 fecha from venta where idCliente = cl.idCliente and venta.estatus = 'D' order by fecha desc) between '" + fecha2 + "'  and '" + fecha1 + "' "
                     Exit Select
                 Case Else
@@ -486,7 +486,7 @@ where vt.fecha between  (select  MAX(fechaInicio) from corteCaja where idCaja = 
 
     Dim ventas_sin_pagar As String = "select 
     vt.idVenta ,
-	vt.folio  as Folio,
+	RIGHT ('00000'+CONVERT(varchar, vt.folio ),5) as Folio,
 	vt.fecha as Fecha,
 	case when  cl.nombre = '' then cl.razonSocial else cl.nombre end as Cliente,
 	vt.totalPagar as Total,
@@ -524,7 +524,7 @@ where vt.estatus = 'D' "
     '######################### Metodos para agregar abono ################################
     '#####################################################################################
 
-    Public Sub agregarAbono(ByVal tblDatosCuentas As DataTable, ByVal abono As Double, ByVal idEmpleado As String, ByVal idCliente As String)
+    Public Sub agregarAbono(ByVal tblDatosCuentas As DataTable, ByVal abono As Double, ByVal idEmpleado As String, ByVal idCliente As String, ByVal idCaja As String)
         Try
             conectar()
             Dim cmd As New SqlCommand("")
@@ -546,7 +546,7 @@ where vt.estatus = 'D' "
                     If abono >= debe Then
                         Dim pago As String = Replace(debe.ToString(), ".", "")
                         pago = Replace(pago, ",", ".")
-                        values = values + " (NEWID(),'" + idCliente + "','" + idEmpleado + "','" + row.Item("idVenta").ToString() + "',CONVERT( DATE , GETDATE())," + pago + ",0.0)"
+                        values = values + " (NEWID(),'" + idCliente + "','" + idEmpleado + "','" + row.Item("idVenta").ToString() + "','" + idCaja + "',CONVERT( DATE , GETDATE())," + pago + ",0.0)"
                         abono = abono - pago
                         listidVtPagadas.Add(row.Item("idVenta").ToString)
                     Else
@@ -555,7 +555,7 @@ where vt.estatus = 'D' "
                         dif = Replace(dif, ",", ".")
                         Dim pago As String = Replace(abono.ToString(), ".", "")
                         pago = Replace(pago, ",", ".")
-                        values = values + "(NEWID(),'" + idCliente + "','" + idEmpleado + "','" + row.Item("idVenta").ToString() + "',CONVERT( DATE , GETDATE())," + pago + "," + dif + ")"
+                        values = values + "(NEWID(),'" + idCliente + "','" + idEmpleado + "','" + row.Item("idVenta").ToString() + "','" + idCaja + "',CONVERT( DATE , GETDATE())," + pago + "," + dif + ")"
                         tblVtDedbe.Rows.Add(row.Item("idVenta").ToString(), pago)
                     End If
                     If Not contRow = cont Then
@@ -579,9 +579,9 @@ where vt.estatus = 'D' "
                         cont += 1
                     Next
                     For Each row In tblVtDedbe.Rows
-                        Dim debe As String = row("debe").ToString
-                        debe = Replace(debe, ".", "")
-                        debe = Replace(debe, ",", ".")
+                        Dim debe As String = row("debe").ToString()
+                        'debe = Replace(debe, ".", "")
+                        debe = Replace(debe, ",", "")
                         If listidVtPagadas.Count > 0 Then
                             comando1 = comando1 + vbCrLf + " update venta set estatus = 'D', cantidadPagada = cantidadPagada +" + debe + " where idVenta = ('" + row("idVenta").ToString + "')"
                         Else
@@ -599,7 +599,7 @@ where vt.estatus = 'D' "
                         comando2 = "update credito set saldo = saldo - " + abono1 + " where idCliente = '" + idCliente + "'"
                         cmd2.CommandText = comando2
                         If cmd2.ExecuteNonQuery Then
-                            tran.Commit
+                            tran.Commit()
                             MsgBox("El abono se realizó correctamente")
                         Else
                             tran.Rollback()
@@ -616,6 +616,142 @@ where vt.estatus = 'D' "
             End Try
         Catch ex As Exception
 
+        End Try
+    End Sub
+
+
+    '#######################################################################################
+    '######################### METODOS PARA ABONOS Y ANTICIPOS #############################
+    '#######################################################################################
+    Dim abonos As String = "select idAbono as Clave , 
+    cl.idCliente,
+	ab.abono as Abono,
+	(select top 1 limiteCredito from credito where idCliente = cl.idCliente) as 'Limite de Crédito',
+	case when  cl.nombre = '' then cl.razonSocial else cl.nombre end as 'Cliente' , 
+	RIGHT ('00000'+CONVERT(varchar, vt.folio ),5)as 'Folio Venta', 
+	vt.totalPagar as 'Total a Pagar',
+	vt.cantidadPagada as Saldado,
+	em.nombre as Empleado , 
+	ab.fecha as Fecha,
+	ab.bede as 'Usted Debia',
+	cj.nombre as Caja
+from abono as ab
+left join cliente as cl on cl.idCliente = ab.idCliente
+left join venta as vt on ab.idVenta = vt.idVenta 
+left join empleado as em on em.idEmpleado = ab.idEmpleado
+left join credito as cr on cl.idCliente = cr.idCredito
+left join caja as cj on ab.idCaja = cj.idCaja"
+
+    Public Sub seleccionarAbonos(ByVal tblAbonos As DataGridView, ByVal busqueda As String, ByVal filtro As String, ByVal fechaInicial As String, ByVal fechaFinal As String, ByVal todos As Boolean, ByVal idCaja As String)
+        Try
+            conectar()
+            Dim cmd As New SqlCommand("")
+            Dim comando As String = ""
+            If todos Then
+                comando = abonos + " where  ab.idCaja like '" + idCaja + "' and ab.fecha between  '" + fechaInicial + "' and '" + fechaFinal + "' "
+            Else
+                comando = abonos + " where  ab.idCaja like '" + idCaja + "' and ab.fecha between  '" + fechaInicial + "' and '" + fechaFinal + "' "
+                Select Case busqueda
+                    Case "Cliente"
+                        If filtro = String.Empty Then
+                            comando = comando + " and (cl.nombre like '%%%' or cl.razonSocial like '%%%')"
+                        Else
+                            comando = comando + " and (cl.nombre like '%" + filtro + "%' or cl.razonSocial like '%" + filtro + "%')"
+                        End If
+                        Exit Select
+                    Case "Folio"
+                        If filtro = String.Empty Then
+                            comando = comando + " and right ('00000' + CONVERT (varchar, vt.folio),5) like '%%%'"
+                        Else
+                            comando = comando + " and right ('00000' + CONVERT (varchar, vt.folio),5) like '%" + filtro + "%'"
+                        End If
+                        Exit Select
+                    Case "Empleado"
+                        If filtro = String.Empty Then
+                            comando = comando + " and em.nombre like '%%%'"
+                        Else
+                            comando = comando + " and em.nombre like '%" + filtro + "%'"
+                        End If
+                        Exit Select
+                End Select
+            End If
+            cmd.CommandText = comando
+            cmd.Connection = conn
+            cmd.ExecuteNonQuery()
+            Dim da As New SqlDataAdapter(cmd)
+            Dim dt As New DataTable
+            da.Fill(dt)
+            tblAbonos.DataSource = dt
+            tblAbonos.Columns("Clave").Visible = False
+            tblAbonos.Columns("idCliente").Visible = False
+        Catch ex As Exception
+            MsgBox(ex.Message)
+        End Try
+    End Sub
+
+    Public Sub EliminarAbono(ByVal idAbono As String)
+        Try
+            conectar()
+            Dim cmd As New SqlCommand("Eliminar_Abono", conn)
+            cmd.CommandType = CommandType.StoredProcedure
+            cmd.Parameters.Add("@idAbono", SqlDbType.VarChar, 36).Value = idAbono
+            cmd.ExecuteNonQuery()
+        Catch ex As Exception
+            MsgBox(ex.Message)
+        End Try
+    End Sub
+
+
+    '#######################################################################################
+    '######################### METODOS PARA PRE-CORTE DE CAJA ##############################
+    '#######################################################################################
+    Dim consultaTotalPrecorte = "select SUM(cantidadPagada) as Total
+from venta as vt
+left join caja as cj on cj.idCaja = vt.idCaja
+left join corteCaja as cc on cc.idCaja= cj.idCaja
+left join cliente as cl on cl.idCliente = vt.idCliente 
+where cc.fechaInicio  = (select MAX(fechaInicio) from corteCaja where idCaja = '"
+
+    Public Function consultarTotalPreCorte(ByRef idCaja As String) As Double
+        Try
+            conectar()
+            Dim cmd As New SqlCommand(consultaTotalPrecorte + idCaja + "')", conn)
+            Dim total As Double = 0.0
+            Using rd = cmd.ExecuteReader
+                If rd.HasRows Then
+                    While rd.Read
+                        total = CDbl(rd.Item("Total").ToString)
+                    End While
+                    desconectar()
+                    Return total
+                Else
+                    MsgBox("Es probable que no se encuentra ninguna venta hecha hasta el momento désde la última apertura de la caja")
+                    Return 0.0
+                End If
+            End Using
+        Catch ex As Exception
+            Return 0.0
+        End Try
+    End Function
+
+    Dim ventasCorteCaja As String = "select  right ('00000' + CONVERT(varchar, vt.folio ), 5 )as Folio, vt.totalPagar as 'Total', vt.cantidadPagada as 'Cantidad Pagada', case when cl.nombre = '' then cl.razonSocial else cl.nombre end as Cliente from venta as vt
+left join caja as cj on cj.idCaja = vt.idCaja
+left join corteCaja as cc on cc.idCaja= cj.idCaja
+left join cliente as cl on cl.idCliente = vt.idCliente 
+where cc.fechaInicio  = (select MAX(fechaInicio) from corteCaja where idCaja = '"
+
+    Public Sub seleccionarVentasCorteCaja(ByVal tblPrecorte As DataGridView, ByVal idcaja As String)
+        Try
+            conectar()
+            Dim cmd As New SqlCommand(ventasCorteCaja + idcaja + "')", conn)
+            If cmd.ExecuteNonQuery Then
+                Dim da As New SqlDataAdapter(cmd)
+                Dim dt As New DataTable
+                da.Fill(dt)
+                tblPrecorte.DataSource = dt
+            End If
+        Catch ex As Exception
+            MsgBox(ex.Message)
         End Try
     End Sub
 End Class
