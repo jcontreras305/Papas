@@ -75,6 +75,11 @@
             Else
                 aeCaja.chbExplicito.Checked = False
             End If
+            If tblCaja.CurrentRow.Cells("Estatus").Value.Equals("A") Then
+                aeCaja.chbActivo.Checked = True
+            Else
+                aeCaja.chbActivo.Checked = False
+            End If
             aeCaja.idCajaActualizar = tblCaja.CurrentRow.Cells("idCaja").Value.ToString()
             aeCaja.ShowDialog()
             mtdCaja.seleccioarCajas(tblCaja)
@@ -89,11 +94,27 @@
 
     Private Sub btnEliminar_Click(sender As Object, e As EventArgs) Handles btnEliminar.Click
         Try
-            Dim idCajaB As String = tblCaja.CurrentRow.Cells("idCaja").Value.ToString
-            mtdCaja.eliminarCaja(idCajaB)
-            mtdCaja.seleccioarCajas(tblCaja)
+            If MessageBox.Show("¿Desea eliminar la caja?", "Advertencia", MessageBoxButtons.YesNo, MessageBoxIcon.Warning) = DialogResult.Yes Then
+                Dim idCajaB As String = tblCaja.CurrentRow.Cells("idCaja").Value.ToString
+                mtdCaja.eliminarCaja(idCajaB)
+                mtdCaja.seleccioarCajas(tblCaja)
+            End If
+
         Catch ex As Exception
             MsgBox(ex.Message)
+        End Try
+    End Sub
+
+    Private Sub CheckBox1_CheckedChanged(sender As Object, e As EventArgs) Handles CheckBox1.CheckedChanged
+        Try
+            If CheckBox1.Checked = True Then
+                mtdCaja.seleccioarCajasTodos(tblCaja)
+            Else
+                mtdCaja.seleccioarCajas(tblCaja, txtFiltro.Text)
+            End If
+
+        Catch ex As Exception
+
         End Try
     End Sub
 End Class

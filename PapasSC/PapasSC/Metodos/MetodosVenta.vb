@@ -997,7 +997,7 @@ UPDATE [dbo].[credito]
                             Dim cmd4 As New SqlCommand("", conn)
                             cmd4.Transaction = transac
                             Dim cantpagada1 As String = Replace(cantidadPagada.ToString, ".", "")
-                            cantpagada1 = Replace(cantpagada, ",", ".")
+                            cantpagada1 = Replace(cantidadPagada, ",", ".")
                             cmd4.CommandText = "update contabilidadCaja set total = total + " + cantpagada1.ToString() + " where idCaja = '" + idCaja + "'"
                             If cmd4.ExecuteNonQuery Then
                                 If formaPago = "Credito" Then

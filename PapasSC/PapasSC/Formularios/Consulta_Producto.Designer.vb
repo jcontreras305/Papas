@@ -51,7 +51,7 @@ Partial Class Consulta_Producto
         Me.Panel1.Controls.Add(Me.TablaProductos)
         Me.Panel1.Location = New System.Drawing.Point(0, 0)
         Me.Panel1.Name = "Panel1"
-        Me.Panel1.Size = New System.Drawing.Size(800, 449)
+        Me.Panel1.Size = New System.Drawing.Size(800, 459)
         Me.Panel1.TabIndex = 0
         '
         'btnActivar
@@ -75,29 +75,38 @@ Partial Class Consulta_Producto
         '
         'Button4
         '
-        Me.Button4.Location = New System.Drawing.Point(613, 397)
+        Me.Button4.Image = Global.PapasSC.My.Resources.Resources.BORRAR
+        Me.Button4.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
+        Me.Button4.Location = New System.Drawing.Point(700, 397)
         Me.Button4.Name = "Button4"
-        Me.Button4.Size = New System.Drawing.Size(175, 41)
+        Me.Button4.Size = New System.Drawing.Size(88, 52)
         Me.Button4.TabIndex = 7
         Me.Button4.Text = "Eliminar"
+        Me.Button4.TextAlign = System.Drawing.ContentAlignment.MiddleRight
         Me.Button4.UseVisualStyleBackColor = True
         '
         'Button3
         '
-        Me.Button3.Location = New System.Drawing.Point(432, 397)
+        Me.Button3.Image = Global.PapasSC.My.Resources.Resources.ACTUALIZAR
+        Me.Button3.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
+        Me.Button3.Location = New System.Drawing.Point(600, 397)
         Me.Button3.Name = "Button3"
-        Me.Button3.Size = New System.Drawing.Size(175, 41)
+        Me.Button3.Size = New System.Drawing.Size(95, 52)
         Me.Button3.TabIndex = 6
         Me.Button3.Text = "Actualizar"
+        Me.Button3.TextAlign = System.Drawing.ContentAlignment.MiddleRight
         Me.Button3.UseVisualStyleBackColor = True
         '
         'Button2
         '
-        Me.Button2.Location = New System.Drawing.Point(251, 397)
+        Me.Button2.Image = Global.PapasSC.My.Resources.Resources.agregar
+        Me.Button2.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
+        Me.Button2.Location = New System.Drawing.Point(502, 397)
         Me.Button2.Name = "Button2"
-        Me.Button2.Size = New System.Drawing.Size(175, 41)
+        Me.Button2.Size = New System.Drawing.Size(92, 52)
         Me.Button2.TabIndex = 5
-        Me.Button2.Text = "Agregar nuevo"
+        Me.Button2.Text = "Agregar"
+        Me.Button2.TextAlign = System.Drawing.ContentAlignment.MiddleRight
         Me.Button2.UseVisualStyleBackColor = True
         '
         'Button1
@@ -151,7 +160,7 @@ Partial Class Consulta_Producto
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(800, 450)
+        Me.ClientSize = New System.Drawing.Size(800, 461)
         Me.Controls.Add(Me.Panel1)
         Me.Name = "Consulta_Producto"
         Me.Text = "Consulta Registro"

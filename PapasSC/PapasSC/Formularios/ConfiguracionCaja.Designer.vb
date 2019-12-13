@@ -29,6 +29,7 @@ Partial Class ConfiguracionCaja
         Me.btnEliminar = New System.Windows.Forms.Button()
         Me.btnEditar = New System.Windows.Forms.Button()
         Me.btnAgregar = New System.Windows.Forms.Button()
+        Me.CheckBox1 = New System.Windows.Forms.CheckBox()
         CType(Me.tblCaja, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
@@ -112,11 +113,22 @@ Partial Class ConfiguracionCaja
         Me.btnAgregar.TextAlign = System.Drawing.ContentAlignment.MiddleRight
         Me.btnAgregar.UseVisualStyleBackColor = True
         '
+        'CheckBox1
+        '
+        Me.CheckBox1.AutoSize = True
+        Me.CheckBox1.Location = New System.Drawing.Point(361, 13)
+        Me.CheckBox1.Name = "CheckBox1"
+        Me.CheckBox1.Size = New System.Drawing.Size(71, 17)
+        Me.CheckBox1.TabIndex = 6
+        Me.CheckBox1.Text = "Ver todos"
+        Me.CheckBox1.UseVisualStyleBackColor = True
+        '
         'ConfiguracionCaja
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(705, 439)
+        Me.Controls.Add(Me.CheckBox1)
         Me.Controls.Add(Me.btnSalir)
         Me.Controls.Add(Me.btnEliminar)
         Me.Controls.Add(Me.btnEditar)
@@ -139,4 +151,5 @@ Partial Class ConfiguracionCaja
     Friend WithEvents btnEditar As Button
     Friend WithEvents btnEliminar As Button
     Friend WithEvents btnSalir As Button
+    Friend WithEvents CheckBox1 As CheckBox
 End Class

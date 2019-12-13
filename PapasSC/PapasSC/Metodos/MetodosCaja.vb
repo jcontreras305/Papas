@@ -10,7 +10,23 @@ Public Class MetodosCaja
     Private busqueda As String = "select idCaja , cj.nombre as Caja,cj.clave as Referencia, cj.estatus as Estatus,cj.fase as Fase, cj.limiteEfectivo, bd.nombre as Bodega, cj.explicito as ValoresExplicitos from caja as  cj left join bodega as bd
 on cj.idBodega = bd.idBodega "
 
-
+    Public Sub seleccioarCajasTodos(ByVal tblCaja As DataGridView)
+        Try
+            conectar()
+            Dim cmd As New SqlCommand(busqueda, conn)
+            If cmd.ExecuteNonQuery Then
+                Dim da As New SqlDataAdapter(cmd)
+                Dim dt As New DataTable
+                da.Fill(dt)
+                tblCaja.DataSource = dt
+            Else
+                MsgBox("Error")
+            End If
+        Catch exc As Exception
+            MsgBox("Error")
+        End Try
+        desconectar()
+    End Sub
     Public Sub seleccioarCajas(ByVal tblCaja As DataGridView)
         Try
             conectar()
@@ -705,12 +721,12 @@ left join caja as cj on ab.idCaja = cj.idCaja"
     '#######################################################################################
     '######################### METODOS PARA PRE-CORTE DE CAJA ##############################
     '#######################################################################################
-    Dim consultaTotalPrecorte = "select SUM(cantidadPagada) as Total
+    Dim consultaTotalPrecorte = "select ISNULL( SUM(cantidadPagada),0) as Total
 from venta as vt
 left join caja as cj on cj.idCaja = vt.idCaja
 left join corteCaja as cc on cc.idCaja= cj.idCaja
 left join cliente as cl on cl.idCliente = vt.idCliente 
-where cc.fechaInicio  = (select MAX(fechaInicio) from corteCaja where idCaja = '"
+where vt.fecha = (select MAX(fechaInicio) from corteCaja where idCaja = '"
 
     Public Function consultarTotalPreCorte(ByRef idCaja As String) As Double
         Try

@@ -28,7 +28,7 @@
             If chbActivo.Checked Then
                 datos(2) = "A"
             Else
-                datos(2) = "I"
+                datos(2) = "B"
             End If
             datos(3) = cmbFase.Text
             datos(4) = CStr(sprEfectivo.Value)
