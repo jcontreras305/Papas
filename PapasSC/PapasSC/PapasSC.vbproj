@@ -944,6 +944,7 @@
     <Content Include="Documentos\ISAAC.sql" />
     <Content Include="Documentos\Jesus.sql" />
     <Content Include="Documentos\LARIGZA.sql" />
+    <Content Include="Documentos\Nuevo sql.sql" />
     <Content Include="Documentos\PS_ACTUAL1.0.sql" />
     <Content Include="Imagenes\ACTUALIZAR.png" />
     <Content Include="Imagenes\agregar.png" />
